@@ -81,12 +81,12 @@ public class MainActivity extends Activity {
 	}
 	
 	public void playFromAngle(View view) {
-		EditText ETd = (EditText) this.findViewById(R.id.editText_driveBy);
-		int d = Integer.parseInt(ETd.getText().toString());
+		EditText ETd = (EditText) this.findViewById(R.id.editText_angle);
+		double d = (double) Integer.parseInt(ETd.getText().toString());
 		double r = (d/180)*Math.PI; //Conversion from degrees to radians;
 		
 		Human orientatedHuman = new Human(Vector2.zero(), r);
-		playAtCoordinate(new Vector2(0, 10), orientatedHuman);
+		playAtCoordinate(new Vector2(0, 20), orientatedHuman);
 	}
 	
 	public void message(String s) {
