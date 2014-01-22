@@ -4,7 +4,7 @@ public class Human {
 	private static double distanceBetweenEars = 20;
 	
 	private Vector2 position;
-	private double  rotation;					//in radians from north
+	private double  rotation;					//in radians from pos x-axis
 	
 	
 	public Human(Vector2 position, double rotation) {
@@ -34,8 +34,8 @@ public class Human {
 	
 	public Vector2 getLeftEarPos() {
 		double h 	= distanceBetweenEars/2;
-		double dx 	= h * Math.sin(rotation);
-		double dy 	= h * Math.cos(rotation);
+		double dx 	= h * Math.cos(rotation);
+		double dy 	= h * Math.sin(rotation);
 		double x 	= this.position.getX() + dx;
 		double y 	= this.position.getY() + dy;
 		
@@ -45,8 +45,8 @@ public class Human {
 	
 	public Vector2 getRightEarPos() {
 		double h 	= distanceBetweenEars/2;
-		double dx 	= h * Math.sin(rotation);
-		double dy 	= h * Math.cos(rotation);
+		double dx 	= h * Math.cos(rotation);
+		double dy 	= h * Math.sin(rotation);
 		double x 	= this.position.getX() - dx;
 		double y 	= this.position.getY() - dy;
 		
