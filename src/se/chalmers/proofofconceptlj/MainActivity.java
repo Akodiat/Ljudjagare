@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 		//Initiate mediaPlayer with dragon roar ^^
 		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.dragon);
 
-		double 	someConstant  		= 1/Math.PI;	//  <-- Edit this (has to be between 0 and 1)
+		double 	someConstant  		= 0.5;	//  <-- Edit this (has to be between 0 and 1)
 
 		//Volume for each ear is inverse proportional to the distance to the sound source
 		float left  = (float) (1 / (Vector2.distance(coord, human.getLeftEarPos())  * someConstant));
