@@ -36,8 +36,8 @@ public class Human {
 		double h 	= distanceBetweenEars/2;
 		double dx 	= h * Math.cos(rotation);
 		double dy 	= h * Math.sin(rotation);
-		double x 	= this.position.getX() + dx;
-		double y 	= this.position.getY() + dy;
+		double x 	= this.position.getX() - dx;
+		double y 	= this.position.getY() - dy;
 		
 		return new Vector2(x,y);
 		
@@ -47,8 +47,8 @@ public class Human {
 		double h 	= distanceBetweenEars/2;
 		double dx 	= h * Math.cos(rotation);
 		double dy 	= h * Math.sin(rotation);
-		double x 	= this.position.getX() - dx;
-		double y 	= this.position.getY() - dy;
+		double x 	= this.position.getX() + dx;
+		double y 	= this.position.getY() + dy;
 		
 		return new Vector2(x,y);
 	}
