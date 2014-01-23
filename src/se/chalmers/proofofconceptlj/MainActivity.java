@@ -6,7 +6,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +44,27 @@ public class MainActivity extends Activity {
 		mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
 		message("L:"+ left + "\tR:" + right);
+		
+		//Rotate arrow:
+		ImageView arrow = (ImageView) this.findViewById(R.id.imageView1);
+		
+		RotateAnimation anim = new RotateAnimation(
+                0, 
+                (float) (-180*(human.getRotation()/Math.PI)),
+                Animation.RELATIVE_TO_SELF, 0.5f, 
+                Animation.RELATIVE_TO_SELF,
+                0.5f);
+
+        // how long the animation will take place
+        anim.setDuration(210);
+
+        // set the animation after the end of the reservation status
+        anim.setFillAfter(true);
+
+        // Start the animation
+        arrow.startAnimation(anim);;
+        
+        
 
 		while(mediaPlayer.isPlaying()); //Stops thread until done playing (fulhack)
 
