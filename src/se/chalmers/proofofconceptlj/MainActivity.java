@@ -38,31 +38,28 @@ public class MainActivity extends Activity {
 		float left  = (float) (1 / (Vector2.distance(coord, human.getLeftEarPos())  * someConstant));
 		float right = (float) (1 / (Vector2.distance(coord, human.getRightEarPos()) * someConstant));
 
+		//Rotate arrow:
+				ImageView arrow = (ImageView) this.findViewById(R.id.imageView1);
+				
+				RotateAnimation anim = new RotateAnimation(
+		                0, 
+		                (float) (-180*(human.getRotation()/Math.PI)),
+		                Animation.RELATIVE_TO_SELF, 0.5f, 
+		                Animation.RELATIVE_TO_SELF,
+		                0.5f);
+		        anim.setDuration(210);
+		        anim.setFillAfter(true);
+		        arrow.startAnimation(anim);
+		        
 		mediaPlayer.setVolume(left, right); //TODO: has to be in interval (0 <= left&right <= 1)
 
+		
 		//mediaPlayer.setLooping(true);
 		mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
 		message("L:"+ left + "\tR:" + right);
 		
-		//Rotate arrow:
-		ImageView arrow = (ImageView) this.findViewById(R.id.imageView1);
 		
-		RotateAnimation anim = new RotateAnimation(
-                0, 
-                (float) (-180*(human.getRotation()/Math.PI)),
-                Animation.RELATIVE_TO_SELF, 0.5f, 
-                Animation.RELATIVE_TO_SELF,
-                0.5f);
-
-        // how long the animation will take place
-        anim.setDuration(210);
-
-        // set the animation after the end of the reservation status
-        anim.setFillAfter(true);
-
-        // Start the animation
-        arrow.startAnimation(anim);;
         
         
 
