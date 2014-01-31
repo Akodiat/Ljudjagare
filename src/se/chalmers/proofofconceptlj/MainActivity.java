@@ -2,8 +2,13 @@ package se.chalmers.proofofconceptlj;
 
 
 import android.app.Activity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,14 +19,61 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	final static String TAG = "PAAR";
+	SensorManager sensorManager;
+	int orientationSensor;
+	float headingAngle;
+	float pitchAngle;
+	float rollAngle;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//Stolen from agumented reality on the Andorid platform pp.23:
+		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		orientationSensor = Sensor.TYPE_ORIENTATION;
+		sensorManager.registerListener(sensorEventListener, sensorManager.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
+
+	}
+	final SensorEventListener sensorEventListener = new SensorEventListener() {
+		public void onSensorChanged(SensorEvent sensorEvent) {
+			if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
+				headingAngle 	= sensorEvent.values[0];
+				pitchAngle 		= sensorEvent.values[1];
+				rollAngle 		= sensorEvent.values[2];
+				Log.d(TAG, "Heading: " + String.valueOf(headingAngle));
+				Log.d(TAG, "Pitch: " + String.valueOf(pitchAngle));
+				Log.d(TAG, "Roll: " + String.valueOf(rollAngle));
+				
+				
+				//message("Pitch: " + String.valueOf(pitchAngle));
+				//message("Roll: " + String.valueOf(rollAngle));
+				message("Heading: " + String.valueOf(headingAngle));
+			}
+		}
+		public void onAccuracyChanged (Sensor senor, int accuracy) {
+			//Not used
+		}
+
+
+	};
+
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		sensorManager.registerListener(sensorEventListener, sensorManager
+				.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
+	}
+	@Override
+	public void onPause() {
+		sensorManager.unregisterListener(sensorEventListener);
+		super.onPause();
 	}
 
-
+	//End of stolen
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -39,29 +91,29 @@ public class MainActivity extends Activity {
 		float right = (float) (1 / (Vector2.distance(coord, human.getRightEarPos()) * someConstant));
 
 		//Rotate arrow:
-				ImageView arrow = (ImageView) this.findViewById(R.id.imageView1);
-				
-				RotateAnimation anim = new RotateAnimation(
-		                0, 
-		                (float) (-180*(human.getRotation()/Math.PI)),
-		                Animation.RELATIVE_TO_SELF, 0.5f, 
-		                Animation.RELATIVE_TO_SELF,
-		                0.5f);
-		        anim.setDuration(210);
-		        anim.setFillAfter(true);
-		        arrow.startAnimation(anim);
-		        
+		ImageView arrow = (ImageView) this.findViewById(R.id.imageView1);
+
+		RotateAnimation anim = new RotateAnimation(
+				0, 
+				(float) (-180*(human.getRotation()/Math.PI)),
+				Animation.RELATIVE_TO_SELF, 0.5f, 
+				Animation.RELATIVE_TO_SELF,
+				0.5f);
+		anim.setDuration(210);
+		anim.setFillAfter(true);
+		arrow.startAnimation(anim);
+
 		mediaPlayer.setVolume(left, right); //TODO: has to be in interval (0 <= left&right <= 1)
 
-		
+
 		//mediaPlayer.setLooping(true);
 		mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
 		message("L:"+ left + "\tR:" + right);
-		
-		
-        
-        
+
+
+
+
 
 		while(mediaPlayer.isPlaying()); //Stops thread until done playing (fulhack)
 
@@ -76,8 +128,7 @@ public class MainActivity extends Activity {
 			playAtCoordinate(new Vector2(i,Math.pow(i, 2)), new Human()); // follow parable y=x²
 		}
 	}
-	
-	// Called when the user clicks the button
+
 	public void playGivenCoordinate(View view) {
 		//AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
 		//Read x and y (sound source) coordinates
@@ -93,23 +144,23 @@ public class MainActivity extends Activity {
 		playAtCoordinate(soundPos, new Human());
 
 	}
-	
+
 	public void playDriveBy(View view) {
 		EditText ETd = (EditText) this.findViewById(R.id.editText_driveBy);
 		int d = Integer.parseInt(ETd.getText().toString());
 
 		driveByFrom(d);
 	}
-	
+
 	public void playFromAngle(View view) {
 		EditText ETd = (EditText) this.findViewById(R.id.editText_angle);
 		double d = (double) Integer.parseInt(ETd.getText().toString());
 		double r = (d/180)*Math.PI; //Conversion from degrees to radians;
-		
+
 		Human orientatedHuman = new Human(Vector2.zero(), r);
 		playAtCoordinate(new Vector2(0, 20), orientatedHuman);
 	}
-	
+
 	public void message(String s) {
 		Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
 
@@ -118,5 +169,6 @@ public class MainActivity extends Activity {
 		debugText.setText(s);
 		debugText.invalidate();
 	}
+
 
 }
