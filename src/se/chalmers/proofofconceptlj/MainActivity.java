@@ -21,6 +21,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	final static String TAG = "PAAR";
 	SensorManager sensorManager;
+	ImageView arrow2;
 	int orientationSensor;
 	float headingAngle;
 	float pitchAngle;
@@ -35,11 +36,13 @@ public class MainActivity extends Activity {
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		orientationSensor = Sensor.TYPE_ORIENTATION;
 		sensorManager.registerListener(sensorEventListener, sensorManager.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
-
+		this.arrow2 = (ImageView) this.findViewById(R.id.imageView2);
 	}
 	final SensorEventListener sensorEventListener = new SensorEventListener() {
 		public void onSensorChanged(SensorEvent sensorEvent) {
 			if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
+				float prevHeading = headingAngle; //Store the old value to rotate arrow
+				
 				headingAngle 	= sensorEvent.values[0];
 				pitchAngle 		= sensorEvent.values[1];
 				rollAngle 		= sensorEvent.values[2];
@@ -50,7 +53,21 @@ public class MainActivity extends Activity {
 				
 				//message("Pitch: " + String.valueOf(pitchAngle));
 				//message("Roll: " + String.valueOf(rollAngle));
-				message("Heading: " + String.valueOf(headingAngle));
+				message("Heading: " + String.valueOf(headingAngle) + 
+						"\nPitch: " + String.valueOf(pitchAngle) + 
+						 "\nRoll: " + String.valueOf(rollAngle));
+				
+				
+				//Rotate arrow:
+				RotateAnimation anim = new RotateAnimation(
+						prevHeading, 
+						rollAngle,
+						Animation.RELATIVE_TO_SELF, 0.5f, 
+						Animation.RELATIVE_TO_SELF,
+						0.5f);
+				anim.setDuration(210);
+				anim.setFillAfter(true);
+				arrow2.startAnimation(anim);
 			}
 		}
 		public void onAccuracyChanged (Sensor senor, int accuracy) {
@@ -153,16 +170,16 @@ public class MainActivity extends Activity {
 	}
 
 	public void playFromAngle(View view) {
-		EditText ETd = (EditText) this.findViewById(R.id.editText_angle);
-		double d = (double) Integer.parseInt(ETd.getText().toString());
-		double r = (d/180)*Math.PI; //Conversion from degrees to radians;
+		//EditText ETd = (EditText) this.findViewById(R.id.editText_angle);
+		//double d = (double) Integer.parseInt(ETd.getText().toString());
+		//double r = (d/180)*Math.PI; //Conversion from degrees to radians;
 
-		Human orientatedHuman = new Human(Vector2.zero(), r);
+		Human orientatedHuman = new Human(Vector2.zero(), this.headingAngle);
 		playAtCoordinate(new Vector2(0, 20), orientatedHuman);
 	}
 
 	public void message(String s) {
-		Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+		//Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
 
 		TextView debugText = (TextView) this.findViewById(R.id.textView_debug);
 
