@@ -20,34 +20,25 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/editText_x"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView_sourceLongitude"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="X-coordinate"
-                android:inputType="numberSigned"
-                android:text="5" >
+                android:text="Source longitude:" />
 
-                <requestFocus />
-            </EditText>
-
-            <EditText
-                android:id="@+id/editText_y"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView_sourceLatitude"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Y-coordinate"
-                android:inputType="numberSigned"
-                android:text="70" />
+                android:text="Source latitude:" />
 
             <Button
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:onClick="playGivenCoordinate"
-                android:text="playGivenCoordinate" />
+                android:onClick="setCurrentAsSource"
+                android:text="Set current position as sound source" />
 
             <TextView
                 android:id="@+id/textView1"
@@ -64,48 +55,52 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
-                android:id="@+id/editText_driveBy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="Drive-by horisontal distance"
-                android:inputType="numberSigned"
-                android:text="5" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="playDriveBy"
-                android:text="playDriveBy" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="playFromAngle"
-                android:text="playFromAngle" />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="54dp"
-                android:layout_height="30dp"
-                android:onClick="play3D"
-                android:text="play3D" />
-
-            <EditText
                 android:id="@+id/editText_angle"
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberSigned" />
 
+            <CheckBox
+                android:id="@+id/checkBox_compass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Use compass (else use gps direction)" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="playSound"
+                android:text="PLAY SOUND" />
+            
+              <Button
+                android:id="@+id/button4"
+                android:layout_width="54dp"
+                android:layout_height="30dp"
+                android:onClick="play3D"
+                android:text="play3D" />
+
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@drawable/arrow" />
+
+            <TextView
+                android:id="@+id/textView_GPS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GPS-pos"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
 

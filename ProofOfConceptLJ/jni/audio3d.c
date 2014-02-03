@@ -194,6 +194,5 @@ int sl_main(void) {
 }
 
 void Java_se_chalmers_proofofconceptlj_MainActivity_test3D() {
-
 	sl_main();
 }
