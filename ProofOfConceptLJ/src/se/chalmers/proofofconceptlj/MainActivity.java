@@ -2,21 +2,15 @@ package se.chalmers.proofofconceptlj;
 
 
 import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.hardware.*;
+import android.location.*;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.animation.*;
+import android.widget.*;
 
 public class MainActivity extends Activity {
 	final static String TAG = "PAAR";
@@ -27,41 +21,58 @@ public class MainActivity extends Activity {
 	float pitchAngle;
 	float rollAngle;
 
+	LocationManager locationManager;
+	double latitude;
+	double longitude;
+	double altitude;
+
+	double sourceLatitude;
+	double sourceLongitude;
+	Human human;
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		//Stolen from agumented reality on the Andorid platform pp.23:
-		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		orientationSensor = Sensor.TYPE_ORIENTATION;
+		sensorManager 		= (SensorManager) getSystemService(SENSOR_SERVICE);
+		orientationSensor 	= Sensor.TYPE_ORIENTATION;
 		sensorManager.registerListener(sensorEventListener, sensorManager.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
-		this.arrow2 = (ImageView) this.findViewById(R.id.imageView2);
+
+		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 2, locationListener);
+
+		arrow2 = (ImageView) this.findViewById(R.id.imageView2);
+		human = new Human();
 	}
 	final SensorEventListener sensorEventListener = new SensorEventListener() {
 		public void onSensorChanged(SensorEvent sensorEvent) {
 			if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
 				float prevHeading = headingAngle; //Store the old value to rotate arrow
-				
+
 				headingAngle 	= sensorEvent.values[0];
 				pitchAngle 		= sensorEvent.values[1];
 				rollAngle 		= sensorEvent.values[2];
 				Log.d(TAG, "Heading: " + String.valueOf(headingAngle));
 				Log.d(TAG, "Pitch: " + String.valueOf(pitchAngle));
 				Log.d(TAG, "Roll: " + String.valueOf(rollAngle));
-				
-				
+
+
 				//message("Pitch: " + String.valueOf(pitchAngle));
 				//message("Roll: " + String.valueOf(rollAngle));
-				message("Heading: " + String.valueOf(headingAngle) + 
+				printOrientation("Heading: " + String.valueOf(headingAngle) + 
 						"\nPitch: " + String.valueOf(pitchAngle) + 
-						 "\nRoll: " + String.valueOf(rollAngle));
-				
-				
+						"\nRoll: " + String.valueOf(rollAngle));
+
+				if(usingCompass()) {
+					human.setRotation(headingAngle);
+				}
 				//Rotate arrow:
 				RotateAnimation anim = new RotateAnimation(
 						prevHeading, 
-						rollAngle,
+						(float) human.getRotation(),
 						Animation.RELATIVE_TO_SELF, 0.5f, 
 						Animation.RELATIVE_TO_SELF,
 						0.5f);
@@ -77,6 +88,34 @@ public class MainActivity extends Activity {
 
 	};
 
+	LocationListener locationListener = new LocationListener() {
+		public void onLocationChanged(Location location) {
+			latitude 	= location.getLatitude();
+			longitude 	= location.getLongitude();
+			altitude 	= location.getAltitude();
+
+			printLocation(	"Latitude: " 	+ String.valueOf(latitude) + 
+					"Longitude: " 	+ String.valueOf(longitude)+ 
+					"Altitude: " 	+ String.valueOf(altitude));
+
+			human.setPosition(new Vector2(latitude,longitude));
+
+			
+			if(!usingCompass())
+				human.setRotation(location.getBearing());
+		}
+		public void onProviderDisabled(String argo) {
+			// TODO Auto-generated method stub
+		}
+		public void onProviderEnabled(String argo) {
+			// TODO Auto-generated method stub
+		}
+		public void onStatusChanged(String argO, int argl, Bundle arg2) {
+			// TODO Auto-generated method stub
+		}
+	};
+
+
 
 	@Override
 	public void onResume() {
@@ -90,12 +129,21 @@ public class MainActivity extends Activity {
 		super.onPause();
 	}
 
+
 	//End of stolen
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	private void pointArrowToSource() {
+		this.human.getRotation();
+	}
+	private boolean usingCompass() {
+		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox_compass);
+		return checkBox.isChecked();
 	}
 	public void playAtCoordinate(Vector2 coord, Human human) {
 		//Initiate mediaPlayer with dragon roar ^^
@@ -120,13 +168,14 @@ public class MainActivity extends Activity {
 		anim.setFillAfter(true);
 		arrow.startAnimation(anim);
 
+
 		mediaPlayer.setVolume(left, right); //TODO: has to be in interval (0 <= left&right <= 1)
 
 
 		//mediaPlayer.setLooping(true);
 		mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
-		message("L:"+ left + "\tR:" + right);
+		printOrientation("L:"+ left + "\tR:" + right);
 
 
 
@@ -136,37 +185,20 @@ public class MainActivity extends Activity {
 
 		mediaPlayer.release();
 	}
-	/**
-	 * Makes the sound source move along the parable y=x² starting from -x
-	 * @param x horizontal distance to sound at beginning
-	 */
-	public void driveByFrom(int x) {
-		for(int i=-x; i<x; i++) {
-			playAtCoordinate(new Vector2(i,Math.pow(i, 2)), new Human()); // follow parable y=x²
-		}
+
+	public void playSound(View view) {
+		playAtCoordinate(new Vector2(sourceLongitude, sourceLatitude), human);
 	}
 
-	public void playGivenCoordinate(View view) {
-		//AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-		//Read x and y (sound source) coordinates
-		EditText ETx = (EditText) this.findViewById(R.id.editText_x);
-		EditText ETy = (EditText) this.findViewById(R.id.editText_y);
+	public void setCurrentAsSource(View view) {
+		this.sourceLongitude = longitude;
+		this.sourceLatitude = latitude;
 
-		//Create position vector of sound source
-		Vector2 soundPos = new Vector2(
-				Integer.parseInt(ETx.getText().toString()),
-				Integer.parseInt(ETy.getText().toString()));
+		TextView textLongitude = (TextView) this.findViewById(R.id.textView_sourceLongitude);
+		TextView textLatitude = (TextView) this.findViewById(R.id.textView_sourceLatitude);
 
-		//Plays sound at sound source
-		playAtCoordinate(soundPos, new Human());
-
-	}
-
-	public void playDriveBy(View view) {
-		EditText ETd = (EditText) this.findViewById(R.id.editText_driveBy);
-		int d = Integer.parseInt(ETd.getText().toString());
-
-		driveByFrom(d);
+		textLongitude.setText("Source longitude: " + this.sourceLongitude);
+		textLatitude.setText(  "Source latitude: " + this.sourceLatitude );
 	}
 
 	public void playFromAngle(View view) {
@@ -178,10 +210,18 @@ public class MainActivity extends Activity {
 		playAtCoordinate(new Vector2(0, 20), orientatedHuman);
 	}
 
-	public void message(String s) {
+	private void printOrientation(String s) {
 		//Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
 
 		TextView debugText = (TextView) this.findViewById(R.id.textView_debug);
+
+		debugText.setText(s);
+		debugText.invalidate();
+	}
+	private void printLocation(String s) {
+		//Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+
+		TextView debugText = (TextView) this.findViewById(R.id.textView_GPS);
 
 		debugText.setText(s);
 		debugText.invalidate();

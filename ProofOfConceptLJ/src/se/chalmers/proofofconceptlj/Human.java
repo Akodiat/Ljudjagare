@@ -1,7 +1,7 @@
 package se.chalmers.proofofconceptlj;
 
 public class Human {
-	private static double distanceBetweenEars = 20;
+	private static double distanceBetweenEars = 0.01;
 	
 	private Vector2 position;
 	private double  rotation;					//in radians from pos x-axis
