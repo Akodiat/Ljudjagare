@@ -14,12 +14,14 @@ import android.widget.*;
 
 public class MainActivity extends Activity {
 	private static final int FX_01 = 1;
+	private static final int LOOP = -1;
 
 	private HashMap<Integer, Integer> soundPoolMap;
 	private SoundPool soundPool;
 	private AudioManager audioManager;
 
 	private Button playFX;
+	private Button sweepFX;
 	private SeekBar seekBar;
 
 	/**
@@ -40,6 +42,19 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				playFX(FX_01);
+			}
+		});
+		
+		sweepFX = (Button) findViewById(R.id.sweep_fx1);
+		sweepFX.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				try {
+					testPanning(FX_01);
+				} catch (InterruptedException e) {
+					// Need to catch eventual exception thrown by testPanning.
+					e.printStackTrace();
+				}
 			}
 		});
 	}
@@ -89,9 +104,9 @@ public class MainActivity extends Activity {
 	public void playFX(int soundID) {
 		audioManager = (AudioManager) this.getSystemService(AUDIO_SERVICE);
 
-		// Get current value from seekbar. 
+		// Get current value from seekbar.
 		// Subtract 100 to get a seekbar from -100 to 100 (max is 200).
-		//int seekValue = seekBar.getProgress() - 100;
+		// int seekValue = seekBar.getProgress() - 100;
 
 		float actualVolume = (float) audioManager
 				.getStreamVolume(AudioManager.STREAM_MUSIC);
@@ -102,5 +117,25 @@ public class MainActivity extends Activity {
 		// Play sound
 		if (loaded)
 			soundPool.play(FX_01, volume, volume, 1, 0, 1f);
+	}
+
+	/**
+	 * Take from http://alvinalexander.com/java/
+	 * jwarehouse/android/media/tests/SoundPoolTest/
+	 * src/com/android/SoundPoolTest.java.shtml
+	 * @throws InterruptedException 
+	 */
+	public void testPanning(int soundID) throws InterruptedException {
+		int id = soundPool.play(soundID, 0.0f, 1.0f, 1, LOOP, 1f);
+
+		for (int count = 0; count < 101; count++) {
+			Thread.sleep(20);
+			double radians = (Math.PI / 2.0) * count / 100.0;
+			float leftVolume = (float) Math.sin(radians);
+			float rightVolume = (float) Math.cos(radians);
+			soundPool.setVolume(id, leftVolume, rightVolume);
+		}
+		
+		soundPool.stop(id);
 	}
 }
