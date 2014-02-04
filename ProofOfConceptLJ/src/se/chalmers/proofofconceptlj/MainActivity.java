@@ -108,15 +108,15 @@ public class MainActivity extends Activity {
 		// Subtract 100 to get a seekbar from -100 to 100 (max is 200).
 		// int seekValue = seekBar.getProgress() - 100;
 
-		float actualVolume = (float) audioManager
-				.getStreamVolume(AudioManager.STREAM_MUSIC);
-		float maxVolume = (float) audioManager
-				.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-		float volume = actualVolume / maxVolume;
+//		float actualVolume = (float) audioManager
+//				.getStreamVolume(AudioManager.STREAM_MUSIC);
+//		float maxVolume = (float) audioManager
+//				.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+//		float volume = actualVolume / maxVolume;
 
 		// Play sound
 		if (loaded)
-			soundPool.play(FX_01, volume, volume, 1, 0, 1f);
+			soundPool.play(FX_01, 1f, 1f, 1, 0, 1f);
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class MainActivity extends Activity {
 	 * @throws InterruptedException 
 	 */
 	public void testPanning(int soundID) throws InterruptedException {
-		int id = soundPool.play(soundID, 0.0f, 1.0f, 1, LOOP, 1f);
+		int id = soundPool.play(soundID, 0f, 1f, 1, LOOP, 1f);
 
 		for (int count = 0; count < 101; count++) {
 			Thread.sleep(20);
