@@ -15,19 +15,23 @@
         android:id="@+id/fx1"
         android:layout_width="286dp"
         android:layout_height="wrap_content"
-        android:text="Play FX1" 
-        android:max="200"/>
+        android:text="Loop FX1" />
     
      <Button
         android:id="@+id/sweep_fx1"
         android:layout_width="286dp"
         android:layout_height="wrap_content"
-        android:text="Sweep FX1" 
-        android:max="200"/>
+        android:text="Sweep FX1" />
 
     <SeekBar
-        android1:id="@+id/seekBar1"
-        android1:layout_width="match_parent"
-        android1:layout_height="wrap_content" />
+        android:id="@+id/seekBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:id="@+id/stop_loop"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:text="Stop Loop" />
 
 </LinearLayout>
