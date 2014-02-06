@@ -166,10 +166,6 @@ public class MainActivity extends Activity {
 		soundPool.play(FX_01, leftVolume, rightVolume, 1, 0, 1f);
 	}
 
-	public void loopForever() {
-
-	}
-
 	/**
 	 * Take from http://alvinalexander.com/java/
 	 * jwarehouse/android/media/tests/SoundPoolTest/
