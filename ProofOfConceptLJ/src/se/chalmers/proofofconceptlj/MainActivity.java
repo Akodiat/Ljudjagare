@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 	private Button stopLoop;
 	private SeekBar seekBar;
 	private SeekBar seekBar2;
-	
+
 	/**
 	 * True if sound is loaded correctly.
 	 */
@@ -127,9 +127,8 @@ public class MainActivity extends Activity {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				panning = Math.PI / 2 * (progress) / 100;
-				float leftVolume = (float) Math.cos(panning);
-				float rightVolume = (float) Math.sin(panning);
-				soundPool.setVolume(id, leftVolume, rightVolume);
+				soundPool.setVolume(id, (float) Math.cos(panning),
+						(float) Math.sin(panning));
 			}
 		});
 
@@ -335,44 +334,19 @@ public class MainActivity extends Activity {
 		soundPoolMap.put(FX_01, soundPool.load(this, R.raw.sound, 1));
 	}
 
-	// public void playAtCoordinate(Vector2 coord, Human human) {
-	// double someConstant = 0.5; // <-- Edit this (has to be between 0 and 1)
-	//
-	// // Volume for each ear is inverse proportional to the distance to the
-	// // sound source
-	// float left = (float) (1 / (Vector2.distance(coord,
-	// human.getLeftEarPos()) * someConstant));
-	// float right = (float) (1 / (Vector2.distance(coord,
-	// human.getRightEarPos()) * someConstant));
-	//
-	// soundPool.setVolume(FX_01, left, right);
-	//
-	// // -1 means loop forever
-	// soundPool.play(FX_01, left, right, 1, 0, 1f);
-	// }
-
 	public void playFX(int soundID) {
-		// AudioManager audioManager = (AudioManager)
-		// this.getSystemService(AUDIO_SERVICE);
-
-		// float actualVolume = (float) audioManager
-		// .getStreamVolume(AudioManager.STREAM_MUSIC);
-		// float maxVolume = (float) audioManager
-		// .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-		// float volume = actualVolume / maxVolume;
-
 		// Play sound
 		if (loaded)
-			soundPool.play(FX_01, 1f, 1f, 1, 0, 1f);
+			soundPool.play(soundID, 1f, 1f, 1, 0, 1f);
 	}
 
-	public void setPanning() {
+	public void setPanning(int soundID) {
 		// 0 - all left, pi/2 all right
 		double radian = panning;
 		float leftVolume = (float) Math.cos(radian);
 		float rightVolume = (float) Math.sin(radian);
 
-		soundPool.play(FX_01, leftVolume, rightVolume, 1, 0, 1f);
+		soundPool.play(soundID, leftVolume, rightVolume, 1, 0, 1f);
 	}
 
 	/**
