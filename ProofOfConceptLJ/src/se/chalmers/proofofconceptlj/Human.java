@@ -1,18 +1,27 @@
 package se.chalmers.proofofconceptlj;
 
+import android.location.Location;
+
 public class Human {
-	private static double distanceBetweenEars = 0.01;
+//	private static double distanceBetweenEars = 0.01;
 	
-	private Vector2 position;
-	private double  rotation;					//in radians from pos x-axis
+//	private Vector2 position;
+	private Location location;
+//	private double  rotation;					//in radians from pos x-axis
 	
 	
-	public Human(Vector2 position, double rotation) {
-		this.position = position;
-		this.rotation = rotation;
+	public Human(Location location, double rotation) {
+		this.location = location;
+	//	this.rotation = rotation;
+	}
+	public Location getLocation(){
+		return this.location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
-	public Human() {
+/*	public Human() {
 		this(Vector2.zero(), 0);
 	}
 	
@@ -23,8 +32,8 @@ public class Human {
 	public void setRotation(double rotation) {
 		this.rotation = rotation;
 	}
-
-	public Vector2 getPosition() {
+*/
+/*	public Vector2 getPosition() {
 		return position;
 	}
 
@@ -52,4 +61,5 @@ public class Human {
 		
 		return new Vector2(x,y);
 	}
+	*/
 }

@@ -27,6 +27,12 @@ public class Vector2 {
 				Math.pow(a.x - b.x, 2) + 
 				Math.pow(a.y - b.y, 2));
 	}
+	public static double angle(Vector2 a, Vector2 b) {
+		double dx = a.x - b.x;
+		double dy = a.y - b.y;
+		return Math.atan(dy/dx); //TODO Check if correct
+		
+	}
 	/**
 	 * Gives a vector at origo (0,0)
 	 * @return the vector at origo (0,0)
