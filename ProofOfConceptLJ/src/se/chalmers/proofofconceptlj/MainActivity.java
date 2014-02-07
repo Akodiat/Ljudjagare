@@ -247,10 +247,6 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	private void pointArrowToSource() {
-		this.human.getRotation();
-	}
-
 	private boolean usingCompass() {
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox_compass);
 		return checkBox.isChecked();
@@ -284,17 +280,21 @@ public class MainActivity extends Activity {
 		mediaPlayer.release();
 	}
 
-	public void playSound(View view) {
+	public void playSound() {
 		playAtCoordinate(new Vector2(sourceLongitude, sourceLatitude), human);
 	}
 
-	public void playFromAngle(View view) {
-		// EditText ETd = (EditText) this.findViewById(R.id.editText_angle);
-		// double d = (double) Integer.parseInt(ETd.getText().toString());
-		// double r = (d/180)*Math.PI; //Conversion from degrees to radians;
-
-		Human orientatedHuman = new Human(Vector2.zero(), this.headingAngle);
-		playAtCoordinate(new Vector2(0, 20), orientatedHuman);
+	public void playFromAngle() {
+		float angle = (float) Vector2.angle(human.getPosition(), new Vector2(longitude,latitude));
+		angle += human.getRotation();
+		
+		if (angle >= 90 && angle <= 180) 
+			soundPool.setVolume(id, 1f, 0f);
+		
+		if (angle >= 180 && angle <= 270) 
+			soundPool.setVolume(id, 0f, 1f);
+		
+		
 	}
 
 	private void printOrientation(String s) {
