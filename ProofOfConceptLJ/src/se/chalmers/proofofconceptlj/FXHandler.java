@@ -53,7 +53,21 @@ public class FXHandler {
 			soundPool.play(soundID, 1f, 1f, 1, 0, 1f);
 	}
 
-	public void setPanning(int soundID) {
+	/**
+	 * 
+	 * @param soundID sound to process
+	 * @param angle angle between current direction and source (0-360)
+	 */
+	public void setPanning(int soundID, int angle) {
+		
+		// Is sound behind the player to the left?
+		if (angle >= 90 && angle <= 180)
+			soundPool.play(soundID, 1f, 0, 1, 0, 1f);
+		
+		// Is sound behind the player to the right?
+		if (angle >= 90 && angle <= 180)
+			soundPool.play(soundID, 0, 1f, 1, 0, 1f);
+		
 		// 0 - all left, pi/2 all right
 		double radian = panning;
 		float leftVolume = (float) Math.cos(radian);
@@ -78,4 +92,15 @@ public class FXHandler {
 
 		soundPool.stop(id);
 	}
+	
+	/** 
+	 * Get max value of device
+	 */
+	public int maxVolume() {
+		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+	}
+	
+	/**
+	 * 
+	 */
 }
