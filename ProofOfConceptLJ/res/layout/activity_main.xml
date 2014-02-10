@@ -94,7 +94,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Device orientation \nThis doesn't work atm" />
+                    android:text="Source (according to compass)" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -112,7 +112,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Sound source direction" />
+                    android:text="Source (according to GPS bearing)" />
 
                 <ImageView
                     android:id="@+id/imageView3"

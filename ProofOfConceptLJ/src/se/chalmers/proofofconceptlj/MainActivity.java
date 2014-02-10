@@ -16,10 +16,10 @@ public class MainActivity extends Activity {
 	final static String TAG = "PAAR";
 	SensorManager sensorManager;
 	ImageView arrow2;
-//	int orientationSensor;
-//	float headingAngle;
-//	float pitchAngle;
-//	float rollAngle;
+		int orientationSensor;
+		float headingAngle;
+		float pitchAngle;
+		float rollAngle;
 
 	LocationManager locationManager;
 
@@ -33,17 +33,18 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		//Stolen from agumented reality on the Andorid platform pp.23:
-//		sensorManager 		= (SensorManager) getSystemService(SENSOR_SERVICE);
-//		orientationSensor 	= Sensor.TYPE_ORIENTATION;
-//		sensorManager.registerListener(sensorEventListener, sensorManager.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
+		//Stolen from augmented reality on the Android platform pp.23:
+				sensorManager 		= (SensorManager) getSystemService(SENSOR_SERVICE);
+				orientationSensor 	= Sensor.TYPE_ORIENTATION;
+				sensorManager.registerListener(sensorEventListener, sensorManager.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
 
 		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 2, locationListener);
+		human = new Human(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER));
 
 		arrow2 = (ImageView) this.findViewById(R.id.imageView2);
 	}
-/*	final SensorEventListener sensorEventListener = new SensorEventListener() {
+		final SensorEventListener sensorEventListener = new SensorEventListener() {
 		public void onSensorChanged(SensorEvent sensorEvent) {
 			if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
 				float prevHeading = headingAngle; //Store the old value to rotate arrow
@@ -51,9 +52,9 @@ public class MainActivity extends Activity {
 				headingAngle 	= sensorEvent.values[0];
 				pitchAngle 		= sensorEvent.values[1];
 				rollAngle 		= sensorEvent.values[2];
-				Log.d(TAG, "Heading: " + String.valueOf(headingAngle));
-				Log.d(TAG, "Pitch: " + String.valueOf(pitchAngle));
-				Log.d(TAG, "Roll: " + String.valueOf(rollAngle));
+//				Log.d(TAG, "Heading: " + String.valueOf(headingAngle));
+//				Log.d(TAG, "Pitch: " + String.valueOf(pitchAngle));
+//				Log.d(TAG, "Roll: " + String.valueOf(rollAngle));
 
 
 				//message("Pitch: " + String.valueOf(pitchAngle));
@@ -62,19 +63,11 @@ public class MainActivity extends Activity {
 						"\nPitch: " + String.valueOf(pitchAngle) + 
 						"\nRoll: " + String.valueOf(rollAngle));
 
-				if(usingCompass()) {
-					human.setRotation(headingAngle);
-				}
-				//Rotate arrow:
-				RotateAnimation anim = new RotateAnimation(
-						prevHeading, 
-						(float) human.getRotation(),
-						Animation.RELATIVE_TO_SELF, 0.5f, 
-						Animation.RELATIVE_TO_SELF,
-						0.5f);
-				anim.setDuration(210);
-				anim.setFillAfter(true);
-				arrow2.startAnimation(anim);
+//				if(usingCompass()) {
+//					human.setRotation(headingAngle);
+//				}
+				if(source != null)
+					pointArrowToSource_C();
 			}
 		}
 		public void onAccuracyChanged (Sensor senor, int accuracy) {
@@ -82,20 +75,25 @@ public class MainActivity extends Activity {
 		}
 
 
-	}; */
+	};
 
 	LocationListener locationListener = new LocationListener() {
 		public void onLocationChanged(Location location) {
-
-			printLocation(	"Latitude: " 	+ location.getLatitude() + 
-							"Longitude: " 	+ location.getLongitude() + 
-							"Altitude: " 	+ location.getAltitude() + 
-							"Distance: " 	+ location.distanceTo(source) + 
-							"Bearing: " + (location.hasBearing() ? location.bearingTo(source) : "no bearing"));
+			printLocation(	
+					"Latitude: " 	+ location.getLatitude() + 
+					"\nLongitude: " 	+ location.getLongitude() + 
+					"\nAltitude: " 	+ location.getAltitude() + 
+					(source == null ? "No source set" : (
+							"\nDistance: " + location.distanceTo(source) + 
+							"\nBearing: " + (location.hasBearing() ? location.bearingTo(source) : "no bearing")
+							)
+							)
+					);
 
 			human.setLocation(location);
-			
-			pointArrowToSource();
+
+			if(source != null)
+				pointArrowToSource_G();
 		}
 		public void onProviderDisabled(String argo) {
 			// TODO Auto-generated method stub
@@ -113,34 +111,38 @@ public class MainActivity extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
-//		sensorManager.registerListener(sensorEventListener, sensorManager
-//				.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
+		//		sensorManager.registerListener(sensorEventListener, sensorManager
+		//				.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
 	}
 	@Override
 	public void onPause() {
-//		sensorManager.unregisterListener(sensorEventListener);
+		//		sensorManager.unregisterListener(sensorEventListener);
 		super.onPause();
 	}
 
 
 	//End of stolen
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	private void pointArrowToSource() {
-				ImageView arrow = (ImageView) this.findViewById(R.id.imageView3);
-				arrow.setRotation(human.getLocation().bearingTo(source));
+	private void pointArrowToSource_G() {
+		ImageView arrow = (ImageView) this.findViewById(R.id.imageView3);
+		arrow.setRotation(human.getLocation().getBearing() + human.getLocation().bearingTo(source));
+	}
+	private void pointArrowToSource_C() {
+		ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
+		arrow.setRotation(headingAngle + human.getLocation().bearingTo(source));
 	}
 	private boolean usingCompass() {
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox_compass);
 		return checkBox.isChecked();
 	}
 	public void playAtCoordinate() {
-/*		//Initiate mediaPlayer with dragon roar ^^
+		/*		//Initiate mediaPlayer with dragon roar ^^
 		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.dragon);
 
 		double 	someConstant  		= 0.5;	//  <-- Edit this (has to be between 0 and 1)
@@ -165,8 +167,8 @@ public class MainActivity extends Activity {
 		while(mediaPlayer.isPlaying()); //Stops thread until done playing (fulhack)
 
 		mediaPlayer.release();
-		*/
-		
+		 */
+
 	}
 
 	public void playSound(View view) {
@@ -174,13 +176,20 @@ public class MainActivity extends Activity {
 	}
 
 	public void setCurrentAsSource(View view) {
-		this.source = this.human.getLocation();
+		if(this.human != null) {
+			this.source = this.human.getLocation();
 
-		TextView textLongitude = (TextView) this.findViewById(R.id.textView_sourceLongitude);
-		TextView textLatitude = (TextView) this.findViewById(R.id.textView_sourceLatitude);
+			TextView textLongitude = (TextView) this.findViewById(R.id.textView_sourceLongitude);
+			TextView textLatitude = (TextView) this.findViewById(R.id.textView_sourceLatitude);
 
-		textLongitude.setText("Source longitude: " + this.source.getLongitude());
-		textLatitude.setText(  "Source latitude: " + this.source.getLatitude());
+			textLongitude.setText("Source longitude: " + this.source.getLongitude());
+			textLatitude.setText(  "Source latitude: " + this.source.getLatitude());
+		}
+		else {
+			TextView textLongitude = (TextView) this.findViewById(R.id.textView_sourceLongitude);
+			textLongitude.setText("Location not found!");
+		}
+
 	}
 
 	private void printOrientation(String s) {

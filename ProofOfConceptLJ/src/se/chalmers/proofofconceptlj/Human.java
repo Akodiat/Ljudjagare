@@ -10,7 +10,7 @@ public class Human {
 //	private double  rotation;					//in radians from pos x-axis
 	
 	
-	public Human(Location location, double rotation) {
+	public Human(Location location) {
 		this.location = location;
 	//	this.rotation = rotation;
 	}
