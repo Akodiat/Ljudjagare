@@ -17,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="752dp"
             android:orientation="vertical" >
 
             <TextView
@@ -53,7 +53,10 @@
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberSigned" />
+                android:inputType="numberSigned" >
+
+                <requestFocus />
+            </EditText>
 
             <CheckBox
                 android:id="@+id/checkBox_compass"
@@ -101,7 +104,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/arrow" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -127,6 +129,12 @@
                 android:layout_height="wrap_content"
                 android:text="GPS-pos"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Map"
+                android:onClick="mapButton" />
         </LinearLayout>
     </ScrollView>
 

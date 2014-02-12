@@ -4,5 +4,7 @@
     <string name="app_name">ProofOfConceptLJ</string>
     <string name="action_settings">Settings</string>
     <string name="descr">Ställ in X- resp. Y-koordinat för ljudkälla för att variera ljudvolymen i vänster och höger högtalare</string>
+    <string name="title_activity_map_direction">MapDirection</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

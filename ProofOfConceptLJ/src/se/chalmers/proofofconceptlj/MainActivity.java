@@ -2,6 +2,7 @@ package se.chalmers.proofofconceptlj;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.*;
 import android.location.*;
 import android.media.MediaPlayer;
@@ -199,6 +200,15 @@ public class MainActivity extends Activity {
 		debugText.setText(s);
 		debugText.invalidate();
 	}
+	
+	/** Called when the user clicks the Map button */
+	public void mapButton(View view) {
+		Intent intent = new Intent(this, MapDirection.class);
+		startActivity(intent);
+		
+	}
+	
+	
 
 
 }
