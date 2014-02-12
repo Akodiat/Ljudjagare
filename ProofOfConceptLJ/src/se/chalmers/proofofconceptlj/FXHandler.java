@@ -75,7 +75,7 @@ public class FXHandler {
 	 * @param angle angle between current direction and source (0-360)
 	 */
 	public void setPanning(int soundID, float angle, float distance) {
-		float distFactor = (float) ((Math.pow(-distance, 2) / Math.pow(maxAudiableDistance, 2)) + 1);
+		float distFactor = (float) ((-1* Math.pow(distance, 2) / Math.pow(maxAudiableDistance, 2)) + 1);
 		if (distFactor<0)
 			distFactor = 0;
 
