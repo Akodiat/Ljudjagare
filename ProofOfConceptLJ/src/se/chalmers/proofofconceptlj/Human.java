@@ -4,13 +4,13 @@ import android.location.Location;
 
 public class Human {
 //	private static double distanceBetweenEars = 0.01;
-	
+
 //	private Vector2 position;
 	private Location location;
 //	private double  rotation;					//in radians from pos x-axis
-	
-	
-	public Human(Location location, double rotation) {
+
+
+	public Human(Location location) {
 		this.location = location;
 	//	this.rotation = rotation;
 	}

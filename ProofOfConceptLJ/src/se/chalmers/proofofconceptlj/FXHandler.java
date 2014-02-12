@@ -12,12 +12,15 @@ public class FXHandler {
 	public static final int FX_01 = 1;
 	public static final int LOOP = -1;
 
+	private static final int maxAudiableDistance = 50; //Meters
+
 	private HashMap<Integer, Integer> soundPoolMap;
 	private SoundPool soundPool;
 
 	private AudioManager am;
 
 	private double panning;
+
 
 	// True if sound is loaded correctly
 	private boolean loaded = false;
@@ -47,10 +50,23 @@ public class FXHandler {
 	 * 
 	 * @param soundID
 	 * @param times
+	 * @return the streamID if successful, non-zero value if not.
 	 */
-	public void playFX(int soundID, int times) {
+	public int playFX(int soundID, int times) {
 		if (loaded)
-			soundPool.play(soundID, 1f, 1f, 1, 0, 1f);
+			return soundPool.play(soundID, 1f, 1f, 1, 0, 1f);
+		return -42;
+	}
+
+	public int playFX(int soundID) {
+		if (loaded)
+			return soundPool.play(soundID, 1f, 1f, 1, -1, 1f);
+		return -42;
+	}
+
+	public void stopFX(int soundID) {
+		if (loaded)
+			soundPool.stop(soundID);
 	}
 
 	/**
@@ -58,22 +74,29 @@ public class FXHandler {
 	 * @param soundID sound to process
 	 * @param angle angle between current direction and source (0-360)
 	 */
-	public void setPanning(int soundID, int angle) {
-		
-		// Is sound behind the player to the left?
-		if (angle >= 90 && angle <= 180)
-			soundPool.play(soundID, 1f, 0, 1, 0, 1f);
-		
-		// Is sound behind the player to the right?
-		if (angle >= 90 && angle <= 180)
-			soundPool.play(soundID, 0, 1f, 1, 0, 1f);
-		
-		// 0 - all left, pi/2 all right
-		double radian = panning;
-		float leftVolume = (float) Math.cos(radian);
-		float rightVolume = (float) Math.sin(radian);
+	public void setPanning(int soundID, float angle, float distance) {
+		float distFactor = (float) ((-1* Math.pow(distance, 2) / Math.pow(maxAudiableDistance, 2)) + 1);
+		if (distFactor<0)
+			distFactor = 0;
 
-		soundPool.play(soundID, leftVolume, rightVolume, 1, 0, 1f);
+		// Is sound behind the player to the left?
+		if (angle >= 90 && angle < 180){
+			soundPool.setVolume(soundID, 1f*distFactor, 0);
+			return;
+		}
+
+		// Is sound behind the player to the right?
+		if (angle >= 180){
+			soundPool.setVolume(soundID, 0, 1f*distFactor);
+			return;
+		}
+
+		// 0 - all left, pi/2 all right
+		double radian = angle * (Math.PI / 180);											//= panning;
+		float leftVolume = (float) Math.cos(radian) * distFactor;
+		float rightVolume = (float) Math.sin(radian)* distFactor;
+
+		soundPool.setVolume(soundID, leftVolume, rightVolume);
 	}
 
 	/**
@@ -92,14 +115,14 @@ public class FXHandler {
 
 		soundPool.stop(id);
 	}
-	
+
 	/** 
 	 * Get max value of device
 	 */
 	public int maxVolume() {
 		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
-	
+
 	/**
 	 * 
 	 */
