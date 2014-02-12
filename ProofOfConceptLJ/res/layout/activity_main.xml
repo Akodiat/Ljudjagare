@@ -94,14 +94,13 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Device orientation \nThis doesn't work atm" />
+                    android:text="Device orientation \nThis doesn&apos;t work atm" />
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/arrow" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -127,6 +126,16 @@
                 android:layout_height="wrap_content"
                 android:text="GPS-pos"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <SeekBar
+                android:id="@+id/seekBarVolume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <SeekBar
+                android:id="@+id/seekBarPanning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 
