@@ -191,8 +191,8 @@ Background
 \begin_layout Standard
 There are currently multiple running applications making use of GPS technology
  in order to measure speed and distance.
- Some of them, like “Zombies, run!” even track the speed and simulates monsters
- approaching (audio) if the user’s speed is too slow 
+ Some of them, like “Zombies, run!” even track the speed and simulate monsters
+ approaching (audio) if the user’s speed is too slow
 \begin_inset CommandInset citation
 LatexCommand citep
 key "SixtoStart2014"
