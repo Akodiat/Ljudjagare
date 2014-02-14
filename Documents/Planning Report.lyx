@@ -581,9 +581,9 @@ Instead, if the sound is supposed to be heard from behind the user, it will
 \end_layout
 
 \begin_layout Standard
-When developing the application, consideration that people might listen
- to music when running, will be taken into account.
- Ideally for user should be able to listen to music alongside using the
+When developing the application, the assumption that people might listen
+ to music when running, will be considered.
+ Ideally the user should be able to listen to music alongside using the
  application, or possibly make the experience fun enough for the user not
  wanting to listen to music while using the application.
 \end_layout
