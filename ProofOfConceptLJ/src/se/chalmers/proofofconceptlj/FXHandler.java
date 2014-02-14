@@ -13,7 +13,7 @@ public class FXHandler {
 	public static final int LOOP = -1;
 	public static final int NOT_LOADED = -42;
 
-	private static final int maxAudiableDistance = 50; //Meters
+	private static final int maxAudiableDistance = 50; // Meters
 
 	private HashMap<Integer, Integer> soundPoolMap;
 	private SoundPool soundPool;
@@ -68,29 +68,44 @@ public class FXHandler {
 
 	/**
 	 * Play sound at specific angle and distance from user.
-	 * @param soundID sound to process
-	 * @param angle angle between current direction and source (0-360)
+	 * 
+	 * @param soundID
+	 *            sound to process
+	 * @param angle
+	 *            angle between current direction and source (0-360).
+	 * @param distance
+	 *            distance from audio source in meters.
 	 */
 	public void setPosition(int soundID, float angle, float distance) {
-		float distFactor = (float) ((-1* Math.pow(distance, 2) / Math.pow(maxAudiableDistance, 2)) + 1);
-		if (distFactor<0)
+		float distFactor = (float) ((-1 * Math.pow(distance, 2) / Math.pow(
+				maxAudiableDistance, 2)) + 1);
+		if (distFactor < 0)
 			distFactor = 0;
 
-//		// Is sound behind the player to the left?
-//		if (angle >= 90 && angle < 180)
-//			soundPool.setVolume(soundID, 1f*distFactor, 0);
-//
-//		// Is sound behind the player to the right?
-//		if (angle >= 180)
-//			soundPool.setVolume(soundID, 0, 1f*distFactor);
+		// Have to add 90 degrees so that (angle = 0) is heard in front.
+		int correctValue = 90;
 
-		// 0 - All left, PI/2 All right
-		float radian = angle;
-		//double radian = angle * (Math.PI / 180); // Convert to radians
-		float leftVolume = (float) Math.cos(radian);
-		float rightVolume = (float) Math.sin(radian);
+		// The angle after being correction.
+		float dangle = angle + correctValue;
 
-		soundPool.setVolume(soundID, leftVolume * distance, rightVolume * distance);
+		// Is sound coming from behind the player to the right?
+		if (angle > 90 && angle <= 180)
+			dangle = 180;
+
+		// Is sound coming from behind the player to the left?
+		if (angle > 180 && angle <= 270)
+			dangle = 0;
+
+		// From left to middle of listening scope.
+		if (angle > 270)
+			dangle = angle - 270;
+
+		double radian = dangle * (Math.PI / 180); // Convert to radians
+		float leftVolume = (float) Math.cos(radian / 2);
+		float rightVolume = (float) Math.sin(radian / 2);
+
+		soundPool.setVolume(soundID, leftVolume * distance, rightVolume
+				* distance);
 	}
 
 	/**
@@ -110,14 +125,10 @@ public class FXHandler {
 		soundPool.stop(id);
 	}
 
-	/** 
+	/**
 	 * Get max value of device
 	 */
 	public int maxVolume() {
 		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
-
-	/**
-	 * 
-	 */
 }

@@ -76,15 +76,15 @@ public class MainActivity extends Activity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
 			}
-
 		});
 
 		testPanning = (SeekBar) findViewById(R.id.seekBarPanning);
+		testPanning.setMax(360);
 		testPanning.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				panning = (float) ((Math.PI/2) * arg1/100);
+				panning = arg1;
 				fx.setPosition(streamID, panning, vol);
 			}
 
