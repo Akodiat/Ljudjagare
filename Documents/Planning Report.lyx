@@ -438,8 +438,8 @@ name "fig:Scheme-of-features"
 \begin_layout Enumerate
 During the implementation of the game modes, a BETA-version will be released.
  The BETA will then be evaluated on usability by doing some testing on actual people.
- After getting feedback from the test group the app will be updated accordingly
- to make sure that is is useable and fun to use.
+ The feedback contained from testing the application will be of great value when improving
+ the implemented features.
 \end_layout
 
 \begin_layout Enumerate
