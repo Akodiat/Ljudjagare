@@ -354,7 +354,7 @@ Secondly game functions will be implemented:
 
 \begin_deeper
 \begin_layout Itemize
-Sound
+Sound will be implemented in the following way:
 \end_layout
 
 \begin_deeper
@@ -388,7 +388,8 @@ The level of the audio will change as the user is approaching or running
 
 \end_deeper
 \begin_layout Itemize
-Putting a monster on the map, which will be a moving destination.
+The following game features will be implemented: Putting a monster on the
+ map, which will be a moving destination.
  Games with monsters might be:
 \end_layout
 
@@ -400,17 +401,37 @@ BETA - With the help of audio-navigation you have to run to a predefined
 
 \begin_layout Itemize
 Coin Collector - Extension of the BETA where the user runs to one destination
- at a time, each represented as coins.
+ at a time, each represented as a coin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Coins are stationary sound sources
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
 Freerun - You can run anywhere you want without any special goals while
- monsters are chasing you.
+ monsters
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Monsters are moving sound sources
+\end_layout
+
+\end_inset
+
+ are chasing you.
 \end_layout
 
 \begin_layout Itemize
 Quest - With the help of audio-navigation you have to run to a predefined
- spot on the map while monsters are chasing you.
+ destination on the map while monsters are chasing you.
 \end_layout
 
 \begin_layout Itemize
@@ -439,7 +460,9 @@ reference "fig:Scheme-of-features"
 
 \end_deeper
 \begin_layout Itemize
-Game High Scores
+Game High Scores will be impemented so that results from different runs
+ can be compared.
+ High scores might be:
 \end_layout
 
 \begin_deeper
@@ -449,6 +472,18 @@ Most coins taken during a run
 
 \begin_layout Itemize
 Most monsters avoided during a run
+\end_layout
+
+\begin_layout Itemize
+Fastest time to get to a certain destination in the Quest-game
+\end_layout
+
+\begin_layout Itemize
+Longest survival time during the Under Attack-game
+\end_layout
+
+\begin_layout Itemize
+Most monsters shot in the Shooter-game
 \end_layout
 
 \end_deeper
@@ -504,15 +539,12 @@ By doing testing with actual people the app will be improved on usability.
 
 \begin_deeper
 \begin_layout Itemize
-Test persons uses the application to do certain tasks
+Establishing requirements by conducting interviews with test persons after
+ they have performed certain tasks in the app
 \end_layout
 
 \begin_layout Itemize
-Establishing requirements by conducting interviews
-\end_layout
-
-\begin_layout Itemize
-Designing and prototyping alternatives
+Designing and prototyping alternatives fitting the requirements
 \end_layout
 
 \begin_layout Itemize
@@ -529,11 +561,11 @@ Finally, if there is time, some advanced and further game functions will
 \begin_deeper
 \begin_layout Itemize
 Multiplayer - Run together with a friend in the same game-world with the
- same monsters and goals.
+ same coins, monsters and destinations.
 \end_layout
 
 \begin_layout Itemize
-Some game mode including Geocaching
+Game mode including Geocaching
 \begin_inset Foot
 status collapsed
 
