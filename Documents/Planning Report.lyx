@@ -644,7 +644,7 @@ The Scrum method will be used when developing the application - a flexible
  The division of labor will be done in cycles (sprints).
  Each job occasion will begin with a daily scrum - a short meeting where
  the group talks about what’s going on, what’s about to happen as well as
- eventual problems.
+ possible problems.
 \end_layout
 
 \begin_layout Standard
@@ -661,7 +661,7 @@ To handle the coding part of the development, Git will be used, which is
 When it comes to the testing part of the development, both the virtual phone
  available in the Android developing environment will be used, as well as
  our own phones.
- Testing is essential for our application to run as smoothly as possible,
+ Testing is essential for our application to be as steady as possible,
  so as many test cases as possible will be covered.
 \end_layout
 
