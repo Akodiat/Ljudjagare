@@ -5,6 +5,10 @@
 \textclass article
 \begin_preamble
 
+\hypersetup{
+   colorlinks=false,
+   pdfborder={0 0 0}
+ }
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -80,84 +84,39 @@ Planning Report - Running with Sound: Android Application Simulating Sound
  Sources at GPS Coordinates Using Smartphone Sensors
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Author
-Anton Palmqvist
+Anton Palmqvist 880906-4010
 \begin_inset Newline newline
 \end_inset
 
-880906-4010 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Daniel Johansson
+ Daniel Johansson 920815-4493
 \begin_inset Newline newline
 \end_inset
 
-920815-4493 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Joakim Johansson
+ Joakim Johansson 921024-4530 
 \begin_inset Newline newline
 \end_inset
 
-921024-4530 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Linus Karlsson
+Linus Karlsson 920731-2852 
 \begin_inset Newline newline
 \end_inset
 
-920731-2852 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Marcus Bernhard
-\begin_inset Newline newline
-\end_inset
-
-920125-1197
+Marcus Bernhard 920125-1197
 \end_layout
 
 \begin_layout Standard
 Group 42
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -169,24 +128,41 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Background
 \end_layout
 
 \begin_layout Standard
-The chosen subject, to combine a running application with guiding sounds,
- is to our knowledge not a very common concept among Android applications.
- This makes the subject academically interesting, since it is a new area
- to explore.
+The chosen subject, to combine a running 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Do stuff
+\end_layout
+
+\end_inset
+
+application with guiding sounds, is to our knowledge not a very common concept
+ among Android applications.
+ The assumption that it is unexplored makes the subject academically interrestin
+g.
  Computer games make use of sound to enhance the user experience, but with
- modern smartphone sensors the same could be done in an outdoor environment
+ modern smart phone sensors the same could be done in an outdoor environment
  to create a virtual reality in sound.
 \end_layout
 
 \begin_layout Standard
 There are currently multiple running applications making use of GPS technology
  in order to measure speed and distance.
- Some, like “Zombies, run!” even tracks the speed and simulates monsters
+ Some, like “Zombies, run!” even track the speed and simulates monsters
  approaching (audio) if the user’s speed is too slow 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -195,9 +171,9 @@ key "SixtoStart2014"
 \end_inset
 
 .
- However, the sound effects aren’t directional, meaning that the direction
- of which the sound is to be heard from is not important for the game’s
- functionality - it acts more like a cool feature.
+ However, the sound effects are not directional, meaning that the direction
+ the sound is to be heard from is not important for the game’s functionality
+ - it acts more like a neat feature.
 \end_layout
 
 \begin_layout Standard
@@ -206,8 +182,8 @@ By combining sound with the running game concept it would be possible to
  obtain it when its location is reached.
  At the same time monsters could be heard from a specific direction and
  by running in another direction they could be avoided.
- These features will be a great motivator for people struggling with motivation
- to workout on a regular basis.
+ These features will be a great motivator for people struggling to workout
+ on a regular basis.
 \end_layout
 
 \begin_layout Standard
@@ -220,6 +196,16 @@ Other academical parts that will not be mainly focused on but still could
 
 \begin_layout Standard
 All of this will be encapsulated in an Android application.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -244,6 +230,13 @@ Makes it enjoyable and motivating for people to exercise.
 
 \begin_layout Section
 Problem/Assignment
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Problem/Assignment"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -319,10 +312,20 @@ Sound
 \begin_layout Itemize
 The sound will be directional, meaning that the sound will appear to come
  from a specific direction of which the runner is supposed to run towards
- - by balancing the audio level between the left and right ear 
+ using panorating
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Balancing the audio level between the left and right ear 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Roads1996"
+
+\end_inset
+
+.
+\end_layout
 
 \end_inset
 
@@ -363,7 +366,7 @@ Under attack - You can run anywhere you want but the amount of monsters
 \end_layout
 
 \begin_layout Itemize
-Shooter - A mode more focused on hunting then running.
+Shooter - A mode more focused on hunting than running.
  While out running use your cellphone as a weapon and hunt down monsters.
 \end_layout
 
@@ -404,9 +407,9 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename tabbellfeatures.eps
-	lyxscale 50
-	width 110text%
+	filename tabbellfeatures.png
+	lyxscale 80
+	width 100text%
 
 \end_inset
 
@@ -437,10 +440,20 @@ name "fig:Scheme-of-features"
 \end_deeper
 \begin_layout Enumerate
 During the implementation of the game modes, a BETA-version will be released.
- The BETA will then be evaluated on usability by doing some testing on actual
+ The BETA will then be evaluated on usability by doing some testing by actual
  people.
  The feedback contained from testing the application will be of great value
  when improving the implemented features.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Metod?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -497,14 +510,24 @@ Plan B - Radio orienteering
 \end_layout
 
 \begin_layout Standard
-If the initial idea of a person running towards a directional sound turns
- out to be a failure, the already written code will be used to make an applicati
-on to emulate radio orienteering - a sport where the competitors have to
- find hidden controls by listening to a signal caught up by a receiver carried
- by each contestant 
+If the initial idea of a using panoration of audio to indicate the direction
+ of the sound is not accurate enough to make it possible for the user to
+ find a sound source, the already written code will be used to make an applicati
+on to emulate radio orienteering
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+A sport where the competitors have to find hidden controls by listening
+ to a signal caught up by a receiver carried by each contestant 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Radio-orienteringSverige2014"
+
+\end_inset
+
+.
+\end_layout
 
 \end_inset
 
@@ -516,7 +539,7 @@ Instead of real controls and receivers, this application will rely on generated
  GPS coordinartes and audio.
  By turning around with the phone in hand, the audio level will change depending
  on if there’s a control in the direction of which the phone is pointing.
- To clarify: no panning will be involved - just the volume of the audio
+ To clarify: no panoration will be involved - just the volume of the audio
  changing as the user is rotating (depending on direction to source).
 \end_layout
 
@@ -535,15 +558,8 @@ Limitations
 \end_layout
 
 \begin_layout Standard
-Apart from being limited in time, one limitation is the ability for the
- audio to be heard from the correct direction when the user is standing
- still.
- It would be possible to use the gyroscope to calculate the direction from
- which the sound is supposed to be heard from - if the user is holding the
- phone in his/her hands, that is.
- If the phone, however, is placed in the user’s pocket (or the like) the
- application has to depend on how the user is approaching the goal destination,
- using GPS technology.
+The device sensors will limit how accurately the user orientation can be
+ measured, thereby limiting the user experience.
 \end_layout
 
 \begin_layout Standard
@@ -582,11 +598,11 @@ Instead, if the sound is supposed to be heard from behind the user, it will
 \end_layout
 
 \begin_layout Standard
-When developing the application, the assumption that people might listen
- to music when running, will be considered.
- Ideally the user should be able to listen to music alongside using the
- application, or possibly make the experience fun enough for the user not
- wanting to listen to music while using the application.
+When developing the application the assumption that people might listen
+ to music when running will be considered.
+ Ideally the user should be able to listen to music while using the application.
+ Alternatively the experience could perhaps be made fun enough for the user
+ not wanting to listen to music while using the application.
 \end_layout
 
 \begin_layout Section
@@ -597,9 +613,8 @@ Method
 Initially, information will be gathered on how to use the Android APIs in
  the most efficient way for this kind of application.
  This will include how to use activities, sensors and maps.
- Since we are essentially developing an application to be run entirely on
- Android platforms, this part of the research will be of huge importance
- for the outcome.
+ Since the application is developed to be run entirely on Android platforms,
+ this part of the research will be of huge importance for the outcome.
 \end_layout
 
 \begin_layout Standard
@@ -619,17 +634,23 @@ When information is gathered the structure of the app will bef decided.
 
 \begin_layout Standard
 Then the coding process will start.
- The parts to be coded will be the ones mentioned in the section of Problem/Assi
-gnment.
- Alongside with the coding testing will be made to make sure that everything
+ The parts to be coded will be the ones mentioned in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Problem/Assignment"
+
+\end_inset
+
+.
+ Alongside with the coding, testing will be made to make sure that everything
  is working as expected.
  When possible, the tests will be made as test cases.
  It will also be important to test with real values - such as going out
- and running for real and see how it works.
+ and running and see how the application works.
 \end_layout
 
 \begin_layout Standard
-An evaluation will be done when the first BETA-version is done.
+An evaluation will be performed when the first BETA-version is finished.
  This will be done by letting a test group use our app and evaluate it by
  conducting an interview.
 \end_layout
@@ -641,9 +662,19 @@ Development
 \begin_layout Standard
 The Scrum method will be used when developing the application - a flexible
  Agile software development framework where the team works more as a unit
- opposed to a traditional and sequential approach.
+ opposed to a traditional and sequential approach
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+waterfall
+\end_layout
+
+\end_inset
+
+.
  The division of labor will be done in cycles (sprints).
- Each job occasion will begin with a daily scrum - a short meeting where
+ Each job occasion will begin with a scrum meeting - a short meeting where
  the group talks about what’s going on, what’s about to happen as well as
  possible problems.
 \end_layout
@@ -662,8 +693,6 @@ To handle the coding part of the development, Git will be used, which is
 When it comes to the testing part of the development, both the virtual phone
  available in the Android developing environment will be used, as well as
  our own phones.
- Testing is essential for our application to be as steady as possible, so
- as many test cases as possible will be covered.
 \end_layout
 
 \begin_layout Subsection
@@ -675,7 +704,7 @@ The literature studies will involve how the human ear perceives sound, and
  how it’s possible to imitate sounds coming from specific directions using
  stereo headphones 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "Roads1996"
 
 \end_inset
@@ -687,10 +716,16 @@ key "Roads1996"
 Literature about Android and how to best develop the app will also be studied.
  This is necessary to make the app enjoyable for the user and flexible enough
  to work on different kinds of phones.
- According to the Android API Guide - Fragments , fragments seems like a
- good way to decompose the functionality of an app into smaller parts (fragments
-) that can be reusable and depending on the screen size show up in different
- quantities.
+ According to the Android API Guide - Fragments 
+\begin_inset CommandInset citation
+LatexCommand citeyearpar
+key "AndroidDevelopers2014b"
+
+\end_inset
+
+, fragments can decompose the functionality of an app into smaller parts
+ (fragments) that can be reusable and, depending on the screen size, show
+ up in different quantities at a time.
 \end_layout
 
 \begin_layout Standard
@@ -721,14 +756,14 @@ key "AndroidDevelopers2014"
  be able to use the magnetic field sensor (compass) and accelerometer to
  provide an orientation of the phone itself 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "Sood2012"
 
 \end_inset
 
 .
  This however has problems since the orientation of the phone relative to
- the actual user is not always known (it dependa on how the user is holding
+ the actual user is not always known (it depends on how the user is holding
  the phone).
 \end_layout
 
@@ -800,7 +835,7 @@ name "fig:Gantt Chart"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "References"
-options "bibtotoc,apalike"
+options "bibtotoc,elsarticle-harv"
 
 \end_inset
 
