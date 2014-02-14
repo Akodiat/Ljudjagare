@@ -593,16 +593,16 @@ Method
 \end_layout
 
 \begin_layout Standard
-To begin with, information will be gathered about how to use the Android
+Initially, information will be gathered on how to use the Android
  APIs in the most efficient way for this kind of application.
  This will include how to use activities, sensors and maps.
- Since we're essentially developing an application to be run entirely on
+ Since we are essentially developing an application to be run entirely on
  Android platforms, this part of the research will be of huge importance
  for the outcome.
 \end_layout
 
 \begin_layout Standard
-Alongside with the coding-aspects mentioned above, information will also
+Alongside the coding-aspects mentioned above, information will 
  be gathered on how specific areas (GPS, audio, etc.) work and how they’re
  implemented using Java for Android.
  Most of the information will probably come from e-books, as well as Android's
@@ -618,13 +618,13 @@ When information is gathered the structure of the app will bef decided.
 
 \begin_layout Standard
 Then the coding process will start.
- The parts to be coded will be the ones mentioned in the subsection Problem/Assi
+ The parts to be coded will be the ones mentioned in the section of Problem/Assi
 gnment.
  Alongside with the coding testing will be made to make sure that everything
  is working as expected.
- Where it is possible the tests will be made as test cases, but it will
- also be important to test with real values, as going out and running for
- real and see if it works.
+ When possible, the tests will be made as test cases. It will
+ also be important to test with real values - such as going out and running for
+ real and see how it works.
 \end_layout
 
 \begin_layout Standard
