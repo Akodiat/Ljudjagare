@@ -5,6 +5,10 @@
 \textclass article
 \begin_preamble
 
+\hypersetup{
+   colorlinks=false,
+   pdfborder={0 0 0}
+ }
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -196,8 +200,8 @@ key "SixtoStart2014"
 
 .
  However, the sound effects aren’t directional, meaning that the direction
- of which the sound is to be heard from is not important for the game’s functionality - it acts
- more like a cool feature.
+ of which the sound is to be heard from is not important for the game’s
+ functionality - it acts more like a cool feature.
 \end_layout
 
 \begin_layout Standard
@@ -404,7 +408,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../Dropbox/Chalmers/Kandidatarbete/tabbellfeatures.png
+	filename tabbellfeatures.eps
 	lyxscale 50
 	width 110text%
 
@@ -437,9 +441,10 @@ name "fig:Scheme-of-features"
 \end_deeper
 \begin_layout Enumerate
 During the implementation of the game modes, a BETA-version will be released.
- The BETA will then be evaluated on usability by doing some testing on actual people.
- The feedback contained from testing the application will be of great value when improving
- the implemented features.
+ The BETA will then be evaluated on usability by doing some testing on actual
+ people.
+ The feedback contained from testing the application will be of great value
+ when improving the implemented features.
 \end_layout
 
 \begin_layout Enumerate
@@ -593,8 +598,8 @@ Method
 \end_layout
 
 \begin_layout Standard
-Initially, information will be gathered on how to use the Android
- APIs in the most efficient way for this kind of application.
+Initially, information will be gathered on how to use the Android APIs in
+ the most efficient way for this kind of application.
  This will include how to use activities, sensors and maps.
  Since we are essentially developing an application to be run entirely on
  Android platforms, this part of the research will be of huge importance
@@ -602,9 +607,9 @@ Initially, information will be gathered on how to use the Android
 \end_layout
 
 \begin_layout Standard
-Alongside the coding-aspects mentioned above, information will 
- be gathered on how specific areas (GPS, audio, etc.) work and how they’re
- implemented using Java for Android.
+Alongside the coding-aspects mentioned above, information will  be gathered
+ on how specific areas (GPS, audio, etc.) work and how they’re implemented
+ using Java for Android.
  Most of the information will probably come from e-books, as well as Android's
  developer pages on the Internet.
 \end_layout
@@ -622,9 +627,9 @@ Then the coding process will start.
 gnment.
  Alongside with the coding testing will be made to make sure that everything
  is working as expected.
- When possible, the tests will be made as test cases. It will
- also be important to test with real values - such as going out and running for
- real and see how it works.
+ When possible, the tests will be made as test cases.
+ It will also be important to test with real values - such as going out
+ and running for real and see how it works.
 \end_layout
 
 \begin_layout Standard
@@ -661,8 +666,8 @@ To handle the coding part of the development, Git will be used, which is
 When it comes to the testing part of the development, both the virtual phone
  available in the Android developing environment will be used, as well as
  our own phones.
- Testing is essential for our application to be as steady as possible,
- so as many test cases as possible will be covered.
+ Testing is essential for our application to be as steady as possible, so
+ as many test cases as possible will be covered.
 \end_layout
 
 \begin_layout Subsection
@@ -670,9 +675,9 @@ Literature studies
 \end_layout
 
 \begin_layout Standard
-The literature studies will involve how the human ear perceives sound,
- and how it’s possible to imitate sounds coming from specific directions
- using stereo headphones 
+The literature studies will involve how the human ear perceives sound, and
+ how it’s possible to imitate sounds coming from specific directions using
+ stereo headphones 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Roads1996"
@@ -761,7 +766,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../Dropbox/Chalmers/Kandidatarbete/timetable.png
+	filename timetable.eps
 	width 90page%
 	scaleBeforeRotation
 

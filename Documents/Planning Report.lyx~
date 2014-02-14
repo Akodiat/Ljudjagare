@@ -174,8 +174,8 @@ Background
 \end_layout
 
 \begin_layout Standard
-The chosen subject, being combining a running application with guiding sounds,
- is to our knowledge unusual.
+The chosen subject, to combine a running application with guiding sounds,
+ is to our knowledge not a very common concept among Android applications.
  This makes the subject academically interesting, since it is a new area
  to explore.
  Computer games make use of sound to enhance the user experience, but with
@@ -196,8 +196,8 @@ key "SixtoStart2014"
 
 .
  However, the sound effects aren’t directional, meaning that the direction
- of which the sound is not important for the game’s functionality - it acts
- more like a cool feature.
+ of which the sound is to be heard from is not important for the game’s
+ functionality - it acts more like a cool feature.
 \end_layout
 
 \begin_layout Standard
@@ -216,11 +216,6 @@ Other academical parts that will not be mainly focused on but still could
  fun and motivating.
  Therefore the target group of the application is not only people who run
  regularly, but also people who need motivation to do so.
-\end_layout
-
-\begin_layout Standard
-Also it might be useful to investigate some shortest paths algorithms for
- the running track.
 \end_layout
 
 \begin_layout Standard
@@ -409,7 +404,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../Dropbox/Chalmers/Kandidatarbete/tabbellfeatures.png
+	filename tabbellfeatures.eps
 	lyxscale 50
 	width 110text%
 
@@ -442,9 +437,10 @@ name "fig:Scheme-of-features"
 \end_deeper
 \begin_layout Enumerate
 During the implementation of the game modes, a BETA-version will be released.
- The BETA will then be evaluated usability wise by some test persons.
- After getting feedback from the test group the app will be updated accordingly
- to make sure that is is useable and fun to use.
+ The BETA will then be evaluated on usability by doing some testing on actual
+ people.
+ The feedback contained from testing the application will be of great value
+ when improving the implemented features.
 \end_layout
 
 \begin_layout Enumerate
@@ -521,7 +517,7 @@ Instead of real controls and receivers, this application will rely on generated
  By turning around with the phone in hand, the audio level will change depending
  on if there’s a control in the direction of which the phone is pointing.
  To clarify: no panning will be involved - just the volume of the audio
- changing.
+ changing as the user is rotating (depending on direction to source).
 \end_layout
 
 \begin_layout Standard
@@ -586,9 +582,9 @@ Instead, if the sound is supposed to be heard from behind the user, it will
 \end_layout
 
 \begin_layout Standard
-When developing the application, consideration that people might listen
- to music when running, will be taken into account.
- Ideally for user should be able to listen to music alongside using the
+When developing the application, the assumption that people might listen
+ to music when running, will be considered.
+ Ideally the user should be able to listen to music alongside using the
  application, or possibly make the experience fun enough for the user not
  wanting to listen to music while using the application.
 \end_layout
@@ -598,24 +594,24 @@ Method
 \end_layout
 
 \begin_layout Standard
-To begin with, information will be gathered about how to use the Android
- APIs in the most efficient way for this kind of application.
+Initially, information will be gathered on how to use the Android APIs in
+ the most efficient way for this kind of application.
  This will include how to use activities, sensors and maps.
- Since we're essentially developing an application to be run entirely on
+ Since we are essentially developing an application to be run entirely on
  Android platforms, this part of the research will be of huge importance
  for the outcome.
 \end_layout
 
 \begin_layout Standard
-Alongside with the coding-aspects mentioned above, information will also
- be gathered on how specific areas (GPS, audio, etc.) work and how they’re
- implemented using Java for Android.
+Alongside the coding-aspects mentioned above, information will  be gathered
+ on how specific areas (GPS, audio, etc.) work and how they’re implemented
+ using Java for Android.
  Most of the information will probably come from e-books, as well as Android's
  developer pages on the Internet.
 \end_layout
 
 \begin_layout Standard
-When information is gathered the structure of the app will be decided.
+When information is gathered the structure of the app will bef decided.
  Here UML-models will be drawn to make the structure clear.
  After the modelling decisions are made sketches will be drawn to decide
  how the GUI might look.
@@ -623,13 +619,13 @@ When information is gathered the structure of the app will be decided.
 
 \begin_layout Standard
 Then the coding process will start.
- The parts to be coded will be the ones mentioned in the subsection Problem/Assi
+ The parts to be coded will be the ones mentioned in the section of Problem/Assi
 gnment.
  Alongside with the coding testing will be made to make sure that everything
  is working as expected.
- Where it is possible the tests will be made as test cases, but it will
- also be important to test with real values, as going out and running for
- real and see if it works.
+ When possible, the tests will be made as test cases.
+ It will also be important to test with real values - such as going out
+ and running for real and see how it works.
 \end_layout
 
 \begin_layout Standard
@@ -646,10 +642,10 @@ Development
 The Scrum method will be used when developing the application - a flexible
  Agile software development framework where the team works more as a unit
  opposed to a traditional and sequential approach.
- The division of labor will be decided in cycles (sprints).
+ The division of labor will be done in cycles (sprints).
  Each job occasion will begin with a daily scrum - a short meeting where
  the group talks about what’s going on, what’s about to happen as well as
- eventual problems.
+ possible problems.
 \end_layout
 
 \begin_layout Standard
@@ -666,8 +662,8 @@ To handle the coding part of the development, Git will be used, which is
 When it comes to the testing part of the development, both the virtual phone
  available in the Android developing environment will be used, as well as
  our own phones.
- Testing is essential for our application to run as smoothly as possible,
- so as many test cases as possible will be covered.
+ Testing is essential for our application to be as steady as possible, so
+ as many test cases as possible will be covered.
 \end_layout
 
 \begin_layout Subsection
@@ -675,11 +671,11 @@ Literature studies
 \end_layout
 
 \begin_layout Standard
-The literature studies will partly involve how the human ear perceives sound,
- and how it’s possible to imitate sounds coming from specific directions
- using stereo headphones 
+The literature studies will involve how the human ear perceives sound, and
+ how it’s possible to imitate sounds coming from specific directions using
+ stereo headphones 
 \begin_inset CommandInset citation
-LatexCommand citep
+LatexCommand citet
 key "Roads1996"
 
 \end_inset
@@ -766,7 +762,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../Dropbox/Chalmers/Kandidatarbete/timetable.png
+	filename timetable.eps
 	width 90page%
 	scaleBeforeRotation
 
