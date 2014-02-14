@@ -679,7 +679,7 @@ The literature studies will partly involve how the human ear perceives sound,
  and how it’s possible to imitate sounds coming from specific directions
  using stereo headphones 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "Roads1996"
 
 \end_inset

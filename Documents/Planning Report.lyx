@@ -409,7 +409,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../Dropbox/Chalmers/Kandidatarbete/tabbellfeatures.png
+	filename tabbellfeatures.eps
 	lyxscale 50
 	width 110text%
 
@@ -766,7 +766,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../Dropbox/Chalmers/Kandidatarbete/timetable.png
+	filename timetable.eps
 	width 90page%
 	scaleBeforeRotation
 
