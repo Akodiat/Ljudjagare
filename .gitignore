@@ -43,3 +43,7 @@ project.properties
 
 # PDT-specific
 .buildpath
+
+# Lyx
+.lyx#
+.lyx~
