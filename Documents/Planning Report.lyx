@@ -715,11 +715,15 @@ Initially, information will be gathered on how to use the Android APIs in
 \end_layout
 
 \begin_layout Standard
-Alongside the coding-aspects mentioned above, information will  be gathered
- on how specific areas (GPS, audio, etc.) work and how they’re implemented
- using Java for Android.
+Alongside the coding-aspects mentioned above, information will be gathered
+ on how specific areas (GPS, orientation sensor, audio, etc.) work and how
+ they’re implemented using Java for Android.
  Most of the information will probably come from e-books, as well as Android's
  developer pages on the Internet.
+ While doing this research a proof of concept of the experience of the sound
+ will be made.
+ This proof of concept will confirm that the sound is sounding as expected
+ in relation to its location.
 \end_layout
 
 \begin_layout Standard
@@ -748,8 +752,10 @@ reference "sec:Problem/Assignment"
 
 \begin_layout Standard
 An evaluation will be performed when the first BETA-version is finished.
- This will be done by letting a test group use our app and evaluate it by
- conducting an interview.
+ This will be done by letting a test group use our app and conducting interviews
+ with the test persons.
+ These findings will help us establish requirements to come up with new
+ design alternatives which later can be implemented.
 \end_layout
 
 \begin_layout Subsection
