@@ -3,13 +3,13 @@ package se.chalmers.proofofconceptlj;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import android.graphics.Color;
 import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -22,13 +22,15 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import java.lang.Math.*;
 
 public class MapDirection extends FragmentActivity implements
 GooglePlayServicesClient.ConnectionCallbacks,
@@ -47,9 +49,12 @@ GooglePlayServicesClient.OnConnectionFailedListener, LocationListener{
 	private Polyline newPolyline;
 	private int width, height;
 	private LatLng RANDOM;
+	private Marker marker;
+	private Marker selectMarker;
 
 	private Boolean first = true;
 
+	// Kanske kan ta bort?
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
 			.setFastestInterval(16)    // 16ms = 60fps
@@ -79,36 +84,90 @@ GooglePlayServicesClient.OnConnectionFailedListener, LocationListener{
 			map.setMyLocationEnabled(true);
 		} 
 
-
-
-
-		// Button for navigation on map
+		// Button for navigation on map, from position to Stockholm
 		bNavigation = (Button) findViewById(R.id.bNavigation);
 		bNavigation.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				findDirections( STOCKHOLM.latitude, STOCKHOLM.longitude,CURRENT_POSITION.latitude, CURRENT_POSITION.longitude, GMapV2Direction.MODE_DRIVING );
-			}
-		});
-
-		bRandom = (Button) findViewById(R.id.bRandom);
-		bRandom.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				double a = Math.random();
 				double b = Math.random();
 				double r = 0.010;
 				double w = r * Math.sqrt(a);
-				double t = 2 * Math.PI * a;
+				double t = 2 * Math.PI * b;
+				double x = w * Math.cos(t); 
+				double y = w * Math.sin(t);
+				findDirections( STOCKHOLM.latitude, STOCKHOLM.longitude,CURRENT_POSITION.latitude
+						, CURRENT_POSITION.longitude, GMapV2Direction.MODE_DRIVING );
+			}
+		});
+
+		// Button for random navigation from current position
+		bRandom = (Button) findViewById(R.id.bRandom);
+		bRandom.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				
+				// Calculation random position, needs more work
+				double a = Math.random();
+				double b = Math.random();
+				double r = 0.010;
+				double w = r * Math.sqrt(a);
+				double t = 2 * Math.PI * b;
 				double x = w * Math.cos(t); 
 				double y = w * Math.sin(t);
 
 				RANDOM = new LatLng(CURRENT_POSITION.latitude+x, CURRENT_POSITION.longitude+y);
-				//(58.705477, 11.990884)
-				findDirections( CURRENT_POSITION.latitude, CURRENT_POSITION.longitude, RANDOM.latitude, RANDOM.longitude, GMapV2Direction.MODE_WALKING );
+				findDirections( CURRENT_POSITION.latitude, CURRENT_POSITION.longitude
+						, RANDOM.latitude, RANDOM.longitude, GMapV2Direction.MODE_WALKING );
 			}
+		});
+
+		// Setting a click event handler for the map
+		map.setOnMapLongClickListener(new OnMapLongClickListener() {
+
+			@Override
+			public void onMapLongClick(LatLng latLng) {
+
+				// Creating a marker
+				//MarkerOptions markerOptions = new MarkerOptions();
+
+				// Setting the position for the marker
+				//markerOptions.position(latLng);
+
+				// Setting the title for the marker.
+				// This will be displayed on taping the marker
+				//markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+
+				// Animating to the touched position
+				map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+//				if ( selectMarker != null){
+//					selectMarker.remove();
+//				}
+				Log.d("click", "1");
+				Log.d("click", "1"+latLng.latitude + " " + latLng.longitude);
+				if(CURRENT_POSITION != null){
+				findDirections( CURRENT_POSITION.latitude, CURRENT_POSITION.longitude
+						, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
+				// Placing a marker on the touched position
+				Log.d("click", "2");
+				//selectMarker = map.addMarker(markerOptions);
+				Log.d("click", "3");
+				}else{
+					// Creating a marker
+					MarkerOptions markerOptions = new MarkerOptions();
+
+					// Setting the position for the marker
+					markerOptions.position(latLng);
+
+					// Setting the title for the marker.
+					// This will be displayed on taping the marker
+					markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+
+					selectMarker = map.addMarker(markerOptions);
+				}
+			}
+
 		});
 	}
 
@@ -126,9 +185,10 @@ GooglePlayServicesClient.OnConnectionFailedListener, LocationListener{
 
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(Color.BLUE);
-
+		int points = -1;
 		for(int i = 0 ; i < directionPoints.size() ; i++) 
 		{          
+			points ++;
 			rectLine.add(directionPoints.get(i));
 		}
 		if (newPolyline != null)
@@ -136,9 +196,18 @@ GooglePlayServicesClient.OnConnectionFailedListener, LocationListener{
 			newPolyline.remove();
 		}
 		newPolyline = map.addPolyline(rectLine);
-		latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
+		//latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
 		float zoom = 19;
-		map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 500));
+		//map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 500));
+
+		// Add a marker on the last position in the route. 
+		if (marker != null){
+			marker.remove();
+		}
+		marker = map.addMarker(new MarkerOptions()
+		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
+		.title("End of route! " + directionPoints.get(points).latitude 
+				+ " " + directionPoints.get(points).longitude));
 		//map.animateCamera(CameraUpdateFactory.zoomOut());
 	}
 
@@ -194,6 +263,7 @@ GooglePlayServicesClient.OnConnectionFailedListener, LocationListener{
 		// TODO Auto-generated method stub
 
 	}
+
 
 
 	public void onLocationChanged(Location location) {
