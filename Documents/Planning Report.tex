@@ -1,10 +1,11 @@
 %% LyX 2.0.3 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[twoside]{article}
+\documentclass{article}
 \renewcommand{\sfdefault}{cmss}
 \usepackage[utf8]{inputenc}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\usepackage{prettyref}
 \usepackage{float}
 \usepackage{rotfloat}
 \usepackage{graphicx}
@@ -13,6 +14,7 @@
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
  breaklinks=false,pdfborder={0 0 1},backref=section,colorlinks=false]
  {hyperref}
+\usepackage{breakurl}
 
 \makeatletter
 
@@ -44,8 +46,8 @@ Group 42
 
 \section{Background}
 
-The chosen subject, as combining a running application with guiding
-sounds is to our knowledge unusual. This makes the subject academically
+The chosen subject, being combining a running application with guiding
+sounds, is to our knowledge unusual. This makes the subject academically
 interesting, since it is a new area to explore. Computer games make
 use of sound to enhance the user experience, but with modern smartphone
 sensors the same could be done in an outdoor environment to create
@@ -144,6 +146,11 @@ until they catch you.
 \item Shooter - A mode more focused on hunting then running. While out running
 use your cellphone as a weapon and hunt down monsters.
 \end{itemize}
+
+Each of these modes will require a set of features, some probably
+easier to implement than others. A table of the required features
+can be found in \prettyref{fig:Scheme-of-features}.
+
 \item Game High Scores
 
 \begin{itemize}
@@ -153,7 +160,7 @@ use your cellphone as a weapon and hunt down monsters.
 \end{itemize}
 
 \begin{figure}[h]
-\includegraphics[width=1.1\textwidth]{\lyxdot \lyxdot /\lyxdot \lyxdot /\lyxdot \lyxdot /Dropbox/Chalmers/Kandidatarbete/tabbellfeatures}\caption{Scheme of what features are needed for different modes}
+\includegraphics[width=1.1\textwidth]{\lyxdot \lyxdot /\lyxdot \lyxdot /\lyxdot \lyxdot /Dropbox/Chalmers/Kandidatarbete/tabbellfeatures}\caption{Scheme of what features are needed for different modes\label{fig:Scheme-of-features}}
 \end{figure}
 
 
@@ -260,7 +267,7 @@ as going out and running for real and see if it works.
 
 An evaluation will be done when the first BETA-version is done. This
 will be done by letting a test group use our app and evaluate it by
-conducting an interview.\pagebreak{}
+conducting an interview.
 
 
 \subsection{Development}
@@ -296,10 +303,10 @@ directions using stereo headphones \citet{Roads1996}.
 Literature about Android and how to best develop the app will also
 be studied. This is necessary to make the app enjoyable for the user
 and flexible enough to work on different kinds of phones. According
-to the Android API Guide - Fragments (2014), fragments seems like
-a good way to decompose the functionality of an app into smaller parts
-(fragments) that can be reusable and depending on the screen size
-show up in different quantities.
+to the Android API Guide - Fragments , fragments seems like a good
+way to decompose the functionality of an app into smaller parts (fragments)
+that can be reusable and depending on the screen size show up in different
+quantities.
 
 Alongside the audio and Android studies, the sensors considering position
 and orientation need to be studied. While GPS is the most natural
@@ -319,16 +326,18 @@ Probably, as some initial testing shows, some combination of both
 is preferable.
 
 
-\section{Timetable }
+\section{Timetable}
 
-Timetable following on the next page.
+In order to create preliminary time plan of the milestones and the
+important phases of the project a Gantt chart was created. It is to
+be found in \prettyref{fig:Gantt Chart}.
 
 \begin{sidewaysfigure}
-\includegraphics[width=0.9\paperwidth]{\lyxdot \lyxdot /\lyxdot \lyxdot /\lyxdot \lyxdot /Dropbox/Chalmers/Kandidatarbete/timetable}\caption{Preliminary Time Plan for the project}
+\includegraphics[width=0.9\paperwidth]{\lyxdot \lyxdot /\lyxdot \lyxdot /\lyxdot \lyxdot /Dropbox/Chalmers/Kandidatarbete/timetable}\caption{Preliminary Time Plan for the project \label{fig:Gantt Chart}}
 \end{sidewaysfigure}
 
 
 \pagebreak{}\bibliographystyle{apalike}
-\phantomsection\addcontentsline{toc}{section}{\refname}\bibliography{\string"/home/joakim/Desktop/My Collection\string"}
+\phantomsection\addcontentsline{toc}{section}{\refname}\bibliography{References}
 
 \end{document}
