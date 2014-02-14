@@ -84,31 +84,80 @@ Planning Report - Running with Sound: Android Application Simulating Sound
  Sources at GPS Coordinates Using Smartphone Sensors
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace medskip
+\begin_layout Author
+Anton Palmqvist
+\begin_inset Newline newline
 \end_inset
 
+880906-4010 
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+
+\backslash
+and
 \end_layout
 
-\begin_layout Author
-Anton Palmqvist 880906-4010
+\end_inset
+
+ Daniel Johansson
 \begin_inset Newline newline
 \end_inset
 
- Daniel Johansson 920815-4493
+920815-4493 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Joakim Johansson
 \begin_inset Newline newline
 \end_inset
 
- Joakim Johansson 921024-4530 
+921024-4530 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Linus Karlsson
 \begin_inset Newline newline
 \end_inset
 
-Linus Karlsson 920731-2852 
+920731-2852 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Marcus Bernhard
 \begin_inset Newline newline
 \end_inset
 
-Marcus Bernhard 920125-1197
+920125-1197
 \end_layout
 
 \begin_layout Standard
@@ -140,29 +189,9 @@ Background
 \end_layout
 
 \begin_layout Standard
-The chosen subject, to combine a running 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Do stuff
-\end_layout
-
-\end_inset
-
-application with guiding sounds, is to our knowledge not a very common concept
- among Android applications.
- The assumption that it is unexplored makes the subject academically interrestin
-g.
- Computer games make use of sound to enhance the user experience, but with
- modern smart phone sensors the same could be done in an outdoor environment
- to create a virtual reality in sound.
-\end_layout
-
-\begin_layout Standard
 There are currently multiple running applications making use of GPS technology
  in order to measure speed and distance.
- Some, like “Zombies, run!” even track the speed and simulates monsters
+ Some of them, like “Zombies, run!” even track the speed and simulates monsters
  approaching (audio) if the user’s speed is too slow 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -172,8 +201,28 @@ key "SixtoStart2014"
 
 .
  However, the sound effects are not directional, meaning that the direction
- the sound is to be heard from is not important for the game’s functionality
- - it acts more like a neat feature.
+ the sound is interprated to be coming from is not important for the game’s
+ functionality - it acts more like a neat feature.
+\end_layout
+
+\begin_layout Standard
+The chosen subject, to combine a running application
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Running meaning the physical activity
+\end_layout
+
+\end_inset
+
+ with guiding sounds, is to our knowledge not a very common concept among
+ Android applications.
+ The assumption that it is unexplored makes the subject academically interrestin
+g.
+ Computer games make use of sound to enhance the user experience, but with
+ modern smart phone sensors the same could be done in an outdoor environment
+ to create a virtual reality in sound.
 \end_layout
 
 \begin_layout Standard
@@ -182,7 +231,7 @@ By combining sound with the running game concept it would be possible to
  obtain it when its location is reached.
  At the same time monsters could be heard from a specific direction and
  by running in another direction they could be avoided.
- These features will be a great motivator for people struggling to workout
+ These features could be a great motivator for people struggling to workout
  on a regular basis.
 \end_layout
 
@@ -196,16 +245,6 @@ Other academical parts that will not be mainly focused on but still could
 
 \begin_layout Standard
 All of this will be encapsulated in an Android application.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -350,6 +389,11 @@ BETA - With the help of audio-navigation you have to run to a predefined
 \end_layout
 
 \begin_layout Itemize
+Coin Collector - Extension of the BETA where the user runs to one destination
+ at a time, each represented as coins.
+\end_layout
+
+\begin_layout Itemize
 Freerun - You can run anywhere you want without any special goals while
  monsters are chasing you.
 \end_layout
@@ -439,23 +483,34 @@ name "fig:Scheme-of-features"
 
 \end_deeper
 \begin_layout Enumerate
-During the implementation of the game modes, a BETA-version will be released.
- The BETA will then be evaluated on usability by doing some testing by actual
- people.
- The feedback contained from testing the application will be of great value
- when improving the implemented features.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Metod?
+Evaluation of the BETA concerning usability:
 \end_layout
 
-\end_inset
-
-
+\begin_deeper
+\begin_layout Itemize
+By doing testing with actual people the app will be improved on usability.
+ This will be done in the following steps:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Test persons uses the application to do certain tasks
+\end_layout
+
+\begin_layout Itemize
+Establishing requirements by conducting interviews
+\end_layout
+
+\begin_layout Itemize
+Designing and prototyping alternatives
+\end_layout
+
+\begin_layout Itemize
+Implementing the new design
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Enumerate
 Finally, if there is time, some advanced and further game functions will
  be implemented:
@@ -776,8 +831,8 @@ Timetable
 \end_layout
 
 \begin_layout Standard
-In order to create preliminary time plan of the milestones and the important
- phases of the project a Gantt chart was created.
+In order to create a preliminary time plan of the important phases of the
+ project a Gantt chart was used.
  It is to be found in 
 \begin_inset CommandInset ref
 LatexCommand formatted
