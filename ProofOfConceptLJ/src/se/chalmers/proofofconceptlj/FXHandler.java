@@ -75,12 +75,15 @@ public class FXHandler {
 	 *            angle between current direction and source (0-360).
 	 * @param distance
 	 *            distance from audio source in meters.
+	 * @throws InterruptedException
 	 */
-	public void setPosition(int soundID, float angle, float distance) {
-		float distFactor = (float) ((-1 * Math.pow(distance, 2) / Math.pow(
-				maxAudiableDistance, 2)) + 1);
-		if (distFactor < 0)
-			distFactor = 0;
+	public void setPosition(int soundID, float angle, float distance)
+			throws InterruptedException {
+
+		float distFactor = distance / maxAudiableDistance;
+
+		if (distFactor <= 0.2)
+			distFactor = 0.2f;
 
 		// Have to add 90 degrees so that (angle = 0) is heard in front.
 		int correctValue = 90;
@@ -104,8 +107,10 @@ public class FXHandler {
 		float leftVolume = (float) Math.cos(radian / 2);
 		float rightVolume = (float) Math.sin(radian / 2);
 
-		soundPool.setVolume(soundID, leftVolume * distance, rightVolume
-				* distance);
+		// Increase frequency after how close target being
+
+		soundPool.setVolume(soundID, leftVolume * distFactor, rightVolume
+				* distFactor);
 	}
 
 	/**

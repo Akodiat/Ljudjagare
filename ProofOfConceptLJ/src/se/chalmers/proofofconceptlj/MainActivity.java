@@ -59,12 +59,18 @@ public class MainActivity extends Activity {
 		(fx = new FXHandler()).initSound(this);
 
 		testVolume = (SeekBar) findViewById(R.id.seekBarVolume);
+		testVolume.setMax(50);
 		testVolume.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				vol = (float)arg1/100;
-				fx.setPosition(streamID, panning, vol);
+				vol = arg1;
+				try {
+					fx.setPosition(streamID, panning, vol);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 			@Override
@@ -85,7 +91,12 @@ public class MainActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				panning = arg1;
-				fx.setPosition(streamID, panning, vol);
+				try {
+					fx.setPosition(streamID, panning, vol);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 			@Override
