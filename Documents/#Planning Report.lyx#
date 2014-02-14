@@ -162,12 +162,23 @@ and
 
 \begin_layout Standard
 Group 42
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -268,6 +279,13 @@ Makes it enjoyable and motivating for people to exercise.
 
 \begin_layout Section
 Problem/Assignment
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Problem/Assignment"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -343,7 +361,7 @@ Sound
 \begin_layout Itemize
 The sound will be directional, meaning that the sound will appear to come
  from a specific direction of which the runner is supposed to run towards
- - by panorating
+ using panorating
 \begin_inset Foot
 status collapsed
 
@@ -360,7 +378,7 @@ key "Roads1996"
 
 \end_inset
 
- 
+.
 \end_layout
 
 \begin_layout Itemize
@@ -439,7 +457,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename tabbellfeatures.png
-	lyxscale 50
+	lyxscale 80
 	width 100text%
 
 \end_inset
@@ -589,15 +607,8 @@ Limitations
 \end_layout
 
 \begin_layout Standard
-Apart from being limited in time, one limitation is the ability for the
- audio to be heard from the correct direction when the user is standing
- still.
- It would be possible to use the gyroscope to calculate the direction from
- which the sound is supposed to be heard from - if the user is holding the
- phone in his/her hands, that is.
- If the phone, however, is placed in the user’s pocket (or the like) the
- application has to depend on how the user is approaching the goal destination,
- using GPS technology.
+The device sensors will limit how accurately the user orientation can be
+ measured, thereby limiting the user experience.
 \end_layout
 
 \begin_layout Standard
@@ -636,11 +647,11 @@ Instead, if the sound is supposed to be heard from behind the user, it will
 \end_layout
 
 \begin_layout Standard
-When developing the application, the assumption that people might listen
- to music when running, will be considered.
- Ideally the user should be able to listen to music alongside using the
- application, or possibly make the experience fun enough for the user not
- wanting to listen to music while using the application.
+When developing the application the assumption that people might listen
+ to music when running will be considered.
+ Ideally the user should be able to listen to music while using the application.
+ Alternatively the experience could perhaps be made fun enough for the user
+ not wanting to listen to music while using the application.
 \end_layout
 
 \begin_layout Section
@@ -651,9 +662,8 @@ Method
 Initially, information will be gathered on how to use the Android APIs in
  the most efficient way for this kind of application.
  This will include how to use activities, sensors and maps.
- Since we are essentially developing an application to be run entirely on
- Android platforms, this part of the research will be of huge importance
- for the outcome.
+ Since the application is developed to be run entirely on Android platforms,
+ this part of the research will be of huge importance for the outcome.
 \end_layout
 
 \begin_layout Standard
@@ -673,17 +683,23 @@ When information is gathered the structure of the app will bef decided.
 
 \begin_layout Standard
 Then the coding process will start.
- The parts to be coded will be the ones mentioned in the section of Problem/Assi
-gnment.
- Alongside with the coding testing will be made to make sure that everything
+ The parts to be coded will be the ones mentioned in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Problem/Assignment"
+
+\end_inset
+
+.
+ Alongside with the coding, testing will be made to make sure that everything
  is working as expected.
  When possible, the tests will be made as test cases.
  It will also be important to test with real values - such as going out
- and running for real and see how it works.
+ and running and see how the application works.
 \end_layout
 
 \begin_layout Standard
-An evaluation will be done when the first BETA-version is done.
+An evaluation will be performed when the first BETA-version is finished.
  This will be done by letting a test group use our app and evaluate it by
  conducting an interview.
 \end_layout
@@ -695,9 +711,19 @@ Development
 \begin_layout Standard
 The Scrum method will be used when developing the application - a flexible
  Agile software development framework where the team works more as a unit
- opposed to a traditional and sequential approach.
+ opposed to a traditional and sequential approach
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+waterfall
+\end_layout
+
+\end_inset
+
+.
  The division of labor will be done in cycles (sprints).
- Each job occasion will begin with a daily scrum - a short meeting where
+ Each job occasion will begin with a scrum meeting - a short meeting where
  the group talks about what’s going on, what’s about to happen as well as
  possible problems.
 \end_layout
@@ -716,8 +742,6 @@ To handle the coding part of the development, Git will be used, which is
 When it comes to the testing part of the development, both the virtual phone
  available in the Android developing environment will be used, as well as
  our own phones.
- Testing is essential for our application to be as steady as possible, so
- as many test cases as possible will be covered.
 \end_layout
 
 \begin_layout Subsection
@@ -729,7 +753,7 @@ The literature studies will involve how the human ear perceives sound, and
  how it’s possible to imitate sounds coming from specific directions using
  stereo headphones 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "Roads1996"
 
 \end_inset
@@ -741,10 +765,16 @@ key "Roads1996"
 Literature about Android and how to best develop the app will also be studied.
  This is necessary to make the app enjoyable for the user and flexible enough
  to work on different kinds of phones.
- According to the Android API Guide - Fragments , fragments seems like a
- good way to decompose the functionality of an app into smaller parts (fragments
-) that can be reusable and depending on the screen size show up in different
- quantities.
+ According to the Android API Guide - Fragments 
+\begin_inset CommandInset citation
+LatexCommand citeyearpar
+key "AndroidDevelopers2014b"
+
+\end_inset
+
+, fragments can decompose the functionality of an app into smaller parts
+ (fragments) that can be reusable and, depending on the screen size, show
+ up in different quantities at a time.
 \end_layout
 
 \begin_layout Standard
@@ -775,14 +805,14 @@ key "AndroidDevelopers2014"
  be able to use the magnetic field sensor (compass) and accelerometer to
  provide an orientation of the phone itself 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "Sood2012"
 
 \end_inset
 
 .
  This however has problems since the orientation of the phone relative to
- the actual user is not always known (it dependa on how the user is holding
+ the actual user is not always known (it depends on how the user is holding
  the phone).
 \end_layout
 
