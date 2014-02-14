@@ -343,7 +343,7 @@ Sound
 \begin_layout Itemize
 The sound will be directional, meaning that the sound will appear to come
  from a specific direction of which the runner is supposed to run towards
- using panorating
+ - by panorating
 \begin_inset Foot
 status collapsed
 
@@ -360,7 +360,7 @@ key "Roads1996"
 
 \end_inset
 
-.
+ 
 \end_layout
 
 \begin_layout Itemize
