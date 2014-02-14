@@ -189,10 +189,18 @@ Background
 \end_layout
 
 \begin_layout Standard
+In this day and age you can see more and more people running as a way of
+ exercising, bringing their smartphones with them.
+ It would thereby be interesting to develop a new kind of sport application
+ to enhance the running experience even more.
+ 
+\end_layout
+
+\begin_layout Standard
 There are currently multiple running applications making use of GPS technology
- in order to measure speed and distance.Some of them, like “Zombies, run!”
- even track the speed and simulate monsters approaching (audio) if the user’s
- speed is too slow
+ in order to measure speed and distance.
+ Some of them, like “Zombies, run!” even track the speed and simulate monsters
+ approaching (audio) if the user’s speed is too slow
 \begin_inset CommandInset citation
 LatexCommand citep
 key "SixtoStart2014"
@@ -207,9 +215,9 @@ key "SixtoStart2014"
 \end_layout
 
 \begin_layout Standard
-The chosen subject, to combine a running application
+The chosen subject, to combine a running
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Running meaning the physical activity
@@ -217,8 +225,8 @@ Running meaning the physical activity
 
 \end_inset
 
- with guiding sounds, is to our knowledge not a very common concept among
- Android applications.
+ application with guiding sounds, is to our knowledge not a very common
+ concept among Android applications.
  The assumption that it is unexplored makes the subject academically interesting.
  Computer games make use of sound to enhance the user experience, but with
  modern smart phone sensors the same could be done in an outdoor environment
@@ -333,10 +341,12 @@ Altitude - Altitude-changes during the route.
 Running High Scores.
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Best time for given distances.
+Best times for given distances.
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Enumerate
 Secondly game functions will be implemented:
@@ -344,7 +354,7 @@ Secondly game functions will be implemented:
 
 \begin_deeper
 \begin_layout Itemize
-Sound
+Sound will be implemented in the following way:
 \end_layout
 
 \begin_deeper
@@ -842,7 +852,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename timetable.eps
+	filename timetable.png
 	width 90page%
 	scaleBeforeRotation
 
