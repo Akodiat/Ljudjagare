@@ -64,7 +64,7 @@ customHeadersFooters
 \paragraph_indentation default
 \quotes_language english
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle fancy
 \tracking_changes false
 \output_changes false
@@ -174,7 +174,7 @@ Background
 \end_layout
 
 \begin_layout Standard
-The chosen subject, as combining a running application with guiding sounds
+The chosen subject, being combining a running application with guiding sounds,
  is to our knowledge unusual.
  This makes the subject academically interesting, since it is a new area
  to explore.
@@ -372,6 +372,19 @@ Shooter - A mode more focused on hunting then running.
  While out running use your cellphone as a weapon and hunt down monsters.
 \end_layout
 
+\begin_layout Standard
+Each of these modes will require a set of features, some probably easier
+ to implement than others.
+ A table of the required features can be found in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Scheme-of-features"
+
+\end_inset
+
+.
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 Game High Scores
@@ -407,6 +420,13 @@ status open
 
 \begin_layout Plain Layout
 Scheme of what features are needed for different modes
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Scheme-of-features"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -616,10 +636,6 @@ gnment.
 An evaluation will be done when the first BETA-version is done.
  This will be done by letting a test group use our app and evaluate it by
  conducting an interview.
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -725,11 +741,20 @@ Probably, as some initial testing shows, some combination of both is preferable.
 \end_layout
 
 \begin_layout Section
-Timetable 
+Timetable
 \end_layout
 
 \begin_layout Standard
-Timetable following on the next page.
+In order to create preliminary time plan of the milestones and the important
+ phases of the project a Gantt chart was created.
+ It is to be found in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Gantt Chart"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -751,7 +776,14 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Preliminary Time Plan for the project
+Preliminary Time Plan for the project 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Gantt Chart"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -771,8 +803,8 @@ Preliminary Time Plan for the project
 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/home/joakim/Desktop/My Collection"
-options "bibtotoc,apalike"
+bibfiles "References"
+options "bibtotoc,plainnat"
 
 \end_inset
 
