@@ -190,9 +190,9 @@ Background
 
 \begin_layout Standard
 There are currently multiple running applications making use of GPS technology
- in order to measure speed and distance.
- Some of them, like “Zombies, run!” even track the speed and simulates monsters
- approaching (audio) if the user’s speed is too slow 
+ in order to measure speed and distance.Some of them, like “Zombies, run!”
+ even track the speed and simulate monsters approaching (audio) if the user’s
+ speed is too slow
 \begin_inset CommandInset citation
 LatexCommand citep
 key "SixtoStart2014"
@@ -203,6 +203,7 @@ key "SixtoStart2014"
  However, the sound effects are not directional, meaning that the direction
  the sound is interprated to be coming from is not important for the game’s
  functionality - it acts more like a neat feature.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -216,10 +217,13 @@ Running meaning the physical activity
 
 \end_inset
 
- with guiding sounds, is to our knowledge not a very common concept among
- Android applications.
+<<<<<<< HEAD with guiding sounds, is to our knowledge not a very common
+ concept among Android applications.
  The assumption that it is unexplored makes the subject academically interrestin
-g.
+=======application with guiding sounds, is to our knowledge not a very common
+ concept among Android applications.
+ The assumption that it is unexplored makes the subject academically interestin>
+>>>>>> 773eefac9c5057a7a928461b90467549b723d29ag.
  Computer games make use of sound to enhance the user experience, but with
  modern smart phone sensors the same could be done in an outdoor environment
  to create a virtual reality in sound.
@@ -717,17 +721,7 @@ Development
 \begin_layout Standard
 The Scrum method will be used when developing the application - a flexible
  Agile software development framework where the team works more as a unit
- opposed to a traditional and sequential approach
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-waterfall
-\end_layout
-
-\end_inset
-
-.
+ opposed to a traditional and sequential approach.
  The division of labor will be done in cycles (sprints).
  Each job occasion will begin with a scrum meeting - a short meeting where
  the group talks about what’s going on, what’s about to happen as well as
