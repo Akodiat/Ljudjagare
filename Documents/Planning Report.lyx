@@ -516,7 +516,7 @@ Instead of real controls and receivers, this application will rely on generated
  By turning around with the phone in hand, the audio level will change depending
  on if there’s a control in the direction of which the phone is pointing.
  To clarify: no panning will be involved - just the volume of the audio
- changing.
+ changing as the user is rotating (depending on direction to source).
 \end_layout
 
 \begin_layout Standard
