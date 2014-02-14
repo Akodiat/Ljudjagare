@@ -202,7 +202,7 @@ key "SixtoStart2014"
 .
  However, the sound effects are not directional, meaning that the direction
  the sound is interprated to be coming from is not important for the game’s
- functionality - it acts more like a neat feature.
+ functionality - it acts more like a neat feature. 
 \end_layout
 
 \begin_layout Standard
@@ -218,7 +218,7 @@ Do stuff
 
 application with guiding sounds, is to our knowledge not a very common concept
  among Android applications.
- The assumption that it is unexplored makes the subject academically interrestin
+ The assumption that it is unexplored makes the subject academically interestin
 g.
  Computer games make use of sound to enhance the user experience, but with
  modern smart phone sensors the same could be done in an outdoor environment
