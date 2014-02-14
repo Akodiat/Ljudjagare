@@ -189,6 +189,23 @@ Background
 \end_layout
 
 \begin_layout Standard
+There are currently multiple running applications making use of GPS technology
+ in order to measure speed and distance.
+ Some, like “Zombies, run!” even track the speed and simulates monsters
+ approaching (audio) if the user’s speed is too slow 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "SixtoStart2014"
+
+\end_inset
+
+.
+ However, the sound effects are not directional, meaning that the direction
+ the sound is interprated to be coming from is not important for the game’s
+ functionality - it acts more like a neat feature.
+\end_layout
+
+\begin_layout Standard
 The chosen subject, to combine a running 
 \begin_inset Note Note
 status open
@@ -209,29 +226,12 @@ g.
 \end_layout
 
 \begin_layout Standard
-There are currently multiple running applications making use of GPS technology
- in order to measure speed and distance.
- Some, like “Zombies, run!” even track the speed and simulates monsters
- approaching (audio) if the user’s speed is too slow 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "SixtoStart2014"
-
-\end_inset
-
-.
- However, the sound effects are not directional, meaning that the direction
- the sound is to be heard from is not important for the game’s functionality
- - it acts more like a neat feature.
-\end_layout
-
-\begin_layout Standard
 By combining sound with the running game concept it would be possible to
  hear something, for example a coin, and by running towards it be able to
  obtain it when its location is reached.
  At the same time monsters could be heard from a specific direction and
  by running in another direction they could be avoided.
- These features will be a great motivator for people struggling to workout
+ These features could be a great motivator for people struggling to workout
  on a regular basis.
 \end_layout
 
