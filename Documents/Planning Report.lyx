@@ -249,6 +249,8 @@ Other academical parts that will not be mainly focused on but still could
  fun and motivating.
  Therefore the target group of the application is not only people who run
  regularly, but also people who need motivation to do so.
+ This makes the subject interesting in an ethical way since it, by increased
+ exercise, can have a positive impact on peoples health.
 \end_layout
 
 \begin_layout Standard
@@ -839,8 +841,8 @@ key "Sood2012"
 The orientation while in motion could be decided through the GPS bearing
  
 \begin_inset CommandInset citation
-LatexCommand citep*
-key "AndroidDevelopers2014"
+LatexCommand citet*
+key "AndroidDevelopers2014c"
 
 \end_inset
 
