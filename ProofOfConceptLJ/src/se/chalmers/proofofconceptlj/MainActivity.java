@@ -79,7 +79,10 @@ public class MainActivity extends Activity {
 				if(source != null){
 					pointArrowToSource_C();
 					if(streamID != -1)
-						fx.setPanning(streamID, (headingAngle + human.getLocation().bearingTo(source)), human.getLocation().distanceTo(source));
+						fx.setPosition(
+								streamID, 
+								(headingAngle + human.getLocation().bearingTo(source)), 
+								human.getLocation().distanceTo(source));
 				}
 			}
 		}

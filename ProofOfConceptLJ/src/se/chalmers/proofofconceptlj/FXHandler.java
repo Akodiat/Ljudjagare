@@ -11,16 +11,13 @@ import android.media.SoundPool.OnLoadCompleteListener;
 public class FXHandler {
 	public static final int FX_01 = 1;
 	public static final int LOOP = -1;
-	
-	private static final int maxAudiableDistance = 50; //Meters
+	public static final int NOT_LOADED = -42;
+
+	private static final int maxAudiableDistance = 50; // Meters
 
 	private HashMap<Integer, Integer> soundPoolMap;
 	private SoundPool soundPool;
-
 	private AudioManager am;
-
-	private double panning;
-	
 
 	// True if sound is loaded correctly
 	private boolean loaded = false;
@@ -55,48 +52,64 @@ public class FXHandler {
 	public int playFX(int soundID, int times) {
 		if (loaded)
 			return soundPool.play(soundID, 1f, 1f, 1, 0, 1f);
-		return -42;
+		return NOT_LOADED;
 	}
 
 	public int playFX(int soundID) {
 		if (loaded)
 			return soundPool.play(soundID, 1f, 1f, 1, -1, 1f);
-		return -42;
+		return NOT_LOADED;
 	}
-	
+
 	public void stopFX(int soundID) {
 		if (loaded)
 			soundPool.stop(soundID);
 	}
 
 	/**
+	 * Play sound at specific angle and distance from user.
 	 * 
-	 * @param soundID sound to process
-	 * @param angle angle between current direction and source (0-360)
+	 * @param soundID
+	 *            sound to process
+	 * @param angle
+	 *            angle between current direction and source (0-360).
+	 * @param distance
+	 *            distance from audio source in meters.
+	 * @throws InterruptedException
 	 */
-	public void setPanning(int soundID, float angle, float distance) {
-		float distFactor = (float) ((-1* Math.pow(distance, 2) / Math.pow(maxAudiableDistance, 2)) + 1);
-		if (distFactor<0)
-			distFactor = 0;
+	public void setPosition(int soundID, float angle, float distance) {
 
-		// Is sound behind the player to the left?
-		if (angle >= 90 && angle < 180){
-			soundPool.setVolume(soundID, 1f*distFactor, 0);
-			return;
-		}
+		float distFactor = distance / maxAudiableDistance;
 
-		// Is sound behind the player to the right?
-		if (angle >= 180){
-			soundPool.setVolume(soundID, 0, 1f*distFactor);
-			return;
-		}
+		if (distFactor <= 0.2)
+			distFactor = 0.2f;
 
-		// 0 - all left, pi/2 all right
-		double radian = angle * (Math.PI / 180);											//= panning;
-		float leftVolume = (float) Math.cos(radian) * distFactor;
-		float rightVolume = (float) Math.sin(radian)* distFactor;
+		// Have to add 90 degrees so that (angle = 0) is heard in front.
+		int correctValue = 90;
 
-		soundPool.setVolume(soundID, leftVolume, rightVolume);
+		// The angle after being correction.
+		float dangle = angle + correctValue;
+
+		// Is sound coming from behind the player to the right?
+		if (angle > 90 && angle <= 180)
+			dangle = 180;
+
+		// Is sound coming from behind the player to the left?
+		if (angle > 180 && angle <= 270)
+			dangle = 0;
+
+		// From left to middle of listening scope.
+		if (angle > 270)
+			dangle = angle - 270;
+
+		double radian = dangle * (Math.PI / 180); // Convert to radians
+		float leftVolume = (float) Math.cos(radian / 2);
+		float rightVolume = (float) Math.sin(radian / 2);
+
+		// Increase frequency after how close target being
+
+		soundPool.setVolume(soundID, leftVolume * distFactor, rightVolume
+				* distFactor);
 	}
 
 	/**
@@ -116,14 +129,10 @@ public class FXHandler {
 		soundPool.stop(id);
 	}
 
-	/** 
+	/**
 	 * Get max value of device
 	 */
 	public int maxVolume() {
 		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
-
-	/**
-	 * 
-	 */
 }
