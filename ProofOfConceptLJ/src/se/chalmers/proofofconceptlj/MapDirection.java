@@ -89,15 +89,15 @@ GooglePlayServicesClient.OnConnectionFailedListener, LocationListener{
 		bNavigation.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				double a = Math.random();
-				double b = Math.random();
-				double r = 0.010;
-				double w = r * Math.sqrt(a);
-				double t = 2 * Math.PI * b;
-				double x = w * Math.cos(t); 
-				double y = w * Math.sin(t);
+//				double a = Math.random();
+//				double b = Math.random();
+//				double r = 0.010;
+//				double w = r * Math.sqrt(a);
+//				double t = 2 * Math.PI * b;
+//				double x = w * Math.cos(t); 
+//				double y = w * Math.sin(t);
 				findDirections( STOCKHOLM.latitude, STOCKHOLM.longitude,CURRENT_POSITION.latitude
-						, CURRENT_POSITION.longitude, GMapV2Direction.MODE_DRIVING );
+						, CURRENT_POSITION.longitude, GMapV2Direction.MODE_WALKING );
 			}
 		});
 
