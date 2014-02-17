@@ -39,7 +39,7 @@ public class FXHandler {
 		});
 
 		// Load FX
-		soundPoolMap.put(FX_01, soundPool.load(context, R.raw.sound, 1));
+		soundPoolMap.put(FX_01, soundPool.load(context, R.raw.dinosaur, 1));
 	}
 
 	/**

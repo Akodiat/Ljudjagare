@@ -14,6 +14,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -179,6 +180,12 @@ GooglePlayServicesClient.OnConnectionFailedListener, LocationListener{
 		map.moveCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 150));
 
 	}
+	
+	public void updateDistance(int distance){
+		String distanceText = Integer.toString(distance);
+		TextView t = (TextView) this.findViewById(R.id.textDistance);
+		t.setText(distanceText);
+	}
 
 
 
@@ -209,6 +216,7 @@ GooglePlayServicesClient.OnConnectionFailedListener, LocationListener{
 		.title("End of route! " + directionPoints.get(points).latitude 
 				+ " " + directionPoints.get(points).longitude));
 		//map.animateCamera(CameraUpdateFactory.zoomOut());
+		
 	}
 
 

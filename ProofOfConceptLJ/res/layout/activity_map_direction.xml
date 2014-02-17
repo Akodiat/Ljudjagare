@@ -28,4 +28,13 @@
         android:layout_toRightOf="@+id/bNavigation"
         android:text="Random" />
 
+    <TextView
+        android:id="@+id/textDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bNavigation"
+        android:layout_below="@+id/bRandom"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
 </RelativeLayout>

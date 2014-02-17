@@ -18,8 +18,13 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
     private MapDirection activity;
     private Exception exception;
     private ProgressDialog progressDialog;
+    private int distance; 
  
-    public GetDirectionsAsyncTask(MapDirection activity)
+    public int getDistance() {
+		return distance;
+	}
+
+	public GetDirectionsAsyncTask(MapDirection activity)
     {
         super();
         this.activity = activity;
@@ -39,6 +44,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
         if (exception == null)
         {
             activity.handleGetDirectionsResult(result);
+            activity.updateDistance(distance);
         }
         else
         {
@@ -57,6 +63,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
             GMapV2Direction md = new GMapV2Direction();
             Document doc = md.getDocument(fromPosition, toPosition, paramMap.get(DIRECTIONS_MODE));
             ArrayList<LatLng> directionPoints = md.getDirection(doc);
+            distance = md.getDistanceValue(doc);
             return directionPoints;
         }
         catch (Exception e)
