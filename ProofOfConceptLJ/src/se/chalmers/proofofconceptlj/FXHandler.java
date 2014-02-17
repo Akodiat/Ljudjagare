@@ -79,7 +79,7 @@ public class FXHandler {
 	 */
 	public void setPosition(int soundID, float angle, float distance) {
 
-		float distFactor = distance / maxAudiableDistance;
+		float distFactor = (float) (1.5/(distance+2));  // maxAudiableDistance;
 
 		if (distFactor <= 0.2)
 			distFactor = 0.2f;
