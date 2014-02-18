@@ -44,7 +44,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
         if (exception == null)
         {
             activity.handleGetDirectionsResult(result);
-            activity.updateDistance(distance);
+            //activity.updateDistance(distance);
         }
         else
         {

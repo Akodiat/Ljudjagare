@@ -11,30 +11,30 @@
         class="com.google.android.gms.maps.SupportMapFragment" />
 
     <Button
-        android:id="@+id/bNavigation"
+        android:id="@+id/bRandom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="5dp"
-        android:text="Navigate" />
-
-    <Button
-        android:id="@+id/bRandom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/bNavigation"
-        android:layout_alignBottom="@+id/bNavigation"
-        android:layout_toRightOf="@+id/bNavigation"
         android:text="Random" />
 
-    <TextView
-        android:id="@+id/textDistance"
+    <Button
+        android:id="@+id/bPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bNavigation"
-        android:layout_below="@+id/bRandom"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_alignBottom="@+id/bRandom"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/bRandom"
+       	android:onClick="playSound"
+        android:text="Play sound" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/arrow" />
 
 </RelativeLayout>

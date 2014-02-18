@@ -162,10 +162,6 @@ public class MainActivity extends Activity {
 		arrow.setRotation(headingAngle + human.getLocation().bearingTo(source));
 	}
 
-	private boolean usingCompass() {
-		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox_compass);
-		return checkBox.isChecked();
-	}
 
 	public void playSound(View view) {
 		if(this.streamID == -1) {
@@ -175,16 +171,6 @@ public class MainActivity extends Activity {
 			fx.stopFX(streamID);
 			this.streamID = -1;
 		}
-	}
-
-	public void setCurrentAsSource(View view) {
-		this.source = this.human.getLocation();
-
-		TextView textLongitude = (TextView) this.findViewById(R.id.textView_sourceLongitude);
-		TextView textLatitude = (TextView) this.findViewById(R.id.textView_sourceLatitude);
-
-		textLongitude.setText("Source longitude: " + this.source.getLongitude());
-		textLatitude.setText(  "Source latitude: " + this.source.getLatitude());
 	}
 
 	private void printOrientation(String s) {
