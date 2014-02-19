@@ -47,3 +47,4 @@ local.properties
 # Lyx
 .lyx#
 .lyx~
+*.properties

@@ -185,18 +185,18 @@ public class MapDirection extends FragmentActivity implements
 	}
 	final SensorEventListener sensorEventListener = new SensorEventListener() {
 		public void onSensorChanged(SensorEvent sensorEvent) {
-			if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
-				headingAngle 	= sensorEvent.values[0];
-
-				if(RANDOM != null){
-					pointArrowToSource_C();
-					if(streamID != -1)
-						fx.setPosition(
-								streamID, 
-								(headingAngle + human.getLocation().bearingTo(RANDOM)), 
-								human.getLocation().distanceTo(RANDOM));
-				}
-			}
+//			if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
+//				headingAngle 	= sensorEvent.values[0];
+//
+//				if(RANDOM != null){
+//					pointArrowToSource_C();
+//					if(streamID != -1)
+//						fx.setPosition(
+//								streamID, 
+//								(headingAngle + human.getLocation().bearingTo(RANDOM)), 
+//								human.getLocation().distanceTo(RANDOM));
+//				}
+//			}
 		}
 		public void onAccuracyChanged (Sensor senor, int accuracy) {
 			//Not used
@@ -210,8 +210,8 @@ public class MapDirection extends FragmentActivity implements
 	protected void onResume() {
 
 		super.onResume();
-		latlngBounds = createLatLngBoundsObject(STOCKHOLM, new LatLng(human.getLocation().getLatitude(), human.getLocation().getLongitude()));
-		map.moveCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 150));
+//		latlngBounds = createLatLngBoundsObject(STOCKHOLM, new LatLng(human.getLocation().getLatitude(), human.getLocation().getLongitude()));
+//		map.moveCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 150));
 
 	}
 
@@ -330,6 +330,19 @@ public class MapDirection extends FragmentActivity implements
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
 		
 		human.setLocation(location);
+		headingAngle = location.getBearing();
+
+		//
+		if(RANDOM != null){
+			pointArrowToSource_C();
+			if(streamID != -1)
+				fx.setPosition(
+						streamID, 
+						(headingAngle + human.getLocation().bearingTo(RANDOM)), 
+						human.getLocation().distanceTo(RANDOM));
+		}
+		//
+		
 		if(first){
 			first = false;
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(
