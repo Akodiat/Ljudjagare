@@ -63,4 +63,12 @@
         android:layout_alignRight="@+id/bRandom"
         android:src="@drawable/arrow" />
 
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/bRandom"
+        android:text="Use compass" />
+
 </RelativeLayout>

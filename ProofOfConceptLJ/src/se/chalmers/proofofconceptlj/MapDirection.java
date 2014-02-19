@@ -20,6 +20,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -361,15 +362,10 @@ SensorEventListener
 			
 			ImageView arrow = (ImageView) this.findViewById(R.id.imageView3);
 			arrow.setRotation(human.getLocation().getBearing());
-			arrow.setColorFilter(android.graphics.Color.BLUE, Mode.MULTIPLY);
+			adjustPanoration();
 			
-			if(streamID != -1)
-				fx.setPosition(
-						streamID, 
-						(headingAngle + human.getLocation().bearingTo(soundSource)), 
-						human.getLocation().distanceTo(soundSource));
+			arrow.setColorFilter(android.graphics.Color.BLUE, Mode.MULTIPLY);	
 		}
-		//
 
 		if(first){
 			first = false;
@@ -392,6 +388,20 @@ SensorEventListener
 			});
 		}
 	}
+	
+	private void adjustPanoration() {
+		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox1);
+		
+		if(streamID != -1)
+			fx.setPosition(
+					streamID, 
+					((
+							checkBox.isChecked() ? 
+							headingAngleOrientation : headingAngle
+					 )
+					+ 	human.getLocation().bearingTo(soundSource)), 
+					human.getLocation().distanceTo(soundSource));
+		}
 
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) {
@@ -415,6 +425,7 @@ SensorEventListener
 				SensorManager.getOrientation(R, orientation);
 				headingAngleOrientation =  (float) (-(180/Math.PI) * orientation[0]); // orientation contains: azimut, pitch and roll
 				pointArrowToSource_Compass();
+				adjustPanoration();
 			}
 		}
 	}
