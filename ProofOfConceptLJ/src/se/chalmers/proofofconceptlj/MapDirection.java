@@ -75,6 +75,7 @@ public class MapDirection extends FragmentActivity implements
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_map_direction);
 
+
 		myLocationClient = new LocationClient(getApplicationContext(), this, this);
 		// once we have the reference to the client, connect it
 		if(myLocationClient != null)
@@ -83,7 +84,7 @@ public class MapDirection extends FragmentActivity implements
 		getScreenDimentions();
 		fragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 		map = fragment.getMap(); 	
-
+		soundSource = new Location("Trololo");
 
 		// Show my location on the map
 		if(map != null)
@@ -108,7 +109,7 @@ public class MapDirection extends FragmentActivity implements
 				double x = w * Math.cos(t); 
 				double y = w * Math.sin(t);
 
-				soundSource = new Location("Trololo");
+
 				soundSource.setLatitude(human.getLocation().getLatitude()+x);
 				soundSource.setLongitude(human.getLocation().getLongitude()+y);
 						
