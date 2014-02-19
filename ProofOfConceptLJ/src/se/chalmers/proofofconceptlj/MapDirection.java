@@ -140,7 +140,7 @@ public class MapDirection extends FragmentActivity implements
 				//				}
 				Log.d("click", "1");
 				Log.d("click", "1"+latLng.latitude + " " + latLng.longitude);
-				if(CURRENT_POSITION != null){
+				if(human.getLocation() != null){
 					findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
 							, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
 					// Placing a marker on the touched position
@@ -174,7 +174,7 @@ public class MapDirection extends FragmentActivity implements
 		);
 
 		
-		human = new Human(myLocationClient.getLastLocation());
+		
 
 		arrow2 = (ImageView) this.findViewById(R.id.imageView2);
 
@@ -210,7 +210,7 @@ public class MapDirection extends FragmentActivity implements
 	protected void onResume() {
 
 		super.onResume();
-		latlngBounds = createLatLngBoundsObject(STOCKHOLM, CURRENT_POSITION);
+		latlngBounds = createLatLngBoundsObject(STOCKHOLM, new LatLng(human.getLocation().getLatitude(), human.getLocation().getLongitude()));
 		map.moveCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 150));
 
 	}
@@ -308,6 +308,7 @@ public class MapDirection extends FragmentActivity implements
 	@Override
 	public void onConnected(Bundle bundle) {
 		myLocationClient.requestLocationUpdates( REQUEST, this); 
+		human = new Human(myLocationClient.getLastLocation());
 	} 
 
 	@Override
@@ -326,7 +327,7 @@ public class MapDirection extends FragmentActivity implements
 
 	@Override
 	public void onLocationChanged(Location location) {
-		CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
+		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
 		
 		human.setLocation(location);
 		if(first){
