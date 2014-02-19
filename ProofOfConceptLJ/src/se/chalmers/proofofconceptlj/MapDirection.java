@@ -338,7 +338,7 @@ public class MapDirection extends FragmentActivity implements
 		headingAngle = location.getBearing();
 		
 		ImageView arrow = (ImageView) this.findViewById(R.id.imageView1);
-		arrow.setRotation(location.getBearing());
+		arrow.setRotation(human.getLocation().bearingTo(soundSource));
 
 		//
 		if(soundSource != null){
