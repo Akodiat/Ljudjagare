@@ -37,7 +37,7 @@ public class MapDirection extends FragmentActivity implements
 	private Button				bRandom;
 	private Polyline 			newPolyline;
 	private int 				width, height;
-	private Location 			RANDOM;
+	private Location 			soundSource;
 	private Marker 				marker;
 	private Marker 				selectMarker;
 	
@@ -108,13 +108,13 @@ public class MapDirection extends FragmentActivity implements
 				double x = w * Math.cos(t); 
 				double y = w * Math.sin(t);
 
-				RANDOM = new Location("Trololo");
-				RANDOM.setLatitude(human.getLocation().getLatitude()+x);
-				RANDOM.setLongitude(human.getLocation().getLongitude()+y);
+				soundSource = new Location("Trololo");
+				soundSource.setLatitude(human.getLocation().getLatitude()+x);
+				soundSource.setLongitude(human.getLocation().getLongitude()+y);
 						
 						//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
 				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
-						, RANDOM.getLatitude(), RANDOM.getLongitude(), GMapV2Direction.MODE_WALKING );
+						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
 			}
 		});
 
@@ -138,6 +138,9 @@ public class MapDirection extends FragmentActivity implements
 				//				if ( selectMarker != null){
 				//					selectMarker.remove();
 				//				}
+				soundSource.setLatitude(latLng.latitude);
+				soundSource.setLongitude(latLng.longitude);
+				
 				Log.d("click", "1");
 				Log.d("click", "1"+latLng.latitude + " " + latLng.longitude);
 				if(human.getLocation() != null){
@@ -322,7 +325,7 @@ public class MapDirection extends FragmentActivity implements
 	 */
 	private void pointArrowToSource_C() {
 		ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
-		arrow.setRotation(headingAngle + human.getLocation().bearingTo(RANDOM));
+		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
 	}
 
 	@Override
@@ -333,13 +336,13 @@ public class MapDirection extends FragmentActivity implements
 		headingAngle = location.getBearing();
 
 		//
-		if(RANDOM != null){
+		if(soundSource != null){
 			pointArrowToSource_C();
 			if(streamID != -1)
 				fx.setPosition(
 						streamID, 
-						(headingAngle + human.getLocation().bearingTo(RANDOM)), 
-						human.getLocation().distanceTo(RANDOM));
+						(headingAngle + human.getLocation().bearingTo(soundSource)), 
+						human.getLocation().distanceTo(soundSource));
 		}
 		//
 		
