@@ -37,4 +37,14 @@
         android:layout_alignParentLeft="true"
         android:src="@drawable/arrow" />
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView2"
+        android:layout_toRightOf="@+id/imageView2"
+        android:layout_alignParentLeft="true"
+        android:alpha="0.2"
+        android:src="@drawable/arrow" />
+
 </RelativeLayout>
