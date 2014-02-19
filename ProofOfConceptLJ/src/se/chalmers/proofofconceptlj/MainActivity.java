@@ -194,7 +194,6 @@ public class MainActivity extends Activity {
 	public void mapButton(View view) {
 		Intent intent = new Intent(this, MapDirection.class);
 		startActivity(intent);
-		
 	}
 	
 	

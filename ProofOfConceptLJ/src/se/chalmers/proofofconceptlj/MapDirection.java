@@ -111,11 +111,11 @@ public class MapDirection extends FragmentActivity implements
 				double y = w * Math.sin(t);
 
 				RANDOM = new Location("Trololo");
-				RANDOM.setLatitude(CURRENT_POSITION.latitude+x);
-				RANDOM.setLongitude(CURRENT_POSITION.longitude+y);
+				RANDOM.setLatitude(human.getLocation().getLatitude()+x);
+				RANDOM.setLongitude(human.getLocation().getLongitude()+y);
 						
-						//new LatLng(CURRENT_POSITION.latitude+x, CURRENT_POSITION.longitude+y);
-				findDirections( CURRENT_POSITION.latitude, CURRENT_POSITION.longitude
+						//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
+				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
 						, RANDOM.getLatitude(), RANDOM.getLongitude(), GMapV2Direction.MODE_WALKING );
 			}
 		});
@@ -144,7 +144,7 @@ public class MapDirection extends FragmentActivity implements
 				Log.d("click", "1");
 				Log.d("click", "1"+latLng.latitude + " " + latLng.longitude);
 				if(CURRENT_POSITION != null){
-					findDirections( CURRENT_POSITION.latitude, CURRENT_POSITION.longitude
+					findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
 							, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
 					// Placing a marker on the touched position
 					Log.d("click", "2");
