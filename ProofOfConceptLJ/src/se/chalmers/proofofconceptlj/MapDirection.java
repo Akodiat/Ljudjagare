@@ -1,36 +1,58 @@
 package se.chalmers.proofofconceptlj;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import android.graphics.*;
-import android.hardware.*;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.PorterDuff.Mode;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
+import android.view.Display;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
 
-import com.google.android.gms.common.*;
-import com.google.android.gms.location.*;
-import com.google.android.gms.maps.*;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
-import com.google.android.gms.maps.model.*;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapDirection extends FragmentActivity implements 
-	GooglePlayServicesClient.ConnectionCallbacks,
-	GooglePlayServicesClient.OnConnectionFailedListener, 
-	LocationListener
+GooglePlayServicesClient.ConnectionCallbacks,
+GooglePlayServicesClient.OnConnectionFailedListener, 
+LocationListener,
+SensorEventListener
 {
 
-	
+
 	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
 	private static 			LatLng CURRENT_POSITION = new LatLng(58.705477, 11.990884);
 	private static final 	LatLng AMSTERDAM		= new LatLng(52.37518, 	4.895439);
 	private static final 	LatLng PARIS 			= new LatLng(48.856132, 2.352448);
 	private static final 	LatLng FRANKFURT 		= new LatLng(50.111772, 8.682632);
-	
+
 	private GoogleMap 			map;
 	private SupportMapFragment 	fragment;
 	private LatLngBounds 		latlngBounds;
@@ -40,8 +62,12 @@ public class MapDirection extends FragmentActivity implements
 	private Location 			soundSource;
 	private Marker 				marker;
 	private Marker 				selectMarker;
-	
+
 	private Boolean 			first = true;
+
+	private SensorManager	mSensorManager;
+	private Sensor 			accelerometer;
+	private Sensor 			magnetometer;
 
 	// Kanske kan ta bort?
 	private static final LocationRequest REQUEST = LocationRequest.create()
@@ -57,8 +83,7 @@ public class MapDirection extends FragmentActivity implements
 	private ImageView arrow2;
 	private int orientationSensor;
 	private float headingAngle;
-	private float pitchAngle;
-	private float rollAngle;
+	private float headingAngleOrientation;
 
 	private LocationManager locationManager;
 	private Human human;
@@ -66,6 +91,7 @@ public class MapDirection extends FragmentActivity implements
 	// Handles all form of audio
 	FXHandler fx;
 	int streamID;
+
 
 
 	@Override
@@ -85,6 +111,9 @@ public class MapDirection extends FragmentActivity implements
 		fragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 		map = fragment.getMap(); 	
 		soundSource = new Location("Trololo");
+		soundSource.setLatitude(CURRENT_POSITION.latitude);
+		soundSource.setLongitude(CURRENT_POSITION.longitude);
+		human = new Human(STOCKHOLM);
 
 		// Show my location on the map
 		if(map != null)
@@ -92,7 +121,9 @@ public class MapDirection extends FragmentActivity implements
 			map.setMyLocationEnabled(true);
 		} 
 
-
+		mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+		accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		magnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 		// Button for random navigation from current position
 		bRandom = (Button) findViewById(R.id.bRandom);
 		bRandom.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +143,8 @@ public class MapDirection extends FragmentActivity implements
 
 				soundSource.setLatitude(human.getLocation().getLatitude()+x);
 				soundSource.setLongitude(human.getLocation().getLongitude()+y);
-						
-						//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
+
+				//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
 				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
 						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
 			}
@@ -141,7 +172,7 @@ public class MapDirection extends FragmentActivity implements
 				//				}
 				soundSource.setLatitude(latLng.latitude);
 				soundSource.setLongitude(latLng.longitude);
-				
+
 				Log.d("click", "1");
 				Log.d("click", "1"+latLng.latitude + " " + latLng.longitude);
 				if(human.getLocation() != null){
@@ -167,19 +198,6 @@ public class MapDirection extends FragmentActivity implements
 			}
 		});
 
-
-		//Stolen from augmented reality on the Android platform pp.23:
-		sensorManager 		= (SensorManager) getSystemService(SENSOR_SERVICE);
-		orientationSensor 	= Sensor.TYPE_ORIENTATION;
-		sensorManager.registerListener(
-				sensorEventListener, 
-				sensorManager.getDefaultSensor(orientationSensor), 
-				SensorManager.SENSOR_DELAY_NORMAL
-		);
-
-		
-		
-
 		arrow2 = (ImageView) this.findViewById(R.id.imageView2);
 
 		streamID = -1;
@@ -187,36 +205,23 @@ public class MapDirection extends FragmentActivity implements
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
 	}
-	final SensorEventListener sensorEventListener = new SensorEventListener() {
-		public void onSensorChanged(SensorEvent sensorEvent) {
-//			if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
-//				headingAngle 	= sensorEvent.values[0];
-//
-//				if(RANDOM != null){
-//					pointArrowToSource_C();
-//					if(streamID != -1)
-//						fx.setPosition(
-//								streamID, 
-//								(headingAngle + human.getLocation().bearingTo(RANDOM)), 
-//								human.getLocation().distanceTo(RANDOM));
-//				}
-//			}
-		}
-		public void onAccuracyChanged (Sensor senor, int accuracy) {
-			//Not used
-		}
 
 
-	};
 
-	
 	@Override
 	protected void onResume() {
 
 		super.onResume();
-//		latlngBounds = createLatLngBoundsObject(STOCKHOLM, new LatLng(human.getLocation().getLatitude(), human.getLocation().getLongitude()));
-//		map.moveCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 150));
+		//		latlngBounds = createLatLngBoundsObject(STOCKHOLM, new LatLng(human.getLocation().getLatitude(), human.getLocation().getLongitude()));
+		//		map.moveCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 150));
+		mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
+		mSensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
 
+	}
+
+	protected void onPause() {
+		super.onPause();
+		mSensorManager.unregisterListener(this);
 	}
 
 	public void playSound(View view) {
@@ -320,29 +325,44 @@ public class MapDirection extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	/**
-	 * Points arrow to source using compass orientation
+	 * Points arrow to source using gps orientation
 	 */
-	private void pointArrowToSource_C() {
+	private void pointArrowToSource_GPS() {
 		ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
 		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
 	}
-	
+
+	/**
+	 * Points arrow to source using compass orientation
+	 */
+	private void pointArrowToSource_Compass() {
+		ImageView arrow = (ImageView) this.findViewById(R.id.imageView1);
+		arrow.setRotation(headingAngleOrientation + human.getLocation().bearingTo(soundSource));
+	}
+
 
 	@Override
 	public void onLocationChanged(Location location) {
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
-		
+
 		human.setLocation(location);
 		headingAngle = location.getBearing();
-		
-		ImageView arrow = (ImageView) this.findViewById(R.id.imageView1);
-		arrow.setRotation(human.getLocation().bearingTo(soundSource));
+		if(location.hasBearing()){
+			ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
+			arrow.setColorFilter(android.graphics.Color.GREEN, Mode.MULTIPLY);
+		}
+		//			arrow.setRotation(human.getLocation().bearingTo(soundSource));
 
 		//
 		if(soundSource != null){
-			pointArrowToSource_C();
+			pointArrowToSource_GPS();
+			
+			ImageView arrow = (ImageView) this.findViewById(R.id.imageView3);
+			arrow.setRotation(human.getLocation().getBearing());
+			arrow.setColorFilter(android.graphics.Color.BLUE, Mode.MULTIPLY);
+			
 			if(streamID != -1)
 				fx.setPosition(
 						streamID, 
@@ -350,7 +370,7 @@ public class MapDirection extends FragmentActivity implements
 						human.getLocation().distanceTo(soundSource));
 		}
 		//
-		
+
 		if(first){
 			first = false;
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(
@@ -373,5 +393,29 @@ public class MapDirection extends FragmentActivity implements
 		}
 	}
 
+	@Override
+	public void onAccuracyChanged(Sensor arg0, int arg1) {
+		// TODO Auto-generated method stub
 
+	}
+
+	float[] mGravity;
+	float[] mGeomagnetic;
+	public void onSensorChanged(SensorEvent event) {
+		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+			mGravity = event.values;
+		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+			mGeomagnetic = event.values;
+		if (mGravity != null && mGeomagnetic != null) {
+			float R[] = new float[9];
+			float I[] = new float[9];
+			boolean success = SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
+			if (success) {
+				float orientation[] = new float[3];
+				SensorManager.getOrientation(R, orientation);
+				headingAngleOrientation =  (float) (-(180/Math.PI) * orientation[0]); // orientation contains: azimut, pitch and roll
+				pointArrowToSource_Compass();
+			}
+		}
+	}
 }

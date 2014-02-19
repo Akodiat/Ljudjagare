@@ -1,5 +1,7 @@
 package se.chalmers.proofofconceptlj;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import android.location.Location;
 
 public class Human {
@@ -12,6 +14,13 @@ public class Human {
 	
 	public Human(Location location) {
 		this.location = location;
+	//	this.rotation = rotation;
+	}
+	public Human(LatLng latLng) {
+		Location loc = new Location("Trololo");
+		loc.setLatitude(latLng.latitude);
+		loc.setLongitude(latLng.longitude);
+		this.location = loc;
 	//	this.rotation = rotation;
 	}
 	public Location getLocation(){

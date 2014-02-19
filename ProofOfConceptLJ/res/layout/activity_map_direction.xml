@@ -5,7 +5,7 @@
     tools:context=".NavigationActivity" >
 
     <fragment
-    	android:id="@+id/map"
+        android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         class="com.google.android.gms.maps.SupportMapFragment" />
@@ -26,25 +26,41 @@
         android:layout_alignParentTop="true"
         android:layout_margin="5dp"
         android:layout_toRightOf="@+id/bRandom"
-       	android:onClick="playSound"
+        android:onClick="playSound"
         android:text="Play sound" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp" >
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bPlay"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/imageView1"
         android:src="@drawable/arrow" />
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView2"
-        android:layout_toRightOf="@+id/imageView2"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toRightOf="@+id/bPlay"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:alpha="0.2"
+        android:layout_alignRight="@+id/bRandom"
         android:src="@drawable/arrow" />
 
 </RelativeLayout>
