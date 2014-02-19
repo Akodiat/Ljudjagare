@@ -1,31 +1,59 @@
 package se.chalmers.proofofconceptlj;
 
 import com.google.android.gms.maps.model.LatLng;
-
 import android.location.Location;
 
-public class Human {
-//	private static double distanceBetweenEars = 0.01;
-	
-//	private Vector2 position;
+
+/**
+ * 
+ * @author Joakim Johansson
+ *
+ */
+public class Human{
 	private Location location;
-//	private double  rotation;					//in radians from pos x-axis
+	private int score;
 	
-	
-	public Human(Location location) {
-		this.location = location;
-	//	this.rotation = rotation;
+	public int getScore() {
+		return score;
 	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	/**
+	 * Increases the score with the given value
+	 * @param score the value to increase the score with. Use a negative value to decrease the score.
+	 */
+	public void modScore(int score) {
+		this.score += score;
+	}
+
+	public Human(Location location) {
+		this.location 	= location;
+		this.score 		= 0;
+	}
+	
 	public Human(LatLng latLng) {
-		Location loc = new Location("Trololo");
+		Location loc = new Location("Trololo"); //Wierd but seems to work
 		loc.setLatitude(latLng.latitude);
 		loc.setLongitude(latLng.longitude);
 		this.location = loc;
-	//	this.rotation = rotation;
 	}
+	
 	public Location getLocation(){
 		return this.location;
 	}
+	
+	public LatLng getLatLng(){
+		return new LatLng(location.getLatitude(), location.getLongitude());
+	}
+	
+	public void setLatLng(LatLng latLng){
+		location.setLatitude(latLng.latitude);
+		location.setLongitude(latLng.longitude);
+	}
+	
 	public void setLocation(Location location) {
 		this.location = location;
 	}
