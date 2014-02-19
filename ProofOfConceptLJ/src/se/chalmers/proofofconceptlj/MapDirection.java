@@ -3,10 +3,7 @@ package se.chalmers.proofofconceptlj;
 import java.util.*;
 
 import android.graphics.*;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.hardware.*;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -27,23 +24,24 @@ public class MapDirection extends FragmentActivity implements
 	LocationListener
 {
 
-	private static final LatLng STOCKHOLM = new LatLng(59.327476, 18.070829);
-	private static LatLng CURRENT_POSITION = new LatLng(58.705477, 11.990884);
-	private static final LatLng AMSTERDAM = new LatLng(52.37518, 4.895439);
-	private static final LatLng PARIS = new LatLng(48.856132, 2.352448);
-	private static final LatLng FRANKFURT = new LatLng(50.111772, 8.682632);
-	private GoogleMap map;
-	private SupportMapFragment fragment;
-	private LatLngBounds latlngBounds;
-	private Button bPlay;
-	private Button bRandom;
-	private Polyline newPolyline;
-	private int width, height;
-	private Location RANDOM;
-	private Marker marker;
-	private Marker selectMarker;
-
-	private Boolean first = true;
+	
+	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
+	private static 			LatLng CURRENT_POSITION = new LatLng(58.705477, 11.990884);
+	private static final 	LatLng AMSTERDAM		= new LatLng(52.37518, 	4.895439);
+	private static final 	LatLng PARIS 			= new LatLng(48.856132, 2.352448);
+	private static final 	LatLng FRANKFURT 		= new LatLng(50.111772, 8.682632);
+	
+	private GoogleMap 			map;
+	private SupportMapFragment 	fragment;
+	private LatLngBounds 		latlngBounds;
+	private Button				bRandom;
+	private Polyline 			newPolyline;
+	private int 				width, height;
+	private Location 			RANDOM;
+	private Marker 				marker;
+	private Marker 				selectMarker;
+	
+	private Boolean 			first = true;
 
 	// Kanske kan ta bort?
 	private static final LocationRequest REQUEST = LocationRequest.create()
@@ -82,7 +80,7 @@ public class MapDirection extends FragmentActivity implements
 		if(myLocationClient != null)
 			myLocationClient.connect(); 
 
-		getSreenDimanstions();
+		getScreenDimentions();
 		fragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 		map = fragment.getMap(); 	
 
@@ -122,7 +120,6 @@ public class MapDirection extends FragmentActivity implements
 
 		// Setting a click event handler for the map
 		map.setOnMapLongClickListener(new OnMapLongClickListener() {
-
 			@Override
 			public void onMapLongClick(LatLng latLng) {
 
@@ -164,14 +161,17 @@ public class MapDirection extends FragmentActivity implements
 					selectMarker = map.addMarker(markerOptions);
 				}
 			}
-
 		});
 
 
 		//Stolen from augmented reality on the Android platform pp.23:
 		sensorManager 		= (SensorManager) getSystemService(SENSOR_SERVICE);
 		orientationSensor 	= Sensor.TYPE_ORIENTATION;
-		sensorManager.registerListener(sensorEventListener, sensorManager.getDefaultSensor(orientationSensor), SensorManager.SENSOR_DELAY_NORMAL);
+		sensorManager.registerListener(
+				sensorEventListener, 
+				sensorManager.getDefaultSensor(orientationSensor), 
+				SensorManager.SENSOR_DELAY_NORMAL
+		);
 
 		
 		human = new Human(myLocationClient.getLastLocation());
@@ -264,7 +264,7 @@ public class MapDirection extends FragmentActivity implements
 	}
 
 
-	private void getSreenDimanstions()
+	private void getScreenDimentions()
 	{
 		Display display = getWindowManager().getDefaultDisplay();
 
