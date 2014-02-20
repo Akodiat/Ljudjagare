@@ -70,7 +70,7 @@ SensorEventListener
 	private Sensor 			accelerometer;
 	private Sensor 			magnetometer;
 
-	// Kanske kan ta bort?
+	
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
 			.setFastestInterval(16)    // 16ms = 60fps
@@ -78,13 +78,12 @@ SensorEventListener
 
 	private LocationClient myLocationClient;
 
-	//
-
 	private SensorManager sensorManager;
 	private ImageView arrow2;
 	private int orientationSensor;
 	private float headingAngle;
 	private float headingAngleOrientation;
+	private float angleToSound;
 
 	private LocationManager locationManager;
 	private Human human;
@@ -155,22 +154,8 @@ SensorEventListener
 		map.setOnMapLongClickListener(new OnMapLongClickListener() {
 			@Override
 			public void onMapLongClick(LatLng latLng) {
-
-				// Creating a marker
-				//MarkerOptions markerOptions = new MarkerOptions();
-
-				// Setting the position for the marker
-				//markerOptions.position(latLng);
-
-				// Setting the title for the marker.
-				// This will be displayed on taping the marker
-				//markerOptions.title(latLng.latitude + " : " + latLng.longitude);
-
 				// Animating to the touched position
 				map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-				//				if ( selectMarker != null){
-				//					selectMarker.remove();
-				//				}
 				soundSource.setLatitude(latLng.latitude);
 				soundSource.setLongitude(latLng.longitude);
 
@@ -179,21 +164,12 @@ SensorEventListener
 				if(human.getLocation() != null){
 					findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
 							, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
-					// Placing a marker on the touched position
 					Log.d("click", "2");
-					//selectMarker = map.addMarker(markerOptions);
 					Log.d("click", "3");
 				}else{
-					// Creating a marker
 					MarkerOptions markerOptions = new MarkerOptions();
-
-					// Setting the position for the marker
 					markerOptions.position(latLng);
-
-					// Setting the title for the marker.
-					// This will be displayed on taping the marker
 					markerOptions.title(latLng.latitude + " : " + latLng.longitude);
-
 					selectMarker = map.addMarker(markerOptions);
 				}
 			}
@@ -277,7 +253,6 @@ SensorEventListener
 	private void getScreenDimentions()
 	{
 		Display display = getWindowManager().getDefaultDisplay();
-
 		Point size = new Point();
 		display.getSize(size);
 		width = size.x;
@@ -288,7 +263,7 @@ SensorEventListener
 	{
 		if (firstLocation != null && secondLocation != null)
 		{
-			LatLngBounds.Builder builder = new LatLngBounds.Builder();    
+			LatLngBounds.Builder builder = new LatLngBounds.Builder();
 			builder.include(firstLocation).include(secondLocation);
 
 			return builder.build();
@@ -312,7 +287,6 @@ SensorEventListener
 	@Override
 	public void onConnectionFailed(ConnectionResult arg0) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -324,7 +298,6 @@ SensorEventListener
 	@Override
 	public void onDisconnected() {
 		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -332,7 +305,14 @@ SensorEventListener
 	 */
 	private void pointArrowToSource_GPS() {
 		ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
-		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
+		float bearingTo = human.getLocation().bearingTo(soundSource);
+		if(bearingTo < 0){
+			bearingTo += 360;
+		}
+		angleToSound = bearingTo - headingAngle;
+		arrow.setRotation(angleToSound);
+//		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
+
 	}
 
 	/**
@@ -359,11 +339,10 @@ SensorEventListener
 		//
 		if(soundSource != null){
 			pointArrowToSource_GPS();
-			
+
 			ImageView arrow = (ImageView) this.findViewById(R.id.imageView3);
 			arrow.setRotation(human.getLocation().getBearing());
 			adjustPanoration();
-			
 			arrow.setColorFilter(android.graphics.Color.BLUE, Mode.MULTIPLY);	
 		}
 
@@ -388,20 +367,21 @@ SensorEventListener
 			});
 		}
 	}
-	
+
 	private void adjustPanoration() {
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox1);
-		
+
 		if(streamID != -1)
 			fx.setPosition(
 					streamID, 
 					((
 							checkBox.isChecked() ? 
-							headingAngleOrientation : headingAngle
-					 )
-					+ 	human.getLocation().bearingTo(soundSource)), 
-					human.getLocation().distanceTo(soundSource));
-		}
+									headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound
+							)
+							//+ 	human.getLocation().bearingTo(soundSource)
+							), 
+							human.getLocation().distanceTo(soundSource));
+	}
 
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) {
