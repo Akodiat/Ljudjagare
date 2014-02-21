@@ -92,7 +92,7 @@ SensorEventListener
 	// Handles all form of audio
 	private FXHandler fx;
 	private boolean playing = false;
-	private FX dinosaur;
+	private FX bip;
 	private FX dragon;
 
 
@@ -104,7 +104,7 @@ SensorEventListener
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_map_direction);
 
-		dinosaur = new FX(1);
+		bip = new FX(1);
 		dragon	 = new FX(1);
 
 		myLocationClient = new LocationClient(getApplicationContext(), this, this);
@@ -216,9 +216,9 @@ SensorEventListener
 
 	public void playSound(View view) {
 		if(!playing)
-			fx.playFX(dinosaur, FXHandler.LOOP);
+			fx.playFX(bip, FXHandler.LOOP);
 		else
-			fx.stopFX(dinosaur);
+			fx.stopFX(bip);
 	}
 
 	//	public void updateDistance(int distance){
@@ -337,7 +337,8 @@ SensorEventListener
 	@Override
 	public void onLocationChanged(Location location) {
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
-		if(location.distanceTo(soundSource) < 10){
+		human.setLocation(location);
+		if(human.getLocation().distanceTo(soundSource) < 10){
 			fx.playFX(dragon, 0);
 			human.modScore(1);
 			generateRandomSoundSource();
@@ -345,7 +346,6 @@ SensorEventListener
 			TextView score = (TextView) findViewById(R.id.textView_score);
 			score.setText("Score: "+human.getScore());
 		}
-		human.setLocation(location);
 		headingAngle = location.getBearing();
 		if(location.hasBearing()){
 			ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
@@ -392,7 +392,7 @@ SensorEventListener
 
 		if(playing)
 			fx.setPosition(
-					dinosaur, 
+					bip, 
 					// Har �ndrat f�r att innan s� var inte ljudet r�tt, om ni f�r f�r er och �ndra prata med Marcus f�rst.
 					((
 							checkBox.isChecked() ? 
