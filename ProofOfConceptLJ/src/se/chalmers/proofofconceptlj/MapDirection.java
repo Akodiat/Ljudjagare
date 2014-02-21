@@ -22,6 +22,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -131,22 +132,7 @@ SensorEventListener
 			@Override
 			public void onClick(View v) {
 
-				// Calculation random position, needs more work
-				double a = Math.random();
-				double b = Math.random();
-				double r = 0.010;
-				double w = r * Math.sqrt(a);
-				double t = 2 * Math.PI * b;
-				double x = w * Math.cos(t); 
-				double y = w * Math.sin(t);
-
-
-				soundSource.setLatitude(human.getLocation().getLatitude()+x);
-				soundSource.setLongitude(human.getLocation().getLongitude()+y);
-
-				//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
-				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
-						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+				generateRandomSoundSource();
 			}
 		});
 
@@ -181,6 +167,28 @@ SensorEventListener
 
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
+	}
+
+
+
+	private void generateRandomSoundSource() {
+		// Calculation random position, needs more work
+		double a = Math.random();
+		double b = Math.random();
+		double r = 0.010;
+		double w = r * Math.sqrt(a);
+		double t = 2 * Math.PI * b;
+		double x = w * Math.cos(t); 
+		double y = w * Math.sin(t);
+
+
+		soundSource.setLatitude(human.getLocation().getLatitude()+x);
+		soundSource.setLongitude(human.getLocation().getLongitude()+y);
+
+		//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
+		findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
+				, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+		
 	}
 
 
@@ -328,7 +336,12 @@ SensorEventListener
 	public void onLocationChanged(Location location) {
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
 		if(location.distanceTo(soundSource) < 10){
-			fx.playFX(FXHandler.FX_02);
+			fx.playFX(FXHandler.FX_02, 0);
+			human.modScore(1);
+			generateRandomSoundSource();
+			
+			TextView score = (TextView) findViewById(R.id.textView_score);
+			score.setText("Score: "+human.getScore());
 		}
 		human.setLocation(location);
 		headingAngle = location.getBearing();

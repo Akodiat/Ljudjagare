@@ -71,4 +71,13 @@
         android:layout_below="@+id/bRandom"
         android:text="Use compass" />
 
+    <TextView
+        android:id="@+id/textView_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/checkBox1"
+        android:text="Score: 0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>
