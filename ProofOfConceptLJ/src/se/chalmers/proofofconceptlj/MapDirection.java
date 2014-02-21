@@ -91,7 +91,6 @@ SensorEventListener
 
 	// Handles all form of audio
 	private FXHandler fx;
-	private boolean playing = false;
 	private FX bip;
 	private FX dragon;
 
@@ -104,8 +103,8 @@ SensorEventListener
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_map_direction);
 
-		bip = new FX(1);
-		dragon	 = new FX(1);
+		bip    = new FX(1);
+		dragon = new FX(2);
 
 		myLocationClient = new LocationClient(getApplicationContext(), this, this);
 		// once we have the reference to the client, connect it
@@ -215,10 +214,11 @@ SensorEventListener
 	}
 
 	public void playSound(View view) {
-		if(!playing)
-			fx.playFX(bip, FXHandler.LOOP);
-		else
+		if(bip.isPlaying())
 			fx.stopFX(bip);
+			
+		else
+			fx.playFX(bip, FXHandler.LOOP);
 	}
 
 	//	public void updateDistance(int distance){
@@ -390,7 +390,7 @@ SensorEventListener
 	private void adjustPanoration() {
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox1);
 
-		if(playing)
+		if(bip.isPlaying())
 			fx.setPosition(
 					bip, 
 					// Har �ndrat f�r att innan s� var inte ljudet r�tt, om ni f�r f�r er och �ndra prata med Marcus f�rst.
