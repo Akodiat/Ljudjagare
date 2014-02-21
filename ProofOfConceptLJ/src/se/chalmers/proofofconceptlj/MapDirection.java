@@ -175,14 +175,17 @@ SensorEventListener
 		// Calculation random position, needs more work
 		double a = Math.random();
 		double b = Math.random();
-		double r = 0.010;
+		double r = 100 / 111300f;
+		
 		double w = r * Math.sqrt(a);
 		double t = 2 * Math.PI * b;
 		double x = w * Math.cos(t); 
 		double y = w * Math.sin(t);
+		
+		double xNew = x / Math.cos(human.getLocation().getLongitude());
 
 
-		soundSource.setLatitude(human.getLocation().getLatitude()+x);
+		soundSource.setLatitude(xNew + human.getLocation().getLatitude());
 		soundSource.setLongitude(human.getLocation().getLongitude()+y);
 
 		//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
