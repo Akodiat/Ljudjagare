@@ -76,14 +76,14 @@ public class MainActivity extends Activity {
 				//				if(usingCompass()) {
 				//					human.setRotation(headingAngle);
 				//				}
-				if(source != null){
+			/*	if(source != null){
 					pointArrowToSource_C();
 					if(streamID != -1)
 						fx.setPosition(
 								streamID, 
 								(headingAngle + human.getLocation().bearingTo(source)), 
 								human.getLocation().distanceTo(source));
-				}
+				} */
 			}
 		}
 		public void onAccuracyChanged (Sensor senor, int accuracy) {
@@ -164,13 +164,13 @@ public class MainActivity extends Activity {
 
 
 	public void playSound(View view) {
-		if(this.streamID == -1) {
+	/*	if(this.streamID == -1) {
 			this.streamID = fx.playFX(FXHandler.FX_01);
 		}
 		else {
 			fx.stopFX(streamID);
 			this.streamID = -1;
-		}
+		} */
 	}
 
 	private void printOrientation(String s) {
