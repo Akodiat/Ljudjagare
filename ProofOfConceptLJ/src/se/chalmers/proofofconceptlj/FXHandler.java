@@ -125,8 +125,15 @@ public class FXHandler {
 		// Set volume on sound
 		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
 
-		soundPool.setVolume(fx.streamID(), fx.leftVolume() * distFactor,
-				fx.rightVolume() * distFactor);
+		soundPool.setVolume(
+				fx.streamID(), 
+				fx.leftVolume() * distFactor,
+				fx.rightVolume() * distFactor
+		);
+		
+		//Set the rate based on the distance
+		float rate = (float) (2 - distance * (1.5 / maxAudiableDistance));
+		soundPool.setRate(fx.streamID(), rate);
 
 		previousAngle = dangle;
 	}
