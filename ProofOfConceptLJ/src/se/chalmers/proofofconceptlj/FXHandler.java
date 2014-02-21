@@ -14,7 +14,7 @@ public class FXHandler {
 	public static final int LOOP = -1;
 	public static final int NOT_LOADED = -42;
 
-	private static final int maxAudiableDistance = 50; // Meters
+	private static final int maxAudiableDistance = 500; // Meters
 
 	private HashMap<Integer, Integer> soundPoolMap;
 	private SoundPool soundPool;
