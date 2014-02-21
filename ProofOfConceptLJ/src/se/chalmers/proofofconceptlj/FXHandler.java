@@ -137,6 +137,8 @@ public class FXHandler {
 		
 		//Set the rate based on the distance
 		float rate = (float) (2 - distance * (1.5 / maxAudiableDistance));
+		if(rate < 0.5)
+			rate = 0.5f;
 		soundPool.setRate(fx.streamID(), rate);
 
 	//	previousAngle = dangle;
