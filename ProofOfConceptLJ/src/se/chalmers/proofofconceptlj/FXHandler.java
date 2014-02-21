@@ -10,6 +10,7 @@ import android.media.SoundPool.OnLoadCompleteListener;
 
 public class FXHandler {
 	public static final int FX_01 = 1;
+	public static final int FX_02 = 2;
 	public static final int LOOP = -1;
 	public static final int NOT_LOADED = -42;
 
@@ -40,6 +41,7 @@ public class FXHandler {
 
 		// Load FX
 		soundPoolMap.put(FX_01, soundPool.load(context, R.raw.dinosaur, 1));
+		soundPoolMap.put(FX_02, soundPool.load(context, R.raw.dragon, 1));
 	}
 
 	/**
@@ -90,8 +92,7 @@ public class FXHandler {
 		// The angle after being correction.
 		float dangle = angle + correctValue;
 
-		// Is sound coming from behind the player to the right?
-		if (angle > 90 && angle <= 180)
+/*	if (angle > 90 && angle <= 180)
 			dangle = 180;
 
 		// Is sound coming from behind the player to the left?
@@ -101,7 +102,7 @@ public class FXHandler {
 		// From left to middle of listening scope.
 		if (angle > 270)
 			dangle = angle - 270;
-
+*/
 		double radian = dangle * (Math.PI / 180); // Convert to radians
 		float leftVolume = (float) Math.cos(radian / 2);
 		float rightVolume = (float) Math.sin(radian / 2);

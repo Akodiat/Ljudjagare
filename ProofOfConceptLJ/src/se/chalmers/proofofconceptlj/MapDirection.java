@@ -327,7 +327,9 @@ SensorEventListener
 	@Override
 	public void onLocationChanged(Location location) {
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
-
+		if(location.distanceTo(soundSource) < 10){
+			fx.playFX(FXHandler.FX_02);
+		}
 		human.setLocation(location);
 		headingAngle = location.getBearing();
 		if(location.hasBearing()){
@@ -374,6 +376,7 @@ SensorEventListener
 		if(streamID != -1)
 			fx.setPosition(
 					streamID, 
+					// Har ändrat för att innan så var inte ljudet rätt, om ni får för er och ändra prata med Marcus först.
 					((
 							checkBox.isChecked() ? 
 									headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound
