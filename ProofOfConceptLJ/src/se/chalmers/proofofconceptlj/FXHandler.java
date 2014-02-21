@@ -10,14 +10,19 @@ import android.media.SoundPool.OnLoadCompleteListener;
 
 public class FXHandler {
 	public static final int FX_01 = 1;
+
 	public static final int LOOP = -1;
 	public static final int NOT_LOADED = -42;
+	public static final int MSG = 3;
+	public static final int MSG_STOP = 0;
 
 	private static final int maxAudiableDistance = 50; // Meters
 
 	private HashMap<Integer, Integer> soundPoolMap;
 	private SoundPool soundPool;
 	private AudioManager am;
+
+	private float previousAngle;
 
 	// True if sound is loaded correctly
 	private boolean loaded = false;
@@ -39,31 +44,37 @@ public class FXHandler {
 		});
 
 		// Load FX
-		soundPoolMap.put(FX_01, soundPool.load(context, R.raw.sound, 1));
+		soundPoolMap.put(FX_01, soundPool.load(context, R.raw.bip, 1));
 	}
 
 	/**
-	 * Play a sound one without any panning.
+	 * Play a sound a specific amount of times.
 	 * 
-	 * @param soundID
+	 * @param fx
 	 * @param times
 	 * @return the streamID if successful, non-zero value if not.
 	 */
-	public int playFX(int soundID, int times) {
+	public void playFX(FX fx, int times) {
 		if (loaded)
-			return soundPool.play(soundID, 1f, 1f, 1, 0, 1f);
-		return NOT_LOADED;
+			fx.setStreamID(soundPool.play(fx.ID(), fx.leftVolume(),
+					fx.rightVolume(), 1, times, 1f));
 	}
 
-	public int playFX(int soundID) {
-		if (loaded)
-			return soundPool.play(soundID, 1f, 1f, 1, -1, 1f);
-		return NOT_LOADED;
+	/**
+	 * Loop sound until the process is interrupted.
+	 * 
+	 * @param fx
+	 * @return the streamID if successful, non-zero value if not.
+	 */
+	public void loopFX(FX fx) {
+		playFX(fx, LOOP);
 	}
 
-	public void stopFX(int soundID) {
-		if (loaded)
-			soundPool.stop(soundID);
+	public void stopFX(FX fx) {
+		if (loaded) {
+			soundPool.stop(fx.streamID());
+			fx.setStreamID(FX.NOT_PLAYING); // reset streamID
+		}
 	}
 
 	/**
@@ -77,7 +88,7 @@ public class FXHandler {
 	 *            distance from audio source in meters.
 	 * @throws InterruptedException
 	 */
-	public void setPosition(int soundID, float angle, float distance)
+	public void setPosition(FX fx, float angle, float distance)
 			throws InterruptedException {
 
 		float distFactor = distance / maxAudiableDistance;
@@ -88,46 +99,51 @@ public class FXHandler {
 		// Have to add 90 degrees so that (angle = 0) is heard in front.
 		int correctValue = 90;
 
-		// The angle after being correction.
+		// The angle after being corrected.
 		float dangle = angle + correctValue;
 
-		// Is sound coming from behind the player to the right?
-		if (angle > 90 && angle <= 180)
-			dangle = 180;
+		if (angle >= 140 && angle <= 220)
+			dangle = previousAngle;
 
-		// Is sound coming from behind the player to the left?
-		if (angle > 180 && angle <= 270)
-			dangle = 0;
+		else {
+			// Is sound coming from behind the player to the right?
+			if (angle > 90 && angle <= 180)
+				dangle = 180;
 
-		// From left to middle of listening scope.
-		if (angle > 270)
-			dangle = angle - 270;
+			// Is sound coming from behind the player to the left?
+			if (angle > 180 && angle <= 270)
+				dangle = 0;
+
+			// From left to middle of listening scope.
+			if (angle > 270)
+				dangle = angle - 270;
+		}
 
 		double radian = dangle * (Math.PI / 180); // Convert to radians
-		float leftVolume = (float) Math.cos(radian / 2);
-		float rightVolume = (float) Math.sin(radian / 2);
 
-		// Increase frequency after how close target being
+		// Set volume on sound
+		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
 
-		soundPool.setVolume(soundID, leftVolume * distFactor, rightVolume
-				* distFactor);
+		soundPool.setVolume(fx.streamID(), fx.leftVolume() * distFactor,
+				fx.rightVolume() * distFactor);
+
+		previousAngle = dangle;
 	}
 
 	/**
 	 * Sweeping sound from left to right
 	 */
-	public void sweepFX(int soundID) throws InterruptedException {
-		int id = soundPool.play(soundID, 0f, 1f, 1, LOOP, 1f);
+	public void sweepFX(FX fx) throws InterruptedException {
+		loopFX(fx);
 
 		for (int count = 0; count < 101; count++) {
-			Thread.sleep(20);
+			Thread.sleep(10);
 			double radians = (Math.PI / 2) * count / 100;
 
-			soundPool.setVolume(id, (float) Math.cos(radians),
-					(float) Math.sin(radians));
+			fx.setVolume((float) Math.cos(radians), (float) Math.sin(radians));
 		}
 
-		soundPool.stop(id);
+		stopFX(fx);
 	}
 
 	/**
@@ -136,4 +152,5 @@ public class FXHandler {
 	public int maxVolume() {
 		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
+
 }
