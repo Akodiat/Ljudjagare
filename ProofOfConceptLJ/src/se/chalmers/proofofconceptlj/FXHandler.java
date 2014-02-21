@@ -99,11 +99,15 @@ public class FXHandler {
 
 		// Have to add 90 degrees so that (angle = 0) is heard in front.
 		int correctValue = 90;
+	
 
 		// The angle after being corrected.
 		float dangle = angle + correctValue;
+		
+		//Correct for angles > 360 degrees
+		dangle %= 360;
 
-		if (angle >= 140 && angle <= 220)
+	/*	if (angle >= 140 && angle <= 220)
 			dangle = previousAngle;
 
 		else {
@@ -119,7 +123,7 @@ public class FXHandler {
 			if (angle > 270)
 				dangle = angle - 270;
 		}
-
+*/
 		double radian = dangle * (Math.PI / 180); // Convert to radians
 
 		// Set volume on sound
@@ -135,7 +139,7 @@ public class FXHandler {
 		float rate = (float) (2 - distance * (1.5 / maxAudiableDistance));
 		soundPool.setRate(fx.streamID(), rate);
 
-		previousAngle = dangle;
+	//	previousAngle = dangle;
 	}
 
 	/**
