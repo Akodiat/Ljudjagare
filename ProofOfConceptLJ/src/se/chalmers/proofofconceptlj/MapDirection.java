@@ -90,8 +90,10 @@ SensorEventListener
 	private Human human;
 
 	// Handles all form of audio
-	FXHandler fx;
-	int streamID;
+	private FXHandler fx;
+	private boolean playing = false;
+	private FX dinosaur;
+	private FX dragon;
 
 
 
@@ -102,6 +104,8 @@ SensorEventListener
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_map_direction);
 
+		dinosaur = new FX(1);
+		dragon	 = new FX(1);
 
 		myLocationClient = new LocationClient(getApplicationContext(), this, this);
 		// once we have the reference to the client, connect it
@@ -163,8 +167,6 @@ SensorEventListener
 
 		arrow2 = (ImageView) this.findViewById(R.id.imageView2);
 
-		streamID = -1;
-
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
 	}
@@ -213,13 +215,10 @@ SensorEventListener
 	}
 
 	public void playSound(View view) {
-		if(this.streamID == -1) {
-			this.streamID = fx.playFX(FXHandler.FX_01);
-		}
-		else {
-			fx.stopFX(streamID);
-			this.streamID = -1;
-		}
+		if(!playing)
+			fx.playFX(dinosaur, FXHandler.LOOP);
+		else
+			fx.stopFX(dinosaur);
 	}
 
 	//	public void updateDistance(int distance){
@@ -339,7 +338,7 @@ SensorEventListener
 	public void onLocationChanged(Location location) {
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
 		if(location.distanceTo(soundSource) < 10){
-			fx.playFX(FXHandler.FX_02, 0);
+			fx.playFX(dragon, 0);
 			human.modScore(1);
 			generateRandomSoundSource();
 			
@@ -391,10 +390,10 @@ SensorEventListener
 	private void adjustPanoration() {
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox1);
 
-		if(streamID != -1)
+		if(playing)
 			fx.setPosition(
-					streamID, 
-					// Har ändrat för att innan så var inte ljudet rätt, om ni får för er och ändra prata med Marcus först.
+					dinosaur, 
+					// Har ï¿½ndrat fï¿½r att innan sï¿½ var inte ljudet rï¿½tt, om ni fï¿½r fï¿½r er och ï¿½ndra prata med Marcus fï¿½rst.
 					((
 							checkBox.isChecked() ? 
 									headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound

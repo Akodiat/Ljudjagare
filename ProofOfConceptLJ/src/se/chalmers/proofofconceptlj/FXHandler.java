@@ -10,6 +10,7 @@ import android.media.SoundPool.OnLoadCompleteListener;
 
 public class FXHandler {
 	public static final int FX_01 = 1;
+	public static final int FX_02 = 2;
 
 	public static final int LOOP = -1;
 	public static final int NOT_LOADED = -42;
@@ -45,6 +46,7 @@ public class FXHandler {
 
 		// Load FX
 		soundPoolMap.put(FX_01, soundPool.load(context, R.raw.bip, 1));
+		soundPoolMap.put(FX_02, soundPool.load(context, R.raw.dragon, 2));
 	}
 
 	/**
@@ -88,10 +90,9 @@ public class FXHandler {
 	 *            distance from audio source in meters.
 	 * @throws InterruptedException
 	 */
-	public void setPosition(FX fx, float angle, float distance)
-			throws InterruptedException {
+	public void setPosition(FX fx, float angle, float distance) {
 
-		float distFactor = distance / maxAudiableDistance;
+		float distFactor = 1 - distance / maxAudiableDistance;
 
 		if (distFactor <= 0.2)
 			distFactor = 0.2f;
