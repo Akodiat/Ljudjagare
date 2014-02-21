@@ -71,7 +71,7 @@ SensorEventListener
 	private Sensor 			accelerometer;
 	private Sensor 			magnetometer;
 
-	
+
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
 			.setFastestInterval(16)    // 16ms = 60fps
@@ -173,15 +173,15 @@ SensorEventListener
 
 	private void generateRandomSoundSource() {
 		// Calculation random position, needs more work
-		double a = Math.random();
-		double b = Math.random();
+		double a = (Math.random()*0.5) + 0.5;
+		double b = (Math.random()*0.5) + 0.5;
 		double r = 100 / 111300f;
-		
+
 		double w = r * Math.sqrt(a);
 		double t = 2 * Math.PI * b;
 		double x = w * Math.cos(t); 
 		double y = w * Math.sin(t);
-		
+
 		double xNew = x / Math.cos(human.getLocation().getLongitude());
 
 
@@ -191,7 +191,7 @@ SensorEventListener
 		//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
 		findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
 				, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
-		
+
 	}
 
 
@@ -245,7 +245,7 @@ SensorEventListener
 		}
 		newPolyline = map.addPolyline(rectLine);
 		//latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
-		float zoom = 19;
+		//float zoom = 19;
 		//map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 500));
 
 		// Add a marker on the last position in the route. 
@@ -303,7 +303,7 @@ SensorEventListener
 	@Override
 	public void onConnected(Bundle bundle) {
 		myLocationClient.requestLocationUpdates( REQUEST, this); 
-		human = new Human(myLocationClient.getLastLocation());
+		//human = new Human(myLocationClient.getLastLocation());
 	} 
 
 	@Override
@@ -322,7 +322,7 @@ SensorEventListener
 		}
 		angleToSound = bearingTo - headingAngle;
 		arrow.setRotation(angleToSound);
-//		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
+		//		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
 
 	}
 
@@ -357,6 +357,8 @@ SensorEventListener
 		//
 		if(soundSource != null){
 			pointArrowToSource_GPS();
+			TextView source = (TextView) findViewById(R.id.textView_source);
+			source.setText("Distance to: " + human.getLocation().distanceTo(soundSource));
 
 			ImageView arrow = (ImageView) this.findViewById(R.id.imageView3);
 			arrow.setRotation(human.getLocation().getBearing());
