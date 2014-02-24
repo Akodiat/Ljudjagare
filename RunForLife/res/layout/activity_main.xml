@@ -5,14 +5,35 @@
               android:layout_height="fill_parent"
     >
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/runner" />
+
     <at.technikum.mti.fancycoverflow.FancyCoverFlow
         android:id="@+id/fancyCoverFlow"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="251dp"
         fcf:maxRotation="45"
+        fcf:scaleDownGravity="0.5"
         fcf:unselectedAlpha="0.3"
         fcf:unselectedSaturation="0.0"
-        fcf:unselectedScale="0.4"
-        fcf:scaleDownGravity="0.5"/>
+        fcf:unselectedScale="0.4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="Button" />
+
+    </RelativeLayout>
 
 </LinearLayout>
