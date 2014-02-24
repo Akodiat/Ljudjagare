@@ -63,6 +63,7 @@ SensorEventListener
 	private LatLngBounds 		latlngBounds;
 	private Button				bRandom;
 	private Polyline 			newPolyline;
+	private Polyline			myPolyRoute;
 	private int 				width, height;
 	private Location 			soundSource;
 	private Marker 				marker;
@@ -76,7 +77,7 @@ SensorEventListener
 	
 	private Route currentRoute;
 	private MySQLiteHelper db;
-
+	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
@@ -113,6 +114,8 @@ SensorEventListener
 		dragon = new FX(2);
 		
 		db = new MySQLiteHelper(this);
+		db.onUpgrade(db.getWritableDatabase(), 1, 2);
+		
 		currentRoute = new Route();
 		currentRoute.setId(db.addRoute(currentRoute));
 
@@ -350,6 +353,11 @@ SensorEventListener
 		human.setLocation(location);
 		
 		db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
+		
+		//RITAR UT DÄR MAN GÅTT
+		LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
+		routeLine.add(p);
+		myPolyRoute = map.addPolyline(routeLine);
 		
 		if(human.getLocation().distanceTo(soundSource) < 10){
 			fx.playFX(dragon, 0);
