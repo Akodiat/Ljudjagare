@@ -74,7 +74,7 @@ SensorEventListener
 	private SensorManager	mSensorManager;
 	private Sensor 			accelerometer;
 	private Sensor 			magnetometer;
-	
+
 	private Route currentRoute;
 	private MySQLiteHelper db;
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
@@ -112,10 +112,10 @@ SensorEventListener
 
 		bip    = new FX(1);
 		dragon = new FX(2);
-		
+
 		db = new MySQLiteHelper(this);
 		db.onUpgrade(db.getWritableDatabase(), 1, 2);
-		
+
 		currentRoute = new Route();
 		currentRoute.setId(db.addRoute(currentRoute));
 
@@ -147,8 +147,9 @@ SensorEventListener
 
 			@Override
 			public void onClick(View v) {
-
+				//map.clear();
 				generateRandomSoundSource();
+				//generateRandomRoute(200);
 			}
 		});
 
@@ -208,6 +209,47 @@ SensorEventListener
 
 	}
 
+	private ArrayList<Location> generateRandomRoute(double distance){
+		// Calculation random positions
+		double a = (Math.random()*0.5) + 0.5;
+		double b = (Math.random()*0.5) + 0.5;
+		double r = distance / 111300f;
+
+		double w = r * Math.sqrt(a);
+		double t = 2 * Math.PI * b;
+		double x = w * Math.cos(t);
+		double y = w * Math.sin(t);
+		double xNew = x / Math.cos(human.getLocation().getLongitude());
+
+		Location routePoint = new Location("route");
+		routePoint.setLatitude(xNew + human.getLocation().getLatitude());
+		routePoint.setLongitude(human.getLocation().getLongitude()+y);
+
+		ArrayList<Location> route = new ArrayList<Location>(); 
+		route.add(human.getLocation());
+		route.add(routePoint);
+		Location routePoint2 = new Location("route2");
+		double differLat = human.getLocation().getLatitude() - routePoint.getLatitude();
+		double differLng = human.getLocation().getLongitude() - routePoint.getLongitude();
+
+		if(Math.random()>0.5){
+			routePoint2.setLatitude(human.getLocation().getLatitude() + differLng);
+			routePoint2.setLongitude(human.getLocation().getLongitude() - differLat);
+		}else{
+			routePoint2.setLatitude(human.getLocation().getLatitude() - differLng);
+			routePoint2.setLongitude(human.getLocation().getLongitude() + differLat);
+		}
+
+		route.add(routePoint2);
+		route.add(human.getLocation());
+
+		for(int i = 0; i < route.size()-1; i++){
+			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
+					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
+		}
+		return route;
+	}
+
 
 
 	@Override
@@ -229,7 +271,7 @@ SensorEventListener
 	public void playSound(View view) {
 		if(bip.isPlaying())
 			fx.stopFX(bip);
-			
+
 		else
 			fx.playFX(bip, FXHandler.LOOP);
 	}
@@ -251,19 +293,19 @@ SensorEventListener
 			points ++;
 			rectLine.add(directionPoints.get(i));
 		}
-		if (newPolyline != null)
-		{
-			newPolyline.remove();
-		}
+		//		if (newPolyline != null)
+		//		{
+		//			newPolyline.remove();
+		//		}
 		newPolyline = map.addPolyline(rectLine);
 		//latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
 		//float zoom = 19;
 		//map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 500));
 
 		// Add a marker on the last position in the route. 
-		if (marker != null){
-			marker.remove();
-		}
+		//		if (marker != null){
+		//			marker.remove();
+		//		}
 		marker = map.addMarker(new MarkerOptions()
 		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
 		.title("End of route! " + directionPoints.get(points).latitude 
@@ -351,19 +393,19 @@ SensorEventListener
 	public void onLocationChanged(Location location) {
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
 		human.setLocation(location);
-		
+
 		db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
-		
+
 		//RITAR UT DÄR MAN GÅTT
 		LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
 		routeLine.add(p);
 		myPolyRoute = map.addPolyline(routeLine);
-		
+
 		if(human.getLocation().distanceTo(soundSource) < 10){
 			fx.playFX(dragon, 0);
 			human.modScore(1);
 			generateRandomSoundSource();
-			
+
 			TextView score = (TextView) findViewById(R.id.textView_score);
 			score.setText("Score: "+human.getScore());
 		}
