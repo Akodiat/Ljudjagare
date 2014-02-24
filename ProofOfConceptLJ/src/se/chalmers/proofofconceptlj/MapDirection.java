@@ -22,6 +22,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -39,6 +40,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import database.MySQLiteHelper;
+import database.Route;
 
 public class MapDirection extends FragmentActivity implements 
 GooglePlayServicesClient.ConnectionCallbacks,
@@ -59,6 +63,7 @@ SensorEventListener
 	private LatLngBounds 		latlngBounds;
 	private Button				bRandom;
 	private Polyline 			newPolyline;
+	private Polyline			myPolyRoute;
 	private int 				width, height;
 	private Location 			soundSource;
 	private Marker 				marker;
@@ -70,7 +75,10 @@ SensorEventListener
 	private Sensor 			accelerometer;
 	private Sensor 			magnetometer;
 
-	
+	private Route currentRoute;
+	private MySQLiteHelper db;
+	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
+
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
 			.setFastestInterval(16)    // 16ms = 60fps
@@ -89,8 +97,9 @@ SensorEventListener
 	private Human human;
 
 	// Handles all form of audio
-	FXHandler fx;
-	int streamID;
+	private FXHandler fx;
+	private FX bip;
+	private FX dragon;
 
 
 
@@ -101,6 +110,14 @@ SensorEventListener
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_map_direction);
 
+		bip    = new FX(1);
+		dragon = new FX(2);
+
+		db = new MySQLiteHelper(this);
+		db.onUpgrade(db.getWritableDatabase(), 1, 2);
+
+		currentRoute = new Route();
+		currentRoute.setId(db.addRoute(currentRoute));
 
 		myLocationClient = new LocationClient(getApplicationContext(), this, this);
 		// once we have the reference to the client, connect it
@@ -130,23 +147,9 @@ SensorEventListener
 
 			@Override
 			public void onClick(View v) {
-
-				// Calculation random position, needs more work
-				double a = Math.random();
-				double b = Math.random();
-				double r = 0.010;
-				double w = r * Math.sqrt(a);
-				double t = 2 * Math.PI * b;
-				double x = w * Math.cos(t); 
-				double y = w * Math.sin(t);
-
-
-				soundSource.setLatitude(human.getLocation().getLatitude()+x);
-				soundSource.setLongitude(human.getLocation().getLongitude()+y);
-
-				//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
-				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
-						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+				//map.clear();
+				generateRandomSoundSource();
+				//generateRandomRoute(200);
 			}
 		});
 
@@ -177,10 +180,74 @@ SensorEventListener
 
 		arrow2 = (ImageView) this.findViewById(R.id.imageView2);
 
-		streamID = -1;
-
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
+	}
+
+
+
+	private void generateRandomSoundSource() {
+		// Calculation random position, needs more work
+		double a = (Math.random()*0.5) + 0.5;
+		double b = (Math.random()*0.5) + 0.5;
+		double r = 100 / 111300f;
+
+		double w = r * Math.sqrt(a);
+		double t = 2 * Math.PI * b;
+		double x = w * Math.cos(t); 
+		double y = w * Math.sin(t);
+
+		double xNew = x / Math.cos(human.getLocation().getLongitude());
+
+
+		soundSource.setLatitude(xNew + human.getLocation().getLatitude());
+		soundSource.setLongitude(human.getLocation().getLongitude()+y);
+
+		//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
+		findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
+				, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+
+	}
+
+	private ArrayList<Location> generateRandomRoute(double distance){
+		// Calculation random positions
+		double a = (Math.random()*0.5) + 0.5;
+		double b = (Math.random()*0.5) + 0.5;
+		double r = distance / 111300f;
+
+		double w = r * Math.sqrt(a);
+		double t = 2 * Math.PI * b;
+		double x = w * Math.cos(t);
+		double y = w * Math.sin(t);
+		double xNew = x / Math.cos(human.getLocation().getLongitude());
+
+		Location routePoint = new Location("route");
+		routePoint.setLatitude(xNew + human.getLocation().getLatitude());
+		routePoint.setLongitude(human.getLocation().getLongitude()+y);
+
+		ArrayList<Location> route = new ArrayList<Location>(); 
+		route.add(human.getLocation());
+		route.add(routePoint);
+		Location routePoint2 = new Location("route2");
+		double differLat = human.getLocation().getLatitude() - routePoint.getLatitude();
+		double differLng = human.getLocation().getLongitude() - routePoint.getLongitude();
+
+		if(Math.random()>0.5){
+			routePoint2.setLatitude(human.getLocation().getLatitude() + differLng);
+			routePoint2.setLongitude(human.getLocation().getLongitude() - differLat);
+		}else{
+			routePoint2.setLatitude(human.getLocation().getLatitude() - differLng);
+			routePoint2.setLongitude(human.getLocation().getLongitude() + differLat);
+		}
+
+		route.add(routePoint2);
+		route.add(human.getLocation());
+
+		for(int i = 0; i < route.size()-1; i++){
+			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
+					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
+		}
+		return route;
 	}
 
 
@@ -202,13 +269,11 @@ SensorEventListener
 	}
 
 	public void playSound(View view) {
-		if(this.streamID == -1) {
-			this.streamID = fx.playFX(FXHandler.FX_01);
-		}
-		else {
-			fx.stopFX(streamID);
-			this.streamID = -1;
-		}
+		if(bip.isPlaying())
+			fx.stopFX(bip);
+
+		else
+			fx.playFX(bip, FXHandler.LOOP);
 	}
 
 	//	public void updateDistance(int distance){
@@ -228,19 +293,19 @@ SensorEventListener
 			points ++;
 			rectLine.add(directionPoints.get(i));
 		}
-		if (newPolyline != null)
-		{
-			newPolyline.remove();
-		}
+		//		if (newPolyline != null)
+		//		{
+		//			newPolyline.remove();
+		//		}
 		newPolyline = map.addPolyline(rectLine);
 		//latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
-		float zoom = 19;
+		//float zoom = 19;
 		//map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 500));
 
 		// Add a marker on the last position in the route. 
-		if (marker != null){
-			marker.remove();
-		}
+		//		if (marker != null){
+		//			marker.remove();
+		//		}
 		marker = map.addMarker(new MarkerOptions()
 		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
 		.title("End of route! " + directionPoints.get(points).latitude 
@@ -292,7 +357,7 @@ SensorEventListener
 	@Override
 	public void onConnected(Bundle bundle) {
 		myLocationClient.requestLocationUpdates( REQUEST, this); 
-		human = new Human(myLocationClient.getLastLocation());
+		//human = new Human(myLocationClient.getLastLocation());
 	} 
 
 	@Override
@@ -311,7 +376,7 @@ SensorEventListener
 		}
 		angleToSound = bearingTo - headingAngle;
 		arrow.setRotation(angleToSound);
-//		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
+		//		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
 
 	}
 
@@ -327,8 +392,23 @@ SensorEventListener
 	@Override
 	public void onLocationChanged(Location location) {
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
-
 		human.setLocation(location);
+
+		db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
+
+		//RITAR UT DÄR MAN GÅTT
+		LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
+		routeLine.add(p);
+		myPolyRoute = map.addPolyline(routeLine);
+
+		if(human.getLocation().distanceTo(soundSource) < 10){
+			fx.playFX(dragon, 0);
+			human.modScore(1);
+			generateRandomSoundSource();
+
+			TextView score = (TextView) findViewById(R.id.textView_score);
+			score.setText("Score: "+human.getScore());
+		}
 		headingAngle = location.getBearing();
 		if(location.hasBearing()){
 			ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
@@ -339,6 +419,8 @@ SensorEventListener
 		//
 		if(soundSource != null){
 			pointArrowToSource_GPS();
+			TextView source = (TextView) findViewById(R.id.textView_source);
+			source.setText("Distance to: " + human.getLocation().distanceTo(soundSource));
 
 			ImageView arrow = (ImageView) this.findViewById(R.id.imageView3);
 			arrow.setRotation(human.getLocation().getBearing());
@@ -371,9 +453,10 @@ SensorEventListener
 	private void adjustPanoration() {
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox1);
 
-		if(streamID != -1)
+		if(bip.isPlaying())
 			fx.setPosition(
-					streamID, 
+					bip, 
+					// Har ï¿½ndrat fï¿½r att innan sï¿½ var inte ljudet rï¿½tt, om ni fï¿½r fï¿½r er och ï¿½ndra prata med Marcus fï¿½rst.
 					((
 							checkBox.isChecked() ? 
 									headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound
