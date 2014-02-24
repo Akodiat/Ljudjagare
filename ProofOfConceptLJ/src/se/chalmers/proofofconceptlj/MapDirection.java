@@ -41,6 +41,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import database.MySQLiteHelper;
+import database.Route;
+
 public class MapDirection extends FragmentActivity implements 
 GooglePlayServicesClient.ConnectionCallbacks,
 GooglePlayServicesClient.OnConnectionFailedListener, 
@@ -70,6 +73,9 @@ SensorEventListener
 	private SensorManager	mSensorManager;
 	private Sensor 			accelerometer;
 	private Sensor 			magnetometer;
+	
+	private Route currentRoute;
+	private MySQLiteHelper db;
 
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
@@ -105,6 +111,10 @@ SensorEventListener
 
 		bip    = new FX(1);
 		dragon = new FX(2);
+		
+		db = new MySQLiteHelper(this);
+		currentRoute = new Route();
+		currentRoute.setId(db.addRoute(currentRoute));
 
 		myLocationClient = new LocationClient(getApplicationContext(), this, this);
 		// once we have the reference to the client, connect it
@@ -338,6 +348,9 @@ SensorEventListener
 	public void onLocationChanged(Location location) {
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
 		human.setLocation(location);
+		
+		db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
+		
 		if(human.getLocation().distanceTo(soundSource) < 10){
 			fx.playFX(dragon, 0);
 			human.modScore(1);
