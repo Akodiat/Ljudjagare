@@ -65,7 +65,7 @@ public class FXHandler {
 		};
 	}
 
-	public FX coin() {
+	public FX cowbell() {
 		return coin;
 	}
 
