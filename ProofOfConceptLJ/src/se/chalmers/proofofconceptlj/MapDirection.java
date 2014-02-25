@@ -3,6 +3,8 @@ package se.chalmers.proofofconceptlj;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.graphics.Color;
 import android.graphics.Point;
@@ -77,6 +79,8 @@ SensorEventListener
 
 	private Route currentRoute;
 	private MySQLiteHelper db;
+	private Boolean isTime = true;
+	private Timer timer = new Timer();
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
 	private ArrayList<Location> finalRoute = new ArrayList<Location>(); 
 	private int marks;
@@ -455,14 +459,26 @@ SensorEventListener
 		//CURRENT_POSITION = new LatLng(location.getLatitude(), location.getLongitude());
 		human.setLocation(location);
 
-		db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
+		if(isTime){
+			isTime = false;
+			
+			db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
+			
+			//RITAR UT DÄR MAN GÅTT
+			LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
+			routeLine.add(p);
+			myPolyRoute = map.addPolyline(routeLine);
+			
+			timer.schedule(new TimerTask() {
+				@Override
+	            public void run() {
+	                isTime = true;
 
-		//RITAR UT DÄR MAN GÅTT
-		LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
-		routeLine.add(p);
-		myPolyRoute = map.addPolyline(routeLine);
+	            }
+	        }, 1500);
+		}
 
-		if(human.getLocation().distanceTo(soundSource) < 10){
+		if(human.getLocation().distanceTo(soundSource) < 15){
 			fx.playFX(dragon, 0);
 			human.modScore(1);
 			generateRandomSoundSource();
