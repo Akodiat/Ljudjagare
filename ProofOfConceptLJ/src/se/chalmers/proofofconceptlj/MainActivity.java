@@ -50,9 +50,6 @@ public class MainActivity extends Activity {
 		arrow2 = (ImageView) this.findViewById(R.id.imageView2);
 		
 		streamID = -1;
-
-		// Initialize audio
-		(fx = new FXHandler()).initSound(this);
 	}
 	final SensorEventListener sensorEventListener = new SensorEventListener() {
 		public void onSensorChanged(SensorEvent sensorEvent) {

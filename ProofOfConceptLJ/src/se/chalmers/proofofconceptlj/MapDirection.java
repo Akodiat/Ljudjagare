@@ -324,7 +324,7 @@ SensorEventListener
 			fx.stopFX(fx.cowbell());
 
 		else
-			fx.playFX(fx.cowbell(), Constants.LOOP);
+			fx.setPosition(fx.cowbell());
 	}
 
 	//	public void updateDistance(int distance){

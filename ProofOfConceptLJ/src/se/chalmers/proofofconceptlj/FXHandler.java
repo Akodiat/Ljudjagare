@@ -27,7 +27,7 @@ public class FXHandler {
 	private Handler handler;
 
 	// FX representing a coin (that the user is picking up).
-	private FX coin;
+	private FX cowbell;
 
 	/**
 	 * Initialize sound engine
@@ -50,14 +50,14 @@ public class FXHandler {
 				.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
 
 		// Initialize audio
-		coin = new FX(Constants.FX_01);
+		cowbell = new FX(Constants.FX_01);
 
 		// Initialize thread handler
 		handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == Constants.MSG)
-					setPosition(coin);
+					setPosition(cowbell());
 
 				if (msg.what == Constants.MSG_STOP)
 					handler.removeCallbacksAndMessages(null);
@@ -66,7 +66,7 @@ public class FXHandler {
 	}
 
 	public FX cowbell() {
-		return coin;
+		return cowbell;
 	}
 
 	/**
@@ -153,8 +153,13 @@ public class FXHandler {
 
 		// Calculate value between 0 and 1, where 0 is when a user has reached
 		// destination:
-		float delayRatio = fx.distance() / Constants.MAX_DISTANCE;
-
+		float delayRatio;
+		
+		if(fx.distance() <= Constants.MAX_DISTANCE)
+			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
+		else
+			delayRatio = 1;
+		
 		// Delay between each repetition.
 		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
 
@@ -185,7 +190,7 @@ public class FXHandler {
 	}
 
 	public void playCoin() {
-		playFX(coin, 1);
+		playFX(cowbell, 1);
 	}
 
 	public Handler getHandler() {
