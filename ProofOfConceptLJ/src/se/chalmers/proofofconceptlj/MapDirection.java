@@ -57,7 +57,7 @@ SensorEventListener
 	private static final 	LatLng AMSTERDAM		= new LatLng(52.37518, 	4.895439);
 	private static final 	LatLng PARIS 			= new LatLng(48.856132, 2.352448);
 	private static final 	LatLng FRANKFURT 		= new LatLng(50.111772, 8.682632);
-
+	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
 	private GoogleMap 			map;
 	private SupportMapFragment 	fragment;
 	private LatLngBounds 		latlngBounds;
@@ -78,6 +78,8 @@ SensorEventListener
 	private Route currentRoute;
 	private MySQLiteHelper db;
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
+	private ArrayList<Location> finalRoute = new ArrayList<Location>(); 
+	private int marks;
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
@@ -148,8 +150,9 @@ SensorEventListener
 			@Override
 			public void onClick(View v) {
 				//map.clear();
+				//marks=0;
 				generateRandomSoundSource();
-				//generateRandomRoute(200);
+				//generateRandomRoute(500);
 			}
 		});
 
@@ -244,10 +247,55 @@ SensorEventListener
 		route.add(human.getLocation());
 
 		for(int i = 0; i < route.size()-1; i++){
+			finalRoute.add(route.get(i));
 			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
 					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
 		}
+		finalRoute.add(human.getLocation());
 		return route;
+
+		//		// Calculation random positions at Marcus home. (På landet)
+		//		double a = (Math.random()*0.5) + 0.5;
+		//		double b = (Math.random()*0.5) + 0.5;
+		//		double r = distance / 111300f;
+		//
+		//		double w = r * Math.sqrt(a);
+		//		double t = 2 * Math.PI * b;
+		//		double x = w * Math.cos(t);
+		//		double y = w * Math.sin(t);
+		//		double xNew = x / Math.cos(HOME_MARCUS.longitude);
+		//
+		//		Location home = new Location("");
+		//		home.setLatitude(HOME_MARCUS.latitude);
+		//		home.setLongitude(HOME_MARCUS.longitude);
+		//		Location routePoint = new Location("route");
+		//		routePoint.setLatitude(xNew + HOME_MARCUS.latitude);
+		//		routePoint.setLongitude(HOME_MARCUS.longitude+y);
+		//
+		//		ArrayList<Location> route = new ArrayList<Location>(); 
+		//		route.add(home);
+		//		route.add(routePoint);
+		//		Location routePoint2 = new Location("route2");
+		//		double differLat = 		HOME_MARCUS.latitude - routePoint.getLatitude();
+		//		double differLng = HOME_MARCUS.longitude - routePoint.getLongitude();
+		//
+		//		if(Math.random()>0.5){
+		//			routePoint2.setLatitude(HOME_MARCUS.latitude + differLng);
+		//			routePoint2.setLongitude(HOME_MARCUS.longitude - differLat);
+		//		}else{
+		//			routePoint2.setLatitude(HOME_MARCUS.latitude - differLng);
+		//			routePoint2.setLongitude(HOME_MARCUS.longitude + differLat);
+		//		}
+		//
+		//		route.add(routePoint2);
+		//		route.add(home);
+		//
+		//		for(int i = 0; i < route.size()-1; i++){
+		//			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
+		//					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
+		//		}
+		//		return route;
+
 	}
 
 
@@ -288,11 +336,17 @@ SensorEventListener
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(Color.BLUE);
 		int points = -1;
+		int halfway=0; 
 		for(int i = 0 ; i < directionPoints.size() ; i++) 
-		{          
+		{
 			points ++;
 			rectLine.add(directionPoints.get(i));
 		}
+		halfway = directionPoints.size() / 2;
+		Location halfwayLocation = new Location("");
+		halfwayLocation.setLatitude(directionPoints.get(halfway).latitude);
+		halfwayLocation.setLongitude(directionPoints.get(halfway).longitude);
+		finalRoute.add(halfwayLocation);
 		//		if (newPolyline != null)
 		//		{
 		//			newPolyline.remove();
@@ -306,9 +360,16 @@ SensorEventListener
 		//		if (marker != null){
 		//			marker.remove();
 		//		}
+		marks++;
+		marker = map.addMarker(new MarkerOptions()
+		.position(new LatLng(directionPoints.get(halfway).latitude, directionPoints.get(halfway).longitude))
+		.title("halfway! " + marks + ",  " + directionPoints.get(halfway).latitude 
+				+ " " + directionPoints.get(halfway).longitude));
+		
+		marks++;
 		marker = map.addMarker(new MarkerOptions()
 		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
-		.title("End of route! " + directionPoints.get(points).latitude 
+		.title("End of route!  " + marks +",  "+ directionPoints.get(points).latitude 
 				+ " " + directionPoints.get(points).longitude));
 		//map.animateCamera(CameraUpdateFactory.zoomOut());
 
