@@ -13,6 +13,9 @@
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
+ *    
+ *    Modified 2014 Anton Palmqvist
+ *    Taking in a parameter of a size to set for the imageview.
  */
 
 package at.technikum.mti.fancycoverflow;
@@ -31,12 +34,17 @@ public class FancyCoverFlowSampleAdapter extends FancyCoverFlowAdapter {
     // Private members
     // =============================================================================
 
-    private int[] images = {R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4, R.drawable.image5, R.drawable.image6,};
-
+    private int[] images = {R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4, R.drawable.image5, R.drawable.image6, R.drawable.runner, R.drawable.runner, R.drawable.runner, R.drawable.gamemodesample, R.drawable.gamemodesample, R.drawable.gamemodesample};
+    private int height;
+    
     // =============================================================================
     // Supertype overrides
     // =============================================================================
 
+    public FancyCoverFlowSampleAdapter(int height){
+    	this.height = height;
+    }
+    
     @Override
     public int getCount() {
         return images.length;
@@ -61,7 +69,7 @@ public class FancyCoverFlowSampleAdapter extends FancyCoverFlowAdapter {
         } else {
             imageView = new ImageView(viewGroup.getContext());
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-            imageView.setLayoutParams(new FancyCoverFlow.LayoutParams(400, 400));
+            imageView.setLayoutParams(new FancyCoverFlow.LayoutParams(height, height));
 
         }
 

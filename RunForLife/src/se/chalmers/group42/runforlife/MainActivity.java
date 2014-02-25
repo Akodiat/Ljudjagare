@@ -3,7 +3,9 @@ package se.chalmers.group42.runforlife;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Point;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,15 +18,29 @@ public class MainActivity extends Activity{
 	private FancyCoverFlow fancyCoverFlow;
 	private ImageButton runButton;
 	private Intent runActivityIntent;
+	private int coverFlowHeight;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		/*
+		 * 
+		 * 
+		 * http://stackoverflow.com/questions/1016896/how-to-get-screen-dimensions
+		 */
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int width = size.x;
+		int height = size.y;
+		//Setting a good coverflow height as 3/8 of the screen height
+		coverFlowHeight = (int)((3.0/8.0)*height) - 50;
 
 		//Setting up the cover flow
 		fancyCoverFlow = (FancyCoverFlow) this.findViewById(R.id.fancyCoverFlow);
-		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter());
+		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter(coverFlowHeight));
 		fancyCoverFlow.setUnselectedAlpha(1.0f);
 		fancyCoverFlow.setUnselectedSaturation(0.0f);
 		fancyCoverFlow.setUnselectedScale(0.5f);
