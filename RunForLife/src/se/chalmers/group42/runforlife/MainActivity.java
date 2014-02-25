@@ -36,7 +36,7 @@ public class MainActivity extends Activity{
 		int width = size.x;
 		int height = size.y;
 		//Setting a good coverflow height as 3/8 of the screen height
-		coverFlowHeight = (int)((3.0/8.0)*height) - 50;
+		coverFlowHeight = (int)((4.0/10.0)*height) - 50;
 
 		//Setting up the cover flow
 		fancyCoverFlow = (FancyCoverFlow) this.findViewById(R.id.fancyCoverFlow);
