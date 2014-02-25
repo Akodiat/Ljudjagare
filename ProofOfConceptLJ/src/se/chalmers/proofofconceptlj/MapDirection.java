@@ -81,6 +81,7 @@ SensorEventListener
 	private MySQLiteHelper db;
 	private Boolean isTime = true;
 	private Timer timer = new Timer();
+	private long delayTime = 1500;
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
 	private ArrayList<Location> finalRoute = new ArrayList<Location>(); 
 	private int marks;
@@ -349,26 +350,26 @@ SensorEventListener
 		halfwayLocation.setLatitude(directionPoints.get(halfway).latitude);
 		halfwayLocation.setLongitude(directionPoints.get(halfway).longitude);
 		finalRoute.add(halfwayLocation);
-		//		if (newPolyline != null)
-		//		{
-		//			newPolyline.remove();
-		//		}
+				if (newPolyline != null)
+				{
+					newPolyline.remove();
+				}
 		newPolyline = map.addPolyline(rectLine);
 		//latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
 		//float zoom = 19;
 		//map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 500));
 
-		// Add a marker on the last position in the route. 
-		//		if (marker != null){
-		//			marker.remove();
-		//		}
-		marks++;
-		marker = map.addMarker(new MarkerOptions()
-		.position(new LatLng(directionPoints.get(halfway).latitude, directionPoints.get(halfway).longitude))
-		.title("halfway! " + marks + ",  " + directionPoints.get(halfway).latitude 
-				+ " " + directionPoints.get(halfway).longitude));
-		
-		marks++;
+//		 Add a marker on the last position in the route. 
+				if (marker != null){
+					marker.remove();
+				}
+//		marks++;
+//		marker = map.addMarker(new MarkerOptions()
+//		.position(new LatLng(directionPoints.get(halfway).latitude, directionPoints.get(halfway).longitude))
+//		.title("halfway! " + marks + ",  " + directionPoints.get(halfway).latitude 
+//				+ " " + directionPoints.get(halfway).longitude));
+//		
+//		marks++;
 		marker = map.addMarker(new MarkerOptions()
 		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
 		.title("End of route!  " + marks +",  "+ directionPoints.get(points).latitude 
@@ -471,9 +472,8 @@ SensorEventListener
 				@Override
 	            public void run() {
 	                isTime = true;
-
 	            }
-	        }, 1500);
+	        }, delayTime);
 		}
 
 		if(human.getLocation().distanceTo(soundSource) < 15){
