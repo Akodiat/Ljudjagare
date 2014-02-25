@@ -258,7 +258,7 @@ SensorEventListener
 		finalRoute.add(human.getLocation());
 		return route;
 
-		//		// Calculation random positions at Marcus home. (På landet)
+		//		// Calculation random positions at Marcus home. (Pï¿½ landet)
 		//		double a = (Math.random()*0.5) + 0.5;
 		//		double b = (Math.random()*0.5) + 0.5;
 		//		double r = distance / 111300f;
@@ -325,7 +325,7 @@ SensorEventListener
 			fx.stopFX(bip);
 
 		else
-			fx.playFX(bip, FXHandler.LOOP);
+			fx.playFX(bip, Constants.LOOP);
 	}
 
 	//	public void updateDistance(int distance){
@@ -464,7 +464,7 @@ SensorEventListener
 			
 			db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
 			
-			//RITAR UT DÄR MAN GÅTT
+			//RITAR UT Dï¿½R MAN Gï¿½TT
 			LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
 			routeLine.add(p);
 			myPolyRoute = map.addPolyline(routeLine);
@@ -531,7 +531,7 @@ SensorEventListener
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox1);
 
 		if(bip.isPlaying())
-			fx.setPosition(
+			fx.update(
 					bip, 
 					// Har ï¿½ndrat fï¿½r att innan sï¿½ var inte ljudet rï¿½tt, om ni fï¿½r fï¿½r er och ï¿½ndra prata med Marcus fï¿½rst.
 					((
