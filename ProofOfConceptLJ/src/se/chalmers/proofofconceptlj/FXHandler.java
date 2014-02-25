@@ -7,14 +7,11 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
+import android.os.Handler;
+import android.os.Message;
 
+@SuppressLint("HandlerLeak")
 public class FXHandler {
-	public static final int FX_01 = 1;
-
-	public static final int LOOP = -1;
-	public static final int NOT_LOADED = -42;
-	public static final int MSG = 3;
-	public static final int MSG_STOP = 0;
 
 	private static final int maxAudiableDistance = 50; // Meters
 
@@ -26,6 +23,11 @@ public class FXHandler {
 
 	// True if sound is loaded correctly
 	private boolean loaded = false;
+
+	private Handler handler;
+
+	// FX representing a coin (that the user is picking up).
+	private FX coin;
 
 	/**
 	 * Initialize sound engine
@@ -44,7 +46,27 @@ public class FXHandler {
 		});
 
 		// Load FX
-		soundPoolMap.put(FX_01, soundPool.load(context, R.raw.bip, 1));
+		soundPoolMap
+				.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
+
+		// Initialize audio
+		coin = new FX(Constants.FX_01);
+
+		// Initialize thread handler
+		handler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				if (msg.what == Constants.MSG)
+					setPosition(coin);
+
+				if (msg.what == Constants.MSG_STOP)
+					handler.removeCallbacksAndMessages(null);
+			}
+		};
+	}
+
+	public FX coin() {
+		return coin;
 	}
 
 	/**
@@ -67,7 +89,7 @@ public class FXHandler {
 	 * @return the streamID if successful, non-zero value if not.
 	 */
 	public void loopFX(FX fx) {
-		playFX(fx, LOOP);
+		playFX(fx, Constants.LOOP);
 	}
 
 	public void stopFX(FX fx) {
@@ -86,37 +108,30 @@ public class FXHandler {
 	 *            angle between current direction and source (0-360).
 	 * @param distance
 	 *            distance from audio source in meters.
-	 * @throws InterruptedException
 	 */
-	public void setPosition(FX fx, float angle, float distance)
-			throws InterruptedException {
-
-		float distFactor = distance / maxAudiableDistance;
-
-		if (distFactor <= 0.2)
-			distFactor = 0.2f;
+	public void setPosition(FX fx) {
 
 		// Have to add 90 degrees so that (angle = 0) is heard in front.
 		int correctValue = 90;
 
 		// The angle after being corrected.
-		float dangle = angle + correctValue;
+		float dangle = fx.angle() + correctValue;
 
-		if (angle >= 140 && angle <= 220)
-			dangle = previousAngle;
+		if (fx.angle() >= 140 && fx.angle() <= 220)
+			dangle = 90;
 
 		else {
 			// Is sound coming from behind the player to the right?
-			if (angle > 90 && angle <= 180)
+			if (fx.angle() > 90 && fx.angle() <= 180)
 				dangle = 180;
 
 			// Is sound coming from behind the player to the left?
-			if (angle > 180 && angle <= 270)
+			if (fx.angle() > 180 && fx.angle() <= 270)
 				dangle = 0;
 
 			// From left to middle of listening scope.
-			if (angle > 270)
-				dangle = angle - 270;
+			if (fx.angle() > 270)
+				dangle = fx.angle() - 270;
 		}
 
 		double radian = dangle * (Math.PI / 180); // Convert to radians
@@ -124,10 +139,26 @@ public class FXHandler {
 		// Set volume on sound
 		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
 
-		soundPool.setVolume(fx.streamID(), fx.leftVolume() * distFactor,
-				fx.rightVolume() * distFactor);
+		soundPool.play(fx.ID(), fx.leftVolume(), fx.rightVolume(), 0, 1,
+				fx.pitch());
 
+		// Send to
+		Message msg = handler.obtainMessage(Constants.MSG);
+
+		// Save previous angle
 		previousAngle = dangle;
+
+		int maxDelay = 1000;
+		int minDelay = 200;
+
+		// Calculate value between 0 and 1, where 0 is when a user has reached
+		// destination:
+		float delayRatio = fx.distance() / Constants.MAX_DISTANCE;
+
+		// Delay between each repetition.
+		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
+
+		handler.sendMessageDelayed(msg, (long) delay);
 	}
 
 	/**
@@ -153,4 +184,21 @@ public class FXHandler {
 		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
 
+	public void playCoin() {
+		playFX(coin, 1);
+	}
+
+	public Handler getHandler() {
+		return handler;
+	}
+
+	public void update(FX fx, float angle, float distance) {
+		fx.setAngle(angle);
+		if (fx.angle() >= 0 && fx.angle() <= 180)
+			fx.setPitch((float) (fx.angle() * (-0.5 / 180) + 1));
+		else
+			fx.setPitch((float) 0.5 * fx.angle() / 180);
+
+		fx.setDistance(distance);
+	}
 }

@@ -15,16 +15,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 public class MainActivity extends Activity {
 	final static String TAG = "PAAR";
 
-	/**
-	 * Distance to destination where sound behavior changes.
-	 */
-	public static final int MAX_DISTANCE = 100;
-
-	/**
-	 * Distance to destination where user has reached the destination.
-	 */
-	public static final int MIN_DISTANCE = 10;
-
 	SensorManager sensorManager;
 	ImageView arrow2;
 	int orientationSensor;
@@ -37,20 +27,14 @@ public class MainActivity extends Activity {
 	Location source;
 	Human human;
 
-	/**
-	 * Repeat the sound several times.
-	 */
-	private Handler handler;
-
-	private SeekBar testVolume;
-	private SeekBar testPanning;
+	private SeekBar repFreq;
+	private SeekBar panning;
 
 	// Handles all form of audio
 	FXHandler fx;
-	FX cowbell;
 
-	float panning;
-	float vol;
+	float degreesToDestination;
+	float distance;
 
 	@SuppressLint("HandlerLeak")
 	@Override
@@ -76,34 +60,14 @@ public class MainActivity extends Activity {
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
 
-		cowbell = new FX(FXHandler.FX_01);
-
-		// Initialize thread handler
-		handler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				if (msg.what == FXHandler.MSG)
-					startFreqLoop(findViewById(android.R.id.content));
-
-				if (msg.what == FXHandler.MSG_STOP)
-					handler.removeCallbacksAndMessages(null);
-
-			}
-		};
-
-		testVolume = (SeekBar) findViewById(R.id.seekBarVolume);
-		testVolume.setMax(50);
-		testVolume.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+		repFreq = (SeekBar) findViewById(R.id.seekBarVolume);
+		repFreq.setMax(50);
+		repFreq.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				vol = arg1;
-				try {
-					fx.setPosition(cowbell, panning, vol);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				distance = arg1;
+				fx.update(fx.coin(), degreesToDestination, distance);
 			}
 
 			@Override
@@ -117,18 +81,13 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		testPanning = (SeekBar) findViewById(R.id.seekBarPanning);
-		testPanning.setMax(360);
-		testPanning.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+		panning = (SeekBar) findViewById(R.id.seekBarPanning);
+		panning.setMax(360);
+		panning.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				try {
-					fx.setPosition(cowbell, arg1, vol);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				fx.update(fx.coin(), arg1, distance);
 			}
 
 			@Override
@@ -224,7 +183,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		handler.removeCallbacksAndMessages(null);
+		fx.getHandler().removeCallbacksAndMessages(null);
 	}
 
 	@Override
@@ -265,13 +224,18 @@ public class MainActivity extends Activity {
 	}
 
 	public void playSound(View view) throws InterruptedException {
-		if (!cowbell.isPlaying())
-			fx.loopFX(cowbell);
-		else
-			fx.stopFX(cowbell);
-
-		Message msg = handler.obtainMessage(FXHandler.MSG_STOP);
-		handler.sendMessage(msg);
+		if (!fx.coin().isPlaying())
+			fx.setPosition(fx.coin());
+		else  {
+			Message msg = fx.getHandler().obtainMessage(Constants.MSG_STOP);
+			fx.getHandler().sendMessage(msg);
+			fx.stopFX(fx.coin());
+		}
+	}
+	
+	public void stopSound(View view) throws InterruptedException {
+			Message msg = fx.getHandler().obtainMessage(Constants.MSG_STOP);
+			fx.getHandler().sendMessage(msg);
 	}
 
 	public void setCurrentAsSource(View view) {
@@ -303,23 +267,5 @@ public class MainActivity extends Activity {
 
 		debugText.setText(s);
 		debugText.invalidate();
-	}
-
-	public void startFreqLoop(View view) {
-		// Play the sound
-		fx.playFX(cowbell, 1);
-		Message msg = handler.obtainMessage(FXHandler.MSG);
-
-		int maxDelay = 1000;
-		int minDelay = 200;
-
-		// Calculate value between 0 and 1, where 0 is when a user has reached
-		// destination:
-		float delayRatio = vol / MAX_DISTANCE;
-
-		// Delay between each repetition.
-		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
-
-		handler.sendMessageDelayed(msg, (long) delay);
 	}
 }
