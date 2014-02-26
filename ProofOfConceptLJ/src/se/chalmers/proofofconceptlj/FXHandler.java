@@ -57,7 +57,7 @@ public class FXHandler {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == Constants.MSG)
-					setPosition(cowbell());
+					setPosition(cowbell);
 
 				if (msg.what == Constants.MSG_STOP)
 					handler.removeCallbacksAndMessages(null);
@@ -80,6 +80,10 @@ public class FXHandler {
 		if (loaded)
 			fx.setStreamID(soundPool.play(fx.ID(), fx.leftVolume(),
 					fx.rightVolume(), 1, times, 1f));
+	}
+	
+	public void playFX() {
+		
 	}
 
 	/**
@@ -139,8 +143,8 @@ public class FXHandler {
 		// Set volume on sound
 		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
 
-		soundPool.play(fx.ID(), fx.leftVolume(), fx.rightVolume(), 0, 1,
-				fx.pitch());
+		fx.setStreamID(soundPool.play(fx.ID(), fx.leftVolume(), fx.rightVolume(), 0, 1,
+				fx.pitch()));
 
 		// Send to
 		Message msg = handler.obtainMessage(Constants.MSG);
@@ -151,15 +155,15 @@ public class FXHandler {
 		int maxDelay = 1000;
 		int minDelay = 200;
 
-		// Calculate value between 0 and 1, where 0 is when a user has reached
-		// destination:
 		float delayRatio;
 		
+		// Calculate value between 0 and 1, where 0 is when a user has reached
+		// destination:
 		if(fx.distance() <= Constants.MAX_DISTANCE)
 			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
 		else
 			delayRatio = 1;
-		
+			
 		// Delay between each repetition.
 		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
 
