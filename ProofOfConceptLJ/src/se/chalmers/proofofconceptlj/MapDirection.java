@@ -16,7 +16,6 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import android.util.Log;
@@ -336,10 +335,17 @@ SensorEventListener
 	}
 
 	public void playSound(View view) {
-		if (!fx.cowbell().isPlaying())
+		Button button = (Button) findViewById(R.id.bPlay);
+		
+		if (!fx.cowbell().isPlaying()){
 			fx.setPosition(fx.cowbell());
+			
+			button.setText("Stop sound");
+		}
 		else {
 			fx.stopHandler();
+			
+			button.setText("Play sound");
 		}
 	}
 
@@ -580,9 +586,9 @@ SensorEventListener
 							), 
 							human.getLocation().distanceTo(soundSource));
 		
-		//Text debug:
-		TextView angleText = (TextView) findViewById(R.id.textView_angle);
-		angleText.setText("Angle: "+ angle);
+//		//Text debug:
+//		TextView angleText = (TextView) findViewById(R.id.textView_angle);
+//		angleText.setText("Angle: "+ angle);
 	}
 
 	@Override
