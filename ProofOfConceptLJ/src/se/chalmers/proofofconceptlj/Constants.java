@@ -16,6 +16,6 @@ public class Constants {
 	/**
 	 * Distance to destination where user has reached the destination.
 	 */
-	public static final int MIN_DISTANCE = 10;
+	public static final int MIN_DISTANCE = 15;
 
 }
