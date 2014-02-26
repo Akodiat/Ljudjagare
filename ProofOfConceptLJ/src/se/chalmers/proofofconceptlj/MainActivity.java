@@ -103,7 +103,6 @@ public class MainActivity extends Activity {
 	}
 
 	/** Called when the user clicks the Map button */
-
 	public void mapButton(View view) {
 		Intent intent = new Intent(this, MapDirection.class);
 		startActivity(intent);

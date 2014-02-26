@@ -26,6 +26,8 @@
                 android:layout_height="105dp"
                 android:layout_marginTop="18dp"
                 android:onClick="mapButton"
+                android:textSize="30dp"
+                android:textScaleX="3"
                 android:text="Show map" />
 
             <Button
@@ -54,32 +56,33 @@
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Frequency by distance" 
-                android:onClick="startFreqLoop"/>
-            
+                android:onClick="startFreqLoop"
+                android:text="Frequency by distance" />
+
             <Button
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stop" 
-                android:onClick="stopSound"/>
+                android:onClick="stopSound"
+                android:text="Stop" />
 
             <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Repeat Frequency" />
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Repeat Frequency" />
+
             <SeekBar
                 android:id="@+id/seekBarVolume"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Panning" />
-            
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Panning" />
+
             <SeekBar
                 android:id="@+id/seekBarPanning"
                 android:layout_width="match_parent"
