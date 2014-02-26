@@ -55,6 +55,7 @@ public class MainActivity extends Activity{
 		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				System.out.println("Selected " + fancyCoverFlow.getSelectedItemId());
 				startActivity(runActivityIntent);
 			}
 		});
