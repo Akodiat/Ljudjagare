@@ -201,31 +201,40 @@ SensorEventListener
 
 	private void generateRandomSoundSource() {
 		// Calculation random position, needs more work
-		double a = (Math.random()*0.5) + 0.5;
-		double b = (Math.random()*0.5) + 0.5;
-		double r = 100 / 111300f;
+				double a = Math.random();
+				double b = Math.random();
+				double r = 100 / 111300f;
 
-		double w = r * Math.sqrt(a);
-		double t = 2 * Math.PI * b;
-		double x = w * Math.cos(t); 
-		double y = w * Math.sin(t);
+				double w = r * Math.sqrt(a);
+				double t = 2 * Math.PI * b;
+				double x = w * Math.cos(t); 
+				double y = w * Math.sin(t);
 
-		double xNew = x / Math.cos(human.getLocation().getLongitude());
+				double xNew = x / Math.cos(human.getLocation().getLongitude());
 
+				Location random = new Location("");
+				random.setLatitude(xNew + human.getLocation().getLatitude());
+				random.setLongitude(human.getLocation().getLongitude()+y);
 
-		soundSource.setLatitude(xNew + human.getLocation().getLatitude());
-		soundSource.setLongitude(human.getLocation().getLongitude()+y);
+				marker = map.addMarker(new MarkerOptions()
+				.position(new LatLng(random.getLatitude(), random.getLongitude()))
+				.title("Random").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+				
+//				soundSource.setLatitude(xNew + human.getLocation().getLatitude());
+//				soundSource.setLongitude(human.getLocation().getLongitude()+y);
 
-		//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
-		findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
-				, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+				//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
+//				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
+//						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+
 
 	}
 
 	private ArrayList<Location> generateRandomRoute(double distance){
 		// Calculation random positions
-		double a = (Math.random()*0.5) + 0.5;
-		double b = (Math.random()*0.5) + 0.5;
+		double a = Math.random();
+		double b = Math.random();
+
 		double r = distance / 111300f;
 
 		double w = r * Math.sqrt(a);
@@ -498,7 +507,7 @@ SensorEventListener
 			}, delayTime);
 		}
 
-		if(human.getLocation().distanceTo(soundSource) < 15){
+		if(human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE){
 			fx.playFX(dragon, 0);
 			human.modScore(1);
 			generateRandomSoundSource();
