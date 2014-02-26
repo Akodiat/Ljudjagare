@@ -227,15 +227,12 @@ public class MainActivity extends Activity {
 		if (!fx.cowbell().isPlaying())
 			fx.setPosition(fx.cowbell());
 		else  {
-			Message msg = fx.getHandler().obtainMessage(Constants.MSG_STOP);
-			fx.getHandler().sendMessage(msg);
-			fx.stopFX(fx.cowbell());
+			fx.stopHandler();
 		}
 	}
 	
 	public void stopSound(View view) throws InterruptedException {
-			Message msg = fx.getHandler().obtainMessage(Constants.MSG_STOP);
-			fx.getHandler().sendMessage(msg);
+			fx.stopHandler();
 	}
 
 	public void setCurrentAsSource(View view) {

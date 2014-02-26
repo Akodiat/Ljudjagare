@@ -3,7 +3,7 @@ package se.chalmers.proofofconceptlj;
 public class FX {
 
 	public static final int NOT_PLAYING = -1;
-	private int id;
+	private int sound;
 	private int streamID;
 	private float leftVolume, rightVolume;
 	private float distance;
@@ -16,7 +16,7 @@ public class FX {
 	private float pitch;
 
 	public FX(int id) {
-		this.id = id;
+		this.sound = id;
 		leftVolume = rightVolume = 1f;
 		streamID = NOT_PLAYING;
 		distance = Constants.MAX_DISTANCE;
@@ -24,8 +24,8 @@ public class FX {
 		pitch = 1;
 	}
 
-	public int ID() {
-		return id;
+	public int sound() {
+		return sound;
 	}
 
 	public float leftVolume() {
