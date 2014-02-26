@@ -27,7 +27,7 @@ public class FXHandler {
 	private Handler handler;
 
 	// FX representing a coin (that the user is picking up).
-	private FX coin;
+	private FX cowbell;
 
 	/**
 	 * Initialize sound engine
@@ -50,14 +50,14 @@ public class FXHandler {
 				.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
 
 		// Initialize audio
-		coin = new FX(Constants.FX_01);
+		cowbell = new FX(Constants.FX_01);
 
 		// Initialize thread handler
 		handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == Constants.MSG)
-					setPosition(coin);
+					setPosition(cowbell);
 
 				if (msg.what == Constants.MSG_STOP)
 					handler.removeCallbacksAndMessages(null);
@@ -65,8 +65,8 @@ public class FXHandler {
 		};
 	}
 
-	public FX coin() {
-		return coin;
+	public FX cowbell() {
+		return cowbell;
 	}
 
 	/**
@@ -80,6 +80,10 @@ public class FXHandler {
 		if (loaded)
 			fx.setStreamID(soundPool.play(fx.ID(), fx.leftVolume(),
 					fx.rightVolume(), 1, times, 1f));
+	}
+	
+	public void playFX() {
+		
 	}
 
 	/**
@@ -139,8 +143,8 @@ public class FXHandler {
 		// Set volume on sound
 		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
 
-		soundPool.play(fx.ID(), fx.leftVolume(), fx.rightVolume(), 0, 1,
-				fx.pitch());
+		fx.setStreamID(soundPool.play(fx.ID(), fx.leftVolume(), fx.rightVolume(), 0, 1,
+				fx.pitch()));
 
 		// Send to
 		Message msg = handler.obtainMessage(Constants.MSG);
@@ -151,10 +155,15 @@ public class FXHandler {
 		int maxDelay = 1000;
 		int minDelay = 200;
 
+		float delayRatio;
+		
 		// Calculate value between 0 and 1, where 0 is when a user has reached
 		// destination:
-		float delayRatio = fx.distance() / Constants.MAX_DISTANCE;
-
+		if(fx.distance() <= Constants.MAX_DISTANCE)
+			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
+		else
+			delayRatio = 1;
+			
 		// Delay between each repetition.
 		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
 
@@ -185,7 +194,7 @@ public class FXHandler {
 	}
 
 	public void playCoin() {
-		playFX(coin, 1);
+		playFX(cowbell, 1);
 	}
 
 	public Handler getHandler() {

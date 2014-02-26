@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				distance = arg1;
-				fx.update(fx.coin(), degreesToDestination, distance);
+				fx.update(fx.cowbell(), degreesToDestination, distance);
 			}
 
 			@Override
@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				fx.update(fx.coin(), arg1, distance);
+				fx.update(fx.cowbell(), arg1, distance);
 			}
 
 			@Override
@@ -224,12 +224,12 @@ public class MainActivity extends Activity {
 	}
 
 	public void playSound(View view) throws InterruptedException {
-		if (!fx.coin().isPlaying())
-			fx.setPosition(fx.coin());
+		if (!fx.cowbell().isPlaying())
+			fx.setPosition(fx.cowbell());
 		else  {
 			Message msg = fx.getHandler().obtainMessage(Constants.MSG_STOP);
 			fx.getHandler().sendMessage(msg);
-			fx.stopFX(fx.coin());
+			fx.stopFX(fx.cowbell());
 		}
 	}
 	
