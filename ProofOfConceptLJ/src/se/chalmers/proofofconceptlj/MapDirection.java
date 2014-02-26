@@ -549,14 +549,19 @@ SensorEventListener
 
 	private void adjustPanoration() {
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox1);
+		
+		float angle = checkBox.isChecked() ? headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound;
 
+		if(angle < 0){
+			angle += 360;
+		}
+		
 		if(fx.cowbell().isPlaying())
 			fx.update(
 					fx.cowbell(), 
 					// Har �ndrat f�r att innan s� var inte ljudet r�tt, om ni f�r f�r er och �ndra prata med Marcus f�rst.
 					((
-							checkBox.isChecked() ? 
-									headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound
+							angle
 							)
 							//+ 	human.getLocation().bearingTo(soundSource)
 							), 
@@ -564,7 +569,7 @@ SensorEventListener
 		
 		//Text debug:
 		TextView angleText = (TextView) findViewById(R.id.textView_angle);
-		angleText.setText("Angle: "+ (checkBox.isChecked() ? headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound));
+		angleText.setText("Angle: "+ angle);
 	}
 
 	@Override
