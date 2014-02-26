@@ -13,13 +13,9 @@ import android.os.Message;
 @SuppressLint("HandlerLeak")
 public class FXHandler {
 
-	private static final int maxAudiableDistance = 50; // Meters
-
 	private HashMap<Integer, Integer> soundPoolMap;
 	private SoundPool soundPool;
 	private AudioManager am;
-
-	private float previousAngle;
 
 	// True if sound is loaded correctly
 	private boolean loaded = false;
@@ -78,12 +74,8 @@ public class FXHandler {
 	 */
 	public void playFX(FX fx, int times) {
 		if (loaded)
-			fx.setStreamID(soundPool.play(fx.ID(), fx.leftVolume(),
+			fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
 					fx.rightVolume(), 1, times, 1f));
-	}
-	
-	public void playFX() {
-		
 	}
 
 	/**
@@ -143,14 +135,11 @@ public class FXHandler {
 		// Set volume on sound
 		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
 
-		fx.setStreamID(soundPool.play(fx.ID(), fx.leftVolume(), fx.rightVolume(), 0, 1,
+		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(), fx.rightVolume(), 0, 1,
 				fx.pitch()));
 
 		// Send to
 		Message msg = handler.obtainMessage(Constants.MSG);
-
-		// Save previous angle
-		previousAngle = dangle;
 
 		int maxDelay = 1000;
 		int minDelay = 200;
@@ -193,12 +182,20 @@ public class FXHandler {
 		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
 
-	public void playCoin() {
-		playFX(cowbell, 1);
-	}
-
+	/**
+	 * Return
+	 * @return
+	 */
 	public Handler getHandler() {
 		return handler;
+	}
+	
+	public void stopHandler() {
+		Message msg = handler.obtainMessage(Constants.MSG_STOP);
+		handler.sendMessage(msg);
+		
+		// set sound to not playings
+		stopFX(cowbell());
 	}
 
 	public void update(FX fx, float angle, float distance) {
