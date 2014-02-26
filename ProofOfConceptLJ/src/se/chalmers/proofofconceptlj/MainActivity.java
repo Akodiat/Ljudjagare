@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				distance = arg1;
-				fx.update(fx.cowbell(), degreesToDestination, distance);
+				fx.update(fx.getCowbell(), degreesToDestination, distance);
 			}
 
 			@Override
@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				fx.update(fx.cowbell(), arg1, distance);
+				fx.update(fx.getCowbell(), arg1, distance);
 			}
 
 			@Override
@@ -91,8 +91,8 @@ public class MainActivity extends Activity {
 
 
 	public void playSound(View view) throws InterruptedException {
-		if (!fx.cowbell().isPlaying())
-			fx.setPosition(fx.cowbell());
+		if (!fx.getCowbell().isPlaying())
+			fx.setPosition(fx.getCowbell());
 		else  {
 			fx.stopHandler();
 		}

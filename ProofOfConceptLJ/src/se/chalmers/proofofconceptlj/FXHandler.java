@@ -23,6 +23,9 @@ public class FXHandler {
 	private Handler handler;
 
 	// FX representing a coin (that the user is picking up).
+	private FX coin;
+
+	// FX representing the navigation sound (
 	private FX cowbell;
 
 	/**
@@ -43,10 +46,14 @@ public class FXHandler {
 
 		// Load FX
 		soundPoolMap
-				.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
+		.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
 
+		soundPoolMap
+		.put(Constants.FX_02, soundPool.load(context, R.raw.dragon, 1));
+		
 		// Initialize audio
-		cowbell = new FX(Constants.FX_01);
+		cowbell	 = new FX(Constants.FX_01);
+		coin	 = new FX(Constants.FX_02);
 
 		// Initialize thread handler
 		handler = new Handler() {
@@ -61,8 +68,12 @@ public class FXHandler {
 		};
 	}
 
-	public FX cowbell() {
+	public FX getCowbell() {
 		return cowbell;
+	}
+	
+	public FX getCoin() {
+		return coin;
 	}
 
 	/**
@@ -145,14 +156,14 @@ public class FXHandler {
 		int minDelay = 200;
 
 		float delayRatio;
-		
+
 		// Calculate value between 0 and 1, where 0 is when a user has reached
 		// destination:
 		if(fx.distance() <= Constants.MAX_DISTANCE)
 			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
 		else
 			delayRatio = 1;
-			
+
 		// Delay between each repetition.
 		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
 
@@ -189,13 +200,13 @@ public class FXHandler {
 	public Handler getHandler() {
 		return handler;
 	}
-	
+
 	public void stopHandler() {
 		Message msg = handler.obtainMessage(Constants.MSG_STOP);
 		handler.sendMessage(msg);
-		
+
 		// set sound to not playings
-		stopFX(cowbell());
+		stopFX(getCowbell());
 	}
 
 	public void update(FX fx, float angle, float distance) {

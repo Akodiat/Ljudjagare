@@ -14,7 +14,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -103,14 +102,10 @@ SensorEventListener
 	private float headingAngleOrientation;
 	private float angleToSound;
 
-	private LocationManager locationManager;
 	private Human human;
 
 	// Handles all form of audio
 	private FXHandler fx;
-	private FX dragon;
-
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,8 +113,6 @@ SensorEventListener
 
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_map_direction);
-
-		dragon = new FX(2);
 
 		db = new MySQLiteHelper(this);
 		db.onUpgrade(db.getWritableDatabase(), 1, 2);
@@ -337,8 +330,8 @@ SensorEventListener
 	public void playSound(View view) {
 		Button button = (Button) findViewById(R.id.bPlay);
 		
-		if (!fx.cowbell().isPlaying()){
-			fx.setPosition(fx.cowbell());
+		if (!fx.getCowbell().isPlaying()){
+			fx.setPosition(fx.getCowbell());
 			
 			button.setText("Stop sound");
 		}
@@ -513,7 +506,7 @@ SensorEventListener
 		}
 
 		if(human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE){
-			fx.playFX(dragon, 0	);
+			fx.playFX(fx.getCoin(), 0); //Plays sound to indicate coin acquired.
 			human.modScore(1);
 			pointsTaken++;
 			if(pointsTaken==3){	
@@ -575,9 +568,9 @@ SensorEventListener
 			angle += 360;
 		}
 		
-		if(fx.cowbell().isPlaying())
+		if(fx.getCowbell().isPlaying())
 			fx.update(
-					fx.cowbell(), 
+					fx.getCowbell(), 
 					// Har �ndrat f�r att innan s� var inte ljudet r�tt, om ni f�r f�r er och �ndra prata med Marcus f�rst.
 					((
 							angle

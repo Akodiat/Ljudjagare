@@ -3,6 +3,7 @@ package se.chalmers.proofofconceptlj;
 public class Constants {
 
 	public static final int FX_01 = 1;
+	public static final int FX_02 = 2;
 	public static final int LOOP = -1;
 	public static final int NOT_LOADED = -42;
 	public static final int MSG = 3;
