@@ -88,6 +88,7 @@ SensorEventListener
 	private ArrayList<Location> finalRoute = new ArrayList<Location>(); 
 	private int marks;
 	private int currentSoundSource;
+	private int pointsTaken = 0;
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
@@ -508,12 +509,14 @@ SensorEventListener
 		}
 
 		if(human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE){
-			fx.playFX(dragon, 0);
+			fx.playFX(dragon, 0	);
 			human.modScore(1);
-			if(marks==3){	
-			generateRandomSoundSource();
+			pointsTaken++;
+			if(pointsTaken==3){	
+			generateRandomRoute(100);
+			pointsTaken = 0;
 			}else{
-				soundSource.set(finalRoute.get(marks));
+				soundSource.set(finalRoute.get(pointsTaken));
 			}
 			TextView score = (TextView) findViewById(R.id.textView_score);
 			score.setText("Score: "+human.getScore());
