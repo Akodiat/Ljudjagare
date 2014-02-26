@@ -157,7 +157,7 @@ SensorEventListener
 			public void onClick(View v) {
 				map.clear();
 				marks=0;
-				currentSoundSource = 1;
+				//currentSoundSource = 1;
 				finalRoute.clear();
 				//generateRandomSoundSource();
 				generateRandomRoute(100);
@@ -510,8 +510,11 @@ SensorEventListener
 		if(human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE){
 			fx.playFX(dragon, 0);
 			human.modScore(1);
+			if(marks==3){	
 			generateRandomSoundSource();
-
+			}else{
+				soundSource.set(finalRoute.get(marks));
+			}
 			TextView score = (TextView) findViewById(R.id.textView_score);
 			score.setText("Score: "+human.getScore());
 		}
