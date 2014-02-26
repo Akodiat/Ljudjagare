@@ -1,31 +1,17 @@
 package se.chalmers.proofofconceptlj;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.hardware.*;
-import android.location.*;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.Menu;
 import android.view.View;
 import android.widget.*;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class MainActivity extends Activity {
-	final static String TAG = "PAAR";
-
-	SensorManager sensorManager;
-	ImageView arrow2;
-	int orientationSensor;
-	float headingAngle;
-	float pitchAngle;
-	float rollAngle;
-
-	LocationManager locationManager;
-
-	Location source;
 	Human human;
 
 	private SeekBar repFreq;
@@ -43,11 +29,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	
-		human = new Human(
-				locationManager
-				.getLastKnownLocation(LocationManager.GPS_PROVIDER));
+		human = new Human(new LatLng(58.489657, 13.777925)); //Set human to be at Marcus's home
 
-		arrow2 = (ImageView) this.findViewById(R.id.imageView2);
 
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
@@ -106,22 +89,6 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	/**
-	 * Points arrow to source using GPS bearing
-	 */
-	private void pointArrowToSource_G() {
-		ImageView arrow = (ImageView) this.findViewById(R.id.imageView3);
-		arrow.setRotation(human.getLocation().getBearing()
-				+ human.getLocation().bearingTo(source));
-	}
-
-	/**
-	 * Points arrow to source using compass orientation
-	 */
-	private void pointArrowToSource_C() {
-		ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
-		arrow.setRotation(headingAngle + human.getLocation().bearingTo(source));
-	}
 
 	public void playSound(View view) throws InterruptedException {
 		if (!fx.cowbell().isPlaying())
@@ -138,11 +105,7 @@ public class MainActivity extends Activity {
 	/** Called when the user clicks the Map button */
 
 	public void mapButton(View view) {
-
 		Intent intent = new Intent(this, MapDirection.class);
 		startActivity(intent);
-
-
-
 	}
 }
