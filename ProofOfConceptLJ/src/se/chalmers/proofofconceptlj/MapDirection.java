@@ -561,6 +561,10 @@ SensorEventListener
 							//+ 	human.getLocation().bearingTo(soundSource)
 							), 
 							human.getLocation().distanceTo(soundSource));
+		
+		//Text debug:
+		TextView angleText = (TextView) findViewById(R.id.textView_angle);
+		angleText.setText("Angle: "+ (checkBox.isChecked() ? headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound));
 	}
 
 	@Override
