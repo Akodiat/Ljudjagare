@@ -17,6 +17,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -85,6 +86,7 @@ SensorEventListener
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
 	private ArrayList<Location> finalRoute = new ArrayList<Location>(); 
 	private int marks;
+	private int currentSoundSource;
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
@@ -152,10 +154,14 @@ SensorEventListener
 
 			@Override
 			public void onClick(View v) {
-				//map.clear();
-				//marks=0;
-				generateRandomSoundSource();
-				//generateRandomRoute(500);
+				map.clear();
+				marks=0;
+				currentSoundSource = 1;
+				finalRoute.clear();
+				//generateRandomSoundSource();
+				generateRandomRoute(100);
+				//soundSource.set(finalRoute.get(1));
+
 			}
 		});
 
@@ -250,11 +256,10 @@ SensorEventListener
 		route.add(human.getLocation());
 
 		for(int i = 0; i < route.size()-1; i++){
-			finalRoute.add(route.get(i));
 			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
 					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
 		}
-		finalRoute.add(human.getLocation());
+		//finalRoute.add(human.getLocation());
 		return route;
 
 		//		// Calculation random positions at Marcus home. (P� landet)
@@ -339,43 +344,57 @@ SensorEventListener
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(Color.BLUE);
 		int points = -1;
-		int halfway=0; 
+		//		int halfway=0; 
 		for(int i = 0 ; i < directionPoints.size() ; i++) 
 		{
 			points ++;
 			rectLine.add(directionPoints.get(i));
 		}
-		halfway = directionPoints.size() / 2;
-		Location halfwayLocation = new Location("");
-		halfwayLocation.setLatitude(directionPoints.get(halfway).latitude);
-		halfwayLocation.setLongitude(directionPoints.get(halfway).longitude);
-		finalRoute.add(halfwayLocation);
-				if (newPolyline != null)
-				{
-					newPolyline.remove();
-				}
+
+		//--- Is used to make more points on the directions, dont remove without asking Marcus ---
+		//		halfway = directionPoints.size() / 2;
+		//		Location halfwayLocation = new Location("");
+		//		halfwayLocation.setLatitude(directionPoints.get(halfway).latitude);
+		//		halfwayLocation.setLongitude(directionPoints.get(halfway).longitude);
+		//		finalRoute.add(halfwayLocation);
+
+		Location wholeWayLocation = new Location("");
+		wholeWayLocation.setLatitude(directionPoints.get(points).latitude);
+		wholeWayLocation.setLongitude(directionPoints.get(points).longitude);
+		finalRoute.add(wholeWayLocation);
+		//		if (newPolyline != null)
+		//		{
+		//			newPolyline.remove();
+		//		}
 		newPolyline = map.addPolyline(rectLine);
 		//latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
 		//float zoom = 19;
 		//map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 500));
 
-//		 Add a marker on the last position in the route. 
-				if (marker != null){
-					marker.remove();
-				}
+		// Add a marker on the last position in the route. 
+		//		if (marker != null){
+		//			marker.remove();
+		//		}
+		if(marks==0){
+			soundSource.set(wholeWayLocation);
+
+			marker = map.addMarker(new MarkerOptions()
+			.position(new LatLng(soundSource.getLatitude(), soundSource.getLongitude()))
+			.title("First! " + marks ).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+		}
+
 //		marks++;
 //		marker = map.addMarker(new MarkerOptions()
 //		.position(new LatLng(directionPoints.get(halfway).latitude, directionPoints.get(halfway).longitude))
 //		.title("halfway! " + marks + ",  " + directionPoints.get(halfway).latitude 
 //				+ " " + directionPoints.get(halfway).longitude));
-//		
-//		marks++;
+
+		marks++;
 		marker = map.addMarker(new MarkerOptions()
 		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
 		.title("End of route!  " + marks +",  "+ directionPoints.get(points).latitude 
 				+ " " + directionPoints.get(points).longitude));
 		//map.animateCamera(CameraUpdateFactory.zoomOut());
-
 	}
 
 
@@ -460,20 +479,20 @@ SensorEventListener
 
 		if(isTime){
 			isTime = false;
-			
+
 			db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
-			
+
 			//RITAR UT D�R MAN G�TT
 			LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
 			routeLine.add(p);
 			myPolyRoute = map.addPolyline(routeLine);
-			
+
 			timer.schedule(new TimerTask() {
 				@Override
-	            public void run() {
-	                isTime = true;
-	            }
-	        }, delayTime);
+				public void run() {
+					isTime = true;
+				}
+			}, delayTime);
 		}
 
 		if(human.getLocation().distanceTo(soundSource) < 15){
