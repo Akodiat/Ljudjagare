@@ -16,6 +16,7 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import android.util.Log;
@@ -325,11 +326,13 @@ SensorEventListener
 	}
 
 	public void playSound(View view) {
-		if(fx.cowbell().isPlaying())
-			fx.stopFX(fx.cowbell());
-
-		else
+		if (!fx.cowbell().isPlaying())
 			fx.setPosition(fx.cowbell());
+		else {
+			Message msg = fx.getHandler().obtainMessage(Constants.MSG_STOP);
+			fx.getHandler().sendMessage(msg);
+			fx.stopFX(fx.cowbell());
+		}
 	}
 
 	//	public void updateDistance(int distance){
@@ -383,11 +386,11 @@ SensorEventListener
 			.title("First! " + marks ).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		}
 
-//		marks++;
-//		marker = map.addMarker(new MarkerOptions()
-//		.position(new LatLng(directionPoints.get(halfway).latitude, directionPoints.get(halfway).longitude))
-//		.title("halfway! " + marks + ",  " + directionPoints.get(halfway).latitude 
-//				+ " " + directionPoints.get(halfway).longitude));
+		//		marks++;
+		//		marker = map.addMarker(new MarkerOptions()
+		//		.position(new LatLng(directionPoints.get(halfway).latitude, directionPoints.get(halfway).longitude))
+		//		.title("halfway! " + marks + ",  " + directionPoints.get(halfway).latitude 
+		//				+ " " + directionPoints.get(halfway).longitude));
 
 		marks++;
 		marker = map.addMarker(new MarkerOptions()
