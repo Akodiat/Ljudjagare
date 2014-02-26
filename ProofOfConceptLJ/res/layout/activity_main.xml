@@ -20,47 +20,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView_sourceLongitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Source longitude:" />
-
-            <TextView
-                android:id="@+id/textView_sourceLatitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Source latitude:" />
-
             <Button
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="105dp"
                 android:layout_marginTop="18dp"
-                android:onClick="setCurrentAsSource"
-                android:text="Set current position as sound source" />
-
-            <TextView
-                android:id="@+id/textView_debug"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <EditText
-                android:id="@+id/editText_angle"
-                android:layout_width="122dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberSigned" />
-
-            <CheckBox
-                android:id="@+id/checkBox_compass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Use compass (else use gps direction)" />
+                android:onClick="mapButton"
+                android:text="Show map" />
 
             <Button
                 android:id="@+id/button3"
@@ -72,60 +38,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Sound direction (last played)" />
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/arrow" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Device orientation \nThis doesn&apos;t work atm" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/arrow" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Sound source direction" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/arrow" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView_GPS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="GPS-pos"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Button
                 android:id="@+id/button2"
