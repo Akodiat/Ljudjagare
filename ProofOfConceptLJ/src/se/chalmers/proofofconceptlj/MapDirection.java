@@ -15,7 +15,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.text.format.Time;
+
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import android.util.Log;
 import android.view.Display;
@@ -88,6 +91,18 @@ SensorEventListener
 	private int marks;
 	private int currentSoundSource;
 	private int pointsTaken = 0;
+	
+	private TextView tx_time;
+	private TextView tx_distance;
+	private TextView tx_speed;
+	private Long seconds = 0L;
+	private Boolean running = false;
+	private Boolean pause = false;
+    private Handler m_handler;
+    private Runnable m_handlerTask;
+    private int distance;
+    private Location prev = new Location("");
+    private Boolean start = true;
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
@@ -114,7 +129,12 @@ SensorEventListener
 
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_map_direction);
-
+		
+		tx_time = (TextView) findViewById(R.id.textView_time);	
+		tx_distance = (TextView) findViewById(R.id.textView_distance);
+		tx_speed = (TextView) findViewById(R.id.textView_speed);
+		m_handler = new Handler();
+		
 		db = new MySQLiteHelper(this);
 		db.onUpgrade(db.getWritableDatabase(), 1, 2);
 
@@ -156,6 +176,13 @@ SensorEventListener
 				//generateRandomSoundSource();
 				generateRandomRoute(100);
 				//soundSource.set(finalRoute.get(1));
+				
+				if(!running){
+					startWatch();
+					running = true;
+				}else{
+					pauseWatch();
+				}
 
 			}
 		});
@@ -500,6 +527,18 @@ SensorEventListener
 
 		if(isTime){
 			isTime = false;
+			
+			Location curr = new Location("");
+			curr.set(location);
+			if(running){
+				if(start){ 
+					prev = curr; 
+					start = false;
+				} else{
+					distance += prev.distanceTo(curr);
+					prev = curr;
+				}
+			}
 
 			db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
 
@@ -630,5 +669,42 @@ SensorEventListener
 				adjustPanoration();
 			}
 		}
+	}
+	
+	public void startWatch(){
+	    m_handlerTask = new Runnable()
+	    {
+	         @Override 
+	         public void run() {
+	             if(!pause)
+	             {
+	              seconds++;
+	              updateDisplay();
+	             }
+	            else 
+	              {
+	                m_handler.removeCallbacks(m_handlerTask);
+	              }
+	              m_handler.postDelayed(m_handlerTask, 1000);
+	         }
+	    };
+	    m_handlerTask.run(); 
+	}
+	
+	public void pauseWatch(){
+		if (pause){
+			pause = false;
+		}else{
+			pause = true;
+		}
+	}
+	
+	public void updateDisplay(){
+		Time t = new Time();
+		t.set(seconds*1000);
+		t.switchTimezone("GMT");
+		tx_time.setText(t.format("%H:%M:%S")); 
+		tx_distance.setText("Total Dist: "+distance+"m");
+		tx_speed.setText("Speed: "+((distance/seconds)*3.6)+"km/h"); 
 	}
 }
