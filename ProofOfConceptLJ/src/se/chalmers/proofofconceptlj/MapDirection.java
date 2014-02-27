@@ -72,6 +72,7 @@ SensorEventListener
 	private Marker 				selectMarker;
 
 	private Boolean 			first = true;
+	private Boolean 			directionFinished = false;
 
 	private SensorManager	mSensorManager;
 	private Sensor 			accelerometer;
@@ -148,10 +149,10 @@ SensorEventListener
 
 			@Override
 			public void onClick(View v) {
-				map.clear();
-				marks=0;
+				//map.clear();
+				//marks=0;
 				//currentSoundSource = 1;
-				finalRoute.clear();
+				//finalRoute.clear();
 				//generateRandomSoundSource();
 				generateRandomRoute(100);
 				//soundSource.set(finalRoute.get(1));
@@ -194,118 +195,123 @@ SensorEventListener
 
 	private void generateRandomSoundSource() {
 		// Calculation random position, needs more work
-				double a = Math.random();
-				double b = Math.random();
-				double r = 100 / 111300f;
+		double a = Math.random();
+		double b = Math.random();
+		double r = 100 / 111300f;
 
-				double w = r * Math.sqrt(a);
-				double t = 2 * Math.PI * b;
-				double x = w * Math.cos(t); 
-				double y = w * Math.sin(t);
+		double w = r * Math.sqrt(a);
+		double t = 2 * Math.PI * b;
+		double x = w * Math.cos(t); 
+		double y = w * Math.sin(t);
 
-				double xNew = x / Math.cos(human.getLocation().getLongitude());
+		double xNew = x / Math.cos(human.getLocation().getLongitude());
 
-				Location random = new Location("");
-				random.setLatitude(xNew + human.getLocation().getLatitude());
-				random.setLongitude(human.getLocation().getLongitude()+y);
+		Location random = new Location("");
+		random.setLatitude(xNew + human.getLocation().getLatitude());
+		random.setLongitude(human.getLocation().getLongitude()+y);
 
-				marker = map.addMarker(new MarkerOptions()
-				.position(new LatLng(random.getLatitude(), random.getLongitude()))
-				.title("Random").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-				
-//				soundSource.setLatitude(xNew + human.getLocation().getLatitude());
-//				soundSource.setLongitude(human.getLocation().getLongitude()+y);
+		marker = map.addMarker(new MarkerOptions()
+		.position(new LatLng(random.getLatitude(), random.getLongitude()))
+		.title("Random").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 
-				//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
-//				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
-//						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+		//				soundSource.setLatitude(xNew + human.getLocation().getLatitude());
+		//				soundSource.setLongitude(human.getLocation().getLongitude()+y);
+
+		//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
+		//				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
+		//						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
 
 
 	}
 
 	private ArrayList<Location> generateRandomRoute(double distance){
 		// Calculation random positions
-		double a = Math.random();
-		double b = Math.random();
+				map.clear();
+				marks=0;
+				//currentSoundSource = 1;
+				finalRoute.clear();
+				double a = Math.random();
+				double b = Math.random();
 
-		double r = distance / 111300f;
+				double r = distance / 111300f;
 
-		double w = r * Math.sqrt(a);
-		double t = 2 * Math.PI * b;
-		double x = w * Math.cos(t);
-		double y = w * Math.sin(t);
-		double xNew = x / Math.cos(human.getLocation().getLongitude());
+				double w = r * Math.sqrt(a);
+				double t = 2 * Math.PI * b;
+				double x = w * Math.cos(t);
+				double y = w * Math.sin(t);
+				double xNew = x / Math.cos(human.getLocation().getLongitude());
 
-		Location routePoint = new Location("route");
-		routePoint.setLatitude(xNew + human.getLocation().getLatitude());
-		routePoint.setLongitude(human.getLocation().getLongitude()+y);
+				Location routePoint = new Location("route");
+				routePoint.setLatitude(xNew + human.getLocation().getLatitude());
+				routePoint.setLongitude(human.getLocation().getLongitude()+y);
 
-		ArrayList<Location> route = new ArrayList<Location>(); 
-		route.add(human.getLocation());
-		route.add(routePoint);
-		Location routePoint2 = new Location("route2");
-		double differLat = human.getLocation().getLatitude() - routePoint.getLatitude();
-		double differLng = human.getLocation().getLongitude() - routePoint.getLongitude();
+				ArrayList<Location> route = new ArrayList<Location>(); 
+				route.add(human.getLocation());
+				route.add(routePoint);
+				Location routePoint2 = new Location("route2");
+				double differLat = human.getLocation().getLatitude() - routePoint.getLatitude();
+				double differLng = human.getLocation().getLongitude() - routePoint.getLongitude();
 
-		if(Math.random()>0.5){
-			routePoint2.setLatitude(human.getLocation().getLatitude() + differLng);
-			routePoint2.setLongitude(human.getLocation().getLongitude() - differLat);
-		}else{
-			routePoint2.setLatitude(human.getLocation().getLatitude() - differLng);
-			routePoint2.setLongitude(human.getLocation().getLongitude() + differLat);
-		}
+				if(Math.random()>0.5){
+					routePoint2.setLatitude(human.getLocation().getLatitude() + differLng);
+					routePoint2.setLongitude(human.getLocation().getLongitude() - differLat);
+				}else{
+					routePoint2.setLatitude(human.getLocation().getLatitude() - differLng);
+					routePoint2.setLongitude(human.getLocation().getLongitude() + differLat);
+				}
 
-		route.add(routePoint2);
-		route.add(human.getLocation());
+				route.add(routePoint2);
+				route.add(human.getLocation());
 
-		for(int i = 0; i < route.size()-1; i++){
-			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
-					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
-		}
-		//finalRoute.add(human.getLocation());
-		return route;
+				for(int i = 0; i < route.size()-1; i++){
+					findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
+							, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
+				}
+				//finalRoute.add(human.getLocation());
+				return route;
 
-		//		// Calculation random positions at Marcus home. (P� landet)
-		//		double a = (Math.random()*0.5) + 0.5;
-		//		double b = (Math.random()*0.5) + 0.5;
-		//		double r = distance / 111300f;
-		//
-		//		double w = r * Math.sqrt(a);
-		//		double t = 2 * Math.PI * b;
-		//		double x = w * Math.cos(t);
-		//		double y = w * Math.sin(t);
-		//		double xNew = x / Math.cos(HOME_MARCUS.longitude);
-		//
-		//		Location home = new Location("");
-		//		home.setLatitude(HOME_MARCUS.latitude);
-		//		home.setLongitude(HOME_MARCUS.longitude);
-		//		Location routePoint = new Location("route");
-		//		routePoint.setLatitude(xNew + HOME_MARCUS.latitude);
-		//		routePoint.setLongitude(HOME_MARCUS.longitude+y);
-		//
-		//		ArrayList<Location> route = new ArrayList<Location>(); 
-		//		route.add(home);
-		//		route.add(routePoint);
-		//		Location routePoint2 = new Location("route2");
-		//		double differLat = 		HOME_MARCUS.latitude - routePoint.getLatitude();
-		//		double differLng = HOME_MARCUS.longitude - routePoint.getLongitude();
-		//
-		//		if(Math.random()>0.5){
-		//			routePoint2.setLatitude(HOME_MARCUS.latitude + differLng);
-		//			routePoint2.setLongitude(HOME_MARCUS.longitude - differLat);
-		//		}else{
-		//			routePoint2.setLatitude(HOME_MARCUS.latitude - differLng);
-		//			routePoint2.setLongitude(HOME_MARCUS.longitude + differLat);
-		//		}
-		//
-		//		route.add(routePoint2);
-		//		route.add(home);
-		//
-		//		for(int i = 0; i < route.size()-1; i++){
-		//			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
-		//					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
-		//		}
-		//		return route;
+				//		// Calculation random positions at Marcus home. (P� landet)
+				//		double a = (Math.random()*0.5) + 0.5;
+				//		double b = (Math.random()*0.5) + 0.5;
+				//		double r = distance / 111300f;
+				//
+				//		double w = r * Math.sqrt(a);
+				//		double t = 2 * Math.PI * b;
+				//		double x = w * Math.cos(t);
+				//		double y = w * Math.sin(t);
+				//		double xNew = x / Math.cos(HOME_MARCUS.longitude);
+				//
+				//		Location home = new Location("");
+				//		home.setLatitude(HOME_MARCUS.latitude);
+				//		home.setLongitude(HOME_MARCUS.longitude);
+				//		Location routePoint = new Location("route");
+				//		routePoint.setLatitude(xNew + HOME_MARCUS.latitude);
+				//		routePoint.setLongitude(HOME_MARCUS.longitude+y);
+				//
+				//		ArrayList<Location> route = new ArrayList<Location>(); 
+				//		route.add(home);
+				//		route.add(routePoint);
+				//		Location routePoint2 = new Location("route2");
+				//		double differLat = 		HOME_MARCUS.latitude - routePoint.getLatitude();
+				//		double differLng = HOME_MARCUS.longitude - routePoint.getLongitude();
+				//
+				//		if(Math.random()>0.5){
+				//			routePoint2.setLatitude(HOME_MARCUS.latitude + differLng);
+				//			routePoint2.setLongitude(HOME_MARCUS.longitude - differLat);
+				//		}else{
+				//			routePoint2.setLatitude(HOME_MARCUS.latitude - differLng);
+				//			routePoint2.setLongitude(HOME_MARCUS.longitude + differLat);
+				//		}
+				//
+				//		route.add(routePoint2);
+				//		route.add(home);
+				//
+				//		for(int i = 0; i < route.size()-1; i++){
+				//			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
+				//					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
+				//		}
+				//		return route;
+
 
 	}
 
@@ -353,11 +359,11 @@ SensorEventListener
 
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(Color.BLUE);
-		int points = -1;
+		int points = directionPoints.size()-1;
 		//		int halfway=0; 
 		for(int i = 0 ; i < directionPoints.size() ; i++) 
 		{
-			points ++;
+			//points ++;
 			rectLine.add(directionPoints.get(i));
 		}
 
@@ -392,19 +398,24 @@ SensorEventListener
 			.position(new LatLng(soundSource.getLatitude(), soundSource.getLongitude()))
 			.title("First! " + marks ).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		}
+		marks++;
 
+		if(finalRoute.size() == 3){
+			directionFinished = true;
+		}
 		//		marks++;
 		//		marker = map.addMarker(new MarkerOptions()
 		//		.position(new LatLng(directionPoints.get(halfway).latitude, directionPoints.get(halfway).longitude))
 		//		.title("halfway! " + marks + ",  " + directionPoints.get(halfway).latitude 
 		//				+ " " + directionPoints.get(halfway).longitude));
 
-		marks++;
-		marker = map.addMarker(new MarkerOptions()
-		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
-		.title("End of route!  " + marks +",  "+ directionPoints.get(points).latitude 
-				+ " " + directionPoints.get(points).longitude));
+
+		//		marker = map.addMarker(new MarkerOptions()
+		//		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
+		//		.title("End of route!  " + marks +",  "+ directionPoints.get(points).latitude 
+		//				+ " " + directionPoints.get(points).longitude));
 		//map.animateCamera(CameraUpdateFactory.zoomOut());
+
 	}
 
 
@@ -505,16 +516,26 @@ SensorEventListener
 			}, delayTime);
 		}
 
-		if(human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE){
+		if((human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE) && directionFinished){
 			fx.playFX(fx.getCoin(), 0); //Plays sound to indicate coin acquired.
 			human.modScore(1);
 			pointsTaken++;
-			if(pointsTaken==3){	
-			generateRandomRoute(100);
-			pointsTaken = 0;
+
+			if(pointsTaken>=finalRoute.size()){	
+				generateRandomRoute(100);
+				directionFinished = false;
+				pointsTaken = 0;
 			}else{
 				soundSource.set(finalRoute.get(pointsTaken));
+				if (marker != null){
+					marker.remove();
+				}
+				marker = map.addMarker(new MarkerOptions()
+				.position(new LatLng(soundSource.getLatitude(), soundSource.getLongitude()))
+				.title("Sound" ).icon(BitmapDescriptorFactory
+						.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 			}
+
 			TextView score = (TextView) findViewById(R.id.textView_score);
 			score.setText("Score: "+human.getScore());
 		}
