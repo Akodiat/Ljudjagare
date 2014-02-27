@@ -33,10 +33,14 @@ public class MainActivity extends Activity{
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
+		System.out.println("Density= " + getResources().getDisplayMetrics().density);
+		int density = (int)getResources().getDisplayMetrics().density;
 		int width = size.x;
 		int height = size.y;
-		//Setting a good coverflow height as 3/8 of the screen height
-		coverFlowHeight = (int)((4.0/10.0)*height) - 50;
+		System.out.println("Width= " + width);
+		System.out.println("Height= " + height);
+		//Setting a good coverflow height as 4/10 of the screen height minus the actionbar
+		coverFlowHeight = (int)((4.0/10.0)*height) - density*32;
 
 		//Setting up the cover flow
 		fancyCoverFlow = (FancyCoverFlow) this.findViewById(R.id.fancyCoverFlow);
