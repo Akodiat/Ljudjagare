@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
 
 	public void playSound(View view) throws InterruptedException {
 		if (!fx.getCowbell().isPlaying())
-			fx.setPosition(fx.getCowbell());
+			fx.loop(fx.getCowbell());
 		else  {
 			fx.stopHandler();
 		}

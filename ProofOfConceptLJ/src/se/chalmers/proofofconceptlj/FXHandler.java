@@ -46,21 +46,21 @@ public class FXHandler {
 
 		// Load FX
 		soundPoolMap
-		.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
+				.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
 
-		soundPoolMap
-		.put(Constants.FX_02, soundPool.load(context, R.raw.dragon, 1));
-		
+		soundPoolMap.put(Constants.FX_02,
+				soundPool.load(context, R.raw.dragon, 1));
+
 		// Initialize audio
-		cowbell	 = new FX(Constants.FX_01);
-		coin	 = new FX(Constants.FX_02);
+		cowbell = new FX(Constants.FX_01);
+		coin = new FX(Constants.FX_02);
 
 		// Initialize thread handler
 		handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == Constants.MSG)
-					setPosition(cowbell);
+					loop(cowbell);
 
 				if (msg.what == Constants.MSG_STOP)
 					handler.removeCallbacksAndMessages(null);
@@ -71,7 +71,7 @@ public class FXHandler {
 	public FX getCowbell() {
 		return cowbell;
 	}
-	
+
 	public FX getCoin() {
 		return coin;
 	}
@@ -87,16 +87,6 @@ public class FXHandler {
 		if (loaded)
 			fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
 					fx.rightVolume(), 1, times, 1f));
-	}
-
-	/**
-	 * Loop sound until the process is interrupted.
-	 * 
-	 * @param fx
-	 * @return the streamID if successful, non-zero value if not.
-	 */
-	public void loopFX(FX fx) {
-		playFX(fx, Constants.LOOP);
 	}
 
 	public void stopFX(FX fx) {
@@ -116,7 +106,7 @@ public class FXHandler {
 	 * @param distance
 	 *            distance from audio source in meters.
 	 */
-	public void setPosition(FX fx) {
+	public void loop(FX fx) {
 
 		// Have to add 90 degrees so that (angle = 0) is heard in front.
 		int correctValue = 90;
@@ -146,11 +136,8 @@ public class FXHandler {
 		// Set volume on sound
 		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
 
-		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(), fx.rightVolume(), 0, 1,
-				fx.pitch()));
-
-		// Send to
-		Message msg = handler.obtainMessage(Constants.MSG);
+		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
+				fx.rightVolume(), 0, 1, fx.pitch()));
 
 		int maxDelay = 1000;
 		int minDelay = 200;
@@ -159,7 +146,7 @@ public class FXHandler {
 
 		// Calculate value between 0 and 1, where 0 is when a user has reached
 		// destination:
-		if(fx.distance() <= Constants.MAX_DISTANCE)
+		if (fx.distance() <= Constants.MAX_DISTANCE)
 			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
 		else
 			delayRatio = 1;
@@ -167,6 +154,8 @@ public class FXHandler {
 		// Delay between each repetition.
 		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
 
+		// Send message to handler
+		Message msg = handler.obtainMessage(Constants.MSG);
 		handler.sendMessageDelayed(msg, (long) delay);
 	}
 
@@ -174,7 +163,7 @@ public class FXHandler {
 	 * Sweeping sound from left to right
 	 */
 	public void sweepFX(FX fx) throws InterruptedException {
-		loopFX(fx);
+		playFX(fx, Constants.LOOP);
 
 		for (int count = 0; count < 101; count++) {
 			Thread.sleep(10);
@@ -193,10 +182,6 @@ public class FXHandler {
 		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
 
-	/**
-	 * Return
-	 * @return
-	 */
 	public Handler getHandler() {
 		return handler;
 	}
@@ -205,8 +190,8 @@ public class FXHandler {
 		Message msg = handler.obtainMessage(Constants.MSG_STOP);
 		handler.sendMessage(msg);
 
-		// set sound to not playings
-		stopFX(getCowbell());
+		// Set streamID to not playing
+		getCowbell().setStreamID(FX.NOT_PLAYING);
 	}
 
 	public void update(FX fx, float angle, float distance) {

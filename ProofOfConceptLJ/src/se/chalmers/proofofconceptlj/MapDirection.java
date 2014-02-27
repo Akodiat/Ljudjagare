@@ -337,7 +337,7 @@ SensorEventListener
 		Button button = (Button) findViewById(R.id.bPlay);
 		
 		if (!fx.getCowbell().isPlaying()){
-			fx.setPosition(fx.getCowbell());
+			fx.loop(fx.getCowbell());
 			
 			button.setText("Stop sound");
 		}
