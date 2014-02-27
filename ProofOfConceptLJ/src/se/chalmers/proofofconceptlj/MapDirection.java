@@ -91,18 +91,18 @@ SensorEventListener
 	private int marks;
 	private int currentSoundSource;
 	private int pointsTaken = 0;
-	
+
 	private TextView tx_time;
 	private TextView tx_distance;
 	private TextView tx_speed;
 	private Long seconds = 0L;
 	private Boolean running = false;
 	private Boolean pause = false;
-    private Handler m_handler;
-    private Runnable m_handlerTask;
-    private int distance;
-    private Location prev = new Location("");
-    private Boolean start = true;
+	private Handler m_handler;
+	private Runnable m_handlerTask;
+	private int distance;
+	private Location prev = new Location("");
+	private Boolean start = true;
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
@@ -129,12 +129,12 @@ SensorEventListener
 
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_map_direction);
-		
+
 		tx_time = (TextView) findViewById(R.id.textView_time);	
 		tx_distance = (TextView) findViewById(R.id.textView_distance);
 		tx_speed = (TextView) findViewById(R.id.textView_speed);
 		m_handler = new Handler();
-		
+
 		db = new MySQLiteHelper(this);
 		db.onUpgrade(db.getWritableDatabase(), 1, 2);
 
@@ -176,7 +176,7 @@ SensorEventListener
 				//generateRandomSoundSource();
 				generateRandomRoute(100);
 				//soundSource.set(finalRoute.get(1));
-				
+
 				if(!running){
 					startWatch();
 					running = true;
@@ -253,91 +253,91 @@ SensorEventListener
 
 	private ArrayList<Location> generateRandomRoute(double distance){
 		// Calculation random positions
-				map.clear();
-				marks=0;
-				//currentSoundSource = 1;
-				finalRoute.clear();
-				double a = Math.random();
-				double b = Math.random();
+		map.clear();
+		marks=0;
+		//currentSoundSource = 1;
+		finalRoute.clear();
+		double a = Math.random();
+		double b = Math.random();
 
-				double r = distance / 111300f;
+		double r = distance / 111300f;
 
-				double w = r * Math.sqrt(a);
-				double t = 2 * Math.PI * b;
-				double x = w * Math.cos(t);
-				double y = w * Math.sin(t);
-				double xNew = x / Math.cos(human.getLocation().getLongitude());
+		double w = r * Math.sqrt(a);
+		double t = 2 * Math.PI * b;
+		double x = w * Math.cos(t);
+		double y = w * Math.sin(t);
+		double xNew = x / Math.cos(human.getLocation().getLongitude());
 
-				Location routePoint = new Location("route");
-				routePoint.setLatitude(xNew + human.getLocation().getLatitude());
-				routePoint.setLongitude(human.getLocation().getLongitude()+y);
+		Location routePoint = new Location("route");
+		routePoint.setLatitude(xNew + human.getLocation().getLatitude());
+		routePoint.setLongitude(human.getLocation().getLongitude()+y);
 
-				ArrayList<Location> route = new ArrayList<Location>(); 
-				route.add(human.getLocation());
-				route.add(routePoint);
-				Location routePoint2 = new Location("route2");
-				double differLat = human.getLocation().getLatitude() - routePoint.getLatitude();
-				double differLng = human.getLocation().getLongitude() - routePoint.getLongitude();
+		ArrayList<Location> route = new ArrayList<Location>(); 
+		route.add(human.getLocation());
+		route.add(routePoint);
+		Location routePoint2 = new Location("route2");
+		double differLat = human.getLocation().getLatitude() - routePoint.getLatitude();
+		double differLng = human.getLocation().getLongitude() - routePoint.getLongitude();
 
-				if(Math.random()>0.5){
-					routePoint2.setLatitude(human.getLocation().getLatitude() + differLng);
-					routePoint2.setLongitude(human.getLocation().getLongitude() - differLat);
-				}else{
-					routePoint2.setLatitude(human.getLocation().getLatitude() - differLng);
-					routePoint2.setLongitude(human.getLocation().getLongitude() + differLat);
-				}
+		if(Math.random()>0.5){
+			routePoint2.setLatitude(human.getLocation().getLatitude() + differLng);
+			routePoint2.setLongitude(human.getLocation().getLongitude() - differLat);
+		}else{
+			routePoint2.setLatitude(human.getLocation().getLatitude() - differLng);
+			routePoint2.setLongitude(human.getLocation().getLongitude() + differLat);
+		}
 
-				route.add(routePoint2);
-				route.add(human.getLocation());
+		route.add(routePoint2);
+		route.add(human.getLocation());
 
-				for(int i = 0; i < route.size()-1; i++){
-					findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
-							, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
-				}
-				//finalRoute.add(human.getLocation());
-				return route;
+		for(int i = 0; i < route.size()-1; i++){
+			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
+					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
+		}
+		//finalRoute.add(human.getLocation());
+		return route;
 
-				//		// Calculation random positions at Marcus home. (P� landet)
-				//		double a = (Math.random()*0.5) + 0.5;
-				//		double b = (Math.random()*0.5) + 0.5;
-				//		double r = distance / 111300f;
-				//
-				//		double w = r * Math.sqrt(a);
-				//		double t = 2 * Math.PI * b;
-				//		double x = w * Math.cos(t);
-				//		double y = w * Math.sin(t);
-				//		double xNew = x / Math.cos(HOME_MARCUS.longitude);
-				//
-				//		Location home = new Location("");
-				//		home.setLatitude(HOME_MARCUS.latitude);
-				//		home.setLongitude(HOME_MARCUS.longitude);
-				//		Location routePoint = new Location("route");
-				//		routePoint.setLatitude(xNew + HOME_MARCUS.latitude);
-				//		routePoint.setLongitude(HOME_MARCUS.longitude+y);
-				//
-				//		ArrayList<Location> route = new ArrayList<Location>(); 
-				//		route.add(home);
-				//		route.add(routePoint);
-				//		Location routePoint2 = new Location("route2");
-				//		double differLat = 		HOME_MARCUS.latitude - routePoint.getLatitude();
-				//		double differLng = HOME_MARCUS.longitude - routePoint.getLongitude();
-				//
-				//		if(Math.random()>0.5){
-				//			routePoint2.setLatitude(HOME_MARCUS.latitude + differLng);
-				//			routePoint2.setLongitude(HOME_MARCUS.longitude - differLat);
-				//		}else{
-				//			routePoint2.setLatitude(HOME_MARCUS.latitude - differLng);
-				//			routePoint2.setLongitude(HOME_MARCUS.longitude + differLat);
-				//		}
-				//
-				//		route.add(routePoint2);
-				//		route.add(home);
-				//
-				//		for(int i = 0; i < route.size()-1; i++){
-				//			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
-				//					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
-				//		}
-				//		return route;
+		//		// Calculation random positions at Marcus home. (P� landet)
+		//		double a = (Math.random()*0.5) + 0.5;
+		//		double b = (Math.random()*0.5) + 0.5;
+		//		double r = distance / 111300f;
+		//
+		//		double w = r * Math.sqrt(a);
+		//		double t = 2 * Math.PI * b;
+		//		double x = w * Math.cos(t);
+		//		double y = w * Math.sin(t);
+		//		double xNew = x / Math.cos(HOME_MARCUS.longitude);
+		//
+		//		Location home = new Location("");
+		//		home.setLatitude(HOME_MARCUS.latitude);
+		//		home.setLongitude(HOME_MARCUS.longitude);
+		//		Location routePoint = new Location("route");
+		//		routePoint.setLatitude(xNew + HOME_MARCUS.latitude);
+		//		routePoint.setLongitude(HOME_MARCUS.longitude+y);
+		//
+		//		ArrayList<Location> route = new ArrayList<Location>(); 
+		//		route.add(home);
+		//		route.add(routePoint);
+		//		Location routePoint2 = new Location("route2");
+		//		double differLat = 		HOME_MARCUS.latitude - routePoint.getLatitude();
+		//		double differLng = HOME_MARCUS.longitude - routePoint.getLongitude();
+		//
+		//		if(Math.random()>0.5){
+		//			routePoint2.setLatitude(HOME_MARCUS.latitude + differLng);
+		//			routePoint2.setLongitude(HOME_MARCUS.longitude - differLat);
+		//		}else{
+		//			routePoint2.setLatitude(HOME_MARCUS.latitude - differLng);
+		//			routePoint2.setLongitude(HOME_MARCUS.longitude + differLat);
+		//		}
+		//
+		//		route.add(routePoint2);
+		//		route.add(home);
+		//
+		//		for(int i = 0; i < route.size()-1; i++){
+		//			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
+		//					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
+		//		}
+		//		return route;
 
 
 	}
@@ -362,15 +362,15 @@ SensorEventListener
 
 	public void playSound(View view) {
 		Button button = (Button) findViewById(R.id.bPlay);
-		
+
 		if (!fx.getCowbell().isPlaying()){
 			fx.loop(fx.getCowbell());
-			
+
 			button.setText("Stop sound");
 		}
 		else {
 			fx.stopHandler();
-			
+
 			button.setText("Play sound");
 		}
 	}
@@ -527,7 +527,7 @@ SensorEventListener
 
 		if(isTime){
 			isTime = false;
-			
+
 			Location curr = new Location("");
 			curr.set(location);
 			if(running){
@@ -555,7 +555,10 @@ SensorEventListener
 			}, delayTime);
 		}
 
-		if((human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE) && directionFinished){
+		if((human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE ||
+				(location.getAccuracy() < 50 ? human.getLocation().distanceTo(soundSource) < location.getAccuracy() : false))
+				&& directionFinished)
+		{
 			fx.playFX(fx.getCoin(), 0); //Plays sound to indicate coin acquired.
 			human.modScore(1);
 			pointsTaken++;
@@ -621,13 +624,13 @@ SensorEventListener
 
 	private void adjustPanoration() {
 		CheckBox checkBox = (CheckBox) this.findViewById(R.id.checkBox1);
-		
+
 		float angle = checkBox.isChecked() ? headingAngleOrientation + human.getLocation().bearingTo(soundSource): angleToSound;
 
 		if(angle < 0){
 			angle += 360;
 		}
-		
+
 		if(fx.getCowbell().isPlaying())
 			fx.update(
 					fx.getCowbell(), 
@@ -638,10 +641,10 @@ SensorEventListener
 							//+ 	human.getLocation().bearingTo(soundSource)
 							), 
 							human.getLocation().distanceTo(soundSource));
-		
-//		//Text debug:
-//		TextView angleText = (TextView) findViewById(R.id.textView_angle);
-//		angleText.setText("Angle: "+ angle);
+
+		//		//Text debug:
+		//		TextView angleText = (TextView) findViewById(R.id.textView_angle);
+		//		angleText.setText("Angle: "+ angle);
 	}
 
 	@Override
@@ -670,27 +673,27 @@ SensorEventListener
 			}
 		}
 	}
-	
+
 	public void startWatch(){
-	    m_handlerTask = new Runnable()
-	    {
-	         @Override 
-	         public void run() {
-	             if(!pause)
-	             {
-	              seconds++;
-	              updateDisplay();
-	             }
-	            else 
-	              {
-	                m_handler.removeCallbacks(m_handlerTask);
-	              }
-	              m_handler.postDelayed(m_handlerTask, 1000);
-	         }
-	    };
-	    m_handlerTask.run(); 
+		m_handlerTask = new Runnable()
+		{
+			@Override 
+			public void run() {
+				if(!pause)
+				{
+					seconds++;
+					updateDisplay();
+				}
+				else 
+				{
+					m_handler.removeCallbacks(m_handlerTask);
+				}
+				m_handler.postDelayed(m_handlerTask, 1000);
+			}
+		};
+		m_handlerTask.run(); 
 	}
-	
+
 	public void pauseWatch(){
 		if (pause){
 			pause = false;
@@ -698,7 +701,7 @@ SensorEventListener
 			pause = true;
 		}
 	}
-	
+
 	public void updateDisplay(){
 		Time t = new Time();
 		t.set(seconds*1000);
