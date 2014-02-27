@@ -225,7 +225,7 @@ public class MainActivity extends Activity {
 
 	public void playSound(View view) throws InterruptedException {
 		if (!fx.cowbell().isPlaying())
-			fx.setPosition(fx.cowbell());
+			fx.loopFX(fx.cowbell());
 		else  {
 			fx.stopHandler();
 		}

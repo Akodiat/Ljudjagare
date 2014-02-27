@@ -2,10 +2,24 @@ package se.chalmers.proofofconceptlj;
 
 public class FX {
 
-	public static final int NOT_PLAYING = -1;
+	
+	public static final int NOT_PLAYING = -1; // Sound is not being played
+	
+	/**
+	 * Sound to be used.
+	 */
 	private int sound;
+	
+	/**
+	 * Stream ID given by SoundPool when playing.
+	 */
 	private int streamID;
+
 	private float leftVolume, rightVolume;
+	
+	/**
+	 * Distance to location.
+	 */
 	private float distance;
 	private float angle;
 	

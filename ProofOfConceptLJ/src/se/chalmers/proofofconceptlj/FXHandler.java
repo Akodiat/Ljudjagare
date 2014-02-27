@@ -43,7 +43,7 @@ public class FXHandler {
 
 		// Load FX
 		soundPoolMap
-				.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
+				.put(Constants.FX_01, soundPool.load(context, R.raw.sine, 1));
 
 		// Initialize audio
 		cowbell = new FX(Constants.FX_01);
@@ -53,7 +53,7 @@ public class FXHandler {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == Constants.MSG)
-					setPosition(cowbell);
+					loopFX(cowbell);
 
 				if (msg.what == Constants.MSG_STOP)
 					handler.removeCallbacksAndMessages(null);
@@ -78,16 +78,6 @@ public class FXHandler {
 					fx.rightVolume(), 1, times, 1f));
 	}
 
-	/**
-	 * Loop sound until the process is interrupted.
-	 * 
-	 * @param fx
-	 * @return the streamID if successful, non-zero value if not.
-	 */
-	public void loopFX(FX fx) {
-		playFX(fx, Constants.LOOP);
-	}
-
 	public void stopFX(FX fx) {
 		if (loaded) {
 			soundPool.stop(fx.streamID());
@@ -105,7 +95,7 @@ public class FXHandler {
 	 * @param distance
 	 *            distance from audio source in meters.
 	 */
-	public void setPosition(FX fx) {
+	public void loopFX(FX fx) {
 
 		// Have to add 90 degrees so that (angle = 0) is heard in front.
 		int correctValue = 90;
@@ -135,15 +125,12 @@ public class FXHandler {
 		// Set volume on sound
 		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
 
+		// Play sound and set streamID
 		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(), fx.rightVolume(), 0, 1,
 				fx.pitch()));
 
-		// Send to
-		Message msg = handler.obtainMessage(Constants.MSG);
-
 		int maxDelay = 1000;
 		int minDelay = 200;
-
 		float delayRatio;
 		
 		// Calculate value between 0 and 1, where 0 is when a user has reached
@@ -156,6 +143,8 @@ public class FXHandler {
 		// Delay between each repetition.
 		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
 
+		// Send message to handler.
+		Message msg = handler.obtainMessage(Constants.MSG);
 		handler.sendMessageDelayed(msg, (long) delay);
 	}
 
@@ -163,7 +152,7 @@ public class FXHandler {
 	 * Sweeping sound from left to right
 	 */
 	public void sweepFX(FX fx) throws InterruptedException {
-		loopFX(fx);
+		playFX(fx, Constants.LOOP);
 
 		for (int count = 0; count < 101; count++) {
 			Thread.sleep(10);
@@ -182,10 +171,6 @@ public class FXHandler {
 		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
 
-	/**
-	 * Return
-	 * @return
-	 */
 	public Handler getHandler() {
 		return handler;
 	}
@@ -194,10 +179,16 @@ public class FXHandler {
 		Message msg = handler.obtainMessage(Constants.MSG_STOP);
 		handler.sendMessage(msg);
 		
-		// set sound to not playings
-		stopFX(cowbell());
+		// Set stream ID to 'not playing'.
+		cowbell.setStreamID(FX.NOT_PLAYING);
 	}
 
+	/**
+	 * Frequently called as GPS is being updated.
+	 * @param fx sound to set values
+	 * @param angle the current angle
+	 * @param distance the distance from the destination
+	 */
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
 		if (fx.angle() >= 0 && fx.angle() <= 180)
