@@ -46,7 +46,7 @@ public class FXHandler {
 
 		// Load FX
 		soundPoolMap
-				.put(Constants.FX_01, soundPool.load(context, R.raw.bip, 1));
+				.put(Constants.FX_01, soundPool.load(context, R.raw.sine, 1));
 
 		soundPoolMap.put(Constants.FX_02,
 				soundPool.load(context, R.raw.dragon, 1));
