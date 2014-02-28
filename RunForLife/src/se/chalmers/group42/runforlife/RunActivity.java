@@ -115,14 +115,21 @@ public class RunActivity extends FragmentActivity implements
 
 		@Override
 		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a DummySectionFragment (defined as a static inner class
-			// below) with the page number as its lone argument.
-			Fragment fragment = new DummySectionFragment();
+			Fragment fragment = null;
+			switch(position){
+				case 0:
+					fragment = new RunFragment();
+				case 1:
+					fragment = new RunFragment();
+			}
+//			// getItem is called to instantiate the fragment for the given page.
+//			// Return a DummySectionFragment (defined as a static inner class
+//			// below) with the page number as its lone argument.
+//			Fragment fragment = new RunFragment();
 			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+////			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
 			fragment.setArguments(args);
-			return fragment;
+			return new RunFragment();
 		}
 
 		@Override
@@ -136,41 +143,41 @@ public class RunActivity extends FragmentActivity implements
 			Locale l = Locale.getDefault();
 			switch (position) {
 			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
+				return getString(R.string.title_run).toUpperCase(l);
 			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
+				return getString(R.string.title_map).toUpperCase(l);
 			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
+				return getString(R.string.title_stats).toUpperCase(l);
 			}
 			return null;
 		}
 	}
 
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class DummySectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		public DummySectionFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_run_dummy,
-					container, false);
-			TextView dummyTextView = (TextView) rootView
-					.findViewById(R.id.section_label);
-			dummyTextView.setText(Integer.toString(getArguments().getInt(
-					ARG_SECTION_NUMBER)));
-			return rootView;
-		}
-	}
+//	/**
+//	 * A dummy fragment representing a section of the app, but that simply
+//	 * displays dummy text.
+//	 */
+//	public static class DummySectionFragment extends Fragment {
+//		/**
+//		 * The fragment argument representing the section number for this
+//		 * fragment.
+//		 */
+//		public static final String ARG_SECTION_NUMBER = "section_number";
+//
+//		public DummySectionFragment() {
+//		}
+//
+//		@Override
+//		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//				Bundle savedInstanceState) {
+//			View rootView = inflater.inflate(R.layout.fragment_run_dummy,
+//					container, false);
+//			TextView dummyTextView = (TextView) rootView
+//					.findViewById(R.id.section_label);
+//			dummyTextView.setText(Integer.toString(getArguments().getInt(
+//					ARG_SECTION_NUMBER)));
+//			return rootView;
+//		}
+//	}
 
 }
