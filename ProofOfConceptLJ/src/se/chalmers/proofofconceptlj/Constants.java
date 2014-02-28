@@ -19,5 +19,10 @@ public class Constants {
 	 * Distance to destination where user has reached the destination.
 	 */
 	public static final int MIN_DISTANCE = 15;
+	
+	/**
+	 * Minimum pitch rate (0.5 - 1)
+	 */
+	public static final float MIN_PITCH = 0.6f;
 
 }

@@ -45,8 +45,8 @@ public class FXHandler {
 		});
 
 		// Load FX
-		soundPoolMap
-				.put(Constants.FX_01, soundPool.load(context, R.raw.sine, 1));
+		soundPoolMap.put(Constants.FX_01,
+				soundPool.load(context, R.raw.sine, 1));
 
 		soundPoolMap.put(Constants.FX_02,
 				soundPool.load(context, R.raw.dragon, 1));
@@ -196,10 +196,18 @@ public class FXHandler {
 
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
-		if (fx.angle() >= 0 && fx.angle() <= 180)
-			fx.setPitch((float) (fx.angle() * (-0.5 / 180) + 1));
-		else
-			fx.setPitch((float) 0.5 * fx.angle() / 180);
+
+		float rate = 0.6f; // value between 0.5 and 1.
+		float k, m;
+		if (fx.angle() >= 0 && fx.angle() <= 180) {
+			k = (1 - Constants.MIN_PITCH) / (-180);
+			m = 1 - k * 0;
+			fx.setPitch(k * fx.angle() + m);
+		} else {
+			k = (1 - Constants.MIN_PITCH) / 180;
+			m = 1 - k * 360;
+			fx.setPitch(k * fx.angle() + m);
+		}
 
 		fx.setDistance(distance);
 	}
