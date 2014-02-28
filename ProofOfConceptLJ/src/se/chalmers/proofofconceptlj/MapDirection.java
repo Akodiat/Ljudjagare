@@ -222,31 +222,54 @@ SensorEventListener
 
 	private void generateRandomSoundSource() {
 		// Calculation random position, needs more work
-		double a = Math.random();
-		double b = Math.random();
-		double r = 100 / 111300f;
+				double a = Math.random();
+				double b = Math.random();
+				double r = 100 / 111300f;
 
-		double w = r * Math.sqrt(a);
-		double t = 2 * Math.PI * b;
-		double x = w * Math.cos(t); 
-		double y = w * Math.sin(t);
+				double w = r * Math.sqrt(a);
+				double t = 2 * Math.PI * b;
+				double x = w * Math.cos(t); 
+				double y = w * Math.sin(t);
 
-		double xNew = x / Math.cos(human.getLocation().getLongitude());
+				double xNew = x / Math.cos(human.getLocation().getLongitude());
 
-		Location random = new Location("");
-		random.setLatitude(xNew + human.getLocation().getLatitude());
-		random.setLongitude(human.getLocation().getLongitude()+y);
+				Location random = new Location("");
+				random.setLatitude(xNew + human.getLocation().getLatitude());
+				random.setLongitude(human.getLocation().getLongitude()+y);
 
-		marker = map.addMarker(new MarkerOptions()
-		.position(new LatLng(random.getLatitude(), random.getLongitude()))
-		.title("Random").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+				float bearingTo = human.getLocation().bearingTo(random);
+				double addLat;
+				double addLng;
+				double distanceFromLocation = 1000/111300f; 
+				if(bearingTo<-90){
+					bearingTo = bearingTo + 180;
+					addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+					addLng = -(Math.cos(bearingTo)*distanceFromLocation);
+				}else if(bearingTo < 0){
+					bearingTo = bearingTo + 90;
+					addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+					addLng = +(Math.cos(bearingTo)*distanceFromLocation);
+				}else if(bearingTo < 90){
+					addLat = +(Math.sin(bearingTo)*distanceFromLocation);
+					addLng = +(Math.cos(bearingTo)*distanceFromLocation);
+				}else{
+					bearingTo = bearingTo - 90;
+					addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+					addLng = +(Math.cos(bearingTo)*distanceFromLocation);	
+				}
+				random.setLatitude(random.getLatitude() + addLat);
+				random.setLongitude(random.getLongitude() + addLng);
+				
+				marker = map.addMarker(new MarkerOptions()
+				.position(new LatLng(random.getLatitude(), random.getLongitude()))
+				.title("Random").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 
-		//				soundSource.setLatitude(xNew + human.getLocation().getLatitude());
-		//				soundSource.setLongitude(human.getLocation().getLongitude()+y);
+				//				soundSource.setLatitude(xNew + human.getLocation().getLatitude());
+				//				soundSource.setLongitude(human.getLocation().getLongitude()+y);
 
-		//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
-		//				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
-		//						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+				//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
+				//				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
+				//						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
 
 
 	}
@@ -272,6 +295,29 @@ SensorEventListener
 		routePoint.setLatitude(xNew + human.getLocation().getLatitude());
 		routePoint.setLongitude(human.getLocation().getLongitude()+y);
 
+		float bearingTo = human.getLocation().bearingTo(routePoint);
+		double addLat;
+		double addLng;
+		double distanceFromLocation = 1000/111300f; 
+		if(bearingTo<-90){
+			bearingTo = bearingTo + 180;
+			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+			addLng = -(Math.cos(bearingTo)*distanceFromLocation);
+		}else if(bearingTo < 0){
+			bearingTo = bearingTo + 90;
+			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+			addLng = +(Math.cos(bearingTo)*distanceFromLocation);
+		}else if(bearingTo < 90){
+			addLat = +(Math.sin(bearingTo)*distanceFromLocation);
+			addLng = +(Math.cos(bearingTo)*distanceFromLocation);
+		}else{
+			bearingTo = bearingTo - 90;
+			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+			addLng = +(Math.cos(bearingTo)*distanceFromLocation);	
+		}
+		routePoint.setLatitude(routePoint.getLatitude() + addLat);
+		routePoint.setLongitude(routePoint.getLongitude() + addLng);
+		
 		ArrayList<Location> route = new ArrayList<Location>(); 
 		route.add(human.getLocation());
 		route.add(routePoint);
@@ -338,6 +384,7 @@ SensorEventListener
 		//					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
 		//		}
 		//		return route;
+
 
 
 	}
