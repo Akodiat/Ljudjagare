@@ -59,9 +59,6 @@ SensorEventListener
 
 	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
 	private static 			LatLng CURRENT_POSITION = new LatLng(58.705477, 11.990884);
-	private static final 	LatLng AMSTERDAM		= new LatLng(52.37518, 	4.895439);
-	private static final 	LatLng PARIS 			= new LatLng(48.856132, 2.352448);
-	private static final 	LatLng FRANKFURT 		= new LatLng(50.111772, 8.682632);
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
 	private GoogleMap 			map;
 	private SupportMapFragment 	fragment;
@@ -89,7 +86,6 @@ SensorEventListener
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
 	private ArrayList<Location> finalRoute = new ArrayList<Location>(); 
 	private int marks;
-	private int currentSoundSource;
 	private int pointsTaken = 0;
 
 	private TextView tx_time;
@@ -149,7 +145,9 @@ SensorEventListener
 		getScreenDimentions();
 		fragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 		map = fragment.getMap(); 	
-		soundSource = new Location("Trololo");
+
+		// Set default soundsource location
+		soundSource = new Location("SoundSource");
 		soundSource.setLatitude(CURRENT_POSITION.latitude);
 		soundSource.setLongitude(CURRENT_POSITION.longitude);
 		human = new Human(STOCKHOLM);
@@ -169,25 +167,20 @@ SensorEventListener
 
 			@Override
 			public void onClick(View v) {
-				//map.clear();
-				//marks=0;
-				//currentSoundSource = 1;
-				//finalRoute.clear();
 				//generateRandomSoundSource();
 				generateRandomRoute(100);
-				//soundSource.set(finalRoute.get(1));
 
+				// The time you are running
 				if(!running){
 					startWatch();
 					running = true;
 				}else{
 					pauseWatch();
 				}
-
 			}
 		});
 
-		// Setting a click event handler for the map
+		// Used to set a point on the place you longpress on the map
 		map.setOnMapLongClickListener(new OnMapLongClickListener() {
 			@Override
 			public void onMapLongClick(LatLng latLng) {
@@ -196,13 +189,9 @@ SensorEventListener
 				soundSource.setLatitude(latLng.latitude);
 				soundSource.setLongitude(latLng.longitude);
 
-				Log.d("click", "1");
-				Log.d("click", "1"+latLng.latitude + " " + latLng.longitude);
 				if(human.getLocation() != null){
 					findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
 							, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
-					Log.d("click", "2");
-					Log.d("click", "3");
 				}else{
 					MarkerOptions markerOptions = new MarkerOptions();
 					markerOptions.position(latLng);
@@ -221,55 +210,55 @@ SensorEventListener
 
 
 	private void generateRandomSoundSource() {
-		// Calculation random position, needs more work
-				double a = Math.random();
-				double b = Math.random();
-				double r = 100 / 111300f;
+		// Calculation random position
+		double a = Math.random();
+		double b = Math.random();
+		double r = 100 / Constants.LAT_LNG_TO_METER;
 
-				double w = r * Math.sqrt(a);
-				double t = 2 * Math.PI * b;
-				double x = w * Math.cos(t); 
-				double y = w * Math.sin(t);
+		double w = r * Math.sqrt(a);
+		double t = 2 * Math.PI * b;
+		double x = w * Math.cos(t); 
+		double y = w * Math.sin(t);
 
-				double xNew = x / Math.cos(human.getLocation().getLongitude());
+		double xNew = x / Math.cos(human.getLocation().getLongitude());
 
-				Location random = new Location("");
-				random.setLatitude(xNew + human.getLocation().getLatitude());
-				random.setLongitude(human.getLocation().getLongitude()+y);
+		Location random = new Location("");
+		random.setLatitude(xNew + human.getLocation().getLatitude());
+		random.setLongitude(human.getLocation().getLongitude()+y);
 
-				float bearingTo = human.getLocation().bearingTo(random);
-				double addLat;
-				double addLng;
-				double distanceFromLocation = 1000/111300f; 
-				if(bearingTo<-90){
-					bearingTo = bearingTo + 180;
-					addLat = -(Math.sin(bearingTo)*distanceFromLocation);
-					addLng = -(Math.cos(bearingTo)*distanceFromLocation);
-				}else if(bearingTo < 0){
-					bearingTo = bearingTo + 90;
-					addLat = -(Math.sin(bearingTo)*distanceFromLocation);
-					addLng = +(Math.cos(bearingTo)*distanceFromLocation);
-				}else if(bearingTo < 90){
-					addLat = +(Math.sin(bearingTo)*distanceFromLocation);
-					addLng = +(Math.cos(bearingTo)*distanceFromLocation);
-				}else{
-					bearingTo = bearingTo - 90;
-					addLat = -(Math.sin(bearingTo)*distanceFromLocation);
-					addLng = +(Math.cos(bearingTo)*distanceFromLocation);	
-				}
-				random.setLatitude(random.getLatitude() + addLat);
-				random.setLongitude(random.getLongitude() + addLng);
-				
-				marker = map.addMarker(new MarkerOptions()
-				.position(new LatLng(random.getLatitude(), random.getLongitude()))
-				.title("Random").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+		float bearingTo = human.getLocation().bearingTo(random);
+		double addLat;
+		double addLng;
+		double distanceFromLocation = 1000/Constants.LAT_LNG_TO_METER; 
+		if(bearingTo<-90){
+			bearingTo = bearingTo + 180;
+			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+			addLng = -(Math.cos(bearingTo)*distanceFromLocation);
+		}else if(bearingTo < 0){
+			bearingTo = bearingTo + 90;
+			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+			addLng = +(Math.cos(bearingTo)*distanceFromLocation);
+		}else if(bearingTo < 90){
+			addLat = +(Math.sin(bearingTo)*distanceFromLocation);
+			addLng = +(Math.cos(bearingTo)*distanceFromLocation);
+		}else{
+			bearingTo = bearingTo - 90;
+			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
+			addLng = +(Math.cos(bearingTo)*distanceFromLocation);	
+		}
+		random.setLatitude(random.getLatitude() + addLat);
+		random.setLongitude(random.getLongitude() + addLng);
 
-				//				soundSource.setLatitude(xNew + human.getLocation().getLatitude());
-				//				soundSource.setLongitude(human.getLocation().getLongitude()+y);
+		marker = map.addMarker(new MarkerOptions()
+		.position(new LatLng(random.getLatitude(), random.getLongitude()))
+		.title("Random").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 
-				//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
-				//				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
-				//						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
+		//				soundSource.setLatitude(xNew + human.getLocation().getLatitude());
+		//				soundSource.setLongitude(human.getLocation().getLongitude()+y);
+
+		//new LatLng(human.getLocation().latitude+x, human.getLocation().longitude+y);
+		//				findDirections( human.getLocation().getLatitude(), human.getLocation().getLongitude()
+		//						, soundSource.getLatitude(), soundSource.getLongitude(), GMapV2Direction.MODE_WALKING );
 
 
 	}
@@ -278,12 +267,11 @@ SensorEventListener
 		// Calculation random positions
 		map.clear();
 		marks=0;
-		//currentSoundSource = 1;
 		finalRoute.clear();
 		double a = Math.random();
 		double b = Math.random();
 
-		double r = distance / 111300f;
+		double r = distance / Constants.LAT_LNG_TO_METER;
 
 		double w = r * Math.sqrt(a);
 		double t = 2 * Math.PI * b;
@@ -298,7 +286,7 @@ SensorEventListener
 		float bearingTo = human.getLocation().bearingTo(routePoint);
 		double addLat;
 		double addLng;
-		double distanceFromLocation = 1000/111300f; 
+		double distanceFromLocation = 1000/Constants.LAT_LNG_TO_METER; 
 		if(bearingTo<-90){
 			bearingTo = bearingTo + 180;
 			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
@@ -317,7 +305,7 @@ SensorEventListener
 		}
 		routePoint.setLatitude(routePoint.getLatitude() + addLat);
 		routePoint.setLongitude(routePoint.getLongitude() + addLng);
-		
+
 		ArrayList<Location> route = new ArrayList<Location>(); 
 		route.add(human.getLocation());
 		route.add(routePoint);
@@ -332,7 +320,6 @@ SensorEventListener
 			routePoint2.setLatitude(human.getLocation().getLatitude() - differLng);
 			routePoint2.setLongitude(human.getLocation().getLongitude() + differLat);
 		}
-
 		route.add(routePoint2);
 		route.add(human.getLocation());
 
@@ -340,66 +327,16 @@ SensorEventListener
 			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
 					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
 		}
-		//finalRoute.add(human.getLocation());
 		return route;
-
-		//		// Calculation random positions at Marcus home. (P� landet)
-		//		double a = (Math.random()*0.5) + 0.5;
-		//		double b = (Math.random()*0.5) + 0.5;
-		//		double r = distance / 111300f;
-		//
-		//		double w = r * Math.sqrt(a);
-		//		double t = 2 * Math.PI * b;
-		//		double x = w * Math.cos(t);
-		//		double y = w * Math.sin(t);
-		//		double xNew = x / Math.cos(HOME_MARCUS.longitude);
-		//
-		//		Location home = new Location("");
-		//		home.setLatitude(HOME_MARCUS.latitude);
-		//		home.setLongitude(HOME_MARCUS.longitude);
-		//		Location routePoint = new Location("route");
-		//		routePoint.setLatitude(xNew + HOME_MARCUS.latitude);
-		//		routePoint.setLongitude(HOME_MARCUS.longitude+y);
-		//
-		//		ArrayList<Location> route = new ArrayList<Location>(); 
-		//		route.add(home);
-		//		route.add(routePoint);
-		//		Location routePoint2 = new Location("route2");
-		//		double differLat = 		HOME_MARCUS.latitude - routePoint.getLatitude();
-		//		double differLng = HOME_MARCUS.longitude - routePoint.getLongitude();
-		//
-		//		if(Math.random()>0.5){
-		//			routePoint2.setLatitude(HOME_MARCUS.latitude + differLng);
-		//			routePoint2.setLongitude(HOME_MARCUS.longitude - differLat);
-		//		}else{
-		//			routePoint2.setLatitude(HOME_MARCUS.latitude - differLng);
-		//			routePoint2.setLongitude(HOME_MARCUS.longitude + differLat);
-		//		}
-		//
-		//		route.add(routePoint2);
-		//		route.add(home);
-		//
-		//		for(int i = 0; i < route.size()-1; i++){
-		//			findDirections( route.get(i).getLatitude(), route.get(i).getLongitude()
-		//					, route.get(i+1).getLatitude(), route.get(i+1).getLongitude(), GMapV2Direction.MODE_WALKING );
-		//		}
-		//		return route;
-
-
-
 	}
 
 
 
 	@Override
 	protected void onResume() {
-
 		super.onResume();
-		//		latlngBounds = createLatLngBoundsObject(STOCKHOLM, new LatLng(human.getLocation().getLatitude(), human.getLocation().getLongitude()));
-		//		map.moveCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 150));
 		mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
 		mSensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
-
 	}
 
 	protected void onPause() {
@@ -409,27 +346,15 @@ SensorEventListener
 
 	public void playSound(View view) {
 		Button button = (Button) findViewById(R.id.bPlay);
-
 		if (!fx.getCowbell().isPlaying()){
 			fx.loop(fx.getCowbell());
-
 			button.setText("Stop sound");
 		}
 		else {
 			fx.stopHandler();
-
 			button.setText("Play sound");
 		}
 	}
-
-	//	public void updateDistance(int distance){
-	//		String distanceText = Integer.toString(distance);
-	//		TextView t = (TextView) this.findViewById(R.id.textDistance);
-	//		t.setText(distanceText);
-	//	}
-
-
-
 
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(Color.BLUE);
@@ -589,7 +514,7 @@ SensorEventListener
 
 			db.addPoint(new database.Point(currentRoute.getId(), location.getLatitude(), location.getLongitude()));
 
-			//RITAR UT D�R MAN G�TT
+			//Mark on the map where you walk
 			LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
 			routeLine.add(p);
 			myPolyRoute = map.addPolyline(routeLine);
@@ -624,7 +549,6 @@ SensorEventListener
 				.title("Sound" ).icon(BitmapDescriptorFactory
 						.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 			}
-
 			TextView score = (TextView) findViewById(R.id.textView_score);
 			score.setText("Score: "+human.getScore());
 		}
@@ -633,9 +557,6 @@ SensorEventListener
 			ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
 			arrow.setColorFilter(android.graphics.Color.GREEN, Mode.MULTIPLY);
 		}
-		//			arrow.setRotation(human.getLocation().bearingTo(soundSource));
-
-		//
 		if(soundSource != null){
 			pointArrowToSource_GPS();
 			TextView source = (TextView) findViewById(R.id.textView_source);
@@ -646,7 +567,6 @@ SensorEventListener
 			adjustPanoration();
 			arrow.setColorFilter(android.graphics.Color.BLUE, Mode.MULTIPLY);	
 		}
-
 		if(first){
 			first = false;
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(
@@ -679,15 +599,8 @@ SensorEventListener
 		}
 
 		if(fx.getCowbell().isPlaying())
-			fx.update(
-					fx.getCowbell(), 
-					// Har �ndrat f�r att innan s� var inte ljudet r�tt, om ni f�r f�r er och �ndra prata med Marcus f�rst.
-					((
-							angle
-							)
-							//+ 	human.getLocation().bearingTo(soundSource)
-							), 
-							human.getLocation().distanceTo(soundSource));
+			fx.update(fx.getCowbell(), (angle),
+					human.getLocation().distanceTo(soundSource));
 
 		//		//Text debug:
 		//		TextView angleText = (TextView) findViewById(R.id.textView_angle);
@@ -726,13 +639,11 @@ SensorEventListener
 		{
 			@Override 
 			public void run() {
-				if(!pause)
-				{
+				if(!pause){
 					seconds++;
 					updateDisplay();
 				}
-				else 
-				{
+				else {
 					m_handler.removeCallbacks(m_handlerTask);
 				}
 				m_handler.postDelayed(m_handlerTask, 1000);
