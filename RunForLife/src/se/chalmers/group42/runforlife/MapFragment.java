@@ -26,8 +26,9 @@ public class MapFragment extends Fragment{
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_run_dummy,
 				container, false);
-		TextView dummyTextView = (TextView) rootView
-				.findViewById(R.id.section_label);
+		System.out.println("Map Fragment running");
+//		TextView dummyTextView = (TextView) rootView
+//				.findViewById(R.id.section_label);
 //		dummyTextView.setText(Integer.toString(getArguments().getInt(
 //				ARG_SECTION_NUMBER)));
 		return rootView;
