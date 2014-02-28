@@ -120,17 +120,41 @@ public class RunActivity extends FragmentActivity implements
 				case 0:
 					fragment = new RunFragment();
 				case 1:
-					fragment = new RunFragment();
+					fragment = new MapFragment();
+				case 2:
+					fragment = new MapFragment();
 			}
 //			// getItem is called to instantiate the fragment for the given page.
 //			// Return a DummySectionFragment (defined as a static inner class
 //			// below) with the page number as its lone argument.
-//			Fragment fragment = new RunFragment();
+//			Fragment fragment = new DummySectionFragment();
 			Bundle args = new Bundle();
 ////			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-			fragment.setArguments(args);
-			return new RunFragment();
+//			fragment.setArguments(args);
+//			return fragment;
+			return fragment;
 		}
+		
+//		/**
+//	     * Custom item ID resolution. Needed for proper page fragment caching.
+//	     * @see FragmentPagerAdapter#getItemId(int).
+//	     * Code from: http://stackoverflow.com/questions/7723964/replace-fragment-inside-a-viewpager/11974777#11974777
+//	     */
+//	    @Override
+//	    public long getItemId(int position) {
+//	      // Fragments from second level page hierarchy have their ID raised above 100. This is
+//	      // important to FragmentPagerAdapter because it is caching fragments to FragmentManager with
+//	      // this item ID key.
+//	      Fragment item = mFragments.get(position);
+//	      if (item != null) {
+//	        if ((item instanceof NewFirstFragment) || (item instanceof NewSecondFragment) ||
+//	          (item instanceof NewThirdFragment)) {
+//	          return 100 + position;
+//	        }
+//	      }
+//
+//	      return position;
+//	    }
 
 		@Override
 		public int getCount() {
@@ -153,31 +177,30 @@ public class RunActivity extends FragmentActivity implements
 		}
 	}
 
-//	/**
-//	 * A dummy fragment representing a section of the app, but that simply
-//	 * displays dummy text.
-//	 */
-//	public static class DummySectionFragment extends Fragment {
-//		/**
-//		 * The fragment argument representing the section number for this
-//		 * fragment.
-//		 */
-//		public static final String ARG_SECTION_NUMBER = "section_number";
-//
-//		public DummySectionFragment() {
-//		}
-//
-//		@Override
-//		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//				Bundle savedInstanceState) {
-//			View rootView = inflater.inflate(R.layout.fragment_run_dummy,
-//					container, false);
-//			TextView dummyTextView = (TextView) rootView
-//					.findViewById(R.id.section_label);
-//			dummyTextView.setText(Integer.toString(getArguments().getInt(
-//					ARG_SECTION_NUMBER)));
-//			return rootView;
-//		}
-//	}
+	/**
+	 * A dummy fragment representing a section of the app, but that simply
+	 * displays dummy text.
+	 */
+	public static class DummySectionFragment extends Fragment {
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		public static final String ARG_SECTION_NUMBER = "section_number";
+
+		public DummySectionFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_run_dummy,
+					container, false);
+			TextView dummyTextView = (TextView) rootView
+					.findViewById(R.id.section_label);
+			dummyTextView.setText(Integer.toString(111));
+			return rootView;
+		}
+	}
 
 }
