@@ -197,7 +197,6 @@ public class FXHandler {
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
 
-		float rate = 0.6f; // value between 0.5 and 1.
 		float k, m;
 		if (fx.angle() >= 0 && fx.angle() <= 180) {
 			k = (1 - Constants.MIN_PITCH) / (-180);
