@@ -116,13 +116,17 @@ public class RunActivity extends FragmentActivity implements
 		@Override
 		public Fragment getItem(int position) {
 			Fragment fragment = null;
+			position = 1;
 			switch(position){
 				case 0:
 					fragment = new RunFragment();
+					break;
 				case 1:
 					fragment = new MapFragment();
+					break;
 				case 2:
-					fragment = new StatsFragment();
+					fragment = new RunFragment();
+					break;
 			}
 //			// getItem is called to instantiate the fragment for the given page.
 //			// Return a DummySectionFragment (defined as a static inner class
