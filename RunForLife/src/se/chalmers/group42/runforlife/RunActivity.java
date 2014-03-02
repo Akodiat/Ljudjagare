@@ -36,6 +36,10 @@ public class RunActivity extends FragmentActivity implements
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
+	
+	Fragment runFragment;
+	Fragment mapFragment;
+	Fragment statsFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,10 @@ public class RunActivity extends FragmentActivity implements
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
+		
+		runFragment = new RunFragment();
+		mapFragment = new MapFragment();
+		statsFragment = new StatsFragment();
 	}
 
 	@Override
@@ -91,6 +99,7 @@ public class RunActivity extends FragmentActivity implements
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
 		mViewPager.setCurrentItem(tab.getPosition());
+		System.out.println("Tab pos= " + tab.getPosition());
 	}
 
 	@Override
@@ -116,16 +125,15 @@ public class RunActivity extends FragmentActivity implements
 		@Override
 		public Fragment getItem(int position) {
 			Fragment fragment = null;
-			position = 1;
 			switch(position){
 				case 0:
-					fragment = new RunFragment();
+					fragment = runFragment;
 					break;
 				case 1:
-					fragment = new MapFragment();
+					fragment = mapFragment;
 					break;
 				case 2:
-					fragment = new RunFragment();
+					fragment = statsFragment;
 					break;
 			}
 //			// getItem is called to instantiate the fragment for the given page.

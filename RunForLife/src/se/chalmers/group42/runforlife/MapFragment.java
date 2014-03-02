@@ -24,7 +24,7 @@ public class MapFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_run_dummy,
+		View rootView = inflater.inflate(R.layout.fragment_map,
 				container, false);
 		System.out.println("Map Fragment running");
 //		TextView dummyTextView = (TextView) rootView
