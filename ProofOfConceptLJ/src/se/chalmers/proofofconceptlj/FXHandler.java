@@ -160,6 +160,34 @@ public class FXHandler {
 	}
 
 	/**
+	 * Mode to be used with radio orienteering.
+	 */
+	public void levelOnRotate(FX fx) {
+		float max = 1, min = 0;
+		float vol = (min - max) / 180;
+
+		fx.setVolume(vol, vol);
+
+		// Send message to handler
+		Message msg = handler.obtainMessage(Constants.MSG);
+		handler.sendMessageDelayed(msg, (long) 1000);
+		// TODO CHANGE 1000 to variable (delay)
+	}
+
+	public void update2(FX fx) {
+
+	}
+
+	/**
+	 * Sound source need to be within a specific range to be 'within reach'.
+	 * 
+	 * @return true if the current angle to location is okay
+	 */
+	public boolean isWithinRange(FX fx) {
+		return Math.abs(fx.angle()) < Constants.ACCURACY;
+	}
+
+	/**
 	 * Sweeping sound from left to right
 	 */
 	public void sweepFX(FX fx) throws InterruptedException {
