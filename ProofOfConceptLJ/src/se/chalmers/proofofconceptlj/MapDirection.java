@@ -474,9 +474,9 @@ SensorEventListener
 	private void pointArrowToSource_GPS() {
 		ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
 		float bearingTo = human.getLocation().bearingTo(soundSource);
-		if(bearingTo < 0){
-			bearingTo += 360;
-		}
+//		if(bearingTo < 0){
+//			bearingTo += 360;
+//		}
 		angleToSound = bearingTo - headingAngle;
 		arrow.setRotation(angleToSound);
 		//		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));

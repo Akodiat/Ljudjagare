@@ -62,7 +62,8 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				fx.update(fx.getCowbell(), arg1, distance);
+				degreesToDestination = arg1 - 180;
+				fx.update(fx.getCowbell(), degreesToDestination, distance);
 			}
 
 			@Override

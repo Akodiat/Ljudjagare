@@ -106,7 +106,7 @@ public class FXHandler {
 	 * @param distance
 	 *            distance from audio source in meters.
 	 */
-	public void loop(FX fx) {
+	public void loop2(FX fx) {
 
 		// Have to add 90 degrees so that (angle = 0) is heard in front.
 		int correctValue = 90;
@@ -139,9 +139,6 @@ public class FXHandler {
 		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
 				fx.rightVolume(), 0, 1, fx.pitch()));
 
-		int maxDelay = 1000;
-		int minDelay = 200;
-
 		float delayRatio;
 
 		// Calculate value between 0 and 1, where 0 is when a user has reached
@@ -152,7 +149,8 @@ public class FXHandler {
 			delayRatio = 1;
 
 		// Delay between each repetition.
-		float delay = (maxDelay - minDelay) * delayRatio + minDelay;
+		float delay = (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
+				+ Constants.MIN_DELAY;
 
 		// Send message to handler
 		Message msg = handler.obtainMessage(Constants.MSG);
@@ -164,7 +162,7 @@ public class FXHandler {
 	 */
 	public void levelOnRotate(FX fx) {
 		float max = 1, min = 0;
-		float vol = (min - max) / 180;
+		float vol = (min - max) * Math.abs(fx.angle()) / 180;
 
 		fx.setVolume(vol, vol);
 
@@ -174,8 +172,43 @@ public class FXHandler {
 		// TODO CHANGE 1000 to variable (delay)
 	}
 
-	public void update2(FX fx) {
+	public void loop(FX fx) {
 
+		float absRotation = Math.abs(fx.angle());
+
+		if (absRotation >= 90)
+			absRotation = 90;
+
+		double radian = absRotation * (Math.PI / 360); // Convert to radians
+
+		// If sound comes from left
+		if (fx.angle() < 0)
+			fx.setVolume((float) Math.sin(radian), (float) Math.cos(radian));
+		else
+			fx.setVolume((float) Math.cos(radian), (float) Math.sin(radian));
+
+		// Play sound at given coordinate
+		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
+				fx.rightVolume(), 0, 1, fx.pitch()));
+
+		// Send message to handler with delay.
+		Message msg = handler.obtainMessage(Constants.MSG);
+		handler.sendMessageDelayed(msg, (long) delayInterval(fx));
+	}
+
+	public float delayInterval(FX fx) {
+		float delayRatio;
+
+		// Calculate value between 0 and 1, where 0 is when a user has reached
+		// destination:
+		if (fx.distance() <= Constants.MAX_DISTANCE)
+			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
+		else
+			delayRatio = 1;
+
+		// Delay between each repetition.
+		return (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
+				+ Constants.MIN_DELAY;
 	}
 
 	/**
@@ -225,16 +258,10 @@ public class FXHandler {
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
 
-		float k, m;
-		if (fx.angle() >= 0 && fx.angle() <= 180) {
-			k = (1 - Constants.MIN_PITCH) / (-180);
-			m = 1 - k * 0;
-			fx.setPitch(k * fx.angle() + m);
-		} else {
-			k = (1 - Constants.MIN_PITCH) / 180;
-			m = 1 - k * 360;
-			fx.setPitch(k * fx.angle() + m);
-		}
+		if (fx.angle() < 0)
+			fx.setPitch((1 - Constants.MIN_PITCH) / 180 * fx.angle() + 1);
+		else
+			fx.setPitch((1 - Constants.MIN_PITCH) / 180 * fx.angle() + 1);
 
 		fx.setDistance(distance);
 	}

@@ -30,5 +30,8 @@ public class Constants {
 	 * A value of 10 would be 10 degrees to each side (20).
 	 */
 	public static final int ACCURACY = 10;
+	
+	public static final int MAX_DELAY = 1000;
+	public static final int MIN_DELAY = 200;
 
 }
