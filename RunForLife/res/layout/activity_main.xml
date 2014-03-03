@@ -1,0 +1,113 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:fcf="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@android:color/white"
+    >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/runner" />
+
+    <at.technikum.mti.fancycoverflow.FancyCoverFlow
+        android:id="@+id/fancyCoverFlow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_gravity="center_horizontal"
+        fcf:maxRotation="45"
+        fcf:scaleDownGravity="0.5"
+        fcf:unselectedAlpha="0.3"
+        fcf:unselectedSaturation="0.0"
+        fcf:unselectedScale="0.4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center" >
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true">
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/gps_green" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GPS signal: strong" />
+                
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sound_red" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sound: off" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/headphones" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Headphones: connected" />
+
+            </TableRow>
+        </TableLayout>
+
+        <ImageButton
+            android:id="@+id/runButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="#0000"
+            android:src="@drawable/run" />
+
+    </RelativeLayout>
+
+</LinearLayout>
