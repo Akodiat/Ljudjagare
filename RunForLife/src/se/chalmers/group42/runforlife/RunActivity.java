@@ -19,6 +19,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+/**
+ * 
+ * Activity-class handling information of a current run. The workspace 
+ * pattern is used to let you choose between the pages by swiping or
+ * by pressing their tab-title.
+ * 
+ * @version
+ * 
+ *          0.1 3 Mars 2014
+ * @author
+ * 
+ *         Anton Palmqvist
+ * 
+ */
 public class RunActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 

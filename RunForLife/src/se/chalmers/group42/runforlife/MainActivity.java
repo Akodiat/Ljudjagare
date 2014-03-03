@@ -48,8 +48,9 @@ public class MainActivity extends Activity{
 		 * Setting a good coverflow height as 4/10 of the screen height minus the actionbar.
 		 * I need to multiply the density with the standard height of an action bar.
 		 */
-		coverFlowHeight = (int)((4.0/10.0)*height) - density * ACTION_BAR_HEIGHT_MDPI;
-
+		coverFlowHeight = (int)((4.0/10.0)*(height - density * ACTION_BAR_HEIGHT_MDPI));
+		System.out.println("Coverflow height: " + coverFlowHeight);
+		
 		/*
 		 * Setting up the cover flow
 		 */
