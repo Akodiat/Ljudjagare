@@ -8,16 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * A dummy fragment representing a section of the app, but that simply
- * displays dummy text.
+ * A fragment including statistical information of the current run.
  */
 public class StatsFragment extends Fragment{
-	/**
-	 * The fragment argument representing the section number for this
-	 * fragment.
-	 */
-	public static final String ARG_SECTION_NUMBER = "section_number";
-
 	public StatsFragment() {
 	}
 

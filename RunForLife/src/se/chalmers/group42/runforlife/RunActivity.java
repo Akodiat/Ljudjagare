@@ -50,8 +50,10 @@ public class RunActivity extends FragmentActivity implements
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		// Creating the adapter that will return a fragment for each of the three
-		// primary sections of the app
+		/*
+		 *  Creating the adapter that will return a fragment for each of the three 
+		 *  primary sections of the app
+		 */
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 
@@ -59,9 +61,11 @@ public class RunActivity extends FragmentActivity implements
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
-		// When swiping between different sections, select the corresponding
-		// tab. We can also use ActionBar.Tab#select() to do this if we have
-		// a reference to the Tab.
+		/*
+		 *  When swiping between different sections, select the corresponding
+		 *  tab. We can also use ActionBar.Tab#select() to do this if we have
+		 *  a reference to the Tab
+		 */
 		mViewPager
 				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 					@Override
@@ -72,10 +76,12 @@ public class RunActivity extends FragmentActivity implements
 
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-			// Create a tab with text corresponding to the page title defined by
-			// the adapter. Also specify this Activity object, which implements
-			// the TabListener interface, as the callback (listener) for when
-			// this tab is selected.
+			/*
+			 *  Create a tab with text corresponding to the page title defined by
+			 *  the adapter. Also specify this Activity object, which implements
+			 *  the TabListener interface, as the callback (listener) for when
+			 *  this tab is selected
+			 */
 			actionBar.addTab(actionBar.newTab()
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
@@ -123,55 +129,30 @@ public class RunActivity extends FragmentActivity implements
 		}
 
 		//TODO return direkt
+		/*
+		 * getItem is called to instantiate the fragment for the given page.(non-Javadoc)
+		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
+		 */
 		@Override
 		public Fragment getItem(int position) {
-			Fragment fragment = null;
+			//Bundle might be used later to send information between fragments
+//			Bundle args = new Bundle();
+//			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+//			fragment.setArguments(args);
 			switch(position){
 				case 0:
-					fragment = runFragment;
-					break;
+					return runFragment;
 				case 1:
-					fragment = mapFragment;
-					break;
+					return mapFragment;
 				case 2:
-					fragment = statsFragment;
-					break;
+					return statsFragment;
 			}
-//			// getItem is called to instantiate the fragment for the given page.
-//			// Return a DummySectionFragment (defined as a static inner class
-//			// below) with the page number as its lone argument.
-//			Fragment fragment = new DummySectionFragment();
-			Bundle args = new Bundle();
-////			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-//			fragment.setArguments(args);
-//			return fragment;
-			return fragment;
+			return null;
 		}
 		
-//		/**
-//	     * Custom item ID resolution. Needed for proper page fragment caching.
-//	     * @see FragmentPagerAdapter#getItemId(int).
-//	     * Code from: http://stackoverflow.com/questions/7723964/replace-fragment-inside-a-viewpager/11974777#11974777
-//	     */
-//	    @Override
-//	    public long getItemId(int position) {
-//	      // Fragments from second level page hierarchy have their ID raised above 100. This is
-//	      // important to FragmentPagerAdapter because it is caching fragments to FragmentManager with
-//	      // this item ID key.
-//	      Fragment item = mFragments.get(position);
-//	      if (item != null) {
-//	        if ((item instanceof NewFirstFragment) || (item instanceof NewSecondFragment) ||
-//	          (item instanceof NewThirdFragment)) {
-//	          return 100 + position;
-//	        }
-//	      }
-//
-//	      return position;
-//	    }
-
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
+			// Show 3 total pages
 			return 3;
 		}
 
@@ -189,31 +170,4 @@ public class RunActivity extends FragmentActivity implements
 			return null;
 		}
 	}
-
-//	/**
-//	 * A dummy fragment representing a section of the app, but that simply
-//	 * displays dummy text.
-//	 */
-//	public static class DummySectionFragment extends Fragment {
-//		/**
-//		 * The fragment argument representing the section number for this
-//		 * fragment.
-//		 */
-//		public static final String ARG_SECTION_NUMBER = "section_number";
-//
-//		public DummySectionFragment() {
-//		}
-//
-//		@Override
-//		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//				Bundle savedInstanceState) {
-//			View rootView = inflater.inflate(R.layout.fragment_run_dummy,
-//					container, false);
-//			TextView dummyTextView = (TextView) rootView
-//					.findViewById(R.id.section_label);
-//			dummyTextView.setText(Integer.toString(111));
-//			return rootView;
-//		}
-//	}
-
 }

@@ -8,16 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * A dummy fragment representing a section of the app, but that simply
- * displays dummy text.
+ * A fragment including the info related to the current run.
  */
 public class RunFragment extends Fragment{
-	/**
-	 * The fragment argument representing the section number for this
-	 * fragment.
-	 */
-	public static final String ARG_SECTION_NUMBER = "section_number";
-
 	public RunFragment() {
 	}
 
@@ -27,10 +20,6 @@ public class RunFragment extends Fragment{
 		View rootView = inflater.inflate(R.layout.fragment_run,
 				container, false);
 		System.out.println("Run Fragment running");
-//		TextView dummyTextView = (TextView) rootView
-//				.findViewById(R.id.section_label);
-//		dummyTextView.setText(Integer.toString(getArguments().getInt(
-//				ARG_SECTION_NUMBER)));
 		return rootView;
 	}
 }
