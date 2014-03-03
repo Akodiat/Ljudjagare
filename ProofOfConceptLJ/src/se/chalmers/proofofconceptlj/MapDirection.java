@@ -664,8 +664,16 @@ SensorEventListener
 		Time t = new Time();
 		t.set(seconds*1000);
 		t.switchTimezone("GMT");
+		
+		double d = distance;
+		double s = seconds;
+		
+		double speed = (d / s)*3.6;
+		speed = Math.round(speed*100)/100.0d;
+		
+		
 		tx_time.setText(t.format("%H:%M:%S")); 
 		tx_distance.setText("Total Dist: "+distance+"m");
-		tx_speed.setText("Speed: "+((distance/seconds)*3.6)+"km/h"); 
+		tx_speed.setText("Speed: "+speed+"km/h"); 
 	}
 }
