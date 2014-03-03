@@ -19,6 +19,8 @@ public class MainActivity extends Activity{
 	private ImageButton runButton;
 	private Intent runActivityIntent;
 	private int coverFlowHeight;
+	
+	private final int ACTION_BAR_HEIGHT_MDPI = 32;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,23 +28,31 @@ public class MainActivity extends Activity{
 		setContentView(R.layout.activity_main);
 
 		/*
-		 * 
+		 * The screen size and density of the device running the program is retrieved to draw 
+		 * the components to good proportions.
 		 * 
 		 * http://stackoverflow.com/questions/1016896/how-to-get-screen-dimensions
 		 */
+		//Getting the display size
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
-		System.out.println("Density= " + getResources().getDisplayMetrics().density);
-		int density = (int)getResources().getDisplayMetrics().density;
 		int width = size.x;
 		int height = size.y;
 		System.out.println("Width= " + width);
 		System.out.println("Height= " + height);
-		//Setting a good coverflow height as 4/10 of the screen height minus the actionbar
-		coverFlowHeight = (int)((4.0/10.0)*height) - density*32;
+		//Getting the display density
+		int density = (int)getResources().getDisplayMetrics().density;
+		System.out.println("Density= " + getResources().getDisplayMetrics().density);
+		/*
+		 * Setting a good coverflow height as 4/10 of the screen height minus the actionbar.
+		 * I need to multiply the density with the standard height of an action bar.
+		 */
+		coverFlowHeight = (int)((4.0/10.0)*height) - density * ACTION_BAR_HEIGHT_MDPI;
 
-		//Setting up the cover flow
+		/*
+		 * Setting up the cover flow
+		 */
 		fancyCoverFlow = (FancyCoverFlow) this.findViewById(R.id.fancyCoverFlow);
 		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter(coverFlowHeight));
 		fancyCoverFlow.setUnselectedAlpha(1.0f);
@@ -53,7 +63,9 @@ public class MainActivity extends Activity{
 		fancyCoverFlow.setScaleDownGravity(0.2f);
 		fancyCoverFlow.setActionDistance(FancyCoverFlow.ACTION_DISTANCE_AUTO);
 
-		//Setting up the run-button
+		/*
+		 * Setting up the run-button
+		 */
 		runButton = (ImageButton) findViewById(R.id.runButton);
 		runActivityIntent = new Intent(this, RunActivity.class);
 		runButton.setOnClickListener(new View.OnClickListener() {

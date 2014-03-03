@@ -46,16 +46,16 @@ public class RunActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
-		// Set up the action bar.
+		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
+		// Creating the adapter that will return a fragment for each of the three
+		// primary sections of the app
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 
-		// Set up the ViewPager with the sections adapter.
+		// Set up the ViewPager with the sections adapter
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
@@ -122,6 +122,7 @@ public class RunActivity extends FragmentActivity implements
 			super(fm);
 		}
 
+		//TODO return direkt
 		@Override
 		public Fragment getItem(int position) {
 			Fragment fragment = null;
