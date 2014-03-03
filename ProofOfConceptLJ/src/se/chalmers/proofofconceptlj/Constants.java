@@ -23,6 +23,6 @@ public class Constants {
 	/**
 	 * Minimum pitch rate (0.5 - 1)
 	 */
-	public static final float MIN_PITCH = 0.6f;
+	public static final float MIN_PITCH = 0.7f;
 
 }
