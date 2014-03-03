@@ -179,7 +179,7 @@ public class FXHandler {
 		if (absRotation >= 90)
 			absRotation = 90;
 
-		double radian = absRotation * (Math.PI / 360); // Convert to radians
+		double radian = absRotation * (Math.PI / 180); // Convert to radians
 
 		// If sound comes from left
 		if (fx.angle() < 0)
