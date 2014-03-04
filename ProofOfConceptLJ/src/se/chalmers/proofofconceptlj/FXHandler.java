@@ -97,67 +97,6 @@ public class FXHandler {
 	}
 
 	/**
-	 * Play sound at specific angle and distance from user.
-	 * 
-	 * @param soundID
-	 *            sound to process
-	 * @param angle
-	 *            angle between current direction and source (0-360).
-	 * @param distance
-	 *            distance from audio source in meters.
-	 */
-	public void loop2(FX fx) {
-
-		// Have to add 90 degrees so that (angle = 0) is heard in front.
-		int correctValue = 90;
-
-		// The angle after being corrected.
-		float dangle = fx.angle() + correctValue;
-
-		if (fx.angle() >= 140 && fx.angle() <= 220)
-			dangle = 90;
-
-		else {
-			// Is sound coming from behind the player to the right?
-			if (fx.angle() > 90 && fx.angle() <= 180)
-				dangle = 180;
-
-			// Is sound coming from behind the player to the left?
-			if (fx.angle() > 180 && fx.angle() <= 270)
-				dangle = 0;
-
-			// From left to middle of listening scope.
-			if (fx.angle() > 270)
-				dangle = fx.angle() - 270;
-		}
-
-		double radian = dangle * (Math.PI / 180); // Convert to radians
-
-		// Set volume on sound
-		fx.setVolume((float) Math.cos(radian / 2), (float) Math.sin(radian / 2));
-
-		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
-				fx.rightVolume(), 0, 1, fx.pitch()));
-
-		float delayRatio;
-
-		// Calculate value between 0 and 1, where 0 is when a user has reached
-		// destination:
-		if (fx.distance() <= Constants.MAX_DISTANCE)
-			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
-		else
-			delayRatio = 1;
-
-		// Delay between each repetition.
-		float delay = (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
-				+ Constants.MIN_DELAY;
-
-		// Send message to handler
-		Message msg = handler.obtainMessage(Constants.MSG);
-		handler.sendMessageDelayed(msg, (long) delay);
-	}
-
-	/**
 	 * Mode to be used with radio orienteering.
 	 */
 	public void levelOnRotate(FX fx) {
@@ -174,18 +113,19 @@ public class FXHandler {
 
 	public void loop(FX fx) {
 
-		float absRotation = Math.abs(fx.angle());
+		float angle = fx.angle();
 
-		if (absRotation >= 90)
-			absRotation = 90;
+		// If sound is coming from behind the user, set to 0.
+		if (Math.abs(angle) > 160)
+			angle = 0;
 
-		double radian = absRotation * (Math.PI / 180); // Convert to radians
+		angle = (angle > 90) ? 90 : angle;
+		angle = (angle < (-90)) ? (-90) : angle;
 
-		// If sound comes from left
-		if (fx.angle() < 0)
-			fx.setVolume((float) Math.sin(radian), (float) Math.cos(radian));
-		else
-			fx.setVolume((float) Math.cos(radian), (float) Math.sin(radian));
+		double radian = angle * (Math.PI / 360); // Convert to radians
+
+		fx.setVolume((float) Math.cos(radian + Math.PI / 4),
+				(float) Math.sin(radian + Math.PI / 4));
 
 		// Play sound at given coordinate
 		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
@@ -261,7 +201,7 @@ public class FXHandler {
 		if (fx.angle() < 0)
 			fx.setPitch((1 - Constants.MIN_PITCH) / 180 * fx.angle() + 1);
 		else
-			fx.setPitch((1 - Constants.MIN_PITCH) / 180 * fx.angle() + 1);
+			fx.setPitch((1 - Constants.MIN_PITCH) / (-180) * fx.angle() + 1);
 
 		fx.setDistance(distance);
 	}
