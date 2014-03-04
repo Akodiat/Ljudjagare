@@ -57,6 +57,7 @@ public class RunActivity extends FragmentActivity implements
 	
 	//Class for handling GPS and Compass sensors
 	SensorInputHandler sensorInputHandler;
+	
 	DataHandler dataHandler;
 
 	@Override
@@ -109,7 +110,7 @@ public class RunActivity extends FragmentActivity implements
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
 		
-		this.sensorInputHandler = new SensorInputHandler(this);
+//		this.sensorInputHandler = new SensorInputHandler(this);
 		this.dataHandler = new DataHandler(this);
 	}
 
