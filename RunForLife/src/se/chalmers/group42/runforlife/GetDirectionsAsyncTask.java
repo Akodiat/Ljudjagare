@@ -32,9 +32,9 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
  
     public void onPreExecute()
     {
-        progressDialog = new ProgressDialog(activity);
-        progressDialog.setMessage("Calculating directions");
-        progressDialog.show();
+//        progressDialog = new ProgressDialog(activity);
+//        progressDialog.setMessage("Calculating directions");
+//        progressDialog.show();
     }
  
     @Override
@@ -43,7 +43,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
         progressDialog.dismiss();
         if (exception == null)
         {
-            activity.handleGetDirectionsResult(result);
+//            activity.handleGetDirectionsResult(result);
             //activity.updateDistance(distance);
         }
         else
@@ -75,6 +75,6 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
  
     private void processException()
     {
-        Toast.makeText(activity, "Error retriving data", 3000).show();
+//        Toast.makeText(activity, "Error retriving data", 3000).show();
     }
 }
