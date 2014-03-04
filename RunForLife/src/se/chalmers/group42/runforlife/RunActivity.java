@@ -54,6 +54,9 @@ public class RunActivity extends FragmentActivity implements
 	Fragment runFragment;
 	Fragment mapFragment;
 	Fragment statsFragment;
+	
+	//Class for handling GPS and Compass sensors
+	SensorInputHandler sensorInputHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,8 @@ public class RunActivity extends FragmentActivity implements
 		runFragment = new RunFragment();
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
+		
+		this.sensorInputHandler = new SensorInputHandler(this);
 	}
 
 	@Override
