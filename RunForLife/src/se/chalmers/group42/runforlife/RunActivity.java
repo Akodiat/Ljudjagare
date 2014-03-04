@@ -184,4 +184,26 @@ public class RunActivity extends FragmentActivity implements
 			return null;
 		}
 	}
+
+	/**
+	 * Called by SensorInputHandler when the compass orientation is updated
+	 */
+	public void onUpdatedCompass() {
+		// TODO Auto-generated method stub
+		
+	}
+	/**
+	 * Called by SensorInputHandler when a coin is aqquired
+	 */
+	public void onAqquiredCoin() {
+		// TODO Auto-generated method stub
+		
+	}
+	/**
+	 * Called by SensorInputHandler when the location is updated
+	 */
+	public void onUpdatedLocation(Human human) {
+		// TODO Auto-generated method stub
+		
+	}
 }
