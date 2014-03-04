@@ -2,13 +2,13 @@ package se.chalmers.group42.runforlife;
 
 public class ModeController {
 
-	public enum Mode {
+	public static enum Mode {
 		COIN_COLLECTOR,
 		QUEST,
 		MONSTER_HUNT
 	}
 	
-	public void launchMode(Mode mode) {
+	public static void launchMode(Mode mode) {
 		switch (mode) {
 		case COIN_COLLECTOR:
 			launchCoinCollector();
@@ -24,7 +24,7 @@ public class ModeController {
 	/**
 	 * Initialize values needed to play 'Monster Hunt' mode.
 	 */
-	private void launchMonsterHunt() {
+	private static void launchMonsterHunt() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -32,7 +32,7 @@ public class ModeController {
 	/**
 	 * Initialize values needed to play 'Quest' mode.
 	 */
-	private void launchQuest() {
+	private static void launchQuest() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -40,7 +40,7 @@ public class ModeController {
 	/**
 	 * Initialize values needed to play 'Coin Collector' mode.
 	 */
-	private void launchCoinCollector() {
+	private static void launchCoinCollector() {
 		// TODO Auto-generated method stub
 		
 	}
