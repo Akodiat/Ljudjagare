@@ -346,12 +346,12 @@ SensorEventListener
 
 	public void playSound(View view) {
 		Button button = (Button) findViewById(R.id.bPlay);
-		if (!fx.getCowbell().isPlaying()){
-			fx.loop(fx.getCowbell());
+		if (!fx.getNavigationFX().isPlaying()){
+			fx.loop(fx.getNavigationFX());
 			button.setText("Stop sound");
 		}
 		else {
-			fx.stopHandler();
+			fx.stopLoop();
 			button.setText("Play sound");
 		}
 	}
@@ -598,8 +598,8 @@ SensorEventListener
 			angle += 360;
 		}
 
-		if(fx.getCowbell().isPlaying())
-			fx.update(fx.getCowbell(), (angle),
+		if(fx.getNavigationFX().isPlaying())
+			fx.update(fx.getNavigationFX(), (angle),
 					human.getLocation().distanceTo(soundSource));
 
 		//		//Text debug:

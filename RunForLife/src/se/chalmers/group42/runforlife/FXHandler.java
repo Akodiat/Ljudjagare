@@ -26,7 +26,7 @@ public class FXHandler {
 	private FX coin;
 
 	// FX representing the navigation sound (
-	private FX cowbell;
+	private FX navigationFX;
 
 	/**
 	 * Initialize sound engine
@@ -52,7 +52,7 @@ public class FXHandler {
 				soundPool.load(context, R.raw.dragon, 1));
 
 		// Initialize audio
-		cowbell = new FX(Constants.FX_01);
+		navigationFX = new FX(Constants.FX_01);
 		coin = new FX(Constants.FX_02);
 
 		// Initialize thread handler
@@ -60,7 +60,7 @@ public class FXHandler {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == Constants.MSG)
-					loop(cowbell);
+					loop(navigationFX);
 
 				if (msg.what == Constants.MSG_STOP)
 					handler.removeCallbacksAndMessages(null);
@@ -68,8 +68,8 @@ public class FXHandler {
 		};
 	}
 
-	public FX getCowbell() {
-		return cowbell;
+	public FX getNavigationFX() {
+		return navigationFX;
 	}
 
 	public FX getCoin() {
@@ -111,6 +111,10 @@ public class FXHandler {
 		// TODO CHANGE 1000 to variable (delay)
 	}
 
+	/**
+	 * Loop a sound until it's being stopped manually.
+	 * @param fx the sound to be looped
+	 */
 	public void loop(FX fx) {
 
 		float angle = fx.angle();
@@ -135,7 +139,23 @@ public class FXHandler {
 		Message msg = handler.obtainMessage(Constants.MSG);
 		handler.sendMessageDelayed(msg, (long) delayInterval(fx));
 	}
+	
+	/**
+	 * Stop the current loop and set stream to not playing.
+	 */
+	public void stopLoop() {
+		Message msg = handler.obtainMessage(Constants.MSG_STOP);
+		handler.sendMessage(msg);
 
+		// Set streamID to not playing
+		getNavigationFX().setStreamID(FX.NOT_PLAYING);
+	}
+
+	/**
+	 * Calculate the delay between each repetition on loop.
+	 * @param fx the sound to update
+	 * @return the delay time in milliseconds
+	 */
 	public float delayInterval(FX fx) {
 		float delayRatio;
 
@@ -187,14 +207,12 @@ public class FXHandler {
 		return handler;
 	}
 
-	public void stopHandler() {
-		Message msg = handler.obtainMessage(Constants.MSG_STOP);
-		handler.sendMessage(msg);
-
-		// Set streamID to not playing
-		getCowbell().setStreamID(FX.NOT_PLAYING);
-	}
-
+	/**
+	 * To be called each time the position of the user is being updated.
+	 * @param fx the sound to be updated
+	 * @param angle the new angle
+	 * @param distance the current distance from goal
+	 */
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
 

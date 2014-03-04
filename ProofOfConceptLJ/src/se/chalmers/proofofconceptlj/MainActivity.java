@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				distance = arg1;
-				fx.update(fx.getCowbell(), degreesToDestination, distance);
+				fx.update(fx.getNavigationFX(), degreesToDestination, distance);
 			}
 
 			@Override
@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				degreesToDestination = arg1 - 180;
-				fx.update(fx.getCowbell(), degreesToDestination, distance);
+				fx.update(fx.getNavigationFX(), degreesToDestination, distance);
 			}
 
 			@Override
@@ -90,15 +90,15 @@ public class MainActivity extends Activity {
 	}
 
 	public void playSound(View view) throws InterruptedException {
-		if (!fx.getCowbell().isPlaying())
-			fx.loop(fx.getCowbell());
+		if (!fx.getNavigationFX().isPlaying())
+			fx.loop(fx.getNavigationFX());
 		else {
-			fx.stopHandler();
+			fx.stopLoop();
 		}
 	}
 
 	public void stopSound(View view) throws InterruptedException {
-		fx.stopHandler();
+		fx.stopLoop();
 	}
 
 	/** Called when the user clicks the Map button */
