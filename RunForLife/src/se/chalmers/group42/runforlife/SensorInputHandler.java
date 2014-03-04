@@ -14,7 +14,11 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.model.LatLng;
 
-
+/**
+ * Class for handling all GPS and other sensor input
+ * @author Joakim Johansson
+ *
+ */
 public class SensorInputHandler implements 
 	GooglePlayServicesClient.ConnectionCallbacks,
 	GooglePlayServicesClient.OnConnectionFailedListener,
@@ -40,9 +44,6 @@ public class SensorInputHandler implements
 			.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY); 
 
 	private LocationClient myLocationClient;
-
-	private SensorManager sensorManager;
-	private int orientationSensor;
 
 	private float headingAngleOrientation;
 	private float angleToSound;
