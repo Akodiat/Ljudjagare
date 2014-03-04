@@ -20,57 +20,45 @@ import com.google.android.gms.maps.model.LatLng;
  *
  */
 public class SensorInputHandler implements 
-	GooglePlayServicesClient.ConnectionCallbacks,
-	GooglePlayServicesClient.OnConnectionFailedListener,
-	LocationListener,
-	SensorEventListener
+GooglePlayServicesClient.ConnectionCallbacks,
+GooglePlayServicesClient.OnConnectionFailedListener,
+LocationListener,
+SensorEventListener
 {
-
-
 	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
 	private static 			LatLng DEFAULT_POSITION = new LatLng(58.705477, 11.990884);
-
-
-	private Location 			soundSource;
-
-	private SensorManager	mSensorManager;
-	private Sensor 			accelerometer;
-	private Sensor 			magnetometer;
-
+	
+	private Location 		soundSource;
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
 			.setFastestInterval(16)    // 16ms = 60fps
 			.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY); 
 
-	private LocationClient myLocationClient;
+	private LocationClient locationClient;
 
 	private float headingAngleOrientation;
 	private float angleToSound;
 
 	private Human human;
-	RunActivity runActivity;
+
+	private RunActivity runActivity;
 
 
 	SensorInputHandler(RunActivity runActivity) {
 		this.runActivity = runActivity;
 
 
-		myLocationClient = new LocationClient(runActivity, this, this);
-		
+		locationClient = new LocationClient(runActivity, this, this);
+
 		// once we have the reference to the client, connect it
-		if(myLocationClient != null)
-			myLocationClient.connect(); 
+		if(locationClient != null)
+			locationClient.connect(); 
 
 		soundSource = locationFromLatlng(DEFAULT_POSITION);
 		human = new Human(STOCKHOLM);
-
-		mSensorManager = (SensorManager) runActivity.getSystemService(android.content.Context.SENSOR_SERVICE);
-		accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		magnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-		
 	}
-	
+
 	private Location locationFromLatlng(LatLng latLng) {
 		Location location = new Location("Trololo");
 		soundSource.setLatitude(latLng.latitude);
@@ -85,7 +73,7 @@ public class SensorInputHandler implements
 
 	@Override
 	public void onConnected(Bundle bundle) {
-		myLocationClient.requestLocationUpdates( REQUEST, this); 
+		locationClient.requestLocationUpdates( REQUEST, this); 
 		//human = new Human(myLocationClient.getLastLocation());
 	} 
 
@@ -103,7 +91,7 @@ public class SensorInputHandler implements
 			bearingTo += 360;
 		}
 		angleToSound = bearingTo - human.getLocation().getBearing();
-		
+
 		return angleToSound;
 	}
 
@@ -117,7 +105,7 @@ public class SensorInputHandler implements
 	@Override
 	public void onLocationChanged(Location location) {
 		human.setLocation(location);
-		
+
 		runActivity.onUpdatedLocation(human); //Notify runActivity of new location update
 
 		if((human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE ||
@@ -148,7 +136,7 @@ public class SensorInputHandler implements
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(R, orientation);
 				headingAngleOrientation =  (float) (-(180/Math.PI) * orientation[0]); // orientation contains: azimut, pitch and roll
-				
+
 				runActivity.onUpdatedCompass(); //Notify runActivity of compass update
 			}
 		}
