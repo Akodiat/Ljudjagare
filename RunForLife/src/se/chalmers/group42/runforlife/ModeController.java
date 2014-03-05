@@ -4,7 +4,7 @@ import se.chalmers.group42.gameModes.CoinCollector;
 import se.chalmers.group42.gameModes.GameMode;
 
 public class ModeController {
-	GameMode activeGameMode;
+	private GameMode activeGameMode;
 
 	public static enum Mode {
 		COIN_COLLECTOR,
