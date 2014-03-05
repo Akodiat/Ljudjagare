@@ -19,5 +19,15 @@ public interface GameMode {
 	 * Method to call every time sensor values are updated
 	 */
 	public void onSensorUpdate(SensorValues sensorValues);
+	
+	/**
+	 * Get the ID of the Game Mode
+	 * 0 - Coin Collector
+	 * 1 - Quest
+	 * 2 - Monster Hunt
+	 * 3 - <not implemented>
+	 * @return 
+	 */
+	public int getGameModeID();
 
 }

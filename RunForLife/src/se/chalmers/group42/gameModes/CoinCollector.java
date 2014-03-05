@@ -79,4 +79,9 @@ public class CoinCollector implements GameMode{
 	public float getRotation_Compass() {
 		return compassFromNorth + human.getLocation().bearingTo(soundSource);
 	}
+
+	@Override
+	public int getGameModeID() {
+		return 0;
+	}
 }

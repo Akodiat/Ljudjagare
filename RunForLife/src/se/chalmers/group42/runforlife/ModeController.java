@@ -6,19 +6,14 @@ import se.chalmers.group42.gameModes.GameMode;
 public class ModeController {
 	private GameMode activeGameMode;
 
-	public static enum Mode {
-		COIN_COLLECTOR,
-		QUEST,
-		MONSTER_HUNT
-	}
 	
-	public void launchMode(Mode mode) {
-		switch (mode) {
-		case COIN_COLLECTOR:
+	public void launchMode(int gameModeID) {
+		switch (gameModeID) {
+		case 1:
 			launchCoinCollector();
-		case QUEST:
+		case 2:
 			launchQuest();
-		case MONSTER_HUNT:
+		case 3:
 			launchMonsterHunt();
 		default:
 			break;
