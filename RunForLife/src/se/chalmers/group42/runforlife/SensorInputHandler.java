@@ -1,5 +1,6 @@
 package se.chalmers.group42.runforlife;
 
+import utils.LocationHelper;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -26,13 +27,10 @@ LocationListener,
 SensorEventListener
 {
 	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
-	private static 			LatLng DEFAULT_POSITION = new LatLng(58.705477, 11.990884);
 	
-	private Location 		soundSource;		//Location of the sound source
 	private Location		currentLocation;	//Location retrieved through GPS
 	
 	private float 			headingAngleOrientation;
-	private float 			angleToSound;
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
@@ -57,15 +55,8 @@ SensorEventListener
 		if(locationClient != null)
 			locationClient.connect(); 
 
-		soundSource = locationFromLatlng(DEFAULT_POSITION);
-		currentLocation = locationFromLatlng(STOCKHOLM);
-	}
-
-	private Location locationFromLatlng(LatLng latLng) {
-		Location location = new Location("Trololo");
-		soundSource.setLatitude(latLng.latitude);
-		soundSource.setLongitude(latLng.longitude);
-		return location;
+		
+		currentLocation = LocationHelper.locationFromLatlng(STOCKHOLM);
 	}
 
 	@Override
@@ -84,37 +75,11 @@ SensorEventListener
 		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * Gets the rotation according to the GPS bearing
-	 */
-	public float getRotation_GPS() {
-		float bearingTo = currentLocation.bearingTo(soundSource);
-		if(bearingTo < 0){
-			bearingTo += 360;
-		}
-		angleToSound = bearingTo - currentLocation.getBearing();
-
-		return angleToSound;
-	}
-
-	/**
-	 * Gets the rotation according to the compass
-	 */
-	public float getRotation_Compass() {
-		return headingAngleOrientation + currentLocation.bearingTo(soundSource);
-	}
-
 	@Override
 	public void onLocationChanged(Location location) {
 		currentLocation = location;
 
 		notifyOfSensorUpdate(); //Notify runActivity of new sensor update
-
-		if((currentLocation.distanceTo(soundSource) < Constants.MIN_DISTANCE ||
-				(location.getAccuracy() < 50 ? currentLocation.distanceTo(soundSource) < location.getAccuracy() : false)))
-		{
-			runActivity.onAqquiredCoin(); //Notify runActivity of new location update
-		}
 	}
 
 	@Override
