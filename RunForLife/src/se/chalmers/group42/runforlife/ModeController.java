@@ -40,15 +40,15 @@ public class ModeController {
 	 * Initialize values needed to play 'Shooter' mode.
 	 */
 	private void launchShooter() {
-		
+		Intent runActivityIntent = new Intent(context, ShooterActivity.class);
+		context.startActivity(runActivityIntent);
 	}
 
 	/**
 	 * Initialize values needed to play 'Quest' mode.
 	 */
 	private void launchQuest() {
-		Intent runActivityIntent = new Intent(context, ShooterActivity.class);
-		context.startActivity(runActivityIntent);
+		// TODO
 	}
 
 	/**
