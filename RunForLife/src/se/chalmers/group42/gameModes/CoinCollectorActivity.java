@@ -11,7 +11,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 /**
  * A game of collecting coins.
- * @author joakim
+ * @author Joakim Johansson
  *
  */
 public class CoinCollectorActivity extends RunActivity {
