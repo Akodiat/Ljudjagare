@@ -4,7 +4,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 import android.location.Location;
 import se.chalmers.group42.runforlife.Constants;
-import se.chalmers.group42.runforlife.GameMode;
 import se.chalmers.group42.runforlife.Human;
 import se.chalmers.group42.runforlife.SensorValues;
 import utils.LocationHelper;

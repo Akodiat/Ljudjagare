@@ -1,6 +1,7 @@
 package se.chalmers.group42.runforlife;
 
 import se.chalmers.group42.gameModes.CoinCollector;
+import se.chalmers.group42.gameModes.GameMode;
 
 public class ModeController {
 	GameMode activeGameMode;

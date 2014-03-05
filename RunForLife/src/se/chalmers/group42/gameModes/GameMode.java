@@ -1,4 +1,6 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.gameModes;
+
+import se.chalmers.group42.runforlife.SensorValues;
 
 /**
  * Interface for a GameMode, contains methods for communicating with a general
