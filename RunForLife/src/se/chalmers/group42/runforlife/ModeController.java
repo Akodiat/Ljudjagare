@@ -5,6 +5,10 @@ import se.chalmers.group42.gameModes.GameMode;
 
 public class ModeController {
 	private GameMode activeGameMode;
+	
+	public static final int COIN_COLLECTOR = 0;
+	public static final int QUEST = 1;
+	public static final int SHOOTER = 2;
 
 	
 	public void launchMode(int gameModeID) {
@@ -14,17 +18,16 @@ public class ModeController {
 		case 1:
 			launchQuest();
 		case 2:
-			launchMonsterHunt();
+			launchShooter();
 		default:
 			break;
 		}
 	}
 
 	/**
-	 * Initialize values needed to play 'Monster Hunt' mode.
+	 * Initialize values needed to play 'Shooter' mode.
 	 */
-	private void launchMonsterHunt() {
-		// TODO Auto-generated method stub
+	private void launchShooter() {
 		
 	}
 

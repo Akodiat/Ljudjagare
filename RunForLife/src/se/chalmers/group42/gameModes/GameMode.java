@@ -24,7 +24,7 @@ public interface GameMode {
 	 * Get the ID of the Game Mode
 	 * 0 - Coin Collector
 	 * 1 - Quest
-	 * 2 - Monster Hunt
+	 * 2 - Shooter
 	 * 3 - <not implemented>
 	 * @return 
 	 */
