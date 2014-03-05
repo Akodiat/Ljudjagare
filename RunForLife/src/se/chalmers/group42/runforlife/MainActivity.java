@@ -77,10 +77,12 @@ public class MainActivity extends Activity {
 		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				new ModeController().launchMode((int) fancyCoverFlow
-						.getSelectedItemId());
+				startActivity(runActivityIntent);
+//				new ModeController().launchMode((int) fancyCoverFlow
+//						.getSelectedItemId());
 			}
 		});
+		
 	}
 
 	@Override
