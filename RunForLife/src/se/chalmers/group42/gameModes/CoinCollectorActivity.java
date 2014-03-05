@@ -31,24 +31,6 @@ public class CoinCollectorActivity extends RunActivity {
 		return human.getScore();
 	}
 
-	public void onSensorUpdate(SensorValues sensorValues) {
-		//Update human location
-		this.human.setLocation(sensorValues.getLocation());
-
-		//Update compass value
-		this.compassFromNorth = sensorValues.getCompassFromNorth();
-
-		//If a coin is found..
-		if(isAtCoin())
-		{
-			//Increase the player score by one
-			this.human.modScore(1);
-
-			//And generate a new coin to search for
-			generateNewCoin();
-		}	
-	}
-
 	private boolean isAtCoin(){
 
 		return (//If closer than minimum distance
@@ -91,5 +73,26 @@ public class CoinCollectorActivity extends RunActivity {
 	 */
 	public float getRotation_Compass() {
 		return compassFromNorth + human.getLocation().bearingTo(soundSource);
+	}
+
+	@Override
+	public void onUpdatedSensors(SensorValues sensorValues) {
+		super.onUpdatedSensors(sensorValues);
+
+		//Update human location
+		this.human.setLocation(sensorValues.getLocation());
+
+		//Update compass value
+		this.compassFromNorth = sensorValues.getCompassFromNorth();
+
+		//If a coin is found..
+		if(isAtCoin())
+		{
+			//Increase the player score by one
+			this.human.modScore(1);
+
+			//And generate a new coin to search for
+			generateNewCoin();
+		}
 	}
 }
