@@ -1,23 +1,35 @@
 package se.chalmers.group42.runforlife;
 
-import se.chalmers.group42.gameModes.CoinCollector;
+import android.content.Context;
+import android.content.Intent;
+import se.chalmers.group42.gameModes.CoinCollectorActivity;
 import se.chalmers.group42.gameModes.GameMode;
+import se.chalmers.group42.gameModes.ShooterActivity;
 
 public class ModeController {
 	private GameMode activeGameMode;
 	
+	/**
+	 * Available modes.
+	 */
 	public static final int COIN_COLLECTOR = 0;
 	public static final int QUEST = 1;
 	public static final int SHOOTER = 2;
+	
+	private Context context;
 
+
+	public ModeController(Context context){
+		this.context = context;
+	}
 	
 	public void launchMode(int gameModeID) {
 		switch (gameModeID) {
-		case 0:
+		case COIN_COLLECTOR:
 			launchCoinCollector();
-		case 1:
+		case QUEST:
 			launchQuest();
-		case 2:
+		case SHOOTER:
 			launchShooter();
 		default:
 			break;
@@ -35,8 +47,8 @@ public class ModeController {
 	 * Initialize values needed to play 'Quest' mode.
 	 */
 	private void launchQuest() {
-		// TODO Auto-generated method stub
-		
+		Intent runActivityIntent = new Intent(context, ShooterActivity.class);
+		context.startActivity(runActivityIntent);
 	}
 
 	/**
@@ -44,13 +56,7 @@ public class ModeController {
 	 * @return 
 	 */
 	private void launchCoinCollector() {
-		//START CoinCollector activity here.
-	}
-	
-	public GameMode getActiveGameMode(){
-		if (activeGameMode == null)
-			throw new NullPointerException("No game mode initialized, launch a game mode before calling getActiveGameMode.");
-		else
-			return activeGameMode;
+		Intent runActivityIntent = new Intent(context, CoinCollectorActivity.class);
+		context.startActivity(runActivityIntent);
 	}
 }
