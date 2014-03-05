@@ -34,7 +34,7 @@ public class FancyCoverFlowSampleAdapter extends FancyCoverFlowAdapter {
     // Private members
     // =============================================================================
 
-    private int[] images = {R.drawable.gamemodesample, R.drawable.gamemodesample, R.drawable.gamemodesample, R.drawable.gamemodesample, R.drawable.gamemodesample, R.drawable.gamemodesample, R.drawable.gamemodesample};
+    private int[] images = {R.drawable.coincollector, R.drawable.placeholder, R.drawable.placeholder, R.drawable.placeholder};
     private int height;
     
     // =============================================================================
