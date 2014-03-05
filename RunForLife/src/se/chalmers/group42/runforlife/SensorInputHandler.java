@@ -28,7 +28,11 @@ SensorEventListener
 	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
 	private static 			LatLng DEFAULT_POSITION = new LatLng(58.705477, 11.990884);
 	
-	private Location 		soundSource;
+	private Location 		soundSource;		//Location of the sound source
+	private Location		currentLocation;	//Location retrieved through GPS
+	
+	private float 			headingAngleOrientation;
+	private float 			angleToSound;
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000)         // 5 seconds
@@ -37,10 +41,8 @@ SensorEventListener
 
 	private LocationClient locationClient;
 
-	private float headingAngleOrientation;
-	private float angleToSound;
 
-	private Human human;
+
 
 	private RunActivity runActivity;
 
@@ -56,7 +58,7 @@ SensorEventListener
 			locationClient.connect(); 
 
 		soundSource = locationFromLatlng(DEFAULT_POSITION);
-		human = new Human(STOCKHOLM);
+		currentLocation = locationFromLatlng(STOCKHOLM);
 	}
 
 	private Location locationFromLatlng(LatLng latLng) {
@@ -86,11 +88,11 @@ SensorEventListener
 	 * Gets the rotation according to the GPS bearing
 	 */
 	public float getRotation_GPS() {
-		float bearingTo = human.getLocation().bearingTo(soundSource);
+		float bearingTo = currentLocation.bearingTo(soundSource);
 		if(bearingTo < 0){
 			bearingTo += 360;
 		}
-		angleToSound = bearingTo - human.getLocation().getBearing();
+		angleToSound = bearingTo - currentLocation.getBearing();
 
 		return angleToSound;
 	}
@@ -99,17 +101,17 @@ SensorEventListener
 	 * Gets the rotation according to the compass
 	 */
 	public float getRotation_Compass() {
-		return headingAngleOrientation + human.getLocation().bearingTo(soundSource);
+		return headingAngleOrientation + currentLocation.bearingTo(soundSource);
 	}
 
 	@Override
 	public void onLocationChanged(Location location) {
-		human.setLocation(location);
+		currentLocation = location;
 
-		runActivity.onUpdatedLocation(human); //Notify runActivity of new location update
+		notifyOfSensorUpdate(); //Notify runActivity of new sensor update
 
-		if((human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE ||
-				(location.getAccuracy() < 50 ? human.getLocation().distanceTo(soundSource) < location.getAccuracy() : false)))
+		if((currentLocation.distanceTo(soundSource) < Constants.MIN_DISTANCE ||
+				(location.getAccuracy() < 50 ? currentLocation.distanceTo(soundSource) < location.getAccuracy() : false)))
 		{
 			runActivity.onAqquiredCoin(); //Notify runActivity of new location update
 		}
@@ -120,24 +122,29 @@ SensorEventListener
 		// TODO Auto-generated method stub
 
 	}
+	
+	private void notifyOfSensorUpdate(){
+		runActivity.onUpdatedSensors(new SensorValues(currentLocation, headingAngleOrientation));
+	}
 
-	float[] mGravity;
-	float[] mGeomagnetic;
+	//The following code is taken from TODO: Fix reference
+	float[] gravityMatrix;
+	float[] geomagneticMatrix;
 	public void onSensorChanged(SensorEvent event) {
 		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
-			mGravity = event.values;
+			gravityMatrix = event.values;
 		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
-			mGeomagnetic = event.values;
-		if (mGravity != null && mGeomagnetic != null) {
+			geomagneticMatrix = event.values;
+		if (gravityMatrix != null && geomagneticMatrix != null) {
 			float R[] = new float[9];
 			float I[] = new float[9];
-			boolean success = SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
-			if (success) {
+			
+			if (SensorManager.getRotationMatrix(R, I, gravityMatrix, geomagneticMatrix)) {
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(R, orientation);
 				headingAngleOrientation =  (float) (-(180/Math.PI) * orientation[0]); // orientation contains: azimut, pitch and roll
 
-				runActivity.onUpdatedCompass(); //Notify runActivity of compass update
+				notifyOfSensorUpdate(); //Notify runActivity of new sensor update
 			}
 		}
 	}

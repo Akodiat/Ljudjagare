@@ -194,13 +194,6 @@ public class RunActivity extends FragmentActivity implements
 	}
 
 	/**
-	 * Called by SensorInputHandler when the compass orientation is updated
-	 */
-	public void onUpdatedCompass() {
-		// TODO Auto-generated method stub
-		
-	}
-	/**
 	 * Called by SensorInputHandler when a coin is aqquired
 	 */
 	public void onAqquiredCoin() {
@@ -208,9 +201,9 @@ public class RunActivity extends FragmentActivity implements
 		
 	}
 	/**
-	 * Called by SensorInputHandler when the location is updated
+	 * Called by SensorInputHandler when the sensor values are updated
 	 */
-	public void onUpdatedLocation(Human human) {
+	public void onUpdatedSensors(SensorValues sensorValues) {
 		// TODO Auto-generated method stub
 		
 	}
