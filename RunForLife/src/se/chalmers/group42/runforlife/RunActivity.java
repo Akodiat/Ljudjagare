@@ -144,7 +144,6 @@ public class RunActivity extends FragmentActivity implements
 				System.out.println("Finish clicked");
 			}
 		});
-		this.modeController = new ModeController();
 	//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
 	}
 
@@ -231,7 +230,7 @@ public class RunActivity extends FragmentActivity implements
 	 */
 	public void onUpdatedSensors(SensorValues sensorValues) {
 		//Send the updated sensorValues to the active GameMode
-		modeController.getActiveGameMode().onSensorUpdate(sensorValues);	
+			
 	}
 	
 	@Override

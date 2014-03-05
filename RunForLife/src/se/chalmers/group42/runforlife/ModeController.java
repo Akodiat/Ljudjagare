@@ -1,11 +1,17 @@
 package se.chalmers.group42.runforlife;
 
+import android.content.Context;
+import android.content.Intent;
 import se.chalmers.group42.gameModes.CoinCollector;
 import se.chalmers.group42.gameModes.GameMode;
 
 public class ModeController {
 	private GameMode activeGameMode;
+	private Context context;
 
+	public ModeController(Context context){
+		this.context = context;
+	}
 	
 	public void launchMode(int gameModeID) {
 		switch (gameModeID) {
@@ -41,13 +47,7 @@ public class ModeController {
 	 * @return 
 	 */
 	private void launchCoinCollector() {
-		//START CoinCollector activity here.
-	}
-	
-	public GameMode getActiveGameMode(){
-		if (activeGameMode == null)
-			throw new NullPointerException("No game mode initialized, launch a game mode before calling getActiveGameMode.");
-		else
-			return activeGameMode;
+		Intent runActivityIntent = new Intent(context, RunActivity.class);
+		context.startActivity(runActivityIntent);
 	}
 }

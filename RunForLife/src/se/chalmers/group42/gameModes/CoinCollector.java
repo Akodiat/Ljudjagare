@@ -14,7 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
  * @author joakim
  *
  */
-public class CoinCollector extends RunActivity{
+public class CoinCollector extends RunActivity {
 	public	static 	LatLng 	DEFAULT_POSITION 	= new LatLng(58.705477, 11.990884);
 	public 	static 	int 	GAME_MODE_ID 		= 0;
 
