@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 		 * Setting up the run-button
 		 */
 		runButton = (ImageButton) findViewById(R.id.runButton);
-		runActivityIntent = new Intent(this, RunActivity.class);
+//		runActivityIntent = new Intent(this, RunActivity.class);
 		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {

@@ -68,6 +68,7 @@ public class MapFragment extends Fragment{
 		map = fragment.getMap();
 		if(map != null){
 			map.setMyLocationEnabled(true);
+		
 		} //
 
 		map.setOnMapLongClickListener(new OnMapLongClickListener() {
