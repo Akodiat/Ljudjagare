@@ -1,6 +1,9 @@
 package se.chalmers.group42.runforlife;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -13,6 +16,12 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+
 
 /**
  * 
@@ -29,7 +38,8 @@ import android.widget.Button;
  * 
  */
 public class RunActivity extends FragmentActivity implements
-		ActionBar.TabListener {
+		ActionBar.TabListener,
+		MapFragment.OnHeadlineSelectedListener{
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -60,6 +70,8 @@ public class RunActivity extends FragmentActivity implements
 	
 	//Class for handling different Game modes.
 	ModeController modeController;
+	
+	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
 	
 
 	@Override
@@ -220,5 +232,33 @@ public class RunActivity extends FragmentActivity implements
 	public void onUpdatedSensors(SensorValues sensorValues) {
 		//Send the updated sensorValues to the active GameMode
 		modeController.getActiveGameMode().onSensorUpdate(sensorValues);	
+	}
+	
+	@Override
+	public void sendMapLocation(LatLng latLng) {
+//		System.out.println("Test");
+		findDirections( HOME_MARCUS.latitude, HOME_MARCUS.longitude
+			, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
+		
+	}
+	
+	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
+		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
+                "android:switcher:"+R.id.pager+":1");
+		mapFrag.handleGetDirectionsResult(directionPoints);
+	}
+
+	
+	public void findDirections(double fromPositionDoubleLat, double fromPositionDoubleLong, double toPositionDoubleLat, double toPositionDoubleLong, String mode)
+	{
+		Map<String, String> map = new HashMap<String, String>();
+		map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionDoubleLat));
+		map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionDoubleLong));
+		map.put(GetDirectionsAsyncTask.DESTINATION_LAT, String.valueOf(toPositionDoubleLat));
+		map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionDoubleLong));
+		map.put(GetDirectionsAsyncTask.DIRECTIONS_MODE, mode);
+
+		GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
+		asyncTask.execute(map);	
 	}
 }

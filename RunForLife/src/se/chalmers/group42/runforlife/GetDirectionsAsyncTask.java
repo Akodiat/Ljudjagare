@@ -15,7 +15,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
     public static final String DESTINATION_LAT = "destination_lat";
     public static final String DESTINATION_LONG = "destination_long";
     public static final String DIRECTIONS_MODE = "directions_mode";
-    private MapFragment activity;
+    private RunActivity activity;
     private Exception exception;
     private ProgressDialog progressDialog;
     private int distance; 
@@ -24,7 +24,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
 		return distance;
 	}
 
-	public GetDirectionsAsyncTask(MapFragment activity)
+	public GetDirectionsAsyncTask(RunActivity activity)
     {
         super();
         this.activity = activity;
@@ -32,9 +32,9 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
  
     public void onPreExecute()
     {
-//        progressDialog = new ProgressDialog(activity);
-//        progressDialog.setMessage("Calculating directions");
-//        progressDialog.show();
+        progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage("Calculating directions");
+        progressDialog.show();
     }
  
     @Override
@@ -43,7 +43,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
         progressDialog.dismiss();
         if (exception == null)
         {
-//            activity.handleGetDirectionsResult(result);
+            activity.handleGetDirectionsResult(result);
             //activity.updateDistance(distance);
         }
         else
