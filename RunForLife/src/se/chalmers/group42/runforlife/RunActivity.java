@@ -2,11 +2,8 @@ package se.chalmers.group42.runforlife;
 
 import java.util.Locale;
 
-import se.chalmers.group42.runforlife.ModeController.Mode;
-
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,12 +11,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 /**
  * 
@@ -140,7 +133,7 @@ public class RunActivity extends FragmentActivity implements
 			}
 		});
 		this.modeController = new ModeController();
-		this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
+	//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
 	}
 
 	@Override
@@ -221,11 +214,11 @@ public class RunActivity extends FragmentActivity implements
 		}
 	}
 
-//	/**
-//	 * Called by SensorInputHandler when the sensor values are updated
-//	 */
-//	public void onUpdatedSensors(SensorValues sensorValues) {
-//		//Send the updated sensorValues to the active GameMode
-//		modeController.getActiveGameMode().onSensorUpdate(sensorValues);	
-//	}
+	/**
+	 * Called by SensorInputHandler when the sensor values are updated
+	 */
+	public void onUpdatedSensors(SensorValues sensorValues) {
+		//Send the updated sensorValues to the active GameMode
+		modeController.getActiveGameMode().onSensorUpdate(sensorValues);	
+	}
 }
