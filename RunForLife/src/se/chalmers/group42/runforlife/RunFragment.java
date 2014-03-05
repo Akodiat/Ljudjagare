@@ -2,6 +2,7 @@ package se.chalmers.group42.runforlife;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
@@ -25,8 +26,12 @@ public class RunFragment extends Fragment{
 				container, false);
 		return rootView;
 	}
-	public void setText(){
-		System.out.println("Setting text");
-		time.setText("text");
+	public void setTime(long seconds){
+		Time t = new Time();
+		t.set(seconds*1000);
+		t.switchTimezone("GMT");
+		
+		TextView textView = (TextView) getView().findViewById(R.id.textViewTime2);
+		textView.setText(t.format("%H:%M:%S"));
 	}
 }

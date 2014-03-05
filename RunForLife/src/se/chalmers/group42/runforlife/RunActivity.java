@@ -127,12 +127,27 @@ public class RunActivity extends FragmentActivity implements
 //		this.sensorInputHandler = new SensorInputHandler(this);
 		this.dataHandler = new DataHandler(this);
 		
+		//START
+		if(!dataHandler.getRunningStatus()){
+			dataHandler.newRoute();
+//			playSound();
+			dataHandler.startWatch();
+		}
+		
 		//Setting up pausebutton
 		pauseButton = (Button) findViewById(R.id.button_pause);
 		pauseButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				System.out.println("Pause clicked");
+				if(dataHandler.getRunningStatus()){
+					if(!dataHandler.getPauseStatus()){
+						pauseButton.setText("Resume");
+					}else{
+						pauseButton.setText("Pause");
+					}
+//					playSound();
+					dataHandler.pauseWatch();
+				}
 			}
 		});
 
@@ -141,7 +156,10 @@ public class RunActivity extends FragmentActivity implements
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				System.out.println("Finish clicked");
+				if(dataHandler.getRunningStatus()){
+					dataHandler.resetWatch();
+//					playSound();
+				}
 			}
 		});
 	//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
@@ -259,5 +277,12 @@ public class RunActivity extends FragmentActivity implements
 
 		GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
 		asyncTask.execute(map);	
+	}
+	public void updateDisplay(long seconds){
+		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
+                "android:switcher:"+R.id.pager+":0");
+		if(runFragment.isAdded()){
+			runFrag.setTime(seconds);
+		}
 	}
 }

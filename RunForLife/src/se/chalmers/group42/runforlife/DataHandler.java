@@ -19,7 +19,7 @@ public class DataHandler {
 	private MySQLiteHelper 	db;
 	
 	private Long 		 	seconds = 0L;
-	private int 		 	distance;
+	private int 		 	distance = 0;
 	private Route			currentRoute;
 	private boolean			isTime = true;
 	
@@ -85,7 +85,7 @@ public class DataHandler {
 			public void run() {
 				if(!pause){
 					seconds++;
-					//runAct.updateDisplay(seconds,distance); 
+					runAct.updateDisplay(seconds); 
 				}
 				else {
 					m_handler.removeCallbacks(m_handlerTask);
@@ -114,7 +114,7 @@ public class DataHandler {
 		pause = true;
 		running = false;
 		
-	//	runAct.updateDisplay(seconds, distance);
+		runAct.updateDisplay(seconds);
 	}
 	public boolean getRunningStatus(){
 		return running;
