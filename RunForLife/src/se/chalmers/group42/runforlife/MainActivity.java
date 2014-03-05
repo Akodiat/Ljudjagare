@@ -11,16 +11,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import at.technikum.mti.fancycoverflow.FancyCoverFlow;
-import at.technikum.mti.fancycoverflow.FancyCoverFlowCustomAdapter;
 import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
 
-public class MainActivity extends Activity{
+public class MainActivity extends Activity {
 
 	private FancyCoverFlow fancyCoverFlow;
 	private ImageButton runButton;
 	private Intent runActivityIntent;
 	private int coverFlowHeight;
-	
+
 	private final int ACTION_BAR_HEIGHT_MDPI = 32;
 
 	@Override
@@ -29,12 +28,12 @@ public class MainActivity extends Activity{
 		setContentView(R.layout.activity_main);
 
 		/*
-		 * The screen size and density of the device running the program is retrieved to draw 
-		 * the components to good proportions.
+		 * The screen size and density of the device running the program is
+		 * retrieved to draw the components to good proportions.
 		 * 
 		 * http://stackoverflow.com/questions/1016896/how-to-get-screen-dimensions
 		 */
-		//Getting the display size
+		// Getting the display size
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
@@ -42,21 +41,26 @@ public class MainActivity extends Activity{
 		int height = size.y;
 		System.out.println("Width= " + width);
 		System.out.println("Height= " + height);
-		//Getting the display density
-		int density = (int)getResources().getDisplayMetrics().density;
-		System.out.println("Density= " + getResources().getDisplayMetrics().density);
+		// Getting the display density
+		int density = (int) getResources().getDisplayMetrics().density;
+		System.out.println("Density= "
+				+ getResources().getDisplayMetrics().density);
 		/*
-		 * Setting a good coverflow height as 4/10 of the screen height minus the actionbar.
-		 * I need to multiply the density with the standard height of an action bar.
+		 * Setting a good coverflow height as 4/10 of the screen height minus
+		 * the actionbar. I need to multiply the density with the standard
+		 * height of an action bar.
 		 */
-		coverFlowHeight = (int)((4.0/10.0)*(height - density * ACTION_BAR_HEIGHT_MDPI));
+		coverFlowHeight = (int) ((4.0 / 10.0) * (height - density
+				* ACTION_BAR_HEIGHT_MDPI));
 		System.out.println("Coverflow height: " + coverFlowHeight);
-		
+
 		/*
 		 * Setting up the cover flow
 		 */
-		fancyCoverFlow = (FancyCoverFlow) this.findViewById(R.id.fancyCoverFlow);
-		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter(coverFlowHeight));
+		fancyCoverFlow = (FancyCoverFlow) this
+				.findViewById(R.id.fancyCoverFlow);
+		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter(
+				coverFlowHeight));
 		fancyCoverFlow.setUnselectedAlpha(1.0f);
 		fancyCoverFlow.setUnselectedSaturation(0.0f);
 		fancyCoverFlow.setUnselectedScale(0.5f);
@@ -73,8 +77,8 @@ public class MainActivity extends Activity{
 		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				System.out.println("Selected " + fancyCoverFlow.getSelectedItemId());
-				//startActivity(runActivityIntent);
+				new ModeController().launchMode((int) fancyCoverFlow
+						.getSelectedItemId());
 			}
 		});
 	}
