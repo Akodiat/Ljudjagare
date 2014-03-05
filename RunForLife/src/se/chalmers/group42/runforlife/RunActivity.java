@@ -285,4 +285,13 @@ public class RunActivity extends FragmentActivity implements
 			runFrag.setTime(seconds);
 		}
 	}
+
+	public void onGPSConnect() {
+		// TODO Uppdatera knappar här
+		
+	}
+	public void onGPSDisconnect() {
+		// TODO Uppdatera knappar här
+		
+	}
 }

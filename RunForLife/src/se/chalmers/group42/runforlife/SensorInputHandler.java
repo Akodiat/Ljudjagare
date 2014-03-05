@@ -67,12 +67,12 @@ SensorEventListener
 	@Override
 	public void onConnected(Bundle bundle) {
 		locationClient.requestLocationUpdates( REQUEST, this); 
-		//human = new Human(myLocationClient.getLastLocation());
+		runActivity.onGPSConnect();
 	} 
 
 	@Override
 	public void onDisconnected() {
-		// TODO Auto-generated method stub
+		runActivity.onGPSDisconnect();
 	}
 
 	@Override
