@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -17,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -54,6 +57,8 @@ public class RunActivity extends FragmentActivity implements
 	Fragment runFragment;
 	Fragment mapFragment;
 	Fragment statsFragment;
+	
+	Button pauseButton, finishButton;
 	
 	//Class for handling GPS and Compass sensors
 	SensorInputHandler sensorInputHandler;
@@ -112,6 +117,24 @@ public class RunActivity extends FragmentActivity implements
 		
 //		this.sensorInputHandler = new SensorInputHandler(this);
 		this.dataHandler = new DataHandler(this);
+		
+		//Setting up pausebutton
+		pauseButton = (Button) findViewById(R.id.button_pause);
+		pauseButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				System.out.println("Pause clicked");
+			}
+		});
+
+		//Setting up finishbutton
+		finishButton = (Button) findViewById(R.id.button_finish);
+		finishButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				System.out.println("Finish clicked");
+			}
+		});
 	}
 
 	@Override
@@ -150,7 +173,6 @@ public class RunActivity extends FragmentActivity implements
 			super(fm);
 		}
 
-		//TODO return direkt
 		/*
 		 * getItem is called to instantiate the fragment for the given page.(non-Javadoc)
 		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
