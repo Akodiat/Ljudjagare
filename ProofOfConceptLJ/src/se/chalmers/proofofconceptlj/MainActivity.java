@@ -28,9 +28,10 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	
-		human = new Human(new LatLng(58.489657, 13.777925)); //Set human to be at Marcus's home
 
+		human = new Human(new LatLng(58.489657, 13.777925)); // Set human to be
+																// at Marcus's
+																// home
 
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
@@ -42,7 +43,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				distance = arg1;
-				fx.update(fx.getCowbell(), degreesToDestination, distance);
+				fx.update(fx.getNavigationFX(), degreesToDestination, distance);
 			}
 
 			@Override
@@ -62,7 +63,8 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				fx.update(fx.getCowbell(), arg1, distance);
+				degreesToDestination = arg1 - 180;
+				fx.update(fx.getNavigationFX(), degreesToDestination, distance);
 			}
 
 			@Override
@@ -78,8 +80,6 @@ public class MainActivity extends Activity {
 		});
 	}
 
-
-
 	// End of stolen
 
 	@Override
@@ -89,17 +89,16 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-
 	public void playSound(View view) throws InterruptedException {
-		if (!fx.getCowbell().isPlaying())
-			fx.loop(fx.getCowbell());
-		else  {
-			fx.stopHandler();
+		if (!fx.getNavigationFX().isPlaying())
+			fx.loop(fx.getNavigationFX());
+		else {
+			fx.stopLoop();
 		}
 	}
 
 	public void stopSound(View view) throws InterruptedException {
-		fx.stopHandler();
+		fx.stopLoop();
 	}
 
 	/** Called when the user clicks the Map button */

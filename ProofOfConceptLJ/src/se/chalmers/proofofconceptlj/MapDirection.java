@@ -346,12 +346,12 @@ SensorEventListener
 
 	public void playSound(View view) {
 		Button button = (Button) findViewById(R.id.bPlay);
-		if (!fx.getCowbell().isPlaying()){
-			fx.loop(fx.getCowbell());
+		if (!fx.getNavigationFX().isPlaying()){
+			fx.loop(fx.getNavigationFX());
 			button.setText("Stop sound");
 		}
 		else {
-			fx.stopHandler();
+			fx.stopLoop();
 			button.setText("Play sound");
 		}
 	}
@@ -474,9 +474,9 @@ SensorEventListener
 	private void pointArrowToSource_GPS() {
 		ImageView arrow = (ImageView) this.findViewById(R.id.imageView2);
 		float bearingTo = human.getLocation().bearingTo(soundSource);
-		if(bearingTo < 0){
-			bearingTo += 360;
-		}
+//		if(bearingTo < 0){
+//			bearingTo += 360;
+//		}
 		angleToSound = bearingTo - headingAngle;
 		arrow.setRotation(angleToSound);
 		//		arrow.setRotation(headingAngle + human.getLocation().bearingTo(soundSource));
@@ -598,8 +598,8 @@ SensorEventListener
 			angle += 360;
 		}
 
-		if(fx.getCowbell().isPlaying())
-			fx.update(fx.getCowbell(), (angle),
+		if(fx.getNavigationFX().isPlaying())
+			fx.update(fx.getNavigationFX(), (angle),
 					human.getLocation().distanceTo(soundSource));
 
 		//		//Text debug:

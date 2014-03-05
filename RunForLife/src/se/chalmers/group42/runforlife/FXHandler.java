@@ -1,4 +1,4 @@
-package se.chalmers.proofofconceptlj;
+package se.chalmers.group42.runforlife;
 
 import java.util.HashMap;
 
