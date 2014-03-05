@@ -74,7 +74,7 @@ public class MainActivity extends Activity{
 			@Override
 			public void onClick(View view) {
 				System.out.println("Selected " + fancyCoverFlow.getSelectedItemId());
-				startActivity(runActivityIntent);
+				//startActivity(runActivityIntent);
 			}
 		});
 	}
