@@ -9,11 +9,11 @@ public class ModeController {
 	
 	public void launchMode(int gameModeID) {
 		switch (gameModeID) {
-		case 1:
+		case 0:
 			launchCoinCollector();
-		case 2:
+		case 1:
 			launchQuest();
-		case 3:
+		case 2:
 			launchMonsterHunt();
 		default:
 			break;
@@ -41,7 +41,7 @@ public class ModeController {
 	 * @return 
 	 */
 	private void launchCoinCollector() {
-		activeGameMode = new CoinCollector();
+		//START CoinCollector activity here.
 	}
 	
 	public GameMode getActiveGameMode(){

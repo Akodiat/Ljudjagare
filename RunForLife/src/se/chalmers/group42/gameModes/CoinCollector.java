@@ -2,6 +2,7 @@ package se.chalmers.group42.gameModes;
 
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.Human;
+import se.chalmers.group42.runforlife.RunActivity;
 import se.chalmers.group42.runforlife.SensorValues;
 import utils.LocationHelper;
 import android.location.Location;
@@ -13,8 +14,9 @@ import com.google.android.gms.maps.model.LatLng;
  * @author joakim
  *
  */
-public class CoinCollector implements GameMode{
-	private static 	LatLng DEFAULT_POSITION = new LatLng(58.705477, 11.990884);
+public class CoinCollector extends RunActivity{
+	public	static 	LatLng 	DEFAULT_POSITION 	= new LatLng(58.705477, 11.990884);
+	public 	static 	int 	GAME_MODE_ID 		= 0;
 
 	private 	Human 			human;				//Containing the player position and score
 	private 	float 			compassFromNorth; 	//Compass angle
@@ -25,12 +27,10 @@ public class CoinCollector implements GameMode{
 		soundSource = LocationHelper.locationFromLatlng(DEFAULT_POSITION);
 	}
 
-	@Override
 	public int getScore() {
 		return human.getScore();
 	}
 
-	@Override
 	public void onSensorUpdate(SensorValues sensorValues) {
 		//Update human location
 		this.human.setLocation(sensorValues.getLocation());
@@ -91,10 +91,5 @@ public class CoinCollector implements GameMode{
 	 */
 	public float getRotation_Compass() {
 		return compassFromNorth + human.getLocation().bearingTo(soundSource);
-	}
-
-	@Override
-	public int getGameModeID() {
-		return 0;
 	}
 }
