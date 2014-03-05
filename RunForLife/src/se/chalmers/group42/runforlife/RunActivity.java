@@ -16,6 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -54,22 +55,25 @@ public class RunActivity extends FragmentActivity implements
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
-	ViewPager mViewPager;
+	private ViewPager mViewPager;
 	
-	Fragment runFragment;
-	Fragment mapFragment;
-	Fragment statsFragment;
+	private Fragment runFragment;
+	private Fragment mapFragment;
+	private Fragment statsFragment;
 	
-	Button pauseButton, finishButton;
+	private Button pauseButton, finishButton;
 	
 	//Class for handling GPS and Compass sensors
-	SensorInputHandler sensorInputHandler;
+	private SensorInputHandler sensorInputHandler;
 	
 	//Class for handling database
-	DataHandler dataHandler;
+	private DataHandler dataHandler;
 	
 	//Class for handling different Game modes.
-	ModeController modeController;
+	private ModeController modeController;
+	
+	private ImageView gpsIcon, soundIcon, headPhonesIcon;
+	
 	
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
 	
@@ -139,15 +143,16 @@ public class RunActivity extends FragmentActivity implements
 		pauseButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(dataHandler.getRunningStatus()){
-					if(!dataHandler.getPauseStatus()){
-						pauseButton.setText("Resume");
-					}else{
-						pauseButton.setText("Pause");
-					}
-//					playSound();
-					dataHandler.pauseWatch();
-				}
+//				if(dataHandler.getRunningStatus()){
+//					if(!dataHandler.getPauseStatus()){
+//						pauseButton.setText("Resume");
+//					}else{
+//						pauseButton.setText("Pause");
+//					}
+////					playSound();
+//					dataHandler.pauseWatch();
+//				}
+				onGPSDisconnect();
 			}
 		});
 
@@ -156,13 +161,19 @@ public class RunActivity extends FragmentActivity implements
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(dataHandler.getRunningStatus()){
-					dataHandler.resetWatch();
-//					playSound();
-				}
+//				if(dataHandler.getRunningStatus()){
+//					dataHandler.resetWatch();
+////					playSound();
+//				}
+				onGPSConnect();
 			}
 		});
 	//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
+		
+		//Setting up icons
+		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
+		soundIcon = (ImageView) findViewById(R.id.imageViewSound);
+		headPhonesIcon = (ImageView) findViewById(R.id.imageViewHeadphones);
 	}
 
 	@Override
@@ -287,11 +298,11 @@ public class RunActivity extends FragmentActivity implements
 	}
 
 	public void onGPSConnect() {
-		// TODO Uppdatera knappar här
+		gpsIcon.setImageResource(R.drawable.gps_green);
 		
 	}
 	public void onGPSDisconnect() {
-		// TODO Uppdatera knappar här
+		gpsIcon.setImageResource(R.drawable.gps_red);
 		
 	}
 }
