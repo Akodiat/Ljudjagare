@@ -2,6 +2,8 @@ package se.chalmers.group42.runforlife;
 
 import java.util.Locale;
 
+import se.chalmers.group42.runforlife.ModeController.Mode;
+
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -10,10 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,7 +62,12 @@ public class RunActivity extends FragmentActivity implements
 	//Class for handling GPS and Compass sensors
 	SensorInputHandler sensorInputHandler;
 	
+	//Class for handling database
 	DataHandler dataHandler;
+	
+	//Class for handling different Game modes.
+	ModeController modeController;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +139,8 @@ public class RunActivity extends FragmentActivity implements
 				System.out.println("Finish clicked");
 			}
 		});
+		this.modeController = new ModeController();
+		this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
 	}
 
 	@Override
@@ -215,25 +221,11 @@ public class RunActivity extends FragmentActivity implements
 		}
 	}
 
-	/**
-	 * Called by SensorInputHandler when the compass orientation is updated
-	 */
-	public void onUpdatedCompass() {
-		// TODO Auto-generated method stub
-		
-	}
-	/**
-	 * Called by SensorInputHandler when a coin is aqquired
-	 */
-	public void onAqquiredCoin() {
-		// TODO Auto-generated method stub
-		
-	}
-	/**
-	 * Called by SensorInputHandler when the location is updated
-	 */
-	public void onUpdatedLocation(Human human) {
-		// TODO Auto-generated method stub
-		
-	}
+//	/**
+//	 * Called by SensorInputHandler when the sensor values are updated
+//	 */
+//	public void onUpdatedSensors(SensorValues sensorValues) {
+//		//Send the updated sensorValues to the active GameMode
+//		modeController.getActiveGameMode().onSensorUpdate(sensorValues);	
+//	}
 }

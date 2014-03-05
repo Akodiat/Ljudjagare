@@ -1,20 +1,19 @@
 package se.chalmers.group42.runforlife;
 
-public class ModeController {
+import se.chalmers.group42.gameModes.CoinCollector;
+import se.chalmers.group42.gameModes.GameMode;
 
-	public static enum Mode {
-		COIN_COLLECTOR,
-		QUEST,
-		MONSTER_HUNT
-	}
+public class ModeController {
+	private GameMode activeGameMode;
+
 	
-	public static void launchMode(Mode mode) {
-		switch (mode) {
-		case COIN_COLLECTOR:
+	public void launchMode(int gameModeID) {
+		switch (gameModeID) {
+		case 1:
 			launchCoinCollector();
-		case QUEST:
+		case 2:
 			launchQuest();
-		case MONSTER_HUNT:
+		case 3:
 			launchMonsterHunt();
 		default:
 			break;
@@ -24,7 +23,7 @@ public class ModeController {
 	/**
 	 * Initialize values needed to play 'Monster Hunt' mode.
 	 */
-	private static void launchMonsterHunt() {
+	private void launchMonsterHunt() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -32,16 +31,23 @@ public class ModeController {
 	/**
 	 * Initialize values needed to play 'Quest' mode.
 	 */
-	private static void launchQuest() {
+	private void launchQuest() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	/**
 	 * Initialize values needed to play 'Coin Collector' mode.
+	 * @return 
 	 */
-	private static void launchCoinCollector() {
-		// TODO Auto-generated method stub
-		
+	private void launchCoinCollector() {
+		activeGameMode = new CoinCollector();
+	}
+	
+	public GameMode getActiveGameMode(){
+		if (activeGameMode == null)
+			throw new NullPointerException("No game mode initialized, launch a game mode before calling getActiveGameMode.");
+		else
+			return activeGameMode;
 	}
 }

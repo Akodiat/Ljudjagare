@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import at.technikum.mti.fancycoverflow.FancyCoverFlow;
+import at.technikum.mti.fancycoverflow.FancyCoverFlowCustomAdapter;
 import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
 
 public class MainActivity extends Activity{
@@ -73,7 +74,7 @@ public class MainActivity extends Activity{
 			@Override
 			public void onClick(View view) {
 				System.out.println("Selected " + fancyCoverFlow.getSelectedItemId());
-				startActivity(runActivityIntent);
+				//startActivity(runActivityIntent);
 			}
 		});
 	}
