@@ -36,6 +36,7 @@ public class CoinCollector implements GameMode{
 		this.human.setLocation(sensorValues.getLocation());
 		this.compassFromNorth = sensorValues.getCompassFromNorth();
 		
+		//If a coin is found..
 		if((human.getLocation().distanceTo(soundSource) < Constants.MIN_DISTANCE ||
 				(human.getLocation().getAccuracy() < 50 ? 
 						human.getLocation().distanceTo(soundSource) < 
@@ -44,10 +45,19 @@ public class CoinCollector implements GameMode{
 				)
 			))
 		{
+			//Increase the player score by one
 			this.human.modScore(1);
+			
+			//And generate a new coin to search for
+			generateNewCoin();
 		}	
 	}
 	
+	private void generateNewCoin() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * Gets the rotation according to the GPS bearing
 	 * Rotating an upwards pointing arrow with this value will
