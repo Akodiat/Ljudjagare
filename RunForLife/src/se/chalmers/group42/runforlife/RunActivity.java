@@ -134,7 +134,6 @@ public class RunActivity extends FragmentActivity implements
 		//START
 		if(!dataHandler.getRunningStatus()){
 			dataHandler.newRoute();
-			playSound();
 			dataHandler.startWatch();
 		}
 		
@@ -174,6 +173,7 @@ public class RunActivity extends FragmentActivity implements
 		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
 		soundIcon = (ImageView) findViewById(R.id.imageViewSound);
 		headPhonesIcon = (ImageView) findViewById(R.id.imageViewHeadphones);
+		
 	}
 
 	protected void playSound() {
