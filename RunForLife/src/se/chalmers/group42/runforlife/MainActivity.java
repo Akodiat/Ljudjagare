@@ -78,6 +78,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				//startActivity(runActivityIntent);
+				System.out.println();
 				new ModeController(MainActivity.this).launchMode((int) fancyCoverFlow
 						.getSelectedItemId());
 			}

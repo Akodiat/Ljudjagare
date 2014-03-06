@@ -43,8 +43,13 @@
         </activity>
         
         <activity
-            android:name="se.chalmers.group42.runforlife.CoinCollectorActivity"
+            android:name="se.chalmers.group42.gameModes.CoinCollectorActivity"
             android:label="coin_collector_activity" >
+        </activity>
+        
+        <activity
+            android:name="se.chalmers.group42.gameModes.ShooterActivity"
+            android:label="shooter_activity" >
         </activity>
         
         <meta-data

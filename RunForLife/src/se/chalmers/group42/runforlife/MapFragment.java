@@ -25,7 +25,7 @@ import android.widget.TextView;
 /**
  * A fragment including the map with information of what route has been taken.
  */
-public class MapFragment extends Fragment{
+public class MapFragment extends Fragment {
 	OnHeadlineSelectedListener mCallback;
 
 	// Container Activity must implement this interface
@@ -47,108 +47,114 @@ public class MapFragment extends Fragment{
 		}
 	}
 
-
-
-	private GoogleMap 			map;
-	private SupportMapFragment 	fragment;
-	private ArrayList<Location> finalRoute = new ArrayList<Location>(); 
+	private GoogleMap map;
+	private SupportMapFragment fragment;
+	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 	private int marks;
-	private Boolean 			directionFinished = false;
+	private Boolean directionFinished = false;
 
 	public MapFragment() {
 	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_map,
-				container, false);
+		View rootView = inflater.inflate(R.layout.fragment_map, container,
+				false);
 
 		// Show location on map
-		fragment = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map));
+		fragment = ((SupportMapFragment) getFragmentManager().findFragmentById(
+				R.id.map));
 		map = fragment.getMap();
-		if(map != null){
+		if (map != null) {
 			map.setMyLocationEnabled(true);
-		
-		} //
 
-		map.setOnMapLongClickListener(new OnMapLongClickListener() {
-			@Override
-			public void onMapLongClick(LatLng latLng) {
-				map.clear();
-				mCallback.sendMapLocation(latLng);
+			map.setOnMapLongClickListener(new OnMapLongClickListener() {
+				@Override
+				public void onMapLongClick(LatLng latLng) {
+					map.clear();
+					mCallback.sendMapLocation(latLng);
 
-				MarkerOptions markerOptions = new MarkerOptions();
-				markerOptions.position(latLng);
-				markerOptions.title(latLng.latitude + " : " + latLng.longitude);
-				map.addMarker(markerOptions);
-			}
-		});
-
-
+					MarkerOptions markerOptions = new MarkerOptions();
+					markerOptions.position(latLng);
+					markerOptions.title(latLng.latitude + " : "
+							+ latLng.longitude);
+					map.addMarker(markerOptions);
+				}
+			});
+		}
 
 		return rootView;
 	}
 
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
-		PolylineOptions rectLine = new PolylineOptions().width(10).color(Color.BLUE);
-		int points = directionPoints.size()-1;
-		//		int halfway=0; 
-		for(int i = 0 ; i < directionPoints.size() ; i++) 
-		{
-			//points ++;
+		PolylineOptions rectLine = new PolylineOptions().width(10).color(
+				Color.BLUE);
+		int points = directionPoints.size() - 1;
+		// int halfway=0;
+		for (int i = 0; i < directionPoints.size(); i++) {
+			// points ++;
 			rectLine.add(directionPoints.get(i));
 		}
 
-		//--- Is used to make more points on the directions, dont remove without asking Marcus ---
-		//		halfway = directionPoints.size() / 2;
-		//		Location halfwayLocation = new Location("");
-		//		halfwayLocation.setLatitude(directionPoints.get(halfway).latitude);
-		//		halfwayLocation.setLongitude(directionPoints.get(halfway).longitude);
-		//		finalRoute.add(halfwayLocation);
+		// --- Is used to make more points on the directions, dont remove
+		// without asking Marcus ---
+		// halfway = directionPoints.size() / 2;
+		// Location halfwayLocation = new Location("");
+		// halfwayLocation.setLatitude(directionPoints.get(halfway).latitude);
+		// halfwayLocation.setLongitude(directionPoints.get(halfway).longitude);
+		// finalRoute.add(halfwayLocation);
 
 		Location wholeWayLocation = new Location("");
 		wholeWayLocation.setLatitude(directionPoints.get(points).latitude);
 		wholeWayLocation.setLongitude(directionPoints.get(points).longitude);
 		finalRoute.add(wholeWayLocation);
-		//		if (newPolyline != null)
-		//		{
-		//			newPolyline.remove();
-		//		}
+		// if (newPolyline != null)
+		// {
+		// newPolyline.remove();
+		// }
 		map.addPolyline(rectLine);
-		//latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
-		//float zoom = 19;
-		//map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, width, height, 500));
+		// latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
+		// float zoom = 19;
+		// map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds,
+		// width, height, 500));
 
-		// Add a marker on the last position in the route. 
-		//		if (marker != null){
-		//			marker.remove();
-		//		}
-		if(marks==0){
-			//soundSource.set(wholeWayLocation);
+		// Add a marker on the last position in the route.
+		// if (marker != null){
+		// marker.remove();
+		// }
+		if (marks == 0) {
+			// soundSource.set(wholeWayLocation);
 
 			map.addMarker(new MarkerOptions()
-			.position(new LatLng(wholeWayLocation.getLatitude(), wholeWayLocation.getLongitude()))
-			.title("First! " + marks ).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+					.position(
+							new LatLng(wholeWayLocation.getLatitude(),
+									wholeWayLocation.getLongitude()))
+					.title("First! " + marks)
+					.icon(BitmapDescriptorFactory
+							.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		}
 		marks++;
 
-		if(finalRoute.size() == 3){
+		if (finalRoute.size() == 3) {
 			directionFinished = true;
 		}
-		//		marks++;
-		//		marker = map.addMarker(new MarkerOptions()
-		//		.position(new LatLng(directionPoints.get(halfway).latitude, directionPoints.get(halfway).longitude))
-		//		.title("halfway! " + marks + ",  " + directionPoints.get(halfway).latitude 
-		//				+ " " + directionPoints.get(halfway).longitude));
+		// marks++;
+		// marker = map.addMarker(new MarkerOptions()
+		// .position(new LatLng(directionPoints.get(halfway).latitude,
+		// directionPoints.get(halfway).longitude))
+		// .title("halfway! " + marks + ",  " +
+		// directionPoints.get(halfway).latitude
+		// + " " + directionPoints.get(halfway).longitude));
 
-
-		//		marker = map.addMarker(new MarkerOptions()
-		//		.position(new LatLng(directionPoints.get(points).latitude, directionPoints.get(points).longitude))
-		//		.title("End of route!  " + marks +",  "+ directionPoints.get(points).latitude 
-		//				+ " " + directionPoints.get(points).longitude));
-		//map.animateCamera(CameraUpdateFactory.zoomOut());
+		// marker = map.addMarker(new MarkerOptions()
+		// .position(new LatLng(directionPoints.get(points).latitude,
+		// directionPoints.get(points).longitude))
+		// .title("End of route!  " + marks +",  "+
+		// directionPoints.get(points).latitude
+		// + " " + directionPoints.get(points).longitude));
+		// map.animateCamera(CameraUpdateFactory.zoomOut());
 
 	}
-
 
 }

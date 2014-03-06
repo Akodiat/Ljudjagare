@@ -27,10 +27,13 @@ public class ModeController {
 		switch (gameModeID) {
 		case COIN_COLLECTOR:
 			launchCoinCollector();
+			break;
 		case QUEST:
 			launchQuest();
+			break;
 		case SHOOTER:
 			launchShooter();
+			break;
 		default:
 			break;
 		}
