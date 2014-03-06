@@ -96,7 +96,7 @@
                             android:id="@+id/imageViewHeadphones"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/headphones" />
+                            android:src="@drawable/headphones_green" />
 
                         <TextView
                             android:id="@+id/textViewHeadphones"
