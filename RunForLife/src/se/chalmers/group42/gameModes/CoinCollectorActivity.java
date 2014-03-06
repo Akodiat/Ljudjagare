@@ -110,13 +110,17 @@ public class CoinCollectorActivity extends RunActivity {
 					human.getLocation().distanceTo(coinLocation));
 		
 	}
-	
-	public void playSound(View view) {
+	@Override
+	protected void playSound() {
+		super.playSound();
+		
 		if (!fx.getNavigationFX().isPlaying())
 			fx.loop(fx.getNavigationFX());
 		else
 			fx.stopLoop();
 	}
+	
+	
 
 	/**
 	 * Gets the rotation according to the GPS bearing

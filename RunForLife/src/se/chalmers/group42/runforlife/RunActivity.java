@@ -143,15 +143,15 @@ public class RunActivity extends FragmentActivity implements
 		pauseButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-//				if(dataHandler.getRunningStatus()){
-//					if(!dataHandler.getPauseStatus()){
-//						pauseButton.setText("Resume");
-//					}else{
-//						pauseButton.setText("Pause");
-//					}
-////					playSound();
-//					dataHandler.pauseWatch();
-//				}
+				if(dataHandler.getRunningStatus()){
+					if(!dataHandler.getPauseStatus()){
+						pauseButton.setText("Resume");
+					}else{
+						pauseButton.setText("Pause");
+					}
+					playSound();
+					dataHandler.pauseWatch();
+				}
 				onGPSDisconnect();
 			}
 		});
@@ -161,10 +161,10 @@ public class RunActivity extends FragmentActivity implements
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-//				if(dataHandler.getRunningStatus()){
-//					dataHandler.resetWatch();
-////					playSound();
-//				}
+				if(dataHandler.getRunningStatus()){
+					dataHandler.resetWatch();
+					playSound();
+				}
 				onGPSConnect();
 			}
 		});
@@ -174,6 +174,11 @@ public class RunActivity extends FragmentActivity implements
 		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
 		soundIcon = (ImageView) findViewById(R.id.imageViewSound);
 		headPhonesIcon = (ImageView) findViewById(R.id.imageViewHeadphones);
+	}
+
+	protected void playSound() {
+		// This is created in CoinCollector, etc. instead. This method should perhaps be abstract instead.
+		
 	}
 
 	@Override
