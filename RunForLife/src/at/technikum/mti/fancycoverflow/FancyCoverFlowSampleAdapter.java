@@ -15,7 +15,8 @@
  *    limitations under the License.
  *    
  *    Modified 2014 Anton Palmqvist
- *    Taking in a parameter of a size to set for the imageview.
+ *    Taking in a parameter of a height to set for the imageview. The height
+ *    value is used to calculate the witdth, which is 0.83 of the height.
  */
 
 package at.technikum.mti.fancycoverflow;
@@ -69,8 +70,7 @@ public class FancyCoverFlowSampleAdapter extends FancyCoverFlowAdapter {
         } else {
             imageView = new ImageView(viewGroup.getContext());
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-            imageView.setLayoutParams(new FancyCoverFlow.LayoutParams(height, height));
-
+            imageView.setLayoutParams(new FancyCoverFlow.LayoutParams((int)(0.83*height), height));
         }
 
         imageView.setImageResource(this.getItem(i));
