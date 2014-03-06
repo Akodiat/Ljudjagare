@@ -3,6 +3,7 @@ package se.chalmers.group42.gameModes;
 import se.chalmers.group42.runforlife.*;
 import utils.LocationHelper;
 import android.location.Location;
+import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -24,7 +25,10 @@ public class CoinCollectorActivity extends RunActivity {
 	private FXHandler fx;
 
 
-	public CoinCollectorActivity(){
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
 		coinLocation = LocationHelper.locationFromLatlng(DEFAULT_POSITION);
 		
 		// Initialise audio
