@@ -299,12 +299,21 @@ public class RunActivity extends FragmentActivity implements
 
 	public void onGPSConnect() {
 		gpsIcon.setImageResource(R.drawable.gps_green);
-		
 	}
 	public void onGPSDisconnect() {
 		gpsIcon.setImageResource(R.drawable.gps_red);
 	}
 	public void onSoundOn() {
-		
+		soundIcon.setImageResource(R.drawable.sound_green);
 	}
+	public void onSoundOff() {
+		soundIcon.setImageResource(R.drawable.sound_red);
+	}
+	public void onHeadphonesIn(){
+		headPhonesIcon.setImageResource(R.drawable.headphones_green);
+	}
+	public void onHeadphonesOut(){
+		headPhonesIcon.setImageResource(R.drawable.headphones_red);
+	}
+	
 }
