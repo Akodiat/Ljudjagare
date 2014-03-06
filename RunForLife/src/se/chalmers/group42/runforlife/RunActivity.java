@@ -134,7 +134,7 @@ public class RunActivity extends FragmentActivity implements
 		//START
 		if(!dataHandler.getRunningStatus()){
 			dataHandler.newRoute();
-//			playSound();
+			playSound();
 			dataHandler.startWatch();
 		}
 		
