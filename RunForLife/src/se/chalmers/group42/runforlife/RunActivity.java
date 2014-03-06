@@ -303,6 +303,8 @@ public class RunActivity extends FragmentActivity implements
 	}
 	public void onGPSDisconnect() {
 		gpsIcon.setImageResource(R.drawable.gps_red);
+	}
+	public void onSoundOn() {
 		
 	}
 }
