@@ -1,7 +1,6 @@
 package se.chalmers.group42.runforlife;
 
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,11 +28,6 @@ public class DataHandler {
 	private Timer 				timer = new Timer();
 	private long 				delayTime = 1500;
 	
-	ArrayList<Location> collection = new ArrayList<Location>();
-	int collect = 0;
-	Long collectionTime = 0L;
-
-	private double currentSpeed = 0;
 	
 	DataHandler(RunActivity runAct){
 		this.runAct = runAct;
@@ -51,16 +45,6 @@ public class DataHandler {
 			isTime = false;
 			Location curr = new Location("");
 			curr.set(location);
-			
-			collection.add(curr);
-			collect++;
-			if(collect == 5){
-				calculateSpeed(seconds - collectionTime);
-				collectionTime = seconds;
-				collection.clear();
-				collect = 0;
-			}
-			
 			if(running){
 				if(start){ 
 					prev = curr; 
@@ -101,7 +85,7 @@ public class DataHandler {
 			public void run() {
 				if(!pause){
 					seconds++;
-					runAct.updateDisplay(seconds,distance,currentSpeed); 
+					runAct.updateDisplay(seconds); 
 				}
 				else {
 					m_handler.removeCallbacks(m_handlerTask);
@@ -130,21 +114,12 @@ public class DataHandler {
 		pause = true;
 		running = false;
 		
-		runAct.updateDisplay(seconds,distance,currentSpeed);
+		runAct.updateDisplay(seconds);
 	}
 	public boolean getRunningStatus(){
 		return running;
 	}
 	public boolean getPauseStatus(){
 		return pause;
-	}
-	
-	public void calculateSpeed(Long time){
-		double d = 0;
-		double s = time;
-		for(int i=0;i < collect-1; i++){
-				d += collection.get(i).distanceTo(collection.get(i+1));
-		}
-		currentSpeed = d / s;
 	}
 }
