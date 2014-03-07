@@ -265,6 +265,7 @@ public class RunActivity extends FragmentActivity implements
 	 */
 	public void onUpdatedSensors(SensorValues sensorValues) {
 		//Send the updated sensorValues to the active GameMode
+		dataHandler.newLocation(sensorValues.getLocation());
 			
 	}
 	
@@ -300,11 +301,11 @@ public class RunActivity extends FragmentActivity implements
 		GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
 		asyncTask.execute(map);	
 	}
-	public void updateDisplay(long seconds){
+	public void updateDisplay(long seconds, int distance, double currentspeed){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":0");
 		if(runFragment.isAdded()){
-			runFrag.setTime(seconds);
+			runFrag.setTime(seconds,distance,currentspeed);
 		}
 	}
 
