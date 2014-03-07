@@ -153,6 +153,11 @@ public class RunActivity extends FragmentActivity implements
 //					dataHandler.pauseWatch();
 //				}
 				onGPSDisconnect();
+				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
+		                "android:switcher:"+R.id.pager+":2");
+				if(statsFragment.isAdded()){
+					statsFrag.updateTableData();
+				}
 			}
 		});
 

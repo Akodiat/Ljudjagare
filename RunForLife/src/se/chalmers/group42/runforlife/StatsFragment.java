@@ -5,12 +5,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 /**
  * A fragment including statistical information of the current run.
  */
 public class StatsFragment extends Fragment{
+	
+	private TableLayout table;
+	
 	public StatsFragment() {
 	}
 
@@ -20,6 +26,15 @@ public class StatsFragment extends Fragment{
 		View rootView = inflater.inflate(R.layout.fragment_stats,
 				container, false);
 		System.out.println("Stats Fragment running");
+		table = (TableLayout) rootView.findViewById(R.id.tableLayout);
 		return rootView;
+	}
+	
+	public void updateTableData(){
+		TableRow row = new TableRow(this.getActivity());
+		TextView time = new TextView(this.getActivity());
+		time.setText("lol");
+		row.addView(time);
+		table.addView(row);
 	}
 }
