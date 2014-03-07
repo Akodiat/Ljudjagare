@@ -75,6 +75,7 @@ public class CoinCollectorActivity extends RunActivity {
 		//If a coin is found..
 		if(isAtCoin())
 		{
+			dataHandler.onAquiredCoin();
 			//Increase the player score by one
 			this.human.modScore(1);
 

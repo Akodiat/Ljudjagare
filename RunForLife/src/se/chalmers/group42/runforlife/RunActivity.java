@@ -68,7 +68,7 @@ public class RunActivity extends FragmentActivity implements
 	private SensorInputHandler sensorInputHandler;
 	
 	//Class for handling database
-	private DataHandler dataHandler;
+	protected DataHandler dataHandler;
 	
 	//Class for handling different Game modes.
 	private ModeController modeController;
@@ -292,6 +292,7 @@ public class RunActivity extends FragmentActivity implements
 		GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
 		asyncTask.execute(map);	
 	}
+	
 	public void updateDisplay(long seconds, int distance, double currentspeed){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":0");
@@ -325,5 +326,4 @@ public class RunActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub	
 		dataHandler.newLocation(location);
 	}
-	
 }

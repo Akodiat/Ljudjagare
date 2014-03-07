@@ -52,6 +52,8 @@ public class DataHandler {
 			Location curr = new Location("");
 			curr.set(location);
 			
+			//------------------------------------------
+			//Calculates the speed over the last 5 points
 			collection.add(curr);
 			collect++;
 			if(collect == 5){
@@ -60,17 +62,21 @@ public class DataHandler {
 				collection.clear();
 				collect = 0;
 			}
+			//------------------------------------------
 			
 			if(running){
 				if(start){ 
+					//if this is the forst point add no distance
 					prev = curr; 
 					start = false;
 				} else{
 					if(!pause){
+						//adds the distance from the last point to the current point
 						distance += prev.distanceTo(curr);
 					}
 					prev = curr;
 				}
+				//adds thte point to the database
 				db.addPoint(new Point(currentRoute.getId(), 
 											   location.getLatitude(),
 											   location.getLongitude()));
@@ -78,6 +84,7 @@ public class DataHandler {
 			
 			//runAct.drawMySteps(location);
 			
+			//Timer, only saves one point evey 1.5s
 			timer.schedule(new TimerTask() {
 				@Override
 				public void run() {
@@ -87,6 +94,7 @@ public class DataHandler {
 		}
 	}
 	
+	//Adds a new route to the database
 	public void newRoute(){
 		currentRoute = new Route();
 		int id = db.addRoute(currentRoute);
@@ -94,6 +102,7 @@ public class DataHandler {
 		
 	}
 	
+	//Starts the stopwatch
 	public void startWatch(){
 		m_handlerTask = new Runnable()
 		{
@@ -101,6 +110,7 @@ public class DataHandler {
 			public void run() {
 				if(!pause){
 					seconds++;
+					//Update the displayed data in the run fragment
 					runAct.updateDisplay(seconds,distance,currentSpeed); 
 				}
 				else {
@@ -114,6 +124,7 @@ public class DataHandler {
 		running = true;
 	}
 	
+	//pause the watch
 	public void pauseWatch(){
 		if (pause){
 			pause = false;
@@ -122,6 +133,7 @@ public class DataHandler {
 		}
 	}
 	
+	//finnishes the route and resets all data
 	public void resetWatch(){
 		m_handler.removeCallbacks(m_handlerTask);
 		db.finishRoute(currentRoute, distance, seconds);
@@ -139,6 +151,7 @@ public class DataHandler {
 		return pause;
 	}
 	
+	//help method to calculate the current speed
 	public void calculateSpeed(Long time){
 		double d = 0;
 		double s = time;
@@ -146,5 +159,9 @@ public class DataHandler {
 				d += collection.get(i).distanceTo(collection.get(i+1));
 		}
 		currentSpeed = d / s;
+	}
+	
+	public void onAquiredCoin(){
+//		antonsmetod(distance, time);
 	}
 }
