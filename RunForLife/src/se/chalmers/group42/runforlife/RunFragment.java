@@ -62,9 +62,10 @@ public class RunFragment extends Fragment{
 
 			TextView txPace = (TextView) getView().findViewById(R.id.textViewPaceAverage2);
 			txPace.setText(""+pace);
-			
-			TextView txCurrPace = (TextView) getView().findViewById(R.id.textViewPace2);
-			txCurrPace.setText(""+currPace);
+			if(currSpd > 0){
+				TextView txCurrPace = (TextView) getView().findViewById(R.id.textViewPace2);
+				txCurrPace.setText(""+currPace);
+			}
 		}
 	}
 }

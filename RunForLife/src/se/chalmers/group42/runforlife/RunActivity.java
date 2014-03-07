@@ -259,15 +259,6 @@ public class RunActivity extends FragmentActivity implements
 			return null;
 		}
 	}
-
-	/**
-	 * Called by SensorInputHandler when the sensor values are updated
-	 */
-	public void onUpdatedSensors(SensorValues sensorValues) {
-		//Send the updated sensorValues to the active GameMode
-		dataHandler.newLocation(sensorValues.getLocation());
-			
-	}
 	
 	@Override
 	public void sendMapLocation(LatLng latLng) {
@@ -332,6 +323,7 @@ public class RunActivity extends FragmentActivity implements
 	}
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub	
+		dataHandler.newLocation(location);
 	}
 	
 }
