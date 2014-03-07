@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -76,7 +77,7 @@ public class RunActivity extends FragmentActivity implements
 	
 	
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
-	
+	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +129,7 @@ public class RunActivity extends FragmentActivity implements
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
 		
-//		this.sensorInputHandler = new SensorInputHandler(this);
+		this.sensorInputHandler = new SensorInputHandler(this);
 		this.dataHandler = new DataHandler(this);
 		
 		//START
@@ -272,7 +273,12 @@ public class RunActivity extends FragmentActivity implements
 //		System.out.println("Test");
 		findDirections( HOME_MARCUS.latitude, HOME_MARCUS.longitude
 			, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
-		
+	
+	}
+	
+	@Override
+	public void sendFinalRoute(ArrayList<Location> finalRoute) {
+		this.finalRoute = finalRoute;
 	}
 	
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
@@ -319,6 +325,12 @@ public class RunActivity extends FragmentActivity implements
 	}
 	public void onHeadphonesOut(){
 		headPhonesIcon.setImageResource(R.drawable.headphones_red);
+	}
+	public void onCompassChanged(float headingAngleOrientation) {
+		// TODO Auto-generated method stub	
+	}
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub	
 	}
 	
 }
