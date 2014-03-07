@@ -71,10 +71,12 @@ public class CoinCollectorActivity extends RunActivity {
 			generateRoute = false;
 			generateRandomRoute(1000);
 		}
-
-		// If a coin is found..
-		if (isAtCoin()) {
-			// Increase the player score by one
+		
+		//If a coin is found..
+		if(isAtCoin())
+		{
+			dataHandler.onAquiredCoin();
+			//Increase the player score by one
 			this.human.modScore(1);
 
 			// Play sound of a coin

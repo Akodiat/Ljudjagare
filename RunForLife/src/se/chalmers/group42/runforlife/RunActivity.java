@@ -68,7 +68,7 @@ public class RunActivity extends FragmentActivity implements
 	private SensorInputHandler sensorInputHandler;
 	
 	//Class for handling database
-	private DataHandler dataHandler;
+	protected DataHandler dataHandler;
 	
 	//Class for handling different Game modes.
 	private ModeController modeController;
@@ -259,14 +259,6 @@ public class RunActivity extends FragmentActivity implements
 			return null;
 		}
 	}
-
-	/**
-	 * Called by SensorInputHandler when the sensor values are updated
-	 */
-	public void onUpdatedSensors(SensorValues sensorValues) {
-		//Send the updated sensorValues to the active GameMode
-			
-	}
 	
 	@Override
 	public void sendMapLocation(LatLng latLng) {
@@ -300,11 +292,12 @@ public class RunActivity extends FragmentActivity implements
 		GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
 		asyncTask.execute(map);	
 	}
-	public void updateDisplay(long seconds){
+	
+	public void updateDisplay(long seconds, int distance, double currentspeed){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":0");
 		if(runFragment.isAdded()){
-			runFrag.setTime(seconds);
+			runFrag.setTime(seconds,distance,currentspeed);
 		}
 	}
 
@@ -331,6 +324,6 @@ public class RunActivity extends FragmentActivity implements
 	}
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub	
+		dataHandler.newLocation(location);
 	}
-	
 }
