@@ -69,7 +69,7 @@ public class CoinCollectorActivity extends RunActivity {
 
 		if (generateRoute) {
 			generateRoute = false;
-			generateRandomRoute(1000);
+			generateRandomRoute(100);
 		}
 		
 		//If a coin is found..
