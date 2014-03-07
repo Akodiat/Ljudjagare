@@ -287,22 +287,8 @@ SensorEventListener
 		double addLat;
 		double addLng;
 		double distanceFromLocation = 1000/Constants.LAT_LNG_TO_METER; 
-		if(bearingTo<-90){
-			bearingTo = bearingTo + 180;
-			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
-			addLng = -(Math.cos(bearingTo)*distanceFromLocation);
-		}else if(bearingTo < 0){
-			bearingTo = bearingTo + 90;
-			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
-			addLng = +(Math.cos(bearingTo)*distanceFromLocation);
-		}else if(bearingTo < 90){
-			addLat = +(Math.sin(bearingTo)*distanceFromLocation);
-			addLng = +(Math.cos(bearingTo)*distanceFromLocation);
-		}else{
-			bearingTo = bearingTo - 90;
-			addLat = -(Math.sin(bearingTo)*distanceFromLocation);
-			addLng = +(Math.cos(bearingTo)*distanceFromLocation);	
-		}
+		addLat = Math.sin(bearingTo)*distanceFromLocation;
+		addLng = Math.cos(bearingTo)*distanceFromLocation;
 		routePoint.setLatitude(routePoint.getLatitude() + addLat);
 		routePoint.setLongitude(routePoint.getLongitude() + addLng);
 

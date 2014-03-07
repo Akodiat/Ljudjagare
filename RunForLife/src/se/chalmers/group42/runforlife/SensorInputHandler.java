@@ -78,8 +78,7 @@ SensorEventListener
 	@Override
 	public void onLocationChanged(Location location) {
 		currentLocation = location;
-
-		notifyOfSensorUpdate(); //Notify runActivity of new sensor update
+		runActivity.onLocationChanged(location);
 	}
 
 	@Override
@@ -88,9 +87,9 @@ SensorEventListener
 
 	}
 	
-	private void notifyOfSensorUpdate(){
-		runActivity.onUpdatedSensors(new SensorValues(currentLocation, headingAngleOrientation));
-	}
+//	private void notifyOfSensorUpdate(){
+//		runActivity.onUpdatedSensors(new SensorValues(currentLocation, headingAngleOrientation));
+//	}
 
 	//The following code is taken from TODO: Fix reference
 	float[] gravityMatrix;
@@ -109,7 +108,7 @@ SensorEventListener
 				SensorManager.getOrientation(R, orientation);
 				headingAngleOrientation =  (float) (-(180/Math.PI) * orientation[0]); // orientation contains: azimut, pitch and roll
 
-				notifyOfSensorUpdate(); //Notify runActivity of new sensor update
+				runActivity.onCompassChanged(headingAngleOrientation);
 			}
 		}
 	}
