@@ -128,7 +128,7 @@ public class RunActivity extends FragmentActivity implements
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
 		
-		this.sensorInputHandler = new SensorInputHandler(this);
+//		this.sensorInputHandler = new SensorInputHandler(this);
 		this.dataHandler = new DataHandler(this);
 		
 		//START
@@ -294,13 +294,11 @@ public class RunActivity extends FragmentActivity implements
 		GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
 		asyncTask.execute(map);	
 	}
-	
-	public void updateDisplay(long seconds,int distance, double currentspeed){
+	public void updateDisplay(long seconds){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":0");
-		
 		if(runFragment.isAdded()){
-			runFrag.setTime(seconds,distance,currentspeed);
+			runFrag.setTime(seconds);
 		}
 	}
 
