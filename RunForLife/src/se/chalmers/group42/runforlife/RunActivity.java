@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -67,7 +68,7 @@ public class RunActivity extends FragmentActivity implements
 	private SensorInputHandler sensorInputHandler;
 	
 	//Class for handling database
-	private DataHandler dataHandler;
+	protected DataHandler dataHandler;
 	
 	//Class for handling different Game modes.
 	private ModeController modeController;
@@ -76,7 +77,7 @@ public class RunActivity extends FragmentActivity implements
 	
 	
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
-	
+	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,13 +129,12 @@ public class RunActivity extends FragmentActivity implements
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
 		
-//		this.sensorInputHandler = new SensorInputHandler(this);
+		this.sensorInputHandler = new SensorInputHandler(this);
 		this.dataHandler = new DataHandler(this);
 		
 		//START
 		if(!dataHandler.getRunningStatus()){
 			dataHandler.newRoute();
-//			playSound();
 			dataHandler.startWatch();
 		}
 		
@@ -143,15 +143,15 @@ public class RunActivity extends FragmentActivity implements
 		pauseButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-//				if(dataHandler.getRunningStatus()){
-//					if(!dataHandler.getPauseStatus()){
-//						pauseButton.setText("Resume");
-//					}else{
-//						pauseButton.setText("Pause");
-//					}
-////					playSound();
-//					dataHandler.pauseWatch();
-//				}
+				if(dataHandler.getRunningStatus()){
+					if(!dataHandler.getPauseStatus()){
+						pauseButton.setText("Resume");
+					}else{
+						pauseButton.setText("Pause");
+					}
+					playSound();
+					dataHandler.pauseWatch();
+				}
 				onGPSDisconnect();
 				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
 		                "android:switcher:"+R.id.pager+":2");
@@ -166,10 +166,10 @@ public class RunActivity extends FragmentActivity implements
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-//				if(dataHandler.getRunningStatus()){
-//					dataHandler.resetWatch();
-////					playSound();
-//				}
+				if(dataHandler.getRunningStatus()){
+					dataHandler.resetWatch();
+					playSound();
+				}
 				onGPSConnect();
 			}
 		});
@@ -179,6 +179,12 @@ public class RunActivity extends FragmentActivity implements
 		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
 		soundIcon = (ImageView) findViewById(R.id.imageViewSound);
 		headPhonesIcon = (ImageView) findViewById(R.id.imageViewHeadphones);
+		
+	}
+
+	protected void playSound() {
+		// This is created in CoinCollector, etc. instead. This method should perhaps be abstract instead.
+		
 	}
 
 	@Override
@@ -258,21 +264,18 @@ public class RunActivity extends FragmentActivity implements
 			return null;
 		}
 	}
-
-	/**
-	 * Called by SensorInputHandler when the sensor values are updated
-	 */
-	public void onUpdatedSensors(SensorValues sensorValues) {
-		//Send the updated sensorValues to the active GameMode
-			
-	}
 	
 	@Override
 	public void sendMapLocation(LatLng latLng) {
 //		System.out.println("Test");
 		findDirections( HOME_MARCUS.latitude, HOME_MARCUS.longitude
 			, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
-		
+	
+	}
+	
+	@Override
+	public void sendFinalRoute(ArrayList<Location> finalRoute) {
+		this.finalRoute = finalRoute;
 	}
 	
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
@@ -294,11 +297,12 @@ public class RunActivity extends FragmentActivity implements
 		GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
 		asyncTask.execute(map);	
 	}
-	public void updateDisplay(long seconds){
+	
+	public void updateDisplay(long seconds, int distance, double currentspeed){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":0");
 		if(runFragment.isAdded()){
-			runFrag.setTime(seconds);
+			runFrag.setTime(seconds,distance,currentspeed);
 		}
 	}
 
@@ -320,5 +324,11 @@ public class RunActivity extends FragmentActivity implements
 	public void onHeadphonesOut(){
 		headPhonesIcon.setImageResource(R.drawable.headphones_red);
 	}
-	
+	public void onCompassChanged(float headingAngleOrientation) {
+		// TODO Auto-generated method stub	
+	}
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub	
+		dataHandler.newLocation(location);
+	}
 }

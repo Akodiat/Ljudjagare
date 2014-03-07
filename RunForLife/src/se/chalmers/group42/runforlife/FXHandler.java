@@ -46,7 +46,7 @@ public class FXHandler {
 
 		// Load FX
 		soundPoolMap.put(Constants.FX_01,
-				soundPool.load(context, R.raw.sine, 1));
+				soundPool.load(context, R.raw.navigate_fx, 1));
 
 		soundPoolMap.put(Constants.FX_02,
 				soundPool.load(context, R.raw.dragon, 1));
@@ -113,14 +113,16 @@ public class FXHandler {
 
 	/**
 	 * Loop a sound until it's being stopped manually.
-	 * @param fx the sound to be looped
+	 * 
+	 * @param fx
+	 *            the sound to be looped
 	 */
 	public void loop(FX fx) {
 
 		float angle = fx.angle();
 
 		// If sound is coming from behind the user, set to 0.
-		if (Math.abs(angle) > 160)
+		if (Math.abs(angle) > 180 - Constants.BEHIND_ANGLE / 2)
 			angle = 0;
 
 		angle = (angle > 90) ? 90 : angle;
@@ -139,7 +141,7 @@ public class FXHandler {
 		Message msg = handler.obtainMessage(Constants.MSG);
 		handler.sendMessageDelayed(msg, (long) delayInterval(fx));
 	}
-	
+
 	/**
 	 * Stop the current loop and set stream to not playing.
 	 */
@@ -153,7 +155,9 @@ public class FXHandler {
 
 	/**
 	 * Calculate the delay between each repetition on loop.
-	 * @param fx the sound to update
+	 * 
+	 * @param fx
+	 *            the sound to update
 	 * @return the delay time in milliseconds
 	 */
 	public float delayInterval(FX fx) {
@@ -207,11 +211,19 @@ public class FXHandler {
 		return handler;
 	}
 
+	public void sayString(String whatToSay) {
+
+	}
+
 	/**
 	 * To be called each time the position of the user is being updated.
-	 * @param fx the sound to be updated
-	 * @param angle the new angle
-	 * @param distance the current distance from goal
+	 * 
+	 * @param fx
+	 *            the sound to be updated
+	 * @param angle
+	 *            the new angle
+	 * @param distance
+	 *            the current distance from goal
 	 */
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);

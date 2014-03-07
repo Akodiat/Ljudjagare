@@ -1,5 +1,7 @@
 package se.chalmers.group42.runforlife;
 
+import utils.LocationHelper;
+
 import com.google.android.gms.maps.model.LatLng;
 import android.location.Location;
 
@@ -10,7 +12,7 @@ import android.location.Location;
  *
  */
 public class Human{
-	private Location location;
+	private Location location ;
 	private int score;
 	
 	public int getScore() {
@@ -29,6 +31,10 @@ public class Human{
 		this.score += score;
 	}
 
+	public Human(){
+		this(LocationHelper.locationFromLatlng(new LatLng(58.489657, 13.777925)));
+	}
+	
 	public Human(Location location) {
 		this.location 	= location;
 		this.score 		= 0;

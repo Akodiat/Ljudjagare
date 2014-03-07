@@ -31,6 +31,7 @@ public class MapFragment extends Fragment {
 	// Container Activity must implement this interface
 	public interface OnHeadlineSelectedListener {
 		public void sendMapLocation(LatLng latlng);
+		public void sendFinalRoute(ArrayList<Location> finalRoute);
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class MapFragment extends Fragment {
 	private GoogleMap map;
 	private SupportMapFragment fragment;
 	private ArrayList<Location> finalRoute = new ArrayList<Location>();
-	private int marks;
+//	private int marks;
 	private Boolean directionFinished = false;
 
 	public MapFragment() {
@@ -113,6 +114,21 @@ public class MapFragment extends Fragment {
 		// {
 		// newPolyline.remove();
 		// }
+		
+		if (finalRoute.size() == 1) {
+			// soundSource.set(wholeWayLocation);
+			map.clear();
+
+		}
+		
+		map.addMarker(new MarkerOptions()
+		.position(
+				new LatLng(wholeWayLocation.getLatitude(),
+						wholeWayLocation.getLongitude()))
+		.title("First!")
+		.icon(BitmapDescriptorFactory
+				.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+		
 		map.addPolyline(rectLine);
 		// latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
 		// float zoom = 19;
@@ -123,21 +139,12 @@ public class MapFragment extends Fragment {
 		// if (marker != null){
 		// marker.remove();
 		// }
-		if (marks == 0) {
-			// soundSource.set(wholeWayLocation);
 
-			map.addMarker(new MarkerOptions()
-					.position(
-							new LatLng(wholeWayLocation.getLatitude(),
-									wholeWayLocation.getLongitude()))
-					.title("First! " + marks)
-					.icon(BitmapDescriptorFactory
-							.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-		}
-		marks++;
+
 
 		if (finalRoute.size() == 3) {
 			directionFinished = true;
+			mCallback.sendFinalRoute(finalRoute);
 		}
 		// marks++;
 		// marker = map.addMarker(new MarkerOptions()
