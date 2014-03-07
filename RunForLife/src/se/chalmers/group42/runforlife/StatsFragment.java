@@ -32,9 +32,18 @@ public class StatsFragment extends Fragment{
 	
 	public void updateTableData(){
 		TableRow row = new TableRow(this.getActivity());
+		TextView event = new TextView(this.getActivity());
 		TextView time = new TextView(this.getActivity());
-		time.setText("lol");
+		TextView dist = new TextView(this.getActivity());
+		TextView pace = new TextView(this.getActivity());
+		event.setText("Coin");
+		time.setText("01:09");
+		dist.setText("500 m");
+		pace.setText("4:30 km/min");
+		row.addView(event);
 		row.addView(time);
+		row.addView(dist);
+		row.addView(pace);
 		table.addView(row);
 	}
 }
