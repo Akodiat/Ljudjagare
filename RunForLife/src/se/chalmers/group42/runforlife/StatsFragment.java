@@ -30,6 +30,8 @@ public class StatsFragment extends Fragment{
 		return rootView;
 	}
 	
+	//TODO Fixa så att varannan rad blir grå med hjälp av om det inlästa 
+	//elementet har udda eller jämn plats
 	public void updateTableData(){
 		TableRow row = new TableRow(this.getActivity());
 		TextView event = new TextView(this.getActivity());

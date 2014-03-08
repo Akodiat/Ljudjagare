@@ -52,6 +52,11 @@
             android:label="shooter_activity" >
         </activity>
         
+        <activity
+            android:name="se.chalmers.group42.runforlife.FinishedRunActivity"
+            android:label="finished_run_activity" >
+        </activity>
+        
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

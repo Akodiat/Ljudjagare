@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import se.chalmers.group42.gameModes.CoinCollectorActivity;
+
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,28 +42,27 @@ import com.google.android.gms.maps.model.PolylineOptions;
  *         Anton Palmqvist
  * 
  */
-public class RunActivity extends FragmentActivity implements
-		ActionBar.TabListener,
+public class RunActivity extends SwipeableActivity implements
 		MapFragment.OnHeadlineSelectedListener{
 
-	/**
-	 * The {@link android.support.v4.view.PagerAdapter} that will provide
-	 * fragments for each of the sections. We use a
-	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
-	 * will keep every loaded fragment in memory. If this becomes too memory
-	 * intensive, it may be best to switch to a
-	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-	 */
-	SectionsPagerAdapter mSectionsPagerAdapter;
-
-	/**
-	 * The {@link ViewPager} that will host the section contents.
-	 */
-	private ViewPager mViewPager;
-	
-	private Fragment runFragment;
-	private Fragment mapFragment;
-	private Fragment statsFragment;
+//	/**
+//	 * The {@link android.support.v4.view.PagerAdapter} that will provide
+//	 * fragments for each of the sections. We use a
+//	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
+//	 * will keep every loaded fragment in memory. If this becomes too memory
+//	 * intensive, it may be best to switch to a
+//	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+//	 */
+//	SectionsPagerAdapter mSectionsPagerAdapter;
+//
+//	/**
+//	 * The {@link ViewPager} that will host the section contents.
+//	 */
+//	private ViewPager mViewPager;
+//	
+//	private Fragment runFragment;
+//	private Fragment mapFragment;
+//	private Fragment statsFragment;
 	
 	private Button pauseButton, finishButton;
 	
@@ -171,6 +173,8 @@ public class RunActivity extends FragmentActivity implements
 					playSound();
 				}
 				onGPSConnect();
+				Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
+				startActivity(finishedRunActivityIntent);
 			}
 		});
 	//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
@@ -194,6 +198,7 @@ public class RunActivity extends FragmentActivity implements
 		return true;
 	}
 
+	//TODO Varför ärvs inte denna? Borde kunna bortkommenteras men då funkar inte tabarna
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
@@ -202,68 +207,68 @@ public class RunActivity extends FragmentActivity implements
 		mViewPager.setCurrentItem(tab.getPosition());
 		System.out.println("Tab pos= " + tab.getPosition());
 	}
+//
+//	@Override
+//	public void onTabUnselected(ActionBar.Tab tab,
+//			FragmentTransaction fragmentTransaction) {
+//	}
+//
+//	@Override
+//	public void onTabReselected(ActionBar.Tab tab,
+//			FragmentTransaction fragmentTransaction) {
+//	}
 
-	@Override
-	public void onTabUnselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
-
-	@Override
-	public void onTabReselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
-
-	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-		public SectionsPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		/*
-		 * getItem is called to instantiate the fragment for the given page.(non-Javadoc)
-		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
-		 */
-		@Override
-		public Fragment getItem(int position) {
-			//Bundle might be used later to send information between fragments
-//			Bundle args = new Bundle();
-//			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-//			fragment.setArguments(args);
-			switch(position){
-				case 0:
-					return runFragment;
-				case 1:
-					return mapFragment;
-				case 2:
-					return statsFragment;
-			}
-			return null;
-		}
-		
-		@Override
-		public int getCount() {
-			// Show 3 total pages
-			return 3;
-		}
-
-		@Override
-		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.title_run).toUpperCase(l);
-			case 1:
-				return getString(R.string.title_map).toUpperCase(l);
-			case 2:
-				return getString(R.string.title_stats).toUpperCase(l);
-			}
-			return null;
-		}
-	}
+//	/**
+//	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+//	 * one of the sections/tabs/pages.
+//	 */
+//	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+//
+//		public SectionsPagerAdapter(FragmentManager fm) {
+//			super(fm);
+//		}
+//
+//		/*
+//		 * getItem is called to instantiate the fragment for the given page.(non-Javadoc)
+//		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
+//		 */
+//		@Override
+//		public Fragment getItem(int position) {
+//			//Bundle might be used later to send information between fragments
+////			Bundle args = new Bundle();
+////			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+////			fragment.setArguments(args);
+//			switch(position){
+//				case 0:
+//					return runFragment;
+//				case 1:
+//					return mapFragment;
+//				case 2:
+//					return statsFragment;
+//			}
+//			return null;
+//		}
+//		
+//		@Override
+//		public int getCount() {
+//			// Show 3 total pages
+//			return 3;
+//		}
+//
+//		@Override
+//		public CharSequence getPageTitle(int position) {
+//			Locale l = Locale.getDefault();
+//			switch (position) {
+//			case 0:
+//				return getString(R.string.title_run).toUpperCase(l);
+//			case 1:
+//				return getString(R.string.title_map).toUpperCase(l);
+//			case 2:
+//				return getString(R.string.title_stats).toUpperCase(l);
+//			}
+//			return null;
+//		}
+//	}
 	
 	@Override
 	public void sendMapLocation(LatLng latLng) {

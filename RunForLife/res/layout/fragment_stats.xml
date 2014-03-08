@@ -8,39 +8,48 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:stretchColumns="*" >
 
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:paddingTop="2dp" >
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/table_event"/>"
+                android:text="@string/table_event"
+             	style="@style/textBold"/>"
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/table_time" />
+                android:text="@string/table_time"
+                style="@style/textBold" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/table_distance" />
+                android:text="@string/table_distance"
+                style="@style/textBold" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/table_pace" />
+                android:text="@string/table_pace"
+                style="@style/textBold" />
             
         </TableRow>
     </TableLayout>
