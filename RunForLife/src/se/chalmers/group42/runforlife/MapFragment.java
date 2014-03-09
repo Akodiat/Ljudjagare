@@ -118,16 +118,16 @@ public class MapFragment extends Fragment {
 		if (finalRoute.size() == 1) {
 			// soundSource.set(wholeWayLocation);
 			map.clear();
-
+			map.addMarker(new MarkerOptions()
+			.position(
+					new LatLng(wholeWayLocation.getLatitude(),
+							wholeWayLocation.getLongitude()))
+			.title("First!")
+			.icon(BitmapDescriptorFactory
+					.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		}
 		
-		map.addMarker(new MarkerOptions()
-		.position(
-				new LatLng(wholeWayLocation.getLatitude(),
-						wholeWayLocation.getLongitude()))
-		.title("First!")
-		.icon(BitmapDescriptorFactory
-				.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+		
 		
 		map.addPolyline(rectLine);
 		// latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
