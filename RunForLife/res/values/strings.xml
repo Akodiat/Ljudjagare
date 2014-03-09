@@ -15,5 +15,7 @@
     <string name="table_time">Time</string>
     <string name="table_distance">Distance</string>
     <string name="table_pace">Pace</string>
+    <string name="title_completedrun_list">Completed Runs</string>
+    <string name="title_completedrun_detail">Completed Run Detail</string>
 
 </resources>

@@ -7,22 +7,22 @@
     <uses-sdk
         android:minSdkVersion="13"
         android:targetSdkVersion="19" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-	<!--
+    <!--
      The following two permissions are not required to use
-     Google Maps Android API v2, but are recommended.
+     Google Maps Android API v2, but are recommended.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -41,29 +41,38 @@
             android:name="se.chalmers.group42.runforlife.RunActivity"
             android:label="run_activity" >
         </activity>
-        
         <activity
             android:name="se.chalmers.group42.gameModes.CoinCollectorActivity"
             android:label="coin_collector_activity" >
         </activity>
-        
         <activity
             android:name="se.chalmers.group42.gameModes.ShooterActivity"
             android:label="shooter_activity" >
         </activity>
-        
         <activity
             android:name="se.chalmers.group42.runforlife.FinishedRunActivity"
             android:label="finished_run_activity" >
         </activity>
-        
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAntUo60DSK3G7I_PG5XLtD1LaeK9liquU" />
-<!--         <activity android:name="se.chalmers.group42.gameModes.CoinCollectorActivity" android:label="coin_collector"></activity> -->
+        <!-- <activity android:name="se.chalmers.group42.gameModes.CoinCollectorActivity" android:label="coin_collector"></activity> -->
+        <activity
+            android:name="se.chalmers.group42.runforlife.CompletedRunListActivity"
+            android:label="@string/title_completedrun_list" >
+        </activity>
+        <activity
+            android:name="se.chalmers.group42.runforlife.CompletedRunDetailActivity"
+            android:label="@string/title_completedrun_detail"
+            android:parentActivityName="se.chalmers.group42.runforlife.CompletedRunListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="se.chalmers.group42.runforlife.CompletedRunListActivity" />
+        </activity>
     </application>
 
 </manifest>
