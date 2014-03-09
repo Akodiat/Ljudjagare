@@ -14,12 +14,18 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class FinishedRunActivity extends SwipeableActivity implements
 MapFragment.OnHeadlineSelectedListener{
 
 	//Class for handling database
 	protected DataHandler dataHandler;
+	
+	//Button
+	private Button endButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +76,16 @@ MapFragment.OnHeadlineSelectedListener{
 		runFragment = new RunFragment();
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
+		
+		endButton = (Button) findViewById(R.id.button_end);
+		endButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+				Intent mainActivityIntent = new Intent(FinishedRunActivity.this, MainActivity.class);
+				startActivity(mainActivityIntent);
+			}
+		});
 	}
 
 	//TODO Varför ärvs inte denna? Borde kunna bortkommenteras men då funkar inte tabarna
