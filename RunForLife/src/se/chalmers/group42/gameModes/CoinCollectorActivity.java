@@ -52,7 +52,7 @@ public class CoinCollectorActivity extends RunActivity {
 	// Get the finalRoute from mapFragment when the route is calculated.
 	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute) {
-		super.sendFinalRoute(finalRoute);
+		this.finalRoute = finalRoute;
 		currentCoin++;
 		coinLocation = finalRoute.get(0);
 	}
@@ -111,7 +111,7 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private void generateNewCoin() {
-		coinLocation = finalRoute.get(currentCoin);
+		coinLocation = this.finalRoute.get(currentCoin);
 		currentCoin++;
 
 	}
@@ -179,7 +179,7 @@ public class CoinCollectorActivity extends RunActivity {
 		double a = Math.random();
 		double b = Math.random();
 
-		double r = distance / Constants.LAT_LNG_TO_METER;
+		double r = 100 / Constants.LAT_LNG_TO_METER;
 
 		double w = r * Math.sqrt(a);
 		double t = 2 * Math.PI * b;
@@ -194,7 +194,7 @@ public class CoinCollectorActivity extends RunActivity {
 		float bearingTo = human.getLocation().bearingTo(routePoint);
 		double addLat;
 		double addLng;
-		double distanceFromLocation = 1000 / Constants.LAT_LNG_TO_METER;
+		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
 		addLat = Math.sin(bearingTo) * distanceFromLocation;
 		addLng = Math.cos(bearingTo) * distanceFromLocation;
 		routePoint.setLatitude(routePoint.getLatitude() + addLat);

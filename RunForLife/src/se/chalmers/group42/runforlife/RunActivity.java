@@ -79,7 +79,6 @@ public class RunActivity extends SwipeableActivity implements
 	
 	
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
-	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 	
 	GetDirectionsAsyncTask asyncTask;
 
@@ -286,7 +285,7 @@ public class RunActivity extends SwipeableActivity implements
 	
 	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute) {
-		this.finalRoute = finalRoute;
+		// TODO
 	}
 	
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
