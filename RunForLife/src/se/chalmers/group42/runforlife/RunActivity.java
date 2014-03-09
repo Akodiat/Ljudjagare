@@ -80,6 +80,8 @@ public class RunActivity extends SwipeableActivity implements
 	
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
 	private ArrayList<Location> finalRoute = new ArrayList<Location>();
+	
+	GetDirectionsAsyncTask asyncTask;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -175,6 +177,10 @@ public class RunActivity extends SwipeableActivity implements
 				onGPSConnect();
 				Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
 				startActivity(finishedRunActivityIntent);
+				if(asyncTask!=null){
+					asyncTask.cancel(true);
+				}
+				finish();
 			}
 		});
 	//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
@@ -299,7 +305,7 @@ public class RunActivity extends SwipeableActivity implements
 		map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionDoubleLong));
 		map.put(GetDirectionsAsyncTask.DIRECTIONS_MODE, mode);
 
-		GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
+		asyncTask = new GetDirectionsAsyncTask(this);
 		asyncTask.execute(map);	
 	}
 	

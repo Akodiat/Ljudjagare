@@ -8,6 +8,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -97,7 +98,5 @@ MapFragment.OnHeadlineSelectedListener{
 	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute) {
 		// TODO Auto-generated method stub
-
 	}
-
 }

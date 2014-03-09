@@ -49,7 +49,7 @@ public class CoinCollectorActivity extends RunActivity {
 		return human.getScore();
 	}
 
-	// Get the finalRoute from mapFregment when the route is calculated.
+	// Get the finalRoute from mapFragment when the route is calculated.
 	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute) {
 		super.sendFinalRoute(finalRoute);
