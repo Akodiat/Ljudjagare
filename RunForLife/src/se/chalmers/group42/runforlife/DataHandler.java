@@ -161,7 +161,19 @@ public class DataHandler {
 		currentSpeed = d / s;
 	}
 	
-	public void onAquiredCoin(){
+	public void onAquiredCoin(Location coinLoc){
+		Coins coin = new Coins();
+		coin.setRouteID(currentRoute.getId());
+		coin.setLocation(coinLoc);
+		coin.setTime(seconds);
+		coin.setDistance(distance);
+		
+		db.addCoin(coin);
+		StatsFragment statsFrag = (StatsFragment) runAct.getSupportFragmentManager().findFragmentByTag(
+                "android:switcher:"+R.id.pager+":2");
+		if(runAct.statsFragment.isAdded()){
+			statsFrag.updateTableData(distance,seconds);
+		}
 //		antonsmetod(distance, time);
 	}
 }
