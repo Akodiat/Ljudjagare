@@ -100,7 +100,7 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private boolean isAtCoin() {
-
+		double dist = human.getLocation().distanceTo(coinLocation);
 		return (// If closer than minimum distance
 		human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
 		// Or the accuracy is less than 50 meters but still larger
@@ -111,8 +111,16 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private void generateNewCoin() {
+		if (currentCoin <= 3 ){
 		coinLocation = this.finalRoute.get(currentCoin);
 		currentCoin++;
+		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
+                "android:switcher:"+R.id.pager+":1");
+		mapFrag.handleNewCoin(coinLocation);
+		} else {
+			currentCoin = 0;
+			generateRandomRoute(100);
+		}
 
 	}
 
@@ -179,7 +187,7 @@ public class CoinCollectorActivity extends RunActivity {
 		double a = Math.random();
 		double b = Math.random();
 
-		double r = 100 / Constants.LAT_LNG_TO_METER;
+		double r = 50 / Constants.LAT_LNG_TO_METER;
 
 		double w = r * Math.sqrt(a);
 		double t = 2 * Math.PI * b;
