@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.location.Location;
 import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper{
@@ -22,6 +23,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 	private static final String TABLE_ROUTES = "routes";
 	private static final String TABLE_FINISHEDROUTES = "finishedRoutes";
 	private static final String TABLE_POINTS = "points";
+	private static final String TABLE_COINS = "coins";
 
 	/*------------------------------Column names--------------------------*/
 
@@ -48,6 +50,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	private static final String[] COLUMNS_POINTS = {KEY_POINTID,KEY_ROUTE, KEY_LAT,KEY_LNG,KEY_TIME};
 
+	
+	// Points Table Columns names
+	private static final String KEY_COINID = "coinId";
+	private static final String KEY_ROUTEID = "routeId";
+	private static final String KEY_COINLAT = "latitude";
+	private static final String KEY_COINLNG = "longitude";
+	private static final String KEY_COINTIME = "time";
+	private static final String KEY_COINDIST = "distance";
+	
+	private static final String[] COLUMNS_COINS = {KEY_COINID,KEY_ROUTEID, KEY_COINLAT,KEY_COINLNG,KEY_COINTIME,KEY_COINDIST};
 
 	public MySQLiteHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);  
@@ -69,7 +81,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		/*------------------------------CREATE_POINTS_TABLE--------------------------------*/
 
 		// SQL statement to create points table
-		String CREATE_POSITION_TABLE = "CREATE TABLE "+TABLE_POINTS+" ( " +
+		String CREATE_POINTS_TABLE = "CREATE TABLE "+TABLE_POINTS+" ( " +
 				KEY_POINTID+" INTEGER PRIMARY KEY AUTOINCREMENT, " + 
 				KEY_ROUTE+" INTEGER, "+
 				KEY_TIME+" LONG, "+
@@ -78,7 +90,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 				"FOREIGN KEY ("+KEY_ROUTE+") REFERENCES "+TABLE_ROUTES+"("+KEY_ID+"))";
 
 		// create position table
-		db.execSQL(CREATE_POSITION_TABLE);
+		db.execSQL(CREATE_POINTS_TABLE);
 
 		/*------------------------------CREATE_FINISHEDROUTES_TABLE--------------------------------*/
 
@@ -91,6 +103,20 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 		//create
 		db.execSQL(CREATE_FINISHED_TABLE);
+		
+		/*------------------------------CREATE_COINS_TABLE--------------------------------*/
+
+		// SQL statement to create points table
+		String CREATE_COINS_TABLE = "CREATE TABLE "+TABLE_COINS+" ( " +
+				KEY_COINID+" INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+				KEY_ROUTEID+" INTEGER, "+
+				KEY_COINTIME+" LONG, "+
+				KEY_COINLAT+" DOUBLE, " +
+				KEY_COINLNG+" DOUBLE, " +
+				"FOREIGN KEY ("+KEY_ROUTEID+") REFERENCES "+TABLE_ROUTES+"("+KEY_ID+"))";
+
+		// create position table
+		db.execSQL(CREATE_COINS_TABLE);
 	}
 
 	@Override
@@ -98,6 +124,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		// Drop older tables if existed
 		db.execSQL("DROP TABLE IF EXISTS "+TABLE_POINTS);
 		db.execSQL("DROP TABLE IF EXISTS "+TABLE_ROUTES);
+		db.execSQL("DROP TABLE IF EXISTS "+TABLE_COINS);
 		db.execSQL("DROP TABLE IF EXISTS "+TABLE_FINISHEDROUTES);
 
 		// create fresh tables
@@ -333,9 +360,95 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		db.close();
 		Log.d("deletePoint", point.toString());
 	}
+	
+	/*------------------------------COINS TABLE METHODS--------------------------------*/
+	
+	public void addCoin(Coins c){
+		Log.d("addCoin",c.toString());					//Log
+		SQLiteDatabase db = this.getWritableDatabase(); //get db
+
+		ContentValues values = new ContentValues();		//values
+		values.put(KEY_ROUTEID, c.getRouteID());
+		values.put(KEY_COINLAT, c.getLocation().getLatitude());	
+		values.put(KEY_COINLNG, c.getLocation().getLongitude());
+		values.put(KEY_COINTIME, c.getTime());
+		values.put(KEY_COINDIST, c.getDistance());
+		
+		db.insert(TABLE_COINS, null, values);			//insert
+
+		db.close();										//close
+	}
+	
+	public Coins getCoin(int id){
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor cursor = db.query(TABLE_COINS, // a. table
+				COLUMNS_COINS, // b. column names
+				" id = ?", // c. selections 
+				new String[] { String.valueOf(id) }, // d. selections args
+				null, // e. group by
+				null, // f. having
+				null, // g. order by
+				null); // h. limit
+
+		if(cursor != null)
+			cursor.moveToFirst();
+		
+		Location loc = new Location("");
+		
+		Coins coin = new Coins();
+		coin.setId(cursor.getInt(0));
+		coin.setRouteID(cursor.getInt(1));
+		loc.setLatitude(cursor.getDouble(2));
+		loc.setLatitude(cursor.getDouble(3));
+		coin.setLocation(loc);
+		coin.setTime(cursor.getLong(4));
+		coin.setDistance(cursor.getInt(5));
+
+		Log.d("getCoin("+id+")", coin.toString());
+		return coin;
+	}
+	public List<Coins> getAllCoinsByRoute(int routeId){
+		List<Coins> coins = new LinkedList<Coins>();
+
+		//get db
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		//build query
+		Cursor cursor = db.query(TABLE_COINS, // a. table
+				COLUMNS_COINS, // b. column names
+				" routeId = ?", // c. selections 
+				new String[] { String.valueOf(routeId) }, // d. selections args
+				null, // e. group by
+				null, // f. having
+				null, // g. order by
+				null); // h. limit
 
 
-	/*------------------------------FINISHED ROUTE TABLE METHODS--------------------------------*/
+		//set up result
+		Coins coin = null;
+		Location loc = new Location("");
+		if(cursor.moveToFirst()){
+			do{
+				coin = new Coins();
+				coin.setId(Integer.parseInt(cursor.getString(0)));
+				coin.setRouteID(Integer.parseInt(cursor.getString(1)));
+				loc.setLatitude(cursor.getDouble(2));
+				loc.setLatitude(cursor.getDouble(3));
+				coin.setLocation(loc);
+				coin.setTime(cursor.getLong(4));
+				coin.setDistance(cursor.getInt(5));
+
+				coins.add(coin);
+			} while (cursor.moveToNext());
+		}
+
+		//Log
+		Log.d("getAllPoints("+routeId+")", coins.toString());
+
+		return coins;
+	}
+	/*------------------------------FINISHED_ROUTE TABLE METHODS--------------------------------*/
 
 	/**
 	 * This method is used to finish a route, it retrieves the time of the first and last point 

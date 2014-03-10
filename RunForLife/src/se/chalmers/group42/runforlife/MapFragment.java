@@ -9,6 +9,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -51,8 +52,9 @@ public class MapFragment extends Fragment {
 	private GoogleMap map;
 	private SupportMapFragment fragment;
 	private ArrayList<Location> finalRoute = new ArrayList<Location>();
-//	private int marks;
+	//	private int marks;
 	private Boolean directionFinished = false;
+	private Marker marker;
 
 	public MapFragment() {
 	}
@@ -88,6 +90,19 @@ public class MapFragment extends Fragment {
 		return rootView;
 	}
 
+	public void handleNewCoin(Location newCoinLocation){
+		if (marker != null){
+			marker.remove();
+		}
+		marker = map.addMarker(new MarkerOptions()
+		.position(
+				new LatLng(newCoinLocation.getLatitude(),
+						newCoinLocation.getLongitude()))
+						.title("Another Coin!")
+						.icon(BitmapDescriptorFactory
+								.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+	}
+
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(
 				Color.BLUE);
@@ -114,21 +129,24 @@ public class MapFragment extends Fragment {
 		// {
 		// newPolyline.remove();
 		// }
-		
+
 		if (finalRoute.size() == 1) {
 			// soundSource.set(wholeWayLocation);
 			map.clear();
-			map.addMarker(new MarkerOptions()
+			if (marker != null){
+				marker.remove();
+			}
+			marker = map.addMarker(new MarkerOptions()
 			.position(
 					new LatLng(wholeWayLocation.getLatitude(),
 							wholeWayLocation.getLongitude()))
-			.title("First!")
-			.icon(BitmapDescriptorFactory
-					.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+							.title("First!")
+							.icon(BitmapDescriptorFactory
+									.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		}
-		
-		
-		
+
+
+
 		map.addPolyline(rectLine);
 		// latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
 		// float zoom = 19;
