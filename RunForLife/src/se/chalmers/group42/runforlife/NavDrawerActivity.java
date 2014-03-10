@@ -74,11 +74,11 @@ import android.widget.Toast;
  * Abstract base class handling the logic of the navigation drawer.
  */
 public abstract class NavDrawerActivity extends FragmentActivity {
-	
+
 	protected DrawerLayout navDrawerLayout;
 	protected ListView navDrawerList;
 	protected String[] navListOption;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -108,12 +108,10 @@ public abstract class NavDrawerActivity extends FragmentActivity {
 		}
 	}
 
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-	MenuInflater inflater = getMenuInflater();
-	inflater.inflate(R.menu.main, menu);
-	return super.onCreateOptionsMenu(menu);
-}
-
-
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 }

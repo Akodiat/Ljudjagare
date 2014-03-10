@@ -37,7 +37,7 @@ CompletedRunListFragment.Callbacks {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_completedrun_list);
 
 		//Setting up Navigation Drawer from left side of screen
 		navListOption = getResources().getStringArray(R.array.nav_drawer_array);
