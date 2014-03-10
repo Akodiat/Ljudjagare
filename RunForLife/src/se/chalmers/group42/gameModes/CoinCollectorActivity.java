@@ -142,7 +142,7 @@ public class CoinCollectorActivity extends RunActivity {
 		super.playSound();
 
 		if (!fx.getNavigationFX().isPlaying()) {
-			fx.loop(fx.getNavigationFX());
+			//fx.loop(fx.getNavigationFX());
 			Message msg = fx.getHandler().obtainMessage(Constants.MSG);
 			fx.getHandler().sendMessageDelayed(msg,
 					(long) fx.delayInterval(fx.getNavigationFX()));
