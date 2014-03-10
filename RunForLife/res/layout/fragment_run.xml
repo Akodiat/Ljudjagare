@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:textSize="30sp"
-                android:text=" 01:00:54"
+                android:text=" 00:00:00"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             </RelativeLayout>
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:textSize="30sp"
-                android:text=" 1.23"
+                android:text="0.0"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             
             <TextView
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:textSize="30sp"
-                android:text=" 30"
+                android:text="0.0"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             
             <TextView
@@ -177,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:textSize="30sp"
-                android:text=" 15"
+                android:text="0.0"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -228,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:textSize="30sp"
-                android:text=" 30"
+                android:text="0.0"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             
             <TextView
@@ -277,7 +277,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:textSize="30sp"
-                android:text=" 15"
+                android:text="0.0"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
