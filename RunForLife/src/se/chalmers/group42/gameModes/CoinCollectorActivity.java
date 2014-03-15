@@ -75,7 +75,7 @@ public class CoinCollectorActivity extends RunActivity {
 		//If a coin is found..
 		if(isAtCoin())
 		{
-			//TODO Fel här. Var tvungen att kommentera raden under för att göra körbart
+			//TODO Fel här. Var tvungen att kommentera raden under för att göra körbart //Anton
 //			dataHandler.onAquiredCoin();
 			//Increase the player score by one
 			this.human.modScore(1);
