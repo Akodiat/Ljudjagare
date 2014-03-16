@@ -11,12 +11,13 @@
         android:layout_height="match_parent"
         tools:context=".RunActivity"/>
     
-    <Button
+    <ImageButton
         android:id="@+id/button_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="End" />
+        android:src="@drawable/finish"
+        android:background="#0000" />
 
 </RelativeLayout>

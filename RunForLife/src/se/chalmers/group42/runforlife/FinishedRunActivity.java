@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class FinishedRunActivity extends SwipeableActivity implements
 MapFragment.OnHeadlineSelectedListener{
@@ -25,7 +26,7 @@ MapFragment.OnHeadlineSelectedListener{
 	protected DataHandler dataHandler;
 	
 	//Button
-	private Button endButton;
+	private ImageButton endButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,7 @@ MapFragment.OnHeadlineSelectedListener{
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
 		
-		endButton = (Button) findViewById(R.id.button_end);
+		endButton = (ImageButton) findViewById(R.id.button_end);
 		endButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
