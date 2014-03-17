@@ -10,18 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@android:color/white"
-            android:orientation="vertical" >
+            android:background="@android:color/white" >
 
             <ImageView
                 android:id="@+id/imageViewRunner"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="3"
                 android:src="@drawable/runner" />
 
             <at.technikum.mti.fancycoverflow.FancyCoverFlow
@@ -29,7 +27,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="4"
                 fcf:maxRotation="45"
                 fcf:scaleDownGravity="0.5"
                 fcf:unselectedAlpha="0.3"
@@ -39,9 +36,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
                 android:gravity="bottom"
-                android:paddingTop="5" >
+                android:layout_alignParentBottom="true" >
 
                 <TableLayout
                     android:layout_width="wrap_content"

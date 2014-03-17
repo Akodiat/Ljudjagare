@@ -33,11 +33,15 @@ CompletedRunListFragment.Callbacks {
 	 * device.
 	 */
 	private boolean mTwoPane;
+	private int apiLevel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_completedrun_list);
+		
+		//Get API-level
+		apiLevel = Integer.valueOf(android.os.Build.VERSION.SDK_INT);
 
 		//Setting up Navigation Drawer from left side of screen
 		navListOption = getResources().getStringArray(R.array.nav_drawer_array);
@@ -55,7 +59,9 @@ CompletedRunListFragment.Callbacks {
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
+		if(apiLevel>=14){
+			getActionBar().setHomeButtonEnabled(true);
+		}
 
 		if (findViewById(R.id.completedrun_detail_container) != null) {
 			// The detail container view will be present only in the
