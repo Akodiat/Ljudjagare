@@ -7,8 +7,8 @@ import utils.LocationHelper;
 import android.location.Location;
 
 public class Monster {
-	private 	Location 	location;
-	private		Location 	target;
+	private 	Location 	location;				//Location of the monster
+	private		Location 	target;					//Location of the target (that the monster hunts)
 	private 	float 		speed;					//Meters per second
 	
 	private 	Timer 		timer = new Timer();
@@ -40,7 +40,7 @@ public class Monster {
 	
 	public void huntTarget(){
 		float direction = location.bearingTo(target);
-		float distance 	=  speed * (delayTime/1000);
+		float distance 	= speed * (delayTime/1000);
 		
 		LocationHelper.moveLocation(target, direction, distance);
 	}
