@@ -17,6 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:paddingBottom="2dp"
+		android:paddingRight="2dp"
         android:src="@drawable/finish"
         android:background="#0000" />
 
