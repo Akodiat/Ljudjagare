@@ -40,7 +40,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="3"
                 android:gravity="bottom"
-                android:paddingTop="@dimen/abc_action_bar_subtitle_bottom_margin" >
+                android:paddingBottom="2dp"
+                android:paddingLeft="2dp" >
 
                 <TableLayout
                     android:layout_width="wrap_content"
@@ -115,6 +116,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
+                    android:paddingBottom="2dp"
+                	android:paddingRight="2dp"
                     android:background="#0000"
                     android:src="@drawable/run" />
             </RelativeLayout>
