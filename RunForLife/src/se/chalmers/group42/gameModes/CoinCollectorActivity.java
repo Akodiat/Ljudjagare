@@ -26,7 +26,6 @@ public class CoinCollectorActivity extends RunActivity {
 	private float compassFromNorth; // Compass angle
 	private Location coinLocation; // Location of the sound source / Location of
 									// current coin
-	private int currentCoin = 0;
 
 	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 	// Handles the sound
@@ -53,7 +52,6 @@ public class CoinCollectorActivity extends RunActivity {
 	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute) {
 		this.finalRoute = finalRoute;
-		currentCoin++;
 		coinLocation = finalRoute.get(0);
 	}
 
@@ -75,7 +73,7 @@ public class CoinCollectorActivity extends RunActivity {
 		//If a coin is found..
 		if(isAtCoin())
 		{
-			//TODO Fel här. Var tvungen att kommentera raden under för att göra körbart //Anton
+			//TODO Fel hï¿½r. Var tvungen att kommentera raden under fï¿½r att gï¿½ra kï¿½rbart //Anton
 //			dataHandler.onAquiredCoin();
 			//Increase the player score by one
 			this.human.modScore(1);
@@ -112,14 +110,14 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private void generateNewCoin() {
-		if (currentCoin <= 3 ){
-		coinLocation = this.finalRoute.get(currentCoin);
-		currentCoin++;
+		if (human.getScore() <= 3 ){
+		coinLocation = this.finalRoute.get(human.getScore());
+		
 		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":1");
 		mapFrag.handleNewCoin(coinLocation);
 		} else {
-			currentCoin = 0;
+			human.setScore(0);
 			generateRandomRoute(100);
 		}
 
