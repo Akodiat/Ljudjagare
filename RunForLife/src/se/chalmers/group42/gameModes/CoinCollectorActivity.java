@@ -26,7 +26,6 @@ public class CoinCollectorActivity extends RunActivity {
 	private float compassFromNorth; // Compass angle
 	private Location coinLocation; // Location of the sound source / Location of
 									// current coin
-	private int currentCoin = 0;
 
 	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 	// Handles the sound
@@ -53,7 +52,6 @@ public class CoinCollectorActivity extends RunActivity {
 	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute) {
 		this.finalRoute = finalRoute;
-		currentCoin++;
 		coinLocation = finalRoute.get(0);
 	}
 
@@ -73,9 +71,17 @@ public class CoinCollectorActivity extends RunActivity {
 		}
 
 		// If a coin is found..
-		if (isAtCoin()) {
-			dataHandler.onAquiredCoin();
-			// Increase the player score by one
+//		if (isAtCoin()) {
+//			dataHandler.onAquiredCoin();
+//			// Increase the player score by one
+//
+//		
+		//If a coin is found..
+		if(isAtCoin())
+		{
+			//TODO Fel h�r. Var tvungen att kommentera raden under f�r att g�ra k�rbart //Anton
+//			dataHandler.onAquiredCoin();
+			//Increase the player score by one
 			this.human.modScore(1);
 
 			// Play sound of a coin
@@ -99,7 +105,7 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private boolean isAtCoin() {
-
+		double dist = human.getLocation().distanceTo(coinLocation);
 		return (// If closer than minimum distance
 		human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
 		// Or the accuracy is less than 50 meters but still larger
@@ -110,8 +116,16 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private void generateNewCoin() {
-		coinLocation = this.finalRoute.get(currentCoin);
-		currentCoin++;
+		if (human.getScore() <= 3 ){
+		coinLocation = this.finalRoute.get(human.getScore());
+		
+		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
+                "android:switcher:"+R.id.pager+":1");
+		mapFrag.handleNewCoin(coinLocation);
+		} else {
+			human.setScore(0);
+			generateRandomRoute(100);
+		}
 
 	}
 
@@ -175,7 +189,7 @@ public class CoinCollectorActivity extends RunActivity {
 		double a = Math.random();
 		double b = Math.random();
 
-		double r = 100 / Constants.LAT_LNG_TO_METER;
+		double r = 50 / Constants.LAT_LNG_TO_METER;
 
 		double w = r * Math.sqrt(a);
 		double t = 2 * Math.PI * b;

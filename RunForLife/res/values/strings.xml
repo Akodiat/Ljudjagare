@@ -18,4 +18,13 @@
     <string name="title_completedrun_list">Completed Runs</string>
     <string name="title_completedrun_detail">Completed Run Detail</string>
 
+    <string-array name="nav_drawer_array">
+        <item>Run</item>
+        <item>History</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_nav_drawer">NavDrawerActivity</string>
+
 </resources>

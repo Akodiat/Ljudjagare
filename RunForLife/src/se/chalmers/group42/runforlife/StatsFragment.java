@@ -2,6 +2,7 @@ package se.chalmers.group42.runforlife;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,16 +33,26 @@ public class StatsFragment extends Fragment{
 	
 	//TODO Fixa så att varannan rad blir grå med hjälp av om det inlästa 
 	//elementet har udda eller jämn plats
-	public void updateTableData(){
+	public void updateTableData(int distance, long seconds){
+		Time t = new Time();
+		t.set(seconds*1000);
+		t.switchTimezone("GMT");
+		
+		double d = distance;
+		double s = seconds;
+		double speed = (d / s)*3.6;
+		double paceX = 60 / speed;
+		paceX = Math.round(paceX*100)/100.0d;
+		
 		TableRow row = new TableRow(this.getActivity());
 		TextView event = new TextView(this.getActivity());
 		TextView time = new TextView(this.getActivity());
 		TextView dist = new TextView(this.getActivity());
 		TextView pace = new TextView(this.getActivity());
 		event.setText("Coin");
-		time.setText("01:09");
-		dist.setText("500 m");
-		pace.setText("4:30 km/min");
+		time.setText(t.format("%H:%M:%S"));
+		dist.setText(distance+"m");
+		pace.setText(paceX+"min/km");
 		row.addView(event);
 		row.addView(time);
 		row.addView(dist);

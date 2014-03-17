@@ -10,26 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@android:color/white"
-            android:orientation="vertical" >
+            android:background="@android:color/white" >
 
             <ImageView
                 android:id="@+id/imageViewRunner"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_above="@+id/fancyCoverFlow"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="3"
                 android:src="@drawable/runner" />
 
             <at.technikum.mti.fancycoverflow.FancyCoverFlow
                 android:id="@+id/fancyCoverFlow"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_above="@+id/relativeLayout1"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="4"
                 fcf:maxRotation="45"
                 fcf:scaleDownGravity="0.5"
                 fcf:unselectedAlpha="0.3"
@@ -37,22 +36,25 @@
                 fcf:unselectedScale="0.4" />
 
             <RelativeLayout
+                android:id="@+id/relativeLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:gravity="bottom" >
+                android:gravity="bottom"
+                android:layout_alignParentBottom="true" >
 
                 <TableLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true" >
+                    android:layout_alignParentLeft="true"
+                    android:stretchColumns="1" >
 
                     <TableRow
                         android:id="@+id/tableRow1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center" >
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:layout_weight="1" >
 
                         <ImageView
                             android:id="@+id/imageViewGPS"
@@ -71,7 +73,8 @@
                         android:id="@+id/tableRow2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center" >
+                        android:gravity="left"
+                        android:layout_weight="1" >
 
                         <ImageView
                             android:id="@+id/imageViewSound"
@@ -90,7 +93,8 @@
                         android:id="@+id/tableRow3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center" >
+                        android:gravity="left"
+                        android:layout_weight="1" >
 
                         <ImageView
                             android:id="@+id/imageViewHeadphones"
@@ -113,13 +117,14 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:background="#0000"
-                    android:src="@drawable/run" />
+                    android:src="@drawable/run"
+                    android:cropToPadding="false" />
             </RelativeLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </FrameLayout>
 
     <ListView
-        android:id="@+id/left_drawer"
+        android:id="@+id/drawer_list"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"

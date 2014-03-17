@@ -20,6 +20,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -64,7 +65,7 @@ public class RunActivity extends SwipeableActivity implements
 //	private Fragment mapFragment;
 //	private Fragment statsFragment;
 	
-	private Button pauseButton, finishButton;
+	private ImageButton pauseButton, finishButton;
 	
 	//Class for handling GPS and Compass sensors
 	private SensorInputHandler sensorInputHandler;
@@ -142,30 +143,30 @@ public class RunActivity extends SwipeableActivity implements
 		}
 		
 		//Setting up pausebutton
-		pauseButton = (Button) findViewById(R.id.button_pause);
+		pauseButton = (ImageButton) findViewById(R.id.button_pause);
 		pauseButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				if(dataHandler.getRunningStatus()){
 					if(!dataHandler.getPauseStatus()){
-						pauseButton.setText("Resume");
+						pauseButton.setImageResource(R.drawable.play);
 					}else{
-						pauseButton.setText("Pause");
+						pauseButton.setImageResource(R.drawable.pause);
 					}
 					playSound();
 					dataHandler.pauseWatch();
 				}
 				onGPSDisconnect();
-				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
-		                "android:switcher:"+R.id.pager+":2");
-				if(statsFragment.isAdded()){
-					statsFrag.updateTableData();
-				}
+//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
+//		                "android:switcher:"+R.id.pager+":2");
+//				if(statsFragment.isAdded()){
+//					statsFrag.updateTableData();
+//				}
 			}
 		});
 
 		//Setting up finishbutton
-		finishButton = (Button) findViewById(R.id.button_finish);
+		finishButton = (ImageButton) findViewById(R.id.button_finish);
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {

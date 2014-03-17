@@ -5,20 +5,10 @@
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
         android:title="@string/action_log_in"/>
-<!--     <item -->
-<!--         android:id="@+id/action_history" -->
-<!--         android:orderInCategory="100" -->
-<!--         android:showAsAction="ifRoom" -->
-<!--         android:title="@string/action_history"/> -->
-<!--     <item -->
-<!--         android:id="@+id/action_highscores" -->
-<!--         android:orderInCategory="100" -->
-<!--         android:showAsAction="ifRoom" -->
-<!--         android:title="@string/action_highscores"/> -->
-<!--     <item -->
-<!--         android:id="@+id/action_settings" -->
-<!--         android:orderInCategory="100" -->
-<!--         android:showAsAction="ifRoom" -->
-<!--         android:title="@string/action_settings"/> -->
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_log_in"/>
 
 </menu>
