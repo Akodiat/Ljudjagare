@@ -276,24 +276,24 @@ public class FXHandler {
 	public void speech(float distance) {
 		int sWidth = 10;
 		if (distance < 1000 + sWidth && distance > 1000 - sWidth)
-			sayDistance(say100);
-		if (distance < 900 + sWidth && distance > 900 - sWidth)
-			sayDistance(say200);
-		if (distance < 800 + sWidth && distance > 800 - sWidth)
-			sayDistance(say300);
-		if (distance < 700 + sWidth && distance > 700 - sWidth)
-			sayDistance(say400);
-		if (distance < 600 + sWidth && distance > 600 - sWidth)
-			sayDistance(say500);
-		if (distance < 500 + sWidth && distance > 500 - sWidth)
-			sayDistance(say600);
-		if (distance < 400 + sWidth && distance > 400 - sWidth)
-			sayDistance(say700);
-		if (distance < 300 + sWidth && distance > 300 - sWidth)
-			sayDistance(say800);
-		if (distance < 200 + sWidth && distance > 200 - sWidth)
-			sayDistance(say900);
-		if (distance < 100 + sWidth && distance > 100 - sWidth)
 			sayDistance(say1000);
+		if (distance < 900 + sWidth && distance > 900 - sWidth)
+			sayDistance(say900);
+		if (distance < 800 + sWidth && distance > 800 - sWidth)
+			sayDistance(say800);
+		if (distance < 700 + sWidth && distance > 700 - sWidth)
+			sayDistance(say700);
+		if (distance < 600 + sWidth && distance > 600 - sWidth)
+			sayDistance(say600);
+		if (distance < 500 + sWidth && distance > 500 - sWidth)
+			sayDistance(say500);
+		if (distance < 400 + sWidth && distance > 400 - sWidth)
+			sayDistance(say400);
+		if (distance < 300 + sWidth && distance > 300 - sWidth)
+			sayDistance(say300);
+		if (distance < 200 + sWidth && distance > 200 - sWidth)
+			sayDistance(say200);
+		if (distance < 100 + sWidth && distance > 100 - sWidth)
+			sayDistance(say100);
 	}
 }
