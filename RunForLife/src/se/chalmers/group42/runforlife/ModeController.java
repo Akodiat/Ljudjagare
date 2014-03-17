@@ -2,9 +2,7 @@ package se.chalmers.group42.runforlife;
 
 import android.content.Context;
 import android.content.Intent;
-import se.chalmers.group42.gameModes.CoinCollectorActivity;
-import se.chalmers.group42.gameModes.GameMode;
-import se.chalmers.group42.gameModes.ShooterActivity;
+import se.chalmers.group42.gameModes.*;
 
 public class ModeController {
 	private GameMode activeGameMode;
@@ -13,7 +11,7 @@ public class ModeController {
 	 * Available modes.
 	 */
 	public static final int COIN_COLLECTOR = 0;
-	public static final int QUEST = 1;
+	public static final int ESCAPE = 1;
 	public static final int SHOOTER = 2;
 	
 	private Context context;
@@ -28,8 +26,8 @@ public class ModeController {
 		case COIN_COLLECTOR:
 			launchCoinCollector();
 			break;
-		case QUEST:
-			launchQuest();
+		case ESCAPE:
+			launchEscape();
 			break;
 		case SHOOTER:
 			launchShooter();
@@ -50,8 +48,9 @@ public class ModeController {
 	/**
 	 * Initialize values needed to play 'Quest' mode.
 	 */
-	private void launchQuest() {
-		// TODO
+	private void launchEscape() {
+		Intent runActivityIntent = new Intent(context, EscapeActivity.class);
+		context.startActivity(runActivityIntent);
 	}
 
 	/**
