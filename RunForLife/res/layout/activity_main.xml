@@ -40,7 +40,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="3"
                 android:gravity="bottom"
-                android:paddingTop="@dimen/abc_action_bar_subtitle_bottom_margin" >
+                android:paddingTop="5dp" >
 
                 <TableLayout
                     android:layout_width="wrap_content"
