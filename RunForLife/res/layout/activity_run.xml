@@ -15,7 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" >
+        android:layout_alignParentLeft="true"
+        android:paddingBottom="2dp"
+		android:paddingLeft="2dp" >
 
         <TableRow
             android:id="@+id/tableRow1"
@@ -63,6 +65,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:paddingBottom="2dp"
+		android:paddingRight="2dp"
         android:src="@drawable/finish"
         android:background="#0000" />
 
@@ -71,6 +75,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:paddingBottom="2dp"
+		android:paddingRight="2dp"
         android:layout_toLeftOf="@+id/button_finish"
         android:src="@drawable/pause"
         android:background="#0000" />
