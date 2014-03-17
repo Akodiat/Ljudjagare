@@ -9,4 +9,14 @@
         android:layout_height="wrap_content"
         android:text="@string/hello" />
 
+    <SeekBar
+        android:id="@+id/userOrientation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <SeekBar
+        android:id="@+id/distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
