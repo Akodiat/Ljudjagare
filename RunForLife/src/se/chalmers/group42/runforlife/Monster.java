@@ -42,6 +42,6 @@ public class Monster {
 		float direction = location.bearingTo(target);
 		float distance 	=  speed * (delayTime/1000);
 		
-		LocationHelper.calculateAndUpdateLocation(target, direction, distance);
+		LocationHelper.moveLocation(target, direction, distance);
 	}
 }

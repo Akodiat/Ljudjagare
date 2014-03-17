@@ -33,6 +33,13 @@ public class LocationHelper {
 		);
 	}
 	
+	/**
+	 * Calculates a new LatLng positioned a specified distance and bearing away.
+	 * @param latLng	The LatLng from which to move
+	 * @param bearing	The bearing in which to move (in degrees)
+	 * @param distance	The distance to move (in meters)
+	 * @return			A new LatLng, positioned distance meters away in the bearing direction.
+	 */
 	public static LatLng calculateNewLatLng(LatLng latLng, float bearing, float distance){
 		double rLat = degToRad(latLng.latitude);
 		double rLng = degToRad(latLng.longitude);
@@ -53,8 +60,14 @@ public class LocationHelper {
 		return new LatLng(radToDeg(newRLat), radToDeg(newRLng));
 		
 	}
-	
-	public static void calculateAndUpdateLocation(Location location, float bearing, float distance) {
+	/**
+	 * Updates the position and bearing of the location to a new one, 
+	 * positioned distance meters away in the bearing direction
+	 * @param location 	the Location to be updated
+	 * @param bearing 	The bearing in which to move (in degrees)
+	 * @param distance	The distance to move (in meters)
+	 */
+	public static void moveLocation(Location location, float bearing, float distance) {
 		//Calculates new position
 		LatLng updatedLatLng = calculateNewLatLng(
 				latlngFromLocation(location), 
