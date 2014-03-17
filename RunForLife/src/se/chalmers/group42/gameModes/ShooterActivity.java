@@ -9,11 +9,18 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ShooterActivity extends Activity implements SensorEventListener {
 
+	public static final int MIN_ANGLE = 10;
+
 	private TextView monsterNotification;
+	private Button generateNewAngle;
+	
 	private FXHandler fx;
 
 	private float[] accelerometer;
@@ -28,7 +35,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 	private float[] matrixValues;
 
 	/**
-	 * Default hp destruction of a gun.
+	 * Default HP destruction of a gun.
 	 */
 	public static final int DEFAULT_GUN_POWER = 20;
 
@@ -55,6 +62,17 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		matrixValues = new float[3];
 
 		(fx = new FXHandler()).initSound(this);
+
+		pointingAngle = -69;
+
+		generateNewAngle = (Button) findViewById(R.id.testRandomAngle);
+		generateNewAngle.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				pointingAngle = generateNewAngle(pointingAngle);
+				System.out.println(pointingAngle);
+			}
+		});
 	}
 
 	public void monsterSpotted() {
@@ -92,21 +110,13 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 	}
 
 	/**
-	 * Place monster at given angle.
-	 * 
-	 * @param angle
-	 */
-	public void createMonsterAtAngle(double angle) {
-
-	}
-
-	/**
 	 * Places a new monster at a random angle (not being close to previous).
 	 * 
 	 * @param previousPointingAngle
 	 */
-	public void createNewMonster(double previousPointingAngle) {
-
+	public double generateNewAngle(double previousPointingAngle) {
+		return (((previousPointingAngle + 180) + (MIN_ANGLE + (int) (Math
+				.random() * (((360 - MIN_ANGLE) - MIN_ANGLE) + 1)))) % 360) - 180;
 	}
 
 	@Override
@@ -129,15 +139,27 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 	private class Monster {
 
-		// Start stepping through the array from the beginning
-		private double angle;
+		private float angle;
 		private FX sound;
 		private int hp;
+
+		public Monster(FX sound, float angle, int hp) {
+			this.angle = angle;
+			this.sound = sound;
+			this.hp = hp;
+		}
 
 		public int hp() {
 			return hp;
 		}
-		
-		
+
+		public FX fx() {
+			return sound;
+		}
+
+		public float angle() {
+			return angle;
+		}
+
 	}
 }

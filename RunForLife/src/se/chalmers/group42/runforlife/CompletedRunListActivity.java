@@ -1,6 +1,7 @@
 package se.chalmers.group42.runforlife;
 
 import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -35,6 +36,7 @@ CompletedRunListFragment.Callbacks {
 	private boolean mTwoPane;
 	private int apiLevel;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
