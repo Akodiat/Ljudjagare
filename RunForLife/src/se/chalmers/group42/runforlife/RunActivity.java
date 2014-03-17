@@ -166,7 +166,7 @@ public class RunActivity extends SwipeableActivity implements
 		});
 
 		//Setting up finishbutton
-		finishButton = (ImageButton) findViewById(R.id.button_finish);
+		finishButton = (ImageButton) findViewById(R.id.button_stop);
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
