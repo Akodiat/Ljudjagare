@@ -101,17 +101,17 @@ public class MainActivity extends NavDrawerActivity {
 		/*
 		 * Setting up the cover flow
 		 */
-//		fancyCoverFlow = (FancyCoverFlow) this
-//				.findViewById(R.id.fancyCoverFlow);
-//		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter(
-//				coverFlowHeight));
-//		fancyCoverFlow.setUnselectedAlpha(1.0f);
-//		fancyCoverFlow.setUnselectedSaturation(0.0f);
-//		fancyCoverFlow.setUnselectedScale(0.5f);
-//		fancyCoverFlow.setSpacing(0);
-//		fancyCoverFlow.setMaxRotation(0);
-//		fancyCoverFlow.setScaleDownGravity(0.2f);
-//		fancyCoverFlow.setActionDistance(FancyCoverFlow.ACTION_DISTANCE_AUTO);
+		fancyCoverFlow = (FancyCoverFlow) this
+				.findViewById(R.id.fancyCoverFlow);
+		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter(
+				coverFlowHeight));
+		fancyCoverFlow.setUnselectedAlpha(1.0f);
+		fancyCoverFlow.setUnselectedSaturation(0.0f);
+		fancyCoverFlow.setUnselectedScale(0.5f);
+		fancyCoverFlow.setSpacing(0);
+		fancyCoverFlow.setMaxRotation(0);
+		fancyCoverFlow.setScaleDownGravity(0.2f);
+		fancyCoverFlow.setActionDistance(FancyCoverFlow.ACTION_DISTANCE_AUTO);
 
 		/*
 		 * Setting up the run-button
