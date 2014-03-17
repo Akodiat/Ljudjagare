@@ -1,98 +1,82 @@
 package se.chalmers.group42.gameModes;
 
-import java.util.ArrayList;
-
-import se.chalmers.group42.runforlife.*;
+import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.FXHandler;
+import se.chalmers.group42.runforlife.Human;
+import se.chalmers.group42.runforlife.Monster;
+import se.chalmers.group42.runforlife.RunActivity;
 import utils.LocationHelper;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
- * A game of collecting coins.
+ * A game of being chased by monsters.
  * 
  * @author Joakim Johansson
  * 
  */
 public class EscapeActivity extends RunActivity {
-	public static LatLng DEFAULT_POSITION = new LatLng(58.705477, 11.990884);
-	public static int GAME_MODE_ID = 0;
+	public static LatLng 	DEFAULT_POSITION 			= new LatLng(58.705477, 11.990884);
+	public static int 		GAME_MODE_ID 				= 1;
+	public static int 		MAX_MONSTER_SPAWN_DISTANCE 	= 200;
+	public static int 		MIN_MONSTER_SPAWN_DISTANCE	= 50;
+	public static float 	MONSTER_SPEED 				= 3; //	Meters per second
 
-	private Human human; // Containing the player position and score
-	private float compassFromNorth; // Compass angle
-	private Location coinLocation; // Location of the sound source / Location of
-									// current coin
+	private Human 	human; 				// Containing the player position and score
+	private Monster monster;			// Containing the monster position
+	private float 	compassFromNorth; 	// Compass angle
 
-	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 	// Handles the sound
 	private FXHandler fx;
-	private boolean generateRoute = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		human = new Human();
-
-		coinLocation = LocationHelper.locationFromLatlng(DEFAULT_POSITION);
+		
+		generateNewMonster();
 
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
 		playSound();
 	}
 
+	private void generateNewMonster() {
+		Location location = new Location(human.getLocation());
+		float bearing = (float) (Math.random() * 360);
+		float distance = (float) ((Math.random() * 
+				(MAX_MONSTER_SPAWN_DISTANCE - MIN_MONSTER_SPAWN_DISTANCE)
+				+ MIN_MONSTER_SPAWN_DISTANCE));
+		
+
+		android.util.Log.d("Monster", "Distance: "+ distance);
+		
+		LocationHelper.moveLocation(location, bearing, distance);
+		
+		monster = new Monster(location, MONSTER_SPEED);
+		monster.setTarget(human.getLocation());
+		
+		android.util.Log.d("Monster", "Distance2: "+ human.getLocation().distanceTo(monster.getLocation()));
+	}
+
 	public int getScore() {
 		return human.getScore();
 	}
 
-	// Get the finalRoute from mapFragment when the route is calculated.
-	@Override
-	public void sendFinalRoute(ArrayList<Location> finalRoute) {
-		this.finalRoute = finalRoute;
-		coinLocation = finalRoute.get(0);
-	}
 
 	@Override
 	public void onLocationChanged(Location location) {
 		super.onLocationChanged(location);
 
-		// map.animateCamera(CameraUpdateFactory.newLatLngZoom(new
-		// LatLng(location.getLatitude(), location.getLongitude()), 12.0f));
-
 		// Update human location
-		this.human.setLocation(location);
-
-		if (generateRoute) {
-			generateRoute = false;
-			generateRandomRoute(100);
-		}
-
-		// If a coin is found..
-//		if (isAtCoin()) {
-//			dataHandler.onAquiredCoin();
-//			// Increase the player score by one
-//
-//		
-		//If a coin is found..
-		if(isAtCoin())
-		{
-			dataHandler.onAquiredCoin(coinLocation);
-			//Increase the player score by one
-			this.human.modScore(1);
-
-			// Play sound of a coin
-			fx.playFX(fx.getCoin(), 0);
-
-			// And generate a new coin to search for
-			generateNewCoin();
-		}
-
-		// If a current coin is set
-		if (this.coinLocation != null)
-			adjustPanoration();
+		human.setLocation(location);
+		
+		// Update monster target
+		monster.setTarget(human.getLocation());
+		
+		adjustPanoration();
 	}
 
 	@Override
@@ -103,29 +87,14 @@ public class EscapeActivity extends RunActivity {
 		this.compassFromNorth = headingAngleOrientation;
 	}
 
-	private boolean isAtCoin() {
-		double dist = human.getLocation().distanceTo(coinLocation);
+	private boolean eatenByMonster() {
 		return (// If closer than minimum distance
-		human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
+		human.getLocation().distanceTo(monster.getLocation()) < Constants.MIN_DISTANCE
 		// Or the accuracy is less than 50 meters but still larger
 		// than the distance to the sound source.
 		|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
-				.distanceTo(coinLocation) < human.getLocation().getAccuracy()
+				.distanceTo(monster.getLocation()) < human.getLocation().getAccuracy()
 				: false));
-	}
-
-	private void generateNewCoin() {
-		if (human.getScore() <= 3 ){
-		coinLocation = this.finalRoute.get(human.getScore());
-		
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
-                "android:switcher:"+R.id.pager+":1");
-		mapFrag.handleNewCoin(coinLocation);
-		} else {
-			human.setScore(0);
-			generateRandomRoute(100);
-		}
-
 	}
 
 	private boolean usingCompass() {
@@ -136,7 +105,7 @@ public class EscapeActivity extends RunActivity {
 	private void adjustPanoration() {
 
 		float angle = usingCompass() ? compassFromNorth
-				+ human.getLocation().bearingTo(coinLocation)
+				+ human.getLocation().bearingTo(monster.getLocation())
 				: getRotation_GPS();
 
 		// if(angle < 0){
@@ -145,7 +114,7 @@ public class EscapeActivity extends RunActivity {
 
 		if (fx.getNavigationFX().isPlaying())
 			fx.update(fx.getNavigationFX(), (angle), human.getLocation()
-					.distanceTo(coinLocation));
+					.distanceTo(monster.getLocation()));
 
 	}
 
@@ -165,7 +134,7 @@ public class EscapeActivity extends RunActivity {
 	 * of the source
 	 */
 	public float getRotation_GPS() {
-		float bearingTo = human.getLocation().bearingTo(coinLocation);
+		float bearingTo = human.getLocation().bearingTo(monster.getLocation());
 		if (bearingTo < 0) {
 			bearingTo += 360;
 		}
@@ -179,65 +148,7 @@ public class EscapeActivity extends RunActivity {
 	 * source
 	 */
 	public float getRotation_Compass() {
-		return compassFromNorth + human.getLocation().bearingTo(coinLocation);
+		return compassFromNorth + human.getLocation().bearingTo(monster.getLocation());
 	}
 
-	private ArrayList<Location> generateRandomRoute(double distance) {
-		// Calculation random positions
-		finalRoute.clear();
-		double a = Math.random();
-		double b = Math.random();
-
-		double r = 50 / Constants.LAT_LNG_TO_METER;
-
-		double w = r * Math.sqrt(a);
-		double t = 2 * Math.PI * b;
-		double x = w * Math.cos(t);
-		double y = w * Math.sin(t);
-		double xNew = x / Math.cos(human.getLocation().getLongitude());
-
-		Location routePoint = new Location("route");
-		routePoint.setLatitude(xNew + human.getLocation().getLatitude());
-		routePoint.setLongitude(human.getLocation().getLongitude() + y);
-
-		float bearingTo = human.getLocation().bearingTo(routePoint);
-		double addLat;
-		double addLng;
-		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
-		addLat = Math.sin(bearingTo) * distanceFromLocation;
-		addLng = Math.cos(bearingTo) * distanceFromLocation;
-		routePoint.setLatitude(routePoint.getLatitude() + addLat);
-		routePoint.setLongitude(routePoint.getLongitude() + addLng);
-
-		ArrayList<Location> route = new ArrayList<Location>();
-		route.add(human.getLocation());
-		route.add(routePoint);
-		Location routePoint2 = new Location("route2");
-		double differLat = human.getLocation().getLatitude()
-				- routePoint.getLatitude();
-		double differLng = human.getLocation().getLongitude()
-				- routePoint.getLongitude();
-
-		if (Math.random() > 0.5) {
-			routePoint2.setLatitude(human.getLocation().getLatitude()
-					+ differLng);
-			routePoint2.setLongitude(human.getLocation().getLongitude()
-					- differLat);
-		} else {
-			routePoint2.setLatitude(human.getLocation().getLatitude()
-					- differLng);
-			routePoint2.setLongitude(human.getLocation().getLongitude()
-					+ differLat);
-		}
-		route.add(routePoint2);
-		route.add(human.getLocation());
-
-		for (int i = 0; i < route.size() - 1; i++) {
-			findDirections(route.get(i).getLatitude(), route.get(i)
-					.getLongitude(), route.get(i + 1).getLatitude(),
-					route.get(i + 1).getLongitude(),
-					GMapV2Direction.MODE_WALKING);
-		}
-		return route;
-	}
 }

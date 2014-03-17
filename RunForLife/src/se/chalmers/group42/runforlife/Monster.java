@@ -27,7 +27,7 @@ public class Monster {
 				huntTarget();	
 			}
 		};
-		timer.schedule(task, delayTime);
+		timer.schedule(task, 0, delayTime);
 	}
 	
 	public void setSpeed(float speed){
@@ -38,9 +38,15 @@ public class Monster {
 		this.target = target;
 	}
 	
+	public Location getLocation(){
+		return location;
+	}
+	
 	public void huntTarget(){
+		android.util.Log.d("Monster", "Monster is "+location.distanceTo(target)+" meters away");
+		
 		float direction = location.bearingTo(target);
-		float distance 	= speed * (delayTime/1000);
+		float distance 	= -speed * (delayTime/1000);
 		
 		LocationHelper.moveLocation(target, direction, distance);
 	}
