@@ -19,6 +19,7 @@
                 android:id="@+id/imageViewRunner"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_above="@+id/fancyCoverFlow"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/runner" />
 
@@ -26,6 +27,7 @@
                 android:id="@+id/fancyCoverFlow"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_above="@+id/relativeLayout1"
                 android:layout_gravity="center_horizontal"
                 fcf:maxRotation="45"
                 fcf:scaleDownGravity="0.5"
@@ -34,6 +36,7 @@
                 fcf:unselectedScale="0.4" />
 
             <RelativeLayout
+                android:id="@+id/relativeLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:gravity="bottom"
@@ -117,7 +120,7 @@
                     android:src="@drawable/run"
                     android:cropToPadding="false" />
             </RelativeLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </FrameLayout>
 
     <ListView
