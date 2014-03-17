@@ -40,8 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                android:gravity="bottom"
-                android:paddingTop="5" >
+                android:gravity="bottom" >
 
                 <TableLayout
                     android:layout_width="wrap_content"
