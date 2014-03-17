@@ -71,12 +71,11 @@ public class CoinCollectorActivity extends RunActivity {
 			generateRoute = false;
 			generateRandomRoute(100);
 		}
-		
-		//If a coin is found..
-		if(isAtCoin())
-		{
+
+		// If a coin is found..
+		if (isAtCoin()) {
 			dataHandler.onAquiredCoin();
-			//Increase the player score by one
+			// Increase the player score by one
 			this.human.modScore(1);
 
 			// Play sound of a coin
@@ -142,10 +141,7 @@ public class CoinCollectorActivity extends RunActivity {
 		super.playSound();
 
 		if (!fx.getNavigationFX().isPlaying()) {
-			//fx.loop(fx.getNavigationFX());
-			Message msg = fx.getHandler().obtainMessage(Constants.MSG);
-			fx.getHandler().sendMessageDelayed(msg,
-					(long) fx.delayInterval(fx.getNavigationFX()));
+			fx.loop(fx.getNavigationFX());
 		} else
 			fx.stopLoop();
 	}

@@ -28,6 +28,11 @@ public class FXHandler {
 	// FX representing the navigation sound (
 	private FX navigationFX;
 
+	private SoundPool speechPool;
+
+	private Speech say100, say200, say300, say400, say500, say600, say700,
+			say800, say900, say1000;
+
 	/**
 	 * Initialize sound engine
 	 */
@@ -55,6 +60,8 @@ public class FXHandler {
 		navigationFX = new FX(Constants.FX_01);
 		coin = new FX(Constants.FX_02);
 
+		initSpeech(context);
+
 		// Initialize thread handler
 		handler = new Handler() {
 			@Override
@@ -66,6 +73,22 @@ public class FXHandler {
 					handler.removeCallbacksAndMessages(null);
 			}
 		};
+	}
+
+	public void initSpeech(Context context) {
+		speechPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+
+		// Load speech voices.
+		say100 = new Speech(speechPool.load(context, R.raw.speech100, 1));
+		say200 = new Speech(speechPool.load(context, R.raw.speech200, 1));
+		say300 = new Speech(speechPool.load(context, R.raw.speech300, 1));
+		say400 = new Speech(speechPool.load(context, R.raw.speech400, 1));
+		say500 = new Speech(speechPool.load(context, R.raw.speech500, 1));
+		say600 = new Speech(speechPool.load(context, R.raw.speech600, 1));
+		say700 = new Speech(speechPool.load(context, R.raw.speech700, 1));
+		say800 = new Speech(speechPool.load(context, R.raw.speech800, 1));
+		say900 = new Speech(speechPool.load(context, R.raw.speech900, 1));
+		say1000 = new Speech(speechPool.load(context, R.raw.speech1000, 1));
 	}
 
 	public FX getNavigationFX() {
@@ -234,5 +257,43 @@ public class FXHandler {
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-180) * fx.angle() + 1);
 
 		fx.setDistance(distance);
+
+		speech(distance);
+	}
+
+	public void sayDistance(Speech speech) {
+		if (!speech.hasBeenPlayed()) {
+			speechPool.play(speech.ID(), 1, 1, 1, 0, 1);
+			speech.setPlayed();
+			if (Speech.previous() != null)
+				Speech.previous().setPlayable(); // make previous playable again.
+			
+			// set current speech as previous.
+			Speech.setPrevious(speech);
+		}
+	}
+
+	public void speech(float distance) {
+		int sWidth = 10;
+		if (distance < 1000 + sWidth && distance > 1000 - sWidth)
+			sayDistance(say100);
+		if (distance < 900 + sWidth && distance > 900 - sWidth)
+			sayDistance(say200);
+		if (distance < 800 + sWidth && distance > 800 - sWidth)
+			sayDistance(say300);
+		if (distance < 700 + sWidth && distance > 700 - sWidth)
+			sayDistance(say400);
+		if (distance < 600 + sWidth && distance > 600 - sWidth)
+			sayDistance(say500);
+		if (distance < 500 + sWidth && distance > 500 - sWidth)
+			sayDistance(say600);
+		if (distance < 400 + sWidth && distance > 400 - sWidth)
+			sayDistance(say700);
+		if (distance < 300 + sWidth && distance > 300 - sWidth)
+			sayDistance(say800);
+		if (distance < 200 + sWidth && distance > 200 - sWidth)
+			sayDistance(say900);
+		if (distance < 100 + sWidth && distance > 100 - sWidth)
+			sayDistance(say1000);
 	}
 }

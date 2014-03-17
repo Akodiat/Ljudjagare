@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
 		(fx = new FXHandler()).initSound(this);
 
 		repFreq = (SeekBar) findViewById(R.id.seekBarVolume);
-		repFreq.setMax(Constants.MAX_DISTANCE);
+		repFreq.setMax(1000);
 		repFreq.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 			@Override
