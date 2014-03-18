@@ -10,12 +10,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SwipeableActivity extends FragmentActivity implements ActionBar.TabListener{
+public abstract class SwipeableActivity extends FragmentActivity implements ActionBar.TabListener{
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -56,6 +57,7 @@ public class SwipeableActivity extends FragmentActivity implements ActionBar.Tab
 			//			Bundle args = new Bundle();
 			//			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
 			//			fragment.setArguments(args);
+			Log.i("getItem","position= " + position);
 			switch(position){
 			case 0:
 				return runFragment;
@@ -93,14 +95,14 @@ public class SwipeableActivity extends FragmentActivity implements ActionBar.Tab
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
 		mViewPager.setCurrentItem(tab.getPosition());
-		System.out.println("Tab pos= " + tab.getPosition());
-
+		Log.i("Tab", "Reselect Tab pos= " + tab.getPosition());
 	}
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-
+		// the ViewPager.
+		mViewPager.setCurrentItem(tab.getPosition());
+		Log.i("Tab", "Reselect Tab pos= " + tab.getPosition());
 	}
 
 	@Override

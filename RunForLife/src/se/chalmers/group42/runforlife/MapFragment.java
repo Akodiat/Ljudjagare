@@ -18,6 +18,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,8 @@ public class MapFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_map, container,
 				false);
+		
+		Log.i("Fragment", "map Fragment running");
 
 		// Show location on map
 		fragment = ((SupportMapFragment) getFragmentManager().findFragmentById(
