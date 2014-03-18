@@ -29,7 +29,7 @@
                 android:id="@+id/imageViewGPS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gps_green" />
+                android:src="@drawable/gps_red" />
         </TableRow>
 
         <TableRow
@@ -55,7 +55,7 @@
                 android:id="@+id/imageViewHeadphones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/headphones_green" />
+                android:src="@drawable/headphones_red" />
         </TableRow>
     </TableLayout>
 
