@@ -57,8 +57,7 @@ public class SwipeableActivity extends FragmentActivity implements ActionBar.Tab
 			//			Bundle args = new Bundle();
 			//			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
 			//			fragment.setArguments(args);
-			Log.v("getItem","position= " + position);
-			System.out.println("GetItem. Pos= " + position);
+			Log.i("getItem","position= " + position);
 			switch(position){
 			case 0:
 				return runFragment;
@@ -101,9 +100,9 @@ public class SwipeableActivity extends FragmentActivity implements ActionBar.Tab
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-			// the ViewPager.
-			mViewPager.setCurrentItem(tab.getPosition());
-			Log.i("Tab", "Reselect Tab pos= " + tab.getPosition());
+		// the ViewPager.
+		mViewPager.setCurrentItem(tab.getPosition());
+		Log.i("Tab", "Reselect Tab pos= " + tab.getPosition());
 	}
 
 	@Override

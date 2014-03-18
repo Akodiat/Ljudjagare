@@ -3,6 +3,7 @@ package se.chalmers.group42.runforlife;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class StatsFragment extends Fragment{
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_stats,
 				container, false);
-		System.out.println("Stats Fragment running");
+		Log.i("Fragment", "Stats Fragment running");
 		table = (TableLayout) rootView.findViewById(R.id.tableLayout);
 		return rootView;
 	}

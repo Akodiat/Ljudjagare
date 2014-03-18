@@ -102,6 +102,7 @@ public class RunActivity extends SwipeableActivity implements
 		// Set up the ViewPager with the sections adapter
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+		mViewPager.setOffscreenPageLimit(2);
 
 		/*
 		 *  When swiping between different sections, select the corresponding
@@ -129,6 +130,11 @@ public class RunActivity extends SwipeableActivity implements
 					.setTabListener(this));
 		}
 		
+//		if (savedInstanceState != null) {
+//	        runFragment = (RunFragment) getSupportFragmentManager().findFragmentByTag("runtag");
+//	    } else {
+//	        getSupportFragmentManager().beginTransaction().add(R.id., fragment, "customtag").commit(); 
+//	    }
 		runFragment = new RunFragment();
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();

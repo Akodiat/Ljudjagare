@@ -3,6 +3,7 @@ package se.chalmers.group42.runforlife;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
@@ -22,6 +23,7 @@ public class RunFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		Log.i("Fragment", "Run Fragment running");
 		View rootView = inflater.inflate(R.layout.fragment_run,
 				container, false);
 		return rootView;
