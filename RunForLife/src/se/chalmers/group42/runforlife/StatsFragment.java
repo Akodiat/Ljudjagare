@@ -27,7 +27,7 @@ public class StatsFragment extends Fragment{
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_stats,
 				container, false);
-		Log.i("Fragment", "Stats Fragment running");
+		Log.i("Fragment", "Stats Fragment created");
 		table = (TableLayout) rootView.findViewById(R.id.tableLayout);
 		return rootView;
 	}

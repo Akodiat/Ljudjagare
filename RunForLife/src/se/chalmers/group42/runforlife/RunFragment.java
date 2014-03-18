@@ -23,7 +23,7 @@ public class RunFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		Log.i("Fragment", "Run Fragment running");
+		Log.i("Fragment", "Run Fragment created");
 		View rootView = inflater.inflate(R.layout.fragment_run,
 				container, false);
 		return rootView;

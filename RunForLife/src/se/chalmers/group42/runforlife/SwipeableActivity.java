@@ -16,7 +16,7 @@ import android.util.Log;
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SwipeableActivity extends FragmentActivity implements ActionBar.TabListener{
+public abstract class SwipeableActivity extends FragmentActivity implements ActionBar.TabListener{
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide

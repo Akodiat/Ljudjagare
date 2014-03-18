@@ -46,25 +46,6 @@ import com.google.android.gms.maps.model.PolylineOptions;
 public class RunActivity extends SwipeableActivity implements
 		MapFragment.OnHeadlineSelectedListener{
 
-//	/**
-//	 * The {@link android.support.v4.view.PagerAdapter} that will provide
-//	 * fragments for each of the sections. We use a
-//	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
-//	 * will keep every loaded fragment in memory. If this becomes too memory
-//	 * intensive, it may be best to switch to a
-//	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-//	 */
-//	SectionsPagerAdapter mSectionsPagerAdapter;
-//
-//	/**
-//	 * The {@link ViewPager} that will host the section contents.
-//	 */
-//	private ViewPager mViewPager;
-//	
-//	private Fragment runFragment;
-//	private Fragment mapFragment;
-//	private Fragment statsFragment;
-	
 	private ImageButton pauseButton, finishButton;
 	
 	//Class for handling GPS and Compass sensors
@@ -102,6 +83,7 @@ public class RunActivity extends SwipeableActivity implements
 		// Set up the ViewPager with the sections adapter
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+		//Offscreenlimit set to 2 to avoid fragments being destroyed
 		mViewPager.setOffscreenPageLimit(2);
 
 		/*
@@ -130,11 +112,6 @@ public class RunActivity extends SwipeableActivity implements
 					.setTabListener(this));
 		}
 		
-//		if (savedInstanceState != null) {
-//	        runFragment = (RunFragment) getSupportFragmentManager().findFragmentByTag("runtag");
-//	    } else {
-//	        getSupportFragmentManager().beginTransaction().add(R.id., fragment, "customtag").commit(); 
-//	    }
 		runFragment = new RunFragment();
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
