@@ -96,16 +96,14 @@ public class SwipeableActivity extends FragmentActivity implements ActionBar.Tab
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
 		mViewPager.setCurrentItem(tab.getPosition());
-		System.out.println("Tab pos= " + tab.getPosition());
-
+		Log.i("Tab", "Reselect Tab pos= " + tab.getPosition());
 	}
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 			// the ViewPager.
 			mViewPager.setCurrentItem(tab.getPosition());
-			System.out.println("Tab pos= " + tab.getPosition());
-
+			Log.i("Tab", "Reselect Tab pos= " + tab.getPosition());
 	}
 
 	@Override
