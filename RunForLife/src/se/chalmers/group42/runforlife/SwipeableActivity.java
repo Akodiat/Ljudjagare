@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -56,6 +57,8 @@ public class SwipeableActivity extends FragmentActivity implements ActionBar.Tab
 			//			Bundle args = new Bundle();
 			//			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
 			//			fragment.setArguments(args);
+			Log.v("getItem","position= " + position);
+			System.out.println("GetItem. Pos= " + position);
 			switch(position){
 			case 0:
 				return runFragment;
@@ -99,7 +102,9 @@ public class SwipeableActivity extends FragmentActivity implements ActionBar.Tab
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
+			// the ViewPager.
+			mViewPager.setCurrentItem(tab.getPosition());
+			System.out.println("Tab pos= " + tab.getPosition());
 
 	}
 
