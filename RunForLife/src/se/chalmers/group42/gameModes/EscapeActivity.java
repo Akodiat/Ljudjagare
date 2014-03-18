@@ -29,7 +29,7 @@ public class EscapeActivity extends RunActivity {
 	private float 	compassFromNorth; 	// Compass angle
 
 	// Handles the sound
-	private FXHandler fx;
+	private FXHandler fx; //TODO: Add sound of vildvittror
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
