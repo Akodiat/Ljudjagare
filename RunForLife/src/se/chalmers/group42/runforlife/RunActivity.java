@@ -140,11 +140,6 @@ public class RunActivity extends SwipeableActivity implements
 					dataHandler.pauseWatch();
 				}
 				onGPSDisconnect();
-//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
-//		                "android:switcher:"+R.id.pager+":2");
-//				if(statsFragment.isAdded()){
-//					statsFrag.updateTableData();
-//				}
 			}
 		});
 
@@ -164,6 +159,11 @@ public class RunActivity extends SwipeableActivity implements
 					asyncTask.cancel(true);
 				}
 				finish();
+//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
+//						"android:switcher:"+R.id.pager+":2");
+//				if(statsFragment.isAdded()){
+//					statsFrag.updateTableData(1,2);
+//				}
 			}
 		});
 	//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched

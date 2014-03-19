@@ -1,5 +1,6 @@
 package se.chalmers.group42.runforlife;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 public class StatsFragment extends Fragment{
 	
 	private TableLayout table;
+	private boolean evenNrOfRows = true;
 	
 	public StatsFragment() {
 	}
@@ -54,6 +56,12 @@ public class StatsFragment extends Fragment{
 		time.setText(t.format("%H:%M:%S"));
 		dist.setText(distance+"m");
 		pace.setText(paceX+"min/km");
+		//Set row color
+		if(evenNrOfRows){
+			row.setBackgroundColor(Color.LTGRAY);
+		}
+		evenNrOfRows=!evenNrOfRows;
+		
 		row.addView(event);
 		row.addView(time);
 		row.addView(dist);
