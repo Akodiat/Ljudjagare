@@ -1,114 +1,114 @@
 package se.chalmers.group42.runforlife;
 
+import java.io.IOException;
 import java.util.HashMap;
 
+import org.pielot.openal.Buffer;
+import org.pielot.openal.SoundEnv;
+
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 @SuppressLint("HandlerLeak")
 public class FXHandler {
 
-	private HashMap<Integer, Integer> soundPoolMap;
-	private SoundPool soundPool;
-	private AudioManager am;
-
-	// True if sound is loaded correctly
-	private boolean loaded = false;
-
+	/**
+	 * Responsible for repeating a sound.
+	 */
 	private Handler handler;
 
 	// FX representing a coin (that the user is picking up).
-	private FX coin;
+	private int coin;
 
 	// FX representing the navigation sound (
-	private FX navigationFX;
+	private FX navFX;
+
+	private SoundEnv env;
+
+	private SoundPool soundPool;
+
+	private Speech say100, say200, say300, say400, say500, say600, say700,
+			say800, say900, say1000;
 
 	/**
 	 * Initialize sound engine
 	 */
 	@SuppressLint("UseSparseArrays")
 	public void initSound(Context context) {
-		am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-		soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-		soundPoolMap = new HashMap<Integer, Integer>();
-		soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
-			@Override
-			public void onLoadComplete(SoundPool soundPool, int sampleId,
-					int status) {
-				loaded = true;
-			}
-		});
+		env = SoundEnv.getInstance((Activity) context);
 
-		// Load FX
-		soundPoolMap.put(Constants.FX_01,
-				soundPool.load(context, R.raw.navigate_fx, 1));
+		// Load sound into memory. Has to be mono .wav file.
+		Buffer navFXBuffer;
+		try {
+			navFXBuffer = env.addBuffer("nav_fx");
 
-		soundPoolMap.put(Constants.FX_02,
-				soundPool.load(context, R.raw.dragon, 1));
+			// Add the audio buffer as a source in the 3D room and
+			// create FX instance.
+			navFX = new FX(env.addSource(navFXBuffer));
+		} catch (IOException e) {
+			Log.e(Constants.TAG, "Could not initialize OpenAL4Android", e);
+		}
 
-		// Initialize audio
-		navigationFX = new FX(Constants.FX_01);
-		coin = new FX(Constants.FX_02);
+		// OpenAL uses right-handed coordinate system. Place sound in front
+		// of listener.
+		navFX.source().setPosition(0, 0, -1);
+
+		// Our application doesn't need a roll-off value (volume's not
+		// changing).
+		// Roll-off is at which distance the gain changes.
+		navFX.source().setRolloffFactor(0);
+
+		// Set listener orientation.
+		env.setListenerOrientation(0);
+
+		initSoundPool(context);
 
 		// Initialize thread handler
 		handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == Constants.MSG)
-					loop(navigationFX);
+					loop(navFX);
 
 				if (msg.what == Constants.MSG_STOP)
+					// Stop looping
 					handler.removeCallbacksAndMessages(null);
 			}
 		};
 	}
 
+	public void initSoundPool(Context context) {
+		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+
+		// initialize speech samples
+		say100 = new Speech(soundPool.load(context, R.raw.say100, 1));
+		say200 = new Speech(soundPool.load(context, R.raw.say200, 1));
+		say300 = new Speech(soundPool.load(context, R.raw.say300, 1));
+		say400 = new Speech(soundPool.load(context, R.raw.say400, 1));
+		say500 = new Speech(soundPool.load(context, R.raw.say500, 1));
+		say600 = new Speech(soundPool.load(context, R.raw.say600, 1));
+		say700 = new Speech(soundPool.load(context, R.raw.say700, 1));
+		say800 = new Speech(soundPool.load(context, R.raw.say800, 1));
+		say900 = new Speech(soundPool.load(context, R.raw.say900, 1));
+		say1000 = new Speech(soundPool.load(context, R.raw.say1000, 1));
+
+		// init coin sample
+		coin = soundPool.load(context, R.raw.dragon, 1);
+	}
+
 	public FX getNavigationFX() {
-		return navigationFX;
+		return navFX;
 	}
 
-	public FX getCoin() {
-		return coin;
-	}
-
-	/**
-	 * Play a sound a specific amount of times.
-	 * 
-	 * @param fx
-	 * @param times
-	 * @return the streamID if successful, non-zero value if not.
-	 */
-	public void playFX(FX fx, int times) {
-		if (loaded)
-			fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
-					fx.rightVolume(), 1, times, 1f));
-	}
-
-	public void stopFX(FX fx) {
-		if (loaded) {
-			soundPool.stop(fx.streamID());
-			fx.setStreamID(FX.NOT_PLAYING); // reset streamID
-		}
-	}
-
-	/**
-	 * Mode to be used with radio orienteering.
-	 */
-	public void levelOnRotate(FX fx) {
-		float max = 1, min = 0;
-		float vol = (min - max) * Math.abs(fx.angle()) / 180;
-
-		fx.setVolume(vol, vol);
-
-		// Send message to handler
-		Message msg = handler.obtainMessage(Constants.MSG);
-		handler.sendMessageDelayed(msg, (long) 1000);
-		// TODO CHANGE 1000 to variable (delay)
+	public void playCoin() {
+		soundPool.play(coin, 1, 1, 1, 0, 1);
 	}
 
 	/**
@@ -118,24 +118,8 @@ public class FXHandler {
 	 *            the sound to be looped
 	 */
 	public void loop(FX fx) {
-
-		float angle = fx.angle();
-
-		// If sound is coming from behind the user, set to 0.
-		if (Math.abs(angle) > 180 - Constants.BEHIND_ANGLE / 2)
-			angle = 0;
-
-		angle = (angle > 90) ? 90 : angle;
-		angle = (angle < (-90)) ? (-90) : angle;
-
-		double radian = angle * (Math.PI / 360); // Convert to radians
-
-		fx.setVolume((float) Math.cos(radian + Math.PI / 4),
-				(float) Math.sin(radian + Math.PI / 4));
-
-		// Play sound at given coordinate
-		fx.setStreamID(soundPool.play(fx.sound(), fx.leftVolume(),
-				fx.rightVolume(), 0, 1, fx.pitch()));
+		env.setListenerOrientation(fx.angle());
+		fx.play();
 
 		// Send message to handler with delay.
 		Message msg = handler.obtainMessage(Constants.MSG);
@@ -148,9 +132,6 @@ public class FXHandler {
 	public void stopLoop() {
 		Message msg = handler.obtainMessage(Constants.MSG_STOP);
 		handler.sendMessage(msg);
-
-		// Set streamID to not playing
-		getNavigationFX().setStreamID(FX.NOT_PLAYING);
 	}
 
 	/**
@@ -175,44 +156,8 @@ public class FXHandler {
 				+ Constants.MIN_DELAY;
 	}
 
-	/**
-	 * Sound source need to be within a specific range to be 'within reach'.
-	 * 
-	 * @return true if the current angle to location is okay
-	 */
-	public boolean isWithinRange(FX fx) {
-		return Math.abs(fx.angle()) < Constants.ACCURACY;
-	}
-
-	/**
-	 * Sweeping sound from left to right
-	 */
-	public void sweepFX(FX fx) throws InterruptedException {
-		playFX(fx, Constants.LOOP);
-
-		for (int count = 0; count < 101; count++) {
-			Thread.sleep(10);
-			double radians = (Math.PI / 2) * count / 100;
-
-			fx.setVolume((float) Math.cos(radians), (float) Math.sin(radians));
-		}
-
-		stopFX(fx);
-	}
-
-	/**
-	 * Get max value of device
-	 */
-	public int maxVolume() {
-		return am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-	}
-
 	public Handler getHandler() {
 		return handler;
-	}
-
-	public void sayString(String whatToSay) {
-
 	}
 
 	/**
@@ -234,5 +179,45 @@ public class FXHandler {
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-180) * fx.angle() + 1);
 
 		fx.setDistance(distance);
+
+		// tell the user how close to goal he/she is
+		sayDistance(distance);
+	}
+
+	public void sayNow(Speech speech) {
+		if (speech.isPlayable()) {
+			soundPool.play(speech.id(), 1, 1, 1, 0, 1);
+			speech.setPlayed();
+
+			if (Speech.previous() != null)
+				Speech.previous().setPlayable();
+
+			Speech.setPrevious(speech);
+		}
+	}
+
+	public void sayDistance(float distance) {
+		int rConst = 10; // meters from coin destination
+
+		if (distance < 1000 + rConst && distance > 1000 - rConst)
+			sayNow(say1000);
+		if (distance < 900 + rConst && distance > 900 - rConst)
+			sayNow(say900);
+		if (distance < 800 + rConst && distance > 800 - rConst)
+			sayNow(say800);
+		if (distance < 700 + rConst && distance > 700 - rConst)
+			sayNow(say700);
+		if (distance < 600 + rConst && distance > 600 - rConst)
+			sayNow(say600);
+		if (distance < 500 + rConst && distance > 500 - rConst)
+			sayNow(say500);
+		if (distance < 400 + rConst && distance > 400 - rConst)
+			sayNow(say400);
+		if (distance < 300 + rConst && distance > 30 - rConst)
+			sayNow(say300);
+		if (distance < 200 + rConst && distance > 200 - rConst)
+			sayNow(say200);
+		if (distance < 100 + rConst && distance > 100 - rConst)
+			sayNow(say100);
 	}
 }
