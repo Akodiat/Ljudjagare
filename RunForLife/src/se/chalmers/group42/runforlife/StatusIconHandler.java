@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
 import android.media.AudioManager;
-import android.media.MediaRouter.VolumeCallback;
 import android.os.Handler;
 
 
@@ -57,10 +56,8 @@ public class StatusIconHandler extends BroadcastReceiver{
 
 		public VolumeChangeObserver(Handler handler) {
 			super(handler);
-			// TODO Auto-generated constructor stub
 		}
 
-		
 		 @Override
 		   public void onChange(boolean selfChange) {
 		      super.onChange(selfChange);
