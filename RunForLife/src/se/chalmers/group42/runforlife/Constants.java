@@ -9,6 +9,8 @@ public class Constants {
 	public static final int MSG = 3;
 	public static final int MSG_STOP = 0;
 	public static final double LAT_LNG_TO_METER = 111300f;
+	
+	public final static String TAG = "Run For Life";
 
 	/**
 	 * Distance to destination where sound behavior changes.
