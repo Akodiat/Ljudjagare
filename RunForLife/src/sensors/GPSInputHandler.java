@@ -23,8 +23,10 @@ GooglePlayServicesClient.ConnectionCallbacks,
 GooglePlayServicesClient.OnConnectionFailedListener,
 LocationListener
 {
-	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
+	public static final 	int		MAXIMAL_ACCEPTABLE_ACCURACY = 20;
 	
+	
+	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
 	private Location		currentLocation;	//Location retrieved through GPS
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
@@ -70,7 +72,7 @@ LocationListener
 		currentLocation = location;
 		listener.onLocationChanged(location);
 		
-		if(location.getAccuracy() > 20){
+		if(location.getAccuracy() > MAXIMAL_ACCEPTABLE_ACCURACY){
 			listener.onGPSDisconnect();
 		}
 		else
