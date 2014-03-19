@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+//import se.chalmers.proofofconceptlj.Polyline;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
@@ -11,6 +13,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import android.app.Activity;
@@ -56,6 +59,10 @@ public class MapFragment extends Fragment {
 	//	private int marks;
 	private Boolean directionFinished = false;
 	private Marker marker;
+	
+	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
+	private Polyline			myPolyRoute;
+	private boolean isConnected = false;
 
 	public MapFragment() {
 	}
@@ -184,5 +191,14 @@ public class MapFragment extends Fragment {
 		// map.animateCamera(CameraUpdateFactory.zoomOut());
 
 	}
-
+	
+	public void drawMyPath(Location location){
+		if(isConnected || location.getAccuracy() <= 20){
+			LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
+			routeLine.add(p);
+			myPolyRoute = map.addPolyline(routeLine);
+		}else{
+			isConnected = true;
+		}
+	}
 }

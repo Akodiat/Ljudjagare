@@ -15,7 +15,19 @@ public class StatusIconHandler extends BroadcastReceiver{
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
-		android.util.Log.d("Status", "Recieved broadcast: "+ intent.getAction());
+		//android.util.Log.d("StatusIcon", "Recieved broadcast: "+ intent.getAction());
+		if(intent.getAction() == "android.intent.action.HEADSET_PLUG"){
+			String message = "Headset";
+			if (intent.getExtras().getInt("state") == 1) {
+				message += " was plugged in";
+				listener.onHeadphonesIn();
+			}
+			else if (intent.getExtras().getInt("state") == 0) {
+				message += " was unplugged";
+				listener.onHeadphonesOut();
+			}
+			android.util.Log.d("StatusIcon", message);
+		}
 //		Broadcast Action: Wired Headset plugged in or unplugged.
 //		
 //		The intent will have the following extra values:

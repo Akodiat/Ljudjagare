@@ -10,6 +10,7 @@ import se.chalmers.group42.gameModes.CoinCollectorActivity;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,7 +45,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
  * 
  */
 public class RunActivity extends SwipeableActivity implements
-		MapFragment.OnHeadlineSelectedListener{
+		MapFragment.OnHeadlineSelectedListener,
+		StatusIconEventListener{
 
 	private ImageButton pauseButton, finishButton;
 	
@@ -69,6 +71,11 @@ public class RunActivity extends SwipeableActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
+		//Setting up statusIconHandler
+		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
+		StatusIconHandler receiver = new StatusIconHandler(this);
+		registerReceiver(receiver, filter);
+		
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -186,6 +193,78 @@ public class RunActivity extends SwipeableActivity implements
 		getMenuInflater().inflate(R.menu.run, menu);
 		return true;
 	}
+
+	//TODO Varf�r �rvs inte denna? Borde kunna bortkommenteras men d� funkar inte tabarna
+	@Override
+	public void onTabSelected(ActionBar.Tab tab,
+			FragmentTransaction fragmentTransaction) {
+		// When the given tab is selected, switch to the corresponding page in
+		// the ViewPager.
+		mViewPager.setCurrentItem(tab.getPosition());
+		System.out.println("Tab pos= " + tab.getPosition());
+	}
+//
+//	@Override
+//	public void onTabUnselected(ActionBar.Tab tab,
+//			FragmentTransaction fragmentTransaction) {
+//	}
+//
+//	@Override
+//	public void onTabReselected(ActionBar.Tab tab,
+//			FragmentTransaction fragmentTransaction) {
+//	}
+
+//	/**
+//	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+//	 * one of the sections/tabs/pages.
+//	 */
+//	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+//
+//		public SectionsPagerAdapter(FragmentManager fm) {
+//			super(fm);
+//		}
+//
+//		/*
+//		 * getItem is called to instantiate the fragment for the given page.(non-Javadoc)
+//		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
+//		 */
+//		@Override
+//		public Fragment getItem(int position) {
+//			//Bundle might be used later to send information between fragments
+////			Bundle args = new Bundle();
+////			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+////			fragment.setArguments(args);
+//			switch(position){
+//				case 0:
+//					return runFragment;
+//				case 1:
+//					return mapFragment;
+//				case 2:
+//					return statsFragment;
+//			}
+//			return null;
+//		}
+//		
+//		@Override
+//		public int getCount() {
+//			// Show 3 total pages
+//			return 3;
+//		}
+//
+//		@Override
+//		public CharSequence getPageTitle(int position) {
+//			Locale l = Locale.getDefault();
+//			switch (position) {
+//			case 0:
+//				return getString(R.string.title_run).toUpperCase(l);
+//			case 1:
+//				return getString(R.string.title_map).toUpperCase(l);
+//			case 2:
+//				return getString(R.string.title_stats).toUpperCase(l);
+//			}
+//			return null;
+//		}
+//	}
 	
 	@Override
 	public void sendMapLocation(LatLng latLng) {
@@ -229,9 +308,22 @@ public class RunActivity extends SwipeableActivity implements
 
 	public void onGPSConnect() {
 		gpsIcon.setImageResource(R.drawable.gps_green);
+		
+//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
+//                "android:switcher:"+R.id.pager+":1");
+//		if(this.statsFragment.isAdded()){
+//			mapFrag.setIsConnected(true);
+//		}
+		
 	}
 	public void onGPSDisconnect() {
 		gpsIcon.setImageResource(R.drawable.gps_red);
+		
+//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
+//                "android:switcher:"+R.id.pager+":1");
+//		if(this.statsFragment.isAdded()){
+//			mapFrag.setIsConnected(false);
+//		}
 	}
 	public void onSoundOn() {
 		soundIcon.setImageResource(R.drawable.sound_green);

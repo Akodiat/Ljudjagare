@@ -66,7 +66,7 @@ public class DataHandler {
 			
 			if(running){
 				if(start){ 
-					//if this is the forst point add no distance
+					//if this is the first point add no distance
 					prev = curr; 
 					start = false;
 				} else{
@@ -82,7 +82,11 @@ public class DataHandler {
 											   location.getLongitude()));
 			}
 			
-			//runAct.drawMySteps(location);
+			MapFragment mapFrag = (MapFragment) runAct.getSupportFragmentManager().findFragmentByTag(
+	                "android:switcher:"+R.id.pager+":1");
+			if(runAct.statsFragment.isAdded()){
+				mapFrag.drawMyPath(location);
+			}
 			
 			//Timer, only saves one point evey 1.5s
 			timer.schedule(new TimerTask() {
