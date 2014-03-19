@@ -17,6 +17,9 @@
 package se.chalmers.group42.runforlife;
 
 import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
+import sensors.GPSInputHandler;
+import sensors.GPSInputListener;
+import android.location.Location;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
@@ -38,7 +41,9 @@ import android.widget.ListView;
 import at.technikum.mti.fancycoverflow.FancyCoverFlow;
 import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
 
-public class MainActivity extends NavDrawerActivity implements StatusIconEventListener{
+public class MainActivity extends NavDrawerActivity implements 
+StatusIconEventListener,
+GPSInputListener{
 
 	private FancyCoverFlow fancyCoverFlow;
 	private ImageButton runButton;
@@ -58,6 +63,9 @@ public class MainActivity extends NavDrawerActivity implements StatusIconEventLi
 		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
 		StatusIconHandler receiver = new StatusIconHandler(this);
 		registerReceiver(receiver, filter);
+		
+		//Setting up Sensor input
+		new GPSInputHandler(this, this);
 
 		//Setting up Navigation Drawer from left side of screen
 		navListOption = getResources().getStringArray(R.array.nav_drawer_array);
@@ -235,6 +243,11 @@ public class MainActivity extends NavDrawerActivity implements StatusIconEventLi
 	public void onHeadphonesOut() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		// We don't need to do stuff here really...
 	}
 
 }
