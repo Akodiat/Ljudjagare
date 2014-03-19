@@ -3,12 +3,12 @@ package se.chalmers.group42.runforlife;
 public class Speech {
 
 	private int id;
-	private boolean hasBeenPlayed;
+	private boolean isPlayable;
 	private static Speech previous;
 	
 	public Speech(int id) {
 		this.id = id;
-		hasBeenPlayed = false;
+		isPlayable = true;
 		previous = null;
 	}
 	
@@ -25,14 +25,14 @@ public class Speech {
 	}
 	
 	public void setPlayed() {
-		hasBeenPlayed = true;
+		isPlayable = false;
 	}
 	
 	public void setPlayable() {
-		hasBeenPlayed = false;
+		isPlayable = true;
 	}
 	
 	public boolean isPlayable() {
-		return !hasBeenPlayed;
+		return isPlayable;
 	}
 }

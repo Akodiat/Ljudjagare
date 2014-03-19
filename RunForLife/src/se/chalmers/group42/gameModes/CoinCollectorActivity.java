@@ -84,7 +84,7 @@ public class CoinCollectorActivity extends RunActivity {
 			this.human.modScore(1);
 
 			// Play sound of a coin
-			fx.playCoin();
+			fx.foundCoin();
 
 			// And generate a new coin to search for
 			generateNewCoin();

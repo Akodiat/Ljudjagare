@@ -25,7 +25,7 @@ public class FXHandler {
 	private Handler handler;
 
 	// FX representing a coin (that the user is picking up).
-	private int coin;
+	private int coin, sayCoinReached, sayNewCoin;
 
 	// FX representing the navigation sound (
 	private FX navFX;
@@ -87,7 +87,7 @@ public class FXHandler {
 	public void initSoundPool(Context context) {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 
-		// initialize speech samples
+		// initialize audio samples
 		say100 = new Speech(soundPool.load(context, R.raw.say100, 1));
 		say200 = new Speech(soundPool.load(context, R.raw.say200, 1));
 		say300 = new Speech(soundPool.load(context, R.raw.say300, 1));
@@ -99,8 +99,9 @@ public class FXHandler {
 		say900 = new Speech(soundPool.load(context, R.raw.say900, 1));
 		say1000 = new Speech(soundPool.load(context, R.raw.say1000, 1));
 
-		// init coin sample
 		coin = soundPool.load(context, R.raw.dragon, 1);
+		sayCoinReached = soundPool.load(context, R.raw.coin_reached, 1);
+		sayNewCoin = soundPool.load(context, R.raw.new_coin, 1);
 	}
 
 	public FX getNavigationFX() {
@@ -109,6 +110,18 @@ public class FXHandler {
 
 	public void playCoin() {
 		soundPool.play(coin, 1, 1, 1, 0, 1);
+	}
+
+	public void foundCoin() {
+		try {
+			playCoin();
+			Thread.sleep(2000); // wait
+			sayCoinReached();
+			Thread.sleep(4000); // wait
+			sayNewCoin();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -131,7 +144,7 @@ public class FXHandler {
 	 */
 	public void stopLoop() {
 		navFX.stop();
-		
+
 		Message msg = handler.obtainMessage(Constants.MSG_STOP);
 		handler.sendMessage(msg);
 	}
@@ -183,10 +196,10 @@ public class FXHandler {
 		fx.setDistance(distance);
 
 		// tell the user how close to goal he/she is
-		sayDistance(distance);
+		distanceAnnouncer(distance);
 	}
 
-	public void sayNow(Speech speech) {
+	public void sayDistance(Speech speech) {
 		if (speech.isPlayable()) {
 			soundPool.play(speech.id(), 1, 1, 1, 0, 1);
 			speech.setPlayed();
@@ -198,28 +211,36 @@ public class FXHandler {
 		}
 	}
 
-	public void sayDistance(float distance) {
+	public void sayCoinReached() {
+		soundPool.play(sayCoinReached, 1, 1, 1, 0, 1);
+	}
+
+	public void sayNewCoin() {
+		soundPool.play(sayNewCoin, 1, 1, 1, 0, 1);
+	}
+
+	public void distanceAnnouncer(float distance) {
 		int rConst = 10; // meters from coin destination
 
 		if (distance < 1000 + rConst && distance > 1000 - rConst)
-			sayNow(say1000);
+			sayDistance(say1000);
 		if (distance < 900 + rConst && distance > 900 - rConst)
-			sayNow(say900);
+			sayDistance(say900);
 		if (distance < 800 + rConst && distance > 800 - rConst)
-			sayNow(say800);
+			sayDistance(say800);
 		if (distance < 700 + rConst && distance > 700 - rConst)
-			sayNow(say700);
+			sayDistance(say700);
 		if (distance < 600 + rConst && distance > 600 - rConst)
-			sayNow(say600);
+			sayDistance(say600);
 		if (distance < 500 + rConst && distance > 500 - rConst)
-			sayNow(say500);
+			sayDistance(say500);
 		if (distance < 400 + rConst && distance > 400 - rConst)
-			sayNow(say400);
+			sayDistance(say400);
 		if (distance < 300 + rConst && distance > 30 - rConst)
-			sayNow(say300);
+			sayDistance(say300);
 		if (distance < 200 + rConst && distance > 200 - rConst)
-			sayNow(say200);
+			sayDistance(say200);
 		if (distance < 100 + rConst && distance > 100 - rConst)
-			sayNow(say100);
+			sayDistance(say100);
 	}
 }
