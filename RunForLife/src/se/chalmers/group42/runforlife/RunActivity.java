@@ -229,9 +229,22 @@ public class RunActivity extends SwipeableActivity implements
 
 	public void onGPSConnect() {
 		gpsIcon.setImageResource(R.drawable.gps_green);
+		
+//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
+//                "android:switcher:"+R.id.pager+":1");
+//		if(this.statsFragment.isAdded()){
+//			mapFrag.setIsConnected(true);
+//		}
+		
 	}
 	public void onGPSDisconnect() {
 		gpsIcon.setImageResource(R.drawable.gps_red);
+		
+//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
+//                "android:switcher:"+R.id.pager+":1");
+//		if(this.statsFragment.isAdded()){
+//			mapFrag.setIsConnected(false);
+//		}
 	}
 	public void onSoundOn() {
 		soundIcon.setImageResource(R.drawable.sound_green);
