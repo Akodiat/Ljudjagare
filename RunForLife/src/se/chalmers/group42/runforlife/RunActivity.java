@@ -140,8 +140,10 @@ public class RunActivity extends SwipeableActivity implements
 				if(dataHandler.getRunningStatus()){
 					if(!dataHandler.getPauseStatus()){
 						pauseButton.setImageResource(R.drawable.play);
+						finishButton.setVisibility(View.VISIBLE);
 					}else{
 						pauseButton.setImageResource(R.drawable.pause);
+						finishButton.setVisibility(View.INVISIBLE);
 					}
 					playSound();
 					dataHandler.pauseWatch();
