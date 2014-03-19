@@ -1,4 +1,4 @@
-package se.chalmers.group42.runforlife;
+package sensors;
 
 import android.location.Location;
 
