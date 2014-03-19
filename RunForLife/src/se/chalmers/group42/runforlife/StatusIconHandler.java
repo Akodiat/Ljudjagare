@@ -3,13 +3,26 @@ package se.chalmers.group42.runforlife;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.ContentObserver;
+import android.media.AudioManager;
+import android.media.MediaRouter.VolumeCallback;
+import android.os.Handler;
+
 
 public class StatusIconHandler extends BroadcastReceiver{
 
-	private StatusIconEventListener  listener;
+	private StatusIconEventListener  	listener;
+	private Context						context;
 	
-	public StatusIconHandler(StatusIconEventListener listener){
-		this.listener = listener;
+	public StatusIconHandler(StatusIconEventListener listener, Context context){
+		this.listener 	= listener;
+		this.context	= context;
+		
+		//Inspired by http://stackoverflow.com/questions/6896746/android-is-there-a-broadcast-action-for-volume-changes/7017516#7017516
+		VolumeChangeObserver volObserver = new VolumeChangeObserver(new Handler());
+		context.getContentResolver().registerContentObserver( 
+		    android.provider.Settings.System.CONTENT_URI, true, 
+		    volObserver);
 	}
 	
 	@Override
@@ -40,4 +53,29 @@ public class StatusIconHandler extends BroadcastReceiver{
 			
 	}
 
+	private class VolumeChangeObserver extends ContentObserver{
+
+		public VolumeChangeObserver(Handler handler) {
+			super(handler);
+			// TODO Auto-generated constructor stub
+		}
+
+		
+		 @Override
+		   public void onChange(boolean selfChange) {
+		      super.onChange(selfChange);
+		      
+		      int currentVolume  = ((AudioManager) context.getSystemService(Context.AUDIO_SERVICE)).getStreamVolume(AudioManager.STREAM_MUSIC);
+		      
+		      android.util.Log.d("StatusIcon", "Something changed. Was it the volume? Volume: "+currentVolume);
+		      
+		      if(currentVolume == 0){
+		    	  listener.onSoundOff();
+		      }
+		      else
+		    	  listener.onSoundOn();
+		     
+		   }
+		
+	}
 }

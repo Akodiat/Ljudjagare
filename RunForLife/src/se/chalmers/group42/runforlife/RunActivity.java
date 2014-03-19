@@ -62,7 +62,7 @@ public class RunActivity extends SwipeableActivity implements
 
 		//Setting up statusIconHandler
 		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
-		StatusIconHandler receiver = new StatusIconHandler(this);
+		StatusIconHandler receiver = new StatusIconHandler(this, this);
 		registerReceiver(receiver, filter);
 		
 		//Setting up Sensor input
