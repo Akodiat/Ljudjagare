@@ -1,9 +1,8 @@
-package se.chalmers.group42.runforlife;
+package sensors;
 
-import sensors.GPSInputHandler;
+import android.location.Location;
 
-public interface StatusIconEventListener {
-	
+public interface GPSInputListener {
 	/**
 	 * Called when the GPS has connected and has an
 	 * accuracy less than {@link GPSInputHandler.MAXIMAL_ACCEPTABLE_ACCURACY}
@@ -16,18 +15,9 @@ public interface StatusIconEventListener {
 	 */
 	public void onGPSDisconnect();
 	
-	public void onSoundOn();
-	
-	public void onSoundOff();
-	
 	/**
-	 * Called when headphones are plugged in
+	 * Called when a new location is received
+	 * @param location the new location
 	 */
-	public void onHeadphonesIn();
-	
-	/**
-	 * Called when headphones are unplugged
-	 */
-	public void onHeadphonesOut();
-	
+	public void onLocationChanged(Location location);
 }

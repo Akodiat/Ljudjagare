@@ -2,32 +2,22 @@ package se.chalmers.group42.runforlife;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
-import se.chalmers.group42.gameModes.CoinCollectorActivity;
-
 import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import sensors.*;
+
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 
 
 /**
@@ -46,18 +36,17 @@ import com.google.android.gms.maps.model.PolylineOptions;
  */
 public class RunActivity extends SwipeableActivity implements
 		MapFragment.OnHeadlineSelectedListener,
-		StatusIconEventListener{
+		StatusIconEventListener,
+		GPSInputListener,
+		OrientationInputListener
+		{
 
 	private ImageButton pauseButton, finishButton;
-	
-	//Class for handling GPS and Compass sensors
-	private SensorInputHandler sensorInputHandler;
+
 	
 	//Class for handling database
 	protected DataHandler dataHandler;
 	
-	//Class for handling different Game modes.
-	private ModeController modeController;
 	
 	private ImageView gpsIcon, soundIcon, headPhonesIcon;
 	
@@ -75,6 +64,10 @@ public class RunActivity extends SwipeableActivity implements
 		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
 		StatusIconHandler receiver = new StatusIconHandler(this);
 		registerReceiver(receiver, filter);
+		
+		//Setting up Sensor input
+		new GPSInputHandler(this, this);
+		new OrientationInputHandler(this);
 		
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
@@ -123,7 +116,7 @@ public class RunActivity extends SwipeableActivity implements
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
 		
-		this.sensorInputHandler = new SensorInputHandler(this);
+
 		this.dataHandler = new DataHandler(this);
 		
 		//START
