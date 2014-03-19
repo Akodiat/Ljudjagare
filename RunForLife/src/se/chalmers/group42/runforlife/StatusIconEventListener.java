@@ -11,7 +11,7 @@ public interface StatusIconEventListener {
 	public void onGPSConnect();
 	
 	/**
-	 * Called when the GPS has diconnected or has an
+	 * Called when the GPS has disconnected or has an
 	 * accuracy larger than {@link GPSInputHandler.MAXIMAL_ACCEPTABLE_ACCURACY}
 	 */
 	public void onGPSDisconnect();
