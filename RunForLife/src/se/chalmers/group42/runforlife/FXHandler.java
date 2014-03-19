@@ -130,6 +130,8 @@ public class FXHandler {
 	 * Stop the current loop and set stream to not playing.
 	 */
 	public void stopLoop() {
+		navFX.stop();
+		
 		Message msg = handler.obtainMessage(Constants.MSG_STOP);
 		handler.sendMessage(msg);
 	}
