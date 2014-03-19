@@ -88,7 +88,7 @@
                 android:layout_toRightOf="@+id/textViewDist2"
                 android:layout_alignBaseline="@+id/textViewDist2"
                 android:textSize="15sp"
-                android:text="km"
+                android:text="m"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             
         </RelativeLayout>
