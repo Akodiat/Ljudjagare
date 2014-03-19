@@ -22,6 +22,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Point;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -37,14 +38,14 @@ import android.widget.ListView;
 import at.technikum.mti.fancycoverflow.FancyCoverFlow;
 import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
 
-public class MainActivity extends NavDrawerActivity {
+public class MainActivity extends NavDrawerActivity implements StatusIconEventListener{
 
 	private FancyCoverFlow fancyCoverFlow;
 	private ImageButton runButton;
 	private Intent runActivityIntent;
 	private int coverFlowHeight;
 
-	//TODO titlar för navdrawer
+	//TODO titlar fï¿½r navdrawer
 
 	private final int ACTION_BAR_HEIGHT_MDPI = 32;
 
@@ -52,6 +53,11 @@ public class MainActivity extends NavDrawerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		//Setting up statusIconHandler
+		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
+		StatusIconHandler receiver = new StatusIconHandler(this);
+		registerReceiver(receiver, filter);
 
 		//Setting up Navigation Drawer from left side of screen
 		navListOption = getResources().getStringArray(R.array.nav_drawer_array);
@@ -193,6 +199,42 @@ public class MainActivity extends NavDrawerActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	@Override
+	public void onGPSConnect() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onGPSDisconnect() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onSoundOn() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onSoundOff() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onHeadphonesIn() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onHeadphonesOut() {
+		// TODO Auto-generated method stub
+
 	}
 
 }
