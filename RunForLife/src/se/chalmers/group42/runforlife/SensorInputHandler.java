@@ -67,7 +67,7 @@ SensorEventListener
 	@Override
 	public void onConnected(Bundle bundle) {
 		locationClient.requestLocationUpdates( REQUEST, this); 
-		runActivity.onGPSConnect();
+		//runActivity.onGPSConnect();
 	} 
 
 	@Override
@@ -79,6 +79,12 @@ SensorEventListener
 	public void onLocationChanged(Location location) {
 		currentLocation = location;
 		runActivity.onLocationChanged(location);
+		
+		if(location.getAccuracy() > 20){
+			runActivity.onGPSDisconnect();
+		}
+		else
+			runActivity.onGPSConnect();
 	}
 
 	@Override
