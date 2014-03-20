@@ -1,7 +1,6 @@
 package se.chalmers.group42.runforlife;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import org.pielot.openal.Buffer;
 import org.pielot.openal.SoundEnv;
@@ -11,7 +10,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
