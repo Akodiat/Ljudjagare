@@ -25,7 +25,7 @@ public class FXHandler {
 	private Handler handler;
 
 	// FX representing a coin (that the user is picking up).
-	private int coin, sayCoinReached, sayNewCoin;
+	private int coin, sayCoinReached, sayNewCoin, finishedTone, goodJob;
 
 	// FX representing the navigation sound (
 	private FX navFX;
@@ -102,6 +102,8 @@ public class FXHandler {
 		coin = soundPool.load(context, R.raw.dragon, 1);
 		sayCoinReached = soundPool.load(context, R.raw.coin_reached, 1);
 		sayNewCoin = soundPool.load(context, R.raw.new_coin, 1);
+		goodJob = soundPool.load(context, R.raw.good_job, 1);
+		finishedTone = soundPool.load(context, R.raw.finished_tone, 1);
 	}
 
 	public FX getNavigationFX() {
@@ -109,19 +111,11 @@ public class FXHandler {
 	}
 
 	public void playCoin() {
-		soundPool.play(coin, 1, 1, 1, 0, 1);
+		soundPool.play(finishedTone, 1, 1, 1, 0, 1);
 	}
 
 	public void foundCoin() {
-		try {
-			playCoin();
-			Thread.sleep(2000); // wait
-			sayCoinReached();
-			Thread.sleep(4000); // wait
-			sayNewCoin();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		(new Thread(new ReachedCoinRunnable())).start();
 	}
 
 	/**
@@ -242,5 +236,26 @@ public class FXHandler {
 			sayDistance(say200);
 		if (distance < 100 + rConst && distance > 100 - rConst)
 			sayDistance(say100);
+	}
+
+	/**
+	 * Plays announcements to user in new thread.
+	 */
+	private class ReachedCoinRunnable implements Runnable {
+
+		@Override
+		public void run() {
+			try {
+				playCoin();
+				Thread.sleep(2500);
+				soundPool.play(goodJob, 1, 1, 1, 0, 1);
+				Thread.sleep(2000);
+				soundPool.play(sayCoinReached, 1, 1, 1, 0, 1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // wait
+		}
+
 	}
 }
