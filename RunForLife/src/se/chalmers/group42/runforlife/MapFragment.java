@@ -56,6 +56,7 @@ public class MapFragment extends Fragment {
 	private GoogleMap map;
 	private SupportMapFragment fragment;
 	private ArrayList<Location> finalRoute = new ArrayList<Location>();
+	private ArrayList<Marker> markers = new ArrayList<Marker>();
 	//	private int marks;
 	private Boolean directionFinished = false;
 	private Marker marker;
@@ -101,18 +102,29 @@ public class MapFragment extends Fragment {
 	}
 
 	public void handleNewCoin(Location newCoinLocation){
-		if (marker != null){
-			marker.remove();
+		if (markers.size() != 0){
+			for(int i = 0; i < markers.size();i++ ){
+				markers.get(i).remove();
+			}
 		}
-		marker = map.addMarker(new MarkerOptions()
+
+		markers.add(map.addMarker(new MarkerOptions()
 		.position(
 				new LatLng(newCoinLocation.getLatitude(),
 						newCoinLocation.getLongitude()))
 						.title("Another Coin!")
 						.icon(BitmapDescriptorFactory
-								.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+								.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 	}
 
+	public void showCollectedCoin(Location locationOfCoin){
+		Marker marker = map.addMarker(new MarkerOptions()
+		.position(new LatLng(locationOfCoin.getLatitude(),
+				locationOfCoin.getLongitude()))
+				.title("Coin")
+				.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_coin)));
+	}
+	
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(
 				Color.BLUE);
@@ -143,16 +155,13 @@ public class MapFragment extends Fragment {
 		if (finalRoute.size() == 1) {
 			// soundSource.set(wholeWayLocation);
 			map.clear();
-			if (marker != null){
-				marker.remove();
-			}
-			marker = map.addMarker(new MarkerOptions()
+			markers.add(map.addMarker(new MarkerOptions()
 			.position(
 					new LatLng(wholeWayLocation.getLatitude(),
 							wholeWayLocation.getLongitude()))
 							.title("First!")
 							.icon(BitmapDescriptorFactory
-									.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+									.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		}
 
 

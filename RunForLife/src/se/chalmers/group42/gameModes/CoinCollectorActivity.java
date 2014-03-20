@@ -2,14 +2,19 @@ package se.chalmers.group42.gameModes;
 
 import java.util.ArrayList;
 
-import se.chalmers.group42.runforlife.*;
+import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.FXHandler;
+import se.chalmers.group42.runforlife.FinishedRunActivity;
+import se.chalmers.group42.runforlife.GMapV2Direction;
+import se.chalmers.group42.runforlife.Human;
+import se.chalmers.group42.runforlife.MapFragment;
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.RunActivity;
 import utils.LocationHelper;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -25,7 +30,7 @@ public class CoinCollectorActivity extends RunActivity {
 	private Human human; // Containing the player position and score
 	private float compassFromNorth; // Compass angle
 	private Location coinLocation; // Location of the sound source / Location of
-									// current coin
+	// current coin
 
 	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 	// Handles the sound
@@ -70,12 +75,6 @@ public class CoinCollectorActivity extends RunActivity {
 			generateRandomRoute(100);
 		}
 
-		// If a coin is found..
-//		if (isAtCoin()) {
-//			dataHandler.onAquiredCoin();
-//			// Increase the player score by one
-//
-//		
 		//If a coin is found..
 		if(isAtCoin())
 		{
@@ -84,7 +83,7 @@ public class CoinCollectorActivity extends RunActivity {
 			this.human.modScore(1);
 
 			// Play sound of a coin
-			fx.playCoin();
+			fx.foundCoin();
 
 			// And generate a new coin to search for
 			generateNewCoin();
@@ -106,24 +105,32 @@ public class CoinCollectorActivity extends RunActivity {
 	private boolean isAtCoin() {
 		double dist = human.getLocation().distanceTo(coinLocation);
 		return (// If closer than minimum distance
-		human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
-		// Or the accuracy is less than 50 meters but still larger
-		// than the distance to the sound source.
-		|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
-				.distanceTo(coinLocation) < human.getLocation().getAccuracy()
-				: false));
+				human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
+				// Or the accuracy is less than 50 meters but still larger
+				// than the distance to the sound source.
+				|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
+						.distanceTo(coinLocation) < human.getLocation().getAccuracy()
+						: false));
 	}
 
 	private void generateNewCoin() {
-		if (human.getScore() <= 3 ){
-		coinLocation = this.finalRoute.get(human.getScore());
-		
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
-                "android:switcher:"+R.id.pager+":1");
-		mapFrag.handleNewCoin(coinLocation);
+		if (human.getScore() < 3 ){
+			coinLocation = this.finalRoute.get(human.getScore());
+
+			MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
+					"android:switcher:"+R.id.pager+":1");
+			mapFrag.handleNewCoin(coinLocation);
+			// Show collected coin on the map
+			mapFrag.showCollectedCoin(human.getLocation());
+
 		} else {
-			human.setScore(0);
-			generateRandomRoute(100);
+			Intent finishedRunActivityIntent = new Intent(this, FinishedRunActivity.class);
+			startActivity(finishedRunActivityIntent);
+			if(asyncTask!=null){
+				asyncTask.cancel(true);
+			}
+			finish();
+
 		}
 
 	}
@@ -139,13 +146,13 @@ public class CoinCollectorActivity extends RunActivity {
 				+ human.getLocation().bearingTo(coinLocation)
 				: getRotation_GPS();
 
-		// if(angle < 0){
-		// angle += 360;
-		// }
+				// if(angle < 0){
+				// angle += 360;
+				// }
 
-		if (fx.getNavigationFX().isPlaying())
-			fx.update(fx.getNavigationFX(), (angle), human.getLocation()
-					.distanceTo(coinLocation));
+				if (fx.getNavigationFX().isPlaying())
+					fx.update(fx.getNavigationFX(), (angle), human.getLocation()
+							.distanceTo(coinLocation));
 
 	}
 
@@ -153,10 +160,16 @@ public class CoinCollectorActivity extends RunActivity {
 	protected void playSound() {
 		super.playSound();
 
-		if (!fx.getNavigationFX().isPlaying()) {
+		if (!fx.getNavigationFX().isPlaying())
 			fx.loop(fx.getNavigationFX());
-		} else
-			fx.stopLoop();
+		
+	}
+
+	@Override
+	protected void stopSound() {
+		super.stopSound();
+
+		fx.stopLoop();
 	}
 
 	/**

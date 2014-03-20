@@ -53,7 +53,7 @@ public class RunActivity extends SwipeableActivity implements
 	
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
 	
-	GetDirectionsAsyncTask asyncTask;
+	protected GetDirectionsAsyncTask asyncTask;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class RunActivity extends SwipeableActivity implements
 
 		//Setting up statusIconHandler
 		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
-		StatusIconHandler receiver = new StatusIconHandler(this);
+		StatusIconHandler receiver = new StatusIconHandler(this, this);
 		registerReceiver(receiver, filter);
 		
 		//Setting up Sensor input
@@ -134,11 +134,13 @@ public class RunActivity extends SwipeableActivity implements
 					if(!dataHandler.getPauseStatus()){
 						pauseButton.setImageResource(R.drawable.play);
 						finishButton.setVisibility(View.VISIBLE);
+						stopSound();
 					}else{
 						pauseButton.setImageResource(R.drawable.pause);
 						finishButton.setVisibility(View.INVISIBLE);
+						playSound();
 					}
-					playSound();
+					
 					dataHandler.pauseWatch();
 				}
 			}
@@ -151,7 +153,7 @@ public class RunActivity extends SwipeableActivity implements
 			public void onClick(View view) {
 				if(dataHandler.getRunningStatus()){
 					dataHandler.resetWatch();
-					playSound();
+					stopSound();
 				}
 				Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
 				startActivity(finishedRunActivityIntent);
@@ -175,10 +177,9 @@ public class RunActivity extends SwipeableActivity implements
 		
 	}
 
-	protected void playSound() {
-		// This is created in CoinCollector, etc. instead. This method should perhaps be abstract instead.
-		
-	}
+	// These are implemented in CoinCollector, etc. instead. This method should perhaps be abstract.
+	protected void playSound() {}
+	protected void stopSound() {}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -219,11 +220,11 @@ public class RunActivity extends SwipeableActivity implements
 		asyncTask.execute(map);	
 	}
 	
-	public void updateDisplay(long seconds, int distance, double currentspeed){
+	public void updateDisplay(long seconds, int distance, double currentspeed, int coins){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":0");
 		if(runFragment.isAdded()){
-			runFrag.setTime(seconds,distance,currentspeed);
+			runFrag.updateDisp(seconds,distance,currentspeed,coins);
 		}
 	}
 

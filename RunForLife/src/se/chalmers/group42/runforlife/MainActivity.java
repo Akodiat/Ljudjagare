@@ -20,6 +20,7 @@ import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
 import sensors.GPSInputHandler;
 import sensors.GPSInputListener;
 import android.location.Location;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
@@ -37,7 +38,9 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import at.technikum.mti.fancycoverflow.FancyCoverFlow;
 import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
 
@@ -49,6 +52,8 @@ GPSInputListener{
 	private ImageButton runButton;
 	private Intent runActivityIntent;
 	private int coverFlowHeight;
+	private ImageView 	gpsIcon, soundIcon, headPhonesIcon;
+	private TextView	gpsText, soundText, headPhonesText;
 
 	//TODO titlar f�r navdrawer
 
@@ -59,11 +64,24 @@ GPSInputListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		//Make hardware buttons control the media volume
+		setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		
+		//Setting up status icons
+		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
+		soundIcon = (ImageView) findViewById(R.id.imageViewSound);
+		headPhonesIcon = (ImageView) findViewById(R.id.imageViewHeadphones);
+ 
+		//Setting up status text
+		gpsText = (TextView) findViewById(R.id.textViewGPS);
+		soundText = (TextView) findViewById(R.id.textViewSound);
+		headPhonesText= (TextView) findViewById(R.id.textViewHeadphones);
+
 		//Setting up statusIconHandler
 		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
-		StatusIconHandler receiver = new StatusIconHandler(this);
+		StatusIconHandler receiver = new StatusIconHandler(this, this);
 		registerReceiver(receiver, filter);
-		
+
 		//Setting up Sensor input
 		new GPSInputHandler(this, this);
 
@@ -211,38 +229,38 @@ GPSInputListener{
 
 	@Override
 	public void onGPSConnect() {
-		// TODO Auto-generated method stub
-
+		gpsIcon.setImageResource(R.drawable.gps_green);
+		gpsText.setText("GPS connected");
 	}
 
 	@Override
 	public void onGPSDisconnect() {
-		// TODO Auto-generated method stub
-
+		gpsIcon.setImageResource(R.drawable.gps_red);
+		gpsText.setText("Searching for gps...");
 	}
 
 	@Override
 	public void onSoundOn() {
-		// TODO Auto-generated method stub
-
+		soundIcon.setImageResource(R.drawable.sound_green);
+		soundText.setText("Sound on");
 	}
 
 	@Override
 	public void onSoundOff() {
-		// TODO Auto-generated method stub
-
+		soundIcon.setImageResource(R.drawable.sound_red);
+		soundText.setText("Turn up media volume");
 	}
 
 	@Override
-	public void onHeadphonesIn() {
-		// TODO Auto-generated method stub
-
+	public void onHeadphonesIn(){
+		headPhonesIcon.setImageResource(R.drawable.headphones_green);
+		headPhonesText.setText("Headphones: connected");
 	}
 
 	@Override
-	public void onHeadphonesOut() {
-		// TODO Auto-generated method stub
-
+	public void onHeadphonesOut(){
+		headPhonesIcon.setImageResource(R.drawable.headphones_red);
+		headPhonesText.setText("Plug in headphones");
 	}
 
 	@Override

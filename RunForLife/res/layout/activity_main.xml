@@ -61,14 +61,14 @@
                             android:id="@+id/imageViewGPS"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/gps_green"
+                            android:src="@drawable/gps_red"
                 			android:paddingRight="2dp" />
 
                         <TextView
                             android:id="@+id/textViewGPS"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="GPS signal: strong" />
+                            android:text="Searching for gps..." />
                     </TableRow>
 
                     <TableRow
@@ -82,14 +82,14 @@
                             android:id="@+id/imageViewSound"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/sound_green"
+                            android:src="@drawable/sound_red"
                             android:paddingRight="2dp" />
 
                         <TextView
                             android:id="@+id/textViewSound"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sound: off" />
+                            android:text="Turn up media volume" />
                     </TableRow>
 
                     <TableRow
@@ -103,14 +103,14 @@
                             android:id="@+id/imageViewHeadphones"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/headphones_green"
+                            android:src="@drawable/headphones_red"
                             android:paddingRight="2dp" />
 
                         <TextView
                             android:id="@+id/textViewHeadphones"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Headphones: connected" />
+                            android:text="Plug in headphones" />
                     </TableRow>
                 </TableLayout>
 
