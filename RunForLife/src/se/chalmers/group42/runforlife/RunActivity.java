@@ -221,11 +221,11 @@ public class RunActivity extends SwipeableActivity implements
 		asyncTask.execute(map);	
 	}
 	
-	public void updateDisplay(long seconds, int distance, double currentspeed){
+	public void updateDisplay(long seconds, int distance, double currentspeed, int coins){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":0");
 		if(runFragment.isAdded()){
-			runFrag.setTime(seconds,distance,currentspeed);
+			runFrag.updateDisp(seconds,distance,currentspeed,coins);
 		}
 	}
 

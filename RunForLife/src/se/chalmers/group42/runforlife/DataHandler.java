@@ -23,6 +23,7 @@ public class DataHandler {
 	private int 		 	distance = 0;
 	private Route			currentRoute;
 	private boolean			isTime = true;
+	private int				coins = 0;
 	
 	private Boolean 			start = true;
 	private Location 			prev = new Location("");
@@ -40,10 +41,8 @@ public class DataHandler {
 		db = new MySQLiteHelper(this.runAct);
 		m_handler = new Handler();
 		
-		
 		//FLUSH DB
 		db.onUpgrade(db.getWritableDatabase(), 1, 2);
-
 	}
 	
 	public void newLocation(Location location){
@@ -73,6 +72,13 @@ public class DataHandler {
 					if(!pause){
 						//adds the distance from the last point to the current point
 						distance += prev.distanceTo(curr);
+						
+						MapFragment mapFrag = (MapFragment) runAct.getSupportFragmentManager().findFragmentByTag(
+				                "android:switcher:"+R.id.pager+":1");
+						if(runAct.statsFragment.isAdded()){
+							mapFrag.drawMyPath(location);
+						}
+						
 					}
 					prev = curr;
 				}
@@ -80,12 +86,6 @@ public class DataHandler {
 				db.addPoint(new Point(currentRoute.getId(), 
 											   location.getLatitude(),
 											   location.getLongitude()));
-			}
-			
-			MapFragment mapFrag = (MapFragment) runAct.getSupportFragmentManager().findFragmentByTag(
-	                "android:switcher:"+R.id.pager+":1");
-			if(runAct.statsFragment.isAdded()){
-				mapFrag.drawMyPath(location);
 			}
 			
 			//Timer, only saves one point evey 1.5s
@@ -115,7 +115,7 @@ public class DataHandler {
 				if(!pause){
 					seconds++;
 					//Update the displayed data in the run fragment
-					runAct.updateDisplay(seconds,distance,currentSpeed); 
+					runAct.updateDisplay(seconds,distance,currentSpeed,coins); 
 				}
 				else {
 					m_handler.removeCallbacks(m_handlerTask);
@@ -145,8 +145,9 @@ public class DataHandler {
 		distance = 0;
 		pause = true;
 		running = false;
+		coins = 0;
 		
-		runAct.updateDisplay(seconds,distance,currentSpeed);
+		runAct.updateDisplay(seconds,distance,currentSpeed,coins);
 	}
 	public boolean getRunningStatus(){
 		return running;
@@ -166,6 +167,8 @@ public class DataHandler {
 	}
 	
 	public void onAquiredCoin(Location coinLoc){
+		coins++;
+		
 		Coins coin = new Coins();
 		coin.setRouteID(currentRoute.getId());
 		coin.setLocation(coinLoc);
@@ -178,6 +181,5 @@ public class DataHandler {
 		if(runAct.statsFragment.isAdded()){
 			statsFrag.updateTableData(distance,seconds);
 		}
-//		antonsmetod(distance, time);
 	}
 }
