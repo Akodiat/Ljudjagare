@@ -134,11 +134,13 @@ public class RunActivity extends SwipeableActivity implements
 					if(!dataHandler.getPauseStatus()){
 						pauseButton.setImageResource(R.drawable.play);
 						finishButton.setVisibility(View.VISIBLE);
+						stopSound();
 					}else{
 						pauseButton.setImageResource(R.drawable.pause);
 						finishButton.setVisibility(View.INVISIBLE);
+						playSound();
 					}
-					playSound();
+					
 					dataHandler.pauseWatch();
 				}
 				onGPSDisconnect();
@@ -152,7 +154,7 @@ public class RunActivity extends SwipeableActivity implements
 			public void onClick(View view) {
 				if(dataHandler.getRunningStatus()){
 					dataHandler.resetWatch();
-					playSound();
+					stopSound();
 				}
 				onGPSConnect();
 				Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
@@ -177,10 +179,9 @@ public class RunActivity extends SwipeableActivity implements
 		
 	}
 
-	protected void playSound() {
-		// This is created in CoinCollector, etc. instead. This method should perhaps be abstract instead.
-		
-	}
+	// These are implemented in CoinCollector, etc. instead. This method should perhaps be abstract.
+	protected void playSound() {}
+	protected void stopSound() {}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
