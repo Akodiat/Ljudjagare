@@ -78,13 +78,14 @@ MapFragment.OnHeadlineSelectedListener{
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
 		
+		/*
+		 * Button taking you back to main menu.
+		 */
 		endButton = (ImageButton) findViewById(R.id.button_end);
 		endButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
-				Intent mainActivityIntent = new Intent(FinishedRunActivity.this, MainActivity.class);
-				startActivity(mainActivityIntent);
 			}
 		});
 	}
