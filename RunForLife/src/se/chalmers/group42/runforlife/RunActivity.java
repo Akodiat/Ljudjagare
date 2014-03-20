@@ -35,24 +35,24 @@ import com.google.android.gms.maps.model.LatLng;
  * 
  */
 public class RunActivity extends SwipeableActivity implements
-		MapFragment.OnHeadlineSelectedListener,
-		StatusIconEventListener,
-		GPSInputListener,
-		OrientationInputListener
-		{
+MapFragment.OnHeadlineSelectedListener,
+StatusIconEventListener,
+GPSInputListener,
+OrientationInputListener
+{
 
 	private ImageButton pauseButton, finishButton;
 
-	
+
 	//Class for handling database
 	protected DataHandler dataHandler;
-	
-	
+
+
 	private ImageView gpsIcon, soundIcon, headPhonesIcon;
-	
-	
+
+
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
-	
+
 	protected GetDirectionsAsyncTask asyncTask;
 
 	@Override
@@ -60,15 +60,12 @@ public class RunActivity extends SwipeableActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
-		//Setting up statusIconHandler
-		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
-		StatusIconHandler receiver = new StatusIconHandler(this, this);
-		registerReceiver(receiver, filter);
-		
+
+
 		//Setting up Sensor input
 		new GPSInputHandler(this, this);
 		new OrientationInputHandler(this);
-		
+
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -92,12 +89,12 @@ public class RunActivity extends SwipeableActivity implements
 		 *  a reference to the Tab
 		 */
 		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
+		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				actionBar.setSelectedNavigationItem(position);
+			}
+		});
 
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -111,20 +108,20 @@ public class RunActivity extends SwipeableActivity implements
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
-		
+
 		runFragment = new RunFragment();
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
-		
+
 
 		this.dataHandler = new DataHandler(this);
-		
+
 		//START
 		if(!dataHandler.getRunningStatus()){
 			dataHandler.newRoute();
 			dataHandler.startWatch();
 		}
-		
+
 		//Setting up pausebutton
 		pauseButton = (ImageButton) findViewById(R.id.button_pause);
 		pauseButton.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +137,7 @@ public class RunActivity extends SwipeableActivity implements
 						finishButton.setVisibility(View.INVISIBLE);
 						playSound();
 					}
-					
+
 					dataHandler.pauseWatch();
 				}
 			}
@@ -161,20 +158,25 @@ public class RunActivity extends SwipeableActivity implements
 					asyncTask.cancel(true);
 				}
 				finish();
-//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
-//						"android:switcher:"+R.id.pager+":2");
-//				if(statsFragment.isAdded()){
-//					statsFrag.updateTableData(1,2);
-//				}
+				//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
+				//						"android:switcher:"+R.id.pager+":2");
+				//				if(statsFragment.isAdded()){
+				//					statsFrag.updateTableData(1,2);
+				//				}
 			}
 		});
-	//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
-		
+		//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
+
 		//Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
 		soundIcon = (ImageView) findViewById(R.id.imageViewSound);
 		headPhonesIcon = (ImageView) findViewById(R.id.imageViewHeadphones);
-		
+
+		//Setting up statusIconHandler
+		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
+		StatusIconHandler receiver = new StatusIconHandler(this, this);
+		registerReceiver(receiver, filter);
+
 	}
 
 	// These are implemented in CoinCollector, etc. instead. This method should perhaps be abstract.
@@ -191,22 +193,22 @@ public class RunActivity extends SwipeableActivity implements
 	@Override
 	public void sendMapLocation(LatLng latLng) {
 		findDirections( HOME_MARCUS.latitude, HOME_MARCUS.longitude
-			, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
-	
+				, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
+
 	}
-	
+
 	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute) {
 		// TODO
 	}
-	
+
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
-                "android:switcher:"+R.id.pager+":1");
+				"android:switcher:"+R.id.pager+":1");
 		mapFrag.handleGetDirectionsResult(directionPoints);
 	}
 
-	
+
 	public void findDirections(double fromPositionDoubleLat, double fromPositionDoubleLong, double toPositionDoubleLat, double toPositionDoubleLong, String mode)
 	{
 		Map<String, String> map = new HashMap<String, String>();
@@ -219,10 +221,10 @@ public class RunActivity extends SwipeableActivity implements
 		asyncTask = new GetDirectionsAsyncTask(this);
 		asyncTask.execute(map);	
 	}
-	
+
 	public void updateDisplay(long seconds, int distance, double currentspeed, int coins){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
-                "android:switcher:"+R.id.pager+":0");
+				"android:switcher:"+R.id.pager+":0");
 		if(runFragment.isAdded()){
 			runFrag.updateDisp(seconds,distance,currentspeed,coins);
 		}
@@ -230,22 +232,22 @@ public class RunActivity extends SwipeableActivity implements
 
 	public void onGPSConnect() {
 		gpsIcon.setImageResource(R.drawable.gps_green);
-		
-//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
-//                "android:switcher:"+R.id.pager+":1");
-//		if(this.statsFragment.isAdded()){
-//			mapFrag.setIsConnected(true);
-//		}
-		
+
+		//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
+		//                "android:switcher:"+R.id.pager+":1");
+		//		if(this.statsFragment.isAdded()){
+		//			mapFrag.setIsConnected(true);
+		//		}
+
 	}
 	public void onGPSDisconnect() {
 		gpsIcon.setImageResource(R.drawable.gps_red);
-		
-//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
-//                "android:switcher:"+R.id.pager+":1");
-//		if(this.statsFragment.isAdded()){
-//			mapFrag.setIsConnected(false);
-//		}
+
+		//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
+		//                "android:switcher:"+R.id.pager+":1");
+		//		if(this.statsFragment.isAdded()){
+		//			mapFrag.setIsConnected(false);
+		//		}
 	}
 	public void onSoundOn() {
 		soundIcon.setImageResource(R.drawable.sound_green);
