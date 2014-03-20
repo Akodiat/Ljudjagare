@@ -236,7 +236,7 @@ public class FXHandler {
 			sayDistance(say500);
 		if (distance < 400 + rConst && distance > 400 - rConst)
 			sayDistance(say400);
-		if (distance < 300 + rConst && distance > 30 - rConst)
+		if (distance < 300 + rConst && distance > 300 - rConst)
 			sayDistance(say300);
 		if (distance < 200 + rConst && distance > 200 - rConst)
 			sayDistance(say200);
