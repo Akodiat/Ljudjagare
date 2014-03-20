@@ -53,7 +53,7 @@ public class RunActivity extends SwipeableActivity implements
 	
 	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
 	
-	GetDirectionsAsyncTask asyncTask;
+	protected GetDirectionsAsyncTask asyncTask;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

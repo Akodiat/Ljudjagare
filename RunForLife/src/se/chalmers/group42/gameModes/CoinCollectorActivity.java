@@ -2,14 +2,19 @@ package se.chalmers.group42.gameModes;
 
 import java.util.ArrayList;
 
-import se.chalmers.group42.runforlife.*;
+import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.FXHandler;
+import se.chalmers.group42.runforlife.FinishedRunActivity;
+import se.chalmers.group42.runforlife.GMapV2Direction;
+import se.chalmers.group42.runforlife.Human;
+import se.chalmers.group42.runforlife.MapFragment;
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.RunActivity;
 import utils.LocationHelper;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -70,12 +75,6 @@ public class CoinCollectorActivity extends RunActivity {
 			generateRandomRoute(100);
 		}
 
-		// If a coin is found..
-//		if (isAtCoin()) {
-//			dataHandler.onAquiredCoin();
-//			// Increase the player score by one
-//
-//		
 		//If a coin is found..
 		if(isAtCoin())
 		{
@@ -115,15 +114,23 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private void generateNewCoin() {
-		if (human.getScore() <= 3 ){
+		if (human.getScore() < 3 ){
 		coinLocation = this.finalRoute.get(human.getScore());
 		
 		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":1");
 		mapFrag.handleNewCoin(coinLocation);
+		// Show collected coin on the map
+		mapFrag.showCollectedCoin(human.getLocation());
+
 		} else {
-			human.setScore(0);
-			generateRandomRoute(100);
+			Intent finishedRunActivityIntent = new Intent(this, FinishedRunActivity.class);
+			startActivity(finishedRunActivityIntent);
+			if(asyncTask!=null){
+				asyncTask.cancel(true);
+			}
+			finish();
+
 		}
 
 	}
