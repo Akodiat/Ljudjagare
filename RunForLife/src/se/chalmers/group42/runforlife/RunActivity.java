@@ -141,7 +141,6 @@ public class RunActivity extends SwipeableActivity implements
 					playSound();
 					dataHandler.pauseWatch();
 				}
-				onGPSDisconnect();
 			}
 		});
 
@@ -154,7 +153,6 @@ public class RunActivity extends SwipeableActivity implements
 					dataHandler.resetWatch();
 					playSound();
 				}
-				onGPSConnect();
 				Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
 				startActivity(finishedRunActivityIntent);
 				if(asyncTask!=null){
