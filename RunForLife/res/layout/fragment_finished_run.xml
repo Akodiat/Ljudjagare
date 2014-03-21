@@ -106,16 +106,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1" >
 
-            <TextView
-                android:id="@+id/textViewPace1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="Max Pace "
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -123,24 +113,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1" >
 
-            <TextView
-                android:id="@+id/textViewPace2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:textSize="25sp"
-                android:text="0.0"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
-            <TextView
-                android:id="@+id/textViewPace3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textViewPace2"
-                android:layout_alignBaseline="@+id/textViewPace2"
-                android:textSize="15sp"
-                android:text="min/km"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
         </RelativeLayout>
     </LinearLayout>
     
@@ -208,16 +180,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1" >
 
-            <TextView
-                android:id="@+id/textViewSpeed1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="Max Speed "
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -225,24 +187,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1" >
 
-            <TextView
-                android:id="@+id/textViewSpeed2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:textSize="25sp"
-                android:text="0.0"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
-            <TextView
-                android:id="@+id/textViewSpeed3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textViewSpeed2"
-                android:layout_alignBaseline="@+id/textViewSpeed2"
-                android:textSize="15sp"
-                android:text="km/h"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
         </RelativeLayout>
     </LinearLayout>
     

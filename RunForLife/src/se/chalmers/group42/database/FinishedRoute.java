@@ -2,11 +2,11 @@ package se.chalmers.group42.database;
 
 public class FinishedRoute extends Route{
 	private double speed;
-	private float dist;
+	private int dist;
 	private Long totTime;
 	
 	FinishedRoute(){}
-	FinishedRoute(Route r, float dist, double speed, Long totTime){
+	FinishedRoute(Route r, int dist, double speed, Long totTime){
 		super();
 		this.setId(r.getId());
 		this.setDate(r.getDate());
@@ -28,10 +28,10 @@ public class FinishedRoute extends Route{
 	}
 	
 	
-	public float getDist() {
+	public int getDist() {
 		return dist;
 	}
-	public void setDist(float dist) {
+	public void setDist(int dist) {
 		this.dist = dist;
 	}
 	@Override
