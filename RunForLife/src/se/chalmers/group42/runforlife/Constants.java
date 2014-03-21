@@ -15,8 +15,7 @@ public class Constants {
 	/**
 	 * Distance to destination where sound behavior changes.
 	 */
-	public static final int MAX_DISTANCE = 500;
-
+	public static final int MAX_DISTANCE = 200;
 	/**
 	 * Distance to destination where user has reached the destination.
 	 */
@@ -25,7 +24,7 @@ public class Constants {
 	/**
 	 * Minimum pitch rate (0.5 - 1)
 	 */
-	public static final float MIN_PITCH = 0.8f;
+	public static final float MIN_PITCH = 0.5f;
 
 	/**
 	 * Accuracy needed for the target to be within reach. 

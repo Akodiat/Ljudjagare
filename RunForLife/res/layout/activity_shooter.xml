@@ -8,15 +8,14 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/monster_notification"
+        android:id="@+id/currentAngle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
 
-    <Button
-        android:id="@+id/testRandomAngle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Generate Random Angle" />
+    <SeekBar
+        android:id="@+id/currentDistance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -248,7 +248,7 @@ public class FXHandler {
 				Thread.sleep(2500);
 				soundPool.play(goodJob, 1, 1, 1, 0, 1);
 				Thread.sleep(2000);
-				soundPool.play(sayCoinReached, 1, 1, 1, 0, 1);
+				soundPool.play(sayNewCoin, 1, 1, 1, 0, 1);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
