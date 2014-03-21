@@ -91,7 +91,7 @@ public class CoinCollectorActivity extends RunActivity {
 		AlertDialog alert=builder.create();
 		alert.show();
 	}   
-	
+
 	@Override
 	public void onLocationChanged(Location location) {
 		super.onLocationChanged(location);
@@ -101,15 +101,14 @@ public class CoinCollectorActivity extends RunActivity {
 
 		// Update human location
 		this.human.setLocation(location);
-		
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
-				"android:switcher:"+R.id.pager+":1");
-		mapFrag.zoomToPosition(location);
-		
-		
+
 		if (generateRoute) {
 			generateRoute = false;
 			generateRandomRoute(Constants.RUN_DISTANCE);
+
+			MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
+					"android:switcher:"+R.id.pager+":1");
+			mapFrag.zoomToPosition(location);
 		}
 
 		//If a coin is found..
