@@ -2,7 +2,10 @@ package se.chalmers.group42.runforlife;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -46,12 +49,31 @@ public class FinishedMapFragment extends MapFragment {
 		double[] latitudes = locs.getDoubleArray("latitudes");
 		double[] longitudes = locs.getDoubleArray("longitudes");
 		
+		double[] coinlat = locs.getDoubleArray("coinlat");
+		double[] coinlng = locs.getDoubleArray("coinlng");
+		
 		for(int i = 0 ; i < latitudes.length; i++){
 			LatLng l = new LatLng(latitudes[i],longitudes[i]);
 			
 			routeLine.add(l);
 			myPolyRoute = map.addPolyline(routeLine);
 		}
+		
+		for(int i = 0 ; i < coinlat.length ; i++){
+			Location l = new Location("");
+			l.setLatitude(coinlat[i]);
+			l.setLongitude(coinlng[i]);
+			showCollectedCoin(l);
+		}
+	}
+	
+	@Override
+	public void showCollectedCoin(Location locationOfCoin){
+		Marker marker = map.addMarker(new MarkerOptions()
+		.position(new LatLng(locationOfCoin.getLatitude(),
+				locationOfCoin.getLongitude()))
+				.title("Coin")
+				.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_coin)));
 	}
 	
 }

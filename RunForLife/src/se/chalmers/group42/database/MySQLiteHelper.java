@@ -114,6 +114,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 				KEY_COINTIME+" LONG, "+
 				KEY_COINLAT+" DOUBLE, " +
 				KEY_COINLNG+" DOUBLE, " +
+				KEY_DIST+" INTEGER , "+
 				"FOREIGN KEY ("+KEY_ROUTEID+") REFERENCES "+TABLE_ROUTES+"("+KEY_ID+"))";
 
 		// create position table
@@ -401,7 +402,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		coin.setId(cursor.getInt(0));
 		coin.setRouteID(cursor.getInt(1));
 		loc.setLatitude(cursor.getDouble(2));
-		loc.setLatitude(cursor.getDouble(3));
+		loc.setLongitude(cursor.getDouble(3));
 		coin.setLocation(loc);
 		coin.setTime(cursor.getLong(4));
 		coin.setDistance(cursor.getInt(5));
