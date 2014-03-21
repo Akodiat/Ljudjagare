@@ -1,20 +1,6 @@
 package se.chalmers.group42.runforlife;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-//import se.chalmers.proofofconceptlj.Polyline;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -25,7 +11,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+//import se.chalmers.proofofconceptlj.Polyline;
 
 /**
  * A fragment including the map with information of what route has been taken.
@@ -123,6 +121,13 @@ public class MapFragment extends Fragment {
 				locationOfCoin.getLongitude()))
 				.title("Coin")
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_coin)));
+	}
+	public void zoomToPosition(Location position){
+		CameraUpdate cameraUpdate= CameraUpdateFactory.
+				newLatLngZoom(new LatLng(position.getLatitude(), position.getLongitude()), 16);
+		if(cameraUpdate!=null){
+			map.animateCamera(cameraUpdate);
+		}
 	}
 	
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
