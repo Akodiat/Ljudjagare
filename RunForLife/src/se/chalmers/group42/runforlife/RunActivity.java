@@ -263,6 +263,17 @@ OrientationInputListener
 	}
 	public void onHeadphonesOut(){
 		headPhonesIcon.setImageResource(R.drawable.headphones_red);
+		
+		//Pause game
+		if(dataHandler.getRunningStatus()){
+			if(!dataHandler.getPauseStatus()){
+				pauseButton.setImageResource(R.drawable.play);
+				finishButton.setVisibility(View.VISIBLE);
+				stopSound();
+			}
+			dataHandler.pauseWatch();
+		}
+
 	}
 	public void onCompassChanged(float headingAngleOrientation) {
 		// TODO Auto-generated method stub	
