@@ -11,6 +11,8 @@ import se.chalmers.group42.runforlife.MapFragment;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.RunActivity;
 import utils.LocationHelper;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng;
 public class CoinCollectorActivity extends RunActivity {
 	public static LatLng DEFAULT_POSITION = new LatLng(58.705477, 11.990884);
 	public static int GAME_MODE_ID = 0;
+	private static final int DIALOG_REALLY_EXIT_ID = 0;
 
 	private Human human; // Containing the player position and score
 	private float compassFromNorth; // Compass angle
@@ -60,6 +63,32 @@ public class CoinCollectorActivity extends RunActivity {
 		coinLocation = finalRoute.get(0);
 	}
 
+	// Ask if you really want to close the activity 
+	// From, http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
+	@Override
+	public void onBackPressed() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setCancelable(false);
+		builder.setMessage("Do you  want to exit the run?");
+		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//if user pressed "yes", then he is allowed to exit from application
+				// Ska vara "finish()" egentligen men det fungerar inte?
+				android.os.Process.killProcess(android.os.Process.myPid());
+			}
+		});
+		builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//if user select "No", just cancel this dialog and continue with app
+				dialog.cancel();
+			}
+		});
+		AlertDialog alert=builder.create();
+		alert.show();
+	}   
+	
 	@Override
 	public void onLocationChanged(Location location) {
 		super.onLocationChanged(location);
