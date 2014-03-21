@@ -69,13 +69,13 @@ LocationListener
 
 	@Override
 	public void onLocationChanged(Location location) {
-		currentLocation = location;
-		listener.onLocationChanged(location);
-		
 		if(location.getAccuracy() > MAXIMAL_ACCEPTABLE_ACCURACY){
 			listener.onGPSDisconnect();
 		}
 		else
 			listener.onGPSConnect();
+		
+		currentLocation = location;
+		listener.onLocationChanged(location);
 	}
 }

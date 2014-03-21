@@ -3,11 +3,14 @@ package se.chalmers.group42.gameModes;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.Human;
+import se.chalmers.group42.runforlife.MapFragment;
 import se.chalmers.group42.runforlife.Monster;
+import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.RunActivity;
 import utils.LocationHelper;
 import android.location.Location;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -20,8 +23,8 @@ import com.google.android.gms.maps.model.LatLng;
 public class EscapeActivity extends RunActivity {
 	public static LatLng 	DEFAULT_POSITION 			= new LatLng(58.705477, 11.990884);
 	public static int 		GAME_MODE_ID 				= 1;
-	public static int 		MAX_MONSTER_SPAWN_DISTANCE 	= 200;
-	public static int 		MIN_MONSTER_SPAWN_DISTANCE	= 50;
+	public static int 		MAX_MONSTER_SPAWN_DISTANCE 	= 500;
+	public static int 		MIN_MONSTER_SPAWN_DISTANCE	= 210;
 	public static float 	MONSTER_SPEED 				= 3; //	Meters per second
 
 	private Human 	human; 				// Containing the player position and score
@@ -36,11 +39,18 @@ public class EscapeActivity extends RunActivity {
 		super.onCreate(savedInstanceState);
 		human = new Human();
 		
-		generateNewMonster();
+		//generateNewMonster();
 
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
 		playSound();
+	}
+	
+	@Override
+	public void onGPSConnect() {
+		super.onGPSConnect();
+		
+		generateNewMonster();
 	}
 
 	private void generateNewMonster() {
@@ -76,7 +86,20 @@ public class EscapeActivity extends RunActivity {
 		// Update monster target
 		monster.setTarget(human.getLocation());
 		
+		Toast.makeText(this, human.getLocation().distanceTo(monster.getLocation()) + "meters", Toast.LENGTH_SHORT).show();
+		
+		updateMarker();
+		//fx.distanceAnnouncer();
+		
 		adjustPanoration();
+	}
+
+	private void updateMarker() {
+		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
+				"android:switcher:"+R.id.pager+":1");
+		mapFrag.handleNewCoin(monster.getLocation());
+		// Show collected coin on the map
+		mapFrag.showCollectedCoin(human.getLocation());	
 	}
 
 	@Override
@@ -122,10 +145,16 @@ public class EscapeActivity extends RunActivity {
 	protected void playSound() {
 		super.playSound();
 
-		if (!fx.getNavigationFX().isPlaying()) {
+		if (!fx.getNavigationFX().isPlaying())
 			fx.loop(fx.getNavigationFX());
-		} else
-			fx.stopLoop();
+		
+	}
+
+	@Override
+	protected void stopSound() {
+		super.stopSound();
+
+		fx.stopLoop();
 	}
 
 	/**
@@ -139,7 +168,6 @@ public class EscapeActivity extends RunActivity {
 			bearingTo += 360;
 		}
 		return bearingTo - human.getLocation().getBearing();
-
 	}
 
 	/**
