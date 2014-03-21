@@ -185,6 +185,15 @@ public class FXHandler {
 		else
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-180) * fx.angle() + 1);
 
+//		float minVol = 0.2f;
+//		float newVol = 0;
+
+		// change volume if sound comes from back
+//		if (Math.abs(fx.angle()) >= 90) {
+//			newVol = ((1 - minVol) / (-90)) * (Math.abs(fx.angle()) - 90) + 1;
+//			fx.source().setGain(newVol);
+//		}
+
 		fx.setDistance(distance);
 
 		// tell the user how close to goal he/she is
