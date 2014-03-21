@@ -17,6 +17,7 @@
     <string name="table_pace">Pace</string>
     <string name="title_completedrun_list">Completed Runs</string>
     <string name="title_completedrun_detail">Completed Run Detail</string>
+    <string name="run_image_desc">ImageView containing the Run for Life-header image</string>
 
     <string-array name="nav_drawer_array">
         <item>Run</item>

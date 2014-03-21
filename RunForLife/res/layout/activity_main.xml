@@ -22,7 +22,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/run_for_life"
-                android:contentDescription="runimage" />
+                android:contentDescription="@string/run_image_desc" />
 
             <at.technikum.mti.fancycoverflow.FancyCoverFlow
                 android:id="@+id/fancyCoverFlow"
