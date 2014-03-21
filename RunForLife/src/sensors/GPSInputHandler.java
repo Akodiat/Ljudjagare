@@ -30,7 +30,7 @@ LocationListener
 	private Location		currentLocation;	//Location retrieved through GPS
 
 	private static final LocationRequest REQUEST = LocationRequest.create()
-			.setInterval(5000)         // 5 seconds
+			.setInterval(1000)         // 1 second
 			.setFastestInterval(16)    // 16ms = 60fps
 			.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY); 
 
