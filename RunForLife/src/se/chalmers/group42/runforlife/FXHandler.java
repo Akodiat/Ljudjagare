@@ -35,6 +35,8 @@ public class FXHandler {
 	private Speech say100, say200, say300, say400, say500, say600, say700,
 			say800, say900, say1000;
 
+	private boolean handlerActive = false;
+
 	/**
 	 * Initialize sound engine
 	 */
@@ -69,17 +71,20 @@ public class FXHandler {
 		initSoundPool(context);
 
 		// Initialize thread handler
-		handler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				if (msg.what == Constants.MSG)
-					loop(navFX);
+		if (!handlerActive) {
+			handler = new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					if (msg.what == Constants.MSG)
+						loop(navFX);
 
-				if (msg.what == Constants.MSG_STOP)
-					// Stop looping
-					handler.removeCallbacksAndMessages(null);
-			}
-		};
+					if (msg.what == Constants.MSG_STOP)
+						// Stop looping
+						handler.removeCallbacksAndMessages(null);
+				}
+			};
+			handlerActive = true;
+		}
 	}
 
 	public void initSoundPool(Context context) {
@@ -139,6 +144,8 @@ public class FXHandler {
 
 		Message msg = handler.obtainMessage(Constants.MSG_STOP);
 		handler.sendMessage(msg);
+
+		handlerActive = false;
 	}
 
 	/**
