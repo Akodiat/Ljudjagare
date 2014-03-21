@@ -100,6 +100,10 @@ public class CoinCollectorActivity extends RunActivity {
 
 		// Update compass value
 		this.compassFromNorth = headingAngleOrientation;
+
+		// If a current coin is set
+		if (usingCompass() && this.coinLocation != null)
+			adjustPanoration();
 	}
 
 	private boolean isAtCoin() {
@@ -164,7 +168,7 @@ public class CoinCollectorActivity extends RunActivity {
 
 		if (!fx.getNavigationFX().isPlaying())
 			fx.loop(fx.getNavigationFX());
-		
+
 	}
 
 	@Override
