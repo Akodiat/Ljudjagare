@@ -21,7 +21,7 @@ public class DataHandler {
 	
 	private Long 		 	seconds = 0L;
 	private int 		 	distance = 0;
-	private Route			currentRoute;
+	private int				routeId;
 	private boolean			isTime = true;
 	private int				coins = 0;
 	
@@ -36,9 +36,9 @@ public class DataHandler {
 
 	private double currentSpeed = 0;
 	
-	DataHandler(RunActivity runAct){
+	DataHandler(MySQLiteHelper db, RunActivity runAct){
 		this.runAct = runAct;
-		db = new MySQLiteHelper(this.runAct);
+		this.db = db;
 		m_handler = new Handler();
 		
 		//FLUSH DB
@@ -83,7 +83,7 @@ public class DataHandler {
 					prev = curr;
 				}
 				//adds thte point to the database
-				db.addPoint(new Point(currentRoute.getId(), 
+				db.addPoint(new Point(routeId, 
 											   location.getLatitude(),
 											   location.getLongitude()));
 			}
@@ -100,9 +100,8 @@ public class DataHandler {
 	
 	//Adds a new route to the database
 	public void newRoute(){
-		currentRoute = new Route();
-		int id = db.addRoute(currentRoute);
-		currentRoute.setId(id);
+		Route currentRoute = new Route();
+		routeId = db.addRoute(currentRoute);
 		
 	}
 	
@@ -140,7 +139,7 @@ public class DataHandler {
 	//finnishes the route and resets all data
 	public void resetWatch(){
 		m_handler.removeCallbacks(m_handlerTask);
-		db.finishRoute(currentRoute, distance, seconds);
+		db.finishRoute(db.getRoute(routeId), distance, seconds);
 		seconds = 0L;
 		distance = 0;
 		pause = true;
@@ -170,7 +169,7 @@ public class DataHandler {
 		coins++;
 		
 		Coins coin = new Coins();
-		coin.setRouteID(currentRoute.getId());
+		coin.setRouteID(routeId);
 		coin.setLocation(coinLoc);
 		coin.setTime(seconds);
 		coin.setDistance(distance);
@@ -181,5 +180,11 @@ public class DataHandler {
 		if(runAct.statsFragment.isAdded()){
 			statsFrag.updateTableData(distance,seconds);
 		}
+	}
+	public void finnishRoute(){
+		db.finishRoute(db.getRoute(routeId), distance, seconds);
+	}
+	public int getCurrentRoute(){
+		return routeId;
 	}
 }

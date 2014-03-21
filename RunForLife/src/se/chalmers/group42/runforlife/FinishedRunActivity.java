@@ -2,6 +2,7 @@ package se.chalmers.group42.runforlife;
 
 import java.util.ArrayList;
 
+import se.chalmers.group42.database.*;
 import se.chalmers.group42.runforlife.SwipeableActivity.SectionsPagerAdapter;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -13,6 +14,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,8 +25,10 @@ public class FinishedRunActivity extends SwipeableActivity implements
 MapFragment.OnHeadlineSelectedListener{
 
 	//Class for handling database
-	protected DataHandler dataHandler;
-	
+	//	protected DataHandler dataHandler;
+
+	MySQLiteHelper db;
+
 	//Button
 	private ImageButton endButton;
 
@@ -36,6 +40,9 @@ MapFragment.OnHeadlineSelectedListener{
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		testApplication app = (testApplication) getApplication();
+		this.db = app.getDatabase();
 
 		/*
 		 *  Creating the adapter that will return a fragment for each of the three 
@@ -77,6 +84,8 @@ MapFragment.OnHeadlineSelectedListener{
 		runFragment = new FinishedRunFragment();
 		mapFragment = new MapFragment();
 		statsFragment = new StatsFragment();
+
+		
 		
 		/*
 		 * Button taking you back to main menu.
@@ -88,17 +97,30 @@ MapFragment.OnHeadlineSelectedListener{
 				finish();
 			}
 		});
+		
+		
+		Bundle extras = getIntent().getExtras();
+		if(extras != null){
+			int id = extras.getInt("test");
+			FinishedRoute fin = db.getFinishedRoute(id);
+			long secs = fin.getTotTime();
+			
+			Bundle args = new Bundle();
+			args.putLong("time", secs);
+			runFragment.setArguments(args);
+		}
+
 	}
 
-//	//TODO Varför ärvs inte denna? Borde kunna bortkommenteras men då funkar inte tabarna
-//	@Override
-//	public void onTabSelected(ActionBar.Tab tab,
-//			FragmentTransaction fragmentTransaction) {
-//		// When the given tab is selected, switch to the corresponding page in
-//		// the ViewPager.
-//		mViewPager.setCurrentItem(tab.getPosition());
-//		System.out.println("Tab pos= " + tab.getPosition());
-//	}
+	//	//TODO Varför ärvs inte denna? Borde kunna bortkommenteras men då funkar inte tabarna
+	//	@Override
+	//	public void onTabSelected(ActionBar.Tab tab,
+	//			FragmentTransaction fragmentTransaction) {
+	//		// When the given tab is selected, switch to the corresponding page in
+	//		// the ViewPager.
+	//		mViewPager.setCurrentItem(tab.getPosition());
+	//		System.out.println("Tab pos= " + tab.getPosition());
+	//	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -38,9 +38,9 @@ SensorEventListener
 		
 		
 		// http://stackoverflow.com/questions/7471226/method-onsensorchanged-when-screen-is-lock
-		PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-		lock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "SensorRead");
-		lock.acquire();
+//		PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+//		lock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "SensorRead");
+//		lock.acquire();
 	}
 	
 	public void stop(){

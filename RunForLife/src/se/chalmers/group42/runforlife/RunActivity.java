@@ -114,7 +114,8 @@ OrientationInputListener
 		statsFragment = new StatsFragment();
 
 
-		this.dataHandler = new DataHandler(this);
+		testApplication app = (testApplication) getApplication();
+		this.dataHandler = new DataHandler(app.getDatabase(),this);
 
 		//START
 		if(!dataHandler.getRunningStatus()){
@@ -153,6 +154,7 @@ OrientationInputListener
 					stopSound();
 				}
 				Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
+				finishedRunActivityIntent.putExtra("test", dataHandler.getCurrentRoute());
 				startActivity(finishedRunActivityIntent);
 				if(asyncTask!=null){
 					asyncTask.cancel(true);

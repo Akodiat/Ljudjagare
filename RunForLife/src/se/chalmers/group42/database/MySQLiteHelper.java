@@ -50,15 +50,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	private static final String[] COLUMNS_POINTS = {KEY_POINTID,KEY_ROUTE, KEY_LAT,KEY_LNG,KEY_TIME};
 
-	
-	// Points Table Columns names
+
+	// Coins Table Columns names
 	private static final String KEY_COINID = "coinId";
 	private static final String KEY_ROUTEID = "routeId";
 	private static final String KEY_COINLAT = "latitude";
 	private static final String KEY_COINLNG = "longitude";
 	private static final String KEY_COINTIME = "time";
 	private static final String KEY_COINDIST = "distance";
-	
+
 	private static final String[] COLUMNS_COINS = {KEY_COINID,KEY_ROUTEID, KEY_COINLAT,KEY_COINLNG,KEY_COINTIME,KEY_COINDIST};
 
 	public MySQLiteHelper(Context context) {
@@ -97,13 +97,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		// SQL to create
 		String CREATE_FINISHED_TABLE = "CREATE TABLE "+TABLE_FINISHEDROUTES+"("+
 				KEY_FINISHED_ID +" INTEGER," +
+				KEY_DIST + " INTEGER, "+
 				KEY_SPEED + " DOUBLE, "+
 				KEY_TOTTIME + " LONG, "+
 				"FOREIGN KEY ("+KEY_FINISHED_ID + ") REFERENCES "+TABLE_ROUTES+" ("+KEY_ID+"))";     
 
 		//create
 		db.execSQL(CREATE_FINISHED_TABLE);
-		
+
 		/*------------------------------CREATE_COINS_TABLE--------------------------------*/
 
 		// SQL statement to create points table
@@ -147,7 +148,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		values.put(KEY_DATE, r.getDate());
 
 		Long row = db.insert(TABLE_ROUTES, null, values);	//insert
-		
+
 		db.close(); //close
 		return getIdFromRow(row);
 	}
@@ -360,9 +361,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		db.close();
 		Log.d("deletePoint", point.toString());
 	}
-	
+
 	/*------------------------------COINS TABLE METHODS--------------------------------*/
-	
+
 	public void addCoin(Coins c){
 		Log.d("addCoin",c.toString());					//Log
 		SQLiteDatabase db = this.getWritableDatabase(); //get db
@@ -373,12 +374,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		values.put(KEY_COINLNG, c.getLocation().getLongitude());
 		values.put(KEY_COINTIME, c.getTime());
 		values.put(KEY_COINDIST, c.getDistance());
-		
+
 		db.insert(TABLE_COINS, null, values);			//insert
 
 		db.close();										//close
 	}
-	
+
 	public Coins getCoin(int id){
 		SQLiteDatabase db = this.getReadableDatabase();
 
@@ -393,9 +394,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 		if(cursor != null)
 			cursor.moveToFirst();
-		
+
 		Location loc = new Location("");
-		
+
 		Coins coin = new Coins();
 		coin.setId(cursor.getInt(0));
 		coin.setRouteID(cursor.getInt(1));
@@ -461,7 +462,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 	public void finishRoute(Route r, float dist, Long time){
 		SQLiteDatabase db = this.getWritableDatabase();
 		int id = r.getId();
-		
+
 
 		//speed
 		double speed = (dist / time) *3.6; 
@@ -483,11 +484,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 	 * @param r the Route to be retrieved from the database
 	 * @return the finished route
 	 */
-	public FinishedRoute getFinishedRoute(Route r){
+	public FinishedRoute getFinishedRoute(int id){
 		SQLiteDatabase db = this.getReadableDatabase();
+		Route r = this.getRoute(id);
 
 		Cursor cursor = db.query(TABLE_FINISHEDROUTES, COLUMNS_FINROUTES, KEY_FINISHED_ID+"=?", 
-				new String[] {String.valueOf(r.getId())}, null, null, null);
+				new String[] {String.valueOf(id)}, null, null, null);
 
 		if(cursor != null)
 			cursor.moveToFirst();
@@ -502,8 +504,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		Log.d("getFinished", f.toString());
 		return f;
 	}
+
 	/****************************HELPER************************************************/
-	
+
 	public int getIdFromRow(Long row){
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor c = db.query(TABLE_ROUTES, 
