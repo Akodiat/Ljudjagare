@@ -9,26 +9,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@android:color/white"
-            android:orientation="vertical" >
+            android:paddingTop="2dp" >
 
             <ImageView
                 android:id="@+id/imageViewRunner"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="3"
-                android:src="@drawable/run_for_life" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/run_for_life"
+                android:contentDescription="runimage" />
 
             <at.technikum.mti.fancycoverflow.FancyCoverFlow
                 android:id="@+id/fancyCoverFlow"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/relativeLayoutTable"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="4"
                 fcf:maxRotation="45"
                 fcf:scaleDownGravity="0.5"
                 fcf:unselectedAlpha="0.3"
@@ -36,10 +37,10 @@
                 fcf:unselectedScale="0.4" />
 
             <RelativeLayout
+                android:id="@+id/relativeLayoutTable"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:gravity="bottom"
+                android:layout_height="140dp"
+                android:layout_alignParentBottom="true"
                 android:paddingBottom="2dp"
                 android:paddingLeft="2dp"
                 android:paddingRight="2dp" >
@@ -55,14 +56,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center_vertical|left">
+                        android:gravity="center_vertical|left" >
 
                         <ImageView
                             android:id="@+id/imageViewGPS"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/gps_red"
-                			android:paddingRight="2dp" />
+                            android:paddingRight="2dp"
+                            android:src="@drawable/gps_red" />
 
                         <TextView
                             android:id="@+id/textViewGPS"
@@ -82,8 +83,8 @@
                             android:id="@+id/imageViewSound"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/sound_red"
-                            android:paddingRight="2dp" />
+                            android:paddingRight="2dp"
+                            android:src="@drawable/sound_red" />
 
                         <TextView
                             android:id="@+id/textViewSound"
@@ -103,8 +104,8 @@
                             android:id="@+id/imageViewHeadphones"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/headphones_red"
-                            android:paddingRight="2dp" />
+                            android:paddingRight="2dp"
+                            android:src="@drawable/headphones_red" />
 
                         <TextView
                             android:id="@+id/textViewHeadphones"
@@ -123,7 +124,7 @@
                     android:background="#0000"
                     android:src="@drawable/run" />
             </RelativeLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </FrameLayout>
 
     <ListView
