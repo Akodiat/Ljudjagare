@@ -168,6 +168,7 @@ public class CoinCollectorActivity extends RunActivity {
 			stopSound();
 
 			Intent finishedRunActivityIntent = new Intent(this, FinishedRunActivity.class);
+			finishedRunActivityIntent.putExtra("test", dataHandler.getCurrentRoute());
 			startActivity(finishedRunActivityIntent);
 			if(asyncTask!=null){
 				asyncTask.cancel(true);
