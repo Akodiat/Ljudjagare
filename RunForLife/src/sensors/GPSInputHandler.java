@@ -47,7 +47,6 @@ LocationListener
 		if(locationClient != null)
 			locationClient.connect(); 
 
-
 		currentLocation = LocationHelper.locationFromLatlng(STOCKHOLM);
 	}
 
