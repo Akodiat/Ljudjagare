@@ -24,8 +24,8 @@ GooglePlayServicesClient.OnConnectionFailedListener,
 LocationListener
 {
 	public static final 	int		MAXIMAL_ACCEPTABLE_ACCURACY = 20;
-	
-	
+
+
 	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
 	private Location		currentLocation;	//Location retrieved through GPS
 
@@ -47,13 +47,13 @@ LocationListener
 		if(locationClient != null)
 			locationClient.connect(); 
 
-		
+
 		currentLocation = LocationHelper.locationFromLatlng(STOCKHOLM);
 	}
 
 	@Override
 	public void onConnectionFailed(ConnectionResult arg0) {
-		// TODO Auto-generated method stub
+		listener.onGPSDisconnect();
 	}
 
 	@Override
@@ -74,8 +74,15 @@ LocationListener
 		}
 		else
 			listener.onGPSConnect();
+
 		
-		currentLocation = location;
+		//If the new location has no bearing, use the old bearing
+		if(!location.hasBearing()){
+			float bearing = currentLocation.getBearing();
+			currentLocation = location;
+			currentLocation.setBearing(bearing);
+		} else currentLocation = location;
+		
 		listener.onLocationChanged(location);
 	}
 }
