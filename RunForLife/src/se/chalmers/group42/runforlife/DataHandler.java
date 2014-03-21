@@ -20,7 +20,7 @@ public class DataHandler {
 	private MySQLiteHelper 	db;
 	
 	private Long 		 	seconds = 0L;
-	private int 		 	distance = 0;
+	private float 		 	distance = 0;
 	private int				routeId;
 	private boolean			isTime = true;
 	private int				coins = 0;
@@ -114,7 +114,8 @@ public class DataHandler {
 				if(!pause){
 					seconds++;
 					//Update the displayed data in the run fragment
-					runAct.updateDisplay(seconds,distance,currentSpeed,coins); 
+					int d = (int) distance;
+					runAct.updateDisplay(seconds,d,currentSpeed,coins); 
 				}
 				else {
 					m_handler.removeCallbacks(m_handlerTask);
@@ -138,15 +139,18 @@ public class DataHandler {
 	
 	//finnishes the route and resets all data
 	public void resetWatch(){
+		int d = (int) distance;
+		
 		m_handler.removeCallbacks(m_handlerTask);
-		db.finishRoute(db.getRoute(routeId), distance, seconds);
+		db.finishRoute(db.getRoute(routeId), d, seconds);
 		seconds = 0L;
 		distance = 0;
 		pause = true;
 		running = false;
 		coins = 0;
 		
-		runAct.updateDisplay(seconds,distance,currentSpeed,coins);
+		
+		runAct.updateDisplay(seconds,d,currentSpeed,coins);
 	}
 	public boolean getRunningStatus(){
 		return running;
@@ -166,23 +170,25 @@ public class DataHandler {
 	}
 	
 	public void onAquiredCoin(Location coinLoc){
+		int d = (int) distance;
 		coins++;
 		
 		Coins coin = new Coins();
 		coin.setRouteID(routeId);
 		coin.setLocation(coinLoc);
 		coin.setTime(seconds);
-		coin.setDistance(distance);
+		coin.setDistance(d);
 		
 		db.addCoin(coin);
 		StatsFragment statsFrag = (StatsFragment) runAct.getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":2");
 		if(runAct.statsFragment.isAdded()){
-			statsFrag.updateTableData(distance,seconds);
+			statsFrag.updateTableData(d,seconds);
 		}
 	}
 	public void finnishRoute(){
-		db.finishRoute(db.getRoute(routeId), distance, seconds);
+		int d = (int) distance;
+		db.finishRoute(db.getRoute(routeId), d, seconds);
 	}
 	public int getCurrentRoute(){
 		return routeId;

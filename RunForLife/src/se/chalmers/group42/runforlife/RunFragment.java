@@ -39,15 +39,15 @@ public class RunFragment extends Fragment{
 		double s = seconds;
 
 		double speed = (d / s)*3.6;
-		speed = Math.round(speed*100)/100.0d;
-
 		double pace = 60 / speed;
+		
+		speed = Math.round(speed*100)/100.0d;
 		pace = Math.round(pace*100)/100.0d;
 
 		double currSpd = currentSpeed*3.6;
-		currSpd = Math.round(currSpd*100)/100.0d;
-
 		double currPace = 60 / currSpd;
+		
+		currSpd = Math.round(currSpd*100)/100.0d;
 		currPace = Math.round(currPace*100)/100.0d;
 		
 		setTexts(t, distance, speed, currSpd, pace, currPace);

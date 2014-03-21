@@ -13,7 +13,7 @@ import android.widget.TextView;
 /**
  * A fragment including the info related to the current run.
  */
-public class FinishedRunFragment extends Fragment{
+public class FinishedRunFragment extends Fragment {
 
 	private TextView time;
 
@@ -28,20 +28,40 @@ public class FinishedRunFragment extends Fragment{
 		View rootView = inflater.inflate(R.layout.fragment_finished_run,
 				container, false);
 
-		Bundle asd = getArguments();
-		if(asd != null){
-			setValues(asd.getLong("time"), rootView);
-		}
-		
+		setValues(rootView);
+
 		return rootView;
 	}
-	
-	public void setValues(long seconds,View view){
-		Time t = new Time();
-		t.set(seconds*1000);
-		t.switchTimezone("GMT");
-		
-		TextView txTime = (TextView) view.findViewById(R.id.textViewTime2);
-		txTime.setText(t.format("%H:%M:%S"));
+
+	public void setValues(View view) {
+		Bundle args = getArguments();
+		if (args != null) {
+			// ************SET TIME!!**************
+			Time t = new Time();
+			t.set(args.getLong("time") * 1000);
+			t.switchTimezone("GMT");
+
+			TextView txTime = (TextView) view.findViewById(R.id.textViewTime2);
+			txTime.setText(t.format("%H:%M:%S"));
+
+			// *************SET Distance*************
+			int dist = args.getInt("distance");
+			TextView txDist = (TextView) view.findViewById(R.id.textViewDist2);
+			txDist.setText("" + dist);
+
+			// *************SET SPEED/pace***************
+			double speed = args.getDouble("speed");
+			double pace = 60 / speed;
+
+			speed = Math.round(speed * 100) / 100.0d;
+			pace = Math.round(pace * 100) / 100.0d;
+
+			TextView txSpeed = (TextView) view
+					.findViewById(R.id.textViewSpeedAverage2);
+			txSpeed.setText("" + speed);
+			TextView txPace = (TextView) view
+					.findViewById(R.id.textViewPaceAverage2);
+			txPace.setText("" + pace);
+		}
 	}
 }

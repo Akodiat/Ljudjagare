@@ -1,6 +1,7 @@
 package se.chalmers.group42.runforlife;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.group42.database.*;
 import se.chalmers.group42.runforlife.SwipeableActivity.SectionsPagerAdapter;
@@ -82,7 +83,7 @@ MapFragment.OnHeadlineSelectedListener{
 		}
 
 		runFragment = new FinishedRunFragment();
-		mapFragment = new MapFragment();
+		mapFragment = new FinishedMapFragment();
 		statsFragment = new StatsFragment();
 
 		
@@ -103,11 +104,26 @@ MapFragment.OnHeadlineSelectedListener{
 		if(extras != null){
 			int id = extras.getInt("test");
 			FinishedRoute fin = db.getFinishedRoute(id);
-			long secs = fin.getTotTime();
 			
 			Bundle args = new Bundle();
-			args.putLong("time", secs);
+			args.putLong("time", fin.getTotTime());
+			args.putInt("distance", fin.getDist());
+			args.putDouble("speed", fin.getSpeed());
+			
 			runFragment.setArguments(args);
+			
+			Bundle locs = new Bundle();
+			List<Point> points = db.getAllPointsByRoute(id);
+			double[] latitudes = new double[points.size()];
+			double[] longitudes = new double[points.size()];
+			for(int i = 0 ; i < points.size() ; i++){
+				latitudes[i] = points.get(i).getLatitude();
+				longitudes[i] = points.get(i).getLongitude();
+			}
+			locs.putDoubleArray("latitudes", latitudes);
+			locs.putDoubleArray("longitudes", longitudes);
+			
+			mapFragment.setArguments(locs);
 		}
 
 	}
@@ -136,7 +152,7 @@ MapFragment.OnHeadlineSelectedListener{
 	}
 
 	@Override
-	public void sendFinalRoute(ArrayList<Location> finalRoute) {
+	public void sendFinalRoute(ArrayList<Location> finalRoute, float distance) {
 		// TODO Auto-generated method stub
 	}
 }

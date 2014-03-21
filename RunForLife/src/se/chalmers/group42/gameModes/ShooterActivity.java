@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.R;
 import android.app.Activity;
@@ -12,11 +13,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.widget.TextView;
 
 public class ShooterActivity extends Activity implements SensorEventListener {
 
-	private float angle, distance, coinAngle;
+	private float angle, distance, prevDistance, coinAngle;
 
 	private SensorManager mSensorManager;
 
@@ -25,7 +27,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 	private boolean hasBeenAnnounced = false;
 
 	TextView currentAngle;
-	//SeekBar currentDistance;
+	// SeekBar currentDistance;
 
 	private Timer timer;
 
@@ -45,11 +47,10 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 		// generate random coin to pick up
 		random = new Random();
-		coinAngle = random.nextInt(180 - (-180) + 1) + (-180);
-		
+		coinAngle = 0;
+
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
-		fx.loop(fx.getNavigationFX());
 
 		// Start running
 		timer = new Timer();
@@ -65,14 +66,19 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		mSensorManager.registerListener(this,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
 				SensorManager.SENSOR_DELAY_GAME);
+		
+		fx.update(fx.getNavigationFX(), angle, distance);
+		fx.loop(fx.getNavigationFX());
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-
 		// to stop the listener and save battery
 		mSensorManager.unregisterListener(this);
+
+		Message msg = fx.getHandler().obtainMessage(Constants.MSG_STOP);
+		fx.getHandler().sendMessage(msg);
 	}
 
 	@Override
@@ -81,20 +87,23 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		if (angle > 180)
 			angle = angle - 360;
 
-		//currentAngle.setText("Heading: " + Float.toString(angle) + " degrees");
-		currentAngle.setText(Float.toString(distance));
+		// currentAngle.setText("Heading: " + Float.toString(angle) +
+		// " degrees");
+		currentAngle.setText(Float.toString(distance) + "Angle: "
+				+ Float.toString(angle));
 
 		fx.update(fx.getNavigationFX(), angle, distance);
 
-		if (isCoinFound() && !hasBeenAnnounced) {
-			fx.stopLoop();
-			fx.foundCoin();
-			hasBeenAnnounced = true;
-		}
+		// if (isCoinFound() && !hasBeenAnnounced) {
+		// fx.stopLoop();
+		// fx.foundCoin();
+		// hasBeenAnnounced = true;
+		// generateNewCoin();
+		// }
 	}
 
 	public boolean isCoinFound() {
-		return distance < 5 && Math.abs(angle - coinAngle) < 10;
+		return distance < 5 && Math.abs(angle - coinAngle) < 5;
 	}
 
 	@Override
@@ -102,9 +111,17 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		// not in use
 	}
 
+	public void generateNewCoin() {
+		coinAngle = random.nextInt(180 - (-180) + 1) + (-180);
+		hasBeenAnnounced = false;
+	}
+
 	private class RunCloser extends TimerTask {
 		public void run() {
-			distance -= 5;
+			distance = -5;
+			// distance = (float) Math.sqrt((Math.pow(5, 2)
+			// + Math.pow(distance, 2) - 2 * 5 * distance
+			// * Math.cos(angle)));
 		}
 	}
 }

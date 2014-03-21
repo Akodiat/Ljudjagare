@@ -459,13 +459,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 	 * @param r Route to be finished
 	 * @param dist the total distance of the route
 	 */
-	public void finishRoute(Route r, float dist, Long time){
+	public void finishRoute(Route r, int dist, Long time){
 		SQLiteDatabase db = this.getWritableDatabase();
 		int id = r.getId();
-
+		
+		double d = dist;
+		double s = time;
 
 		//speed
-		double speed = (dist / time) *3.6; 
+		double speed = (d / s) *3.6; 
 
 		//Store data!!    	
 		FinishedRoute f = new FinishedRoute(r,dist,speed,time);
@@ -473,6 +475,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 		ContentValues values = new ContentValues();
 		values.put(KEY_FINISHED_ID, f.getId());
+		values.put(KEY_DIST, f.getDist());
 		values.put(KEY_SPEED, f.getSpeed());
 		values.put(KEY_TOTTIME, f.getTotTime());
 

@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -58,9 +59,11 @@ public class CoinCollectorActivity extends RunActivity {
 
 	// Get the finalRoute from mapFragment when the route is calculated.
 	@Override
-	public void sendFinalRoute(ArrayList<Location> finalRoute) {
+	public void sendFinalRoute(ArrayList<Location> finalRoute, float distance) {
 		this.finalRoute = finalRoute;
 		coinLocation = finalRoute.get(0);
+		final TextView textViewToChange = (TextView) findViewById(R.id.textView_distance);
+		textViewToChange.setText(distance +" m");
 	}
 
 	// Ask if you really want to close the activity 
@@ -88,7 +91,7 @@ public class CoinCollectorActivity extends RunActivity {
 		AlertDialog alert=builder.create();
 		alert.show();
 	}   
-	
+
 	@Override
 	public void onLocationChanged(Location location) {
 		super.onLocationChanged(location);
@@ -98,15 +101,14 @@ public class CoinCollectorActivity extends RunActivity {
 
 		// Update human location
 		this.human.setLocation(location);
-		
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
-				"android:switcher:"+R.id.pager+":1");
-		mapFrag.zoomToPosition(location);
-		
-		
+
 		if (generateRoute) {
 			generateRoute = false;
-			generateRandomRoute(100);
+			generateRandomRoute(Constants.RUN_DISTANCE);
+
+			MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
+					"android:switcher:"+R.id.pager+":1");
+			mapFrag.zoomToPosition(location);
 		}
 
 		//If a coin is found..
