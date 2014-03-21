@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class ShooterActivity extends Activity implements SensorEventListener {
 
-	private float angle, distance, coinAngle;
+	private float angle, distance, prevDistance, coinAngle;
 
 	private SensorManager mSensorManager;
 
@@ -25,7 +25,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 	private boolean hasBeenAnnounced = false;
 
 	TextView currentAngle;
-	//SeekBar currentDistance;
+	// SeekBar currentDistance;
 
 	private Timer timer;
 
@@ -46,7 +46,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		// generate random coin to pick up
 		random = new Random();
 		coinAngle = random.nextInt(180 - (-180) + 1) + (-180);
-		
+
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
 		fx.loop(fx.getNavigationFX());
@@ -81,8 +81,10 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		if (angle > 180)
 			angle = angle - 360;
 
-		//currentAngle.setText("Heading: " + Float.toString(angle) + " degrees");
-		currentAngle.setText(Float.toString(distance));
+		// currentAngle.setText("Heading: " + Float.toString(angle) +
+		// " degrees");
+		currentAngle.setText(Float.toString(distance) + "Angle: "
+				+ Float.toString(angle));
 
 		fx.update(fx.getNavigationFX(), angle, distance);
 
@@ -104,7 +106,10 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 	private class RunCloser extends TimerTask {
 		public void run() {
-			distance -= 5;
+			distance = -5;
+//			distance = (float) Math.sqrt((Math.pow(5, 2)
+//					+ Math.pow(distance, 2) - 2 * 5 * distance
+//					* Math.cos(angle)));
 		}
 	}
 }
