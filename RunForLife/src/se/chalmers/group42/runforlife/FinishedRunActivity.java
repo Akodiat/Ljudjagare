@@ -140,7 +140,7 @@ MapFragment.OnHeadlineSelectedListener{
 	}
 
 	@Override
-	public void sendFinalRoute(ArrayList<Location> finalRoute) {
+	public void sendFinalRoute(ArrayList<Location> finalRoute, float distance) {
 		// TODO Auto-generated method stub
 	}
 }

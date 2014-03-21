@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,7 +36,7 @@ public class MapFragment extends Fragment {
 	// Container Activity must implement this interface
 	public interface OnHeadlineSelectedListener {
 		public void sendMapLocation(LatLng latlng);
-		public void sendFinalRoute(ArrayList<Location> finalRoute);
+		public void sendFinalRoute(ArrayList<Location> finalRoute, float distance);
 	}
 
 	@Override
@@ -62,6 +64,7 @@ public class MapFragment extends Fragment {
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
 	private Polyline			myPolyRoute;
 	private boolean isConnected = false;
+	private float distance = 0;
 
 	public MapFragment() {
 	}
@@ -135,8 +138,17 @@ public class MapFragment extends Fragment {
 				Color.BLUE);
 		int points = directionPoints.size() - 1;
 		// int halfway=0;
+		Location distanceHelper = new Location("");
+		distanceHelper.setLatitude(directionPoints.get(0).latitude);
+		distanceHelper.setLongitude(directionPoints.get(0).longitude);
+
 		for (int i = 0; i < directionPoints.size(); i++) {
 			// points ++;
+			Location distancePoint = new Location("");
+			distancePoint.setLatitude(directionPoints.get(i).latitude);
+			distancePoint.setLongitude(directionPoints.get(i).longitude);
+			distance += distanceHelper.distanceTo(distancePoint);
+			distanceHelper = distancePoint;
 			rectLine.add(directionPoints.get(i));
 		}
 
@@ -186,7 +198,8 @@ public class MapFragment extends Fragment {
 
 		if (finalRoute.size() == 3) {
 			directionFinished = true;
-			mCallback.sendFinalRoute(finalRoute);
+			mCallback.sendFinalRoute(finalRoute, distance);
+
 		}
 		// marks++;
 		// marker = map.addMarker(new MarkerOptions()

@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -58,9 +59,11 @@ public class CoinCollectorActivity extends RunActivity {
 
 	// Get the finalRoute from mapFragment when the route is calculated.
 	@Override
-	public void sendFinalRoute(ArrayList<Location> finalRoute) {
+	public void sendFinalRoute(ArrayList<Location> finalRoute, float distance) {
 		this.finalRoute = finalRoute;
 		coinLocation = finalRoute.get(0);
+		final TextView textViewToChange = (TextView) findViewById(R.id.textView_distance);
+		textViewToChange.setText(distance +" m");
 	}
 
 	// Ask if you really want to close the activity 
@@ -106,7 +109,7 @@ public class CoinCollectorActivity extends RunActivity {
 		
 		if (generateRoute) {
 			generateRoute = false;
-			generateRandomRoute(100);
+			generateRandomRoute(1000);
 		}
 
 		//If a coin is found..
