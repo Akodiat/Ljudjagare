@@ -97,9 +97,9 @@ public class EscapeActivity extends RunActivity {
 	private void updateMarker() {
 		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
 				"android:switcher:"+R.id.pager+":1");
-		mapFrag.handleNewCoin(monster.getLocation());
+		//mapFrag.handleNewCoin(monster.getLocation());
 		// Show collected coin on the map
-		mapFrag.showCollectedCoin(human.getLocation());	
+		mapFrag.showCollectedCoin(monster.getLocation());	
 	}
 
 	@Override
