@@ -157,7 +157,8 @@ OrientationInputListener
 				if(asyncTask!=null){
 					asyncTask.cancel(true);
 				}
-				finish();
+				// Ska vara "finish()" egentligen men det fungerar inte?
+				android.os.Process.killProcess(android.os.Process.myPid());
 				//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
 				//						"android:switcher:"+R.id.pager+":2");
 				//				if(statsFragment.isAdded()){

@@ -124,15 +124,17 @@ public class CoinCollectorActivity extends RunActivity {
 			mapFrag.showCollectedCoin(human.getLocation());
 
 		} else {
+			dataHandler.resetWatch();
+			stopSound();
+
 			Intent finishedRunActivityIntent = new Intent(this, FinishedRunActivity.class);
 			startActivity(finishedRunActivityIntent);
 			if(asyncTask!=null){
 				asyncTask.cancel(true);
 			}
-			finish();
-
+			// Ska vara "finish()" egentligen men det fungerar inte?
+			android.os.Process.killProcess(android.os.Process.myPid());
 		}
-
 	}
 
 	private boolean usingCompass() {
