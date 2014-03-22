@@ -123,6 +123,16 @@ MapFragment.OnHeadlineSelectedListener{
 			locs.putDoubleArray("latitudes", latitudes);
 			locs.putDoubleArray("longitudes", longitudes);
 			
+			List<Coins> coins = db.getAllCoinsByRoute(id);
+			double[] coinlat = new double[points.size()];
+			double[] coinlng = new double[points.size()];
+			for(int i = 0 ; i < coins.size();i++){
+				coinlat[i] = coins.get(i).getLocation().getLatitude();
+				coinlng[i] = coins.get(i).getLocation().getLongitude();
+			}
+			locs.putDoubleArray("coinlat", coinlat);
+			locs.putDoubleArray("coinlng", coinlng);
+			
 			mapFragment.setArguments(locs);
 		}
 

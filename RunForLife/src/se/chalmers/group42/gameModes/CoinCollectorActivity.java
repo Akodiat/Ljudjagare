@@ -114,7 +114,7 @@ public class CoinCollectorActivity extends RunActivity {
 		//If a coin is found..
 		if(isAtCoin())
 		{
-			dataHandler.onAquiredCoin(coinLocation);
+			dataHandler.onAquiredCoin(human.getLocation());
 			//Increase the player score by one
 			this.human.modScore(1);
 
@@ -168,6 +168,7 @@ public class CoinCollectorActivity extends RunActivity {
 			stopSound();
 
 			Intent finishedRunActivityIntent = new Intent(this, FinishedRunActivity.class);
+			finishedRunActivityIntent.putExtra("test", dataHandler.getCurrentRoute());
 			startActivity(finishedRunActivityIntent);
 			if(asyncTask!=null){
 				asyncTask.cancel(true);
@@ -179,7 +180,7 @@ public class CoinCollectorActivity extends RunActivity {
 
 	private boolean usingCompass() {
 		// Use compass if human is moving in less than 1 m/s
-		return true; //human.getLocation().getSpeed() < 1;
+		return false; //human.getLocation().getSpeed() < 1;
 	}
 
 	private void adjustPanoration() {
