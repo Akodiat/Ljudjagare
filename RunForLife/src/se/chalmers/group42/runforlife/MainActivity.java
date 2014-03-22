@@ -74,6 +74,7 @@ GPSInputListener{
  
 		//Setting up status text
 		gpsText = (TextView) findViewById(R.id.textViewGPS);
+		gpsText.setText("Searching for gps...");
 		soundText = (TextView) findViewById(R.id.textViewSound);
 		headPhonesText= (TextView) findViewById(R.id.textViewHeadphones);
 

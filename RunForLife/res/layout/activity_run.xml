@@ -1,7 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="2dp"
+    android:paddingLeft="2dp" >
 
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,53 +13,7 @@
         android:layout_height="match_parent"
         tools:context=".RunActivity"/>
 
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:paddingBottom="2dp"
-		android:paddingLeft="2dp" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center" >
-
-            <ImageView
-                android:id="@+id/imageViewGPS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/gps_red" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center" >
-
-            <ImageView
-                android:id="@+id/imageViewSound"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/sound_red" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center" >
-
-            <ImageView
-                android:id="@+id/imageViewHeadphones"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/headphones_red" />
-        </TableRow>
-    </TableLayout>
+    <include layout="@layout/status_icons"/>
 
     <ImageButton
         android:id="@+id/button_stop"
@@ -69,6 +25,7 @@
         android:paddingBottom="2dp"
 		android:paddingRight="2dp"
         android:src="@drawable/stop"
+        android:contentDescription="@string/button_desc_stop"
         android:background="#0000" />
 
     <ImageButton
@@ -80,6 +37,7 @@
 		android:paddingRight="2dp"
         android:layout_centerInParent="true"
         android:src="@drawable/pause"
+        android:contentDescription="@string/button_desc_pause"
         android:background="#0000" />
 
 </RelativeLayout>

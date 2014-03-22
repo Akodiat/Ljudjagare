@@ -17,7 +17,14 @@
     <string name="table_pace">Pace</string>
     <string name="title_completedrun_list">Completed Runs</string>
     <string name="title_completedrun_detail">Completed Run Detail</string>
-    <string name="run_image_desc">ImageView containing the Run for Life-header image</string>
+    <string name="image_desc_run">ImageView containing the Run for Life-header image</string>
+    <string name="image_desc_gps">ImageView containing GPS image</string>
+    <string name="image_desc_sound">ImageView containing sound image</string>
+    <string name="image_desc_headphones">ImageView containing headphones image</string>
+    <string name="button_desc_run">Run button</string>
+    <string name="button_desc_pause">Pause button</string>
+    <string name="button_desc_stop">Stop button</string>
+    <string name="button_desc_finish">Finish button</string>
 
     <string-array name="nav_drawer_array">
         <item>Run</item>

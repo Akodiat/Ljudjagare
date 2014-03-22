@@ -31,7 +31,7 @@ MapFragment.OnHeadlineSelectedListener{
 	MySQLiteHelper db;
 
 	//Button
-	private ImageButton endButton;
+	private ImageButton finishButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +91,8 @@ MapFragment.OnHeadlineSelectedListener{
 		/*
 		 * Button taking you back to main menu.
 		 */
-		endButton = (ImageButton) findViewById(R.id.button_end);
-		endButton.setOnClickListener(new OnClickListener() {
+		finishButton = (ImageButton) findViewById(R.id.button_finish);
+		finishButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();

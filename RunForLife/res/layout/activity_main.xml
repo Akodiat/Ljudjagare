@@ -21,8 +21,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/run_for_life"
-                android:contentDescription="@string/run_image_desc" />
+                android:contentDescription="@string/image_desc_run"
+                android:src="@drawable/run_for_life" />
 
             <at.technikum.mti.fancycoverflow.FancyCoverFlow
                 android:id="@+id/fancyCoverFlow"
@@ -45,75 +45,7 @@
                 android:paddingLeft="2dp"
                 android:paddingRight="2dp" >
 
-                <TableLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true" >
-
-                    <TableRow
-                        android:id="@+id/tableRow1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical|left" >
-
-                        <ImageView
-                            android:id="@+id/imageViewGPS"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingRight="2dp"
-                            android:src="@drawable/gps_red" />
-
-                        <TextView
-                            android:id="@+id/textViewGPS"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Searching for gps..." />
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical|left" >
-
-                        <ImageView
-                            android:id="@+id/imageViewSound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingRight="2dp"
-                            android:src="@drawable/sound_red" />
-
-                        <TextView
-                            android:id="@+id/textViewSound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Turn up media volume" />
-                    </TableRow>
-
-                    <TableRow
-                        android:id="@+id/tableRow3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical|left" >
-
-                        <ImageView
-                            android:id="@+id/imageViewHeadphones"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingRight="2dp"
-                            android:src="@drawable/headphones_red" />
-
-                        <TextView
-                            android:id="@+id/textViewHeadphones"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Plug in headphones" />
-                    </TableRow>
-                </TableLayout>
+                <include layout="@layout/status_icons"/>
 
                 <ImageButton
                     android:id="@+id/runButton"
@@ -122,6 +54,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:background="#0000"
+                    android:contentDescription="@string/button_desc_run"
                     android:src="@drawable/run" />
             </RelativeLayout>
         </RelativeLayout>

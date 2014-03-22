@@ -12,7 +12,7 @@
         tools:context=".RunActivity"/>
     
     <ImageButton
-        android:id="@+id/button_end"
+        android:id="@+id/button_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -20,6 +20,7 @@
         android:paddingBottom="2dp"
 		android:paddingRight="2dp"
         android:src="@drawable/finish"
+        android:contentDescription="@string/button_desc_finish"
         android:background="#0000" />
 
 </RelativeLayout>
