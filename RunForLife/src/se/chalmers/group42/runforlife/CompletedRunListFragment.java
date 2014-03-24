@@ -1,5 +1,7 @@
 package se.chalmers.group42.runforlife;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -7,6 +9,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import se.chalmers.group42.database.MySQLiteHelper;
+import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.dummy.DummyContent;
 
 /**
@@ -69,11 +73,18 @@ public class CompletedRunListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
+		testApplication app = (testApplication) getActivity().getApplication();
+		MySQLiteHelper db = app.getDatabase();
+		List<Route> routes = db.getAllRoutes();
+		
+		setListAdapter(new ArrayAdapter<Route>(getActivity(),
+				android.R.layout.simple_list_item_activated_1,routes));
+		
 		// TODO: replace with a real list adapter.
-		setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, DummyContent.ITEMS));
+//		setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+//				android.R.layout.simple_list_item_activated_1,
+//				android.R.id.text1, DummyContent.ITEMS));
 	}
 
 	@Override

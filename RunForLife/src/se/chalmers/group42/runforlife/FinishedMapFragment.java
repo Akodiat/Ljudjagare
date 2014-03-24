@@ -68,10 +68,12 @@ public class FinishedMapFragment extends MapFragment {
 			l = new LatLng(coinlat[i],coinlng[i]);
 			showCollectedCoin(l);
 		}
-		CameraUpdate cameraUpdate= CameraUpdateFactory.
-				newLatLngZoom(l, 16);
-		if(cameraUpdate!=null){
-			map.animateCamera(cameraUpdate);
+		if(l != null){
+			CameraUpdate cameraUpdate= CameraUpdateFactory.
+					newLatLngZoom(l, 16);
+			if(cameraUpdate!=null){
+				map.animateCamera(cameraUpdate);
+			}
 		}
 	}
 

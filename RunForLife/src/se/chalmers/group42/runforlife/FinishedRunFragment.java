@@ -51,17 +51,21 @@ public class FinishedRunFragment extends Fragment {
 
 			// *************SET SPEED/pace***************
 			double speed = args.getDouble("speed");
-			double pace = 60 / speed;
-
 			speed = Math.round(speed * 100) / 100.0d;
-			pace = Math.round(pace * 100) / 100.0d;
-
 			TextView txSpeed = (TextView) view
 					.findViewById(R.id.textViewSpeedAverage2);
 			txSpeed.setText("" + speed);
+
+			double pace;
+			if(speed != 0){
+				pace = Math.round((60 / speed) * 100) / 100.0d;
+			}else{
+				pace = 0;
+			}
 			TextView txPace = (TextView) view
 					.findViewById(R.id.textViewPaceAverage2);
 			txPace.setText("" + pace);
+
 		}
 	}
 }
