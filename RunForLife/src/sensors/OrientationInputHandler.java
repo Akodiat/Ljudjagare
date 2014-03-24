@@ -1,5 +1,7 @@
 package sensors;
 
+import com.google.android.gms.internal.am;
+
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -77,5 +79,13 @@ public class OrientationInputHandler implements SensorEventListener
 		if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE){
 			android.util.Log.d("Compass", "Gyroscope" + event.values[0] + "\t" + event.values[1] + "\t" + event.values[1]);
 		}
+	}
+	
+	private float calculateAlfa(float samplePeriod, float relativeDuration){
+		return relativeDuration / (relativeDuration + samplePeriod);
+	}
+	
+	private float calculateFilteredOrientation(float gyroOrientation, float accMagOrientation, float alfa){
+		return alfa * gyroOrientation + (1-alfa) * accMagOrientation;
 	}
 }
