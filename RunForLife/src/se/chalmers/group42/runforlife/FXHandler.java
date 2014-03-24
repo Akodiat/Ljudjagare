@@ -190,12 +190,12 @@ public class FXHandler {
 		fx.setAngle(angle);
 
 		if (fx.angle() < 0)
-			fx.setPitch((1 - Constants.MIN_PITCH) / 180 * fx.angle() + 1);
+			fx.setPitch((1 - Constants.MIN_PITCH) / 90 * fx.angle() + 1);
 		else
-			fx.setPitch((1 - Constants.MIN_PITCH) / (-180) * fx.angle() + 1);
+			fx.setPitch((1 - Constants.MIN_PITCH) / (-90) * fx.angle() + 1);
 
-		float minVol = 0.1f;
-		float newVol = 0;
+//		float minVol = 0.1f;
+//		float newVol = 0;
 
 		// change volume if sound comes from back
 //		if (Math.abs(fx.angle()) >= 90) {
