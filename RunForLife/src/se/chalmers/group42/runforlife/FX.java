@@ -3,7 +3,7 @@ package se.chalmers.group42.runforlife;
 import org.pielot.openal.Source;
 
 public class FX {
-	
+
 	private Source source;
 	private float distance;
 	private boolean isPlaying;
@@ -57,7 +57,7 @@ public class FX {
 		return angle;
 	}
 
-	/** 
+	/**
 	 * Play sound once without looping.
 	 */
 	public void play() {
@@ -69,8 +69,12 @@ public class FX {
 		source.stop();
 		isPlaying = false;
 	}
-	
+
 	public boolean isPlaying() {
 		return isPlaying;
+	}
+
+	public boolean isBehindUser() {
+		return Math.abs(angle) > 90;
 	}
 }

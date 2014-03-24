@@ -63,11 +63,12 @@ public class CoinCollectorActivity extends RunActivity {
 		this.finalRoute = finalRoute;
 		coinLocation = finalRoute.get(0);
 		final TextView textViewToChange = (TextView) findViewById(R.id.textView_distance);
-		textViewToChange.setText(distance +" m");
+		textViewToChange.setText(distance + " m");
 	}
 
-	// Ask if you really want to close the activity 
-	// From, http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
+	// Ask if you really want to close the activity
+	// From,
+	// http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
 	@Override
 	public void onBackPressed() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -76,21 +77,23 @@ public class CoinCollectorActivity extends RunActivity {
 		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				//if user pressed "yes", then he is allowed to exit from application
+				// if user pressed "yes", then he is allowed to exit from
+				// application
 				// Ska vara "finish()" egentligen men det fungerar inte?
 				android.os.Process.killProcess(android.os.Process.myPid());
 			}
 		});
-		builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				//if user select "No", just cancel this dialog and continue with app
+				// if user select "No", just cancel this dialog and continue
+				// with app
 				dialog.cancel();
 			}
 		});
-		AlertDialog alert=builder.create();
+		AlertDialog alert = builder.create();
 		alert.show();
-	}   
+	}
 
 	@Override
 	public void onLocationChanged(Location location) {
@@ -106,16 +109,15 @@ public class CoinCollectorActivity extends RunActivity {
 			generateRoute = false;
 			generateRandomRoute(Constants.RUN_DISTANCE);
 
-			MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
-					"android:switcher:"+R.id.pager+":1");
+			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 			mapFrag.zoomToPosition(location);
 		}
 
-		//If a coin is found..
-		if(isAtCoin())
-		{
+		// If a coin is found..
+		if (isAtCoin()) {
 			dataHandler.onAquiredCoin(human.getLocation());
-			//Increase the player score by one
+			// Increase the player score by one
 			this.human.modScore(1);
 
 			// Play sound of a coin
@@ -145,20 +147,20 @@ public class CoinCollectorActivity extends RunActivity {
 	private boolean isAtCoin() {
 		double dist = human.getLocation().distanceTo(coinLocation);
 		return (// If closer than minimum distance
-				human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
-				// Or the accuracy is less than 50 meters but still larger
-				// than the distance to the sound source.
-				|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
-						.distanceTo(coinLocation) < human.getLocation().getAccuracy()
-						: false));
+		human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
+		// Or the accuracy is less than 50 meters but still larger
+		// than the distance to the sound source.
+		|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
+				.distanceTo(coinLocation) < human.getLocation().getAccuracy()
+				: false));
 	}
 
 	private void generateNewCoin() {
-		if (human.getScore() < 3 ){
+		if (human.getScore() < 3) {
 			coinLocation = this.finalRoute.get(human.getScore());
 
-			MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
-					"android:switcher:"+R.id.pager+":1");
+			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 			mapFrag.handleNewCoin(coinLocation);
 			// Show collected coin on the map
 			mapFrag.showCollectedCoin(human.getLocation());
@@ -167,10 +169,12 @@ public class CoinCollectorActivity extends RunActivity {
 			dataHandler.resetWatch();
 			stopSound();
 
-			Intent finishedRunActivityIntent = new Intent(this, FinishedRunActivity.class);
-			finishedRunActivityIntent.putExtra("test", dataHandler.getCurrentRoute());
+			Intent finishedRunActivityIntent = new Intent(this,
+					FinishedRunActivity.class);
+			finishedRunActivityIntent.putExtra("test",
+					dataHandler.getCurrentRoute());
 			startActivity(finishedRunActivityIntent);
-			if(asyncTask!=null){
+			if (asyncTask != null) {
 				asyncTask.cancel(true);
 			}
 			// Ska vara "finish()" egentligen men det fungerar inte?
@@ -180,22 +184,19 @@ public class CoinCollectorActivity extends RunActivity {
 
 	private boolean usingCompass() {
 		// Use compass if human is moving in less than 1 m/s
-		return false; //human.getLocation().getSpeed() < 1;
+		return false; // human.getLocation().getSpeed() < 1;
 	}
 
 	private void adjustPanoration() {
 
-		float angle = usingCompass() ? compassFromNorth
+		// negate to invert angle
+		float angle = -(usingCompass() ? compassFromNorth
 				+ human.getLocation().bearingTo(coinLocation)
-				: getRotation_GPS();
+				: getRotation_GPS());
 
-				// if(angle < 0){
-				// angle += 360;
-				// }
-
-				if (fx.getNavigationFX().isPlaying())
-					fx.update(fx.getNavigationFX(), (angle), human.getLocation()
-							.distanceTo(coinLocation));
+		if (fx.getNavigationFX().isPlaying())
+			fx.update(fx.getNavigationFX(), (angle), human.getLocation()
+					.distanceTo(coinLocation));
 
 	}
 
