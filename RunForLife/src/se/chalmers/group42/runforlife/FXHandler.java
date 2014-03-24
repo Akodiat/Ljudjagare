@@ -26,7 +26,7 @@ public class FXHandler {
 	private int coin, sayCoinReached, sayNewCoin, finishedTone, goodJob;
 
 	// FX representing the navigation sound (
-	private FX navFX;
+	private FX navFX, navFXBehind;
 
 	private SoundEnv env;
 
@@ -45,13 +45,14 @@ public class FXHandler {
 		env = SoundEnv.getInstance((Activity) context);
 
 		// Load sound into memory. Has to be mono .wav file.
-		Buffer navFXBuffer;
+		Buffer navFXBuffer, navFXBehindBuffer;
 		try {
 			navFXBuffer = env.addBuffer("nav_fx");
+			navFXBehindBuffer = env.addBuffer("nav_fx_behind");
 
 			// Add the audio buffer as a source in the 3D room and
 			// create FX instance.
-			navFX = new FX(env.addSource(navFXBuffer));
+			navFX = new FX(env.addSource(navFXBuffer), env.addSource(navFXBehindBuffer));
 		} catch (IOException e) {
 			Log.e(Constants.TAG, "Could not initialize OpenAL4Android", e);
 		}
@@ -197,10 +198,10 @@ public class FXHandler {
 		float newVol = 0;
 
 		// change volume if sound comes from back
-		if (Math.abs(fx.angle()) >= 90) {
-			newVol = ((1 - minVol) / (-90)) * (Math.abs(fx.angle()) - 90) + 1;
-			fx.source().setGain(newVol);
-		}
+//		if (Math.abs(fx.angle()) >= 90) {
+//			newVol = ((1 - minVol) / (-90)) * (Math.abs(fx.angle()) - 90) + 1;
+//			fx.source().setGain(newVol);
+//		}
 
 		fx.setDistance(distance);
 
