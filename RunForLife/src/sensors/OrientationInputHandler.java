@@ -30,9 +30,11 @@ public class OrientationInputHandler implements SensorEventListener
 		 
 		 Sensor accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		 Sensor magneticField = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+		 Sensor gyroscope	  = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
 		 sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
 		 sensorManager.registerListener(this, magneticField, SensorManager.SENSOR_DELAY_FASTEST);
+		 sensorManager.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_FASTEST);
 		
 		// http://stackoverflow.com/questions/7471226/method-onsensorchanged-when-screen-is-lock
 //		PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -68,9 +70,12 @@ public class OrientationInputHandler implements SensorEventListener
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(R, orientation);
 				headingAngleOrientation =  (float) (-(180/Math.PI) * orientation[0]); // orientation contains: azimut, pitch and roll
-				android.util.Log.d("Compass", "Heading angle: "+ headingAngleOrientation);
+				//android.util.Log.d("Compass", "Heading angle: "+ headingAngleOrientation);
 				listener.onCompassChanged(headingAngleOrientation);
 			}
+		}
+		if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE){
+			android.util.Log.d("Compass", "Gyroscope" + event.values[0] + "\t" + event.values[1] + "\t" + event.values[1]);
 		}
 	}
 }
