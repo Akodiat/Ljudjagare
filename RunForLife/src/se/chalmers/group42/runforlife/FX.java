@@ -53,12 +53,11 @@ public class FX {
 
 	public void setAngle(float angle) {
 		this.angle = angle;
-		
-		if(Math.abs(angle) > 90) {
+
+		if (Math.abs(angle) > 90) {
 			source = behindSource;
 			angle = 0;
-		}
-		else
+		} else
 			source = forwardSource;
 	}
 
@@ -85,5 +84,10 @@ public class FX {
 
 	public boolean isBehindUser() {
 		return Math.abs(angle) > 90;
+	}
+
+	public void setVolume(float volume) {
+		forwardSource.setGain(volume);
+		behindSource.setGain(volume);
 	}
 }

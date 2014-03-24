@@ -43,5 +43,7 @@ public class Constants {
 	public static final int MIN_DELAY = 250;
 	
 	public static final int BEHIND_ANGLE = 40;
+	
+	public static final int APPROACHING_COIN = 100;
 
 }

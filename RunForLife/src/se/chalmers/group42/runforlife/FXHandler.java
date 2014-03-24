@@ -121,6 +121,7 @@ public class FXHandler {
 	}
 
 	public void foundCoin() {
+		soundPool.stop(coin); // stop play coin
 		(new Thread(new ReachedCoinRunnable())).start();
 	}
 
@@ -198,8 +199,9 @@ public class FXHandler {
 		fx.setDistance(distance);
 
 		// if distance is below 100, introduce coin
-//		if (distance < 100)
-//			loopCoin(distance);
+		if (distance < Constants.APPROACHING_COIN
+				&& distance > Constants.MIN_DISTANCE)
+			loopCoin(distance);
 
 		// tell the user how close to goal he/she is
 		distanceAnnouncer(distance);
@@ -207,12 +209,15 @@ public class FXHandler {
 
 	public void loopCoin(float distance) {
 		if (coinPlayable) {
-			soundPool.play(coin, 1, 1, 1, Constants.LOOP, 1);
+			soundPool.play(coin, 0, 0, 1, Constants.LOOP, 1);
 			coinPlayable = false;
 		}
 
 		soundPool.setVolume(coin, (1 / (-Constants.MIN_DISTANCE)) * distance
 				+ 2, (1 / (-Constants.MIN_DISTANCE)) * distance + 2);
+
+		// decrease volume on the navigate sound until coin is reached.
+		navFX.setVolume((1 / Constants.MIN_DISTANCE) * distance - 1);
 	}
 
 	public void sayDistance(Speech speech) {

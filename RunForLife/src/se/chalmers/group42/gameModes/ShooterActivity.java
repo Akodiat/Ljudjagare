@@ -43,7 +43,6 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		currentAngle = (TextView) findViewById(R.id.currentAngle);
 		currentDistance = (SeekBar) findViewById(R.id.currentDistance);
 		currentDistance.setMax(500);
-		currentDistance.setProgress(500);
 		
 		distance = 500;
 		
@@ -64,7 +63,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
 		// generate random coin to pick up
-		random = new Random();
+		// random = new Random();
 		coinAngle = 0;
 
 		// Initialize audio
