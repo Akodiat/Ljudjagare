@@ -104,7 +104,6 @@ MapFragment.OnHeadlineSelectedListener{
 		if(extras != null){
 			int id = extras.getInt("test");
 			FinishedRoute fin = db.getFinishedRoute(id);
-			
 			Bundle args = new Bundle();
 			args.putLong("time", fin.getTotTime());
 			args.putInt("distance", fin.getDist());
