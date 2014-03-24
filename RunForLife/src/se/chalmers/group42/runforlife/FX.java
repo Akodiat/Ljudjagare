@@ -25,7 +25,7 @@ public class FX {
 		this.angle = 0; // must be 90 to be heard in front
 		this.pitch = 1; // original pitch at first
 
-		source.setPosition(0, 0, 1); // set position in front on user
+		source.setPosition(0, 0, -1); // set position in front on user
 		source.setRolloffFactor(0); // no roll-off
 	}
 

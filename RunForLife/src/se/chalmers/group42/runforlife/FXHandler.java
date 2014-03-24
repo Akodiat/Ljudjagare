@@ -129,7 +129,7 @@ public class FXHandler {
 	 *            the sound to be looped
 	 */
 	public void loop(FX fx) {
-		env.setListenerOrientation(fx.angle());
+		env.setListenerOrientation(fx.angle() + 180);
 		fx.play();
 
 		// Send message to handler with delay.
