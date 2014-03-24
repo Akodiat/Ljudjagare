@@ -20,7 +20,7 @@ public class Constants {
 	/**
 	 * Distance to destination where sound behavior changes.
 	 */
-	public static final int MAX_DISTANCE = 200;
+	public static final int MAX_DISTANCE = 500;
 	/**
 	 * Distance to destination where user has reached the destination.
 	 */

@@ -35,7 +35,7 @@ public class FXHandler {
 	private Speech say100, say200, say300, say400, say500, say600, say700,
 			say800, say900, say1000;
 
-	private boolean handlerActive = false;
+	private boolean handlerActive = false, coinPlayable = true;
 
 	/**
 	 * Initialize sound engine
@@ -107,6 +107,7 @@ public class FXHandler {
 		sayNewCoin = soundPool.load(context, R.raw.new_coin, 1);
 		goodJob = soundPool.load(context, R.raw.good_job, 1);
 		finishedTone = soundPool.load(context, R.raw.finished_tone, 1);
+		coin = soundPool.load(context, R.raw.coin, 1);
 	}
 
 	public FX getNavigationFX() {
@@ -203,8 +204,22 @@ public class FXHandler {
 
 		fx.setDistance(distance);
 
+		// if distance is below 100, introduce coin
+		if (distance < 100)
+//			loopCoin(distance);
+
 		// tell the user how close to goal he/she is
 		distanceAnnouncer(distance);
+	}
+
+	public void loopCoin(float distance) {
+		if (coinPlayable) {
+			soundPool.play(coin, 1, 1, 1, 1, 1);
+			coinPlayable = false;
+		}
+
+//		soundPool.setVolume(coin, (1 / (-Constants.MIN_DISTANCE)) * distance
+//				+ 2, (1 / (-Constants.MIN_DISTANCE)) * distance + 2);
 	}
 
 	public void sayDistance(Speech speech) {

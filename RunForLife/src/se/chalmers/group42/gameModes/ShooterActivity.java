@@ -14,6 +14,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Message;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class ShooterActivity extends Activity implements SensorEventListener {
@@ -27,7 +29,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 	private boolean hasBeenAnnounced = false;
 
 	TextView currentAngle;
-	// SeekBar currentDistance;
+	SeekBar currentDistance;
 
 	private Timer timer;
 
@@ -39,11 +41,29 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		setContentView(R.layout.activity_shooter);
 
 		currentAngle = (TextView) findViewById(R.id.currentAngle);
+		currentDistance = (SeekBar) findViewById(R.id.currentDistance);
+		currentDistance.setMax(500);
+		currentDistance.setProgress(500);
+		
+		distance = 500;
+		
+		currentDistance.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+               	distance = progress;
+            }
+ 
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+ 
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            	// TODO Auto-generated method stub
+            }
+        });
+ 
+		
 
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-
-		// set distance
-		distance = 500;
 
 		// generate random coin to pick up
 		random = new Random();
@@ -53,8 +73,8 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		(fx = new FXHandler()).initSound(this);
 
 		// Start running
-		timer = new Timer();
-		timer.schedule(new RunCloser(), 0, 1000);
+//		timer = new Timer();
+//		timer.schedule(new RunCloser(), 0, 1000);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -66,7 +86,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		mSensorManager.registerListener(this,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
 				SensorManager.SENSOR_DELAY_GAME);
-		
+
 		fx.update(fx.getNavigationFX(), angle, distance);
 		fx.loop(fx.getNavigationFX());
 	}
@@ -94,12 +114,12 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 		fx.update(fx.getNavigationFX(), angle, distance);
 
-		// if (isCoinFound() && !hasBeenAnnounced) {
-		// fx.stopLoop();
-		// fx.foundCoin();
-		// hasBeenAnnounced = true;
-		// generateNewCoin();
-		// }
+		if (isCoinFound() && !hasBeenAnnounced) {
+			fx.stopLoop();
+			fx.foundCoin();
+			hasBeenAnnounced = true;
+			// generateNewCoin();
+		}
 	}
 
 	public boolean isCoinFound() {
@@ -118,10 +138,10 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 	private class RunCloser extends TimerTask {
 		public void run() {
-			distance = -5;
-			// distance = (float) Math.sqrt((Math.pow(5, 2)
-			// + Math.pow(distance, 2) - 2 * 5 * distance
-			// * Math.cos(angle)));
+//			distance = -5;
+//			 distance = (float) Math.sqrt((Math.pow(5, 2)
+//			 + Math.pow(distance, 2) - 2 * 5 * distance
+//			 * Math.cos(angle)));
 		}
 	}
 }
