@@ -59,9 +59,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
             public void onStopTrackingTouch(SeekBar seekBar) {
             	// TODO Auto-generated method stub
             }
-        });
- 
-		
+        });		
 
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 

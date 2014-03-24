@@ -26,7 +26,7 @@ public class FXHandler {
 	private int coin, sayCoinReached, sayNewCoin, finishedTone, goodJob;
 
 	// FX representing the navigation sound (
-	private FX navFX, navFXBehind;
+	private FX navFX;
 
 	private SoundEnv env;
 
@@ -45,14 +45,15 @@ public class FXHandler {
 		env = SoundEnv.getInstance((Activity) context);
 
 		// Load sound into memory. Has to be mono .wav file.
-		Buffer navFXBuffer, navFXBehindBuffer;
+		Buffer navFXFrontBuffer, navFXBehindBuffer;
 		try {
-			navFXBuffer = env.addBuffer("nav_fx");
+			navFXFrontBuffer = env.addBuffer("nav_fx");
 			navFXBehindBuffer = env.addBuffer("nav_fx_behind");
 
 			// Add the audio buffer as a source in the 3D room and
 			// create FX instance.
-			navFX = new FX(env.addSource(navFXBuffer), env.addSource(navFXBehindBuffer));
+			navFX = new FX(env.addSource(navFXFrontBuffer),
+					env.addSource(navFXBehindBuffer));
 		} catch (IOException e) {
 			Log.e(Constants.TAG, "Could not initialize OpenAL4Android", e);
 		}
@@ -189,25 +190,16 @@ public class FXHandler {
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
 
-		if (fx.angle() < 0)
+		if (fx.angle() < 0 && fx.angle() > -90)
 			fx.setPitch((1 - Constants.MIN_PITCH) / 90 * fx.angle() + 1);
-		else
+		else if (fx.angle() >= 0 && fx.angle() < 90)
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-90) * fx.angle() + 1);
-
-//		float minVol = 0.1f;
-//		float newVol = 0;
-
-		// change volume if sound comes from back
-//		if (Math.abs(fx.angle()) >= 90) {
-//			newVol = ((1 - minVol) / (-90)) * (Math.abs(fx.angle()) - 90) + 1;
-//			fx.source().setGain(newVol);
-//		}
 
 		fx.setDistance(distance);
 
 		// if distance is below 100, introduce coin
 		if (distance < 100)
-//			loopCoin(distance);
+			loopCoin(distance);
 
 		// tell the user how close to goal he/she is
 		distanceAnnouncer(distance);
@@ -215,12 +207,12 @@ public class FXHandler {
 
 	public void loopCoin(float distance) {
 		if (coinPlayable) {
-			soundPool.play(coin, 1, 1, 1, 1, 1);
+			soundPool.play(coin, 1, 1, 1, Constants.LOOP, 1);
 			coinPlayable = false;
 		}
 
-//		soundPool.setVolume(coin, (1 / (-Constants.MIN_DISTANCE)) * distance
-//				+ 2, (1 / (-Constants.MIN_DISTANCE)) * distance + 2);
+		soundPool.setVolume(coin, (1 / (-Constants.MIN_DISTANCE)) * distance
+				+ 2, (1 / (-Constants.MIN_DISTANCE)) * distance + 2);
 	}
 
 	public void sayDistance(Speech speech) {
@@ -286,6 +278,5 @@ public class FXHandler {
 				e.printStackTrace();
 			} // wait
 		}
-
 	}
 }
