@@ -52,6 +52,7 @@ public class FinishedMapFragment extends MapFragment {
 		double[] coinlat = locs.getDoubleArray("coinlat");
 		double[] coinlng = locs.getDoubleArray("coinlng");
 		
+		//draw path
 		for(int i = 0 ; i < latitudes.length; i++){
 			LatLng l = new LatLng(latitudes[i],longitudes[i]);
 			
@@ -59,19 +60,17 @@ public class FinishedMapFragment extends MapFragment {
 			myPolyRoute = map.addPolyline(routeLine);
 		}
 		
+		//draw coin
 		for(int i = 0 ; i < coinlat.length ; i++){
-			Location l = new Location("");
-			l.setLatitude(coinlat[i]);
-			l.setLongitude(coinlng[i]);
+			LatLng l = new LatLng(coinlat[i],coinlng[i]);
 			showCollectedCoin(l);
 		}
 	}
 	
-	@Override
-	public void showCollectedCoin(Location locationOfCoin){
+	public void showCollectedCoin(LatLng l){
+		Log.d("asd","test: "+l.latitude+":"+l.longitude);
 		Marker marker = map.addMarker(new MarkerOptions()
-		.position(new LatLng(locationOfCoin.getLatitude(),
-				locationOfCoin.getLongitude()))
+		.position(l)
 				.title("Coin")
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_coin)));
 	}

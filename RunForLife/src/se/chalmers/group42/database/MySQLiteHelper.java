@@ -436,7 +436,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 				coin.setId(Integer.parseInt(cursor.getString(0)));
 				coin.setRouteID(Integer.parseInt(cursor.getString(1)));
 				loc.setLatitude(cursor.getDouble(2));
-				loc.setLatitude(cursor.getDouble(3));
+				loc.setLongitude(cursor.getDouble(3));
 				coin.setLocation(loc);
 				coin.setTime(cursor.getLong(4));
 				coin.setDistance(cursor.getInt(5));
@@ -446,7 +446,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		}
 
 		//Log
-		Log.d("getAllPoints("+routeId+")", coins.toString());
+		Log.d("getAllCoins("+routeId+")", coins.toString());
 
 		return coins;
 	}
