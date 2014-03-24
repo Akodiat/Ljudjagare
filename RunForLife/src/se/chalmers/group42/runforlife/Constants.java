@@ -11,6 +11,8 @@ public class Constants {
 	public static final double LAT_LNG_TO_METER = 111300f;
 	
 	public final static String TAG = "Run For Life";
+	
+	public static final boolean USING_COMPASS = false;
 	/**
 	 * Distance to the first generated point you run to.
 	 */

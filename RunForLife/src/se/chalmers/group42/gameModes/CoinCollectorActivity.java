@@ -183,8 +183,7 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private boolean usingCompass() {
-		// Use compass if human is moving in less than 1 m/s
-		return false; //human.getLocation().getSpeed() < 1;
+		return Constants.USING_COMPASS; //human.getLocation().getSpeed() < 1;
 	}
 
 	private void adjustPanoration() {
