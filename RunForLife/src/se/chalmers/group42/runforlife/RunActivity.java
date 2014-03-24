@@ -65,6 +65,8 @@ OrientationInputListener
 		//Setting up Sensor input
 		new GPSInputHandler(this, this);
 		new OrientationInputHandler(this, this);
+		
+		
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
