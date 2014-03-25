@@ -84,7 +84,7 @@ MapFragment.OnHeadlineSelectedListener{
 
 		runFragment = new FinishedRunFragment();
 		mapFragment = new FinishedMapFragment();
-		statsFragment = new StatsFragment();
+		statsFragment = new FinishedStatsFragment();
 
 		
 		
@@ -104,7 +104,6 @@ MapFragment.OnHeadlineSelectedListener{
 		if(extras != null){
 			int id = extras.getInt("test");
 			FinishedRoute fin = db.getFinishedRoute(id);
-			
 			Bundle args = new Bundle();
 			args.putLong("time", fin.getTotTime());
 			args.putInt("distance", fin.getDist());
@@ -124,16 +123,31 @@ MapFragment.OnHeadlineSelectedListener{
 			locs.putDoubleArray("longitudes", longitudes);
 			
 			List<Coins> coins = db.getAllCoinsByRoute(id);
-			double[] coinlat = new double[points.size()];
-			double[] coinlng = new double[points.size()];
-			for(int i = 0 ; i < coins.size();i++){
+			int nrCoins = coins.size();
+			double[] coinlat = new double[nrCoins];
+			double[] coinlng = new double[nrCoins];
+			
+			long[] times = new long[nrCoins];
+			int[] dists = new int[nrCoins];
+			
+			for(int i = 0 ; i < nrCoins;i++){
 				coinlat[i] = coins.get(i).getLocation().getLatitude();
 				coinlng[i] = coins.get(i).getLocation().getLongitude();
+			
+				times[i] = coins.get(i).getTime();
+				dists[i] = coins.get(i).getDistance();
 			}
 			locs.putDoubleArray("coinlat", coinlat);
 			locs.putDoubleArray("coinlng", coinlng);
 			
 			mapFragment.setArguments(locs);
+			
+			Bundle stats = new Bundle();
+			
+			stats.putLongArray("times", times);
+			stats.putIntArray("dists", dists);
+
+			statsFragment.setArguments(stats);
 		}
 
 	}

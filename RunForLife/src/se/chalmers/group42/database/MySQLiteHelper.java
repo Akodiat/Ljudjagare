@@ -436,7 +436,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 				coin.setId(Integer.parseInt(cursor.getString(0)));
 				coin.setRouteID(Integer.parseInt(cursor.getString(1)));
 				loc.setLatitude(cursor.getDouble(2));
-				loc.setLatitude(cursor.getDouble(3));
+				loc.setLongitude(cursor.getDouble(3));
 				coin.setLocation(loc);
 				coin.setTime(cursor.getLong(4));
 				coin.setDistance(cursor.getInt(5));
@@ -446,7 +446,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		}
 
 		//Log
-		Log.d("getAllPoints("+routeId+")", coins.toString());
+		Log.d("getAllCoins("+routeId+")", coins.toString());
 
 		return coins;
 	}
@@ -491,7 +491,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 	public FinishedRoute getFinishedRoute(int id){
 		SQLiteDatabase db = this.getReadableDatabase();
 		Route r = this.getRoute(id);
-
+		
 		Cursor cursor = db.query(TABLE_FINISHEDROUTES, COLUMNS_FINROUTES, KEY_FINISHED_ID+"=?", 
 				new String[] {String.valueOf(id)}, null, null, null);
 
@@ -507,6 +507,29 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 		Log.d("getFinished", f.toString());
 		return f;
+	}
+	public List<FinishedRoute> getAllFinishedRoutes(){
+		List<FinishedRoute> routes = new LinkedList<FinishedRoute>();
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		Cursor cursor = db.query(TABLE_FINISHEDROUTES, COLUMNS_FINROUTES, null, null, null, null, null);
+
+		if(cursor.moveToFirst()){
+			do{
+				Route r = getRoute(cursor.getInt(0));
+				FinishedRoute f = new FinishedRoute();
+				
+				f.setId(cursor.getInt(0));
+				f.setDist(cursor.getInt(1));
+				f.setSpeed(cursor.getDouble(2));
+				f.setTotTime(cursor.getLong(3));
+				f.setDate(r.getDate());
+				routes.add(f);
+			}while(cursor.moveToNext());
+		}
+
+		Log.d("getAllRoutes",routes.toString());
+		return routes; 
 	}
 
 	/****************************HELPER************************************************/

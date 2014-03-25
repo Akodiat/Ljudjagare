@@ -11,16 +11,18 @@ public class Constants {
 	public static final double LAT_LNG_TO_METER = 111300f;
 	
 	public final static String TAG = "Run For Life";
+	
+	public static final boolean USING_COMPASS = false;
 	/**
 	 * Distance to the first generated point you run to.
 	 */
-	public static final int RUN_DISTANCE = 700;
+	public static final int RUN_DISTANCE = 150;
 	
 	
 	/**
 	 * Distance to destination where sound behavior changes.
 	 */
-	public static final int MAX_DISTANCE = 200;
+	public static final int MAX_DISTANCE = 500;
 	/**
 	 * Distance to destination where user has reached the destination.
 	 */

@@ -43,7 +43,7 @@ public class DataHandler {
 		m_handler = new Handler();
 		
 		//FLUSH DB
-		db.onUpgrade(db.getWritableDatabase(), 1, 2);
+//		db.onUpgrade(db.getWritableDatabase(), 1, 2);
 	}
 	
 	public void newLocation(Location location){

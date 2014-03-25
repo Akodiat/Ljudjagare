@@ -1,30 +1,20 @@
 package sensors;
 
-import se.chalmers.group42.runforlife.RunActivity;
-import utils.LocationHelper;
+import com.google.android.gms.internal.am;
+
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.location.Location;
-import android.os.Bundle;
 import android.os.PowerManager;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.location.LocationClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Class for handling all GPS and other sensor input
  * @author Joakim Johansson
  *
  */
-public class OrientationInputHandler implements 
-SensorEventListener
+public class OrientationInputHandler implements SensorEventListener
 {
 	private float 			headingAngleOrientation;
 
@@ -36,6 +26,17 @@ SensorEventListener
 	public OrientationInputHandler(OrientationInputListener listener, Context context) {
 		this.listener = listener;
 		
+		android.util.Log.d("Compass", "OrientationInputHandler initiated");
+		
+		 SensorManager sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+		 
+		 Sensor accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		 Sensor magneticField = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+		 Sensor gyroscope	  = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+		 sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
+		 sensorManager.registerListener(this, magneticField, SensorManager.SENSOR_DELAY_FASTEST);
+		 sensorManager.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_FASTEST);
 		
 		// http://stackoverflow.com/questions/7471226/method-onsensorchanged-when-screen-is-lock
 //		PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -58,6 +59,7 @@ SensorEventListener
 	float[] gravityMatrix;
 	float[] geomagneticMatrix;
 	public void onSensorChanged(SensorEvent event) {
+		//android.util.Log.d("Compass", "Sensor changed");
 		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
 			gravityMatrix = event.values;
 		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
@@ -70,9 +72,20 @@ SensorEventListener
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(R, orientation);
 				headingAngleOrientation =  (float) (-(180/Math.PI) * orientation[0]); // orientation contains: azimut, pitch and roll
-
+				//android.util.Log.d("Compass", "Heading angle: "+ headingAngleOrientation);
 				listener.onCompassChanged(headingAngleOrientation);
 			}
 		}
+		if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE){
+			android.util.Log.d("Compass", "Gyroscope" + event.values[0] + "\t" + event.values[1] + "\t" + event.values[1]);
+		}
+	}
+	
+	private float calculateAlfa(float samplePeriod, float relativeDuration){
+		return relativeDuration / (relativeDuration + samplePeriod);
+	}
+	
+	private float calculateFilteredOrientation(float gyroOrientation, float accMagOrientation, float alfa){
+		return alfa * gyroOrientation + (1-alfa) * accMagOrientation;
 	}
 }

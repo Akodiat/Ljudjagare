@@ -3,8 +3,8 @@ package se.chalmers.group42.runforlife;
 import org.pielot.openal.Source;
 
 public class FX {
-	
-	private Source source;
+
+	private Source source, forwardSource, behindSource;
 	private float distance;
 	private boolean isPlaying;
 
@@ -19,8 +19,10 @@ public class FX {
 	 */
 	private float pitch;
 
-	public FX(Source source) {
-		this.source = source;
+	public FX(Source forwardSource, Source behindSource) {
+		this.source = forwardSource;
+		this.forwardSource = forwardSource;
+		this.behindSource = behindSource;
 		this.distance = Constants.MAX_DISTANCE;
 		this.angle = 0; // must be 90 to be heard in front
 		this.pitch = 1; // original pitch at first
@@ -51,13 +53,20 @@ public class FX {
 
 	public void setAngle(float angle) {
 		this.angle = angle;
+		
+		if(Math.abs(angle) > 90) {
+			source = behindSource;
+			angle = 0;
+		}
+		else
+			source = forwardSource;
 	}
 
 	public float angle() {
 		return angle;
 	}
 
-	/** 
+	/**
 	 * Play sound once without looping.
 	 */
 	public void play() {
@@ -69,8 +78,12 @@ public class FX {
 		source.stop();
 		isPlaying = false;
 	}
-	
+
 	public boolean isPlaying() {
 		return isPlaying;
+	}
+
+	public boolean isBehindUser() {
+		return Math.abs(angle) > 90;
 	}
 }

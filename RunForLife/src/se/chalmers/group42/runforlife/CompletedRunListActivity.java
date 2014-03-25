@@ -1,5 +1,10 @@
 package se.chalmers.group42.runforlife;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import se.chalmers.group42.database.MySQLiteHelper;
+import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -40,7 +46,8 @@ CompletedRunListFragment.Callbacks {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_completedrun_list);
+		setContentView(R.layout.activity_completedrun_list);	
+		
 		
 		//Get API-level
 		apiLevel = Integer.valueOf(android.os.Build.VERSION.SDK_INT);
@@ -104,8 +111,8 @@ CompletedRunListFragment.Callbacks {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
 			Intent detailIntent = new Intent(this,
-					CompletedRunDetailActivity.class);
-			detailIntent.putExtra(CompletedRunDetailFragment.ARG_ITEM_ID, id);
+					FinishedRunActivity.class);
+			detailIntent.putExtra("test", Integer.parseInt(id));
 			startActivity(detailIntent);
 		}
 	}

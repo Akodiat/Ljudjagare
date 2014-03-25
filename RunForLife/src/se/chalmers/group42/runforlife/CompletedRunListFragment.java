@@ -1,12 +1,18 @@
 package se.chalmers.group42.runforlife;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import se.chalmers.group42.database.FinishedRoute;
+import se.chalmers.group42.database.MySQLiteHelper;
+import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.dummy.DummyContent;
 
 /**
@@ -36,6 +42,8 @@ public class CompletedRunListFragment extends ListFragment {
 	 * The current activated item position. Only used on tablets.
 	 */
 	private int mActivatedPosition = ListView.INVALID_POSITION;
+	
+	private List<FinishedRoute> routes;
 
 	/**
 	 * A callback interface that all activities containing this fragment must
@@ -69,11 +77,13 @@ public class CompletedRunListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		// TODO: replace with a real list adapter.
-		setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, DummyContent.ITEMS));
+		
+		testApplication app = (testApplication) getActivity().getApplication();
+		MySQLiteHelper db = app.getDatabase();
+		routes = db.getAllFinishedRoutes();
+		
+		setListAdapter(new ArrayAdapter<FinishedRoute>(getActivity(),
+				android.R.layout.simple_list_item_activated_1,routes));
 	}
 
 	@Override
@@ -113,10 +123,11 @@ public class CompletedRunListFragment extends ListFragment {
 	public void onListItemClick(ListView listView, View view, int position,
 			long id) {
 		super.onListItemClick(listView, view, position, id);
-
+		
+		int idx = routes.get(position).getId();
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+		mCallbacks.onItemSelected(String.valueOf(idx));
 	}
 
 	@Override
