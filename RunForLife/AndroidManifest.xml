@@ -40,7 +40,8 @@ Google Maps Android API v2, but are recommended. -->
 
         <activity
             android:name="se.chalmers.group42.runforlife.MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:screenOrientation="nosensor" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,23 +50,28 @@ Google Maps Android API v2, but are recommended. -->
         </activity>
         <activity
             android:name="se.chalmers.group42.runforlife.RunActivity"
-            android:label="run_activity" >
+            android:label="run_activity"
+            android:screenOrientation="nosensor" >
         </activity>
         <activity
             android:name="se.chalmers.group42.gameModes.CoinCollectorActivity"
-            android:label="coin_collector_activity" >
+            android:label="coin_collector_activity"
+            android:screenOrientation="nosensor" >
         </activity>
         <activity
             android:name="se.chalmers.group42.gameModes.EscapeActivity"
-            android:label="escape_activity" >
+            android:label="escape_activity"
+            android:screenOrientation="nosensor" >
         </activity>
         <activity
             android:name="se.chalmers.group42.gameModes.ShooterActivity"
-            android:label="shooter_activity" >
+            android:label="shooter_activity"
+            android:screenOrientation="nosensor" >
         </activity>
         <activity
             android:name="se.chalmers.group42.runforlife.FinishedRunActivity"
-            android:label="finished_run_activity" >
+            android:label="finished_run_activity"
+            android:screenOrientation="nosensor" >
         </activity>
 
         <meta-data

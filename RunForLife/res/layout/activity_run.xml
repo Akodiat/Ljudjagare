@@ -17,7 +17,6 @@
 
     <ImageButton
         android:id="@+id/button_stop"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -26,7 +25,8 @@
 		android:paddingRight="2dp"
         android:src="@drawable/stop"
         android:contentDescription="@string/button_desc_stop"
-        android:background="#0000" />
+        android:background="#0000"
+        android:visibility="invisible" />
 
     <ImageButton
         android:id="@+id/button_pause"

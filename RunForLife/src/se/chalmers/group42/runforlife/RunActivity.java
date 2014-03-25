@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import se.chalmers.group42.runforlife.DataHandler.RunStatus;
 import sensors.*;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -41,12 +42,13 @@ GPSInputListener,
 OrientationInputListener
 {
 
-	private ImageButton pauseButton, finishButton;
+	private ImageButton pauseButton, stopButton;
 
 
 	//Class for handling database
 	protected DataHandler dataHandler;
 
+	private boolean gpsOn, soundOn, headphonesIn;
 
 	private ImageView gpsIcon, soundIcon, headPhonesIcon;
 
@@ -117,58 +119,39 @@ OrientationInputListener
 		testApplication app = (testApplication) getApplication();
 		this.dataHandler = new DataHandler(app.getDatabase(),this);
 
-		//START
-		if(!dataHandler.getRunningStatus()){
-			dataHandler.newRoute();
-			dataHandler.startWatch();
-		}
+
 
 		//Setting up pausebutton
 		pauseButton = (ImageButton) findViewById(R.id.button_pause);
 		pauseButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(dataHandler.getRunningStatus()){
-					if(!dataHandler.getPauseStatus()){
-						pauseButton.setImageResource(R.drawable.play);
-						finishButton.setVisibility(View.VISIBLE);
-						stopSound();
-					}else{
-						pauseButton.setImageResource(R.drawable.pause);
-						finishButton.setVisibility(View.INVISIBLE);
-						playSound();
+				if(dataHandler.isRunning()){
+					pause();
+					if(!isOkToRun()){
+						setNotGreenToRun();
 					}
-
-					dataHandler.pauseWatch();
+				}else{
+					if(dataHandler.isPaused())
+						resume();
+					else
+						start();
 				}
+				//				dataHandler.pauseWatch();
 			}
 		});
 
-		//Setting up finishbutton
-		finishButton = (ImageButton) findViewById(R.id.button_stop);
-		finishButton.setOnClickListener(new View.OnClickListener() {
+		pauseButton.setImageResource(R.drawable.play_red);
+
+		//Setting up stopbutton
+		stopButton = (ImageButton) findViewById(R.id.button_stop);
+		stopButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(dataHandler.getRunningStatus()){
-					dataHandler.resetWatch();
-					stopSound();
-				}
-				Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
-				finishedRunActivityIntent.putExtra("test", dataHandler.getCurrentRoute());
-				startActivity(finishedRunActivityIntent);
-				if(asyncTask!=null){
-					asyncTask.cancel(true);
-				}
-				// Ska vara "finish()" egentligen men det fungerar inte?
-				android.os.Process.killProcess(android.os.Process.myPid());
-				//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
-				//						"android:switcher:"+R.id.pager+":2");
-				//				if(statsFragment.isAdded()){
-				//					statsFrag.updateTableData(1,2);
-				//				}
+				stop();
 			}
 		});
-		//	this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
+		//			this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
 
 		//Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
@@ -185,6 +168,55 @@ OrientationInputListener
 	// These are implemented in CoinCollector, etc. instead. This method should perhaps be abstract.
 	protected void playSound() {}
 	protected void stopSound() {}
+
+
+	private void start(){
+		//START
+		dataHandler.newRoute();
+		dataHandler.startWatch();
+		pauseButton.setImageResource(R.drawable.pause);
+		dataHandler.runStatus=RunStatus.RUNNING;
+		playSound();
+		System.out.println("Start!!!!!");
+	}
+
+	private void resume(){
+		pauseButton.setImageResource(R.drawable.pause);
+		stopButton.setVisibility(View.INVISIBLE);
+		playSound();
+		dataHandler.runStatus=RunStatus.RUNNING;
+		System.out.println("Resume!!!!!");
+	}
+
+	private void pause(){
+		pauseButton.setImageResource(R.drawable.play);
+		stopButton.setVisibility(View.VISIBLE);
+		stopSound();
+		dataHandler.runStatus=RunStatus.PAUSED;
+		System.out.println("Pause!!!!!!");
+	}
+
+	private void stop(){
+		pauseButton.setImageResource(R.drawable.play);
+		stopSound();
+		dataHandler.runStatus=RunStatus.STOPPED;
+		System.out.println("Stop!!!!!!");
+
+		dataHandler.resetWatch();
+		Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
+		finishedRunActivityIntent.putExtra("test", dataHandler.getCurrentRoute());
+		startActivity(finishedRunActivityIntent);
+		if(asyncTask!=null){
+			asyncTask.cancel(true);
+		}
+		//				// Ska vara "finish()" egentligen men det fungerar inte?
+		android.os.Process.killProcess(android.os.Process.myPid());
+		//				//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
+		//				//						"android:switcher:"+R.id.pager+":2");
+		//				//				if(statsFragment.isAdded()){
+		//				//					statsFrag.updateTableData(1,2);
+		//				//				}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -232,10 +264,26 @@ OrientationInputListener
 			runFrag.updateDisp(seconds,distance,currentspeed,coins);
 		}
 	}
+	
+	private boolean isOkToRun(){
+		return (gpsOn && soundOn && headphonesIn);
+	}
 
+	private void setGreenToRun(){
+		if(isOkToRun() && !dataHandler.isRunning())
+			pauseButton.setImageResource(R.drawable.play);
+	}
+	
+	private void setNotGreenToRun(){
+		pauseButton.setImageResource(R.drawable.play_red);
+	}
 	public void onGPSConnect() {
-		gpsIcon.setImageResource(R.drawable.gps_green);
-
+		if(!gpsOn){
+			System.out.println("GPS on");
+			gpsOn=true;
+			gpsIcon.setImageResource(R.drawable.gps_green);
+			setGreenToRun();
+		}
 		//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
 		//                "android:switcher:"+R.id.pager+":1");
 		//		if(this.statsFragment.isAdded()){
@@ -245,6 +293,11 @@ OrientationInputListener
 	}
 	public void onGPSDisconnect() {
 		gpsIcon.setImageResource(R.drawable.gps_red);
+		gpsOn=false;
+		if(dataHandler.runStatus == RunStatus.RUNNING){
+			pause();
+		}
+		setNotGreenToRun();
 
 		//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
 		//                "android:switcher:"+R.id.pager+":1");
@@ -253,27 +306,36 @@ OrientationInputListener
 		//		}
 	}
 	public void onSoundOn() {
-		soundIcon.setImageResource(R.drawable.sound_green);
+		if(!soundOn){
+			System.out.println("Sound On");
+			soundOn=true;
+			soundIcon.setImageResource(R.drawable.sound_green);
+			setGreenToRun();
+		}
 	}
 	public void onSoundOff() {
 		soundIcon.setImageResource(R.drawable.sound_red);
+		soundOn=false;
+		if(dataHandler.runStatus == RunStatus.RUNNING){
+			pause();
+		}
+		setNotGreenToRun();
 	}
 	public void onHeadphonesIn(){
-		headPhonesIcon.setImageResource(R.drawable.headphones_green);
+		if(!headphonesIn){
+			System.out.println("HeadPhones In");
+			headphonesIn=true;
+			headPhonesIcon.setImageResource(R.drawable.headphones_green);
+			setGreenToRun();
+		}
 	}
 	public void onHeadphonesOut(){
 		headPhonesIcon.setImageResource(R.drawable.headphones_red);
-		
-		//Pause game
-		if(dataHandler.getRunningStatus()){
-			if(!dataHandler.getPauseStatus()){
-				pauseButton.setImageResource(R.drawable.play);
-				finishButton.setVisibility(View.VISIBLE);
-				stopSound();
-			}
-			dataHandler.pauseWatch();
+		headphonesIn=false;
+		if(dataHandler.runStatus == RunStatus.RUNNING){
+			pause();
 		}
-
+		setNotGreenToRun();
 	}
 	public void onCompassChanged(float headingAngleOrientation) {
 		// TODO Auto-generated method stub	

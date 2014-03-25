@@ -12,7 +12,7 @@ public class StatusIconHandler extends BroadcastReceiver{
 
 	private StatusIconEventListener  	listener;
 	private Context						context;
-
+	
 	public StatusIconHandler(StatusIconEventListener listener, Context context){
 		this.listener 	= listener;
 		this.context	= context;
@@ -62,8 +62,9 @@ public class StatusIconHandler extends BroadcastReceiver{
 		if(currentVolume == 0){
 			listener.onSoundOff();
 		}
-		else
+		else {
 			listener.onSoundOn();
+		}
 	}
 
 	private class VolumeChangeObserver extends ContentObserver{

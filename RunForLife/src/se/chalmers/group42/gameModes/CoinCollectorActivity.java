@@ -50,7 +50,7 @@ public class CoinCollectorActivity extends RunActivity {
 
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
-		playSound();
+//		playSound();
 	}
 
 	public int getScore() {

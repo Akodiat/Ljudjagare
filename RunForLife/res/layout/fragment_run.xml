@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"  >
+        android:layout_marginTop="5dp" >
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -23,9 +23,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:textSize="25sp"
                 android:text="Time "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="25sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -38,11 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:textSize="25sp"
                 android:text="00:00:00"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            </RelativeLayout>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="25sp" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -50,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearTime"
-        android:layout_marginTop = "10dp" >
+        android:layout_marginTop="10dp" >
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -62,9 +61,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:textSize="25sp"
                 android:text="Distance "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="25sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -77,29 +76,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:textSize="25sp"
                 android:text="0.0"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="25sp" />
+
             <TextView
                 android:id="@+id/textViewDist3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textViewDist2"
                 android:layout_alignBaseline="@+id/textViewDist2"
-                android:textSize="15sp"
+                android:layout_toRightOf="@+id/textViewDist2"
                 android:text="m"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/linearPace1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearDist"
-        android:layout_marginTop = "10dp" >
+        android:layout_marginTop="10dp" >
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -115,7 +113,6 @@
                 android:text="Curr Pace "
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="25sp" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -128,28 +125,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:textSize="25sp"
                 android:text="0.0"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="25sp" />
+
             <TextView
                 android:id="@+id/textViewPace3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textViewPace2"
                 android:layout_alignBaseline="@+id/textViewPace2"
-                android:textSize="15sp"
+                android:layout_toRightOf="@+id/textViewPace2"
                 android:text="min/km"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/linearPace2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearPace1"
-        android:layout_marginTop = "2dp"  >
+        android:layout_marginTop="2dp" >
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -165,7 +162,6 @@
                 android:text="Avg Pace "
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="25sp" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -178,9 +174,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:textSize="25sp"
                 android:text="0.0"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/textViewPaceAverage3"
@@ -192,16 +188,15 @@
                 android:text="min/km"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="15sp" />
-
         </RelativeLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/linearSpeed1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearPace2"
-        android:layout_marginTop = "10dp" >
+        android:layout_marginTop="10dp" >
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -217,7 +212,6 @@
                 android:text="Curr Speed "
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="25sp" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -230,28 +224,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:textSize="25sp"
                 android:text="0.0"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="25sp" />
+
             <TextView
                 android:id="@+id/textViewSpeed3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textViewSpeed2"
                 android:layout_alignBaseline="@+id/textViewSpeed2"
-                android:textSize="15sp"
+                android:layout_toRightOf="@+id/textViewSpeed2"
                 android:text="km/h"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/linearSpeed2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearSpeed1"
-        android:layout_marginTop = "2dp" >
+        android:layout_marginTop="2dp" >
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -267,7 +261,6 @@
                 android:text="Avg Speed "
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="25sp" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -280,9 +273,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:textSize="25sp"
                 android:text="0.0"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/textViewSpeedAverage3"
@@ -294,37 +287,14 @@
                 android:text="km/h"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="15sp" />
-
         </RelativeLayout>
     </LinearLayout>
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearSpeed2"
-        android:layout_alignRight="@+id/linearSpeed2"
-        android:layout_below="@+id/linearSpeed2"
-        android:layout_marginTop="76dp" 
-        android:max="3"/>
 
-    <TextView
-        android:id="@+id/progressText1"
+    <include
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/progressBar1"
-        android:layout_alignLeft="@+id/progressBar1"
-        android:layout_marginBottom="16dp"
-        android:text="Progress:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_marginBottom="140dp"
+        layout="@layout/progress_bar" />
 
-    <TextView
-        android:id="@+id/progressText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/progressText1"
-        android:layout_alignBottom="@+id/progressText1"
-        android:layout_alignRight="@+id/progressBar1"
-        android:text="0/3 Coins"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 </RelativeLayout>

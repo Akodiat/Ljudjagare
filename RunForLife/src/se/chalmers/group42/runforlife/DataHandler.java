@@ -12,8 +12,9 @@ import android.os.Handler;
 
 public class DataHandler {
 	private RunActivity 	runAct;
-	private boolean			running = false;
-	private boolean 	 	pause = true;
+	public RunStatus		runStatus=RunStatus.STOPPED;
+//	private boolean			running = false;
+//	private boolean 	 	pause = false;
 	private Handler 	 	m_handler;
 	private Runnable 	 	m_handlerTask;
 	
@@ -63,13 +64,13 @@ public class DataHandler {
 			}
 			//------------------------------------------
 			
-			if(running){
+			if(runStatus==RunStatus.RUNNING){
 				if(start){ 
 					//if this is the first point add no distance
 					prev = curr; 
 					start = false;
 				} else{
-					if(!pause){
+					if(runStatus==RunStatus.RUNNING){
 						//adds the distance from the last point to the current point
 						distance += prev.distanceTo(curr);
 						
@@ -111,29 +112,30 @@ public class DataHandler {
 		{
 			@Override 
 			public void run() {
-				if(!pause){
+				if(runStatus==RunStatus.RUNNING){
 					seconds++;
 					//Update the displayed data in the run fragment
 					int d = (int) distance;
 					runAct.updateDisplay(seconds,d,currentSpeed,coins); 
 				}
-				else {
-					m_handler.removeCallbacks(m_handlerTask);
-				}
+//				else {
+//					m_handler.removeCallbacks(m_handlerTask);
+//				}
 				m_handler.postDelayed(m_handlerTask, 1000);
 			}
 		};
 		m_handlerTask.run(); 
-		pause = false;
-		running = true;
+//		pause = false;
+//		running = true;
+//		runStatus=RunStatus.RUNNING;
 	}
 	
 	//pause the watch
 	public void pauseWatch(){
-		if (pause){
-			pause = false;
+		if (runStatus==RunStatus.PAUSED){
+			runStatus=RunStatus.RUNNING;
 		}else{
-			pause = true;
+			runStatus=RunStatus.PAUSED;
 		}
 	}
 	
@@ -145,18 +147,18 @@ public class DataHandler {
 		db.finishRoute(db.getRoute(routeId), d, seconds);
 		seconds = 0L;
 		distance = 0;
-		pause = true;
-		running = false;
+//		pause = false;
+//		running = false;
 		coins = 0;
 		
 		
 		runAct.updateDisplay(seconds,d,currentSpeed,coins);
 	}
-	public boolean getRunningStatus(){
-		return running;
+	public boolean isRunning(){
+		return runStatus==RunStatus.RUNNING;
 	}
-	public boolean getPauseStatus(){
-		return pause;
+	public boolean isPaused(){
+		return runStatus==RunStatus.PAUSED;
 	}
 	
 	//help method to calculate the current speed
@@ -192,5 +194,8 @@ public class DataHandler {
 	}
 	public int getCurrentRoute(){
 		return routeId;
+	}
+	public static enum RunStatus{
+		RUNNING, PAUSED, STOPPED;
 	}
 }
