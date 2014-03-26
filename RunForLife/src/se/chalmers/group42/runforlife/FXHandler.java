@@ -143,6 +143,10 @@ public class FXHandler {
 		// change delayinterval to delayintervaleach100 if preferred 
 		handler.sendMessageDelayed(msg, (long) delayIntervalEach100(fx));
 	}
+	
+	public void loopLong(FX fx) {
+		fx.source().play(true);
+	}
 
 	/**
 	 * Stop the current loop and set stream to not playing.
@@ -225,6 +229,8 @@ public class FXHandler {
 
 			// tell the user how close to goal he/she is
 			distanceAnnouncer(distance);
+		
+		//env.setListenerOrientation(fx.angle());
 	}
 
 	public void loopCoin(float distance) {

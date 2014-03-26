@@ -50,7 +50,6 @@ public class CoinCollectorActivity extends RunActivity {
 
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
-//		playSound();
 	}
 
 	public int getScore() {
@@ -183,7 +182,7 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private boolean usingCompass() {
-		return Constants.USING_COMPASS; //human.getLocation().getSpeed() < 1;
+		return Constants.USING_COMPASS; // human.getLocation().getSpeed() < 1;
 	}
 
 	private void adjustPanoration() {
@@ -207,6 +206,17 @@ public class CoinCollectorActivity extends RunActivity {
 			fx.loop(fx.getNavigationFX());
 
 	}
+
+	/**
+	 * Play long sound without audible repetition.
+	 */
+//	@Override
+//	protected void playLongSound() {
+//		super.playSound();
+//
+//		if (!fx.getNavigationFX().isPlaying())
+//			fx.loopLong(fx.getNavigationFX());
+//	}
 
 	@Override
 	protected void stopSound() {

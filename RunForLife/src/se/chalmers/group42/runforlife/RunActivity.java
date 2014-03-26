@@ -169,6 +169,7 @@ OrientationInputListener
 
 	// These are implemented in CoinCollector, etc. instead. This method should perhaps be abstract.
 	protected void playSound() {}
+	//protected void playLongSound() {}
 	protected void stopSound() {}
 
 
