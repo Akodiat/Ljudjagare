@@ -112,7 +112,7 @@ CompletedRunListFragment.Callbacks {
 			// for the selected item ID.
 			Intent detailIntent = new Intent(this,
 					FinishedRunActivity.class);
-			detailIntent.putExtra("test", Integer.parseInt(id));
+			detailIntent.putExtra(Constants.EXTRA_ID, Integer.parseInt(id));
 			startActivity(detailIntent);
 		}
 	}

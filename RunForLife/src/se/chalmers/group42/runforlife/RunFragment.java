@@ -30,19 +30,25 @@ public class RunFragment extends Fragment{
 		return rootView;
 	}
 
-	public void updateDisp(long seconds,double distance, double currentSpeed, int coins){
+	public void updateDisp(long seconds,int distance, double currentSpeed, int coins){
 		Time t = new Time();
 		t.set(seconds*1000);
 		t.switchTimezone("GMT");
 
-		double d;
 		if(distance >= 1000){
-			d = distance/1000;
-			d = Math.round(d*100)/100.0d;
+			double d = Math.round((distance/1000)*100)/100.0d;
+			
+			TextView txDist = (TextView) getView().findViewById(R.id.textViewDist2);
+			txDist.setText(""+d);
+			
 			TextView txkm = (TextView) getView().findViewById(R.id.textViewDist3);
 			txkm.setText("km");
 		}else{
-			d = distance;
+			int d = distance;
+			
+			TextView txDist = (TextView) getView().findViewById(R.id.textViewDist2);
+			txDist.setText(""+d);
+			
 			TextView txkm = (TextView) getView().findViewById(R.id.textViewDist3);
 			txkm.setText("m");
 		}
@@ -71,7 +77,7 @@ public class RunFragment extends Fragment{
 		currSpd = Math.round(currSpd*100)/100.0d;
 		currPace = Math.round(currPace*100)/100.0d;
 
-		setTexts(t, d, speed, currSpd, pace, currPace);
+		setTexts(t, speed, currSpd, pace, currPace);
 
 		progress(coins);
 	}
@@ -93,13 +99,10 @@ public class RunFragment extends Fragment{
 		progressBar.setMax(max);
 	}
 
-	public void setTexts(Time time, double distance, double speed, double currentSpeed, double pace,double currentPace){
+	public void setTexts(Time time, double speed, double currentSpeed, double pace,double currentPace){
 		TextView txTime = (TextView) getView().findViewById(R.id.textViewTime2);
 		txTime.setText(time.format("%H:%M:%S"));
 
-
-		TextView txDist = (TextView) getView().findViewById(R.id.textViewDist2);
-		txDist.setText(""+distance);
 
 		TextView txAvgSpd = (TextView) getView().findViewById(R.id.textViewSpeedAverage2);
 		txAvgSpd.setText(""+speed);

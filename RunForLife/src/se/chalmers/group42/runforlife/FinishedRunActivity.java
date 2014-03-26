@@ -42,7 +42,7 @@ MapFragment.OnHeadlineSelectedListener{
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		testApplication app = (testApplication) getApplication();
+		RunForLifeApplication app = (RunForLifeApplication) getApplication();
 		this.db = app.getDatabase();
 
 		/*
@@ -102,7 +102,7 @@ MapFragment.OnHeadlineSelectedListener{
 		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
-			int id = extras.getInt("test");
+			int id = extras.getInt(Constants.EXTRA_ID);
 			FinishedRoute fin = db.getFinishedRoute(id);
 			Bundle args = new Bundle();
 			args.putLong("time", fin.getTotTime());

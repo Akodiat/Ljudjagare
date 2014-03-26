@@ -49,10 +49,9 @@ public class FinishedRunFragment extends Fragment {
 			
 			double d = distance;
 			if(d >= 1000){
-				d = distance/1000;
-				d = Math.round(d*100)/100.0d;
+				d = Math.round((distance/1000)*100)/100.0d;
 				TextView txkm = (TextView) view.findViewById(R.id.textViewDist3);
-				txkm.setText("km");
+				txkm.setText("");
 			}
 			TextView txDist = (TextView) view.findViewById(R.id.textViewDist2);
 			txDist.setText("" + d);

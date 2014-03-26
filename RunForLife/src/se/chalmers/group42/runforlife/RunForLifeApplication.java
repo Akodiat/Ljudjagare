@@ -3,7 +3,7 @@ package se.chalmers.group42.runforlife;
 import se.chalmers.group42.database.MySQLiteHelper;
 import android.app.Application;
 
-public class testApplication extends Application{
+public class RunForLifeApplication extends Application{
 	private MySQLiteHelper 	db;
 	
 	@Override

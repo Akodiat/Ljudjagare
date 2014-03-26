@@ -118,7 +118,7 @@ OrientationInputListener
 		statsFragment = new StatsFragment();
 
 
-		testApplication app = (testApplication) getApplication();
+		RunForLifeApplication app = (RunForLifeApplication) getApplication();
 		this.dataHandler = new DataHandler(app.getDatabase(),this);
 
 
@@ -206,7 +206,7 @@ OrientationInputListener
 
 		dataHandler.resetWatch();
 		Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
-		finishedRunActivityIntent.putExtra("test", dataHandler.getCurrentRoute());
+		finishedRunActivityIntent.putExtra(Constants.EXTRA_ID, dataHandler.getCurrentRoute());
 		startActivity(finishedRunActivityIntent);
 		if(asyncTask!=null){
 			asyncTask.cancel(true);

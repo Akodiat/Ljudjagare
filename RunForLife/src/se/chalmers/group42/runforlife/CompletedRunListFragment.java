@@ -78,7 +78,7 @@ public class CompletedRunListFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		testApplication app = (testApplication) getActivity().getApplication();
+		RunForLifeApplication app = (RunForLifeApplication) getActivity().getApplication();
 		MySQLiteHelper db = app.getDatabase();
 		routes = db.getAllFinishedRoutes();
 		

@@ -46,4 +46,6 @@ public class Constants {
 	
 	public static final int APPROACHING_COIN = 100;
 
+	
+	public static final String EXTRA_ID = "asdasdasdasd";
 }
