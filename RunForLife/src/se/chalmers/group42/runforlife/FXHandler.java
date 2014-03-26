@@ -122,6 +122,8 @@ public class FXHandler {
 
 	public void foundCoin() {
 		soundPool.stop(coin); // stop play coin
+		
+		// play audio in a new thread to make it possible to change screen
 		(new Thread(new ReachedCoinRunnable())).start();
 	}
 
@@ -189,7 +191,8 @@ public class FXHandler {
 	 *            the current distance from goal
 	 */
 	public void update(FX fx, float angle, float distance) {
-		fx.setAngle(angle);
+		if (angle >= 90 && angle <= 150)
+			fx.setAngle(angle);
 
 		if (fx.angle() < 0 && fx.angle() > -90)
 			fx.setPitch((1 - Constants.MIN_PITCH) / 90 * fx.angle() + 1);
@@ -201,7 +204,7 @@ public class FXHandler {
 		// if distance is below 100, introduce coin
 		if (distance < Constants.APPROACHING_COIN
 				&& distance > Constants.MIN_DISTANCE)
-			loopCoin(distance);
+			// loopCoin(distance);
 
 		// tell the user how close to goal he/she is
 		distanceAnnouncer(distance);
