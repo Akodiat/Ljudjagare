@@ -77,7 +77,7 @@ public class OrientationInputHandler implements SensorEventListener
 			}
 		}
 		if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE){
-			android.util.Log.d("Compass", "Gyroscope" + event.values[0] + "\t" + event.values[1] + "\t" + event.values[1]);
+			android.util.Log.d("Compass", "Gyroscope" + event.values[0] + "\t" + event.values[1] + "\t" + event.values[2]);
 		}
 	}
 	
