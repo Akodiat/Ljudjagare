@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import se.chalmers.group42.database.FinishedRoute;
 import se.chalmers.group42.database.MySQLiteHelper;
@@ -44,6 +47,7 @@ public class CompletedRunListFragment extends ListFragment {
 	private int mActivatedPosition = ListView.INVALID_POSITION;
 	
 	private List<FinishedRoute> routes;
+	private MySQLiteHelper db;
 
 	/**
 	 * A callback interface that all activities containing this fragment must
@@ -56,7 +60,8 @@ public class CompletedRunListFragment extends ListFragment {
 		 */
 		public void onItemSelected(String id);
 	}
-
+		
+	
 	/**
 	 * A dummy implementation of the {@link Callbacks} interface that does
 	 * nothing. Used only when this fragment is not attached to an activity.
@@ -79,7 +84,7 @@ public class CompletedRunListFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 		
 		RunForLifeApplication app = (RunForLifeApplication) getActivity().getApplication();
-		MySQLiteHelper db = app.getDatabase();
+		this.db = app.getDatabase();
 		routes = db.getAllFinishedRoutes();
 		
 		setListAdapter(new ArrayAdapter<FinishedRoute>(getActivity(),
@@ -96,6 +101,21 @@ public class CompletedRunListFragment extends ListFragment {
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
+		
+		getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
+
+	        @Override
+	        public boolean onItemLongClick(AdapterView<?> paramAdapterView, 
+	        									View paramView, int position, long paramLong) {
+	        	
+	        	Route r = routes.get(position);
+	        	db.deleteRoute(r);
+	        	routes.remove(position);
+	        	getActivity().recreate();
+	            Toast.makeText(getActivity(), "ID: "+r.getId()+" Deleted", Toast.LENGTH_LONG).show();
+	            return true;
+	        }
+		});
 	}
 
 	@Override
@@ -129,6 +149,8 @@ public class CompletedRunListFragment extends ListFragment {
 		// fragment is attached to one) that an item has been selected.
 		mCallbacks.onItemSelected(String.valueOf(idx));
 	}
+	
+	
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {

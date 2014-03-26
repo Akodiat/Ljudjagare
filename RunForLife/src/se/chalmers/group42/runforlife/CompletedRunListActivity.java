@@ -3,6 +3,8 @@ package se.chalmers.group42.runforlife;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.internal.db;
+
 import se.chalmers.group42.database.MySQLiteHelper;
 import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
@@ -65,7 +67,6 @@ CompletedRunListFragment.Callbacks {
 		//Setup of drawer list view with items and click listener
 		navDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navListOption));
 		navDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		if(apiLevel>=14){
@@ -106,7 +107,7 @@ CompletedRunListFragment.Callbacks {
 			getSupportFragmentManager().beginTransaction()
 			.replace(R.id.completedrun_detail_container, fragment)
 			.commit();
-
+			
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.

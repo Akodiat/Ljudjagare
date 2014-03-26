@@ -36,6 +36,6 @@ public class FinishedRoute extends Route{
 	}
 	@Override
 	public String toString(){
-		return "[ID: "+this.getId()+" Date: "+this.getDate()+" Distance: "+dist+"m Speed: "+this.speed+"km/h TotTime: "+this.totTime+"s]";
+		return "ID: "+this.getId()+"                                         "+this.getDate()+"";
 	}
 }

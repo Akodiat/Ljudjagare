@@ -90,7 +90,7 @@ public abstract class NavDrawerActivity extends FragmentActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			selectItem(position);
-		}
+		}		
 	}
 
 	private void selectItem(int position) {
