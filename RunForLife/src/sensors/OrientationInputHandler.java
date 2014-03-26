@@ -81,6 +81,29 @@ public class OrientationInputHandler implements SensorEventListener
 		}
 	}
 	
+	/*
+	 * http://www.thousand-thoughts.com/wp-content/uploads/MasterThesis_Lawitzki_2012.pdf
+	 * sidan 67
+	 
+The integration of the gyroscope data was performed by measuring the time
+between each sensor update and multiplying the measured time with the rota-
+tion speed values from the gyroscope. The result was an orientation increment
+which was then added to a variable containing the absolute orientation. But
+since this absolute orientation data was completely derived from the gyroscope
+measurements, it was still containing the gyroscope drift error and needed fur-
+ther processing. In the following this particular orientation variable will be called
+gyroOrientation. In principle the code for the calculation was as follows:
+
+gyroOrientation = gyroOrientation + deltaTime * gyroRotation;
+
+where deltaTime was the time in seconds elapsed since the last update of the variable
+gyroOrientation, and gyroRotation contained the speed values measured by the gyroscope. 
+Of course this is a simplified code line, since in practice gyroOrientationwas a vector 
+containing orientation angles and the values were integrated component-wise.
+
+etc, etc, etc.
+	 */
+	
 	private float calculateAlfa(float samplePeriod, float relativeDuration){
 		return relativeDuration / (relativeDuration + samplePeriod);
 	}
