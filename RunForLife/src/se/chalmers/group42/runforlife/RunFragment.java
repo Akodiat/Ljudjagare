@@ -15,10 +15,10 @@ import android.widget.TextView;
  * A fragment including the info related to the current run.
  */
 public class RunFragment extends Fragment{
-	
+
 	private ProgressBar progressBar;
 	private int progressStatus = 0;
-	
+
 	public RunFragment() {	}
 
 	@Override
@@ -30,28 +30,49 @@ public class RunFragment extends Fragment{
 		return rootView;
 	}
 
-	public void updateDisp(long seconds,int distance, double currentSpeed, int coins){
+	public void updateDisp(long seconds,double distance, double currentSpeed, int coins){
 		Time t = new Time();
 		t.set(seconds*1000);
 		t.switchTimezone("GMT");
 
-		double d = distance;
+		double d;
+		if(distance >= 1000){
+			d = distance/1000;
+			d = Math.round(d*100)/100.0d;
+			TextView txkm = (TextView) getView().findViewById(R.id.textViewDist3);
+			txkm.setText("km");
+		}else{
+			d = distance;
+			TextView txkm = (TextView) getView().findViewById(R.id.textViewDist3);
+			txkm.setText("m");
+		}
+
 		double s = seconds;
 
-		double speed = (d / s)*3.6;
-		double pace = 60 / speed;
-		
+		double speed = (distance / s)*3.6;
+		double pace;
+		if(speed != 0){
+			pace = 60 / speed;
+		}else{
+			pace = 0;
+		}
+
 		speed = Math.round(speed*100)/100.0d;
 		pace = Math.round(pace*100)/100.0d;
 
 		double currSpd = currentSpeed*3.6;
-		double currPace = 60 / currSpd;
-		
+		double currPace;
+		if(currSpd != 0){
+			currPace = 60 / currSpd;
+		}else{
+			currPace = 0;
+		}
+
 		currSpd = Math.round(currSpd*100)/100.0d;
 		currPace = Math.round(currPace*100)/100.0d;
-		
-		setTexts(t, distance, speed, currSpd, pace, currPace);
-		
+
+		setTexts(t, d, speed, currSpd, pace, currPace);
+
 		progress(coins);
 	}
 
@@ -66,13 +87,13 @@ public class RunFragment extends Fragment{
 			}
 		}
 	}
-	
+
 	public void setMax(int max){
 		progressBar = (ProgressBar) getView().findViewById(R.id.progressBar1);
 		progressBar.setMax(max);
 	}
-	
-	public void setTexts(Time time, int distance, double speed, double currentSpeed, double pace,double currentPace){
+
+	public void setTexts(Time time, double distance, double speed, double currentSpeed, double pace,double currentPace){
 		TextView txTime = (TextView) getView().findViewById(R.id.textViewTime2);
 		txTime.setText(time.format("%H:%M:%S"));
 
@@ -80,22 +101,16 @@ public class RunFragment extends Fragment{
 		TextView txDist = (TextView) getView().findViewById(R.id.textViewDist2);
 		txDist.setText(""+distance);
 
-		if(distance > 0){
-			TextView txAvgSpd = (TextView) getView().findViewById(R.id.textViewSpeedAverage2);
-			txAvgSpd.setText(""+speed);
+		TextView txAvgSpd = (TextView) getView().findViewById(R.id.textViewSpeedAverage2);
+		txAvgSpd.setText(""+speed);
 
-			TextView txSpd = (TextView) getView().findViewById(R.id.textViewSpeed2);
-			txSpd.setText(""+currentSpeed);
+		TextView txSpd = (TextView) getView().findViewById(R.id.textViewSpeed2);
+		txSpd.setText(""+currentSpeed);
 
-			TextView txPace = (TextView) getView().findViewById(R.id.textViewPaceAverage2);
-			txPace.setText(""+pace);
-			if(currentSpeed == 0){
-				TextView txCurrPace = (TextView) getView().findViewById(R.id.textViewPace2);
-				txCurrPace.setText("0.0");
-			}else{
-				TextView txCurrPace = (TextView) getView().findViewById(R.id.textViewPace2);
-				txCurrPace.setText(""+currentPace);
-			}
-		}
+		TextView txPace = (TextView) getView().findViewById(R.id.textViewPaceAverage2);
+		txPace.setText(""+pace);
+		TextView txCurrPace = (TextView) getView().findViewById(R.id.textViewPace2);
+		txCurrPace.setText(""+currentPace);
+
 	}
 }

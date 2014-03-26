@@ -45,9 +45,17 @@ public class FinishedRunFragment extends Fragment {
 			txTime.setText(t.format("%H:%M:%S"));
 
 			// *************SET Distance*************
-			int dist = args.getInt("distance");
+			int distance = args.getInt("distance");
+			
+			double d = distance;
+			if(d >= 1000){
+				d = distance/1000;
+				d = Math.round(d*100)/100.0d;
+				TextView txkm = (TextView) view.findViewById(R.id.textViewDist3);
+				txkm.setText("km");
+			}
 			TextView txDist = (TextView) view.findViewById(R.id.textViewDist2);
-			txDist.setText("" + dist);
+			txDist.setText("" + d);
 
 			// *************SET SPEED/pace***************
 			double speed = args.getDouble("speed");
