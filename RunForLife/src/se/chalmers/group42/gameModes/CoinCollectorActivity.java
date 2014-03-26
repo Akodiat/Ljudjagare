@@ -165,19 +165,7 @@ public class CoinCollectorActivity extends RunActivity {
 			mapFrag.showCollectedCoin(human.getLocation());
 
 		} else {
-			dataHandler.resetWatch();
-			stopSound();
-
-			Intent finishedRunActivityIntent = new Intent(this,
-					FinishedRunActivity.class);
-			finishedRunActivityIntent.putExtra("test",
-					dataHandler.getCurrentRoute());
-			startActivity(finishedRunActivityIntent);
-			if (asyncTask != null) {
-				asyncTask.cancel(true);
-			}
-			// Ska vara "finish()" egentligen men det fungerar inte?
-			android.os.Process.killProcess(android.os.Process.myPid());
+			stop();
 		}
 	}
 

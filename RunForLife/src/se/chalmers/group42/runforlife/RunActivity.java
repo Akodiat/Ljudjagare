@@ -199,7 +199,7 @@ OrientationInputListener
 		System.out.println("Pause!!!!!!");
 	}
 
-	private void stop(){
+	public void stop(){
 		pauseButton.setImageResource(R.drawable.play);
 		stopSound();
 		dataHandler.runStatus=RunStatus.STOPPED;
