@@ -296,9 +296,9 @@ OrientationInputListener
 	public void onGPSDisconnect() {
 		gpsIcon.setImageResource(R.drawable.gps_red);
 		gpsOn=false;
-		if(dataHandler.runStatus == RunStatus.RUNNING){
-			pause();
-		}
+//		if(dataHandler.runStatus == RunStatus.RUNNING){
+//			pause();
+//		}
 		setNotGreenToRun();
 
 		//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
