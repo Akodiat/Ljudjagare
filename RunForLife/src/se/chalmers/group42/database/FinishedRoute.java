@@ -36,6 +36,6 @@ public class FinishedRoute extends Route{
 	}
 	@Override
 	public String toString(){
-		return "ID: "+this.getId()+"                                         "+this.getDate()+"";
+		return "ID: "+this.getId()+"   "+this.getDate()+"";
 	}
 }

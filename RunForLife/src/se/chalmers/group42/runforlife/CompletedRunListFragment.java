@@ -3,6 +3,8 @@ package se.chalmers.group42.runforlife;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -85,10 +87,8 @@ public class CompletedRunListFragment extends ListFragment {
 		
 		RunForLifeApplication app = (RunForLifeApplication) getActivity().getApplication();
 		this.db = app.getDatabase();
-		routes = db.getAllFinishedRoutes();
 		
-		setListAdapter(new ArrayAdapter<FinishedRoute>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,routes));
+		setList();
 	}
 
 	@Override
@@ -101,18 +101,37 @@ public class CompletedRunListFragment extends ListFragment {
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
-		
+	
+	
 		getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 
 	        @Override
 	        public boolean onItemLongClick(AdapterView<?> paramAdapterView, 
 	        									View paramView, int position, long paramLong) {
+	        	final int pos = position;
+	        	final Route r = routes.get(position);
 	        	
-	        	Route r = routes.get(position);
-	        	db.deleteRoute(r);
-	        	routes.remove(position);
-	        	getActivity().recreate();
-	            Toast.makeText(getActivity(), "ID: "+r.getId()+" Deleted", Toast.LENGTH_LONG).show();
+	        	AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+	    		builder.setCancelable(false);
+	    		builder.setMessage("Do you  want to delete the run? ID: "+r.getId());
+	    		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	    			@Override
+	    			public void onClick(DialogInterface dialog, int which) {
+	    				//DELETE
+	    	        	db.deleteRoute(r);
+	    	        	routes.remove(pos);
+	    	        	setList();
+	    			}
+	    		});
+	    		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+	    			@Override
+	    			public void onClick(DialogInterface dialog, int which) {
+	    				dialog.cancel();
+	    			}
+	    		});
+	    		AlertDialog alert = builder.create();
+	    		alert.show();
+	        
 	            return true;
 	        }
 		});
@@ -181,5 +200,11 @@ public class CompletedRunListFragment extends ListFragment {
 		}
 
 		mActivatedPosition = position;
+	}
+	public void setList(){
+		routes = db.getAllFinishedRoutes();
+		
+		setListAdapter(new ArrayAdapter<FinishedRoute>(getActivity(),
+				android.R.layout.simple_list_item_activated_1,routes));
 	}
 }
