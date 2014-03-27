@@ -130,9 +130,10 @@ MapFragment.OnHeadlineSelectedListener{
 			long[] times = new long[nrCoins];
 			int[] dists = new int[nrCoins];
 			
-			for(int i = 0 ; i < nrCoins;i++){
-				coinlat[i] = coins.get(i).getLocation().getLatitude();
-				coinlng[i] = coins.get(i).getLocation().getLongitude();
+			for(int i = 0 ; i < nrCoins ; i++){
+				Location l = coins.get(i).getLocation();
+				coinlat[i] = l.getLatitude();
+				coinlng[i] = l.getLongitude();
 			
 				times[i] = coins.get(i).getTime();
 				dists[i] = coins.get(i).getDistance();

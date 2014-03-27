@@ -78,7 +78,6 @@ public class FinishedMapFragment extends MapFragment {
 	}
 
 	public void showCollectedCoin(LatLng l){
-		Log.d("asd","test: "+l.latitude+":"+l.longitude);
 		Marker marker = map.addMarker(new MarkerOptions()
 		.position(l)
 		.title("Coin")

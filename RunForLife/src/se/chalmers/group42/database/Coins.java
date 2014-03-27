@@ -54,6 +54,9 @@ public class Coins {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+	@Override
+	public String toString(){
+		return "[ID: "+id+" Loc: "+location.getLatitude()+":"+location.getLongitude()+"]";
+	}
 	
 }

@@ -429,10 +429,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 		//set up result
 		Coins coin = null;
-		Location loc = new Location("");
+//		Location loc = new Location("");
 		if(cursor.moveToFirst()){
 			do{
 				coin = new Coins();
+				Location loc = new Location("");
+				
 				coin.setId(Integer.parseInt(cursor.getString(0)));
 				coin.setRouteID(Integer.parseInt(cursor.getString(1)));
 				loc.setLatitude(cursor.getDouble(2));
