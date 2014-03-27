@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 /**
@@ -16,6 +17,8 @@ import android.widget.TextView;
 public class FinishedRunFragment extends Fragment {
 
 	private TextView time;
+	private int progressStatus;
+	private ProgressBar progressBar;
 
 	public FinishedRunFragment() {
 
@@ -72,7 +75,22 @@ public class FinishedRunFragment extends Fragment {
 			TextView txPace = (TextView) view
 					.findViewById(R.id.textViewPaceAverage2);
 			txPace.setText("" + pace);
+			//*******************SET PROGRESS********************
+			
+			int coins = args.getInt("nrCoins");
+			progress(coins, view);
+		}
+	}
 
+	public void progress(int coins, View view){
+		if(coins != progressStatus){
+			progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
+			progressStatus = coins;
+			if(progressStatus <= progressBar.getMax()){
+				TextView txProg = (TextView) view.findViewById(R.id.progressText2);
+				txProg.setText(progressStatus+"/"+progressBar.getMax()+" Coins");
+				progressBar.setProgress(progressStatus);
+			}
 		}
 	}
 }

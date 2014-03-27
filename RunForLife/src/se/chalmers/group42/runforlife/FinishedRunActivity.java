@@ -109,7 +109,7 @@ MapFragment.OnHeadlineSelectedListener{
 			args.putInt("distance", fin.getDist());
 			args.putDouble("speed", fin.getSpeed());
 			
-			runFragment.setArguments(args);
+			
 			
 			Bundle locs = new Bundle();
 			List<Point> points = db.getAllPointsByRoute(id);
@@ -124,6 +124,9 @@ MapFragment.OnHeadlineSelectedListener{
 			
 			List<Coins> coins = db.getAllCoinsByRoute(id);
 			int nrCoins = coins.size();
+			
+			args.putInt("nrCoins", nrCoins);
+			
 			double[] coinlat = new double[nrCoins];
 			double[] coinlng = new double[nrCoins];
 			
@@ -142,6 +145,8 @@ MapFragment.OnHeadlineSelectedListener{
 			locs.putDoubleArray("coinlng", coinlng);
 			
 			mapFragment.setArguments(locs);
+			
+			runFragment.setArguments(args);
 			
 			Bundle stats = new Bundle();
 			
