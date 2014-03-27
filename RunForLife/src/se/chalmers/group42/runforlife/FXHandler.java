@@ -223,8 +223,8 @@ public class FXHandler {
 		fx.setDistance(distance);
 
 		// if distance is below 100, introduce coin
-		if (distance < Constants.APPROACHING_COIN
-				&& distance > Constants.MIN_DISTANCE)
+		// if (distance < Constants.APPROACHING_COIN
+		// && distance > Constants.MIN_DISTANCE)
 			// loopCoin(distance);
 
 			// tell the user how close to goal he/she is
