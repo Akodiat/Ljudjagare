@@ -10,11 +10,16 @@ import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -43,20 +48,26 @@ CompletedRunListFragment.Callbacks {
 	 */
 	private boolean mTwoPane;
 	private int apiLevel;
+	
+	private CharSequence navDrawerTitle;
 
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_completedrun_list);	
-		
-		
+
+
 		//Get API-level
 		apiLevel = Integer.valueOf(android.os.Build.VERSION.SDK_INT);
 
 		//Setting up Navigation Drawer from left side of screen
+		appTitle = navDrawerTitle = getTitle();
+		//The string-array of list options, as "Run" and "History"
 		navListOption = getResources().getStringArray(R.array.nav_drawer_array);
+		//The whole drawer layout
 		navDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		//The list view of options
 		navDrawerList = (ListView) findViewById(R.id.drawer_list);
 
 		/*
@@ -64,14 +75,39 @@ CompletedRunListFragment.Callbacks {
 		 * drawer_shadow.9 images borrowed from com.example.android.navigationdrawerexample
 		 */
 		navDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-		//Setup of drawer list view with items and click listener
+		//Setup of drawer list view with items contained in navListOptions and click listener to them
 		navDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navListOption));
 		navDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		if(apiLevel>=14){
 			getActionBar().setHomeButtonEnabled(true);
 		}
+
+		actionBarDrawerToggle = new ActionBarDrawerToggle(
+				this,                  /* host Activity */
+				navDrawerLayout,         /* DrawerLayout object */
+				R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
+				R.string.drawer_open,  /* "open drawer" description */
+				R.string.drawer_close  /* "close drawer" description */
+				) {
+
+			/** Called when a drawer has settled in a completely closed state. */
+			public void onDrawerClosed(View view) {
+				super.onDrawerClosed(view);
+				getActionBar().setTitle("Start a run");
+			}
+
+			/** Called when a drawer has settled in a completely open state. */
+			public void onDrawerOpened(View drawerView) {
+				super.onDrawerOpened(drawerView);
+				getActionBar().setTitle(appTitle);
+			}
+		};
+
+		// Set the drawer toggle as the DrawerListener
+		navDrawerLayout.setDrawerListener(actionBarDrawerToggle);
 
 		if (findViewById(R.id.completedrun_detail_container) != null) {
 			// The detail container view will be present only in the
@@ -88,6 +124,40 @@ CompletedRunListFragment.Callbacks {
 		}
 
 		// TODO: If exposing deep links into your app, handle intents here.
+	}
+	
+	//Method needed to get the hamburgermenu working
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		actionBarDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	//Method needed to get the hamburgermenu working
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
+		// then it has handled the app icon touch event
+		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	//Method needed to get the hamburgermenu working
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		actionBarDrawerToggle.syncState();
+	}
+
+	//Method needed to get the hamburgermenu working
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
 
 	/**
@@ -107,7 +177,7 @@ CompletedRunListFragment.Callbacks {
 			getSupportFragmentManager().beginTransaction()
 			.replace(R.id.completedrun_detail_container, fragment)
 			.commit();
-			
+
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.

@@ -27,7 +27,7 @@
     <string name="button_desc_finish">Finish button</string>
 
     <string-array name="nav_drawer_array">
-        <item>Run</item>
+        <item>Main</item>
         <item>History</item>
     </string-array>
 

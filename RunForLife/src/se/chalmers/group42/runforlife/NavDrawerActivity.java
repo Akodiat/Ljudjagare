@@ -41,6 +41,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.support.v4.app.ActionBarDrawerToggle;
 
 /**
  * This example illustrates a common usage of the DrawerLayout widget
@@ -78,6 +79,8 @@ public abstract class NavDrawerActivity extends FragmentActivity {
 	protected DrawerLayout navDrawerLayout;
 	protected ListView navDrawerList;
 	protected String[] navListOption;
+	protected ActionBarDrawerToggle actionBarDrawerToggle;
+	protected CharSequence appTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

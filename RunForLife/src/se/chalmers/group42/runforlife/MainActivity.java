@@ -27,12 +27,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.graphics.Point;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -43,6 +45,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import at.technikum.mti.fancycoverflow.FancyCoverFlow;
 import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
+import android.support.v4.app.ActionBarDrawerToggle;
 
 public class MainActivity extends NavDrawerActivity implements 
 StatusIconEventListener,
@@ -55,6 +58,10 @@ GPSInputListener{
 	private ImageView 	gpsIcon, soundIcon, headPhonesIcon;
 	private TextView	gpsText, soundText, headPhonesText;
 
+	private CharSequence navDrawerTitle;
+	
+	private int apiLevel;
+
 	//TODO titlar f�r navdrawer
 
 	private final int ACTION_BAR_HEIGHT_MDPI = 32;
@@ -64,14 +71,17 @@ GPSInputListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		//Get API-level
+		apiLevel = Integer.valueOf(android.os.Build.VERSION.SDK_INT);
+
 		//Make hardware buttons control the media volume
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
-		
+
 		//Setting up status icons
 		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
 		soundIcon = (ImageView) findViewById(R.id.imageViewSound);
 		headPhonesIcon = (ImageView) findViewById(R.id.imageViewHeadphones);
- 
+
 		//Setting up status text
 		gpsText = (TextView) findViewById(R.id.textViewGPS);
 		gpsText.setText("Searching for gps...");
@@ -87,8 +97,12 @@ GPSInputListener{
 		new GPSInputHandler(this, this);
 
 		//Setting up Navigation Drawer from left side of screen
+		appTitle = navDrawerTitle = getTitle();
+		//The string-array of list options, as "Run" and "History"
 		navListOption = getResources().getStringArray(R.array.nav_drawer_array);
+		//The whole drawer layout
 		navDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		//The list view of options
 		navDrawerList = (ListView) findViewById(R.id.drawer_list);
 
 		/*
@@ -96,13 +110,41 @@ GPSInputListener{
 		 * drawer_shadow.9 images borrowed from com.example.android.navigationdrawerexample
 		 */
 		navDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-		//Setup of drawer list view with items and click listener
+		//Setup of drawer list view with items contained in navListOptions and click listener to them
 		navDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navListOption));
 		navDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
+		if(apiLevel>=14){
+			getActionBar().setHomeButtonEnabled(true);
+		}
+
+		actionBarDrawerToggle = new ActionBarDrawerToggle(
+				this,                  /* host Activity */
+				navDrawerLayout,         /* DrawerLayout object */
+				R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
+				R.string.drawer_open,  /* "open drawer" description */
+				R.string.drawer_close  /* "close drawer" description */
+				) {
+
+			/** Called when a drawer has settled in a completely closed state. */
+			public void onDrawerClosed(View view) {
+				super.onDrawerClosed(view);
+				getActionBar().setTitle("Start a run");
+			}
+
+			/** Called when a drawer has settled in a completely open state. */
+			public void onDrawerOpened(View drawerView) {
+				super.onDrawerOpened(drawerView);
+				getActionBar().setTitle(appTitle);
+			}
+		};
+
+		// Set the drawer toggle as the DrawerListener
+		navDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+
+
 
 		/*
 		 * The screen size and density of the device running the program is
@@ -162,65 +204,33 @@ GPSInputListener{
 		});
 	}
 
-	//		//Setting up Navigation Drawer from left side of screen
-	//		navListOption = getResources().getStringArray(R.array.nav_drawer_array);
-	//		navDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-	//		navDrawerList = (ListView) findViewById(R.id.drawer_list);
-	//
-	//		/*
-	//		 * Custom shadow set up
-	//		 * drawer_shadow.9 images borrowed from com.example.android.navigationdrawerexample
-	//		 */
-	//		navDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-	//		//Setup of drawer list view with items and click listener
-	//		navDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navListOption));
-	//		navDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-	//
-	//		// enable ActionBar app icon to behave as action to toggle nav drawer
-	//		getActionBar().setDisplayHomeAsUpEnabled(true);
-	//		getActionBar().setHomeButtonEnabled(true);
-	//
-	//
-	//
-	//	}
-	//
-	//	/* The click listner for ListView in the navigation drawer */
-	//	private class DrawerItemClickListener implements ListView.OnItemClickListener {
-	//		@Override
-	//		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-	//			selectItem(position);
-	//		}
-	//	}
-	//
-	//	private void selectItem(int position) {
-	//		//Transition to History-activity
-	//		switch(position) {
-	//		case 1:
-	//			Intent a = new Intent(MainActivity.this, CompletedRunListActivity.class);
-	//			startActivity(a);
-	//			break;
-	//		case 2:
-	//			Intent b = new Intent(MainActivity.this, MainActivity.class);
-	//			startActivity(b);
-	//			break;
-	//		default:
-	//		}
-	//	}
+	//Method needed to get the hamburgermenu working
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		actionBarDrawerToggle.onConfigurationChanged(newConfig);
+	}
 
-	//        // update the main content by replacing fragments
-	//        Fragment fragment = new PlanetFragment();
-	//        Bundle args = new Bundle();
-	//        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-	//        fragment.setArguments(args);
-	//
-	//        FragmentManager fragmentManager = getFragmentManager();
-	//        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-	//
-	//        // update selected item and title, then close the drawer
-	//        mDrawerList.setItemChecked(position, true);
-	//        setTitle(mPlanetTitles[position]);
-	//        mDrawerLayout.closeDrawer(mDrawerList);
+	//Method needed to get the hamburgermenu working
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
+		// then it has handled the app icon touch event
+		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
+	//Method needed to get the hamburgermenu working
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		actionBarDrawerToggle.syncState();
+	}
+
+	//Method needed to get the hamburgermenu working
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
