@@ -34,6 +34,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -203,34 +204,7 @@ GPSInputListener{
 			}
 		});
 	}
-
-	//Method needed to get the hamburgermenu working
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		actionBarDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-	//Method needed to get the hamburgermenu working
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
-		// then it has handled the app icon touch event
-		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	//Method needed to get the hamburgermenu working
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
-		actionBarDrawerToggle.syncState();
-	}
-
-	//Method needed to get the hamburgermenu working
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

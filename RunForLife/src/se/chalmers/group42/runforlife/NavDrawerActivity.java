@@ -111,10 +111,29 @@ public abstract class NavDrawerActivity extends FragmentActivity {
 		}
 	}
 
+	//Method needed to get the hamburgermenu working
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-		return super.onCreateOptionsMenu(menu);
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		actionBarDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	//Method needed to get the hamburgermenu working
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
+		// then it has handled the app icon touch event
+		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	//Method needed to get the hamburgermenu working
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		actionBarDrawerToggle.syncState();
 	}
 }

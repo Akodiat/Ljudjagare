@@ -126,33 +126,6 @@ CompletedRunListFragment.Callbacks {
 		// TODO: If exposing deep links into your app, handle intents here.
 	}
 	
-	//Method needed to get the hamburgermenu working
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		actionBarDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-	//Method needed to get the hamburgermenu working
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
-		// then it has handled the app icon touch event
-		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	//Method needed to get the hamburgermenu working
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
-		actionBarDrawerToggle.syncState();
-	}
-
-	//Method needed to get the hamburgermenu working
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
