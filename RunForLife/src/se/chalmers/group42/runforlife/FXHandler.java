@@ -122,8 +122,6 @@ public class FXHandler {
 
 	public void foundCoin() {
 		soundPool.stop(coin); // stop play coin
-
-		// play audio in a new thread to make it possible to change screen
 		(new Thread(new ReachedCoinRunnable())).start();
 	}
 
@@ -139,13 +137,7 @@ public class FXHandler {
 
 		// Send message to handler with delay.
 		Message msg = handler.obtainMessage(Constants.MSG);
-		
-		// change delayinterval to delayintervaleach100 if preferred 
 		handler.sendMessageDelayed(msg, (long) delayIntervalEach100(fx));
-	}
-	
-	public void loopLong(FX fx) {
-		fx.source().play(true);
 	}
 
 	/**
@@ -212,8 +204,7 @@ public class FXHandler {
 	 *            the current distance from goal
 	 */
 	public void update(FX fx, float angle, float distance) {
-		if (angle >= 90 && angle <= 150)
-			fx.setAngle(angle);
+		fx.setAngle(angle);
 
 		if (fx.angle() < 0 && fx.angle() > -90)
 			fx.setPitch((1 - Constants.MIN_PITCH) / 90 * fx.angle() + 1);
@@ -223,14 +214,12 @@ public class FXHandler {
 		fx.setDistance(distance);
 
 		// if distance is below 100, introduce coin
-		if (distance < Constants.APPROACHING_COIN
-				&& distance > Constants.MIN_DISTANCE)
-			// loopCoin(distance);
+		// if (distance < Constants.APPROACHING_COIN
+		// && distance > Constants.MIN_DISTANCE)
+		// loopCoin(distance);
 
-			// tell the user how close to goal he/she is
-			distanceAnnouncer(distance);
-		
-		//env.setListenerOrientation(fx.angle());
+		// tell the user how close to goal he/she is
+		distanceAnnouncer(distance);
 	}
 
 	public void loopCoin(float distance) {
@@ -267,7 +256,7 @@ public class FXHandler {
 	}
 
 	public void distanceAnnouncer(float distance) {
-		int rConst = 5; // meters from coin destination
+		int rConst = 10; // meters from coin destination
 
 		if (distance < 1000 + rConst && distance > 1000 - rConst)
 			sayDistance(say1000);
