@@ -137,7 +137,7 @@ public class FXHandler {
 
 		// Send message to handler with delay.
 		Message msg = handler.obtainMessage(Constants.MSG);
-		handler.sendMessageDelayed(msg, (long) delayInterval(fx));
+		handler.sendMessageDelayed(msg, (long) delayIntervalEach100(fx));
 	}
 
 	/**
@@ -174,6 +174,21 @@ public class FXHandler {
 				+ Constants.MIN_DELAY;
 	}
 
+	public float delayIntervalEach100(FX fx) {
+		float delayRatio, newDist = fx.distance() % 100;
+
+		// Calculate value between 0 and 1, where 0 is when a user has reached
+		// destination:
+		if (newDist < 100)
+			delayRatio = newDist / 100;
+		else
+			delayRatio = 1;
+
+		// Delay between each repetition.
+		return (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
+				+ Constants.MIN_DELAY;
+	}
+
 	public Handler getHandler() {
 		return handler;
 	}
@@ -199,9 +214,9 @@ public class FXHandler {
 		fx.setDistance(distance);
 
 		// if distance is below 100, introduce coin
-		if (distance < Constants.APPROACHING_COIN
-				&& distance > Constants.MIN_DISTANCE)
-			loopCoin(distance);
+		// if (distance < Constants.APPROACHING_COIN
+		// && distance > Constants.MIN_DISTANCE)
+		// loopCoin(distance);
 
 		// tell the user how close to goal he/she is
 		distanceAnnouncer(distance);

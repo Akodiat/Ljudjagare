@@ -56,7 +56,7 @@ public class FX {
 
 		if (Math.abs(angle) > 90) {
 			source = behindSource;
-			angle = 0;
+			//angle = 0;
 		} else
 			source = forwardSource;
 	}
