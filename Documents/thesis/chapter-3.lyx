@@ -274,67 +274,15 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Implementation
+Usability evaluation
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/Sound.lyx"
-
-\end_inset
-
-
+\begin_layout Section
+Observations
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/Sensors.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/RandomRouteGeneration.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/Database.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/Design.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/GameModes.lyx"
-
-\end_inset
-
-
+\begin_layout Section
+Interviews
 \end_layout
 
 \end_body

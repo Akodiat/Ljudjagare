@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master thesis.lyx
+\master ../chapter-2.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -102,10 +102,10 @@ customHeadersFooters
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
-\branch Sound
-\selected 1
+\branch NoChildDocument
+\selected 0
 \filename_suffix 0
-\color #faf0e6
+\color #ff0000
 \end_branch
 \index Index
 \shortcut idx
@@ -273,68 +273,12 @@ thepage
 
 \end_layout
 
-\begin_layout Chapter
-Implementation
+\begin_layout Section
+Random route generation algorithm
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/Sound.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/Sensors.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/RandomRouteGeneration.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/Database.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/Design.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Implementation/GameModes.lyx"
-
-\end_inset
-
-
+weeeeeeeeeeeeeeeeeeeeeeeeeeee
 \end_layout
 
 \end_body

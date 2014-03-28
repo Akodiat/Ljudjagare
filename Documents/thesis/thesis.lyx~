@@ -124,6 +124,26 @@ customHeadersFooters
 \filename_suffix 0
 \color #faf0e6
 \end_branch
+\branch Sound
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter-3
+\selected 1
+\filename_suffix 0
+\color #17fa50
+\end_branch
+\branch chapter-4
+\selected 1
+\filename_suffix 0
+\color #fa195d
+\end_branch
+\branch chapter-5
+\selected 1
+\filename_suffix 0
+\color #fae821
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -183,7 +203,7 @@ document
 \end_layout
 
 \begin_layout Subject
-Thesis to get the degree of a doctor of philosophy
+Thesis to get the degree of a Bachelor of Science
 \begin_inset Note Note
 status open
 
@@ -245,15 +265,12 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-Replace this box e.
-\begin_inset space \thinspace{}
+\begin_inset Graphics
+	filename AvancezChalmersU_black_centered.eps
+
 \end_inset
 
-g.
-\begin_inset space ~
-\end_inset
 
-by the coat of arms of the university.
 \end_layout
 
 \end_inset
@@ -613,7 +630,7 @@ rightmark
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Enable page headers and add the chapter to the header line.
@@ -651,6 +668,63 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "chapter-2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter-3
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "chapter-3.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter-4
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "chapter-4.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter-5
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "chapter-5.lyx"
 
 \end_inset
 
