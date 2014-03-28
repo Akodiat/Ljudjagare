@@ -81,6 +81,7 @@ public abstract class NavDrawerActivity extends FragmentActivity {
 	protected String[] navListOption;
 	protected ActionBarDrawerToggle actionBarDrawerToggle;
 	protected CharSequence appTitle;
+	protected CharSequence navDrawerTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,17 +96,35 @@ public abstract class NavDrawerActivity extends FragmentActivity {
 			selectItem(position);
 		}		
 	}
-
-	private void selectItem(int position) {
-		//Transition to History-activity
+	
+	/*
+	 * Method handling the transition between the different activities that may be chosen
+	 * from the Navigation Drawer-menu.
+	 */
+	protected void selectItem(int position) {
 		switch(position) {
 		case 0:
-			Intent a = new Intent(NavDrawerActivity.this, MainActivity.class);
-			startActivity(a);
+			Intent mainIntent = new Intent(NavDrawerActivity.this, MainActivity.class);
+			/*Flag clearing other activities from backstack to make sure that back press
+			 * from main will exit the app.
+			 */
+			
+			mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(mainIntent);
+			// update selected item and title, then close the drawer
+			navDrawerList.setItemChecked(position, true);
+			setTitle(navDrawerTitle);
+			navDrawerLayout.closeDrawer(navDrawerList);
 			break;
 		case 1:
-			Intent b = new Intent(NavDrawerActivity.this, CompletedRunListActivity.class);
-			startActivity(b);
+			Intent historyIntent = new Intent(NavDrawerActivity.this, CompletedRunListActivity.class);
+			//Flag making sure that no new instances of a current running activity are launched
+			historyIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+			startActivity(historyIntent);
+			// update selected item and title, then close the drawer
+			navDrawerList.setItemChecked(position, true);
+			setTitle(navDrawerTitle);
+			navDrawerLayout.closeDrawer(navDrawerList);
 			break;
 		default:
 		}

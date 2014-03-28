@@ -48,8 +48,6 @@ CompletedRunListFragment.Callbacks {
 	 */
 	private boolean mTwoPane;
 	private int apiLevel;
-	
-	private CharSequence navDrawerTitle;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -159,5 +157,10 @@ CompletedRunListFragment.Callbacks {
 			detailIntent.putExtra(Constants.EXTRA_ID, Integer.parseInt(id));
 			startActivity(detailIntent);
 		}
+	}
+	@Override
+	public void onBackPressed(){
+		//selectItem-method is called to use the logic clearing the backstack.
+		super.selectItem(0);
 	}
 }

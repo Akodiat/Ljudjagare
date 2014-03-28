@@ -58,8 +58,6 @@ GPSInputListener{
 	private int coverFlowHeight;
 	private ImageView 	gpsIcon, soundIcon, headPhonesIcon;
 	private TextView	gpsText, soundText, headPhonesText;
-
-	private CharSequence navDrawerTitle;
 	
 	private int apiLevel;
 
