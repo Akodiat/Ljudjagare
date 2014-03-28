@@ -274,18 +274,18 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Title of first chapter
+Introduction
 \end_layout
 
 \begin_layout Section
-Overview
+Background
 \end_layout
 
 \begin_layout Standard
 bla bla bla bla bla bla bla bla bla bla bla, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:The-next-section"
+reference "sec:Purpose"
 
 \end_inset
 
@@ -330,10 +330,10 @@ reference "eq:Integral-sine"
 \end_layout
 
 \begin_layout Section
-The next section
+Purpose
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:The-next-section"
+name "sec:Purpose"
 
 \end_inset
 
@@ -369,6 +369,18 @@ width "2.5cm"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Goals
+\end_layout
+
+\begin_layout Section
+Method
+\end_layout
+
+\begin_layout Section
+Outline
 \end_layout
 
 \end_body
