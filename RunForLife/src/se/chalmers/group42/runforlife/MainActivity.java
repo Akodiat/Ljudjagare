@@ -16,6 +16,7 @@
 
 package se.chalmers.group42.runforlife;
 
+import se.chalmers.group42.runforlife.DataHandler.RunStatus;
 import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
 import sensors.GPSInputHandler;
 import sensors.GPSInputListener;
@@ -58,7 +59,8 @@ GPSInputListener{
 	private int coverFlowHeight;
 	private ImageView 	gpsIcon, soundIcon, headPhonesIcon;
 	private TextView	gpsText, soundText, headPhonesText;
-	
+	private boolean gpsOn, soundOn, headphonesIn;
+
 	private int apiLevel;
 
 	//TODO titlar f�r navdrawer
@@ -202,7 +204,7 @@ GPSInputListener{
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -212,38 +214,73 @@ GPSInputListener{
 
 	@Override
 	public void onGPSConnect() {
-		gpsIcon.setImageResource(R.drawable.gps_green);
-		gpsText.setText("GPS connected");
+		if(!gpsOn){
+			System.out.println("GPS on");
+			gpsOn=true;
+			gpsIcon.setImageResource(R.drawable.gps_green);
+			gpsText.setText("GPS connected");
+			setGreenToRun();
+		}
 	}
 
 	@Override
 	public void onGPSDisconnect() {
+		gpsOn=false;
 		gpsIcon.setImageResource(R.drawable.gps_red);
 		gpsText.setText("Searching for gps...");
+		setNotGreenToRun();
 	}
 
 	@Override
 	public void onSoundOn() {
-		soundIcon.setImageResource(R.drawable.sound_green);
-		soundText.setText("Sound on");
+		if(!soundOn){
+			System.out.println("Sound On");
+			soundOn=true;
+			soundIcon.setImageResource(R.drawable.sound_green);
+			soundText.setText("Sound on");
+			setGreenToRun();
+		}
 	}
 
 	@Override
 	public void onSoundOff() {
+		soundOn=false;
 		soundIcon.setImageResource(R.drawable.sound_red);
 		soundText.setText("Turn up media volume");
+		setNotGreenToRun();
 	}
 
 	@Override
 	public void onHeadphonesIn(){
-		headPhonesIcon.setImageResource(R.drawable.headphones_green);
-		headPhonesText.setText("Headphones: connected");
+		if(!headphonesIn){
+			System.out.println("HeadPhones In");
+			headphonesIn=true;
+			headPhonesIcon.setImageResource(R.drawable.headphones_green);
+			headPhonesText.setText("Headphones: connected");
+			setGreenToRun();
+		}
 	}
 
 	@Override
 	public void onHeadphonesOut(){
+		headphonesIn=false;
 		headPhonesIcon.setImageResource(R.drawable.headphones_red);
 		headPhonesText.setText("Plug in headphones");
+		setNotGreenToRun();
+	}
+
+	private boolean isOkToRun(){
+		return (gpsOn && soundOn && headphonesIn);
+	}
+
+	private void setGreenToRun(){
+		if(isOkToRun()){
+			runButton.setImageResource(R.drawable.run);
+		}
+	}
+
+	private void setNotGreenToRun(){
+		runButton.setImageResource(R.drawable.run_red);
 	}
 
 	@Override

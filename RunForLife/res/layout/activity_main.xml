@@ -55,7 +55,7 @@
                     android:layout_alignParentRight="true"
                     android:background="#0000"
                     android:contentDescription="@string/button_desc_run"
-                    android:src="@drawable/run" />
+                    android:src="@drawable/run_red" />
             </RelativeLayout>
         </RelativeLayout>
     </FrameLayout>
