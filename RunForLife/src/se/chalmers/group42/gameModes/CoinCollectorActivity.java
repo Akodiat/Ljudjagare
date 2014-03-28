@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -131,6 +132,13 @@ public class CoinCollectorActivity extends RunActivity {
 			adjustPanoration();
 	}
 
+	private void pointArrowToSource_Compass(float headingAngleOrientation) {
+		if(generateRoute == false){
+		ImageView arrow = (ImageView) this.findViewById(R.id.imageView_arrow);
+		arrow.setRotation(headingAngleOrientation + human.getLocation().bearingTo(coinLocation));
+		}
+	}
+
 	@Override
 	public void onCompassChanged(float headingAngleOrientation) {
 		super.onCompassChanged(headingAngleOrientation);
@@ -138,20 +146,23 @@ public class CoinCollectorActivity extends RunActivity {
 		// Update compass value
 		this.compassFromNorth = headingAngleOrientation;
 
+
 		// If a current coin is set
-		if (usingCompass() && this.coinLocation != null)
+		if (usingCompass() && this.coinLocation != null){
 			adjustPanoration();
+			pointArrowToSource_Compass(headingAngleOrientation);
+		}
 	}
 
 	private boolean isAtCoin() {
 		double dist = human.getLocation().distanceTo(coinLocation);
 		return (// If closer than minimum distance
-		human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
-		// Or the accuracy is less than 50 meters but still larger
-		// than the distance to the sound source.
-		|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
-				.distanceTo(coinLocation) < human.getLocation().getAccuracy()
-				: false));
+				human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
+				// Or the accuracy is less than 50 meters but still larger
+				// than the distance to the sound source.
+				|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
+						.distanceTo(coinLocation) < human.getLocation().getAccuracy()
+						: false));
 	}
 
 	private void generateNewCoin() {
@@ -198,13 +209,13 @@ public class CoinCollectorActivity extends RunActivity {
 	/**
 	 * Play long sound without audible repetition.
 	 */
-//	@Override
-//	protected void playLongSound() {
-//		super.playSound();
-//
-//		if (!fx.getNavigationFX().isPlaying())
-//			fx.loopLong(fx.getNavigationFX());
-//	}
+	//	@Override
+	//	protected void playLongSound() {
+	//		super.playSound();
+	//
+	//		if (!fx.getNavigationFX().isPlaying())
+	//			fx.loopLong(fx.getNavigationFX());
+	//	}
 
 	@Override
 	protected void stopSound() {
