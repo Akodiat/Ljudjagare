@@ -16,7 +16,7 @@ public class Constants {
 	/**
 	 * Distance to the first generated point you run to.
 	 */
-	public static final int RUN_DISTANCE = 150;
+	public static final int RUN_DISTANCE = 700;
 	
 	
 	/**
