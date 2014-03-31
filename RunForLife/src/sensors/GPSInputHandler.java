@@ -1,6 +1,6 @@
 package sensors;
 
-import se.chalmers.group42.runforlife.RunActivity;
+import se.chalmers.group42.controller.RunActivity;
 import utils.LocationHelper;
 import android.content.Context;
 import android.location.Location;

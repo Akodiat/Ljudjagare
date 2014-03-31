@@ -1,4 +1,4 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
 import se.chalmers.group42.runforlife.dummy.DummyContent;
 
 /**

@@ -1,6 +1,11 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
 import java.util.ArrayList;
+
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.R.drawable;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
 
 import android.app.Activity;
 import android.graphics.Color;

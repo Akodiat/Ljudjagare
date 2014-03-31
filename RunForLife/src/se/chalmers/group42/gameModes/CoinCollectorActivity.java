@@ -2,14 +2,14 @@ package se.chalmers.group42.gameModes;
 
 import java.util.ArrayList;
 
+import se.chalmers.group42.controller.FinishedRunActivity;
+import se.chalmers.group42.controller.MapFragment;
+import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
-import se.chalmers.group42.runforlife.FinishedRunActivity;
 import se.chalmers.group42.runforlife.GMapV2Direction;
 import se.chalmers.group42.runforlife.Human;
-import se.chalmers.group42.runforlife.MapFragment;
 import se.chalmers.group42.runforlife.R;
-import se.chalmers.group42.runforlife.RunActivity;
 import utils.LocationHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;

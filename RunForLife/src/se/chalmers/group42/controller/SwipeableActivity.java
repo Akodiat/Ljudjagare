@@ -1,6 +1,9 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
 import java.util.Locale;
+
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.R.string;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -35,7 +38,7 @@ public abstract class SwipeableActivity extends FragmentActivity implements Acti
 
 	protected Fragment runFragment;
 	protected Fragment mapFragment;
-	protected Fragment statsFragment;
+	private Fragment statsFragment;
 
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -64,7 +67,7 @@ public abstract class SwipeableActivity extends FragmentActivity implements Acti
 			case 1:
 				return mapFragment;
 			case 2:
-				return statsFragment;
+				return getStatsFragment();
 			}
 			return null;
 		}
@@ -109,5 +112,13 @@ public abstract class SwipeableActivity extends FragmentActivity implements Acti
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public Fragment getStatsFragment() {
+		return statsFragment;
+	}
+
+	public void setStatsFragment(Fragment statsFragment) {
+		this.statsFragment = statsFragment;
 	}
 }

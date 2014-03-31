@@ -3,6 +3,6 @@
     android:id="@+id/completedrun_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="se.chalmers.group42.runforlife.CompletedRunDetailActivity"
+    tools:context="se.chalmers.group42.controller.CompletedRunDetailActivity"
     tools:ignore="MergeRootFrame" />
 

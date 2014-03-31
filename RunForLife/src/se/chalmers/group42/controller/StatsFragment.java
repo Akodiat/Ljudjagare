@@ -1,23 +1,32 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.SupportMapFragment;
-
-public class FinishedStatsFragment extends StatsFragment{
+/**
+ * A fragment including statistical information of the current run.
+ */
+public class StatsFragment extends Fragment{
 	
 	private TableLayout table;
 	private boolean evenNrOfRows = true;
 	
+	public StatsFragment() {
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -25,18 +34,11 @@ public class FinishedStatsFragment extends StatsFragment{
 				container, false);
 		Log.i("Fragment", "Stats Fragment created");
 		table = (TableLayout) rootView.findViewById(R.id.tableLayout);
-		
-		Bundle stats = getArguments();
-		long[] times = stats.getLongArray("times");
-		int[] dists = stats.getIntArray("dists");
-		
-		for(int row = 0 ; row < times.length ; row++){
-			updateTableData(dists[row],times[row]);
-		}
-		
 		return rootView;
 	}
 	
+	//TODO Fixa så att varannan rad blir grå med hjälp av om det inlästa 
+	//elementet har udda eller jämn plats
 	public void updateTableData(int distance, long seconds){
 		Time t = new Time();
 		t.set(seconds*1000);
@@ -45,12 +47,8 @@ public class FinishedStatsFragment extends StatsFragment{
 		double d = distance;
 		double s = seconds;
 		double speed = (d / s)*3.6;
-		double paceX;
-		if(speed != 0){
-			paceX = Math.round((60 / speed)*100)/100.0d;
-		}else{
-			paceX = 0;
-		}
+		double paceX = 60 / speed;
+		paceX = Math.round(paceX*100)/100.0d;
 		
 		TableRow row = new TableRow(this.getActivity());
 		TextView event = new TextView(this.getActivity());

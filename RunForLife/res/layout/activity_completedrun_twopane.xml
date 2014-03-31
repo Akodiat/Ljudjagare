@@ -8,7 +8,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context="se.chalmers.group42.runforlife.CompletedRunListActivity" >
+    tools:context="se.chalmers.group42.controller.CompletedRunListActivity" >
 
     <!--
     This layout is a two-pane layout for the Completed Runs
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/completedrun_list"
-        android:name="se.chalmers.group42.runforlife.CompletedRunListFragment"
+        android:name="se.chalmers.group42.controller.CompletedRunListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

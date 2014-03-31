@@ -1,12 +1,12 @@
 package se.chalmers.group42.gameModes;
 
+import se.chalmers.group42.controller.MapFragment;
+import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.Human;
-import se.chalmers.group42.runforlife.MapFragment;
 import se.chalmers.group42.runforlife.Monster;
 import se.chalmers.group42.runforlife.R;
-import se.chalmers.group42.runforlife.RunActivity;
 import utils.LocationHelper;
 import android.location.Location;
 import android.os.Bundle;

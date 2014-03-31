@@ -1,10 +1,17 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import se.chalmers.group42.controller.MapFragment.OnHeadlineSelectedListener;
+import se.chalmers.group42.controller.SwipeableActivity.SectionsPagerAdapter;
 import se.chalmers.group42.database.*;
-import se.chalmers.group42.runforlife.SwipeableActivity.SectionsPagerAdapter;
+import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.RunForLifeApplication;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
+import se.chalmers.group42.runforlife.R.menu;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -84,7 +91,7 @@ MapFragment.OnHeadlineSelectedListener{
 
 		runFragment = new FinishedRunFragment();
 		mapFragment = new FinishedMapFragment();
-		statsFragment = new FinishedStatsFragment();
+		setStatsFragment(new FinishedStatsFragment());
 
 		
 		
@@ -153,7 +160,7 @@ MapFragment.OnHeadlineSelectedListener{
 			stats.putLongArray("times", times);
 			stats.putIntArray("dists", dists);
 
-			statsFragment.setArguments(stats);
+			getStatsFragment().setArguments(stats);
 		}
 
 	}

@@ -14,10 +14,20 @@
  * limitations under the License.
  */
 
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
+import se.chalmers.group42.controller.NavDrawerActivity.DrawerItemClickListener;
+import se.chalmers.group42.runforlife.ModeController;
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.StatusIconEventListener;
+import se.chalmers.group42.runforlife.StatusIconHandler;
 import se.chalmers.group42.runforlife.DataHandler.RunStatus;
-import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
+import se.chalmers.group42.runforlife.R.array;
+import se.chalmers.group42.runforlife.R.drawable;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
+import se.chalmers.group42.runforlife.R.menu;
+import se.chalmers.group42.runforlife.R.string;
 import sensors.GPSInputHandler;
 import sensors.GPSInputListener;
 import android.location.Location;

@@ -1,4 +1,4 @@
-package se.chalmers.group42.history;
+package se.chalmers.group42.controller;
 
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.R.id;

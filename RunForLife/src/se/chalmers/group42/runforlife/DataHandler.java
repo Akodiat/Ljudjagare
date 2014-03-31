@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import se.chalmers.group42.controller.MapFragment;
+import se.chalmers.group42.controller.RunActivity;
+import se.chalmers.group42.controller.StatsFragment;
 import se.chalmers.group42.database.*;
 
 import android.location.Location;
@@ -37,7 +40,7 @@ public class DataHandler {
 
 	private double currentSpeed = 0;
 	
-	DataHandler(MySQLiteHelper db, RunActivity runAct){
+	public DataHandler(MySQLiteHelper db, RunActivity runAct){
 		this.runAct = runAct;
 		this.db = db;
 		m_handler = new Handler();
@@ -76,7 +79,7 @@ public class DataHandler {
 						
 						MapFragment mapFrag = (MapFragment) runAct.getSupportFragmentManager().findFragmentByTag(
 				                "android:switcher:"+R.id.pager+":1");
-						if(runAct.statsFragment.isAdded()){
+						if(runAct.getStatsFragment().isAdded()){
 							mapFrag.drawMyPath(location);
 						}
 						
@@ -184,7 +187,7 @@ public class DataHandler {
 		db.addCoin(coin);
 		StatsFragment statsFrag = (StatsFragment) runAct.getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":2");
-		if(runAct.statsFragment.isAdded()){
+		if(runAct.getStatsFragment().isAdded()){
 			statsFrag.updateTableData(d,seconds);
 		}
 	}

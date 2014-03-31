@@ -1,5 +1,8 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;

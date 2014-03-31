@@ -1,13 +1,21 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.android.gms.internal.db;
 
+import se.chalmers.group42.controller.NavDrawerActivity.DrawerItemClickListener;
 import se.chalmers.group42.database.MySQLiteHelper;
 import se.chalmers.group42.database.Route;
-import se.chalmers.group42.runforlife.NavDrawerActivity.DrawerItemClickListener;
+import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.R.array;
+import se.chalmers.group42.runforlife.R.drawable;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
+import se.chalmers.group42.runforlife.R.menu;
+import se.chalmers.group42.runforlife.R.string;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -53,7 +61,8 @@ CompletedRunListFragment.Callbacks {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_completedrun_list);	
+		setContentView(R.layout.activity_completedrun_list);
+		Log.v("CompletedRunListActivity", "CompletedRunListActivity");
 
 
 		//Get API-level

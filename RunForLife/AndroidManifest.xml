@@ -39,7 +39,7 @@ Google Maps Android API v2, but are recommended. -->
         </receiver>
 
         <activity
-            android:name="se.chalmers.group42.runforlife.MainActivity"
+            android:name="se.chalmers.group42.controller.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="nosensor" >
             <intent-filter>
@@ -49,7 +49,7 @@ Google Maps Android API v2, but are recommended. -->
             </intent-filter>
         </activity>
         <activity
-            android:name="se.chalmers.group42.runforlife.RunActivity"
+            android:name="se.chalmers.group42.controller.RunActivity"
             android:label="run_activity"
             android:screenOrientation="nosensor" >
         </activity>
@@ -69,7 +69,7 @@ Google Maps Android API v2, but are recommended. -->
             android:screenOrientation="nosensor" >
         </activity>
         <activity
-            android:name="se.chalmers.group42.runforlife.FinishedRunActivity"
+            android:name="se.chalmers.group42.controller.FinishedRunActivity"
             android:label="finished_run_activity"
             android:screenOrientation="nosensor" >
         </activity>
@@ -82,17 +82,17 @@ Google Maps Android API v2, but are recommended. -->
             android:value="AIzaSyAntUo60DSK3G7I_PG5XLtD1LaeK9liquU" />
         <!-- <activity android:name="se.chalmers.group42.gameModes.CoinCollectorActivity" android:label="coin_collector"></activity> -->
         <activity
-            android:name="se.chalmers.group42.runforlife.CompletedRunListActivity"
-            android:parentActivityName="se.chalmers.group42.runforlife.MainActivity"
+            android:name="se.chalmers.group42.controller.CompletedRunListActivity"
+            android:parentActivityName="se.chalmers.group42.controller.MainActivity"
             android:label="@string/title_completedrun_list" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="se.chalmers.group42.runforlife.MainActivity" />
         </activity>
         <activity
-            android:name="se.chalmers.group42.runforlife.CompletedRunDetailActivity"
+            android:name="se.chalmers.group42.controller.CompletedRunDetailActivity"
             android:label="@string/title_completedrun_detail"
-            android:parentActivityName="se.chalmers.group42.runforlife.CompletedRunListActivity" >
+            android:parentActivityName="se.chalmers.group42.controller.CompletedRunListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="se.chalmers.group42.runforlife.CompletedRunListActivity" />

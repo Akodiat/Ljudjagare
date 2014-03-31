@@ -1,4 +1,9 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
+
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.R.drawable;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;

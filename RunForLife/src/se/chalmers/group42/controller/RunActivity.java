@@ -1,4 +1,4 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,19 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.DataHandler;
+import se.chalmers.group42.runforlife.GMapV2Direction;
+import se.chalmers.group42.runforlife.GetDirectionsAsyncTask;
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.RunForLifeApplication;
+import se.chalmers.group42.runforlife.StatusIconEventListener;
+import se.chalmers.group42.runforlife.StatusIconHandler;
 import se.chalmers.group42.runforlife.DataHandler.RunStatus;
+import se.chalmers.group42.runforlife.R.drawable;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
+import se.chalmers.group42.runforlife.R.menu;
 import sensors.*;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -115,7 +127,7 @@ OrientationInputListener
 
 		runFragment = new RunFragment();
 		mapFragment = new MapFragment();
-		statsFragment = new StatsFragment();
+		setStatsFragment(new StatsFragment());
 
 
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();

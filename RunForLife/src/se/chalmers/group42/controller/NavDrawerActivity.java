@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.controller;
 
 import java.util.Locale;
+
 
 
 import android.app.Activity;

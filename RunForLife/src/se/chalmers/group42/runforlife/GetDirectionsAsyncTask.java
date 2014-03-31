@@ -3,6 +3,9 @@ package se.chalmers.group42.runforlife;
 import java.util.ArrayList;
 import java.util.Map;
 import org.w3c.dom.Document;
+
+import se.chalmers.group42.controller.RunActivity;
+
 import com.google.android.gms.maps.model.LatLng;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
