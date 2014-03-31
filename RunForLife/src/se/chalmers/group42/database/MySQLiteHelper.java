@@ -516,7 +516,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 		Cursor cursor = db.query(TABLE_FINISHEDROUTES, COLUMNS_FINROUTES, null, null, null, null, null);
 
-		if(cursor.moveToFirst()){
+		if(cursor.moveToLast()){
 			do{
 				Route r = getRoute(cursor.getInt(0));
 				FinishedRoute f = new FinishedRoute();
@@ -527,10 +527,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 				f.setTotTime(cursor.getLong(3));
 				f.setDate(r.getDate());
 				routes.add(f);
-			}while(cursor.moveToNext());
+			}while(cursor.moveToPrevious());
 		}
 
-		Log.d("getAllRoutes",routes.toString());
+		Log.d("getAllFinishedRoutes",routes.toString());
 		return routes; 
 	}
 

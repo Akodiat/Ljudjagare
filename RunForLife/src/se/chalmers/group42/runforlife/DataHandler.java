@@ -7,14 +7,15 @@ import java.util.TimerTask;
 
 import se.chalmers.group42.database.*;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentSender.SendIntentException;
 import android.location.Location;
 import android.os.Handler;
 
 public class DataHandler {
 	private RunActivity 	runAct;
 	public RunStatus		runStatus=RunStatus.STOPPED;
-//	private boolean			running = false;
-//	private boolean 	 	pause = false;
 	private Handler 	 	m_handler;
 	private Runnable 	 	m_handlerTask;
 	
@@ -41,9 +42,6 @@ public class DataHandler {
 		this.runAct = runAct;
 		this.db = db;
 		m_handler = new Handler();
-		
-		//FLUSH DB
-//		db.onUpgrade(db.getWritableDatabase(), 1, 2);
 	}
 	
 	public void newLocation(Location location){
@@ -83,7 +81,7 @@ public class DataHandler {
 					}
 					prev = curr;
 				}
-				//adds thte point to the database
+				//adds the point to the database
 				db.addPoint(new Point(routeId, 
 											   location.getLatitude(),
 											   location.getLongitude()));
@@ -116,18 +114,13 @@ public class DataHandler {
 					seconds++;
 					//Update the displayed data in the run fragment
 					int d = (int) distance;
+					
 					runAct.updateDisplay(seconds,d,currentSpeed,coins); 
 				}
-//				else {
-//					m_handler.removeCallbacks(m_handlerTask);
-//				}
 				m_handler.postDelayed(m_handlerTask, 1000);
 			}
 		};
 		m_handlerTask.run(); 
-//		pause = false;
-//		running = true;
-//		runStatus=RunStatus.RUNNING;
 	}
 	
 	//pause the watch
@@ -143,12 +136,10 @@ public class DataHandler {
 	public void resetWatch(){
 		int d = (int) distance;
 		
-		m_handler.removeCallbacks(m_handlerTask);
+//		m_handler.removeCallbacks(m_handlerTask);
 		db.finishRoute(db.getRoute(routeId), d, seconds);
 		seconds = 0L;
 		distance = 0;
-//		pause = false;
-//		running = false;
 		coins = 0;
 		
 		
