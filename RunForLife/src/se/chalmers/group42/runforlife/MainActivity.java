@@ -89,11 +89,6 @@ GPSInputListener{
 		soundText = (TextView) findViewById(R.id.textViewSound);
 		headPhonesText= (TextView) findViewById(R.id.textViewHeadphones);
 
-		//Setting up statusIconHandler
-		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
-		StatusIconHandler receiver = new StatusIconHandler(this, this);
-		registerReceiver(receiver, filter);
-
 		//Setting up Sensor input
 		new GPSInputHandler(this, this);
 
@@ -203,6 +198,10 @@ GPSInputListener{
 						.getSelectedItemId());
 			}
 		});
+		//Setting up statusIconHandler
+		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
+		StatusIconHandler receiver = new StatusIconHandler(this, this);
+		registerReceiver(receiver, filter);
 	}
 
 	@Override

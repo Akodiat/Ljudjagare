@@ -90,7 +90,7 @@ public abstract class NavDrawerActivity extends FragmentActivity {
 	}
 
 	/* The click listner for ListView in the navigation drawer */
-	protected class DrawerItemClickListener implements ListView.OnItemClickListener {
+	public class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			selectItem(position);
