@@ -206,16 +206,15 @@ public class CoinCollectorActivity extends RunActivity {
 			curr100 = ((int) (distance / 100)) * 100;
 		}
 
-		else if (distance - curr100 > 100) 
+		else if (distance - curr100 > 100)
 			fx.updateDelay(1); // keep slow repetition if going back
-		
-		else {
-			float delayRatio, newDist = distance % curr100;
-			delayRatio = newDist / 100;
 
-			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
-					* delayRatio + Constants.MIN_DELAY);
-		}
+		float delayRatio, newDist = distance % curr100;
+		delayRatio = newDist / 100;
+
+		fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
+				+ Constants.MIN_DELAY);
+
 	}
 
 	@Override
