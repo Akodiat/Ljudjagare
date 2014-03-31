@@ -62,6 +62,8 @@ MapFragment.OnHeadlineSelectedListener{
 		// Set up the ViewPager with the sections adapter
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+		//Offscreenlimit set to 2 to avoid fragments being destroyed
+		mViewPager.setOffscreenPageLimit(2);
 
 		/*
 		 *  When swiping between different sections, select the corresponding
@@ -93,8 +95,8 @@ MapFragment.OnHeadlineSelectedListener{
 		mapFragment = new FinishedMapFragment();
 		setStatsFragment(new FinishedStatsFragment());
 
-		
-		
+
+
 		/*
 		 * Button taking you back to main menu.
 		 */
@@ -105,8 +107,8 @@ MapFragment.OnHeadlineSelectedListener{
 				finish();
 			}
 		});
-		
-		
+
+
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			int id = extras.getInt(Constants.EXTRA_ID);
@@ -115,9 +117,9 @@ MapFragment.OnHeadlineSelectedListener{
 			args.putLong("time", fin.getTotTime());
 			args.putInt("distance", fin.getDist());
 			args.putDouble("speed", fin.getSpeed());
-			
-			
-			
+
+
+
 			Bundle locs = new Bundle();
 			List<Point> points = db.getAllPointsByRoute(id);
 			double[] latitudes = new double[points.size()];
@@ -128,35 +130,35 @@ MapFragment.OnHeadlineSelectedListener{
 			}
 			locs.putDoubleArray("latitudes", latitudes);
 			locs.putDoubleArray("longitudes", longitudes);
-			
+
 			List<Coins> coins = db.getAllCoinsByRoute(id);
 			int nrCoins = coins.size();
-			
+
 			args.putInt("nrCoins", nrCoins);
-			
+
 			double[] coinlat = new double[nrCoins];
 			double[] coinlng = new double[nrCoins];
-			
+
 			long[] times = new long[nrCoins];
 			int[] dists = new int[nrCoins];
-			
+
 			for(int i = 0 ; i < nrCoins ; i++){
 				Location l = coins.get(i).getLocation();
 				coinlat[i] = l.getLatitude();
 				coinlng[i] = l.getLongitude();
-			
+
 				times[i] = coins.get(i).getTime();
 				dists[i] = coins.get(i).getDistance();
 			}
 			locs.putDoubleArray("coinlat", coinlat);
 			locs.putDoubleArray("coinlng", coinlng);
-			
+
 			mapFragment.setArguments(locs);
-			
+
 			runFragment.setArguments(args);
-			
+
 			Bundle stats = new Bundle();
-			
+
 			stats.putLongArray("times", times);
 			stats.putIntArray("dists", dists);
 
