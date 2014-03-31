@@ -1,14 +1,11 @@
 package se.chalmers.group42.controller;
 
 import se.chalmers.group42.runforlife.R;
-import se.chalmers.group42.runforlife.R.id;
-import se.chalmers.group42.runforlife.R.layout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -19,7 +16,6 @@ import android.widget.TextView;
  */
 public class FinishedRunFragment extends Fragment {
 
-	private TextView time;
 	private int progressStatus;
 	private ProgressBar progressBar;
 
@@ -55,20 +51,23 @@ public class FinishedRunFragment extends Fragment {
 			
 			double d = distance;
 			if(d >= 1000){
-				d = Math.round((distance/1000)*100)/100.0d;
+				d = Math.round((d/1000)*100)/100.0d;
+				TextView txd = (TextView) view.findViewById(R.id.textViewDist2);
+				txd.setText("" + d);
 				TextView txkm = (TextView) view.findViewById(R.id.textViewDist3);
-				txkm.setText("");
+				txkm.setText("km");
+			}else{
+				TextView txDist = (TextView) view.findViewById(R.id.textViewDist2);
+				txDist.setText("" + distance);
 			}
-			TextView txDist = (TextView) view.findViewById(R.id.textViewDist2);
-			txDist.setText("" + d);
-
+			
 			// *************SET SPEED/pace***************
 			double speed = args.getDouble("speed");
 			speed = Math.round(speed * 100) / 100.0d;
 			TextView txSpeed = (TextView) view
 					.findViewById(R.id.textViewSpeedAverage2);
 			txSpeed.setText("" + speed);
-
+			
 			double pace;
 			if(speed != 0){
 				pace = Math.round((60 / speed) * 100) / 100.0d;
@@ -78,8 +77,8 @@ public class FinishedRunFragment extends Fragment {
 			TextView txPace = (TextView) view
 					.findViewById(R.id.textViewPaceAverage2);
 			txPace.setText("" + pace);
-			//*******************SET PROGRESS********************
 			
+			//*******************SET PROGRESS********************
 			int coins = args.getInt("nrCoins");
 			progress(coins, view);
 		}
@@ -96,4 +95,5 @@ public class FinishedRunFragment extends Fragment {
 			}
 		}
 	}
+	
 }

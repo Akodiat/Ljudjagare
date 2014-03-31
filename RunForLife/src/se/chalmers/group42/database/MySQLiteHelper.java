@@ -464,7 +464,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 	 */
 	public void finishRoute(Route r, int dist, Long time){
 		SQLiteDatabase db = this.getWritableDatabase();
-		int id = r.getId();
 		
 		double d = dist;
 		double s = time;

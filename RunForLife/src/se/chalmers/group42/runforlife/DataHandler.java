@@ -10,9 +10,6 @@ import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.controller.StatsFragment;
 import se.chalmers.group42.database.*;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentSender.SendIntentException;
 import android.location.Location;
 import android.os.Handler;
 
