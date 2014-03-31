@@ -31,7 +31,7 @@ public class Constants {
 	/**
 	 * Minimum pitch rate (0.5 - 1)
 	 */
-	public static final float MIN_PITCH = 0.5f;
+	public static final float MIN_PITCH = 0.4f;
 
 	/**
 	 * Accuracy needed for the target to be within reach. 
