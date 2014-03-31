@@ -1,5 +1,7 @@
 package se.chalmers.group42.database;
 
+import android.text.format.Time;
+
 public class FinishedRoute extends Route{
 	private double speed;
 	private int dist;
@@ -36,6 +38,16 @@ public class FinishedRoute extends Route{
 	}
 	@Override
 	public String toString(){
-		return "ID: "+this.getId()+"   "+this.getDate()+"";
+		Time t = new Time();
+		t.set(totTime*1000);
+		t.switchTimezone("GMT");
+		if(dist >= 1000){
+			double d = dist;
+			d = Math.round((d/1000)*100)/100.0d;
+			return this.getDate()+"\t\t"+t.format("%H:%M:%S")+"\t\t\t"+d+" km";
+		}else{
+			int d = dist;
+			return this.getDate()+"\t\t"+t.format("%H:%M:%S")+"\t\t\t"+d+" m";
+		}
 	}
 }
