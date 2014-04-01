@@ -3,6 +3,8 @@ package sensors;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import utils.Vector3;
+
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -113,6 +115,7 @@ public class OrientationInputHandler implements SensorEventListener
 		case Sensor.TYPE_GYROSCOPE:
 			// process gyro data
 			gyroFunction(event);
+			gyroToGlobalCoordinates();
 			break;
 
 		case Sensor.TYPE_MAGNETIC_FIELD:
@@ -233,6 +236,14 @@ etc, etc, etc.
 		if(timestamp != 0) {
 			final float dT = (event.timestamp - timestamp) * NS2S;
 			System.arraycopy(event.values, 0, gyro, 0, 3);
+			
+//			//Test av Joakim
+//			Vector3 v = gyroToGlobalCoordinates();
+//			gyro[0] = (float) v.x;
+//			gyro[1] = (float) v.y;
+//			gyro[2] = (float) v.z;
+//			//Slut på test av Joakim
+			
 			getRotationVectorFromGyro(gyro, deltaVector, dT / 2.0f);
 		}
 
@@ -322,12 +333,31 @@ etc, etc, etc.
 	        System.arraycopy(fusedOrientation, 0, gyroOrientation, 0, 3);
 	    }
 	}
+	/**
+	 * http://electronics.stackexchange.com/questions/29423/rotating-a-gyroscopes-output-values-into-an-earth-relative-reference-frame
+	 */
+	private Vector3 gyroToGlobalCoordinates(){
+		Vector3 V  = new Vector3(accel[0], accel[1], accel[2]);
+		Vector3 G  = new Vector3( gyro[0],  gyro[1],  gyro[2]);
+		
+		Vector3 H1 = new Vector3(Math.random(), Math.random(), Math.random());
 
-	private float calculateAlfa(float samplePeriod, float relativeDuration){
-		return relativeDuration / (relativeDuration + samplePeriod);
-	}
+		Vector3 H2 = V.crossProduct(H1);
+		H1 = V.crossProduct(H2);
 
-	private float calculateFilteredOrientation(float gyroOrientation, float accMagOrientation, float alfa){
-		return alfa * gyroOrientation + (1-alfa) * accMagOrientation;
+		H1.normalize();
+		H2.normalize();
+		
+		double GV  = (G.x*V.x)  + (G.y*V.y)  + (G.z*V.z);
+		double GH1 = (G.x*H1.x) + (G.y*H1.y) + (G.z*H1.z);
+		double GH2 = (G.x*H2.x) + (G.y*H2.y) + (G.z*H2.z);
+		
+		android.util.Log.d("GYRO", 
+				"Global gyro| " +
+				"x:"  +Math.round(GV/(Math.PI)*180) + 
+				"\ty:"+Math.round(GH1/(Math.PI)*180)  + 
+				"\tz:"+Math.round(GH2/(Math.PI)*180)
+				);
+		return new Vector3(GV, GH1, GH2);
 	}
 }
