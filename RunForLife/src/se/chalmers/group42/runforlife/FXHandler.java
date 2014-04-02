@@ -198,10 +198,10 @@ public class FXHandler {
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
 
-		if (fx.angle() < 0 && fx.angle() > -90)
-			fx.setPitch((1 - Constants.MIN_PITCH) / 90 * fx.angle() + 1);
-		else if (fx.angle() >= 0 && fx.angle() < 90)
-			fx.setPitch((1 - Constants.MIN_PITCH) / (-90) * fx.angle() + 1);
+		if (fx.angle() < 0 && fx.angle() > -145)
+			fx.setPitch((1 - Constants.MIN_PITCH) / 145 * fx.angle() + 1);
+		else if (fx.angle() >= 0 && fx.angle() < 145)
+			fx.setPitch((1 - Constants.MIN_PITCH) / (-145) * fx.angle() + 1);
 		else
 			fx.setPitch(0);
 
