@@ -279,18 +279,18 @@ public class CoinCollectorActivity extends RunActivity {
 		double t = 2 * Math.PI * b;
 		double x = w * Math.cos(t);
 		double y = w * Math.sin(t);
-		double xNew = x / Math.cos(human.getLocation().getLongitude());
+		double xNew = x / Math.cos(human.getLocation().getLatitude());
 
 		Location routePoint = new Location("route");
-		routePoint.setLatitude(xNew + human.getLocation().getLatitude());
-		routePoint.setLongitude(human.getLocation().getLongitude() + y);
+		routePoint.setLongitude(xNew + human.getLocation().getLongitude());
+		routePoint.setLatitude(human.getLocation().getLatitude() + y);
 
 		float bearingTo = human.getLocation().bearingTo(routePoint);
 		double addLat;
 		double addLng;
 		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
 		addLat = Math.sin(bearingTo) * distanceFromLocation;
-		addLng = Math.cos(bearingTo) * distanceFromLocation;
+		addLng = Math.cos(bearingTo) * distanceFromLocation / Math.cos(human.getLocation().getLatitude());
 		routePoint.setLatitude(routePoint.getLatitude() + addLat);
 		routePoint.setLongitude(routePoint.getLongitude() + addLng);
 
