@@ -4,7 +4,9 @@ import se.chalmers.group42.controller.RunActivity;
 import utils.LocationHelper;
 import android.content.Context;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -36,6 +38,8 @@ LocationListener
 
 	private LocationClient 	locationClient;
 	private GPSInputListener 	listener;
+	
+	private LocationManager locationManager;
 
 
 	public GPSInputHandler(GPSInputListener listener, Context context) {
@@ -48,6 +52,8 @@ LocationListener
 			locationClient.connect(); 
 
 		currentLocation = LocationHelper.locationFromLatlng(STOCKHOLM);
+		
+		locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 	}
 
 	@Override
@@ -68,11 +74,11 @@ LocationListener
 
 	@Override
 	public void onLocationChanged(Location location) {
-		if(location.getAccuracy() > MAXIMAL_ACCEPTABLE_ACCURACY){
-			listener.onGPSDisconnect();
+		if((location.getAccuracy() < MAXIMAL_ACCEPTABLE_ACCURACY) && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+			listener.onGPSConnect();
 		}
 		else
-			listener.onGPSConnect();
+			listener.onGPSDisconnect();
 
 		
 		//If the new location has no bearing, use the old bearing

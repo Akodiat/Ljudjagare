@@ -278,7 +278,69 @@ Random route generation algorithm
 \end_layout
 
 \begin_layout Standard
-weeeeeeeeeeeeeeeeeeeeeeeeeeee
+To be able to quickly use the application when the user want to get out
+ and run the sound sources (checkpoints) are generated out of a predefined
+ algorithm.
+ The checkpoints must be generated at reachable locations.
+ It can for example not be placed in a lake or a building but instead on
+ a road or trail.
+ To accomplish this the application uses Google Maps and its routing features
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Akis03"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+First of all a random location is generated in a predefined distance from
+ your location that is set by the GPS.
+ The location can be generated in a circle around you with the radius equals
+ to the distance, see figure random 1.
+ d{http://gis.stackexchange.com/questions/25877/how-to-generate-random-locations-n
+earby-my-location}.
+ Förklara hur detta görs.
+ To avoid that the location is generated to close to you it is instead generated
+ within a range around the desired radius, see figure random 2.
+ This is done by generate a location randomly around you within a circle
+ of radius r.
+ Then the bearing between you and the recently generated location is calculated.
+ From the bearing the ratio between the cathetus is calculated and multiplied
+ with the desired distance d.
+ From this the distance of how much to add to the latitude and longitude
+ is given and added to the current longitude and latitude.
+ To make this randomly generated location reachable a request of directions
+ from your current location to the new location is send to Google Maps.
+ The answer from Google maps directions is a list of locations that you
+ have to run by in order to reach the destination.
+ It is a big chance that the generated location is not on the road but instead
+ in the forest or in a lake.
+ But by taking out the last location that is given by Google maps direction
+ you find a location that is as close as possible to the generated location
+ but it is reachable.
+ This location is then set as a checkpoint.
+ 
+\end_layout
+
+\begin_layout Standard
+To end up on the same location as you start when out are out running a routing
+ algorithm was implemented.
+ It creates a route based on the first generated random location.
+ To create a route that not just go to one point and back the algorithm
+ tries to make a route that is a circle of checkpoints and it end up on
+ the same location as the user started on.
+ This is done by first generating the a random location.
+ This location is then mirrored over the geographic coordinate system but
+ with the origo on the starting location of the user (Figure random 4).
+ By taking the difference in the latitude, y, and longitude, x, between
+ the users location and the newly generated location and adding/subtract
+ them to the inverted axis (the difference in x direction is added to the
+ y axis and the difference in y direction is added to the x axis) a mirrored
+ location is achieved.
+ 
 \end_layout
 
 \end_body

@@ -13,6 +13,7 @@ import android.location.Location;
  */
 public class Human{
 	private Location location ;
+	private Location oldLocation;
 	private int score;
 	
 	public int getScore() {
@@ -22,6 +23,15 @@ public class Human{
 	public void setScore(int score) {
 		this.score = score;
 	}
+
+	public Location getOldLocation() {
+		return oldLocation;
+	}
+
+	public void setOldLocation(Location location) {
+		oldLocation = location;
+	}
+
 	
 	/**
 	 * Increases the score with the given value
@@ -61,6 +71,11 @@ public class Human{
 	}
 	
 	public void setLocation(Location location) {
+		if(this.location != null){
+			oldLocation = this.location;
+		}
+
 		this.location = location;
 	}
+
 }

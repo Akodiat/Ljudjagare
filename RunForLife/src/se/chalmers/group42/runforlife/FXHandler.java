@@ -37,6 +37,10 @@ public class FXHandler {
 
 	private boolean handlerActive = false, coinPlayable = true;
 
+	private int curr100, prev100;
+
+	private float delay;
+
 	/**
 	 * Initialize sound engine
 	 */
@@ -122,6 +126,8 @@ public class FXHandler {
 
 	public void foundCoin() {
 		soundPool.stop(coin); // stop play coin
+
+		// play in new thread to not be interrupted
 		(new Thread(new ReachedCoinRunnable())).start();
 	}
 
@@ -137,7 +143,7 @@ public class FXHandler {
 
 		// Send message to handler with delay.
 		Message msg = handler.obtainMessage(Constants.MSG);
-		handler.sendMessageDelayed(msg, (long) delayIntervalEach100(fx));
+		handler.sendMessageDelayed(msg, (long) delay);
 	}
 
 	/**
@@ -159,10 +165,11 @@ public class FXHandler {
 	 *            the sound to update
 	 * @return the delay time in milliseconds
 	 */
-	public float delayInterval(FX fx) {
+	public void delayInterval(FX fx) {
 		float delayRatio;
 
-		// Calculate value between 0 and 1, where 0 is when a user has reached
+		// Calculate value between 0 and 1, where 0 is when a user has
+		// reached
 		// destination:
 		if (fx.distance() <= Constants.MAX_DISTANCE)
 			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
@@ -170,22 +177,7 @@ public class FXHandler {
 			delayRatio = 1;
 
 		// Delay between each repetition.
-		return (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
-				+ Constants.MIN_DELAY;
-	}
-
-	public float delayIntervalEach100(FX fx) {
-		float delayRatio, newDist = fx.distance() % 100;
-
-		// Calculate value between 0 and 1, where 0 is when a user has reached
-		// destination:
-		if (newDist < 100)
-			delayRatio = newDist / 100;
-		else
-			delayRatio = 1;
-
-		// Delay between each repetition.
-		return (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
+		delay = (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
 				+ Constants.MIN_DELAY;
 	}
 
@@ -206,17 +198,14 @@ public class FXHandler {
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
 
-		if (fx.angle() < 0 && fx.angle() > -90)
-			fx.setPitch((1 - Constants.MIN_PITCH) / 90 * fx.angle() + 1);
-		else if (fx.angle() >= 0 && fx.angle() < 90)
-			fx.setPitch((1 - Constants.MIN_PITCH) / (-90) * fx.angle() + 1);
+		if (fx.angle() < 0 && fx.angle() > -145)
+			fx.setPitch((1 - Constants.MIN_PITCH) / 145 * fx.angle() + 1);
+		else if (fx.angle() >= 0 && fx.angle() < 145)
+			fx.setPitch((1 - Constants.MIN_PITCH) / (-145) * fx.angle() + 1);
+		else
+			fx.setPitch(0);
 
 		fx.setDistance(distance);
-
-		// if distance is below 100, introduce coin
-		// if (distance < Constants.APPROACHING_COIN
-		// && distance > Constants.MIN_DISTANCE)
-		// loopCoin(distance);
 
 		// tell the user how close to goal he/she is
 		distanceAnnouncer(distance);
@@ -298,5 +287,14 @@ public class FXHandler {
 				e.printStackTrace();
 			} // wait
 		}
+	}
+
+	public void updateDelay(float f) {
+		delay = f;
+	}
+
+	public void isPrevious(boolean b) {
+		// TODO Auto-generated method stub
+
 	}
 }

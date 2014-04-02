@@ -45,14 +45,16 @@ public class CoinCollectorActivity extends RunActivity {
 	private FXHandler fx;
 	private boolean generateRoute = true;
 
+	private int curr100, prev100;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		human = new Human();
-
+		curr100 = Constants.RUN_DISTANCE;
 		coinLocation = LocationHelper.locationFromLatlng(DEFAULT_POSITION);
 
-		// Initialise audio
+		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
 	}
 
@@ -140,9 +142,11 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private void pointArrowToSource_Compass(float headingAngleOrientation) {
-		if(generateRoute == false){
-		ImageView arrow = (ImageView) this.findViewById(R.id.imageView_arrow);
-		arrow.setRotation(headingAngleOrientation + human.getLocation().bearingTo(coinLocation));
+		if (generateRoute == false) {
+			ImageView arrow = (ImageView) this
+					.findViewById(R.id.imageView_arrow);
+			arrow.setRotation(headingAngleOrientation
+					+ human.getLocation().bearingTo(coinLocation));
 		}
 	}
 
@@ -153,9 +157,8 @@ public class CoinCollectorActivity extends RunActivity {
 		// Update compass value
 		this.compassFromNorth = headingAngleOrientation;
 
-
 		// If a current coin is set
-		if (usingCompass() && this.coinLocation != null){
+		if (usingCompass() && this.coinLocation != null) {
 			adjustPanoration();
 			pointArrowToSource_Compass(headingAngleOrientation);
 		}
@@ -164,12 +167,12 @@ public class CoinCollectorActivity extends RunActivity {
 	private boolean isAtCoin() {
 		double dist = human.getLocation().distanceTo(coinLocation);
 		return (// If closer than minimum distance
-				human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
-				// Or the accuracy is less than 50 meters but still larger
-				// than the distance to the sound source.
-				|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
-						.distanceTo(coinLocation) < human.getLocation().getAccuracy()
-						: false));
+		human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
+		// Or the accuracy is less than 50 meters but still larger
+		// than the distance to the sound source.
+		|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
+				.distanceTo(coinLocation) < human.getLocation().getAccuracy()
+				: false));
 	}
 
 	private void generateNewCoin() {
@@ -202,6 +205,30 @@ public class CoinCollectorActivity extends RunActivity {
 			fx.update(fx.getNavigationFX(), (angle), human.getLocation()
 					.distanceTo(coinLocation));
 
+		float distance = human.getLocation().distanceTo(coinLocation);
+
+		if (distance < 100) {
+			curr100 = 0;
+			float delayRatio = distance / 100;
+
+			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
+					* delayRatio + Constants.MIN_DELAY);
+		} else {
+			// if user has moved forward to new 100s
+			if (distance - curr100 < 0) {
+				prev100 = curr100; // set previous
+				curr100 = ((int) (distance / 100)) * 100;
+			}
+
+			else if (!(distance - curr100 > 100)) {
+				float delayRatio, newDist = distance % curr100;
+				delayRatio = newDist / 100;
+
+				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
+						* delayRatio + Constants.MIN_DELAY);
+			}
+		}
+
 	}
 
 	@Override
@@ -216,13 +243,13 @@ public class CoinCollectorActivity extends RunActivity {
 	/**
 	 * Play long sound without audible repetition.
 	 */
-	//	@Override
-	//	protected void playLongSound() {
-	//		super.playSound();
+	// @Override
+	// protected void playLongSound() {
+	// super.playSound();
 	//
-	//		if (!fx.getNavigationFX().isPlaying())
-	//			fx.loopLong(fx.getNavigationFX());
-	//	}
+	// if (!fx.getNavigationFX().isPlaying())
+	// fx.loopLong(fx.getNavigationFX());
+	// }
 
 	@Override
 	protected void stopSound() {
@@ -243,6 +270,10 @@ public class CoinCollectorActivity extends RunActivity {
 		}
 		return bearingTo - human.getLocation().getBearing();
 
+	}
+	
+	private float GPS_Bearing(){
+		return 	human.getOldLocation().bearingTo(human.getLocation());
 	}
 
 	/**
@@ -266,18 +297,18 @@ public class CoinCollectorActivity extends RunActivity {
 		double t = 2 * Math.PI * b;
 		double x = w * Math.cos(t);
 		double y = w * Math.sin(t);
-		double xNew = x / Math.cos(human.getLocation().getLongitude());
+		double xNew = x / Math.cos(human.getLocation().getLatitude());
 
 		Location routePoint = new Location("route");
-		routePoint.setLatitude(xNew + human.getLocation().getLatitude());
-		routePoint.setLongitude(human.getLocation().getLongitude() + y);
+		routePoint.setLongitude(xNew + human.getLocation().getLongitude());
+		routePoint.setLatitude(human.getLocation().getLatitude() + y);
 
 		float bearingTo = human.getLocation().bearingTo(routePoint);
 		double addLat;
 		double addLng;
 		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
 		addLat = Math.sin(bearingTo) * distanceFromLocation;
-		addLng = Math.cos(bearingTo) * distanceFromLocation;
+		addLng = Math.cos(bearingTo) * distanceFromLocation / Math.cos(human.getLocation().getLatitude());
 		routePoint.setLatitude(routePoint.getLatitude() + addLat);
 		routePoint.setLongitude(routePoint.getLongitude() + addLng);
 
