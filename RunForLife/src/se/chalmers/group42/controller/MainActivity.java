@@ -33,11 +33,13 @@ import sensors.GPSInputListener;
 import android.location.Location;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.support.v4.view.GravityCompat;
@@ -202,8 +204,8 @@ GPSInputListener{
 		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				//startActivity(runActivityIntent);
-				System.out.println();
+//				//startActivity(runActivityIntent);
+//				System.out.println();
 				new ModeController(MainActivity.this).launchMode((int) fancyCoverFlow
 						.getSelectedItemId());
 			}

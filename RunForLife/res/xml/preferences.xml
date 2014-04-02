@@ -5,8 +5,8 @@
         <EditTextPreference
             android:key="distance"
             android:title="Distance"
-            android:summary="Set total running distance"
-            android:dialogTitle="Running distance" />
+            android:summary="Set interval between each checkpoint (meters)"
+            android:dialogTitle="Interval distance (meters)" />
     </PreferenceCategory>
     <PreferenceCategory android:title="Sound" >
         <CheckBoxPreference

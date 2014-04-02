@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import se.chalmers.group42.controller.FinishedRunActivity;
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
+import se.chalmers.group42.controller.SettingsActivity;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;
@@ -14,8 +15,10 @@ import utils.LocationHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -107,7 +110,11 @@ public class CoinCollectorActivity extends RunActivity {
 
 		if (generateRoute) {
 			generateRoute = false;
-			generateRandomRoute(Constants.RUN_DISTANCE);
+			//Retrieving distancevalue from preferences
+			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+			//Setting value to 700 meters if no values have been set
+			String distance = sharedPref.getString("distance", "700");
+			generateRandomRoute(Integer.parseInt(distance));
 
 			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
