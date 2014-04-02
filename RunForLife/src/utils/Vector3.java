@@ -15,6 +15,10 @@ public class Vector3 {
 		y /= lenght;
 		z /= lenght;
 	}
+	
+	public Vector3 copy(){
+		return new Vector3(x, y, z);
+	}
 
 	public double getLength(){
 		return Math.sqrt(x*x+ y*y + z*z);
