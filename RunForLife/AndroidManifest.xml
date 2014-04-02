@@ -16,7 +16,7 @@
 
     <!--
 The following two permissions are not required to use 
-Google Maps Android API v2, but are recommended.
+Google Maps Android API v2, but are recommended.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -73,6 +73,7 @@ Google Maps Android API v2, but are recommended.
             android:label="finished_run_activity"
             android:parentActivityName="se.chalmers.group42.controller.CompletedRunListActivity"
             android:screenOrientation="nosensor" >
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -92,7 +93,7 @@ Google Maps Android API v2, but are recommended.
             android:parentActivityName="se.chalmers.group42.controller.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="se.chalmers.group42.runforlife.MainActivity" />
+                android:value="se.chalmers.group42.controller.MainActivity" />
         </activity>
         <activity
             android:name="se.chalmers.group42.controller.CompletedRunDetailActivity"
@@ -101,6 +102,10 @@ Google Maps Android API v2, but are recommended.
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="se.chalmers.group42.runforlife.CompletedRunListActivity" />
+        </activity>
+        <activity
+            android:name="se.chalmers.group42.controller.SettingsActivity"
+            android:label="@string/title_settings" >
         </activity>
     </application>
 

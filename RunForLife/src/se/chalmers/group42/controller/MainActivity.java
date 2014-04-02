@@ -208,6 +208,9 @@ GPSInputListener{
 						.getSelectedItemId());
 			}
 		});
+		
+		
+		
 		//Setting up statusIconHandler
 		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
 		StatusIconHandler receiver = new StatusIconHandler(this, this);

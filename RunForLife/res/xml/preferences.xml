@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Running" >
+        <EditTextPreference
+            android:key="distance"
+            android:title="Distance"
+            android:summary="Set total running distance"
+            android:dialogTitle="Running distance" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Sound" >
+        <CheckBoxPreference
+            android:key="sound"
+            android:title="Stereo sound"
+            android:summary="Toggle stereo sound"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

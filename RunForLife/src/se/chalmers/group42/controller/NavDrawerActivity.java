@@ -18,6 +18,8 @@ package se.chalmers.group42.controller;
 
 import java.util.Locale;
 
+import se.chalmers.group42.runforlife.R;
+
 
 
 import android.app.Activity;
@@ -145,6 +147,11 @@ public abstract class NavDrawerActivity extends FragmentActivity {
 		// then it has handled the app icon touch event
 		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
+		}
+		else if(item.getItemId()==R.id.action_settings){
+			Intent settingsIntent = new Intent(NavDrawerActivity.this, SettingsActivity.class);
+			//Flag making sure that no new instances of a current running activity are launched
+			startActivity(settingsIntent);
 		}
 		return super.onOptionsItemSelected(item);
 	}
