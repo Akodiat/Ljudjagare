@@ -257,6 +257,10 @@ public class CoinCollectorActivity extends RunActivity {
 		return bearingTo - human.getLocation().getBearing();
 
 	}
+	
+	private float GPS_Bearing(){
+		return 	human.getOldLocation().bearingTo(human.getLocation());
+	}
 
 	/**
 	 * Gets the rotation according to the compass Rotating an upwards pointing
