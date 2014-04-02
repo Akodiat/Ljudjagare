@@ -200,20 +200,27 @@ public class CoinCollectorActivity extends RunActivity {
 
 		float distance = human.getLocation().distanceTo(coinLocation);
 
-		// if user has moved forward to new 100s
-		if (distance - curr100 < 0) {
-			prev100 = curr100; // set previous
-			curr100 = ((int) (distance / 100)) * 100;
+		if (distance < 100) {
+			curr100 = 0;
+			float delayRatio = distance / 100;
+
+			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
+					* delayRatio + Constants.MIN_DELAY);
+		} else {
+			// if user has moved forward to new 100s
+			if (distance - curr100 < 0) {
+				prev100 = curr100; // set previous
+				curr100 = ((int) (distance / 100)) * 100;
+			}
+
+			else if (!(distance - curr100 > 100)) {
+				float delayRatio, newDist = distance % curr100;
+				delayRatio = newDist / 100;
+
+				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
+						* delayRatio + Constants.MIN_DELAY);
+			}
 		}
-
-		else if (distance - curr100 > 100)
-			fx.updateDelay(1); // keep slow repetition if going back
-
-		float delayRatio, newDist = distance % curr100;
-		delayRatio = newDist / 100;
-
-		fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
-				+ Constants.MIN_DELAY);
 
 	}
 

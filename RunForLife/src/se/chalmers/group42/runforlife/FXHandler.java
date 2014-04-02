@@ -289,8 +289,8 @@ public class FXHandler {
 		}
 	}
 
-	public float updateDelay(float f) {
-		return f;
+	public void updateDelay(float f) {
+		delay = f;
 	}
 
 	public void isPrevious(boolean b) {

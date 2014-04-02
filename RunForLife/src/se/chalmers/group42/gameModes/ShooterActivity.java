@@ -34,6 +34,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 	private Timer timer;
 
 	private Random random;
+	int curr100;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +43,27 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 		currentAngle = (TextView) findViewById(R.id.currentAngle);
 		currentDistance = (SeekBar) findViewById(R.id.currentDistance);
-		currentDistance.setMax(500);
-		
-		distance = 500;
-		
-		currentDistance.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
-               	distance = progress;
-            }
- 
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
-            }
- 
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            	// TODO Auto-generated method stub
-            }
-        });		
+		currentDistance.setMax(200);
+		currentDistance.setProgress(200);
+
+		distance = 200;
+		curr100 = 200;
+
+		currentDistance
+				.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+					public void onProgressChanged(SeekBar seekBar,
+							int progress, boolean fromUser) {
+						distance = progress;
+					}
+
+					public void onStartTrackingTouch(SeekBar seekBar) {
+						// TODO Auto-generated method stub
+					}
+
+					public void onStopTrackingTouch(SeekBar seekBar) {
+						// TODO Auto-generated method stub
+					}
+				});
 
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
@@ -70,8 +75,8 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		(fx = new FXHandler()).initSound(this);
 
 		// Start running
-//		timer = new Timer();
-//		timer.schedule(new RunCloser(), 0, 1000);
+		// timer = new Timer();
+		// timer.schedule(new RunCloser(), 0, 1000);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -117,6 +122,27 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 			hasBeenAnnounced = true;
 			// generateNewCoin();
 		}
+
+		if (distance < 100) {
+			curr100 = 0;
+			float delayRatio = distance / 100;
+
+			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
+					* delayRatio + Constants.MIN_DELAY);
+		} else {
+			// if user has moved forward to new 100s
+			if (distance - curr100 < 0) {
+				curr100 = ((int) (distance / 100)) * 100;
+			}
+
+			else if (!(distance - curr100 > 100)) {
+				float delayRatio, newDist = distance % curr100;
+				delayRatio = newDist / 100;
+
+				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
+						* delayRatio + Constants.MIN_DELAY);
+			}
+		}
 	}
 
 	public boolean isCoinFound() {
@@ -135,10 +161,10 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 	private class RunCloser extends TimerTask {
 		public void run() {
-//			distance = -5;
-//			 distance = (float) Math.sqrt((Math.pow(5, 2)
-//			 + Math.pow(distance, 2) - 2 * 5 * distance
-//			 * Math.cos(angle)));
+			// distance = -5;
+			// distance = (float) Math.sqrt((Math.pow(5, 2)
+			// + Math.pow(distance, 2) - 2 * 5 * distance
+			// * Math.cos(angle)));
 		}
 	}
 }
