@@ -78,7 +78,7 @@ OrientationInputListener
 
 		//Setting up Sensor input
 		new GPSInputHandler(this, this);
-		new OrientationInputHandler(this, this);
+//		new OrientationInputHandler(this, this);
 		
 		
 
