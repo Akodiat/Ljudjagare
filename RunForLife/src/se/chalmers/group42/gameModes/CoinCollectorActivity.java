@@ -229,7 +229,6 @@ public class CoinCollectorActivity extends RunActivity {
 						* delayRatio + Constants.MIN_DELAY);
 			}
 		}
-
 	}
 
 	@Override

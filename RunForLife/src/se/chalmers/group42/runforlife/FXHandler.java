@@ -37,8 +37,6 @@ public class FXHandler {
 
 	private boolean handlerActive = false, coinPlayable = true;
 
-	private int curr100, prev100;
-
 	private float delay;
 
 	/**
