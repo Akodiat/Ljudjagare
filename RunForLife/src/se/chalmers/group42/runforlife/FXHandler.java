@@ -193,7 +193,6 @@ public class FXHandler {
 	 *            the current distance from goal
 	 */
 	public void update(FX fx, float angle, float distance) {
-		distance -= Constants.MIN_DISTANCE;
 		fx.setAngle(angle);
 
 		if (fx.angle() < 0 && fx.angle() > -Constants.FRONT_ANGLE)

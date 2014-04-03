@@ -201,12 +201,11 @@ public class CoinCollectorActivity extends RunActivity {
 				+ human.getLocation().bearingTo(coinLocation)
 				: getRotation_GPS());
 
-		if (fx.getNavigationFX().isPlaying())
-			fx.update(fx.getNavigationFX(), (angle), human.getLocation()
-					.distanceTo(coinLocation));
-
 		float distance = human.getLocation().distanceTo(coinLocation) 
 				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
+		
+		if (fx.getNavigationFX().isPlaying())
+			fx.update(fx.getNavigationFX(), (angle), distance);
 
 		if (distance < 100) {
 			curr100 = 0;
