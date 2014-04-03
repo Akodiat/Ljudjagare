@@ -47,17 +47,6 @@ public class FXHandler {
 	@SuppressLint("UseSparseArrays")
 	public void initSound(Context context) {
 		env = SoundEnv.getInstance((Activity) context);
-
-		speech.add(say100);
-		speech.add(say200);
-		speech.add(say300);
-		speech.add(say400);
-		speech.add(say500);
-		speech.add(say600);
-		speech.add(say700);
-		speech.add(say800);
-		speech.add(say900);
-		speech.add(say1000);
 		
 		// Load sound into memory. Has to be mono .wav file.
 		Buffer navFXFrontBuffer, navFXBehindBuffer;
@@ -123,6 +112,17 @@ public class FXHandler {
 		say900 = new Speech(soundPool.load(context, R.raw.say900, 1));
 		say1000 = new Speech(soundPool.load(context, R.raw.say1000, 1));
 
+		speech.add(say100);
+		speech.add(say200);
+		speech.add(say300);
+		speech.add(say400);
+		speech.add(say500);
+		speech.add(say600);
+		speech.add(say700);
+		speech.add(say800);
+		speech.add(say900);
+		speech.add(say1000);
+		
 		coin = soundPool.load(context, R.raw.dragon, 1);
 		sayCoinReached = soundPool.load(context, R.raw.coin_reached, 1);
 		sayNewCoin = soundPool.load(context, R.raw.new_coin, 1);
