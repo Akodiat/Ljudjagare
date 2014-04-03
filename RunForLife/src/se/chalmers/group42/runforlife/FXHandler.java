@@ -34,8 +34,8 @@ public class FXHandler {
 	private SoundPool soundPool;
 
 	private ArrayList<Speech> speech = new ArrayList<Speech>();
-	private Speech say100, say200, say300, say400, say500, say600, say700,
-			say800, say900, say1000;
+	//private Speech say100, say200, say300, say400, say500, say600, say700,
+	//		say800, say900, say1000;
 
 	private boolean handlerActive = false, coinPlayable = true;
 
@@ -101,27 +101,16 @@ public class FXHandler {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 
 		// initialize audio samples
-		say100 = new Speech(soundPool.load(context, R.raw.say100, 1));
-		say200 = new Speech(soundPool.load(context, R.raw.say200, 1));
-		say300 = new Speech(soundPool.load(context, R.raw.say300, 1));
-		say400 = new Speech(soundPool.load(context, R.raw.say400, 1));
-		say500 = new Speech(soundPool.load(context, R.raw.say500, 1));
-		say600 = new Speech(soundPool.load(context, R.raw.say600, 1));
-		say700 = new Speech(soundPool.load(context, R.raw.say700, 1));
-		say800 = new Speech(soundPool.load(context, R.raw.say800, 1));
-		say900 = new Speech(soundPool.load(context, R.raw.say900, 1));
-		say1000 = new Speech(soundPool.load(context, R.raw.say1000, 1));
-
-		speech.add(say100);
-		speech.add(say200);
-		speech.add(say300);
-		speech.add(say400);
-		speech.add(say500);
-		speech.add(say600);
-		speech.add(say700);
-		speech.add(say800);
-		speech.add(say900);
-		speech.add(say1000);
+		speech.add(new Speech(soundPool.load(context, R.raw.say100, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say200, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say300, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say400, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say500, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say600, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say700, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say800, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say900, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say1000, 1)));
 		
 		coin = soundPool.load(context, R.raw.dragon, 1);
 		sayCoinReached = soundPool.load(context, R.raw.coin_reached, 1);
@@ -256,30 +245,30 @@ public class FXHandler {
 		soundPool.play(sayNewCoin, 1, 1, 1, 0, 1);
 	}
 
-	public void distanceAnnouncer(float distance) {
-		int rConst = 1; // meters from coin destination
-
-		if (distance < 1000 + rConst && distance > 1000 - rConst)
-			sayDistance(say1000);
-		if (distance < 900 + rConst && distance > 900 - rConst)
-			sayDistance(say900);
-		if (distance < 800 + rConst && distance > 800 - rConst)
-			sayDistance(say800);
-		if (distance < 700 + rConst && distance > 700 - rConst)
-			sayDistance(say700);
-		if (distance < 600 + rConst && distance > 600 - rConst)
-			sayDistance(say600);
-		if (distance < 500 + rConst && distance > 500 - rConst)
-			sayDistance(say500);
-		if (distance < 400 + rConst && distance > 400 - rConst)
-			sayDistance(say400);
-		if (distance < 300 + rConst && distance > 300 - rConst)
-			sayDistance(say300);
-		if (distance < 200 + rConst && distance > 200 - rConst)
-			sayDistance(say200);
-		if (distance < 100 + rConst && distance > 100 - rConst)
-			sayDistance(say100);
-	}
+//	public void distanceAnnouncer(float distance) {
+//		int rConst = 1; // meters from coin destination
+//
+//		if (distance < 1000 + rConst && distance > 1000 - rConst)
+//			sayDistance(say1000);
+//		if (distance < 900 + rConst && distance > 900 - rConst)
+//			sayDistance(say900);
+//		if (distance < 800 + rConst && distance > 800 - rConst)
+//			sayDistance(say800);
+//		if (distance < 700 + rConst && distance > 700 - rConst)
+//			sayDistance(say700);
+//		if (distance < 600 + rConst && distance > 600 - rConst)
+//			sayDistance(say600);
+//		if (distance < 500 + rConst && distance > 500 - rConst)
+//			sayDistance(say500);
+//		if (distance < 400 + rConst && distance > 400 - rConst)
+//			sayDistance(say400);
+//		if (distance < 300 + rConst && distance > 300 - rConst)
+//			sayDistance(say300);
+//		if (distance < 200 + rConst && distance > 200 - rConst)
+//			sayDistance(say200);
+//		if (distance < 100 + rConst && distance > 100 - rConst)
+//			sayDistance(say100);
+//	}
 
 	/**
 	 * Plays announcements to user in new thread.
