@@ -44,10 +44,10 @@ public class FinishedRoute extends Route{
 		if(dist >= 1000){
 			double d = dist;
 			d = Math.round((d/1000)*100)/100.0d;
-			return this.getDate()+"\t\t"+t.format("%H:%M:%S")+"\t\t\t"+d+" km";
+			return this.getDate()+"\t\t"+t.format("%H:%M:%S")+"\t\t"+d+" km";
 		}else{
 			int d = dist;
-			return this.getDate()+"\t\t"+t.format("%H:%M:%S")+"\t\t\t"+d+" m";
+			return this.getDate()+"\t\t"+t.format("%H:%M:%S")+"\t\t"+d+" m";
 		}
 	}
 }

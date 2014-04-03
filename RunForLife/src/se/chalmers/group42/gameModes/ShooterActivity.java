@@ -136,7 +136,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 			}
 
 			else if (!(distance - curr100 > 100)) {
-				float delayRatio, newDist = distance % curr100;
+				float delayRatio, newDist = distance % 100;
 				delayRatio = newDist / 100;
 
 				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)

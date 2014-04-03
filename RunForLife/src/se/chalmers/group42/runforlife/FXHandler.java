@@ -1,6 +1,7 @@
 package se.chalmers.group42.runforlife;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.pielot.openal.Buffer;
 import org.pielot.openal.SoundEnv;
@@ -32,12 +33,11 @@ public class FXHandler {
 
 	private SoundPool soundPool;
 
-	private Speech say100, say200, say300, say400, say500, say600, say700,
-			say800, say900, say1000;
+	private ArrayList<Speech> speech = new ArrayList<Speech>();
+	//private Speech say100, say200, say300, say400, say500, say600, say700,
+	//		say800, say900, say1000;
 
 	private boolean handlerActive = false, coinPlayable = true;
-
-	private int curr100, prev100;
 
 	private float delay;
 
@@ -47,7 +47,7 @@ public class FXHandler {
 	@SuppressLint("UseSparseArrays")
 	public void initSound(Context context) {
 		env = SoundEnv.getInstance((Activity) context);
-
+		
 		// Load sound into memory. Has to be mono .wav file.
 		Buffer navFXFrontBuffer, navFXBehindBuffer;
 		try {
@@ -93,21 +93,25 @@ public class FXHandler {
 		}
 	}
 
+	public Speech getSpeech(int i){
+		return speech.get(i);
+	}
+	
 	public void initSoundPool(Context context) {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 
 		// initialize audio samples
-		say100 = new Speech(soundPool.load(context, R.raw.say100, 1));
-		say200 = new Speech(soundPool.load(context, R.raw.say200, 1));
-		say300 = new Speech(soundPool.load(context, R.raw.say300, 1));
-		say400 = new Speech(soundPool.load(context, R.raw.say400, 1));
-		say500 = new Speech(soundPool.load(context, R.raw.say500, 1));
-		say600 = new Speech(soundPool.load(context, R.raw.say600, 1));
-		say700 = new Speech(soundPool.load(context, R.raw.say700, 1));
-		say800 = new Speech(soundPool.load(context, R.raw.say800, 1));
-		say900 = new Speech(soundPool.load(context, R.raw.say900, 1));
-		say1000 = new Speech(soundPool.load(context, R.raw.say1000, 1));
-
+		speech.add(new Speech(soundPool.load(context, R.raw.say100, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say200, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say300, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say400, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say500, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say600, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say700, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say800, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say900, 1)));
+		speech.add(new Speech(soundPool.load(context, R.raw.say1000, 1)));
+		
 		coin = soundPool.load(context, R.raw.dragon, 1);
 		sayCoinReached = soundPool.load(context, R.raw.coin_reached, 1);
 		sayNewCoin = soundPool.load(context, R.raw.new_coin, 1);
@@ -176,7 +180,6 @@ public class FXHandler {
 		else
 			delayRatio = 1;
 
-		// Delay between each repetition.
 		delay = (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
 				+ Constants.MIN_DELAY;
 	}
@@ -198,15 +201,15 @@ public class FXHandler {
 	public void update(FX fx, float angle, float distance) {
 		fx.setAngle(angle);
 
-		if (fx.angle() < 0 && fx.angle() > -145)
-			fx.setPitch((1 - Constants.MIN_PITCH) / 145 * fx.angle() + 1);
-		else if (fx.angle() >= 0 && fx.angle() < 145)
-			fx.setPitch((1 - Constants.MIN_PITCH) / (-145) * fx.angle() + 1);
+		if (fx.angle() < 0 && fx.angle() > -Constants.FRONT_ANGLE)
+			fx.setPitch((1 - Constants.MIN_PITCH) / Constants.FRONT_ANGLE * fx.angle() + 1);
+		else if (fx.angle() >= 0 && fx.angle() < Constants.FRONT_ANGLE)
+			fx.setPitch((1 - Constants.MIN_PITCH) / (-Constants.FRONT_ANGLE) * fx.angle() + 1);
 		
 		fx.setDistance(distance);
 
 		// tell the user how close to goal he/she is
-		distanceAnnouncer(distance);
+		//distanceAnnouncer(distance);
 	}
 
 	public void loopCoin(float distance) {
@@ -242,30 +245,30 @@ public class FXHandler {
 		soundPool.play(sayNewCoin, 1, 1, 1, 0, 1);
 	}
 
-	public void distanceAnnouncer(float distance) {
-		int rConst = 1; // meters from coin destination
-
-		if (distance < 1000 + rConst && distance > 1000 - rConst)
-			sayDistance(say1000);
-		if (distance < 900 + rConst && distance > 900 - rConst)
-			sayDistance(say900);
-		if (distance < 800 + rConst && distance > 800 - rConst)
-			sayDistance(say800);
-		if (distance < 700 + rConst && distance > 700 - rConst)
-			sayDistance(say700);
-		if (distance < 600 + rConst && distance > 600 - rConst)
-			sayDistance(say600);
-		if (distance < 500 + rConst && distance > 500 - rConst)
-			sayDistance(say500);
-		if (distance < 400 + rConst && distance > 400 - rConst)
-			sayDistance(say400);
-		if (distance < 300 + rConst && distance > 300 - rConst)
-			sayDistance(say300);
-		if (distance < 200 + rConst && distance > 200 - rConst)
-			sayDistance(say200);
-		if (distance < 100 + rConst && distance > 100 - rConst)
-			sayDistance(say100);
-	}
+//	public void distanceAnnouncer(float distance) {
+//		int rConst = 1; // meters from coin destination
+//
+//		if (distance < 1000 + rConst && distance > 1000 - rConst)
+//			sayDistance(say1000);
+//		if (distance < 900 + rConst && distance > 900 - rConst)
+//			sayDistance(say900);
+//		if (distance < 800 + rConst && distance > 800 - rConst)
+//			sayDistance(say800);
+//		if (distance < 700 + rConst && distance > 700 - rConst)
+//			sayDistance(say700);
+//		if (distance < 600 + rConst && distance > 600 - rConst)
+//			sayDistance(say600);
+//		if (distance < 500 + rConst && distance > 500 - rConst)
+//			sayDistance(say500);
+//		if (distance < 400 + rConst && distance > 400 - rConst)
+//			sayDistance(say400);
+//		if (distance < 300 + rConst && distance > 300 - rConst)
+//			sayDistance(say300);
+//		if (distance < 200 + rConst && distance > 200 - rConst)
+//			sayDistance(say200);
+//		if (distance < 100 + rConst && distance > 100 - rConst)
+//			sayDistance(say100);
+//	}
 
 	/**
 	 * Plays announcements to user in new thread.

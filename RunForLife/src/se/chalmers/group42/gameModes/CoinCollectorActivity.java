@@ -201,11 +201,11 @@ public class CoinCollectorActivity extends RunActivity {
 				+ human.getLocation().bearingTo(coinLocation)
 				: getRotation_GPS());
 
+		float distance = human.getLocation().distanceTo(coinLocation) 
+				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
+		
 		if (fx.getNavigationFX().isPlaying())
-			fx.update(fx.getNavigationFX(), (angle), human.getLocation()
-					.distanceTo(coinLocation));
-
-		float distance = human.getLocation().distanceTo(coinLocation);
+			fx.update(fx.getNavigationFX(), (angle), distance);
 
 		if (distance < 100) {
 			curr100 = 0;
@@ -216,19 +216,21 @@ public class CoinCollectorActivity extends RunActivity {
 		} else {
 			// if user has moved forward to new 100s
 			if (distance - curr100 < 0) {
+				
 				prev100 = curr100; // set previous
-				curr100 = ((int) (distance / 100)) * 100;
+				int currHundred = ((int) (distance / 100));
+				curr100 = currHundred * 100;
+				fx.sayDistance(fx.getSpeech(currHundred - 1));
 			}
 
 			else if (!(distance - curr100 > 100)) {
-				float delayRatio, newDist = distance % curr100;
+				float delayRatio, newDist = distance % 100;
 				delayRatio = newDist / 100;
 
 				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 						* delayRatio + Constants.MIN_DELAY);
 			}
 		}
-
 	}
 
 	@Override

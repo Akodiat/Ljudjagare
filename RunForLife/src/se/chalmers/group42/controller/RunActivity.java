@@ -78,7 +78,7 @@ OrientationInputListener
 
 		//Setting up Sensor input
 		new GPSInputHandler(this, this);
-		new OrientationInputHandler(this, this);
+//		new OrientationInputHandler(this, this);
 		
 		
 
@@ -299,26 +299,14 @@ OrientationInputListener
 			gpsIcon.setImageResource(R.drawable.gps_green);
 			setGreenToRun();
 		}
-		//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
-		//                "android:switcher:"+R.id.pager+":1");
-		//		if(this.statsFragment.isAdded()){
-		//			mapFrag.setIsConnected(true);
-		//		}
 
 	}
 	public void onGPSDisconnect() {
 		gpsIcon.setImageResource(R.drawable.gps_red);
 		gpsOn=false;
-//		if(dataHandler.runStatus == RunStatus.RUNNING){
-//			pause();
-//		}
-		setNotGreenToRun();
-
-		//		MapFragment mapFrag = (MapFragment) this.getSupportFragmentManager().findFragmentByTag(
-		//                "android:switcher:"+R.id.pager+":1");
-		//		if(this.statsFragment.isAdded()){
-		//			mapFrag.setIsConnected(false);
-		//		}
+		if(dataHandler.isPaused()){
+			setNotGreenToRun();
+		}
 	}
 	public void onSoundOn() {
 		if(!soundOn){
