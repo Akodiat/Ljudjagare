@@ -205,7 +205,8 @@ public class CoinCollectorActivity extends RunActivity {
 			fx.update(fx.getNavigationFX(), (angle), human.getLocation()
 					.distanceTo(coinLocation));
 
-		float distance = human.getLocation().distanceTo(coinLocation);
+		float distance = human.getLocation().distanceTo(coinLocation) 
+				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
 
 		if (distance < 100) {
 			curr100 = 0;
@@ -221,7 +222,7 @@ public class CoinCollectorActivity extends RunActivity {
 			}
 
 			else if (!(distance - curr100 > 100)) {
-				float delayRatio, newDist = distance % curr100;
+				float delayRatio, newDist = distance % 100;
 				delayRatio = newDist / 100;
 
 				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
