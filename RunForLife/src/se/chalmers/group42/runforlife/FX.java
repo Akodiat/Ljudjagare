@@ -54,7 +54,7 @@ public class FX {
 	public void setAngle(float angle) {
 		this.angle = angle;
 
-		if (Math.abs(angle) > 145 && Math.abs(angle) <= 180) {
+		if (Math.abs(angle) > Constants.FRONT_ANGLE && Math.abs(angle) <= 180) {
 			source = behindSource;
 		} else
 			source = forwardSource;
