@@ -174,7 +174,6 @@ public class FXHandler {
 		else
 			delayRatio = 1;
 
-		// Delay between each repetition.
 		delay = (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
 				+ Constants.MIN_DELAY;
 	}
@@ -194,6 +193,7 @@ public class FXHandler {
 	 *            the current distance from goal
 	 */
 	public void update(FX fx, float angle, float distance) {
+		distance -= Constants.MIN_DISTANCE;
 		fx.setAngle(angle);
 
 		if (fx.angle() < 0 && fx.angle() > -Constants.FRONT_ANGLE)
