@@ -59,20 +59,15 @@ public class FinishedMapFragment extends MapFragment {
 		double[] coinlat = locs.getDoubleArray("coinlat");
 		double[] coinlng = locs.getDoubleArray("coinlng");
 
+		LatLng l = null;
 		//draw path
 		for(int i = 0 ; i < latitudes.length; i++){
-			LatLng l = new LatLng(latitudes[i],longitudes[i]);
+			l = new LatLng(latitudes[i],longitudes[i]);
 
 			routeLine.add(l);
 			myPolyRoute = map.addPolyline(routeLine);
 		}
 
-		//draw coin
-		LatLng l = null;
-		for(int i = 0 ; i < coinlat.length ; i++){
-			l = new LatLng(coinlat[i],coinlng[i]);
-			showCollectedCoin(l);
-		}
 		if(l != null){
 			CameraUpdate cameraUpdate= CameraUpdateFactory.
 					newLatLngZoom(l, 16);
@@ -80,6 +75,13 @@ public class FinishedMapFragment extends MapFragment {
 				map.animateCamera(cameraUpdate);
 			}
 		}
+		
+		//draw coin
+		for(int i = 0 ; i < coinlat.length ; i++){
+			l = new LatLng(coinlat[i],coinlng[i]);
+			showCollectedCoin(l);
+		}
+		
 	}
 
 	public void showCollectedCoin(LatLng l){

@@ -9,26 +9,20 @@ import se.chalmers.group42.database.*;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.RunForLifeApplication;
-import se.chalmers.group42.runforlife.R.id;
-import se.chalmers.group42.runforlife.R.layout;
-import se.chalmers.group42.runforlife.R.menu;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class FinishedRunActivity extends SwipeableActivity implements
@@ -38,6 +32,7 @@ MapFragment.OnHeadlineSelectedListener{
 	//	protected DataHandler dataHandler;
 
 	MySQLiteHelper db;
+	int id;
 
 	//Button
 	private ImageButton finishButton;
@@ -55,6 +50,11 @@ MapFragment.OnHeadlineSelectedListener{
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
 		this.db = app.getDatabase();
 
+		Bundle extras = getIntent().getExtras();
+		if(extras != null){
+			id = extras.getInt(Constants.EXTRA_ID);
+		}
+		
 		/*
 		 *  Creating the adapter that will return a fragment for each of the three 
 		 *  primary sections of the app
@@ -112,15 +112,11 @@ MapFragment.OnHeadlineSelectedListener{
 		});
 
 
-		Bundle extras = getIntent().getExtras();
-		if(extras != null){
-			int id = extras.getInt(Constants.EXTRA_ID);
 			FinishedRoute fin = db.getFinishedRoute(id);
 			Bundle args = new Bundle();
 			args.putLong("time", fin.getTotTime());
 			args.putInt("distance", fin.getDist());
 			args.putDouble("speed", fin.getSpeed());
-
 
 
 			Bundle locs = new Bundle();
@@ -136,7 +132,7 @@ MapFragment.OnHeadlineSelectedListener{
 
 			List<Coins> coins = db.getAllCoinsByRoute(id);
 			int nrCoins = coins.size();
-
+			
 			args.putInt("nrCoins", nrCoins);
 
 			double[] coinlat = new double[nrCoins];
@@ -166,7 +162,6 @@ MapFragment.OnHeadlineSelectedListener{
 			stats.putIntArray("dists", dists);
 
 			getStatsFragment().setArguments(stats);
-		}
 
 	}
 
@@ -207,5 +202,9 @@ MapFragment.OnHeadlineSelectedListener{
 	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute, float distance) {
 		// TODO Auto-generated method stub
+	}
+	
+	public void test(){
+		
 	}
 }

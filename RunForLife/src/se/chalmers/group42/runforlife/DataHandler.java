@@ -53,12 +53,10 @@ public class DataHandler {
 			//------------------------------------------
 			//Calculates the speed over the last 5 points
 			collection.add(curr);
-			collect++;
-			if(collect == 5){
+			if(collection.size() == 5){
 				calculateSpeed(seconds - collectionTime);
 				collectionTime = seconds;
 				collection.clear();
-				collect = 0;
 			}
 			//------------------------------------------
 			
@@ -156,10 +154,15 @@ public class DataHandler {
 	public void calculateSpeed(Long time){
 		double d = 0;
 		double s = time;
-		for(int i=0;i < collect-1; i++){
+		for(int i=0;i < collection.size()-1; i++){
 				d += collection.get(i).distanceTo(collection.get(i+1));
 		}
-		currentSpeed = d / s;
+		if( s != 0){
+			currentSpeed = d / s;
+		}else{
+			currentSpeed = 0;
+		}
+		
 	}
 	
 	public void onAquiredCoin(Location coinLoc){
