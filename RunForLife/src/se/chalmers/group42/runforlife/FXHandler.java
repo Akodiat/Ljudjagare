@@ -1,6 +1,7 @@
 package se.chalmers.group42.runforlife;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.pielot.openal.Buffer;
 import org.pielot.openal.SoundEnv;
@@ -32,6 +33,7 @@ public class FXHandler {
 
 	private SoundPool soundPool;
 
+	private ArrayList<Speech> speech = new ArrayList<Speech>();
 	private Speech say100, say200, say300, say400, say500, say600, say700,
 			say800, say900, say1000;
 
@@ -46,6 +48,17 @@ public class FXHandler {
 	public void initSound(Context context) {
 		env = SoundEnv.getInstance((Activity) context);
 
+		speech.add(say100);
+		speech.add(say200);
+		speech.add(say300);
+		speech.add(say400);
+		speech.add(say500);
+		speech.add(say600);
+		speech.add(say700);
+		speech.add(say800);
+		speech.add(say900);
+		speech.add(say1000);
+		
 		// Load sound into memory. Has to be mono .wav file.
 		Buffer navFXFrontBuffer, navFXBehindBuffer;
 		try {
@@ -91,6 +104,10 @@ public class FXHandler {
 		}
 	}
 
+	public Speech getSpeech(int i){
+		return speech.get(i);
+	}
+	
 	public void initSoundPool(Context context) {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 
@@ -203,7 +220,7 @@ public class FXHandler {
 		fx.setDistance(distance);
 
 		// tell the user how close to goal he/she is
-		distanceAnnouncer(distance);
+		//distanceAnnouncer(distance);
 	}
 
 	public void loopCoin(float distance) {

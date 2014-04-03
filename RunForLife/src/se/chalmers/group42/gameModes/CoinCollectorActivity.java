@@ -216,8 +216,11 @@ public class CoinCollectorActivity extends RunActivity {
 		} else {
 			// if user has moved forward to new 100s
 			if (distance - curr100 < 0) {
+				
 				prev100 = curr100; // set previous
-				curr100 = ((int) (distance / 100)) * 100;
+				int currHundred = ((int) (distance / 100));
+				curr100 = currHundred * 100;
+				fx.sayDistance(fx.getSpeech(currHundred - 1));
 			}
 
 			else if (!(distance - curr100 > 100)) {
