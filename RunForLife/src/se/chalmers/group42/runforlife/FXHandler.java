@@ -202,9 +202,7 @@ public class FXHandler {
 			fx.setPitch((1 - Constants.MIN_PITCH) / 145 * fx.angle() + 1);
 		else if (fx.angle() >= 0 && fx.angle() < 145)
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-145) * fx.angle() + 1);
-		else
-			fx.setPitch(0);
-
+		
 		fx.setDistance(distance);
 
 		// tell the user how close to goal he/she is
@@ -245,7 +243,7 @@ public class FXHandler {
 	}
 
 	public void distanceAnnouncer(float distance) {
-		int rConst = 10; // meters from coin destination
+		int rConst = 1; // meters from coin destination
 
 		if (distance < 1000 + rConst && distance > 1000 - rConst)
 			sayDistance(say1000);
