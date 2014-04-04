@@ -19,6 +19,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -167,18 +168,22 @@ public class CoinCollectorActivity extends RunActivity {
 	private boolean isAtCoin() {
 		double dist = human.getLocation().distanceTo(coinLocation);
 		return (// If closer than minimum distance
-		human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
-		// Or the accuracy is less than 50 meters but still larger
-		// than the distance to the sound source.
-		|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
-				.distanceTo(coinLocation) < human.getLocation().getAccuracy()
-				: false));
+				human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
+				// Or the accuracy is less than 50 meters but still larger
+				// than the distance to the sound source.
+				|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
+						.distanceTo(coinLocation) < human.getLocation().getAccuracy()
+						: false));
 	}
 
 	private void generateNewCoin() {
 		if (human.getScore() < 3) {
 			coinLocation = this.finalRoute.get(human.getScore());
 
+			float distance = human.getLocation().distanceTo(coinLocation) 
+					- Constants.MIN_DISTANCE;
+			curr100 = ((int) (distance / 100)) * 100;
+			
 			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 			mapFrag.handleNewCoin(coinLocation);
@@ -203,30 +208,31 @@ public class CoinCollectorActivity extends RunActivity {
 
 		float distance = human.getLocation().distanceTo(coinLocation) 
 				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
-		
+
 		if (fx.getNavigationFX().isPlaying())
 			fx.update(fx.getNavigationFX(), (angle), distance);
 
-		if (distance < 100) {
+		if (distance <= 100) {
 			curr100 = 0;
-			float delayRatio = distance / 100;
-
+			//float delayRatio = distance / 100;
+			float delayRatio = (float) Math.pow(distance / 100, 2);
+			fx.sayDistance(fx.getSpeech(curr100));
 			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 					* delayRatio + Constants.MIN_DELAY);
 		} else {
 			// if user has moved forward to new 100s
-			if (distance - curr100 < 0) {
-				
+			if (distance - curr100 <= 0) {
+
 				prev100 = curr100; // set previous
 				int currHundred = ((int) (distance / 100));
 				curr100 = currHundred * 100;
-				fx.sayDistance(fx.getSpeech(currHundred - 1));
+				fx.sayDistance(fx.getSpeech(currHundred));
 			}
 
 			else if (!(distance - curr100 > 100)) {
 				float delayRatio, newDist = distance % 100;
-				delayRatio = newDist / 100;
-
+				//delayRatio = newDist / 100;
+				delayRatio = (float) Math.pow(newDist / 100, 2);
 				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 						* delayRatio + Constants.MIN_DELAY);
 			}
@@ -273,7 +279,7 @@ public class CoinCollectorActivity extends RunActivity {
 		return bearingTo - human.getLocation().getBearing();
 
 	}
-	
+
 	private float GPS_Bearing(){
 		return 	human.getOldLocation().bearingTo(human.getLocation());
 	}

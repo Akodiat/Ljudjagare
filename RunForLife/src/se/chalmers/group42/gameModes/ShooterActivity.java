@@ -14,6 +14,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -43,11 +44,11 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 		currentAngle = (TextView) findViewById(R.id.currentAngle);
 		currentDistance = (SeekBar) findViewById(R.id.currentDistance);
-		currentDistance.setMax(200);
-		currentDistance.setProgress(200);
+		currentDistance.setMax(300);
+		currentDistance.setProgress(300);
 
-		distance = 200;
-		curr100 = 200;
+		distance = 300;
+		curr100 = 300;
 
 		currentDistance
 				.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -125,7 +126,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 
 		if (distance < 100) {
 			curr100 = 0;
-			float delayRatio = distance / 100;
+			float delayRatio = (float) Math.pow(distance / 100, 2);
 
 			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 					* delayRatio + Constants.MIN_DELAY);
@@ -135,10 +136,11 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 				curr100 = ((int) (distance / 100)) * 100;
 			}
 
-			else if (!(distance - curr100 > 100)) {
+			else if (!(distance - curr100 >= 100)) {
 				float delayRatio, newDist = distance % 100;
-				delayRatio = newDist / 100;
+				delayRatio = (float) Math.pow(newDist / 100, 2);
 
+				Log.d("dist", "ratio: " + delayRatio);
 				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 						* delayRatio + Constants.MIN_DELAY);
 			}
