@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master ../chapter-2.lyx
+\master thesis.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -273,20 +273,117 @@ thepage
 
 \end_layout
 
+\begin_layout Chapter
+Introduction
+\end_layout
+
 \begin_layout Section
-Design choices and usability
+Background
 \end_layout
 
-\begin_layout Subsection
-Establishment of requirements
+\begin_layout Standard
+In recent years smartphones containing GPS (Global Positioning System) sensors
+ have become more and more common {citation needed}.
+ As a result of this, multiple smartphone applications making use of the
+ GPS for tracking the user position and movement have originated.
+ One such example, Endomondo Sports Tracker {https://play.google.com/store/apps/de
+tails?id=com.endomondo.android, 2014-03-28} launched in 2008 {http://blog.endomondo.
+com/about/, 2014-04-04}}.
+ The Endomondo application tracked the position and time of the smartphone
+ while the user was running and utilized those values to calculate statistics
+ such as speed, distance and multiple averages.{http://blog.endomondo.com/facts/,
+ 2014-04-04}.
+ Another application, called Zombies, Run! {https://play.google.com/store/apps/det
+ails?id=com.sixtostart.zombiesrun, 2014-03-28}, launched in 2012.
+ Zombies, Run! focused more on a fun game experience than on running statistics
+ and therefore provided an illusion of zombies chasing the user.
+ This was done by generating the sound of zombies (a type of monsters) approachi
+ng the user.
+ The sound would only disappear if the user ran fast enough over a period
+ of time, thereby evading the zombies.
+ However, the zombie sound effects are not directional.
+ Thus, the user didn’t have to run in any specific direction to evade these
+ monsters.
 \end_layout
 
-\begin_layout Subsection
-Design of alternatives
+\begin_layout Standard
+Meanwhile, directional sound or rather binaural sound, had been around in
+ computer games for several years {citation needed}.
+ [----| Include some example here |----] In these games, however, the sound
+ generation was based on the movement of the virtual character, not the
+ movement of the actual user.
+ The possibility of tracking the head movements of the actual user using
+ a smartphone was however studied as a master thesis by Paul Lawitzki in
+ 2012 called Application of Dynamic Binaural Signals in Acoustic Games.
 \end_layout
 
-\begin_layout Subsection
-Implementation of prototype (Beta)
+\begin_layout Standard
+Combining both the orientational sensors of the modern smartphone with GPS
+ and the concept of the gamified running application, this thesis investigates
+ how binaural sound can be used to motivate exercise.
+ 
+\begin_inset Formula 
+\begin{equation}
+\int\frac{\sin(x)}{x}\,\mathrm{d}x=\mathrm{Si}(x)\label{eq:Integral-sine}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Purpose
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Purpose"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch NoChildDocument
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesisExample"
+options "alpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "custom"
+width "2.5cm"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Goals
+\end_layout
+
+\begin_layout Section
+Method
+\end_layout
+
+\begin_layout Section
+Terms and Definitions
 \end_layout
 
 \end_body

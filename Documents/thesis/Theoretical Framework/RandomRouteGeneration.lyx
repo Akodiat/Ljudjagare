@@ -274,19 +274,11 @@ thepage
 \end_layout
 
 \begin_layout Section
-Design choices and usability
+Random route generation algorithm
 \end_layout
 
-\begin_layout Subsection
-Establishment of requirements
-\end_layout
+\begin_layout Standard
 
-\begin_layout Subsection
-Design of alternatives
-\end_layout
-
-\begin_layout Subsection
-Implementation of prototype (Beta)
 \end_layout
 
 \end_body

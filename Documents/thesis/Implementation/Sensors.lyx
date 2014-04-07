@@ -278,27 +278,7 @@ Sensors
 \end_layout
 
 \begin_layout Standard
-kslfskfä
-\end_layout
-
-\begin_layout Subsection
-GPS
-\end_layout
-
-\begin_layout Subsection
-Accelerometer
-\end_layout
-
-\begin_layout Subsection
-Magnetic field
-\end_layout
-
-\begin_layout Subsection
-Gyroscope
-\end_layout
-
-\begin_layout Subsection
-Sensor fusion
+Our implementaiton of sensor fusion
 \end_layout
 
 \end_body
