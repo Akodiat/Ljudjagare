@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/white"
+            android:paddingTop="2dp" >
+
+            <ImageView
+                android:id="@+id/imageViewRunner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/image_desc_run"
+                android:src="@drawable/run_for_life" />
+
+<!--             <at.technikum.mti.fancycoverflow.FancyCoverFlow -->
+<!--                 android:id="@+id/fancyCoverFlow" -->
+<!--                 android:layout_width="match_parent" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:layout_above="@+id/relativeLayoutTable" -->
+<!--                 android:layout_gravity="center_horizontal" -->
+<!--                 fcf:maxRotation="45" -->
+<!--                 fcf:scaleDownGravity="0.5" -->
+<!--                 fcf:unselectedAlpha="0.3" -->
+<!--                 fcf:unselectedSaturation="0.0" -->
+<!--                 fcf:unselectedScale="0.4" /> -->
+
+            <RelativeLayout
+                android:id="@+id/relativeLayoutTable"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_alignParentBottom="true"
+                android:paddingBottom="2dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp" >
+
+                <include layout="@layout/status_icons"/>
+
+                <ImageButton
+                    android:id="@+id/runButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="#0000"
+                    android:contentDescription="@string/button_desc_run"
+                    android:src="@drawable/run_red" />
+            </RelativeLayout>
+        </RelativeLayout>
+    
+
+</LinearLayout>
