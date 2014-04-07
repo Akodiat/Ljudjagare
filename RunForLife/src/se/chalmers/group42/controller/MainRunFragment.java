@@ -18,6 +18,8 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +37,7 @@ GPSInputListener{
 	private ImageView 	gpsIcon, soundIcon, headPhonesIcon;
 	private TextView	gpsText, soundText, headPhonesText;
 	private boolean gpsOn, soundOn, headphonesIn;
+	private FrameLayout fancyCoverFlowContainer;
 	
 	private final int ACTION_BAR_HEIGHT_MDPI = 32;
 
@@ -96,6 +99,7 @@ GPSInputListener{
 		 * Setting up the cover flow
 		 */
 //		fancyCoverFlow = (FancyCoverFlow) view.findViewById(R.id.fancyCoverFlow);
+		fancyCoverFlowContainer = (FrameLayout) view.findViewById(R.id.fancyCoverFlowContainer);
 		fancyCoverFlow = new FancyCoverFlow(mainActivity);
 		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter(
 				coverFlowHeight));
@@ -106,7 +110,8 @@ GPSInputListener{
 		fancyCoverFlow.setMaxRotation(0);
 		fancyCoverFlow.setScaleDownGravity(0.2f);
 		fancyCoverFlow.setActionDistance(FancyCoverFlow.ACTION_DISTANCE_AUTO);
-
+		fancyCoverFlowContainer.addView(fancyCoverFlow);
+		
 		/*
 		 * Setting up the run-button
 		 */
