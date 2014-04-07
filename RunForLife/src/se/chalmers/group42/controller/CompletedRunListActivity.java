@@ -164,6 +164,8 @@ CompletedRunListFragment.Callbacks {
 			Intent detailIntent = new Intent(this,
 					FinishedRunActivity.class);
 			detailIntent.putExtra(Constants.EXTRA_ID, Integer.parseInt(id));
+			//TODO Sharedpreferences
+			//Skicak med runläge eller finishedläge
 			startActivity(detailIntent);
 		}
 	}
