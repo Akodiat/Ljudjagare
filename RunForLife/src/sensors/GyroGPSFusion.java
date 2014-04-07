@@ -29,9 +29,10 @@ public class GyroGPSFusion implements SensorEventListener, GPSInputListener
 
 	// accelerometer vector
 	private Vector3 accel;
-	
+
 	private float gpsBearing;
 	private float gyroBearing;
+	private float fusedBearing;
 
 	public static final int 	TIME_CONSTANT = 30;
 	public static final float 	FILTER_COEFFICIENT = 0.98f;
@@ -43,16 +44,14 @@ public class GyroGPSFusion implements SensorEventListener, GPSInputListener
 
 	public GyroGPSFusion(OrientationInputListener listener, Context context) {
 		this.listener = listener;
-		
+
 		new GPSInputHandler(this, context);
-		
+
 		gpsBearing = 0;
 		gyroBearing = 0;
-		
+
 		accel 	= new Vector3(0, 0, 0);
 		gyro 	= new Vector3(0, 0, 0);
-
-		android.util.Log.d("Compass", "OrientationInputHandler initiated");
 
 		SensorManager sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
 
@@ -78,6 +77,12 @@ public class GyroGPSFusion implements SensorEventListener, GPSInputListener
 	//The following code is taken from TODO: Fix reference
 	float[] gravityMatrix;
 	float[] geomagneticMatrix;
+
+	//Nano-seconds to seconds
+	private static final float NS2S = 1.0f / 1000000000.0f;
+
+	private float timestamp;
+
 	public void onSensorChanged(SensorEvent event) {
 		switch(event.sensor.getType()) {
 		case Sensor.TYPE_ACCELEROMETER:
@@ -85,15 +90,36 @@ public class GyroGPSFusion implements SensorEventListener, GPSInputListener
 			break;
 
 		case Sensor.TYPE_GYROSCOPE:
+			/* http://developer.android.com/reference/android/hardware/SensorEvent.html
+			 * Initial values are in radians/second and measure the rate of rotation 
+			 * around the device's local X, Y and Z axis. 
+			 * The coordinate system is the same as is used for the 
+			 * acceleration sensor.
+			 * Rotation is positive in the counter-clockwise direction. 
+			 */
 			gyro = new Vector3(event.values[0], event.values[1], event.values[2]);
-			
 
-			float dT = (event.timestamp - timestamp) * NS2S; //Times in seconds
-			float dV = (float) (gyroToGlobalCoordinates().x * dT);
+			//Calculate time difference since last measure (and convert to seconds)
+			float dT = (event.timestamp - this.timestamp) * NS2S;
+
+			//Update timestamp with new value
+			this.timestamp = event.timestamp;
+
+			//Log.d("GYROSCOPE", "dT: " + dT + " seconds");
+
+			double v = gyroToGlobalCoordinates();
+			v /= 10;
+			float dV = (float) (v * dT);
+
+			//updateGyroBearing(dV);
+			fusedBearing += Math.toDegrees(dV);
+			while(fusedBearing<0)
+				fusedBearing += 360;
+			fusedBearing %= 360;
 			
-			updateGyroBearing(dV);
-			
-			Log.d("GYROSCOPE", "dV: "+dV + "\tgpsBearing: "+gpsBearing + "\tfused:" + gyroBearing/10000000);
+			listener.onCompassChanged(fusedBearing);
+
+			Log.d("GYROSCOPE", "v: "+Math.round(v) + "\t\tfusedBearing: " + fusedBearing);
 			break;
 		}
 
@@ -101,37 +127,30 @@ public class GyroGPSFusion implements SensorEventListener, GPSInputListener
 
 	public static final float EPSILON = 0.000000001f;
 
-	private static final float NS2S = 1.0f / 1000000000.0f;
-	private float timestamp;
+
 	private boolean initState = true;
 
-	public void updateGyroBearing(float dV) {
+	private void updateGyroBearing(float dV) {
 		gyroBearing += dV;
+		Log.d("GYROSCOPE", "dV: "+Math.round(Math.toDegrees(dV)) + "\tgyroBearing:" + Math.round(Math.toDegrees(gyroBearing)));
 	}
 
 	/**
 	 * http://electronics.stackexchange.com/questions/29423/rotating-a-gyroscopes-output-values-into-an-earth-relative-reference-frame
 	 */
-	private Vector3 gyroToGlobalCoordinates(){
-		Vector3 H1 = new Vector3(Math.random(), Math.random(), Math.random());
+	private double gyroToGlobalCoordinates(){
 
-		Vector3 H2 = accel.crossProduct(H1);
-		H1 = accel.crossProduct(H2);
+		double GV  = (gyro.x * -accel.x)  + (gyro.y * accel.y)  + (gyro.z * -accel.z);
+		
+		
 
-		H1.normalize();
-		H2.normalize();
-
-		double GV  = (gyro.x * accel.x)  + (gyro.y * accel.y)  + (gyro.z * accel.z);
-		double GH1 = (gyro.x * H1.x) + (gyro.y * H1.y) + (gyro.z * H1.z);
-		double GH2 = (gyro.x * H2.x) + (gyro.y * H2.y) + (gyro.z * H2.z);
-
-		android.util.Log.d("GYRO", 
+		android.util.Log.d("GYROREADINGS", 
 				"Global gyro| " +
-						"x:"  +Math.round(GV/(Math.PI)*180) + 
-						"\ty:"+Math.round(GH1/(Math.PI)*180)  + 
-						"\tz:"+Math.round(GH2/(Math.PI)*180)
+						"deg:"  +Math.round(GV/(Math.PI)*180)
+						+
+						"\trad:"  +GV
 				);
-		return new Vector3(GV, GH1, GH2);
+		return GV;
 	}
 
 	@Override
@@ -142,7 +161,10 @@ public class GyroGPSFusion implements SensorEventListener, GPSInputListener
 
 	@Override
 	public void onLocationChanged(Location location) {
-		if(location.hasBearing())
-			this.gpsBearing = location.getBearing();
+		if(location.hasBearing() && location.getSpeed() > 0.5){
+			//this.gpsBearing = location.getBearing();
+			this.fusedBearing = location.getBearing();
+			listener.onCompassChanged(fusedBearing);
+		}
 	}
 }
