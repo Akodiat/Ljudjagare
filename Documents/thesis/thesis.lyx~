@@ -144,6 +144,16 @@ customHeadersFooters
 \filename_suffix 0
 \color #fae821
 \end_branch
+\branch theoFramework
+\selected 1
+\filename_suffix 0
+\color #fa3ed8
+\end_branch
+\branch chapter-6
+\selected 1
+\filename_suffix 0
+\color #aaaaff
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -203,7 +213,7 @@ document
 \end_layout
 
 \begin_layout Subject
-Thesis to get the degree of a Bachelor of Science
+Thesis to get the degree Bachelor of Science
 \begin_inset Note Note
 status open
 
@@ -251,14 +261,14 @@ Date (optional)
 \end_layout
 
 \begin_layout Publishers
-\begin_inset Box Boxed
-position "t"
+\begin_inset Box Frameless
+position "c"
 hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
-use_makebox 0
-width "40col%"
+use_makebox 1
+width "0page%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -267,6 +277,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename AvancezChalmersU_black_centered.eps
+	scale 85
 
 \end_inset
 
@@ -380,6 +391,55 @@ Dedication, cite from a famous person, or whatever you like (optional)
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{plain}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The summary should not have page headers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Summary
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Summary.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -516,58 +576,6 @@ status collapsed
 
 
 \backslash
-pagestyle{plain}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The summary should not have page headers.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch Summary
-status open
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Summary.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
 pagestyle{fancy}
 \end_layout
 
@@ -648,7 +656,26 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-1.lyx"
+filename "Introduction.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch theoFramework
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "TheoriticalFramework.lyx"
 
 \end_inset
 
@@ -667,7 +694,7 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-2.lyx"
+filename "Implementation.lyx"
 
 \end_inset
 
@@ -686,7 +713,7 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-3.lyx"
+filename "UsabilityEvaluation.lyx"
 
 \end_inset
 
@@ -705,7 +732,7 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-4.lyx"
+filename "Results.lyx"
 
 \end_inset
 
@@ -724,7 +751,26 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-5.lyx"
+filename "Discussion.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter-6
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Conclusion.lyx"
 
 \end_inset
 

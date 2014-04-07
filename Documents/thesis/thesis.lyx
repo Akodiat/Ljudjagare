@@ -144,6 +144,16 @@ customHeadersFooters
 \filename_suffix 0
 \color #fae821
 \end_branch
+\branch theoFramework
+\selected 1
+\filename_suffix 0
+\color #fa3ed8
+\end_branch
+\branch chapter-6
+\selected 1
+\filename_suffix 0
+\color #aaaaff
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -203,7 +213,7 @@ document
 \end_layout
 
 \begin_layout Subject
-Thesis to get the degree of a Bachelor of Science
+Thesis to get the degree Bachelor of Science
 \begin_inset Note Note
 status open
 
@@ -511,7 +521,7 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -649,7 +659,26 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-1.lyx"
+filename "Introduction.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch theoFramework
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "TheoriticalFramework.lyx"
 
 \end_inset
 
@@ -668,7 +697,7 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-2.lyx"
+filename "Implementation.lyx"
 
 \end_inset
 
@@ -687,7 +716,7 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-3.lyx"
+filename "UsabilityEvaluation.lyx"
 
 \end_inset
 
@@ -706,7 +735,7 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-4.lyx"
+filename "Results.lyx"
 
 \end_inset
 
@@ -725,7 +754,26 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chapter-5.lyx"
+filename "Discussion.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter-6
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Conclusion.lyx"
 
 \end_inset
 

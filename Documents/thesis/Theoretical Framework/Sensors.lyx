@@ -274,19 +274,31 @@ thepage
 \end_layout
 
 \begin_layout Section
-Design choices and usability
+Sensors
+\end_layout
+
+\begin_layout Standard
+kslfskfä
 \end_layout
 
 \begin_layout Subsection
-Establishment of requirements
+GPS
 \end_layout
 
 \begin_layout Subsection
-Design of alternatives
+Accelerometer
 \end_layout
 
 \begin_layout Subsection
-Implementation of prototype (Beta)
+Magnetic field
+\end_layout
+
+\begin_layout Subsection
+Gyroscope
+\end_layout
+
+\begin_layout Subsection
+Sensor fusion
 \end_layout
 
 \end_body

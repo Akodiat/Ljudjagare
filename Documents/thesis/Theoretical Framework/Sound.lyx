@@ -102,11 +102,6 @@ customHeadersFooters
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
-\branch NoChildDocument
-\selected 0
-\filename_suffix 0
-\color #ff0000
-\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -274,19 +269,11 @@ thepage
 \end_layout
 
 \begin_layout Section
-Design choices and usability
+Sound
 \end_layout
 
-\begin_layout Subsection
-Establishment of requirements
-\end_layout
-
-\begin_layout Subsection
-Design of alternatives
-\end_layout
-
-\begin_layout Subsection
-Implementation of prototype (Beta)
+\begin_layout Standard
+Text about sound
 \end_layout
 
 \end_body
