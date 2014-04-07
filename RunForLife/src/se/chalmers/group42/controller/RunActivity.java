@@ -125,8 +125,8 @@ OrientationInputListener
 					.setTabListener(this));
 		}
 
-		runFragment = new RunFragment();
-		mapFragment = new MapFragment();
+		setRunFragment(new RunFragment());
+		setMapFragment(new MapFragment());
 		setStatsFragment(new StatsFragment());
 
 
@@ -275,7 +275,7 @@ OrientationInputListener
 	public void updateDisplay(long seconds, int distance, double currentspeed, int coins){
 		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
 				"android:switcher:"+R.id.pager+":0");
-		if(runFragment.isAdded()){
+		if(getRunFragment().isAdded()){
 			runFrag.updateDisp(seconds,distance,currentspeed,coins);
 		}
 	}

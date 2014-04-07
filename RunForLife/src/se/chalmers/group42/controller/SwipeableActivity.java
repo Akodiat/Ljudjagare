@@ -36,8 +36,8 @@ public abstract class SwipeableActivity extends FragmentActivity implements Acti
 	 */
 	protected ViewPager mViewPager;
 
-	protected Fragment runFragment;
-	protected Fragment mapFragment;
+	private Fragment runFragment;
+	private Fragment mapFragment;
 	private Fragment statsFragment;
 
 	/**
@@ -67,7 +67,7 @@ public abstract class SwipeableActivity extends FragmentActivity implements Acti
 			case 1:
 				return mapFragment;
 			case 2:
-				return getStatsFragment();
+				return statsFragment;
 			}
 			return null;
 		}
@@ -113,11 +113,24 @@ public abstract class SwipeableActivity extends FragmentActivity implements Acti
 		// TODO Auto-generated method stub
 
 	}
+	
+	public Fragment getRunFragment() {
+		return runFragment;
+	}
+	public void setRunFragment(Fragment runFragment) {
+		this.runFragment = runFragment;
+	}
+	
+	public Fragment getMapFragment() {
+		return mapFragment;
+	}
+	public void setMapFragment(Fragment mapFragment) {
+		this.mapFragment = mapFragment;
+	}
 
 	public Fragment getStatsFragment() {
 		return statsFragment;
 	}
-
 	public void setStatsFragment(Fragment statsFragment) {
 		this.statsFragment = statsFragment;
 	}

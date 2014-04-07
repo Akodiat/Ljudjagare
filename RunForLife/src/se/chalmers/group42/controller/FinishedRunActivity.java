@@ -94,8 +94,8 @@ MapFragment.OnHeadlineSelectedListener{
 					.setTabListener(this));
 		}
 
-		runFragment = new FinishedRunFragment();
-		mapFragment = new FinishedMapFragment();
+		setRunFragment(new FinishedRunFragment());
+		setMapFragment(new FinishedMapFragment());
 		setStatsFragment(new FinishedStatsFragment());
 
 
@@ -152,9 +152,9 @@ MapFragment.OnHeadlineSelectedListener{
 			locs.putDoubleArray("coinlat", coinlat);
 			locs.putDoubleArray("coinlng", coinlng);
 
-			mapFragment.setArguments(locs);
+			getMapFragment().setArguments(locs);
 
-			runFragment.setArguments(args);
+			getRunFragment().setArguments(args);
 
 			Bundle stats = new Bundle();
 
