@@ -331,7 +331,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-name "Endomondo Sports Tracker"
 target "https://play.google.com/store/apps/details?id=com.endomondo.android"
 
 \end_inset
@@ -341,9 +340,17 @@ target "https://play.google.com/store/apps/details?id=com.endomondo.android"
 
 \end_inset
 
- launched in 2008 (källa här).The Endomondo application tracked the position
- and time of the smartphone while the user was running and utilized those
- values to calculate statistics such as speed, distance and multiple averages.{
+ launched in 2008 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Endomondo2014"
+
+\end_inset
+
+.
+ The Endomondo application tracked the position and time of the smartphone
+ while the user was running and utilized those values to calculate statistics
+ such as speed, distance and multiple averages.{
 \begin_inset CommandInset href
 LatexCommand href
 name "Endomondo"
@@ -352,32 +359,53 @@ target "http://blog.endomondo.com/facts/"
 \end_inset
 
 , 2014-04-04}.
- Another application, called Zombies, Run! {
+ Another application, called 
+\emph on
+Zombies, Run!
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-name "Zombies"
 target "https://play.google.com/store/apps/details?id=com.sixtostart.zombiesrun"
 
 \end_inset
 
-, 2014-03-28}, launched in 2012.
- Zombies, Run! focused more on a fun game experience than on running statistics
- and therefore provided an illusion of zombies chasing the user.
+
+\end_layout
+
+\end_inset
+
+, launched in 2012.
+ 
+\emph on
+Zombies, Run!
+\emph default
+ focused more on a fun game experience than on running statistics and therefore
+ provided an illusion of zombies chasing the user.
  This was done by generating the sound of zombies (a type of monsters) approachi
 ng the user.
  The sound would only disappear if the user ran fast enough over a period
  of time, thereby evading the zombies.
  However, the zombie sound effects are not directional.
- Thus, the user didn’t have to run in any specific direction to evade these
+ Thus, the user did not have to run in any specific direction to evade these
  monsters.
 \end_layout
 
 \begin_layout Standard
 Meanwhile, directional sound or rather binaural sound, had been around in
  computer games for several years {citation needed}.
- [----| Include some example here |----] In these games, however, the sound
- generation was based on the movement of the virtual character, not the
- movement of the actual user.
+ 
+\noun on
+\color green
+[----| Include some example here |----] 
+\noun default
+\color inherit
+In these games, however, the sound generation was based on the movement
+ of the virtual character, not the movement of the actual user.
  The possibility of tracking the head movements of the actual user using
  a smartphone was however studied as a master thesis by Paul Lawitzki in
  2012 called Application of Dynamic Binaural Signals in Acoustic Games.
