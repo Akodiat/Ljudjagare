@@ -293,8 +293,31 @@ public class CoinCollectorActivity extends RunActivity {
 		return compassFromNorth + human.getLocation().bearingTo(coinLocation);
 	}
 
+	private ArrayList<Location> generateRoute(int checkpoints, double radius, Location origo){
+		double radiansPerCheckpoint = 2 * Math.PI / checkpoints;
+		ArrayList<Location> route = new ArrayList<Location>();
+		double currentCheckpoint = 2 * Math.PI * 3/4;
+		
+		for(int i = 0; i < checkpoints; i++){
+			currentCheckpoint -= radiansPerCheckpoint;
+			double addLat = Math.sin(currentCheckpoint) * radius;
+			double addLong = Math.cos(currentCheckpoint) * radius / Math.cos(Math.toRadians(human.getLocation().getLatitude()));
+			
+			Location routeLocation = new Location("new Location");
+			routeLocation.setLongitude(origo.getLongitude() + addLong);
+			routeLocation.setLatitude(origo.getLatitude() + addLat);
+			
+			route.add(routeLocation);
+		}
+		
+		return route;
+		
+	}
+	
 	private ArrayList<Location> generateRandomRoute(double distance) {
 		// Calculation random positions
+		int checkpoints = 10;
+		
 		finalRoute.clear();
 		double a = Math.random();
 		double b = Math.random();
@@ -305,18 +328,24 @@ public class CoinCollectorActivity extends RunActivity {
 		double t = 2 * Math.PI * b;
 		double x = w * Math.cos(t);
 		double y = w * Math.sin(t);
-		double xNew = x / Math.cos(human.getLocation().getLatitude());
+		double xNew = x / Math.cos(Math.toRadians(human.getLocation().getLatitude()));
 
 		Location routePoint = new Location("route");
 		routePoint.setLongitude(xNew + human.getLocation().getLongitude());
 		routePoint.setLatitude(human.getLocation().getLatitude() + y);
 
-		float bearingTo = human.getLocation().bearingTo(routePoint);
+		
+		double bearingTo = human.getLocation().bearingTo(routePoint);
+		if (bearingTo < 0) {
+			bearingTo += 360;
+		}
+		bearingTo = Math.toRadians(bearingTo);
+		
 		double addLat;
 		double addLng;
 		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
 		addLat = Math.sin(bearingTo) * distanceFromLocation;
-		addLng = Math.cos(bearingTo) * distanceFromLocation / Math.cos(human.getLocation().getLatitude());
+		addLng = Math.cos(bearingTo) * distanceFromLocation / Math.cos(Math.toRadians(human.getLocation().getLatitude()));
 		routePoint.setLatitude(routePoint.getLatitude() + addLat);
 		routePoint.setLongitude(routePoint.getLongitude() + addLng);
 
@@ -326,9 +355,42 @@ public class CoinCollectorActivity extends RunActivity {
 		Location routePoint2 = new Location("route2");
 		double differLat = human.getLocation().getLatitude()
 				- routePoint.getLatitude();
-		double differLng = human.getLocation().getLongitude()
-				- routePoint.getLongitude();
+		double differLng = (human.getLocation().getLongitude()
+				- routePoint.getLongitude()) * Math.cos(Math.toRadians(human.getLocation().getLatitude()));
+		
+		double hypotenusa = Math.sqrt((Math.pow(differLat, 2) + Math.pow(differLng, 2)));
+		
+		Location newOrigo = new Location("MidLocation");
+		newOrigo.setLongitude(human.getLocation().getLongitude());
+		newOrigo.setLatitude(human.getLocation().getLatitude() + (hypotenusa / 2));
 
+		ArrayList<Location> routeTest = generateRoute(checkpoints, hypotenusa / 2, newOrigo);
+		
+		double angle = human.getLocation().bearingTo(routePoint);
+		if (angle < 0) {
+			angle += 360;
+		}
+		angle = Math.toRadians(angle);
+		
+		for(int i = 0; i < routeTest.size(); i++){
+			//float angleToRoute = human.getLocation().bearingTo(routeTest.get(i));
+			//float angleToNew = angleToRoute + angle;
+			double diffLong = -(human.getLocation().getLongitude() - routeTest.get(i).getLongitude()) * Math.cos(Math.toRadians(human.getLocation().getLatitude()));
+			double diffLat = -(human.getLocation().getLatitude() - routeTest.get(i).getLatitude());
+
+			// Rotation around human location, rotation matrix
+			double newLong = Math.cos(angle) * diffLong + Math.sin(angle) * diffLat;
+			double newLat =  -Math.sin(angle) * diffLong + Math.cos(angle) * diffLat;
+
+			routeTest.get(i).setLongitude(human.getLocation().getLongitude() + newLong/ Math.cos(Math.toRadians(human.getLocation().getLatitude())));
+			routeTest.get(i).setLatitude(human.getLocation().getLatitude() + newLat);
+		}
+		
+//		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+//				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
+//		mapFrag.randomTest(routeTest, routePoint);
+		
+		
 		if (Math.random() > 0.5) {
 			routePoint2.setLatitude(human.getLocation().getLatitude()
 					+ differLng);
