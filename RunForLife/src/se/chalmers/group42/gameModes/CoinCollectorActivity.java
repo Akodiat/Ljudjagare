@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import se.chalmers.group42.controller.FinishedRunActivity;
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
-import se.chalmers.group42.controller.SettingsActivity;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;

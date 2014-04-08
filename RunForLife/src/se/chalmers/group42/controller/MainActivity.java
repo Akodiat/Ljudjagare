@@ -37,6 +37,7 @@ import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -209,11 +210,14 @@ public class MainActivity extends FragmentActivity{
 	 */
 	private void selectItem(int position) {
 		FragmentManager fragmentManager = getFragmentManager();
+		FragmentTransaction ft;
 		switch(position) {
 		case 0:
-			Fragment mainRunFragment = new MainRunFragment();
 			// Insert the fragment by replacing any existing fragment
-			fragmentManager.beginTransaction().replace(R.id.content_frame, mainRunFragment).commit();
+			ft = fragmentManager.beginTransaction();
+			Fragment mainRunFragment = new MainRunFragment();
+			ft.replace(R.id.content_frame, mainRunFragment);
+			ft.commit();
 			//			Intent mainIntent = new Intent(NavDrawerActivity.this, MainActivity.class);
 			//			/*Flag clearing other activities from backstack to make sure that back press
 			//			 * from main will exit the app.
@@ -221,21 +225,25 @@ public class MainActivity extends FragmentActivity{
 			//
 			//			mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			//			startActivity(mainIntent);
-			//			// update selected item and title, then close the drawer
+			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
 			setTitle(navDrawerTitle);
 			navDrawerLayout.closeDrawer(navDrawerList);
 			break;
-			//		case 1:
+		case 1:
+			ft = fragmentManager.beginTransaction();
+			Fragment completedRunListFragment = new CompletedRunListFragment();
+			ft.replace(R.id.content_frame, completedRunListFragment);
+			ft.commit();
 			//			Intent historyIntent = new Intent(NavDrawerActivity.this, CompletedRunListActivity.class);
 			//			//Flag making sure that no new instances of a current running activity are launched
 			//			historyIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 			//			startActivity(historyIntent);
-			//			// update selected item and title, then close the drawer
-			//			navDrawerList.setItemChecked(position, true);
-			//			setTitle(navDrawerTitle);
-			//			navDrawerLayout.closeDrawer(navDrawerList);
-			//			break;
+			// update selected item and title, then close the drawer
+			navDrawerList.setItemChecked(position, true);
+			setTitle(navDrawerTitle);
+			navDrawerLayout.closeDrawer(navDrawerList);
+			break;
 		default:
 		}
 	}
@@ -256,9 +264,18 @@ public class MainActivity extends FragmentActivity{
 			return true;
 		}
 		else if(item.getItemId()==R.id.action_settings){
-			//			Intent settingsIntent = new Intent(NavDrawerActivity.this, SettingsActivity.class);
-			//			//Flag making sure that no new instances of a current running activity are launched
-			//			startActivity(settingsIntent);
+			//						Intent settingsIntent = new Intent(NavDrawerActivity, SettingsActivity.class);
+			//						//Flag making sure that no new instances of a current running activity are launched
+			//						startActivity(settingsIntent);
+
+			FragmentManager fragmentManager = getFragmentManager();
+			FragmentTransaction ft = fragmentManager.beginTransaction();
+			Fragment fragmentSettings = new SettingsFragment();
+			ft.replace(R.id.content_frame, fragmentSettings);
+			ft.addToBackStack("settings");
+			ft.commit();
+
+			//			fragmentManager.beginTransaction().replace(R.id.content_frame, fragmentSettings).addToBackStack("settings").commit();
 		}
 		return super.onOptionsItemSelected(item);
 	}

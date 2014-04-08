@@ -120,10 +120,10 @@ GPSInputListener{
 		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				//				//startActivity(runActivityIntent);
-				//				System.out.println();
-//				new ModeController(MainActivity.this).launchMode((int) fancyCoverFlow
-//						.getSelectedItemId());
+								//startActivity(runActivityIntent);
+								System.out.println();
+				new ModeController(mainActivity).launchMode((int) fancyCoverFlow
+						.getSelectedItemId());
 			}
 		});
 
