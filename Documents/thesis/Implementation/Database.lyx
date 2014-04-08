@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master ../chapter-2.lyx
+\master ../Implementation.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -335,43 +335,10 @@ The design of the database
 \end_layout
 
 \begin_layout Standard
-The database that was implemented was a relational database, a relational
- database stores data in tables.
- This means that the columns of the table represents the different data
- that is stored and each row is a specific object.
- It is also important to have a column that stores a unique identifier(ID)
- for each row, this makes it possible to obtain a specific row from the
- database and to specify relations between different tables.
- An example of a simple database is that for a hotel, the columns will store
- the room type, the price per night as well as an ID, in this case the ID
- could be the room number.
- Then a specific row could look like this: “Double, 100, 123”, by selecting
- the the row with the room number 123 you will get the information about
- the room, in this example that it is a double room and costs 100 per night.
-\end_layout
-
-\begin_layout Standard
-The first step when designing the database is to design a is to make a visual
- representation of the database, this is done with a so called Entity/Relation-D
-iagram(ER-Diagram).
- An ER-Diagram consists of three main parts: entities, relations and attributes
- (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "database2009"
-
-\end_inset
-
-, kap 4.1).
- The entities are the different object that we want to store in the database
- and the attributes are the different data of the object.
- In the previous example the Room could be the entity and room number, room
- type and price be the attributes of the room.
- The relation part of the ER-Diagram holds relation between different entities
- of the database, for example it could hold the relation between hotels
- and their rooms.
- In the ER-Diagram entities are represented by rectangles, attributes by
- ellipses and the relations by diamond.
+An ER-Diagram (See 2.4) was used to visualize how the database should be
+ implemented into the application.
+ The ER-Diagram helped to keep track on what the different elements of the
+ database consists of as well as how the relate to each other.
  
 \end_layout
 
@@ -424,7 +391,7 @@ reference "er-dia"
 
 \end_inset
 
- is a ER-Diagram of our database, it is centered around the entity “Route”,
+ is the ER-Diagram of our database, it is centered around the entity “Route”,
  the route is basically the users running session, it contains a unique
  identifier and the date that the route started.
  The “Point” entity represents a specific location of the users route and
