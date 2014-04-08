@@ -984,8 +984,8 @@ restore the right header line
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/home/joakim/workspace/Ljudjägare/Documents/References"
-options "alpha"
+bibfiles "References/References,References/References_Anton,References/References_Daniel,References/References_Joakim,References/References_Linus,References/References_Marcus"
+options "elsarticle-harv"
 
 \end_inset
 
