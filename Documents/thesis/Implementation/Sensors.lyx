@@ -318,11 +318,33 @@ a{}_{3}
 \begin_inset Formula $\varphi$
 \end_inset
 
- is the scalar product, calculated using the following formula:
+ is the scalar product of the two vectors, calculated using the the formula
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:gyroToGlobal"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\varphi=-(g{}_{1}*a{}_{1})+(g{}_{2}*a{}_{2})-(g{}_{3}*a{}_{3})$
+\begin_inset Formula 
+\begin{equation}
+\varphi=-(g{}_{1}*a{}_{1})+(g{}_{2}*a{}_{2})-(g{}_{3}*a{}_{3})\label{eq:gyroToGlobal}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Negations should be explained
+\end_layout
+
 \end_inset
 
 

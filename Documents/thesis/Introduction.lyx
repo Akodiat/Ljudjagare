@@ -320,26 +320,30 @@ In recent years smartphones containing GPS (Global Positioning System) sensors
  have become more and more common {citation needed}.
  As a result of this, multiple smartphone applications making use of the
  GPS for tracking the user position and movement have originated.
- One such example, Endomondo Sports Tracker {
+ One such example, 
+\emph on
+Endomondo Sports Tracker
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-name "Endomondo"
+name "Endomondo Sports Tracker"
 target "https://play.google.com/store/apps/details?id=com.endomondo.android"
 
 \end_inset
 
-, 2014-03-28} launched in 2008 {
-\begin_inset CommandInset href
-LatexCommand href
-name "Endomondo"
-target "http://blog.endomondo.com/about/"
+
+\end_layout
 
 \end_inset
 
-, 2014-04-04}}.
- The Endomondo application tracked the position and time of the smartphone
- while the user was running and utilized those values to calculate statistics
- such as speed, distance and multiple averages.{
+ launched in 2008 (källa här).The Endomondo application tracked the position
+ and time of the smartphone while the user was running and utilized those
+ values to calculate statistics such as speed, distance and multiple averages.{
 \begin_inset CommandInset href
 LatexCommand href
 name "Endomondo"
