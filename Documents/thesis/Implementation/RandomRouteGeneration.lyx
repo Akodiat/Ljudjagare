@@ -875,18 +875,18 @@ To avoid that the location is generated to close to you it is instead generated
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudjägare/Images/Random_generation.png
+	filename C:/Users/marcus/Documents/GitHub/Ljudjagare/Documents/thesis/Figures/Random_generation.png
 	width 40page%
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudjägare/Images/routing.png
+	filename C:/Users/marcus/Documents/GitHub/Ljudjagare/Documents/thesis/Figures/routing.png
 	width 40page%
 
 \end_inset
@@ -933,13 +933,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudjägare/Images/Random_testing_range.png
-	height 20pheight%
+	filename C:/Users/marcus/Documents/GitHub/Ljudjagare/Documents/thesis/Figures/Random_testing_range.png
+	width 40page%
 
 \end_inset
 
@@ -953,10 +949,6 @@ Random...
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
