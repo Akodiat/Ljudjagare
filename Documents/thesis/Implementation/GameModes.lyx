@@ -274,11 +274,37 @@ thepage
 \end_layout
 
 \begin_layout Section
-Game modes?
+Game modes
+\end_layout
+
+\begin_layout Standard
+In order to make the game modular enough to allow future extensions, as
+ well as to fit different user interests and to showcase the possibilities
+ of the application, three different game modes were implemented.
 \end_layout
 
 \begin_layout Subsection
 Coin collector
+\end_layout
+
+\begin_layout Standard
+Run a route and collect coins along the way.
+\end_layout
+
+\begin_layout Subsection
+Escape
+\end_layout
+
+\begin_layout Standard
+Try to evade the monster hunting you by running away from it.
+\end_layout
+
+\begin_layout Subsection
+Shooter
+\end_layout
+
+\begin_layout Standard
+Shoot the monsters!
 \end_layout
 
 \end_body
