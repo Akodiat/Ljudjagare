@@ -292,9 +292,14 @@ To be able to quickly use the application when the user want to get out
 First of all a random location is generated in a predefined distance from
  your location that is set by the GPS.
  The location can be generated in a circle around you with the radius equals
- to the distance, see figure random 1.
- d{http://gis.stackexchange.com/questions/25877/how-to-generate-random-locations-n
-earby-my-location}.
+ to the distance, see figure random 1 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "atok2013"
+
+\end_inset
+
+.
  First two random numbers, a and b, with a value between 0 and 1 is generated.
  Then the constant r calculated.
  r is the radius of which the location can be generated within converted
