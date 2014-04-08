@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master ../chapter-2.lyx
+\master ../TheoriticalFramework.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -321,16 +321,6 @@ Magnetic field
 \begin_layout Standard
 Determines the magnetic field.
  Can be used together with accelerometer obtain device orientation.
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "AndroidDevelopers2014b"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
