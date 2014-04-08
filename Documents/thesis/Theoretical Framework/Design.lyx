@@ -182,7 +182,7 @@ rightmark
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Enable page headers and add the chapter to the header line.
@@ -281,16 +281,59 @@ Design choices and usability
 Android design patterns
 \end_layout
 
-\begin_layout Subsection
-Establishment of requirements
+\begin_layout Standard
+Android standard design patterns are used where applicable in the app.
+ A great advantage of using design patterns is that the app becomes consistent
+ to other apps on the Android platform.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+{Smashing s 288} This consistency creates a more comfortable user experience
+ since the user knows what can be done with the present design components.
+ 
 \end_layout
 
-\begin_layout Subsection
-Design of alternatives
+\begin_layout Subsubsection*
+2.5.1 Action Bar pattern
 \end_layout
 
-\begin_layout Subsection
-Implementation of prototype (Beta)
+\begin_layout Standard
+One of the most defining design components in Android is the Action Bar
+ pattern.
+ {Smashing 292} As the name suggests it is a bar containing components which
+ can perform actions to the app.
+ (see Fig X.X}.
+ Since it has been around for quite long it is one of the most recognizable
+ patterns.{Smashing 292} An advantage with the Action Bar pattern is that
+ it displays the app logo(1) which, when recognized becomes an identifier
+ to let the user know the current location.
+ The app logo also is a button that provides navigation control by either
+ taking the user one step up in the hierarchy, to the home view or opening
+ a side menu (navigation drawer) with more navigation options.
+ {Smashing 293}
+\end_layout
+
+\begin_layout Standard
+Another component giving a sense of location is the Screen title (2), which
+ apart from displaying the name of the app or the current screen of the
+ app may provide navigation options.
+ 
+\end_layout
+
+\begin_layout Standard
+The name to the right of the logo may be used to display the name of the
+ app or the name of the current sub view.
+ Different 
+\end_layout
+
+\begin_layout Standard
+Figure of an Action Bar and its components App Icon (1), Screen title (2),
+ Action Buttons (3) and Action overflow menu (4) {http://developer.android.com/des
+ign/patterns/actionbar.html}
 \end_layout
 
 \end_body
