@@ -278,27 +278,69 @@ Sensors
 \end_layout
 
 \begin_layout Standard
-kslfskfä
+In this project it was important to determine the user direction, the direction
+ in which user is facing.
+ Since the orientation of the phone relative to the user is unknown (a user
+ may carry a phone in many ways), the problem of acquiring a user direction
+ is not elementary.
+ Using a combination of multiple sensors however, a sufficiently accurate
+ user direction can be calculated.
+\end_layout
+
+\begin_layout Standard
+Strengths and weaknesses with different sensors.
+ 
 \end_layout
 
 \begin_layout Subsection
 GPS
 \end_layout
 
+\begin_layout Standard
+The Global Positioning System - GPS is used to determine the global coordinates
+ of the device in latitudes and longitudes through satellites.
+ This is utilized for determining the user position relative to the virtual
+ objects in the game, such as coins and monsters.
+ Furthermore, by keeping track of previous GPS locations, it is getting
+ user coordinates as well as the user bearing
+\end_layout
+
 \begin_layout Subsection
 Accelerometer
+\end_layout
+
+\begin_layout Standard
+Linear acceleration of device.
+ Used together with magnetic field sensor to obtain device orientation
 \end_layout
 
 \begin_layout Subsection
 Magnetic field
 \end_layout
 
+\begin_layout Standard
+Determines the magnetic field.
+ Used together with accelerometer obtain device orientation
+\end_layout
+
 \begin_layout Subsection
 Gyroscope
 \end_layout
 
+\begin_layout Standard
+Gives the rotational speed of the device around each of its axises.
+ Can be used to get more accurate values of device orientation (compass).
+ Used to update user direction when gps bearing cannot be trusted (while
+ turning around fast)
+\end_layout
+
 \begin_layout Subsection
 Sensor fusion
+\end_layout
+
+\begin_layout Standard
+Just general info about what sensor fusion is.
+ Combining multiple sensors
 \end_layout
 
 \end_body
