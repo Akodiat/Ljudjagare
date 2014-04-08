@@ -397,55 +397,6 @@ Dedication, cite from a famous person, or whatever you like (optional)
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagestyle{plain}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The summary should not have page headers.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch Summary
-status open
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Summary.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Left Header
 \begin_inset ERT
 status collapsed
@@ -555,6 +506,58 @@ thepage
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{plain}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The summary should not have page headers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Summary
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Summary.lyx"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -981,7 +984,7 @@ restore the right header line
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "thesisExample"
+bibfiles "thesisExample,/home/joakim/workspace/Ljudjägare/Documents/References"
 options "alpha"
 
 \end_inset

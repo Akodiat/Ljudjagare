@@ -278,7 +278,32 @@ Sensors
 \end_layout
 
 \begin_layout Standard
-Our implementaiton of sensor fusion
+Our implementation of sensor fusion.
+\end_layout
+
+\begin_layout Standard
+Converting gyroscope coordinates into global coordinate system using acceleromet
+er:
+\end_layout
+
+\begin_layout Standard
+Given 
+\begin_inset Formula $g=\left(\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'=-(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})-(g{}_{z}*a{}_{z})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gyro → Global coordinates → delta angle → delta angle * time constant→ differ
+ from gpsBearing with delta angle * constant (longer time = smaller angle)
 \end_layout
 
 \end_body
