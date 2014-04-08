@@ -278,8 +278,11 @@ Sensors
 \end_layout
 
 \begin_layout Standard
-In this project it was important to determine the user direction, the direction
- in which user is facing.
+In this project it was important to determine the 
+\emph on
+user direction
+\emph default
+, the direction in which user is facing.
  Since the orientation of the phone relative to the user is unknown (a user
  may carry a phone in many ways), the problem of acquiring a user direction
  is not elementary.
@@ -310,8 +313,88 @@ Accelerometer
 \end_layout
 
 \begin_layout Standard
-Linear acceleration of device.
- Used together with magnetic field sensor to obtain device orientation.
+The accelerometer gives the linear acceleration of device 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AndroidOpenSourceproject2014"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+These values can be used together with magnetic field sensor to obtain device
+ orientation, or together with the gyroscope to obtain rotation in a global
+ coordinate system.
+ The accelerometer gives values as a 3-dimentional vector 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $a=\begin{Bmatrix}a{}_{1}\\
+a{}_{2}\\
+a{}_{3}
+\end{Bmatrix}$
+\end_inset
+
+, where
+ 
+\begin_inset Formula $a{}_{1}$
+\end_inset
+
+ is the rightward movement speed, 
+\begin_inset Formula $a{}_{2}$
+\end_inset
+
+ is the forward moving speed and 
+\begin_inset Formula $a{}_{3}$
+\end_inset
+
+ is the upward moving speed.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Figures/coord_system_accel.eps
+	lyxscale 20
+	width 40text%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Coordinate system of the accelerometer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -319,7 +402,7 @@ Magnetic field
 \end_layout
 
 \begin_layout Standard
-Determines the magnetic field.
+Determines the magnetic field strength.
  Can be used together with accelerometer obtain device orientation.
 \end_layout
 
@@ -328,10 +411,118 @@ Gyroscope
 \end_layout
 
 \begin_layout Standard
-Gives the rotational speed of the device around each of its axises.
- Can be used to get more accurate values of device orientation (compass).
- Used to update user direction when GPS bearing cannot be trusted (while
- turning around fast)
+Gives the rotational speed of the device around each of its axises 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AndroidOpenSourceproject2014"
+
+\end_inset
+
+.
+ While it has a lot less disturbances than a accelerometer and magnetometer
+ compass, it only determines change of direction and not the direction itself.
+ The accelerometer gives values as a 3-dimentional vector 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $g=\begin{Bmatrix}g{}_{1}\\
+g{}_{2}\\
+g{}_{3}
+\end{Bmatrix}$
+\end_inset
+
+, where
+ 
+\begin_inset Formula $g{}_{1}$
+\end_inset
+
+ is the rotation around the x-axis of the device (green in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gyroCoord"
+
+\end_inset
+
+), 
+\begin_inset Formula $g{}_{2}$
+\end_inset
+
+ is the rotation around the y-axis (blue in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gyroCoord"
+
+\end_inset
+
+) and 
+\begin_inset Formula $g{}_{3}$
+\end_inset
+
+ is the rotation around the z-axis (red in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gyroCoord"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Figures/coord_system_gyro.eps
+	lyxscale 20
+	width 40text%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:gyroCoord"
+
+\end_inset
+
+Coordinate system of the accelerometer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
