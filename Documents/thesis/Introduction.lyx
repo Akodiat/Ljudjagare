@@ -103,7 +103,7 @@ customHeadersFooters
 \suppress_date false
 \use_refstyle 0
 \branch NoChildDocument
-\selected 0
+\selected 1
 \filename_suffix 0
 \color #ff0000
 \end_branch
@@ -277,6 +277,40 @@ thepage
 Introduction
 \end_layout
 
+\begin_layout Standard
+Long before humans could drive to a grocery store or call a pizza delivery
+ service to get food, we had to actually hunt for it.
+ But humans were not the fastest nor the strongest animal.
+ Instead, our feet, perspiratory system and ability to hold our head steady
+ while moving suggest that persistence hunting might have been our way of
+ acquiring food{citation needed, 
+\begin_inset CommandInset href
+LatexCommand href
+name "?"
+target "http://www.nature.com/nature/journal/v432/n7015/full/nature03052.html"
+
+\end_inset
+
+}.
+ Persistence hunting works by running and tracking an animal, chasing it
+ into exhaustion.
+\end_layout
+
+\begin_layout Standard
+Nowadays however, persistence hunting barely practiced anymore.
+ We do not run as much as we did.
+ [Include example of why that is bad].
+ Exercise as a mean of survival has been replaced by exercise motivated
+ by other reasons.
+ So how to motivate running in this day and age? Some run to stay healthy
+ or to win races, but that does not work for everyone.
+ One solution is to make a game out of hunting.
+ Instead of just running for a faster time, run toward the sound of an imaginary
+ prey.By using modern technology: smart phones, GPS and headphones, it is
+ possible to exercise in the most ancient of ways.
+ 
+\end_layout
+
 \begin_layout Section
 Background
 \end_layout
@@ -286,15 +320,43 @@ In recent years smartphones containing GPS (Global Positioning System) sensors
  have become more and more common {citation needed}.
  As a result of this, multiple smartphone applications making use of the
  GPS for tracking the user position and movement have originated.
- One such example, Endomondo Sports Tracker {https://play.google.com/store/apps/de
-tails?id=com.endomondo.android, 2014-03-28} launched in 2008 {http://blog.endomondo.
-com/about/, 2014-04-04}}.
+ One such example, Endomondo Sports Tracker {
+\begin_inset CommandInset href
+LatexCommand href
+name "Endomondo"
+target "https://play.google.com/store/apps/details?id=com.endomondo.android"
+
+\end_inset
+
+, 2014-03-28} launched in 2008 {
+\begin_inset CommandInset href
+LatexCommand href
+name "Endomondo"
+target "http://blog.endomondo.com/about/"
+
+\end_inset
+
+, 2014-04-04}}.
  The Endomondo application tracked the position and time of the smartphone
  while the user was running and utilized those values to calculate statistics
- such as speed, distance and multiple averages.{http://blog.endomondo.com/facts/,
- 2014-04-04}.
- Another application, called Zombies, Run! {https://play.google.com/store/apps/det
-ails?id=com.sixtostart.zombiesrun, 2014-03-28}, launched in 2012.
+ such as speed, distance and multiple averages.{
+\begin_inset CommandInset href
+LatexCommand href
+name "Endomondo"
+target "http://blog.endomondo.com/facts/"
+
+\end_inset
+
+, 2014-04-04}.
+ Another application, called Zombies, Run! {
+\begin_inset CommandInset href
+LatexCommand href
+name "Zombies"
+target "https://play.google.com/store/apps/details?id=com.sixtostart.zombiesrun"
+
+\end_inset
+
+, 2014-03-28}, launched in 2012.
  Zombies, Run! focused more on a fun game experience than on running statistics
  and therefore provided an illusion of zombies chasing the user.
  This was done by generating the sound of zombies (a type of monsters) approachi
@@ -318,18 +380,10 @@ Meanwhile, directional sound or rather binaural sound, had been around in
 \end_layout
 
 \begin_layout Standard
-Combining both the orientational sensors of the modern smartphone with GPS
+Combining both the orientation sensors of the modern smartphone with GPS
  and the concept of the gamified running application, this thesis investigates
  how binaural sound can be used to motivate exercise.
  
-\begin_inset Formula 
-\begin{equation}
-\int\frac{\sin(x)}{x}\,\mathrm{d}x=\mathrm{Si}(x)\label{eq:Integral-sine}
-\end{equation}
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
