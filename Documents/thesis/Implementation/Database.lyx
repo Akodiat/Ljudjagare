@@ -277,12 +277,242 @@ thepage
 Database
 \end_layout
 
+\begin_layout Standard
+When exercising it is very important to keep track of your improvements
+ over a larger time span.
+ During the users running route we accumulate some information such as the
+ time and distance of the route as well as information about the game objectives
+, these data needs to be stored somewhere so that the user can access it
+ and gain knowledge about their improvement.
+ To accomplish this a database is required.
+ The database that was implemented is an embedded database, which means
+ that the data is stored locally on the users device.
+ 
+\end_layout
+
 \begin_layout Subsection
 Database management system
 \end_layout
 
+\begin_layout Standard
+The Database Management System (DBMS) is the system that is used for the
+ application to communicate with the database.
+ It makes the necessary request to the database using Structured Query Language
+ (SQL).
+ The DBMS handles request such as adding or retrieving data from the database.
+ 
+\end_layout
+
+\begin_layout Standard
+The database that was implemented uses the DBMS SQLite, it is a public domain
+ system that is supported for use in Android development.
+ Since SQLite requires no human support it is well suitable when implementing
+ an embedded database for portable devices 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sqlite"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The database is implemented by making a java class that inherits the SQLite
+ library, then methods have been created to do operations to the database.
+ These methods contains the appropriate SQL-queries that are executed on
+ the database.
+ For example if the application wants to add a object to the database it
+ calls a method from our DBMS that takes the object as an argument, this
+ method executes the appropriate SQL-query to the database to add a row
+ to the appropriate table.
+ 
+\end_layout
+
 \begin_layout Subsection
 The design of the database
+\end_layout
+
+\begin_layout Standard
+The database that was implemented was a relational database, a relational
+ database stores data in tables.
+ This means that the columns of the table represents the different data
+ that is stored and each row is a specific object.
+ It is also important to have a column that stores a unique identifier(ID)
+ for each row, this makes it possible to obtain a specific row from the
+ database and to specify relations between different tables.
+ An example of a simple database is that for a hotel, the columns will store
+ the room type, the price per night as well as an ID, in this case the ID
+ could be the room number.
+ Then a specific row could look like this: “Double, 100, 123”, by selecting
+ the the row with the room number 123 you will get the information about
+ the room, in this example that it is a double room and costs 100 per night.
+\end_layout
+
+\begin_layout Standard
+The first step when designing the database is to design a is to make a visual
+ representation of the database, this is done with a so called Entity/Relation-D
+iagram(ER-Diagram).
+ An ER-Diagram consists of three main parts: entities, relations and attributes
+ (Database Systems - The Complete Book (2nd Edition), kap 4.1).
+ The entities are the different object that we want to store in the database
+ and the attributes are the different data of the object.
+ In the previous example the Room could be the entity and room number, room
+ type and price be the attributes of the room.
+ The relation part of the ER-Diagram holds relation between different entities
+ of the database, for example it could hold the relation between hotels
+ and their rooms.
+ In the ER-Diagram entities are represented by rectangles, attributes by
+ ellipses and the relations by diamond.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Daniel/Desktop/rapport/ERDIA1.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "er-dia"
+
+\end_inset
+
+The implemented database represented by an ER-diagram.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "er-dia"
+
+\end_inset
+
+ is a ER-Diagram of our database, it is centered around the entity “Route”,
+ the route is basically the users running session, it contains a unique
+ identifier and the date that the route started.
+ The “Point” entity represents a specific location of the users route and
+ is noticeably different by the double border, this means that the entity
+ is a weak entity.
+ A weak entity is dependent on another entity to exist (Database Systems
+ - The Complete Book (2nd Edition), kap 4.4), in our case a point can not
+ exist without being connected to a route.
+ In practice the weak entity in our database is that the point table has
+ an additional column with the route that is connected to the point.
+ This allows retrieval of all the points that is connected to a specific
+ route.
+ Each point stores data about the location of the user at the time that
+ the point was added, that is latitude and latitude, as well as the timestamp,
+ and a unique id.
+ The “Coin” entity works in a similar fashion as the point but it stores
+ data of each of the collected coins.
+ When a coin is collected it is stored in the database as a unique id with
+ the distance and time that the user had run when it was collected.
+ 
+\end_layout
+
+\begin_layout Standard
+The “FinishedRoute” entity also differs from the other entities because
+ of the “ISA” relationship to the route.
+ This relation can be read as “FinishedRoute is a Route”, this means that
+ a finished route inherit each of the attributes that the route has.
+ When a route is finished we store it in the FinishedRoute table along with
+ the total time and distance of the route.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Daniel/Desktop/rapport/tables.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table-1"
+
+\end_inset
+
+Visualisation of the tables in the database.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table-1"
+
+\end_inset
+
+ is a visualisation of how the tables in the database could look with some
+ data in them.
+ The column in the points and coins table named “R.ID” (red/blue lines) represent
+s which route that the row is accosiated with.
+ This is how the weak relations that was represented with double borders
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "er-dia"
+
+\end_inset
+
+ was implemented.
+ We can also see that the finished routes are stored in a table with the
+ additional data about time and distance.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -290,7 +520,56 @@ Using the database - Statistics
 \end_layout
 
 \begin_layout Standard
-weeeeeeeeeeeeeeeeeeeeeeeeeeee
+The purpose of the database is that it should be possible to recreate a
+ stored route in the future.
+ By extracting the points that is associated to the route we can draw the
+ path that the user ran on a map and with the distance and time that we
+ stored when we finished the route we can calculate the average speed and
+ pace that the user ran in.
+ 
+\end_layout
+
+\begin_layout Standard
+An special activity was implemented, called finished view, this view is
+ where the data about a route is shown to the user.
+ The user reaches this view first when it has finished a running session,
+ and it displays a summary of the run.
+ This finished view is very similar to what the user sees on the screen
+ during the running session but now the values are frozen and the buttons
+ have changed appearance.
+\end_layout
+
+\begin_layout Standard
+The finished view consists of three different parts, the run-, map- and
+ stats screen.
+ The run screen displays a variety of information of the run, such as time,
+ distance and average speed.
+ These data are retrieved from the FinishedRoute table in the database.
+ Basic formulas are used to calculate the average, that is distance divided
+ by time.
+ The map screen displays a map that shows the path that the user ran as
+ well as the location of the coin that was collected.
+ The path is drawn by retrieving all the points associated to the specific
+ route from the “Points” table of the database, then a line is drawn between
+ all the points and thus forming the trail that the user ran.
+ The coins are placed on the map in the similar way, the locations of the
+ coins are retrieved from the database and displayed on the map with a small
+ coin icon.
+ The stats screen displays the time and distance of each collected coin
+ in the form of a table.
+ 
+\end_layout
+
+\begin_layout Standard
+A history list was implemented that contain all the routes in FinishedRoute,
+ this is where the user can access all its previous running sessions.
+ The elements in the list displays the date of the run as well as the time
+ and distance of the run.
+ These list elements are selectable and when a element is selected it will
+ open a new window which is the finished view mentioned in the previous
+ piece of this report.
+ The route that was selected will be displayed in the finished view, this
+ allows the user to examine and compare all its previous runs.
 \end_layout
 
 \end_body
