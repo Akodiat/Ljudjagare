@@ -355,7 +355,14 @@ The first step when designing the database is to design a is to make a visual
  representation of the database, this is done with a so called Entity/Relation-D
 iagram(ER-Diagram).
  An ER-Diagram consists of three main parts: entities, relations and attributes
- (Database Systems - The Complete Book (2nd Edition), kap 4.1).
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "database2009"
+
+\end_inset
+
+, kap 4.1).
  The entities are the different object that we want to store in the database
  and the attributes are the different data of the object.
  In the previous example the Room could be the entity and room number, room
@@ -377,7 +384,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Daniel/Desktop/rapport/ERDIA1.png
+	filename C:/Users/Daniel/Documents/GitHub/Ljudjagare/Documents/thesis/Figures/erdia.png
 	width 100text%
 
 \end_inset
@@ -423,9 +430,15 @@ reference "er-dia"
  The “Point” entity represents a specific location of the users route and
  is noticeably different by the double border, this means that the entity
  is a weak entity.
- A weak entity is dependent on another entity to exist (Database Systems
- - The Complete Book (2nd Edition), kap 4.4), in our case a point can not
- exist without being connected to a route.
+ A weak entity is dependent on another entity to exist (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "database2009"
+
+\end_inset
+
+, kap 4.4), in our case a point can not exist without being connected to
+ a route.
  In practice the weak entity in our database is that the point table has
  an additional column with the route that is connected to the point.
  This allows retrieval of all the points that is connected to a specific
@@ -458,7 +471,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Daniel/Desktop/rapport/tables.png
+	filename C:/Users/Daniel/Documents/GitHub/Ljudjagare/Documents/thesis/Figures/tables.png
 	width 100text%
 
 \end_inset
