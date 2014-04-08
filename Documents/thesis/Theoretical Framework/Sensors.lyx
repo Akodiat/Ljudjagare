@@ -323,16 +323,6 @@ Determines the magnetic field.
  Can be used together with accelerometer obtain device orientation.
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "AndroidDevelopers2014b"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Gyroscope
 \end_layout

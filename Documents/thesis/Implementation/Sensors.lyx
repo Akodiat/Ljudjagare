@@ -287,11 +287,14 @@ er:
 \end_layout
 
 \begin_layout Standard
-Given 
-\begin_inset Formula $g=\left(\right)$
+Given that 
+\begin_inset Formula $g=\begin{Bmatrix}g{}_{x}\\
+g{}_{y}\\
+g{}_{z}
+\end{Bmatrix}$
 \end_inset
 
-
+ is the raw gyroscope readings from the device.
 \end_layout
 
 \begin_layout Standard
