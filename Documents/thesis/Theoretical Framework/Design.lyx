@@ -285,7 +285,6 @@ Android design patterns
 Android standard design patterns are used where applicable in the app.
  A great advantage of using design patterns is that the app becomes consistent
  to other apps on the Android platform.
- 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaeki2013"
@@ -297,8 +296,8 @@ key "Lehtimaeki2013"
  
 \end_layout
 
-\begin_layout Subsubsection*
-2.5.1 Action Bar pattern
+\begin_layout Subsubsection
+Action Bar pattern
 \end_layout
 
 \begin_layout Standard
