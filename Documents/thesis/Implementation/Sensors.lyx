@@ -288,23 +288,49 @@ er:
 
 \begin_layout Standard
 Given that 
-\begin_inset Formula $g=\begin{Bmatrix}g{}_{x}\\
-g{}_{y}\\
-g{}_{z}
+\begin_inset Formula $g=\begin{Bmatrix}g{}_{1}\\
+g{}_{2}\\
+g{}_{3}
 \end{Bmatrix}$
 \end_inset
 
- is the raw gyroscope readings from the device.
+ is the raw gyroscope readings from the device and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $a=\begin{Bmatrix}a{}_{1}\\
+a{}_{2}\\
+a{}_{3}
+\end{Bmatrix}$
+\end_inset
+
+ is the raw accelerometer readings, the rotation of the device in the plane
+ orthogonal to the gravitation vector 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is the scalar product, calculated using the following formula:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $g'=-(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})-(g{}_{z}*a{}_{z})$
+\begin_inset Formula $\varphi=-(g{}_{1}*a{}_{1})+(g{}_{2}*a{}_{2})-(g{}_{3}*a{}_{3})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+
+\color green
 Gyro → Global coordinates → delta angle → delta angle * time constant→ differ
  from gpsBearing with delta angle * constant (longer time = smaller angle)
 \end_layout
