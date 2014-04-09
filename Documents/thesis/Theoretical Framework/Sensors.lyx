@@ -347,8 +347,7 @@ a{}_{3}
 \end{Bmatrix}$
 \end_inset
 
-, where
- 
+, where 
 \begin_inset Formula $a{}_{1}$
 \end_inset
 
@@ -374,7 +373,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Figures/coord_system_accel.eps
+	filename Figures/coord_system_accel.eps
 	lyxscale 20
 	width 40text%
 
@@ -440,8 +439,7 @@ g{}_{3}
 \end{Bmatrix}$
 \end_inset
 
-, where
- 
+, where 
 \begin_inset Formula $g{}_{1}$
 \end_inset
 
@@ -485,14 +483,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
-	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Figures/coord_system_gyro.eps
+	filename Figures/coord_system_gyro.eps
 	lyxscale 20
 	width 40text%
 

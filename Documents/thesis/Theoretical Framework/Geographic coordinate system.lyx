@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master thesis.lyx
+\master ../TheoriticalFramework.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -102,10 +102,10 @@ customHeadersFooters
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
-\branch Sound
-\selected 1
+\branch NoChildDocument
+\selected 0
 \filename_suffix 0
-\color #faf0e6
+\color #ff0000
 \end_branch
 \index Index
 \shortcut idx
@@ -273,64 +273,117 @@ thepage
 
 \end_layout
 
-\begin_layout Chapter
-Theoretical Framework: Sensors, sound and design
+\begin_layout Section
+Geographic coordinate system
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Sound.lyx"
+The application needs to know the location of the user and
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Blir detta bra?
+\end_layout
+
+\end_inset
+
+ its bearing in order to generate suitable sound sources as well as playing
+ the sound with the correct panning.
+ To be able to do this a coordinate system is used.
+ A coordinate system splits the earth in a specific way so that every point
+ on it is corresponding a coordinate.
+ There are a lot of different coordinate system to determine this points
+ on the earth.
+ Throughout the project the Geographic coordinate system (GCS) is used since
+ it is the most commonly known system as well that the GPS-sensor in Android
+ phones is using it {http://www.nrri.umn.edu/worms/downloads/team/TheGeographicCoor
+dinateSystem.pdf}.
+ 
+\end_layout
+
+\begin_layout Standard
+The GSO is representing a location with two numbers, latitude, longitude.
+ As seen in figure GCS 1 the latitude,Ф, is the angle that specifies the
+ north-south position on the earth surface.
+ The latitude is 0 degrees on the equator and 90° N in the north pole and
+ 90° S on the south pole.
+ The Longitude is the angular measure that specifies the east-west position.
+ The Longitude is 0 on the location of the the Royal Observatory, Greenwich,
+ UK.
+ It is then incrementing west and east and goes to 180° E and 180° W.
+ {http://www.gutenberg.org/files/17759/17759-h/17759-h.htm}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/Latitude_and_longitude_graticule_on_a_sphere.png
+	width 40page%
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Geographic coordinate system.lyx"
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/Geographic_coordinates_sphere_2.png
+	width 35page%
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Sensors.lyx"
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Image...
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/RandomRouteGeneration.lyx"
-
-\end_inset
-
+\begin_layout Plain Layout
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Database.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Design.lyx"
 
 \end_inset
 
