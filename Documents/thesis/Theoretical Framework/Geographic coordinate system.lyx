@@ -327,13 +327,13 @@ status open
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Figures/Latitude_and_longitude_graticule_on_a_sphere.png
-	width 40page%
+	width 45text%
 
 \end_inset
 
@@ -342,13 +342,13 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Figures/Geographic_coordinates_sphere_2.png
-	width 35page%
+	width 45text%
 
 \end_inset
 
@@ -371,10 +371,6 @@ Image...
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
