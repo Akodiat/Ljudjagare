@@ -388,56 +388,35 @@ Combining both the orientation sensors of the modern smartphone with GPS
 
 \begin_layout Section
 Purpose
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Purpose"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch NoChildDocument
-status collapsed
-
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "thesisExample"
-options "alpha"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset nomencl_print
-LatexCommand printnomenclature
-set_width "custom"
-width "2.5cm"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+Investigate how sound, sensors and design patterns can be implemented to
+ encourage running.
+ 
 \end_layout
 
 \begin_layout Section
 Goals
 \end_layout
 
+\begin_layout Standard
+The goal of the assignment is to create a fully functional running game
+ that is fun to use.
+ To do this, the following milestones have been created.
+\end_layout
+
 \begin_layout Section
 Method
 \end_layout
 
-\begin_layout Section
-Terms and Definitions
+\begin_layout Standard
+Ha med i method: Arbetssätt? Scrum User evaluation
+\end_layout
+
+\begin_layout Standard
+(genomförande) Behöver inte vara kronologiskt Implementerat, designat BETA,
+ testat, omdesignat 
 \end_layout
 
 \end_body

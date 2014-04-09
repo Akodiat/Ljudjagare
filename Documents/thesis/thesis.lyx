@@ -984,9 +984,8 @@ restore the right header line
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-btprint "btPrintAll"
 bibfiles "References/References_Marcus,References/References_Daniel,References/References,References/References_Joakim,References/References_Anton,References/References_Linus"
-options "bibtotoc,elsarticle-harv"
+options "bibtotoc,alpha"
 
 \end_inset
 
