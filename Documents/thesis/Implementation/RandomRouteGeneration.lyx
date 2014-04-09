@@ -950,8 +950,11 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/Random_testing_range.png
+	lyxscale 30
 	height 30theight%
 
 \end_inset
