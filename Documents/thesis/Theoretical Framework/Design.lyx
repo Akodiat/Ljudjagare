@@ -274,7 +274,7 @@ thepage
 \end_layout
 
 \begin_layout Section
-Design choices and usability
+Design patterns
 \end_layout
 
 \begin_layout Subsection
@@ -477,7 +477,41 @@ When a view is provided with a navigation drawer it is important to let
 \end_layout
 
 \begin_layout Standard
-Figure showing an app icon provided with the navigation drawer indicator.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/navigation_drawer_indicator_big.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Figure showing an app icon provided with the navigation drawer indicator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -493,8 +527,16 @@ Navigation Drawer provides quick access to different views of the app without
  mostly used instead of picking it.
  From there the user may quickly switch to other views with the navigation
  drawer eliminating redundant clicks back and forth from a dashboard.
- {Smashing, s332} 2.6.3 Swipe Views As mentioned above the Navigation Drawer
- provides quick navigation between different views.
+ {Smashing, s332} 
+\end_layout
+
+\begin_layout Subsubsection
+Swipe Views
+\end_layout
+
+\begin_layout Standard
+As mentioned above the Navigation Drawer provides quick navigation between
+ different views.
  However there are times when functionality that logically belongs to the
  same view does not fit into a single screen.
  This can be solved by putting the different parts on different tabs that
@@ -509,6 +551,18 @@ As long as the number of tabs are limited to three or less it is considered
  called title strip where the user may swipe between unlimited number of
  tabs.
  {Smashing 324} 
+\end_layout
+
+\begin_layout Subsection
+Standard Design patterns
+\end_layout
+
+\begin_layout Subsubsection
+Prominent Done button
+\end_layout
+
+\begin_layout Subsubsection
+Carousel pattern
 \end_layout
 
 \end_body

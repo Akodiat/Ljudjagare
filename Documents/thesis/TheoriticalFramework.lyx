@@ -290,16 +290,6 @@ filename "Theoretical Framework/Sound.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "Theoretical Framework/Geographic coordinate system.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
 filename "Theoretical Framework/Sensors.lyx"
 
 \end_inset
@@ -325,6 +315,16 @@ filename "Theoretical Framework/Database.lyx"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Software model
+\end_layout
+
+\begin_layout Standard
+
+\color green
+activities, fragments, etc
 \end_layout
 
 \begin_layout Standard
