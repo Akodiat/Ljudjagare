@@ -273,7 +273,99 @@ Sound
 \end_layout
 
 \begin_layout Standard
-Text about sound
+The APIs provided by Android as a part of the Software Development Kit (SDK)
+ provides several classes for handling audio, like AudioTrack, MediaPlayer
+ and SoundPool.
+ However, none of these supports 3D audio operations at the time this is
+ written (NDK beginner’s guide reference).
+ To implement binaural audio, one needs to access operations that aren’t
+ covered in the SDK.
+\end_layout
+
+\begin_layout Subsection
+Native Development Kit (NDK)
+\end_layout
+
+\begin_layout Standard
+Android’s NDK allows developers to implement part of an application using
+ other languages than Java, such as C.
+ The use of low-level languages doesn’t generally result in better performance
+ and on top of it, it also increases the application’s complexity (Android
+ NDK).
+ However, it enables developers to use operations that aren’t accessible
+ using only Java - such as handling 3D audio.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+OpenSL ES
+\end_layout
+
+\begin_layout Standard
+OpenSL ES is a cross-platform API that enables audio functionality in native
+ applications on multimedia devices.
+ It’s been part of Android’s native development kit (NDK) since 2.3 and is
+ divided into three different profiles - game, music and phone {NDK Beginner
+ guide}.
+ For a phone to take use of the functions provided by such a profile, it
+ needs to have an appropriate compilation.
+ The only profile enabling functions that lets the developer control audio
+ in the spatial space is the game mode.
+ Sadly, there is not a lot of information available on what phones supports
+ what profile.
+ In Android Beginner’s Guide (2012) the author mentions that no devices
+ supports the game profile at the time the book was written.
+ 
+\end_layout
+
+\begin_layout Standard
+After implementing a simple 3D test application using OpenSL ES and its
+ features, testing it on our own phones* did indeed result in a SL_RESULT_FEATUR
+E_UNSUPPORTED being thrown.
+ That basically means the phone is not compiled with the correct profile
+ supporting the feature implemented in the application {OpenSL EL manual}.
+ That makes the API useless to our purpose - implementing 3D audio - and
+ hence blabalbalbal 
+\end_layout
+
+\begin_layout Subsubsection
+OpenAL
+\end_layout
+
+\begin_layout Standard
+VÄLDIGT OKLAR TEXT
+\end_layout
+
+\begin_layout Standard
+OpenAL is an application programming interface (API) that enables the creation
+ of spatial sound environments independent on the soundcard setup.
+ As a result it eliminates the problem with programmers having to write
+ different code to each device because of each soundcard supporting different
+ instructions.
+ 
+\end_layout
+
+\begin_layout Standard
+The OpenAL version we used has been adapted to Android by Martins Mozeiko
+ and Chris Robinson.
+ They have patched the code to make it work on Android.
+ (http://repo.or.cz/w/openal-soft/android.git) To make it easier to access
+ native functions we are using a small library provided by Martien Pielot,
+ called OpenAL4Android (http://pielot.org/2011/11/10/openal4android-2/).
+ It serves as an intermediary between the native OpelAL code and our Java
+ application and contains all methods necessary to create a binaural environment.
+ Apart from moving the sound source in three dimensions, it’s also possible
+ to move the ‘listener’, meaning where in the 3D space the listener is supposed
+ to interpret the audio signal from.
+ 
+\end_layout
+
+\begin_layout Standard
+Our sound sources places in the 3D environment are static (since that’s
+ how our application works).
+ The only thing getting updated as the user is moving is the angle of the
+ ‘listener’ to sound source.
+ 
 \end_layout
 
 \end_body
