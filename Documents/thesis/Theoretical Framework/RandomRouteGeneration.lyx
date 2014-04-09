@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master ../TheoriticalFramework.lyx
+\master ../chapter-2.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -278,14 +278,41 @@ Random route generation algorithm
 \end_layout
 
 \begin_layout Standard
+To be able to quickly use the application when the user want to get out
+ and run the sound sources (checkpoints) are generated out of a predefined
+ algorithm.
+ The checkpoints must be generated at reachable locations.
+ It can for example not be placed in a lake or a building but instead on
+ a road or trail.
+\end_layout
 
-\color green
-Write about different approaches to make a route that is runnable.
+\begin_layout Standard
+There are several methods to generate a location that is reachable.
+ One way is to after a randomly generated location is acquired this location
+ is evaluated if it lies in an appropriate environment by extracting the
+ color this location has on a map.
+ By classifying all the colors on a map by for example blue is equal to
+ water, light green is equal to grass, and so on one can compare the color
+ on a location and then classify it thereafter.
+ If the color is blue the location is most likely located in water of some
+ kind.
+ In this scenario a new random location has to be generated and evaluated
+ in the same way.
+ In order to implement this an accurate map is required that i linked to
+ some kind of coordinate system.
+ It must also be possible to extract the color of the random location.
  
 \end_layout
 
 \begin_layout Standard
-
+Another approach is to use Google maps and the function directions.
+ As before a random location is generated.
+ The a request to Google direction is sent with the walking direction from
+ the users location to the random location.
+ The answer from Google gives the direction to the closest reachable point
+ to the location.
+ This closest point is then extracted and is used as the random location.
+ {https://developers.google.com/maps/documentation/android/} 
 \end_layout
 
 \end_body
