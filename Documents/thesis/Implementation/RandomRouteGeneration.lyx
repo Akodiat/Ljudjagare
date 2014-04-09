@@ -295,7 +295,14 @@ First of all a random location is generated in a predefined distance from
  to the distance, see figure random 1.
  d{http://gis.stackexchange.com/questions/25877/how-to-generate-random-locations-n
 earby-my-location}.
- First two random numbers, a and b, with a value between 0 and 1 is generated.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "atok2013"
+
+\end_inset
+
+First two random numbers, a and b, with a value between 0 and 1 is generated.
  Then the constant r calculated.
  r is the radius of which the location can be generated within converted
  from meters into the Geographic coordinate system.
@@ -802,7 +809,6 @@ Longitude from the location of the user
 \noun off
 \color none
 14
-
 \end_layout
 
 \end_inset
@@ -875,7 +881,7 @@ To avoid that the location is generated to close to you it is instead generated
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -930,7 +936,7 @@ To end up on the same location as you start when out are out running a routing
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
