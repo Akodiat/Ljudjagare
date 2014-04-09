@@ -277,12 +277,170 @@ thepage
 Design choices and usability
 \end_layout
 
+\begin_layout Standard
+To make the game pleasant to use it has to be designed in a an appealing
+ way.
+\end_layout
+
 \begin_layout Subsection
 Establishment of requirements
 \end_layout
 
+\begin_layout Standard
+As a starting point inspiration was taken from the apps Endomondo {https://play.g
+oogle.com/store/apps/details?id=com.endomondo.android, 2014-03-28} and “Zombies,
+ Run!” {https://play.google.com/store/apps/details?id=com.sixtostart.zombiesrun,
+ 2014-03-28}.
+ 
+\end_layout
+
+\begin_layout Standard
+These apps are in some sense their opposites.
+ Endomondo focuses on the running experience and lets the user quickly get
+ started with a run.
+ “Zombies, Run!” on the other hand focuses more on external game elements
+ like what items were picked up during a run and the upgrading of the users
+ basecamp.
+ Also Endomondo is very detailed in its statistics while “Zombies, Run!”
+ is not.
+\end_layout
+
+\begin_layout Standard
+The desired requirement is to combine the best of the two worlds represented
+ by the two apps.
+ It is wanted to get the app to be as straight forward as Endomondo when
+ starting a new run while still letting the app be fun and having game elements
+ like in “Zombies, Run!”.
+ 
+\end_layout
+
 \begin_layout Subsection
 Design of alternatives
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Beskriv designvalen och förklara varför de är bra
+\end_layout
+
+\begin_layout Subsubsection
+General
+\end_layout
+
+\begin_layout Subsubsection
+Main screen 
+\end_layout
+
+\begin_layout Standard
+When starting an app a splash screen may sometimes be motivated since it
+ gives the user feedback that the app is loading.
+ When the loading takes long time like in games it is a good idea to use
+ a splash screen.
+ However, the fact that the loading of the splash screen itself requires
+ resources suggests that it is better avoided.
+ In Run for Life a splash screen would probably take almost as long time
+ to load as the app’s start screen (also known as landing screen), which
+ makes it inefficient.
+ A better solution was making the landing screen light weight and low in
+ its demanding of resources.
+ {Smashing s 350-351} Thereby the Run For Life-welcoming screen was chosen
+ not to include loading of all the heavy algorithms that are needed to calculate
+ a route.
+ Instead the screen provides a clear overview of what the app does and lets
+ the user start a run from there.
+\end_layout
+
+\begin_layout Standard
+At first the dashboard pattern was considered for the landing screen.
+ The reason for this is that it clearly presents all different parts of
+ the app with big icons leading to them.
+ The pattern was earlier officially recommended by Google and have thereby
+ become well known to users.
+ The pattern could have been used to let the user choose if he/she wants
+ to start the run-mode, view the history or something else.
+ {Smashing, 318-319} However, the fact that the app’s main focus is the
+ running part it seemed like a better idea to on startup take the user directly
+ into the view that starts a running session.
+ This reduces the excise for the user by one click when he/she wants to
+ start a run.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Undvikande av dashboard
+\end_layout
+
+\begin_layout Standard
+Having said that, the user will at startup arrive into a landing screen
+ providing information about whether the GPS and headphones are connected.
+ The user may then be able to fix these errors by enabling the GPS and inserting
+ the headphones.
+ 
+\end_layout
+
+\begin_layout Standard
+To easily browse between different game modes the swipeable pattern carousel
+ was chosen{Källa från Designing interfaces boken}.
+ Since carousel is not a standard pattern in Android the external library
+ Fancy Cover Flow was implemented{https://github.com/davidschreiber/FancyCoverFlo
+w}.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Coverflow for game selection, well known pattern
+\end_layout
+
+\begin_layout Standard
+As mentioned earlier the running session is not started at the landing screen
+ to minimize processor usage.
+ However it was decided that it from there should be quick and easy to start
+ the run.
+ The running session is thereby easily started with a prominent done button
+ in the bottom right of the screen.
+ {Källa från Designin Interfaces} 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Prominent done button.
+ Likhet mellan grönt-grönt, rött-rött.
+ <hitta källa i designing interface-boken>
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Action bar 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Action bar overflow menu
+\end_layout
+
+\begin_layout Subsubsection
+Running screen 
+\end_layout
+
+\begin_layout Standard
+In the running screen the pattern workspace is used.
+ The reason for this is that there Too much information to fit one screen
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Navigation Drawer -> History Motiverat eftersom det kommer vara många olika
+ sidor 
 \end_layout
 
 \begin_layout Subsection
