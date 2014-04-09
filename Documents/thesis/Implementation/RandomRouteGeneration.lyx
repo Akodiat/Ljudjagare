@@ -278,6 +278,17 @@ Random route generation algorithm
 \end_layout
 
 \begin_layout Standard
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Har inte refererat bilderna till texten rätt än!
+\end_layout
+
+\end_inset
+
 To be able to quickly use the application when the user want to get out
  and run the sound sources (checkpoints) are generated out of a predefined
  algorithm.
@@ -933,15 +944,15 @@ To end up on the same location as you start when out are out running a routing
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Figures/Random_testing_range.png
-	width 40page%
+	height 30theight%
 
 \end_inset
 
