@@ -295,8 +295,11 @@ dinateSystem.pdf}.
 
 \begin_layout Standard
 The GSO is representing a location with two numbers, latitude, longitude.
- As seen in figure GCS 1 the latitude,Ф, is the angle that specifies the
- north-south position on the earth surface.
+ As seen in figure GCS 1 the latitude,
+\begin_inset Formula $\phi$
+\end_inset
+
+, is the angle that specifies the north-south position on the earth surface.
  The latitude is 0 degrees on the equator and 90° N in the north pole and
  90° S on the south pole.
  The Longitude is the angular measure that specifies the east-west position.
