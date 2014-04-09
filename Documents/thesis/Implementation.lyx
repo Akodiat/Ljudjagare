@@ -280,16 +280,6 @@ Implementation
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "Implementation/Design.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
 filename "Implementation/Sound.lyx"
 
 \end_inset
@@ -321,6 +311,16 @@ filename "Implementation/RandomRouteGeneration.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "Implementation/Database.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Implementation/Design.lyx"
 
 \end_inset
 

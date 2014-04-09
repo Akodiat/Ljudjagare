@@ -487,9 +487,11 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/navigation_drawer_indicator_big.png
-	width 100text%
+	width 40text%
 
 \end_inset
 
@@ -515,16 +517,16 @@ Figure showing an app icon provided with the navigation drawer indicator
 \end_layout
 
 \begin_layout Standard
-Navigation Drawer provides quick access to different views of the app without
- forcing the user to go back via some main menu like a dashboard.
+Navigation Drawer provides quick access to different views of the application
+ without forcing the user to go back via some main menu like a dashboard.
  The dashboard is basically a landing screen consisting of big icons which
  take the user to different parts of the app.
  The Dashboard pattern used to be one of Google’s official recommendations
  but has been more or less replaced by Navigation Drawer since it provides
- more direct access throughout an app.
- The avoidance of the dashboard pattern is especially effective at an app’s
- startup since the user then can be taken directly into the view that is
- mostly used instead of picking it.
+ more direct access throughout an application.
+ The avoidance of the dashboard pattern is especially effective at an applicatio
+n’s startup since the user then can be taken directly into the view that
+ is mostly used instead of picking it.
  From there the user may quickly switch to other views with the navigation
  drawer eliminating redundant clicks back and forth from a dashboard.
  {Smashing, s332} 
