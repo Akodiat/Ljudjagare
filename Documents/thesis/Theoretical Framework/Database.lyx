@@ -277,20 +277,42 @@ thepage
 Database
 \end_layout
 
-\begin_layout Subsection
-Database management system
-\end_layout
-
-\begin_layout Subsection
-The design of the database
-\end_layout
-
-\begin_layout Subsection
-Using the database - Statistics
+\begin_layout Standard
+A relational database collects data in tables.
+ The columns of the table represents the different kinds data that is stored
+ and each row is a specific object.
+ It is also important to have a column that stores a unique identifier(ID)
+ for each row, this makes it possible to obtain a specific row from the
+ database and to specify relations between different tables.
+ An example of a simple database is that of a hotel, the columns will store
+ the room type, the price per night as well as an ID, in this case the ID
+ could be the room number.
+ Then a specific row could look like this: “Double, 100, 123”, by selecting
+ the the row with the room number 123 you will get the information about
+ the room, that it is a double room and costs 100 per night.
+ 
 \end_layout
 
 \begin_layout Standard
-weeeeeeeeeeeeeeeeeeeeeeeeeeee
+The first step when designing the database is to design a is to make a visual
+ representation of the database, this is done with a so called Entity/Relation-D
+iagram(ER-Diagram).
+ An ER-Diagram consists of three main parts: entities, relations and attributes
+ (databaseboken , kap 4.1).
+ The entities are the different object that we want to store in the database
+ and the attributes are the different data of the object.
+ In the previous example the Room could be the entity and room number, room
+ type and price be the attributes of the room.
+ The entities are the what will become the tables of the database and the
+ attributes are the columns of the tables..
+ The relation part of the ER-Diagram holds relation between different entities
+ of the database, for example it could hold the relation between hotels
+ and their rooms.
+ In the ER-Diagram entities are represented by rectangles, attributes by
+ ellipses and the relations by diamond.
+ In the database a relation is often a separate table that stores the relation
+ between different entities.
+ 
 \end_layout
 
 \end_body
