@@ -935,7 +935,7 @@ rightmark
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 remove the chapter from the header line
@@ -970,7 +970,7 @@ leftmark
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 restore the right header line
@@ -984,8 +984,8 @@ restore the right header line
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/home/joakim/workspace/Ljudjägare/Documents/References,References/References_Anton"
-options "alpha"
+bibfiles "References/References_Marcus,References/References_Daniel,References/References,References/References_Joakim,References/References_Anton,References/References_Linus"
+options "elsarticle-harv"
 
 \end_inset
 

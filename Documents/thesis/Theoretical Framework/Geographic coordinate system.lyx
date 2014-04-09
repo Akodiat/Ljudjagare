@@ -278,20 +278,9 @@ Geographic coordinate system
 \end_layout
 
 \begin_layout Standard
-The application needs to know the location of the user and
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-
-\color red
-Blir detta bra?
-\end_layout
-
-\end_inset
-
- its bearing in order to generate suitable sound sources as well as playing
- the sound with the correct panning.
+The application needs to know the location of the user and its bearing in
+ order to generate suitable sound sources as well as playing the sound with
+ the correct panning.
  To be able to do this a coordinate system is used.
  A coordinate system splits the earth in a specific way so that every point
  on it is corresponding a coordinate.
@@ -319,6 +308,7 @@ The GSO is representing a location with two numbers, latitude, longitude.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
