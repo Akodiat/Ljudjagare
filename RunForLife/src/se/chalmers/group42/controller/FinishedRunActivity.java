@@ -55,10 +55,10 @@ MapFragment.OnHeadlineSelectedListener{
 			id = extras.getInt(Constants.EXTRA_ID);
 		}
 		
-		/*
-		 *  Creating the adapter that will return a fragment for each of the three 
-		 *  primary sections of the app
-		 */
+//		/*
+//		 *  Creating the adapter that will return a fragment for each of the three 
+//		 *  primary sections of the app
+//		 */
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 

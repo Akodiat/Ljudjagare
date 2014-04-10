@@ -74,22 +74,18 @@ OrientationInputListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
-
-
 		//Setting up Sensor input
 		new GPSInputHandler(this, this);
 //		new OrientationInputHandler(this, this);
-		
-		
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		/*
-		 *  Creating the adapter that will return a fragment for each of the three 
-		 *  primary sections of the app
-		 */
+//		/*
+//		 *  Creating the adapter that will return a fragment for each of the three 
+//		 *  primary sections of the app
+//		 */
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 
