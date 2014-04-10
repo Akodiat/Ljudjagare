@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Run For Life</string>
+    <string name="app_decription">RunForLife™ is an revolutionary excerising application that builds around audio. Read the guide and start running!</string>
     <string name="action_log_in">Log in</string>
     <string name="action_history">History</string>
     <string name="action_highscores">Highscores</string>
@@ -26,6 +27,8 @@
     <string name="button_desc_pause">Pause button</string>
     <string name="button_desc_stop">Stop button</string>
     <string name="button_desc_finish">Finish button</string>
+    <string name="swipe_desc">Swipe to change mode</string>
+    <string name="run_button_text">GO</string>
 
     <string-array name="nav_drawer_array">
         <item>Main</item>

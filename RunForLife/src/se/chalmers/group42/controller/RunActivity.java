@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -24,48 +25,40 @@ import se.chalmers.group42.runforlife.RunForLifeApplication;
 import se.chalmers.group42.runforlife.StatusIconEventListener;
 import se.chalmers.group42.runforlife.StatusIconHandler;
 import se.chalmers.group42.runforlife.DataHandler.RunStatus;
-import se.chalmers.group42.runforlife.R.drawable;
-import se.chalmers.group42.runforlife.R.id;
-import se.chalmers.group42.runforlife.R.layout;
-import se.chalmers.group42.runforlife.R.menu;
 import sensors.*;
 
 import com.google.android.gms.maps.model.LatLng;
 
-
 /**
  * 
- * Activity-class handling information of a current run. The workspace 
- * pattern is used to let you choose between the pages by swiping or
- * by pressing their tab-title.
+ * Activity-class handling information of a current run. The workspace pattern
+ * is used to let you choose between the pages by swiping or by pressing their
+ * tab-title.
  * 
  * @version
  * 
  *          0.1 3 Mars 2014
  * @author
  * 
- *         Anton Palmqvist
+ *         Anton Palmqvist, Linus Karlsson
  * 
  */
 public class RunActivity extends SwipeableActivity implements
-MapFragment.OnHeadlineSelectedListener,
-StatusIconEventListener,
-GPSInputListener,
-OrientationInputListener
-{
+		MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
+		GPSInputListener, OrientationInputListener {
 
-	private ImageButton pauseButton, stopButton;
+	private Button runButton;
+	
+	private ImageButton stopButton;
 
-
-	//Class for handling database
+	// Class for handling database
 	protected DataHandler dataHandler;
 
-	private boolean gpsOn, soundOn, headphonesIn;
+	private boolean gpsOn, headphonesIn;
 
-	private ImageView gpsIcon, soundIcon, headPhonesIcon;
+	private ImageView gpsIcon, headPhonesIcon;
 
-
-	private static final 	LatLng HOME_MARCUS 		= new LatLng(58.489657, 13.777925);
+	private static final LatLng HOME_MARCUS = new LatLng(58.489657, 13.777925);
 
 	protected GetDirectionsAsyncTask asyncTask;
 
@@ -74,21 +67,17 @@ OrientationInputListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
-
-
-		//Setting up Sensor input
+		// Setting up Sensor input
 		new GPSInputHandler(this, this);
-//		new OrientationInputHandler(this, this);
-		
-		
+		// new OrientationInputHandler(this, this);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		/*
-		 *  Creating the adapter that will return a fragment for each of the three 
-		 *  primary sections of the app
+		 * Creating the adapter that will return a fragment for each of the
+		 * three primary sections of the app
 		 */
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
@@ -96,29 +85,29 @@ OrientationInputListener
 		// Set up the ViewPager with the sections adapter
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-		//Offscreenlimit set to 2 to avoid fragments being destroyed
+		// Offscreenlimit set to 2 to avoid fragments being destroyed
 		mViewPager.setOffscreenPageLimit(2);
 
 		/*
-		 *  When swiping between different sections, select the corresponding
-		 *  tab. We can also use ActionBar.Tab#select() to do this if we have
-		 *  a reference to the Tab
+		 * When swiping between different sections, select the corresponding
+		 * tab. We can also use ActionBar.Tab#select() to do this if we have a
+		 * reference to the Tab
 		 */
 		mViewPager
-		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			@Override
-			public void onPageSelected(int position) {
-				actionBar.setSelectedNavigationItem(position);
-			}
-		});
+				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+					@Override
+					public void onPageSelected(int position) {
+						actionBar.setSelectedNavigationItem(position);
+					}
+				});
 
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
 			/*
-			 *  Create a tab with text corresponding to the page title defined by
-			 *  the adapter. Also specify this Activity object, which implements
-			 *  the TabListener interface, as the callback (listener) for when
-			 *  this tab is selected
+			 * Create a tab with text corresponding to the page title defined by
+			 * the adapter. Also specify this Activity object, which implements
+			 * the TabListener interface, as the callback (listener) for when
+			 * this tab is selected
 			 */
 			actionBar.addTab(actionBar.newTab()
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
@@ -129,35 +118,32 @@ OrientationInputListener
 		setMapFragment(new MapFragment());
 		setStatsFragment(new StatsFragment());
 
-
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
-		this.dataHandler = new DataHandler(app.getDatabase(),this);
+		this.dataHandler = new DataHandler(app.getDatabase(), this);
 
-
-
-		//Setting up pausebutton
-		pauseButton = (ImageButton) findViewById(R.id.button_pause);
-		pauseButton.setOnClickListener(new View.OnClickListener() {
+		// Setting up pausebutton
+		runButton = (Button) findViewById(R.id.run_button);
+		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(dataHandler.isRunning()){
+				if (dataHandler.isRunning()) {
 					pause();
-					if(!isOkToRun()){
+					if (!isOkToRun()) {
 						setNotGreenToRun();
 					}
-				}else{
-					if(dataHandler.isPaused())
+				} else {
+					if (dataHandler.isPaused())
 						resume();
 					else
 						start();
 				}
-				//				dataHandler.pauseWatch();
+				// dataHandler.pauseWatch();
 			}
 		});
 
-		pauseButton.setImageResource(R.drawable.play_red);
+		runButton.setText("GO");
 
-		//Setting up stopbutton
+		// Setting up stopbutton
 		stopButton = (ImageButton) findViewById(R.id.button_stop);
 		stopButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -165,72 +151,79 @@ OrientationInputListener
 				stop();
 			}
 		});
-		//			this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it possible to actually choose which mode is launched
+//		 this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it
+//		 possible to actually choose which mode is launched
 
-		//Setting up icons
-		gpsIcon = (ImageView) findViewById(R.id.imageViewGPS);
-		soundIcon = (ImageView) findViewById(R.id.imageViewSound);
-		headPhonesIcon = (ImageView) findViewById(R.id.imageViewHeadphones);
+		// Setting up icons
+		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
+		headPhonesIcon = (ImageView) findViewById(R.id.headphones_icon);
 
-		//Setting up statusIconHandler
-		IntentFilter filter = new IntentFilter("android.intent.action.HEADSET_PLUG");
+		// Setting up statusIconHandler
+		IntentFilter filter = new IntentFilter(
+				"android.intent.action.HEADSET_PLUG");
 		StatusIconHandler receiver = new StatusIconHandler(this, this);
 		registerReceiver(receiver, filter);
 
 	}
 
-	// These are implemented in CoinCollector, etc. instead. This method should perhaps be abstract.
-	protected void playSound() {}
-	//protected void playLongSound() {}
-	protected void stopSound() {}
+	// These are implemented in CoinCollector, etc. instead. This method should
+	// perhaps be abstract.
+	protected void playSound() {
+	}
 
+	// protected void playLongSound() {}
+	protected void stopSound() {
+	}
 
-	private void start(){
-		//START
+	private void start() {
+		// START
 		dataHandler.newRoute();
 		dataHandler.startWatch();
-		pauseButton.setImageResource(R.drawable.pause);
-		dataHandler.runStatus=RunStatus.RUNNING;
+		runButton.setText("Pause");
+		dataHandler.runStatus = RunStatus.RUNNING;
 		playSound();
 		System.out.println("Start!!!!!");
 	}
 
-	private void resume(){
-		pauseButton.setImageResource(R.drawable.pause);
+	private void resume() {
+		runButton.setText("Pause");
 		stopButton.setVisibility(View.INVISIBLE);
 		playSound();
-		dataHandler.runStatus=RunStatus.RUNNING;
+		dataHandler.runStatus = RunStatus.RUNNING;
 		System.out.println("Resume!!!!!");
 	}
 
-	private void pause(){
-		pauseButton.setImageResource(R.drawable.play);
+	private void pause() {
+		runButton.setText("GO");
 		stopButton.setVisibility(View.VISIBLE);
 		stopSound();
-		dataHandler.runStatus=RunStatus.PAUSED;
+		dataHandler.runStatus = RunStatus.PAUSED;
 		System.out.println("Pause!!!!!!");
 	}
 
-	public void stop(){
-		pauseButton.setImageResource(R.drawable.play);
+	public void stop() {
+		runButton.setText("GO");
 		stopSound();
-		dataHandler.runStatus=RunStatus.STOPPED;
+		dataHandler.runStatus = RunStatus.STOPPED;
 		System.out.println("Stop!!!!!!");
 
 		dataHandler.resetWatch();
-		Intent finishedRunActivityIntent = new Intent(RunActivity.this, FinishedRunActivity.class);
-		finishedRunActivityIntent.putExtra(Constants.EXTRA_ID, dataHandler.getCurrentRoute());
+		Intent finishedRunActivityIntent = new Intent(RunActivity.this,
+				FinishedRunActivity.class);
+		finishedRunActivityIntent.putExtra(Constants.EXTRA_ID,
+				dataHandler.getCurrentRoute());
 		startActivity(finishedRunActivityIntent);
-		if(asyncTask!=null){
+		if (asyncTask != null) {
 			asyncTask.cancel(true);
 		}
-		//				// Ska vara "finish()" egentligen men det fungerar inte?
+		// // Ska vara "finish()" egentligen men det fungerar inte?
 		android.os.Process.killProcess(android.os.Process.myPid());
-		//				//				StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
-		//				//						"android:switcher:"+R.id.pager+":2");
-		//				//				if(statsFragment.isAdded()){
-		//				//					statsFrag.updateTableData(1,2);
-		//				//				}
+		// // StatsFragment statsFrag = (StatsFragment)
+		// getSupportFragmentManager().findFragmentByTag(
+		// // "android:switcher:"+R.id.pager+":2");
+		// // if(statsFragment.isAdded()){
+		// // statsFrag.updateTableData(1,2);
+		// // }
 	}
 
 	@Override
@@ -242,8 +235,8 @@ OrientationInputListener
 
 	@Override
 	public void sendMapLocation(LatLng latLng) {
-		findDirections( HOME_MARCUS.latitude, HOME_MARCUS.longitude
-				, latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING );
+		findDirections(HOME_MARCUS.latitude, HOME_MARCUS.longitude,
+				latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING);
 
 	}
 
@@ -253,98 +246,91 @@ OrientationInputListener
 	}
 
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
-				"android:switcher:"+R.id.pager+":1");
+		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 		mapFrag.handleGetDirectionsResult(directionPoints);
 	}
 
-
-	public void findDirections(double fromPositionDoubleLat, double fromPositionDoubleLong, double toPositionDoubleLat, double toPositionDoubleLong, String mode)
-	{
+	public void findDirections(double fromPositionDoubleLat,
+			double fromPositionDoubleLong, double toPositionDoubleLat,
+			double toPositionDoubleLong, String mode) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionDoubleLat));
-		map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionDoubleLong));
-		map.put(GetDirectionsAsyncTask.DESTINATION_LAT, String.valueOf(toPositionDoubleLat));
-		map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionDoubleLong));
+		map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT,
+				String.valueOf(fromPositionDoubleLat));
+		map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG,
+				String.valueOf(fromPositionDoubleLong));
+		map.put(GetDirectionsAsyncTask.DESTINATION_LAT,
+				String.valueOf(toPositionDoubleLat));
+		map.put(GetDirectionsAsyncTask.DESTINATION_LONG,
+				String.valueOf(toPositionDoubleLong));
 		map.put(GetDirectionsAsyncTask.DIRECTIONS_MODE, mode);
 
 		asyncTask = new GetDirectionsAsyncTask(this);
-		asyncTask.execute(map);	
+		asyncTask.execute(map);
 	}
 
-	public void updateDisplay(long seconds, int distance, double currentspeed, int coins){
-		RunFragment runFrag = (RunFragment) getSupportFragmentManager().findFragmentByTag(
-				"android:switcher:"+R.id.pager+":0");
-		if(getRunFragment().isAdded()){
-			runFrag.updateDisp(seconds,distance,currentspeed,coins);
+	public void updateDisplay(long seconds, int distance, double currentspeed,
+			int coins) {
+		RunFragment runFrag = (RunFragment) getSupportFragmentManager()
+				.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
+		if (getRunFragment().isAdded()) {
+			runFrag.updateDisp(seconds, distance, currentspeed, coins);
 		}
 	}
-	
-	private boolean isOkToRun(){
-		return (gpsOn && soundOn && headphonesIn);
+
+	private boolean isOkToRun() {
+		return (gpsOn && headphonesIn);
 	}
 
-	private void setGreenToRun(){
-		if(isOkToRun() && !dataHandler.isRunning())
-			pauseButton.setImageResource(R.drawable.play);
+	private void setGreenToRun() {
+		if (isOkToRun() && !dataHandler.isRunning())
+			runButton.setText("GO");
 	}
-	
-	private void setNotGreenToRun(){
-		pauseButton.setImageResource(R.drawable.play_red);
+
+	private void setNotGreenToRun() {
+		runButton.setText("NOTOK");
 	}
+
 	public void onGPSConnect() {
-		if(!gpsOn){
-			System.out.println("GPS on");
-			gpsOn=true;
-			gpsIcon.setImageResource(R.drawable.gps_green);
+		if (!gpsOn) {
+			gpsOn = true;
+			gpsIcon.setImageResource(R.drawable.gps_activated);
 			setGreenToRun();
 		}
 
 	}
+
 	public void onGPSDisconnect() {
-		gpsIcon.setImageResource(R.drawable.gps_red);
-		gpsOn=false;
-		if(dataHandler.isPaused()){
+		gpsIcon.setImageResource(R.drawable.gps_disabled);
+		gpsOn = false;
+		if (dataHandler.isPaused()) {
 			setNotGreenToRun();
 		}
 	}
-	public void onSoundOn() {
-		if(!soundOn){
-			System.out.println("Sound On");
-			soundOn=true;
-			soundIcon.setImageResource(R.drawable.sound_green);
+
+	public void onHeadphonesIn() {
+		if (!headphonesIn) {
+			headphonesIn = true;
+			headPhonesIcon.setImageResource(R.drawable.headphones_activated);
 			setGreenToRun();
 		}
 	}
-	public void onSoundOff() {
-		soundIcon.setImageResource(R.drawable.sound_red);
-		soundOn=false;
-		if(dataHandler.runStatus == RunStatus.RUNNING){
+
+	public void onHeadphonesOut() {
+		headPhonesIcon.setImageResource(R.drawable.headphones_disabled);
+		headphonesIn = false;
+		if (dataHandler.runStatus == RunStatus.RUNNING) {
 			pause();
 		}
 		setNotGreenToRun();
 	}
-	public void onHeadphonesIn(){
-		if(!headphonesIn){
-			System.out.println("HeadPhones In");
-			headphonesIn=true;
-			headPhonesIcon.setImageResource(R.drawable.headphones_green);
-			setGreenToRun();
-		}
-	}
-	public void onHeadphonesOut(){
-		headPhonesIcon.setImageResource(R.drawable.headphones_red);
-		headphonesIn=false;
-		if(dataHandler.runStatus == RunStatus.RUNNING){
-			pause();
-		}
-		setNotGreenToRun();
-	}
+
 	public void onCompassChanged(float headingAngleOrientation) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 	}
+
 	public void onLocationChanged(Location location) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 		dataHandler.newLocation(location);
 	}
 }
