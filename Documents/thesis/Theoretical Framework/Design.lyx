@@ -274,10 +274,6 @@ thepage
 \end_layout
 
 \begin_layout Section
-Design patterns
-\end_layout
-
-\begin_layout Subsection
 Android design patterns
 \end_layout
 
@@ -306,7 +302,7 @@ Fråga: Sätta referensen här eller i slutet av stycket?
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Action Bar pattern
 \end_layout
 
@@ -417,7 +413,7 @@ Another component giving a sense of location is the View control(2), which
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Navigation Drawer
 \end_layout
 
@@ -532,7 +528,7 @@ n’s startup since the user then can be taken directly into the view that
  {Smashing, s332} 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Swipe Views
 \end_layout
 
@@ -555,15 +551,15 @@ As long as the number of tabs are limited to three or less it is considered
  {Smashing 324} 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Standard Design patterns
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Prominent Done button
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Carousel pattern
 \end_layout
 

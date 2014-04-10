@@ -11,7 +11,7 @@
 
         <fragment
             android:id="@+id/completedrun_list"
-            android:name="se.chalmers.group42.controller.CompletedRunListFragment"
+            android:name="se.chalmers.group42.controller.HistoryListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"

@@ -278,37 +278,13 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Long before humans could drive to a grocery store or call a pizza delivery
- service to get food, we had to actually hunt for it.
- But humans were not the fastest nor the strongest animal.
- Instead, our feet, perspiratory system and ability to hold our head steady
- while moving suggest that persistence hunting might have been our way of
- acquiring food{citation needed, 
-\begin_inset CommandInset href
-LatexCommand href
-name "?"
-target "http://www.nature.com/nature/journal/v432/n7015/full/nature03052.html"
-
-\end_inset
-
-}.
- Persistence hunting works by running and tracking an animal, chasing it
- into exhaustion.
-\end_layout
-
-\begin_layout Standard
-Nowadays however, persistence hunting barely practiced anymore.
- We do not run as much as we did.
- [Include example of why that is bad].
- Exercise as a mean of survival has been replaced by exercise motivated
- by other reasons.
- So how to motivate running in this day and age? Some run to stay healthy
- or to win races, but that does not work for everyone.
- One solution is to make a game out of hunting.
+There are different reasons for running.
+ Some run to stay healthy or to win races, but that is not motivating enough
+ for everyone.
+ Another way to motivate could be to make it entertaining to run, to make
+ a game out of running.
  Instead of just running for a faster time, run toward the sound of an imaginary
- prey.By using modern technology: smart phones, GPS and headphones, it is
- possible to exercise in the most ancient of ways.
- 
+ prey, or away from the sound of an imaginary monster.
 \end_layout
 
 \begin_layout Section
@@ -320,7 +296,11 @@ In recent years smartphones containing GPS (Global Positioning System) sensors
  have become more and more common {citation needed}.
  As a result of this, multiple smartphone applications making use of the
  GPS for tracking the user position and movement have originated.
- One such example, Endomondo Sports Tracker {
+ One such example, 
+\emph on
+Endomondo Sports Tracker
+\emph default
+ {
 \begin_inset CommandInset href
 LatexCommand href
 name "Endomondo"
@@ -348,17 +328,21 @@ target "http://blog.endomondo.com/facts/"
 \end_inset
 
 , 2014-04-04}.
- Another application, called Zombies, Run! {
-\begin_inset CommandInset href
-LatexCommand href
-name "Zombies"
-target "https://play.google.com/store/apps/details?id=com.sixtostart.zombiesrun"
+ Another application, called 
+\emph on
+Zombies, Run! 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SixtoStart2014"
 
 \end_inset
 
-, 2014-03-28}, launched in 2012.
- Zombies, Run! focused more on a fun game experience than on running statistics
- and therefore provided an illusion of zombies chasing the user.
+, launched in 2012 and had a lot of similarities with the application described
+ in this report: Zombies, Run! focused more on a fun game experience than
+ on running statistics and therefore provided an illusion of zombies chasing
+ the user.
  This was done by generating the sound of zombies (a type of monsters) approachi
 ng the user.
  The sound would only disappear if the user ran fast enough over a period

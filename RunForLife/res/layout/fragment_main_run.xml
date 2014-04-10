@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:weightSum="100" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_weight="85"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/app_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center_horizontal"
+                android:text="@string/app_name"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/app_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:text="@string/app_decription"
+                android:textColor="#ffffff"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/fancyCoverFlowContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal" > <!-- <at.technikum.mti.fancycoverflow.FancyCoverFlow -->
+                
+                <!-- android:id="@+id/fancyCoverFlow" -->
+                <!-- android:layout_width="match_parent" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_gravity="center_horizontal" -->
+                <!-- fcf:maxRotation="45" -->
+                <!-- fcf:scaleDownGravity="0.5" -->
+                <!-- fcf:unselectedAlpha="0.3" -->
+                <!-- fcf:unselectedSaturation="0.0" -->
+                <!-- fcf:unselectedScale="0.4" /> -->
+
+
+                <!-- <ImageView -->
+                <!-- android:id="@+id/game_mode" -->
+                <!-- android:layout_width="190dp" -->
+                <!-- android:layout_height="190dp" -->
+                <!-- android:layout_gravity="center" -->
+                <!-- android:layout_marginTop="17dp" -->
+                <!-- android:background="@drawable/run_button" -->
+                <!-- android:contentDescription="@string/image_desc_run" /> -->
+
+                <TextView
+                    android:id="@+id/swipe_info"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-8dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/swipe_desc"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="15"
+            android:background="#aaffffff"
+            android:orientation="vertical"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp" >
+
+            <ImageView
+                android:id="@+id/gps_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/image_desc_gps"
+                android:src="@drawable/gps_disabled" />
+
+            <ImageView
+                android:id="@+id/headphones_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-15dp"
+                android:layout_toRightOf="@id/gps_icon"
+                android:contentDescription="@string/image_desc_headphones"
+                android:src="@drawable/headphones_disabled" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/run_button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/run_button"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/run_button_text"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

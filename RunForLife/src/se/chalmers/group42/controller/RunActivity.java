@@ -67,9 +67,8 @@ public class RunActivity extends SwipeableActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
-		// Setting up Sensor input
+		//Setting up Sensor input
 		new GPSInputHandler(this, this);
-		// new OrientationInputHandler(this, this);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
@@ -79,6 +78,7 @@ public class RunActivity extends SwipeableActivity implements
 		 * Creating the adapter that will return a fragment for each of the
 		 * three primary sections of the app
 		 */
+
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 

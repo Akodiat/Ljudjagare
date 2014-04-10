@@ -278,6 +278,12 @@ Theoretical Framework: Sensors, sound and design
 \end_layout
 
 \begin_layout Standard
+
+\color green
+Text missing here.
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
 filename "Theoretical Framework/Sound.lyx"
@@ -317,14 +323,14 @@ filename "Theoretical Framework/Database.lyx"
 
 \end_layout
 
-\begin_layout Section
-Software model
-\end_layout
-
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Theoretical Framework/Software models.lyx"
 
-\color green
-activities, fragments, etc
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

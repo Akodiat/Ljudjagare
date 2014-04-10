@@ -16,60 +16,62 @@
 
 package se.chalmers.group42.controller;
 
+import se.chalmers.group42.controller.HistoryListFragment.Callbacks;
+import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.ModeController;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.StatusIconEventListener;
 import se.chalmers.group42.runforlife.StatusIconHandler;
+import se.chalmers.group42.runforlife.DataHandler.RunStatus;
+import se.chalmers.group42.runforlife.R.array;
+import se.chalmers.group42.runforlife.R.drawable;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
+import se.chalmers.group42.runforlife.R.menu;
+import se.chalmers.group42.runforlife.R.string;
 import sensors.GPSInputHandler;
 import sensors.GPSInputListener;
 import android.location.Location;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.content.IntentFilter;
-import android.graphics.Point;
+import android.preference.Preference;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Display;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
+
 import android.widget.ListView;
-import at.technikum.mti.fancycoverflow.FancyCoverFlow;
-import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
+
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends NavDrawerActivity implements
-		StatusIconEventListener, GPSInputListener {
+public class MainActivity extends FragmentActivity implements Callbacks {
 
-	private FancyCoverFlow fancyCoverFlow;
-	private Button runButton;
-	private int coverFlowHeight;
-	private ImageView gpsIcon, headPhonesIcon;
-	private boolean gpsOn, headphonesIn;
+	private DrawerLayout navDrawerLayout;
+	private ListView navDrawerList;
+	private String[] navListOption;
+	private ActionBarDrawerToggle actionBarDrawerToggle;
+	private CharSequence appTitle;
+	private CharSequence navDrawerTitle;
 
-	private int apiLevel;
-
-	private final int ACTION_BAR_HEIGHT_MDPI = 32;
+	// TODO titlar fï¿½r navdrawer
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// Get API-level
-		apiLevel = Integer.valueOf(android.os.Build.VERSION.SDK_INT);
-
 		// Make hardware buttons control the media volume
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
-		// Setting up status icons
-		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
-		headPhonesIcon = (ImageView) findViewById(R.id.headphones_icon);
-
-		// Setting up Sensor input
-		new GPSInputHandler(this, this);
 
 		// Setting up Navigation Drawer from left side of screen
 		appTitle = navDrawerTitle = getTitle();
@@ -90,13 +92,18 @@ public class MainActivity extends NavDrawerActivity implements
 		// click listener to them
 		navDrawerList.setAdapter(new ArrayAdapter<String>(this,
 				R.layout.drawer_list_item, navListOption));
-		navDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		/* Setting up listener for the ListView in the navigation drawer */
+		navDrawerList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				selectItem(position);
+			}
+		});
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		if (apiLevel >= 14) {
-			getActionBar().setHomeButtonEnabled(true);
-		}
+		getActionBar().setHomeButtonEnabled(true);
 
 		actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
 		navDrawerLayout, /* DrawerLayout object */
@@ -121,65 +128,80 @@ public class MainActivity extends NavDrawerActivity implements
 		// Set the drawer toggle as the DrawerListener
 		navDrawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-		/*
-		 * The screen size and density of the device running the program is
-		 * retrieved to draw the components to good proportions.
-		 * 
-		 * http://stackoverflow.com/questions/1016896/how-to-get-screen-dimensions
-		 */
-		// Getting the display size
-		Display display = getWindowManager().getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		int width = size.x;
-		int height = size.y;
-		System.out.println("Width= " + width);
-		System.out.println("Height= " + height);
-		// Getting the display density
-		int density = (int) getResources().getDisplayMetrics().density;
-		System.out.println("Density= "
-				+ getResources().getDisplayMetrics().density);
-		/*
-		 * Setting a good coverflow height as 4/9 of the screen height minus the
-		 * actionbar. I need to multiply the density with the standard height of
-		 * an action bar.
-		 */
-		coverFlowHeight = (int) ((4.0 / 9.0) * (height - density
-				* ACTION_BAR_HEIGHT_MDPI));
-		System.out.println("Coverflow height: " + coverFlowHeight);
+		// Start MainRunFragment at startup
+		if (getFragmentManager().findFragmentById(R.id.content_frame) == null) {
+			selectItem(0);
+		}
+	}
 
-		/*
-		 * Setting up the cover flow
-		 */
-		fancyCoverFlow = (FancyCoverFlow) this
-				.findViewById(R.id.fancyCoverFlow);
-		fancyCoverFlow.setAdapter(new FancyCoverFlowSampleAdapter(
-				coverFlowHeight));
-		fancyCoverFlow.setUnselectedAlpha(1.0f);
-		fancyCoverFlow.setUnselectedSaturation(0.0f);
-		fancyCoverFlow.setUnselectedScale(0.5f);
-		fancyCoverFlow.setSpacing(0);
-		fancyCoverFlow.setMaxRotation(0);
-		fancyCoverFlow.setScaleDownGravity(0.2f);
-		fancyCoverFlow.setActionDistance(FancyCoverFlow.ACTION_DISTANCE_AUTO);
+	/*
+	 * Method handling the transition between the different fragments that may
+	 * be chosen from the Navigation Drawer-menu.
+	 */
+	private void selectItem(int position) {
+		FragmentManager fragmentManager = getFragmentManager();
+		FragmentTransaction ft;
+		switch (position) {
+		case 0:
+			// Insert the fragment by replacing any existing fragment
+			ft = fragmentManager.beginTransaction();
+			Fragment mainRunFragment = new MainRunFragment();
+			ft.replace(R.id.content_frame, mainRunFragment);
+			ft.commit();
+			// update selected item and title, then close the drawer
+			navDrawerList.setItemChecked(position, true);
+			setTitle(navDrawerTitle);
+			navDrawerLayout.closeDrawer(navDrawerList);
+			break;
+		case 1:
+			ft = fragmentManager.beginTransaction();
+			HistoryListFragment completedRunListFragment = new HistoryListFragment();
+			ft.replace(R.id.content_frame, completedRunListFragment);
+			ft.commit();
+			// update selected item and title, then close the drawer
+			navDrawerList.setItemChecked(position, true);
+			setTitle(navDrawerTitle);
+			navDrawerLayout.closeDrawer(navDrawerList);
+			break;
+		default:
+		}
+	}
 
-		/*
-		 * Setting up the run-button
-		 */
-		runButton = (Button) findViewById(R.id.run_button);
-		runButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				new ModeController(MainActivity.this)
-						.launchMode((int) fancyCoverFlow.getSelectedItemId());
-			}
-		});
+	// Method needed to get the hamburgermenu working
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		actionBarDrawerToggle.onConfigurationChanged(newConfig);
+	}
 
-		// Setting up statusIconHandler
-		IntentFilter filter = new IntentFilter(
-				"android.intent.action.HEADSET_PLUG");
-		StatusIconHandler receiver = new StatusIconHandler(this, this);
-		registerReceiver(receiver, filter);
+	// Method needed to get the hamburgermenu working
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns
+		// true
+		// then it has handled the app icon touch event
+		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		} else if (item.getItemId() == R.id.action_settings) {
+			FragmentManager fragmentManager = getFragmentManager();
+			FragmentTransaction ft = fragmentManager.beginTransaction();
+			Fragment fragmentSettings = new SettingsFragment();
+			ft.replace(R.id.content_frame, fragmentSettings);
+			ft.addToBackStack(null);
+			ft.commit();
+
+			// fragmentManager.beginTransaction().replace(R.id.content_frame,
+			// fragmentSettings).addToBackStack("settings").commit();
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	// Method needed to get the hamburgermenu working
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		actionBarDrawerToggle.syncState();
 	}
 
 	@Override
@@ -190,56 +212,14 @@ public class MainActivity extends NavDrawerActivity implements
 	}
 
 	@Override
-	public void onGPSConnect() {
-		if (!gpsOn) {
-			gpsOn = true;
-			gpsIcon.setImageResource(R.drawable.gps_activated);
-			setGreenToRun();
-		}
-	}
+	public void onHistoryItemSelected(String id) {
+		// for the selected item ID.
+		Intent detailIntent = new Intent(this, FinishedRunActivity.class);
+		detailIntent.putExtra(Constants.EXTRA_ID, Integer.parseInt(id));
+		// TODO Sharedpreferences
+		// Skicak med runläge eller finishedläge
+		startActivity(detailIntent);
 
-	@Override
-	public void onGPSDisconnect() {
-		gpsOn = false;
-		gpsIcon.setImageResource(R.drawable.gps_disabled);
-		setNotGreenToRun();
-	}
-
-	@Override
-	public void onHeadphonesIn() {
-		if (!headphonesIn) {
-			headphonesIn = true;
-			headPhonesIcon.setImageResource(R.drawable.headphones_activated);
-			setGreenToRun();
-		}
-	}
-
-	@Override
-	public void onHeadphonesOut() {
-		headphonesIn = false;
-		headPhonesIcon.setImageResource(R.drawable.headphones_disabled);
-		setNotGreenToRun();
-	}
-
-	private boolean isOkToRun() {
-		return (gpsOn && headphonesIn);
-	}
-
-	private void setGreenToRun() {
-		if (isOkToRun()) {
-			runButton.setTextColor(getResources().getColor(
-					R.color.common_signin_btn_light_text_focused));
-		}
-	}
-
-	private void setNotGreenToRun() {
-		runButton.setTextColor(getResources().getColor(
-				R.color.common_signin_btn_light_text_disabled));
-	}
-
-	@Override
-	public void onLocationChanged(Location location) {
-		// Not needed.
 	}
 
 }
