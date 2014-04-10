@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master ../TheoriticalFramework.lyx
+\master ../chapter-2.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -274,7 +274,7 @@ thepage
 \end_layout
 
 \begin_layout Section
-Database
+Database: Relational model and visual representation
 \end_layout
 
 \begin_layout Standard
@@ -298,7 +298,14 @@ The first step when designing the database is to design a is to make a visual
  representation of the database, this is done with a so called Entity/Relation-D
 iagram(ER-Diagram).
  An ER-Diagram consists of three main parts: entities, relations and attributes
- (databaseboken , kap 4.1).
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "database2009"
+
+\end_inset
+
+ , kap 4.1).
  The entities are the different object that we want to store in the database
  and the attributes are the different data of the object.
  In the previous example the Room could be the entity and room number, room
