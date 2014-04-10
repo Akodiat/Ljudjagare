@@ -1,3 +1,4 @@
+package garbage;
 //package se.chalmers.group42.controller;
 //
 //import se.chalmers.group42.runforlife.R;

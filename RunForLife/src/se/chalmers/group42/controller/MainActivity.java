@@ -16,7 +16,7 @@
 
 package se.chalmers.group42.controller;
 
-import se.chalmers.group42.controller.CompletedRunListFragment.Callbacks;
+import se.chalmers.group42.controller.HistoryListFragment.Callbacks;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.ModeController;
 import se.chalmers.group42.runforlife.R;
@@ -220,13 +220,6 @@ public class MainActivity extends FragmentActivity implements Callbacks{
 			Fragment mainRunFragment = new MainRunFragment();
 			ft.replace(R.id.content_frame, mainRunFragment);
 			ft.commit();
-			//			Intent mainIntent = new Intent(NavDrawerActivity.this, MainActivity.class);
-			//			/*Flag clearing other activities from backstack to make sure that back press
-			//			 * from main will exit the app.
-			//			 */
-			//
-			//			mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			//			startActivity(mainIntent);
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
 			setTitle(navDrawerTitle);
@@ -234,13 +227,9 @@ public class MainActivity extends FragmentActivity implements Callbacks{
 			break;
 		case 1:
 			ft = fragmentManager.beginTransaction();
-			CompletedRunListFragment completedRunListFragment = new CompletedRunListFragment();
+			HistoryListFragment completedRunListFragment = new HistoryListFragment();
 			ft.replace(R.id.content_frame, completedRunListFragment);
 			ft.commit();
-			//			Intent historyIntent = new Intent(NavDrawerActivity.this, CompletedRunListActivity.class);
-			//			//Flag making sure that no new instances of a current running activity are launched
-			//			historyIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-			//			startActivity(historyIntent);
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
 			setTitle(navDrawerTitle);
@@ -266,15 +255,11 @@ public class MainActivity extends FragmentActivity implements Callbacks{
 			return true;
 		}
 		else if(item.getItemId()==R.id.action_settings){
-			//						Intent settingsIntent = new Intent(NavDrawerActivity, SettingsActivity.class);
-			//						//Flag making sure that no new instances of a current running activity are launched
-			//						startActivity(settingsIntent);
-
 			FragmentManager fragmentManager = getFragmentManager();
 			FragmentTransaction ft = fragmentManager.beginTransaction();
 			Fragment fragmentSettings = new SettingsFragment();
 			ft.replace(R.id.content_frame, fragmentSettings);
-			ft.addToBackStack("settings");
+			ft.addToBackStack(null);
 			ft.commit();
 
 			//			fragmentManager.beginTransaction().replace(R.id.content_frame, fragmentSettings).addToBackStack("settings").commit();
@@ -298,7 +283,7 @@ public class MainActivity extends FragmentActivity implements Callbacks{
 	}
 
 	@Override
-	public void onListItemSelected(String id) {
+	public void onHistoryItemSelected(String id) {
 		// for the selected item ID.
 		Intent detailIntent = new Intent(this,
 				FinishedRunActivity.class);

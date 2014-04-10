@@ -30,7 +30,7 @@ import se.chalmers.group42.runforlife.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class CompletedRunListFragment extends ListFragment {
+public class HistoryListFragment extends ListFragment {
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -61,7 +61,7 @@ public class CompletedRunListFragment extends ListFragment {
 		/**
 		 * Callback for when an item has been selected.
 		 */
-		public void onListItemSelected(String id);
+		public void onHistoryItemSelected(String id);
 	}
 		
 	
@@ -71,7 +71,7 @@ public class CompletedRunListFragment extends ListFragment {
 	 */
 	private static Callbacks sDummyCallbacks = new Callbacks() {
 		@Override
-		public void onListItemSelected(String id) {
+		public void onHistoryItemSelected(String id) {
 		}
 	};
 
@@ -79,7 +79,7 @@ public class CompletedRunListFragment extends ListFragment {
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
-	public CompletedRunListFragment() {
+	public HistoryListFragment() {
 	}
 
 	@Override
@@ -167,7 +167,7 @@ public class CompletedRunListFragment extends ListFragment {
 		int idx = routes.get(position).getId();
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onListItemSelected(String.valueOf(idx));
+		mCallbacks.onHistoryItemSelected(String.valueOf(idx));
 	}
 	
 	
