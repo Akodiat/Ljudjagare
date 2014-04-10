@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master ../Implementation.lyx
+\master ../TheoriticalFramework.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -182,7 +182,7 @@ rightmark
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Enable page headers and add the chapter to the header line.
@@ -274,39 +274,13 @@ thepage
 \end_layout
 
 \begin_layout Section
-Sensor fusion: Combining sensor values to calculate user direction
+Software models
 \end_layout
 
 \begin_layout Standard
-Our implementation of sensor fusion.
-\end_layout
 
-\begin_layout Standard
-Converting gyroscope coordinates into global coordinate system using acceleromet
-er:
-\end_layout
-
-\begin_layout Standard
-Given that 
-\begin_inset Formula $g=\begin{Bmatrix}g{}_{x}\\
-g{}_{y}\\
-g{}_{z}
-\end{Bmatrix}$
-\end_inset
-
- is the raw gyroscope readings from the device.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $g'=-(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})-(g{}_{z}*a{}_{z})$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Gyro → Global coordinates → delta angle → delta angle * time constant→ differ
- from gpsBearing with delta angle * constant (longer time = smaller angle)
+\color green
+activities, fragments, etc
 \end_layout
 
 \end_body
