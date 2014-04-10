@@ -278,6 +278,13 @@ Implementation
 \end_layout
 
 \begin_layout Standard
+
+\color green
+Our implementation of sound, sensors, routes, database, design and the game
+ modes
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
 filename "Implementation/Sound.lyx"

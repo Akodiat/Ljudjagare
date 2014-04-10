@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master thesis.lyx
+\master ../TheoriticalFramework.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -102,10 +102,10 @@ customHeadersFooters
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
-\branch Sound
-\selected 1
+\branch NoChildDocument
+\selected 0
 \filename_suffix 0
-\color #faf0e6
+\color #ff0000
 \end_branch
 \index Index
 \shortcut idx
@@ -182,7 +182,7 @@ rightmark
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Enable page headers and add the chapter to the header line.
@@ -273,74 +273,14 @@ thepage
 
 \end_layout
 
-\begin_layout Chapter
-Theoretical Framework: Sensors, sound and design
+\begin_layout Section
+Software models
 \end_layout
 
 \begin_layout Standard
 
 \color green
-Text missing here.
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Sound.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Sensors.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/RandomRouteGeneration.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Database.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Software models.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Theoretical Framework/Design.lyx"
-
-\end_inset
-
-
+activities, fragments, etc
 \end_layout
 
 \end_body
