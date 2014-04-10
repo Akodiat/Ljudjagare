@@ -16,6 +16,8 @@
 
 package se.chalmers.group42.controller;
 
+import se.chalmers.group42.controller.CompletedRunListFragment.Callbacks;
+import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.ModeController;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.StatusIconEventListener;
@@ -65,7 +67,7 @@ import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends FragmentActivity implements Callbacks{
 
 	private DrawerLayout navDrawerLayout;
 	private ListView navDrawerList;
@@ -232,7 +234,7 @@ public class MainActivity extends FragmentActivity{
 			break;
 		case 1:
 			ft = fragmentManager.beginTransaction();
-			Fragment completedRunListFragment = new CompletedRunListFragment();
+			CompletedRunListFragment completedRunListFragment = new CompletedRunListFragment();
 			ft.replace(R.id.content_frame, completedRunListFragment);
 			ft.commit();
 			//			Intent historyIntent = new Intent(NavDrawerActivity.this, CompletedRunListActivity.class);
@@ -293,6 +295,18 @@ public class MainActivity extends FragmentActivity{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	@Override
+	public void onListItemSelected(String id) {
+		// for the selected item ID.
+		Intent detailIntent = new Intent(this,
+				FinishedRunActivity.class);
+		detailIntent.putExtra(Constants.EXTRA_ID, Integer.parseInt(id));
+		//TODO Sharedpreferences
+		//Skicak med runläge eller finishedläge
+		startActivity(detailIntent);
+		
 	}
 
 	//	@Override
