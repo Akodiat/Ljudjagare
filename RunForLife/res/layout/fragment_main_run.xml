@@ -46,8 +46,10 @@
                 android:id="@+id/fancyCoverFlowContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="-50dp"
                 android:layout_gravity="center_horizontal" > <!-- <at.technikum.mti.fancycoverflow.FancyCoverFlow -->
-                
+
+
                 <!-- android:id="@+id/fancyCoverFlow" -->
                 <!-- android:layout_width="match_parent" -->
                 <!-- android:layout_height="wrap_content" -->
@@ -68,17 +70,18 @@
                 <!-- android:background="@drawable/run_button" -->
                 <!-- android:contentDescription="@string/image_desc_run" /> -->
 
-                <TextView
-                    android:id="@+id/swipe_info"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-8dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/swipe_desc"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
             </FrameLayout>
+
+            <TextView
+                android:id="@+id/swipe_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-60dp"
+                android:gravity="center_horizontal"
+                android:text="@string/swipe_desc"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <RelativeLayout

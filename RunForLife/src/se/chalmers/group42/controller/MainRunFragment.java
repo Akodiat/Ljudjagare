@@ -8,21 +8,17 @@ import sensors.GPSInputHandler;
 import sensors.GPSInputListener;
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Point;
 import android.location.Location;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 import at.technikum.mti.fancycoverflow.FancyCoverFlow;
 import at.technikum.mti.fancycoverflow.FancyCoverFlowSampleAdapter;
 
@@ -32,11 +28,9 @@ public class MainRunFragment extends Fragment implements
 	private Activity mainActivity;
 	private FancyCoverFlow fancyCoverFlow;
 	private Button runButton;
-	private Intent runActivityIntent;
 	private int coverFlowHeight;
-	private ImageView gpsIcon, soundIcon, headPhonesIcon;
-	private TextView gpsText, soundText, headPhonesText;
-	private boolean gpsOn, soundOn, headphonesIn;
+	private ImageView gpsIcon, headPhonesIcon;
+	private boolean gpsOn, headphonesIn;
 	private FrameLayout fancyCoverFlowContainer;
 
 	private final int ACTION_BAR_HEIGHT_MDPI = 32;
@@ -53,16 +47,8 @@ public class MainRunFragment extends Fragment implements
 		view = inflater.inflate(R.layout.fragment_main_run, null);
 
 		// Setting up status icons
-		gpsIcon = (ImageView) view.findViewById(R.id.imageViewGPS);
-		soundIcon = (ImageView) view.findViewById(R.id.imageViewSound);
-		headPhonesIcon = (ImageView) view
-				.findViewById(R.id.imageViewHeadphones);
-
-		// Setting up status text
-		gpsText = (TextView) view.findViewById(R.id.textViewGPS);
-		gpsText.setText("Searching for gps...");
-		soundText = (TextView) view.findViewById(R.id.textViewSound);
-		headPhonesText = (TextView) view.findViewById(R.id.textViewHeadphones);
+		gpsIcon = (ImageView) view.findViewById(R.id.gps_icon);
+		headPhonesIcon = (ImageView) view.findViewById(R.id.headphones_icon);
 
 		// Setting up Sensor input
 		new GPSInputHandler(this, mainActivity);
