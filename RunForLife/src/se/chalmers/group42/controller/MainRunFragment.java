@@ -159,15 +159,15 @@ public class MainRunFragment extends Fragment implements
 	}
 
 	private void setGreenToRun() {
-		if (isOkToRun()) {
-			runButton.setTextColor(getResources().getColor(
-					R.color.common_signin_btn_light_text_focused));
-		}
+//		if (isOkToRun()) {
+//			runButton.setTextColor(getResources().getColor(
+//					R.color.common_signin_btn_light_text_focused));
+//		}
 	}
 
 	private void setNotGreenToRun() {
-		runButton.setTextColor(getResources().getColor(
-				R.color.common_signin_btn_light_text_disabled));
+//		runButton.setTextColor(getResources().getColor(
+//				R.color.common_signin_btn_light_text_disabled));
 	}
 
 	@Override
