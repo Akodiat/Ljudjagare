@@ -120,19 +120,27 @@ public class CoinCollectorActivity extends RunActivity {
 
 		if (generateRoute) {
 			generateRoute = false;
-			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
-					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
-			runFrag.setMax(checkpoints);
+
 
 			//Retrieving distancevalue from preferences
 			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 			//Setting value to 700 meters if no values have been set
 			String distance = sharedPref.getString("distance", "700");
-			generateRandomRoute(Integer.parseInt(distance));
+			
+			String nrPoints = sharedPref.getString("nrPoints", "3");
 
+			checkpoints = Integer.parseInt(nrPoints);
+			
+			generateRandomRoute(Integer.parseInt(distance));
+			
 			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 			mapFrag.zoomToPosition(location);
+			mapFrag.setCheckpoints(checkpoints);
+			
+			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
+					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
+			runFrag.setMax(checkpoints);
 		}
 
 		// If a coin is found..
@@ -309,7 +317,7 @@ public class CoinCollectorActivity extends RunActivity {
 		ArrayList<Location> route = new ArrayList<Location>();
 		double currentCheckpoint = 2 * Math.PI * 3/4;
 		
-		for(int i = 0; i < checkpoints; i++){
+		for(int i = 0; i <= checkpoints; i++){
 
 			double addLat = Math.sin(currentCheckpoint) * radius;
 			double addLong = Math.cos(currentCheckpoint) * radius / Math.cos(Math.toRadians(human.getLocation().getLatitude()));
