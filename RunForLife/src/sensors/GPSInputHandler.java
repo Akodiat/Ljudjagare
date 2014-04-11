@@ -90,4 +90,12 @@ LocationListener
 		
 		listener.onLocationChanged(location);
 	}
+
+	public void pause() {
+		locationClient.disconnect();
+	}
+
+	public void resume() {
+		locationClient.connect();
+	}
 }

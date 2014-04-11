@@ -67,11 +67,12 @@ public class MapFragment extends Fragment {
 	//	private int marks;
 	private Boolean directionFinished = false;
 	private Marker marker;
-	
+
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
 	private Polyline			myPolyRoute;
 	private boolean isConnected = false;
 	private float distance = 0;
+	private int checkpoints;
 
 	public MapFragment() {
 	}
@@ -81,7 +82,7 @@ public class MapFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_map, container,
 				false);
-		
+
 		Log.i("Fragment", "map Fragment running");
 
 		// Show location on map
@@ -94,16 +95,16 @@ public class MapFragment extends Fragment {
 			map.setOnMapLongClickListener(new OnMapLongClickListener() {
 				@Override
 				public void onMapLongClick(LatLng latLng) {
-//					map.clear();
-//					mCallback.sendMapLocation(latLng);
-//
-//					MarkerOptions markerOptions = new MarkerOptions();
-//					markerOptions.position(latLng);
-//					markerOptions.title(latLng.latitude + " : "
-//							+ latLng.longitude);
-//					map.addMarker(markerOptions);
+					//					map.clear();
+					//					mCallback.sendMapLocation(latLng);
+					//
+					//					MarkerOptions markerOptions = new MarkerOptions();
+					//					markerOptions.position(latLng);
+					//					markerOptions.title(latLng.latitude + " : "
+					//							+ latLng.longitude);
+					//					map.addMarker(markerOptions);
 					//randomTest();
-					
+
 				}
 			});
 		}
@@ -124,7 +125,7 @@ public class MapFragment extends Fragment {
 						newCoinLocation.getLongitude()))
 						.title("Another Coin!")
 						.icon(BitmapDescriptorFactory
-								.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
+								.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))));
 	}
 
 	public void showCollectedCoin(Location locationOfCoin){
@@ -141,53 +142,53 @@ public class MapFragment extends Fragment {
 			map.animateCamera(cameraUpdate);
 		}
 	}
-	
+
 	public void randomTest(ArrayList<Location> routeTest, Location routePoint){
 		marker = map.addMarker(new MarkerOptions()
 		.position(new LatLng(routePoint.getLatitude(), routePoint.getLongitude()))
 		.title("Random2").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-		
+
 		for(int i = 0; i < routeTest.size(); i++){
 			marker = map.addMarker(new MarkerOptions()
 			.position(new LatLng(routeTest.get(i).getLatitude(), routeTest.get(i).getLongitude()))
-			.title("Random2").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+			.title("Random: " + i).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
 		}
-		
-		
-//		Location random = new Location("");
-//		random.setLatitude(CURRENT_POSITION.latitude);
-//		random.setLongitude(CURRENT_POSITION.longitude);
-//		
-//		double a = Math.random();
-//		double b = Math.random();
-//
-//		double r = 50 / Constants.LAT_LNG_TO_METER;
-//
-//		double w = r * Math.sqrt(a);
-//		double t = 2 * Math.PI * b;
-//		double x = w * Math.cos(t);
-//		double y = w * Math.sin(t);
-//		double xNew = x / Math.cos(random.getLatitude());
-//
-//		Location random2 = new Location("");
-//		random2.setLongitude(xNew + random.getLongitude());
-//		random2.setLatitude(random.getLatitude()+y);
-//
-//		float bearingTo = random.bearingTo(random2);
-//		double addLat;
-//		double addLng;
-//		double distanceFromLocation = 1000/Constants.LAT_LNG_TO_METER; 
-//		addLat = Math.sin(bearingTo)*distanceFromLocation;
-//		addLng = Math.cos(bearingTo)*distanceFromLocation / Math.cos(random.getLatitude());
-//
-//		random2.setLatitude(random2.getLatitude() + addLat);
-//		random2.setLongitude(random2.getLongitude() + addLng);
-//		
-//		marker = map.addMarker(new MarkerOptions()
-//		.position(new LatLng(random2.getLatitude(), random2.getLongitude()))
-//		.title("Random2").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+
+		//		Location random = new Location("");
+		//		random.setLatitude(CURRENT_POSITION.latitude);
+		//		random.setLongitude(CURRENT_POSITION.longitude);
+		//		
+		//		double a = Math.random();
+		//		double b = Math.random();
+		//
+		//		double r = 50 / Constants.LAT_LNG_TO_METER;
+		//
+		//		double w = r * Math.sqrt(a);
+		//		double t = 2 * Math.PI * b;
+		//		double x = w * Math.cos(t);
+		//		double y = w * Math.sin(t);
+		//		double xNew = x / Math.cos(random.getLatitude());
+		//
+		//		Location random2 = new Location("");
+		//		random2.setLongitude(xNew + random.getLongitude());
+		//		random2.setLatitude(random.getLatitude()+y);
+		//
+		//		float bearingTo = random.bearingTo(random2);
+		//		double addLat;
+		//		double addLng;
+		//		double distanceFromLocation = 1000/Constants.LAT_LNG_TO_METER; 
+		//		addLat = Math.sin(bearingTo)*distanceFromLocation;
+		//		addLng = Math.cos(bearingTo)*distanceFromLocation / Math.cos(random.getLatitude());
+		//
+		//		random2.setLatitude(random2.getLatitude() + addLat);
+		//		random2.setLongitude(random2.getLongitude() + addLng);
+		//		
+		//		marker = map.addMarker(new MarkerOptions()
+		//		.position(new LatLng(random2.getLatitude(), random2.getLongitude()))
+		//		.title("Random2").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 	}
-	
+
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(
 				Color.BLUE);
@@ -207,14 +208,6 @@ public class MapFragment extends Fragment {
 			rectLine.add(directionPoints.get(i));
 		}
 
-		// --- Is used to make more points on the directions, dont remove
-		// without asking Marcus ---
-		// halfway = directionPoints.size() / 2;
-		// Location halfwayLocation = new Location("");
-		// halfwayLocation.setLatitude(directionPoints.get(halfway).latitude);
-		// halfwayLocation.setLongitude(directionPoints.get(halfway).longitude);
-		// finalRoute.add(halfwayLocation);
-
 		Location wholeWayLocation = new Location("");
 		wholeWayLocation.setLatitude(directionPoints.get(points).latitude);
 		wholeWayLocation.setLongitude(directionPoints.get(points).longitude);
@@ -224,56 +217,26 @@ public class MapFragment extends Fragment {
 		// newPolyline.remove();
 		// }
 
-		if (finalRoute.size() == 1) {
-			// soundSource.set(wholeWayLocation);
-			//map.clear();
-			markers.add(map.addMarker(new MarkerOptions()
-			.position(
-					new LatLng(wholeWayLocation.getLatitude(),
-							wholeWayLocation.getLongitude()))
-							.title("First!")
-							.icon(BitmapDescriptorFactory
-									.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
-		}
-
-
+//		if (finalRoute.size() == 1) {
+//			// soundSource.set(wholeWayLocation);
+//			//map.clear();
+//			markers.add(map.addMarker(new MarkerOptions()
+//			.position(
+//					new LatLng(wholeWayLocation.getLatitude(),
+//							wholeWayLocation.getLongitude()))
+//							.title("First!")
+//							.icon(BitmapDescriptorFactory
+//									.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
+//		}
 
 		map.addPolyline(rectLine);
-		// latlngBounds = createLatLngBoundsObject(RANDOM, CURRENT_POSITION);
-		// float zoom = 19;
-		// map.animateCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds,
-		// width, height, 500));
 
-		// Add a marker on the last position in the route.
-		// if (marker != null){
-		// marker.remove();
-		// }
-
-
-
-		if (finalRoute.size() == 3) {
+		if (finalRoute.size() == checkpoints) {
 			directionFinished = true;
 			mCallback.sendFinalRoute(finalRoute, distance);
-
 		}
-		// marks++;
-		// marker = map.addMarker(new MarkerOptions()
-		// .position(new LatLng(directionPoints.get(halfway).latitude,
-		// directionPoints.get(halfway).longitude))
-		// .title("halfway! " + marks + ",  " +
-		// directionPoints.get(halfway).latitude
-		// + " " + directionPoints.get(halfway).longitude));
-
-		// marker = map.addMarker(new MarkerOptions()
-		// .position(new LatLng(directionPoints.get(points).latitude,
-		// directionPoints.get(points).longitude))
-		// .title("End of route!  " + marks +",  "+
-		// directionPoints.get(points).latitude
-		// + " " + directionPoints.get(points).longitude));
-		// map.animateCamera(CameraUpdateFactory.zoomOut());
-
 	}
-	
+
 	public void drawMyPath(Location location){
 		if(isConnected || location.getAccuracy() <= 20){
 			LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
@@ -282,5 +245,10 @@ public class MapFragment extends Fragment {
 		}else{
 			isConnected = true;
 		}
+	}
+
+	public void setCheckpoints(int checkpoints) {
+		this.checkpoints = checkpoints;
+		
 	}
 }

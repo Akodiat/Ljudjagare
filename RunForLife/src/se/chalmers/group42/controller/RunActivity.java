@@ -62,13 +62,15 @@ public class RunActivity extends SwipeableActivity implements
 
 	protected GetDirectionsAsyncTask asyncTask;
 
+	private GPSInputHandler gpsInputHandler;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
 		//Setting up Sensor input
-		new GPSInputHandler(this, this);
+		gpsInputHandler = new GPSInputHandler(this, this);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();

@@ -100,6 +100,8 @@ public class RunFragment extends Fragment{
 	public void setMax(int max){
 		progressBar = (ProgressBar) getView().findViewById(R.id.progressBar1);
 		progressBar.setMax(max);
+		TextView txProg = (TextView) getView().findViewById(R.id.progressText2);
+		txProg.setText(progressStatus+"/"+progressBar.getMax()+" Coins");
 	}
 
 	public void setTexts(Time time, double speed, double currentSpeed, double pace,double currentPace){

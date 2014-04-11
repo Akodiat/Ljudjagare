@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import se.chalmers.group42.controller.FinishedRunActivity;
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
+import se.chalmers.group42.controller.RunFragment;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;
@@ -46,6 +47,8 @@ public class CoinCollectorActivity extends RunActivity {
 	private boolean generateRoute = true;
 
 	private int curr100, prev100;
+	
+	private int checkpoints = 4;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,11 @@ public class CoinCollectorActivity extends RunActivity {
 	public void sendFinalRoute(ArrayList<Location> finalRoute, float distance) {
 		this.finalRoute = finalRoute;
 		coinLocation = finalRoute.get(0);
+		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
+
+		mapFrag.handleNewCoin(coinLocation);
+		
 		final TextView textViewToChange = (TextView) findViewById(R.id.textView_distance);
 		textViewToChange.setText(distance + " m");
 	}
@@ -112,6 +120,10 @@ public class CoinCollectorActivity extends RunActivity {
 
 		if (generateRoute) {
 			generateRoute = false;
+			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
+					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
+			runFrag.setMax(checkpoints);
+
 			//Retrieving distancevalue from preferences
 			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 			//Setting value to 700 meters if no values have been set
@@ -124,7 +136,7 @@ public class CoinCollectorActivity extends RunActivity {
 		}
 
 		// If a coin is found..
-		if (isAtCoin()) {
+		if (isAtCoin() && dataHandler.isRunning()) {
 			dataHandler.onAquiredCoin(human.getLocation());
 			// Increase the player score by one
 			this.human.modScore(1);
@@ -176,7 +188,7 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private void generateNewCoin() {
-		if (human.getScore() < 3) {
+		if (human.getScore() < checkpoints) {
 			coinLocation = this.finalRoute.get(human.getScore());
 
 			float distance = human.getLocation().distanceTo(coinLocation) 
@@ -298,9 +310,11 @@ public class CoinCollectorActivity extends RunActivity {
 		double currentCheckpoint = 2 * Math.PI * 3/4;
 		
 		for(int i = 0; i < checkpoints; i++){
-			currentCheckpoint -= radiansPerCheckpoint;
+
 			double addLat = Math.sin(currentCheckpoint) * radius;
 			double addLong = Math.cos(currentCheckpoint) * radius / Math.cos(Math.toRadians(human.getLocation().getLatitude()));
+			
+			currentCheckpoint -= radiansPerCheckpoint;
 			
 			Location routeLocation = new Location("new Location");
 			routeLocation.setLongitude(origo.getLongitude() + addLong);
@@ -315,7 +329,6 @@ public class CoinCollectorActivity extends RunActivity {
 	
 	private ArrayList<Location> generateRandomRoute(double distance) {
 		// Calculation random positions
-		int checkpoints = 10;
 		
 		finalRoute.clear();
 		double a = Math.random();
@@ -385,31 +398,39 @@ public class CoinCollectorActivity extends RunActivity {
 			routeTest.get(i).setLatitude(human.getLocation().getLatitude() + newLat);
 		}
 		
-//		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
-//				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
-//		mapFrag.randomTest(routeTest, routePoint);
+		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
+		mapFrag.randomTest(routeTest, routePoint);
 		
 		
-		if (Math.random() > 0.5) {
-			routePoint2.setLatitude(human.getLocation().getLatitude()
-					+ differLng);
-			routePoint2.setLongitude(human.getLocation().getLongitude()
-					- differLat);
-		} else {
-			routePoint2.setLatitude(human.getLocation().getLatitude()
-					- differLng);
-			routePoint2.setLongitude(human.getLocation().getLongitude()
-					+ differLat);
-		}
-		route.add(routePoint2);
-		route.add(human.getLocation());
+//		if (Math.random() > 0.5) {
+//			routePoint2.setLatitude(human.getLocation().getLatitude()
+//					+ differLng);
+//			routePoint2.setLongitude(human.getLocation().getLongitude()
+//					- differLat);
+//		} else {
+//			routePoint2.setLatitude(human.getLocation().getLatitude()
+//					- differLng);
+//			routePoint2.setLongitude(human.getLocation().getLongitude()
+//					+ differLat);
+//		}
+//		route.add(routePoint2);
+//		route.add(human.getLocation());
 
-		for (int i = 0; i < route.size() - 1; i++) {
-			findDirections(route.get(i).getLatitude(), route.get(i)
-					.getLongitude(), route.get(i + 1).getLatitude(),
-					route.get(i + 1).getLongitude(),
-					GMapV2Direction.MODE_WALKING);
-		}
+//		for (int i = 0; i < route.size() - 1; i++) {
+//			findDirections(route.get(i).getLatitude(), route.get(i)
+//					.getLongitude(), route.get(i + 1).getLatitude(),
+//					route.get(i + 1).getLongitude(),
+//					GMapV2Direction.MODE_WALKING);
+//		}
+		
+		for (int i = 0; i < routeTest.size() - 1; i++) {
+			findDirections(routeTest.get(i).getLatitude(), routeTest.get(i)
+					.getLongitude(), routeTest.get(i + 1).getLatitude(),
+					routeTest.get(i + 1).getLongitude(),
+						GMapV2Direction.MODE_WALKING);
+			}
+
 		return route;
 	}
 }
