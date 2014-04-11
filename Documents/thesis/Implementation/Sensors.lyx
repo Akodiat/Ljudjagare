@@ -288,20 +288,125 @@ er:
 
 \begin_layout Standard
 Given that 
-\begin_inset Formula $g=\begin{Bmatrix}g{}_{x}\\
+\begin_inset Formula $\mathbf{g}=\begin{Bmatrix}g{}_{x}\\
 g{}_{y}\\
 g{}_{z}
 \end{Bmatrix}$
 \end_inset
 
- is the raw gyroscope readings from the device.
+ is the raw gyroscope readings from the device and 
+\begin_inset Formula $\boldsymbol{\mathbb{\mathbf{a}}}=\begin{Bmatrix}a{}_{x}\\
+a{}_{y}\\
+a{}_{z}
+\end{Bmatrix}$
+\end_inset
+
+ is the raw accelerometer readings, the scalar product of the two vectors,
+ 
+\begin_inset Formula $\mathbf{g}\times\mathbf{a}$
+\end_inset
+
+, is gives the rotational speed, here referred to as 
+\begin_inset Formula $\omega$
+\end_inset
+
+, around the axis orthogonal to the ground.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $g'=-(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})-(g{}_{z}*a{}_{z})$
+\begin_inset Formula 
+\begin{equation}
+\mathbf{g}\times\mathbf{a}=(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})+(g{}_{z}*a{}_{z})
+\end{equation}
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+However, because this by unknown reasons doesn't work, we negate two of
+ the addends:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega=-(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})-(g{}_{z}*a{}_{z})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Each sensor value update event also has a time stamp, 
+\begin_inset Formula $t$
+\end_inset
+
+, associated with it.
+ If the n:th event has the time stamp 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ the difference in time, 
+\begin_inset Formula $\triangle t$
+\end_inset
+
+, is equal to 
+\begin_inset Formula $t_{n}-t_{n-1}$
+\end_inset
+
+.
+ Subsequently multiplying 
+\begin_inset Formula $\omega$
+\end_inset
+
+ [radians/time] with 
+\begin_inset Formula $\triangle t$
+\end_inset
+
+ [time] will give the radians rotated since the last event, 
+\begin_inset Formula $\triangle v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\triangle v=\omega*\triangle t
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to calculate the current direction (at the time of the n:th element)
+ one simply sums all previous rotations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v_{n}=\sum_{i=0}^{n}\omega_{i}(t_{i}-t_{i-1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, by this method only an angle relative to a start angle is calculated.
+ In other words, the user can clearly hear a direction that the sound is
+ coming from, updating correctly when the user is turning around.
+ But the direction is not the same as the one the real coin is located in,
+ this can however be solved by involving the GPS bearing.
 \end_layout
 
 \begin_layout Standard
