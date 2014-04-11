@@ -21,6 +21,7 @@ import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.R;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -38,9 +39,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends FragmentActivity implements Callbacks {
+public class MainActivity extends Activity implements Callbacks {
 
 	private DrawerLayout navDrawerLayout;
 	private ListView navDrawerList;
