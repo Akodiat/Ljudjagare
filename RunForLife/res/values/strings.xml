@@ -33,6 +33,7 @@
     <string-array name="nav_drawer_array">
         <item>Main</item>
         <item>History</item>
+        <item>Help</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>

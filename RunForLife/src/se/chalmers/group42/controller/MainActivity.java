@@ -149,6 +149,16 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 			setTitle(navDrawerTitle);
 			navDrawerLayout.closeDrawer(navDrawerList);
 			break;
+		case 2:
+			ft = fragmentManager.beginTransaction();
+			HelpFragment helpFragment = new HelpFragment();
+			ft.replace(R.id.content_frame, helpFragment);
+			ft.commit();
+			// update selected item and title, then close the drawer
+			navDrawerList.setItemChecked(position, true);
+			setTitle(navDrawerTitle);
+			navDrawerLayout.closeDrawer(navDrawerList);
+			break;
 		default:
 		}
 	}

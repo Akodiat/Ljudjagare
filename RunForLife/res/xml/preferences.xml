@@ -8,6 +8,13 @@
             android:summary="700 meters interval between each checkpoint"
             android:dialogTitle="Interval distance (meters)" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="CheckPoints" >
+        <EditTextPreference
+            android:key="nrPoints"
+            android:title="CheckPoints"
+            android:summary="4 number of checkpoints"
+            android:dialogTitle="Number of points" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="Sound" >
         <CheckBoxPreference
             android:key="sound"

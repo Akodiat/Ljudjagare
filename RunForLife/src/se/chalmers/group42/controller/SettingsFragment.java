@@ -35,6 +35,11 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
         String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
         Preference distancePref = (Preference) findPreference("distance");
         distancePref.setSummary(distance + " meters interval between each checkpoint");
+        
+        //Initializing distance summary text
+        String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
+        Preference pointsPref = (Preference) findPreference("nrPoints");
+        pointsPref.setSummary(points + " number of checkpoint");
     }
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
@@ -42,5 +47,9 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
         String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
         Preference distancePref = (Preference) findPreference("distance");
         distancePref.setSummary(distance + " meters interval between each checkpoint");
+        
+        String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
+        Preference pointsPref = (Preference) findPreference("nrPoints");
+        pointsPref.setSummary(points + " number of checkpoint");
     }
 }
