@@ -406,9 +406,9 @@ public class CoinCollectorActivity extends RunActivity {
 			routeTest.get(i).setLatitude(human.getLocation().getLatitude() + newLat);
 		}
 		
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
-				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
-		mapFrag.randomTest(routeTest, routePoint);
+//		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+//				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
+//		mapFrag.randomTest(routeTest, routePoint);
 		
 		
 //		if (Math.random() > 0.5) {
