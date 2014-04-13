@@ -154,10 +154,10 @@
 
         <include
             android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="140dp"
-            layout="@layout/progress_bar" />
+            layout="@layout/progress_bar"
+            android:padding="7dp" />
     </LinearLayout>
 
 </RelativeLayout>

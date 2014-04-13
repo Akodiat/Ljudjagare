@@ -47,9 +47,7 @@ public class RunActivity extends SwipeableActivity implements
 		MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
 		GPSInputListener, OrientationInputListener {
 
-	private Button runButton;
-	
-	private ImageButton stopButton;
+	private Button runButton, stopButton;
 
 	// Class for handling database
 	protected DataHandler dataHandler;
@@ -146,7 +144,7 @@ public class RunActivity extends SwipeableActivity implements
 		runButton.setText("GO");
 
 		// Setting up stopbutton
-		stopButton = (ImageButton) findViewById(R.id.button_stop);
+		stopButton = (Button) findViewById(R.id.button_stop);
 		stopButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -290,7 +288,7 @@ public class RunActivity extends SwipeableActivity implements
 	}
 
 	private void setNotGreenToRun() {
-		runButton.setText("NOTOK");
+		runButton.setText("PLAY");
 	}
 
 	public void onGPSConnect() {

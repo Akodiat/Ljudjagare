@@ -60,20 +60,37 @@
         android:textSize="35sp"
         android:textStyle="bold" />
 
-    <ImageButton
+<!--     <ImageButton -->
+<!--         android:id="@+id/button_stop" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignParentBottom="true" -->
+<!--         android:layout_alignParentRight="true" -->
+<!--         android:background="#0000" -->
+<!--         android:contentDescription="@string/button_desc_stop" -->
+<!--         android:paddingBottom="2dp" -->
+<!--         android:paddingRight="2dp" -->
+<!--         android:src="@drawable/stop" -->
+<!--         android:visibility="invisible" /> -->
+
+    <Button
         android:id="@+id/button_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:background="#0000"
-        android:contentDescription="@string/button_desc_stop"
-        android:paddingBottom="2dp"
-        android:paddingRight="2dp"
-        android:src="@drawable/stop"
-        android:visibility="invisible" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="100dp"
+        android:layout_toLeftOf="@id/run_button"
+        android:background="@drawable/stop_button"
+        android:fontFamily="sans-serif-condensed"
+        android:text="STOP"
+        android:visibility="invisible"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-</RelativeLayout><!-- <ImageButton -->
+</RelativeLayout> <!-- <ImageButton -->
 <!-- android:id="@+id/button_stop" -->
 <!-- android:layout_width="wrap_content" -->
 <!-- android:layout_height="wrap_content" -->
