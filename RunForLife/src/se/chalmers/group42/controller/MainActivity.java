@@ -49,8 +49,6 @@ public class MainActivity extends Activity implements Callbacks {
 	private CharSequence appTitle;
 	private CharSequence navDrawerTitle;
 
-	// TODO titlar f�r navdrawer
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
