@@ -309,7 +309,12 @@ public class CoinCollectorActivity extends RunActivity {
 	 * source
 	 */
 	public float getRotation_Compass() {
-		return compassFromNorth + human.getLocation().bearingTo(coinLocation);
+		float bearingTo = human.getLocation().bearingTo(coinLocation);
+		if (bearingTo < 0) {
+			bearingTo += 360;
+		}
+		return bearingTo - compassFromNorth;
+
 	}
 
 	private ArrayList<Location> generateRoute(int checkpoints, double radius, Location origo){
