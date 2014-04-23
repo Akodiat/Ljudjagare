@@ -10,6 +10,7 @@ import se.chalmers.group42.runforlife.R;
 import utils.LocationHelper;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -38,36 +39,32 @@ public class EscapeActivity extends RunActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		human = new Human();
-		
+
 		//generateNewMonster();
 
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
 		playSound();
 	}
-	
-	@Override
-	public void onGPSConnect() {
-		super.onGPSConnect();
-		
-		generateNewMonster();
-	}
 
 	private void generateNewMonster() {
-		Location location = new Location(human.getLocation());
+		Location monsterLocation = new Location(human.getLocation());
 		float bearing = (float) (Math.random() * 360);
 		float distance = (float) ((Math.random() * 
 				(MAX_MONSTER_SPAWN_DISTANCE - MIN_MONSTER_SPAWN_DISTANCE)
 				+ MIN_MONSTER_SPAWN_DISTANCE));
-		
 
-		android.util.Log.d("Monster", "Distance: "+ distance);
-		
-		LocationHelper.moveLocation(location, bearing, distance);
-		
-		monster = new Monster(location, MONSTER_SPEED);
+
+		LocationHelper.moveLocation(monsterLocation, bearing, distance);
+
+//		android.util.Log.d("Monster", 
+//				"Distance: "+ distance + 
+//				"\tLat: " 	+ monsterLocation.getLatitude() +
+//				"\tLng: " 	+ monsterLocation.getLongitude());
+
+		monster = new Monster(this, monsterLocation, MONSTER_SPEED);
 		monster.setTarget(human.getLocation());
-		
+
 		android.util.Log.d("Monster", "Distance2: "+ human.getLocation().distanceTo(monster.getLocation()));
 	}
 
@@ -75,26 +72,36 @@ public class EscapeActivity extends RunActivity {
 		return human.getScore();
 	}
 
+	public void onMonsterLocationChanged(){
+		//Toast.makeText(this, human.getLocation().distanceTo(monster.getLocation()) + "meters", Toast.LENGTH_SHORT).show();
+
+		updateMarker();
+		//fx.distanceAnnouncer();
+	}
 
 	@Override
 	public void onLocationChanged(Location location) {
 		super.onLocationChanged(location);
-
+		
 		// Update human location
 		human.setLocation(location);
 		
+		if(monster == null)
+			generateNewMonster();
+
 		// Update monster target
 		monster.setTarget(human.getLocation());
-		
-		Toast.makeText(this, human.getLocation().distanceTo(monster.getLocation()) + "meters", Toast.LENGTH_SHORT).show();
-		
+
+	//	Toast.makeText(this, human.getLocation().distanceTo(monster.getLocation()) + "meters", Toast.LENGTH_SHORT).show();
+
 		updateMarker();
 		//fx.distanceAnnouncer();
-		
+
 		adjustPanoration();
 	}
-
+	
 	private void updateMarker() {
+		Log.d("Monster", "Distance: "+ human.getLocation().distanceTo(monster.getLocation()));
 		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
 				"android:switcher:"+R.id.pager+":1");
 		//mapFrag.handleNewCoin(monster.getLocation());
@@ -112,12 +119,12 @@ public class EscapeActivity extends RunActivity {
 
 	private boolean eatenByMonster() {
 		return (// If closer than minimum distance
-		human.getLocation().distanceTo(monster.getLocation()) < Constants.MIN_DISTANCE
-		// Or the accuracy is less than 50 meters but still larger
-		// than the distance to the sound source.
-		|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
-				.distanceTo(monster.getLocation()) < human.getLocation().getAccuracy()
-				: false));
+				human.getLocation().distanceTo(monster.getLocation()) < Constants.MIN_DISTANCE
+				// Or the accuracy is less than 50 meters but still larger
+				// than the distance to the sound source.
+				|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
+						.distanceTo(monster.getLocation()) < human.getLocation().getAccuracy()
+						: false));
 	}
 
 	private boolean usingCompass() {
@@ -131,13 +138,13 @@ public class EscapeActivity extends RunActivity {
 				+ human.getLocation().bearingTo(monster.getLocation())
 				: getRotation_GPS();
 
-		// if(angle < 0){
-		// angle += 360;
-		// }
+				// if(angle < 0){
+				// angle += 360;
+				// }
 
-		if (fx.getNavigationFX().isPlaying())
-			fx.update(fx.getNavigationFX(), (angle), human.getLocation()
-					.distanceTo(monster.getLocation()));
+				if (fx.getNavigationFX().isPlaying())
+					fx.update(fx.getNavigationFX(), (angle), human.getLocation()
+							.distanceTo(monster.getLocation()));
 
 	}
 
@@ -147,7 +154,7 @@ public class EscapeActivity extends RunActivity {
 
 		if (!fx.getNavigationFX().isPlaying())
 			fx.loop(fx.getNavigationFX());
-		
+
 	}
 
 	@Override

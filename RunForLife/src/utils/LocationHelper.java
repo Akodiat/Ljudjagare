@@ -41,14 +41,15 @@ public class LocationHelper {
 	 * @return			A new LatLng, positioned distance meters away in the bearing direction.
 	 */
 	public static LatLng calculateNewLatLng(LatLng latLng, float bearing, float distance){
-		double rLat = degToRad(latLng.latitude);
-		double rLng = degToRad(latLng.longitude);
+		//Convert lat and long to radians
+		double rLat = Math.toRadians(latLng.latitude);
+		double rLng = Math.toRadians(latLng.longitude);
 		
 		//Changing distance to proportion of earth radius;
 		distance /= EARTH_RADIUS;
 		
 		//Changing bearing to radians
-		double rBearing = degToRad(bearing);
+		double rBearing = Math.toRadians(bearing);
 		
 		//Calculate new latitude and longitude (in radians)
 		double newRLat = Math.asin(Math.sin(rLat) * Math.cos(distance) +
@@ -57,7 +58,7 @@ public class LocationHelper {
 		double newRLng = rLng + Math.atan2(Math.sin(rBearing) * Math.sin(distance) * Math.cos(rLat),
                 Math.cos(distance) - Math.sin(rLat * Math.sin(newRLat)));
 		
-		return new LatLng(radToDeg(newRLat), radToDeg(newRLng));
+		return new LatLng(Math.toDegrees(newRLat), Math.toDegrees(newRLng));
 		
 	}
 	/**
@@ -80,13 +81,4 @@ public class LocationHelper {
 		//Updates bearing to match the travelled direction
 		location.setBearing(bearing);
 	}
-	
-	private static double degToRad(double value){
-		return (value * (Math.PI/180));
-	}
-	
-	private static double radToDeg(double value){
-		return (value * (180/Math.PI));
-	}
-	
 }
