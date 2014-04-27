@@ -15,7 +15,7 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:layout_weight="85"
+            android:layout_weight="30"
             android:orientation="vertical" >
 
             <TextView
@@ -41,48 +41,48 @@
                 android:textColor="#ffffff"
                 android:textSize="13sp"
                 android:textStyle="bold" />
-
-            <FrameLayout
-                android:id="@+id/fancyCoverFlowContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="-50dp" > <!-- <at.technikum.mti.fancycoverflow.FancyCoverFlow -->
-
-
-                <!-- android:id="@+id/fancyCoverFlow" -->
-                <!-- android:layout_width="match_parent" -->
-                <!-- android:layout_height="wrap_content" -->
-                <!-- android:layout_gravity="center_horizontal" -->
-                <!-- fcf:maxRotation="45" -->
-                <!-- fcf:scaleDownGravity="0.5" -->
-                <!-- fcf:unselectedAlpha="0.3" -->
-                <!-- fcf:unselectedSaturation="0.0" -->
-                <!-- fcf:unselectedScale="0.4" /> -->
-
-
-                <!-- <ImageView -->
-                <!-- android:id="@+id/game_mode" -->
-                <!-- android:layout_width="190dp" -->
-                <!-- android:layout_height="190dp" -->
-                <!-- android:layout_gravity="center" -->
-                <!-- android:layout_marginTop="17dp" -->
-                <!-- android:background="@drawable/run_button" -->
-                <!-- android:contentDescription="@string/image_desc_run" /> -->
-
-            </FrameLayout>
-
-            <TextView
-                android:id="@+id/swipe_info"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-60dp"
-                android:gravity="center_horizontal"
-                android:text="@string/swipe_desc"
-                android:textColor="#ffffff"
-                android:textSize="14sp"
-                android:textStyle="bold" />
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="45" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/previous_mode_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:paddingLeft="10dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/prev_mode" 
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/next_mode_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:paddingRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/next_mode" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/swipe_info"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:gravity="center_horizontal"
+            android:text="@string/swipe_desc"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="fill_parent"

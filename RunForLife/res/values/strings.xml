@@ -27,7 +27,7 @@
     <string name="button_desc_pause">Pause button</string>
     <string name="button_desc_stop">Stop button</string>
     <string name="button_desc_finish">Finish button</string>
-    <string name="swipe_desc">Swipe to change mode</string>
+    <string name="swipe_desc"></string>
     <string name="run_button_text">GO</string>
 
     <string-array name="nav_drawer_array">
