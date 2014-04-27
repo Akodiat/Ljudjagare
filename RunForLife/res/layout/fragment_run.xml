@@ -11,7 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#55FFFFFF"
         android:orientation="vertical"
         android:padding="8dp" >
 
@@ -31,6 +30,7 @@
                     android:id="@+id/time_desc"
                     android:layout_marginRight="8dp"
                     android:text="Time"
+                    android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
@@ -53,6 +53,7 @@
                     android:id="@+id/dist_desc"
                     android:layout_marginRight="8dp"
                     android:text="Distance"
+                    android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
@@ -75,6 +76,7 @@
                     android:id="@+id/curr_pace_desc"
                     android:layout_marginRight="8dp"
                     android:text="Current pace"
+                    android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
@@ -97,6 +99,7 @@
                     android:id="@+id/avg_pace_desc"
                     android:layout_marginRight="8dp"
                     android:text="Average pace"
+                    android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
@@ -119,6 +122,7 @@
                     android:id="@+id/curr_speed_desc"
                     android:layout_marginRight="8dp"
                     android:text="Current speed"
+                    android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
@@ -141,6 +145,7 @@
                     android:id="@+id/avg_speed_desc"
                     android:layout_marginRight="8dp"
                     android:text="Average speed"
+                    android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView

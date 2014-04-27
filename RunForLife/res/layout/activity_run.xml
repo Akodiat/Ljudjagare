@@ -23,7 +23,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="15"
-            android:background="#aaffffff"
+            android:background="#1c1c1f"
             android:orientation="vertical"
             android:paddingBottom="15dp"
             android:paddingTop="15dp" >
@@ -48,8 +48,8 @@
 
     <Button
         android:id="@+id/run_button"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="-20dp"
@@ -58,20 +58,8 @@
         android:fontFamily="sans-serif-condensed"
         android:text="@string/run_button_text"
         android:textSize="35sp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
-
-<!--     <ImageButton -->
-<!--         android:id="@+id/button_stop" -->
-<!--         android:layout_width="wrap_content" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_alignParentBottom="true" -->
-<!--         android:layout_alignParentRight="true" -->
-<!--         android:background="#0000" -->
-<!--         android:contentDescription="@string/button_desc_stop" -->
-<!--         android:paddingBottom="2dp" -->
-<!--         android:paddingRight="2dp" -->
-<!--         android:src="@drawable/stop" -->
-<!--         android:visibility="invisible" /> -->
 
     <Button
         android:id="@+id/button_stop"
@@ -85,31 +73,9 @@
         android:background="@drawable/stop_button"
         android:fontFamily="sans-serif-condensed"
         android:text="STOP"
-        android:visibility="invisible"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
-</RelativeLayout> <!-- <ImageButton -->
-<!-- android:id="@+id/button_stop" -->
-<!-- android:layout_width="wrap_content" -->
-<!-- android:layout_height="wrap_content" -->
-<!-- android:layout_alignParentBottom="true" -->
-<!-- android:layout_alignParentRight="true" -->
-<!-- android:background="#0000" -->
-<!-- android:contentDescription="@string/button_desc_stop" -->
-<!-- android:paddingBottom="2dp" -->
-<!-- android:paddingRight="2dp" -->
-<!-- android:src="@drawable/stop" -->
-<!-- android:visibility="invisible" /> -->
-<!-- <ImageButton -->
-<!-- android:id="@+id/button_pause" -->
-<!-- android:layout_width="wrap_content" -->
-<!-- android:layout_height="wrap_content" -->
-<!-- android:layout_alignParentBottom="true" -->
-<!-- android:layout_centerInParent="true" -->
-<!-- android:background="#0000" -->
-<!-- android:contentDescription="@string/button_desc_pause" -->
-<!-- android:paddingBottom="2dp" -->
-<!-- android:paddingRight="2dp" -->
-<!-- android:src="@drawable/pause" /> -->
+</RelativeLayout>
