@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background" >
+    android:background="#FFFFFF" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -26,7 +26,7 @@
                 android:gravity="center_horizontal"
                 android:text="@string/app_name"
                 android:textAllCaps="true"
-                android:textColor="#ffffff"
+                android:textColor="#1c1c1f"
                 android:textSize="50sp"
                 android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
                 android:paddingLeft="10sp"
                 android:paddingRight="10sp"
                 android:text="@string/app_decription"
-                android:textColor="#ffffff"
+                android:textColor="#1c1c1f"
                 android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -46,7 +46,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="45" >
+            android:layout_weight="55" >
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/pager"
@@ -57,38 +57,27 @@
                 android:id="@+id/previous_mode_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:paddingLeft="10dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/prev_mode" 
-                android:visibility="invisible"/>
+                android:paddingLeft="10dp"
+                android:src="@drawable/prev_mode"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/next_mode_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:paddingRight="10dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
+                android:paddingRight="10dp"
                 android:src="@drawable/next_mode" />
         </RelativeLayout>
-
-        <TextView
-            android:id="@+id/swipe_info"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:gravity="center_horizontal"
-            android:text="@string/swipe_desc"
-            android:textColor="#ffffff"
-            android:textSize="14sp"
-            android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="15"
-            android:background="#aaffffff"
+            android:background="#1c1c1f"
             android:orientation="vertical"
             android:paddingBottom="15dp"
             android:paddingTop="15dp" >
@@ -122,6 +111,7 @@
         android:background="@drawable/run_button"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/run_button_text"
+        android:textColor="#FFFFFF"
         android:textSize="35sp"
         android:textStyle="bold" />
 

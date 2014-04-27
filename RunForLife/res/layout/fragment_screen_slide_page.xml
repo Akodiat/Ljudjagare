@@ -7,7 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="20" >
+        android:weightSum="20" 
+        android:background="@drawable/coin_pic"
+        android:paddingBottom="30dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
