@@ -14,7 +14,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="30"
+            android:layout_weight="27"
             android:orientation="vertical" >
 
             <TextView
@@ -44,7 +44,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="55" >
+            android:layout_weight="60" >
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/pager"
@@ -70,33 +70,33 @@
                 android:paddingRight="10dp"
                 android:src="@drawable/next_mode" />
         </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="15"
-            android:background="#1c1c1f"
-            android:orientation="vertical"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp" >
-
-            <ImageView
-                android:id="@+id/gps_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/image_desc_gps"
-                android:src="@drawable/gps_disabled" />
-
-            <ImageView
-                android:id="@+id/headphones_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-15dp"
-                android:layout_toRightOf="@id/gps_icon"
-                android:contentDescription="@string/image_desc_headphones"
-                android:src="@drawable/headphones_disabled" />
-        </RelativeLayout>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:background="#1c1c1f"
+        android:orientation="vertical"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp" 
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/gps_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_desc_gps"
+            android:src="@drawable/gps_disabled" />
+
+        <ImageView
+            android:id="@+id/headphones_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-13dp"
+            android:layout_toRightOf="@id/gps_icon"
+            android:contentDescription="@string/image_desc_headphones"
+            android:src="@drawable/headphones_disabled" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/run_button"

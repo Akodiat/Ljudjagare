@@ -86,13 +86,13 @@ public class MainRunFragment extends Fragment implements
 		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-//				int selectedMode = mPager.getCurrentItem();
-//
-//				if (selectedMode == 0 && !gpsOn || !headphonesIn)
-//					notAbleToLaunchGame();
-//				else
-					new ModeController(mainActivity).launchMode((int) mPager
-							.getCurrentItem());
+				int selectedMode = mPager.getCurrentItem();
+
+				if (selectedMode == 0 && !gpsOn || !headphonesIn)
+					System.out.print("Ja");
+
+				new ModeController(mainActivity).launchMode((int) mPager
+						.getCurrentItem());
 			}
 		});
 
@@ -121,24 +121,6 @@ public class MainRunFragment extends Fragment implements
 
 	}
 
-//	/**
-//	 * Alert dialog to be displayed if GPS or headphones are disabled.
-//	 */
-//	public void notAbleToLaunchGame() {
-//		AlertDialog.Builder dlgAlert = new AlertDialog.Builder(getActivity()
-//				.getApplicationContext());
-//
-//		dlgAlert.setTitle("Headphones and GPS missing");
-//		dlgAlert.setMessage("For this mode to work, headphones need to be plugged in and GPS needs to be turned on");
-//		dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//			public void onClick(DialogInterface dialog, int which) {
-//				// Dismiss dialog
-//			}
-//		});
-//		dlgAlert.setCancelable(true);
-//		dlgAlert.create().show();
-//	}
-
 	/**
 	 * A pager adapter that represents 3 modes in sequence.
 	 */
@@ -158,22 +140,32 @@ public class MainRunFragment extends Fragment implements
 			return NUM_MODES;
 		}
 	}
-	
-//	private class ModeNotLaunchableDialogFragment extends DialogFragment {
-//	    @Override
-//	    public Dialog onCreateDialog(Bundle savedInstanceState) {
-//	        // Use the Builder class for convenient dialog construction
-//	        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//	        builder.setMessage("For this mode to work, headphones need to be plugged in and GPS needs to be turned on")
-//	               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//	                   public void onClick(DialogInterface dialog, int id) {
-//	                       // Do nothing.
-//	                   }
-//	               });
-//	        // Create the AlertDialog object and return it
-//	        return builder.create();
-//	    }
-//	}
+
+	// private class ModeNotLaunchableDialogFragment extends DialogFragment {
+	//
+	// public static ModeNotLaunchableDialogFragment newInstance(int title) {
+	// MyAlertDialogFragment frag = new MyAlertDialogFragment();
+	// Bundle args = new Bundle();
+	// args.putInt("title", title);
+	// frag.setArguments(args);
+	// return frag;
+	// }
+	//
+	// @Override
+	// public Dialog onCreateDialog(Bundle savedInstanceState) {
+	// // Use the Builder class for convenient dialog construction
+	// AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+	// builder.setMessage("For this mode to work, headphones need to be plugged in and GPS needs to be turned on")
+	// .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+	// public void onClick(DialogInterface dialog, int id) {
+	// // Do nothing.
+	// }
+	// });
+	//
+	// // Create the AlertDialog object and return it
+	// return builder.create();
+	// }
+	// }
 
 	@Override
 	public void onGPSConnect() {
