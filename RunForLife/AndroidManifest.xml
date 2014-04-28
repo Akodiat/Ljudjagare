@@ -31,7 +31,7 @@ Google Maps Android API v2, but are recommended.
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <receiver android:name="StatusIconHandler" >
+        <receiver android:name="se.chalmers.group42.runforlife.StatusIconHandler" >
             <intent-filter>
                 <action android:name="android.intent.action.HEADSET_PLUG" >
                 </action>
@@ -106,6 +106,10 @@ Google Maps Android API v2, but are recommended.
         <activity
             android:name="se.chalmers.group42.controller.SettingsActivity"
             android:label="@string/title_settings" >
+        </activity>
+        <activity
+            android:name="se.chalmers.group42.runforlife.TutorialActivity"
+            android:label="@string/title_activity_tutorial" >
         </activity>
     </application>
 
