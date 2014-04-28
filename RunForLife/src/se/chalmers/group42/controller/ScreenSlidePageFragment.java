@@ -33,13 +33,12 @@ public class ScreenSlidePageFragment extends android.support.v4.app.Fragment {
 	/**
 	 * Images to be used for modes.
 	 */
-	private int[] images = { R.drawable.coin_collect, R.drawable.placeholder,
-			R.drawable.placeholder };
+	private int[] images = { R.drawable.coin_collect, R.drawable.placeholder};
 
 	/**
 	 * The name of each mode.
 	 */
-	private String[] imageDesc = { "COIN COLLECTOR", "SOMETHING", "SOMETHING" };
+	private String[] imageDesc = { "COIN COLLECTOR", "TUTORIAL"};
 
 	/**
 	 * The fragment's mode number.

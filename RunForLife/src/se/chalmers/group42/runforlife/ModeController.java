@@ -5,14 +5,12 @@ import android.content.Intent;
 import se.chalmers.group42.gameModes.*;
 
 public class ModeController {
-	private GameMode activeGameMode;
 	
 	/**
 	 * Available modes.
 	 */
 	public static final int COIN_COLLECTOR = 0;
-	public static final int ESCAPE = 1;
-	public static final int SHOOTER = 2;
+	public static final int TUTORIAL = 1;
 	
 	private Context context;
 
@@ -26,11 +24,8 @@ public class ModeController {
 		case COIN_COLLECTOR:
 			launchCoinCollector();
 			break;
-		case ESCAPE:
-			launchEscape();
-			break;
-		case SHOOTER:
-			launchShooter();
+		case TUTORIAL:
+			launchTutorial();
 			break;
 		default:
 			break;
@@ -38,17 +33,9 @@ public class ModeController {
 	}
 
 	/**
-	 * Initialize values needed to play 'Shooter' mode.
-	 */
-	private void launchShooter() {
-		Intent runActivityIntent = new Intent(context, ShooterActivity.class);
-		context.startActivity(runActivityIntent);
-	}
-
-	/**
 	 * Initialize values needed to play 'Quest' mode.
 	 */
-	private void launchEscape() {
+	private void launchTutorial() {
 		Intent runActivityIntent = new Intent(context, EscapeActivity.class);
 		context.startActivity(runActivityIntent);
 	}

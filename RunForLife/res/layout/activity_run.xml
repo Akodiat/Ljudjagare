@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background" >
+    android:background="#ebf0f7" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -56,10 +56,9 @@
         android:layout_marginRight="15dp"
         android:background="@drawable/run_button"
         android:fontFamily="sans-serif-condensed"
-        android:text="@string/run_button_text"
-        android:textSize="35sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:text="►"
+        android:textSize="30sp"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button_stop"
