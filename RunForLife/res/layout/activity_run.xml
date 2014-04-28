@@ -40,7 +40,7 @@
             android:id="@+id/headphones_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-13dp"
+            android:layout_marginLeft="-17dp"
             android:layout_toRightOf="@id/gps_icon"
             android:contentDescription="@string/image_desc_headphones"
             android:src="@drawable/headphones_disabled" />
@@ -48,8 +48,8 @@
 
     <Button
         android:id="@+id/run_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="-20dp"
@@ -58,23 +58,19 @@
         android:fontFamily="sans-serif-condensed"
         android:text="►"
         android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+        android:textSize="45sp" />
 
     <Button
         android:id="@+id/button_stop"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="25dp"
-        android:layout_marginRight="110dp"
-        android:layout_toLeftOf="@id/run_button"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/stop_button"
         android:fontFamily="sans-serif-condensed"
-        android:text="STOP"
+        android:text="■"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="45sp"
         android:visibility="invisible" />
 
 </RelativeLayout>

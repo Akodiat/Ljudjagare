@@ -105,7 +105,7 @@ public class RunFragment extends Fragment {
 				R.id.curr_pace_table);
 
 		// Set times
-		txTime.setText(time.format("%H:%M:%S" + "s"));
+		txTime.setText(time.format("%H:%M:%S"));
 		txAvgSpd.setText(speed + "m/s");
 		txCurrSpd.setText(currentSpeed + "m/s");
 		txAvgPace.setText(pace + "m/s");

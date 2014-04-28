@@ -37,8 +37,7 @@
                 android:paddingRight="10sp"
                 android:text="@string/app_decription"
                 android:textColor="#1c1c1f"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textSize="13sp"/>
         </LinearLayout>
 
         <RelativeLayout
@@ -92,7 +91,7 @@
             android:id="@+id/headphones_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-13dp"
+            android:layout_marginLeft="-17dp"
             android:layout_toRightOf="@id/gps_icon"
             android:contentDescription="@string/image_desc_headphones"
             android:src="@drawable/headphones_disabled" />
@@ -100,8 +99,8 @@
 
     <Button
         android:id="@+id/run_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="-20dp"

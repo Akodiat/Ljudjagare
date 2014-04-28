@@ -60,15 +60,10 @@ public class RunActivity extends SwipeableActivity implements
 
 	protected GetDirectionsAsyncTask asyncTask;
 
-	private GPSInputHandler gpsInputHandler;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
-
-		//Setting up Sensor input
-		gpsInputHandler = new GPSInputHandler(this, this);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
@@ -85,6 +80,7 @@ public class RunActivity extends SwipeableActivity implements
 		// Set up the ViewPager with the sections adapter
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+		
 		// Offscreenlimit set to 2 to avoid fragments being destroyed
 		mViewPager.setOffscreenPageLimit(2);
 
@@ -121,7 +117,7 @@ public class RunActivity extends SwipeableActivity implements
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
 		this.dataHandler = new DataHandler(app.getDatabase(), this);
 
-		// Setting up pausebutton
+		// Setting up pause button
 		runButton = (Button) findViewById(R.id.run_button);
 		runButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -141,9 +137,7 @@ public class RunActivity extends SwipeableActivity implements
 			}
 		});
 
-		runButton.setText("GO");
-
-		// Setting up stopbutton
+		// Setting up stop button
 		stopButton = (Button) findViewById(R.id.button_stop);
 		stopButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -151,8 +145,6 @@ public class RunActivity extends SwipeableActivity implements
 				stop();
 			}
 		});
-//		 this.modeController.launchMode(Mode.COIN_COLLECTOR); //TODO: Make it
-//		 possible to actually choose which mode is launched
 
 		// Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
@@ -179,33 +171,29 @@ public class RunActivity extends SwipeableActivity implements
 		// START
 		dataHandler.newRoute();
 		dataHandler.startWatch();
-		runButton.setText("Pause");
+		runButton.setText("║");
 		dataHandler.runStatus = RunStatus.RUNNING;
 		playSound();
-		System.out.println("Start!!!!!");
 	}
 
 	private void resume() {
-		runButton.setText("Pause");
+		runButton.setText("║");
 		stopButton.setVisibility(View.INVISIBLE);
 		playSound();
 		dataHandler.runStatus = RunStatus.RUNNING;
-		System.out.println("Resume!!!!!");
 	}
 
 	private void pause() {
-		runButton.setText("GO");
+		runButton.setText("►");
 		stopButton.setVisibility(View.VISIBLE);
 		stopSound();
 		dataHandler.runStatus = RunStatus.PAUSED;
-		System.out.println("Pause!!!!!!");
 	}
 
 	public void stop() {
-		runButton.setText("GO");
+		runButton.setText("►");
 		stopSound();
 		dataHandler.runStatus = RunStatus.STOPPED;
-		System.out.println("Stop!!!!!!");
 
 		dataHandler.resetWatch();
 		Intent finishedRunActivityIntent = new Intent(RunActivity.this,
@@ -216,14 +204,9 @@ public class RunActivity extends SwipeableActivity implements
 		if (asyncTask != null) {
 			asyncTask.cancel(true);
 		}
-		// // Ska vara "finish()" egentligen men det fungerar inte?
+		
 		android.os.Process.killProcess(android.os.Process.myPid());
-		// // StatsFragment statsFrag = (StatsFragment)
-		// getSupportFragmentManager().findFragmentByTag(
-		// // "android:switcher:"+R.id.pager+":2");
-		// // if(statsFragment.isAdded()){
-		// // statsFrag.updateTableData(1,2);
-		// // }
+
 	}
 
 	@Override
@@ -288,7 +271,7 @@ public class RunActivity extends SwipeableActivity implements
 	}
 
 	private void setNotGreenToRun() {
-		runButton.setText("PLAY");
+		runButton.setText("►");
 	}
 
 	public void onGPSConnect() {

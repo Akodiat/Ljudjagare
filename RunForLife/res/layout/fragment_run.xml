@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="40dp"
+    android:paddingBottom="35dp"
     android:paddingLeft="12dp"
     android:paddingRight="12dp"
     android:paddingTop="12dp"
@@ -37,7 +37,7 @@
                     android:id="@+id/time_table"
                     android:layout_weight="1.0"
                     android:gravity="right"
-                    android:text="00:00:00s"
+                    android:text="00:00:00"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
 
@@ -83,7 +83,7 @@
                     android:id="@+id/curr_pace_table"
                     android:layout_weight="1.0"
                     android:gravity="right"
-                    android:text="0.0m/s"
+                    android:text="0.0min/km"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
 

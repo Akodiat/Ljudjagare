@@ -1,26 +1,63 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
-    <android.support.v4.view.ViewPager
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".RunActivity"/>
-    
-    <ImageButton
-        android:id="@+id/button_finish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#ebf0f7" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:weightSum="100" >
+
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="85"
+            tools:context=".RunActivity" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="#1c1c1f"
+        android:orientation="vertical"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp" >
+
+<!--         <ImageView -->
+<!--             android:id="@+id/gps_icon" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:contentDescription="@string/image_desc_gps" -->
+<!--             android:src="@drawable/gps_disabled" /> -->
+
+<!--         <ImageView -->
+<!--             android:id="@+id/headphones_icon" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginLeft="-17dp" -->
+<!--             android:layout_toRightOf="@id/gps_icon" -->
+<!--             android:contentDescription="@string/image_desc_headphones" -->
+<!--             android:src="@drawable/headphones_disabled" /> -->
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:paddingBottom="2dp"
-		android:paddingRight="2dp"
-        android:src="@drawable/finish"
-        android:contentDescription="@string/button_desc_finish"
-        android:background="#0000" />
+        android:layout_marginBottom="-20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/run_button"
+        android:fontFamily="sans-serif-condensed"
+        android:text="OK"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
 
 </RelativeLayout>
