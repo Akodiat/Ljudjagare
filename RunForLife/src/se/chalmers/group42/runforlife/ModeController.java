@@ -36,7 +36,7 @@ public class ModeController {
 	 * Initialize values needed to play 'Quest' mode.
 	 */
 	private void launchTutorial() {
-		Intent runActivityIntent = new Intent(context, EscapeActivity.class);
+		Intent runActivityIntent = new Intent(context, TutorialActivity.class);
 		context.startActivity(runActivityIntent);
 	}
 
