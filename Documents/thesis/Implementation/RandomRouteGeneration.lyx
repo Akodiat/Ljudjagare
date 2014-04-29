@@ -349,9 +349,18 @@ Since the longitude coordinates is shrinking the further away from the equator
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+To fill...
+\end_layout
+
+\end_inset
+
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
 <features tabularvalignment="middle">
@@ -843,19 +852,6 @@ Longitude from the location of the user
 
 \end_inset
 
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-To fill...
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
