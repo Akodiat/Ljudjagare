@@ -59,11 +59,16 @@ public class RunActivity extends SwipeableActivity implements
 	private static final LatLng HOME_MARCUS = new LatLng(58.489657, 13.777925);
 
 	protected GetDirectionsAsyncTask asyncTask;
+	
+	private GPSInputHandler gpsInputHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
+		
+		//Setting up Sensor input
+		gpsInputHandler = new GPSInputHandler(this, this);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
