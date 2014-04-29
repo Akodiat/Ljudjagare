@@ -21,8 +21,10 @@ import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.R;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.support.v4.app.FragmentActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.view.GravityCompat;
@@ -88,11 +90,11 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 		getActionBar().setHomeButtonEnabled(true);
 
 		actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-		navDrawerLayout, /* DrawerLayout object */
-		R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
-		R.string.drawer_open, /* "open drawer" description */
-		R.string.drawer_close /* "close drawer" description */
-		) {
+				navDrawerLayout, /* DrawerLayout object */
+				R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
+				R.string.drawer_open, /* "open drawer" description */
+				R.string.drawer_close /* "close drawer" description */
+				) {
 
 			/** Called when a drawer has settled in a completely closed state. */
 			public void onDrawerClosed(View view) {
@@ -113,6 +115,45 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 		// Start MainRunFragment at startup
 		if (getFragmentManager().findFragmentById(R.id.content_frame) == null) {
 			selectItem(0);
+		}
+
+		// Show help dialog at first run of the app
+		boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun2", true);
+		if (firstrun){
+
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+			// set title
+			alertDialogBuilder.setTitle("Welcome");
+
+			// set dialog message
+			alertDialogBuilder
+			.setMessage("Welcome to Run for Life! Would you like to learn how to play?")
+			.setCancelable(false)
+			.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					// if this button is clicked, open help fragment
+					selectItem(2);
+				}
+			})
+			.setNegativeButton("No",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					// if this button is clicked, just close the dialog box and do nothing
+					dialog.cancel();
+				}
+			});
+
+			// create alert dialog
+			AlertDialog alertDialog = alertDialogBuilder.create();
+
+			// show it
+			alertDialog.show();
+
+			// Save the state
+			getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+			.edit()
+			.putBoolean("firstrun", false)
+			.commit();
 		}
 	}
 
