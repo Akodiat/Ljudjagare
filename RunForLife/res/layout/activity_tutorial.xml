@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background" >
 
-    <LinearLayout
+  <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
@@ -14,18 +14,28 @@
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="Distance: 300 m"
+            android:textAppearance="?android:attr/textAppearanceMedium" />  
 
         <SeekBar
-            android:id="@+id/seekBar_distance"
+            android:id="@+id/seekBar_x"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="85"
+            android:layout_height="wrap_content" 
             android:max="1000"
-            android:progress="200"
-            android:rotation="-90" />
+            android:progress="200"/>
+
+        <SeekBar
+            android:id="@+id/seekBar_y"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progress="200"/> />
+
+        <utils.DrawableView
+            android:id="@+id/drawableView1"
+            android:layout_width="wrap_content"
+            android:layout_weight="85"
+            android:layout_height="172dp" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -51,6 +61,7 @@
                 android:layout_toRightOf="@id/gps_icon"
                 android:contentDescription="@string/image_desc_headphones"
                 android:src="@drawable/headphones_disabled" />
+
         </RelativeLayout>
     </LinearLayout>
 
