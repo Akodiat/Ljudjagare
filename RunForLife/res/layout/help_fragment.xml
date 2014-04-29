@@ -1,31 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context=".RunActivity$RunFragment" >
+    android:id="@+id/ScrollView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scrollbars="none" >
 
-    <LinearLayout
-        android:id="@+id/linearTime"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp" >
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        tools:context=".RunActivity$RunFragment" >
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" >
+        <TextView
+            android:id="@+id/textViewTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Your objective is to pich up coins. When you start running a coin will be generated. 
+                To pick up a coin you run to its location. When running in the correct direction towards the coin you will hear this sound:
+                
+                Your objective is to pich up coins. When you start running a coin will be generated. 
+                To pick up a coin you run to its location. When running in the correct direction towards the coin you will hear this sound:
+                Your objective is to pich up coins. When you start running a coin will be generated. 
+                To pick up a coin you run to its location. When running in the correct direction towards the coin you will hear this sound:
+                Your objective is to pich up coins. When you start running a coin will be generated. 
+                To pick up a coin you run to its location. When running in the correct direction towards the coin you will hear this sound:
+                "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/textViewTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Testtesttes tesst test test tesst test testtesst test testtesst test test!"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
-        </RelativeLayout>
-	</LinearLayout>
-</RelativeLayout>
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTime1"
+            android:text="Button" />
+    </RelativeLayout>
+
+</ScrollView>
