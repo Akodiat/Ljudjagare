@@ -5,37 +5,72 @@
     android:layout_height="wrap_content"
     android:scrollbars="none" >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         tools:context=".RunActivity$RunFragment" >
 
         <TextView
-            android:id="@+id/textViewTime1"
+            android:id="@+id/textViewHelp1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Your objective is to pich up coins. When you start running a coin will be generated. 
-                To pick up a coin you run to its location. When running in the correct direction towards the coin you will hear this sound:
-                
-                Your objective is to pich up coins. When you start running a coin will be generated. 
-                To pick up a coin you run to its location. When running in the correct direction towards the coin you will hear this sound:
-                Your objective is to pich up coins. When you start running a coin will be generated. 
-                To pick up a coin you run to its location. When running in the correct direction towards the coin you will hear this sound:
-                Your objective is to pich up coins. When you start running a coin will be generated. 
-                To pick up a coin you run to its location. When running in the correct direction towards the coin you will hear this sound:
-                "
+            android:text="Your objective is to pick up coins. When you start running a coin will be generated. 
+                To pick up the coin you run to its location. When running in the correct direction towards the coin you will hear this sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
-
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewTime1"
-            android:text="Button" />
-    </RelativeLayout>
+            android:text="Play Sound" />
+
+        <TextView
+            android:id="@+id/textViewHelp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="For each 100 meter interval around the coin there are checkpoints. 
+            When crossing an interval like this you will hear how many hundred meters are left:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="25sp" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play Sound" />
+
+        <TextView
+            android:id="@+id/textViewHelp3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The closer you get to the coin within each interval the faster the sound frequency will be"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="25sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <SeekBar
+                android:id="@+id/seekBar1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"/>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100 m" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Play Sound" />
+        </LinearLayout>
+        
+    </LinearLayout>
 
 </ScrollView>
