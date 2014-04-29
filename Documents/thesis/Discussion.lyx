@@ -277,5 +277,43 @@ thepage
 Discussion
 \end_layout
 
+\begin_layout Standard
+
+\color green
+Bla bla
+\end_layout
+
+\begin_layout Section
+Future work
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Escaping a moving sound source.
+ A monster is hunting you, you better get far enough from it before it gets
+ you!
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Hunting a moving sound source.
+ You hear your prey somewhere near you, as you run closer it notices you
+ and starts to gallop in the opposite direction.
+ Either you run fast enough to catch it, or you run long enough to tire
+ it out.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Running around with randomly located sound sources popping up near you.
+ You run, suddenly a wild coin (sound source) appear 100m to the north.
+ After navigating to that point and picking the coin up, you run in any
+ direction you please and after a while another wild coin will appear near
+ you.
+\end_layout
+
 \end_body
 \end_document
