@@ -36,9 +36,11 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 	private int		coinX, coinY;
 	private	int 	curr100;
 	private boolean hasBeenAnnounced = false;
+	private int updateCounter = 0;
 	//	private DrawableView drawableView;
 	private Canvas 	canvas;
-	private Paint 	paint;
+	private Paint 	paint1;
+	private Paint 	paint2;
 	private TextView distanceText;
 
 	@Override
@@ -55,13 +57,16 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		//		drawableView.setBackgroundColor(color.holo_purple);
 
 
-		paint = new Paint();
-		paint.setColor(Color.parseColor("#CD5C5C"));
-		Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
-		canvas = new Canvas(bg); 
-		canvas.drawRect(50, 50, 200, 200, paint); 
-		LinearLayout ll = (LinearLayout) findViewById(R.id.drawingLayout);
-		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
+		paint1 = new Paint();
+		paint1.setColor(Color.parseColor("#CD5C5C"));
+		paint2 = new Paint();
+		paint2.setColor(Color.parseColor("#5CCD5C"));
+		
+//		Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
+//		canvas = new Canvas(bg); 
+//		canvas.drawRect(50, 50, 200, 200, paint); 
+//		LinearLayout ll = (LinearLayout) findViewById(R.id.drawingLayout);
+//		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 
 		distanceText = (TextView)		findViewById(R.id.textView_TutDistance);
 
@@ -121,6 +126,11 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		Log.d("GYROSCOPE", "v: "+Math.round(orientation));
 
 		onOrientationChanged();
+		
+		//This could be done a lot nicer in C
+		updateCounter++;
+		if((updateCounter %= 40) == 0)
+			draw();
 	}
 
 
@@ -182,6 +192,14 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		else return;
 		//drawableView.invalidate();
 
+		draw();
+		//drawableView.postInvalidate();
+		distanceText.setText("Distance: " + getDistance() +" m");
+		//Log.d("TUTORIAL", "Distance: " + getDistance() +" m");
+
+	}
+	
+	public void draw(){
 		LinearLayout ll = (LinearLayout) findViewById(R.id.drawingLayout);
 		Bitmap bg = Bitmap.createBitmap(ll.getWidth(), ll.getHeight(), Bitmap.Config.ARGB_8888);
 		canvas = new Canvas(bg);
@@ -196,19 +214,21 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
         canvas.drawBitmap(rotatedBitmap, 
         		x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getWidth()/2, 
 				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getHeight()/2, 
-				paint);
+				null);
      
-		
 		//Paint
 		canvas.drawCircle(
 				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
 				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
-				15, paint);
-		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
-		//drawableView.postInvalidate();
-		distanceText.setText("Distance: " + getDistance() +" m");
-		//Log.d("TUTORIAL", "Distance: " + getDistance() +" m");
+				15, paint1);
+		
+		canvas.drawCircle(
+				coinX	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
+				coinY	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
+				15, paint2);
+		
 
+		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 	}
 	public void onStartTrackingTouch(SeekBar seekBar) {}
 	public void onStopTrackingTouch(SeekBar seekBar) {}

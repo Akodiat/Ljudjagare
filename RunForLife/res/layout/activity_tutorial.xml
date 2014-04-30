@@ -44,30 +44,30 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:background="#1c1c1f"
-            android:orientation="vertical"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp" >
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="#1c1c1f"
+        android:orientation="vertical"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp" >
 
-            <ImageView
-                android:id="@+id/gps_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/image_desc_gps"
-                android:src="@drawable/gps_disabled" />
+        <ImageView
+            android:id="@+id/gps_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_desc_gps"
+            android:src="@drawable/gps_disabled" />
 
-            <ImageView
-                android:id="@+id/headphones_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-15dp"
-                android:layout_toRightOf="@id/gps_icon"
-                android:contentDescription="@string/image_desc_headphones"
-                android:src="@drawable/headphones_disabled" />
-
-        </RelativeLayout>
+        <ImageView
+            android:id="@+id/headphones_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-17dp"
+            android:layout_toRightOf="@id/gps_icon"
+            android:contentDescription="@string/image_desc_headphones"
+            android:src="@drawable/headphones_disabled" />
+    </RelativeLayout>
 
     </LinearLayout>
     
