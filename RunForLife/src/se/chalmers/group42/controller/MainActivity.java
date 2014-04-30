@@ -21,9 +21,11 @@ import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.R;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.app.FragmentManager;
-import android.support.v4.app.FragmentActivity;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -40,7 +42,7 @@ import android.widget.ListView;
 
 import android.support.v4.app.ActionBarDrawerToggle;
 
-public class MainActivity extends FragmentActivity implements Callbacks {
+public class MainActivity extends Activity implements Callbacks {
 
 	private DrawerLayout navDrawerLayout;
 	private ListView navDrawerList;
@@ -163,16 +165,14 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 	 */
 	private void selectItem(int position) {
 		FragmentManager fragmentManager = getFragmentManager();
-		android.support.v4.app.FragmentManager fragmentManager2 = getSupportFragmentManager();
-		android.app.FragmentTransaction ft;
-		android.support.v4.app.FragmentTransaction ft2;
+		FragmentTransaction ft;
 		switch (position) {
 		case 0:
 			// Insert the fragment by replacing any existing fragment
-			ft2 = fragmentManager2.beginTransaction();
-			MainRunFragment mainRunFragment = new MainRunFragment();
-			ft2.replace(R.id.content_frame, mainRunFragment);
-			ft2.commit();
+			ft = fragmentManager.beginTransaction();
+			Fragment mainRunFragment = new MainRunFragment();
+			ft.replace(R.id.content_frame, mainRunFragment);
+			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
 			setTitle(navDrawerTitle);
@@ -180,7 +180,7 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 			break;
 		case 1:
 			ft = fragmentManager.beginTransaction();
-			android.app.Fragment completedRunListFragment = new HistoryListFragment();
+			Fragment completedRunListFragment = new HistoryListFragment();
 			ft.replace(R.id.content_frame, completedRunListFragment);
 			ft.commit();
 			// update selected item and title, then close the drawer
@@ -190,7 +190,7 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 			break;
 		case 2:
 			ft = fragmentManager.beginTransaction();
-			HelpFragment helpFragment = new HelpFragment();
+			Fragment helpFragment = new HelpFragment();
 			ft.replace(R.id.content_frame, helpFragment);
 			ft.commit();
 			// update selected item and title, then close the drawer

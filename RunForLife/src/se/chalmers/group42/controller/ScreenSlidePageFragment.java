@@ -23,8 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.app.Fragment;
 
-public class ScreenSlidePageFragment extends android.support.v4.app.Fragment {
+public class ScreenSlidePageFragment extends Fragment {
 	/**
 	 * The argument key for the page number this fragment represents.
 	 */

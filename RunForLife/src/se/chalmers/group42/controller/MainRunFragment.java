@@ -9,6 +9,8 @@ import sensors.GPSInputListener;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.IntentFilter;
 import android.graphics.Point;
@@ -20,9 +22,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
@@ -124,14 +125,14 @@ public class MainRunFragment extends Fragment implements
 	/**
 	 * A pager adapter that represents 3 modes in sequence.
 	 */
-	private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+	private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter{
 		public ScreenSlidePagerAdapter(
-				android.support.v4.app.FragmentManager fragmentManager) {
+				FragmentManager fragmentManager) {
 			super(fragmentManager);
 		}
 
 		@Override
-		public android.support.v4.app.Fragment getItem(int position) {
+		public Fragment getItem(int position) {
 			return ScreenSlidePageFragment.create(position);
 		}
 
