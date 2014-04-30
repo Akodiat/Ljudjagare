@@ -1,6 +1,6 @@
 package utils;
 
-import se.chalmers.group42.runforlife.TutorialActivity;
+import se.chalmers.group42.gameModes.TutorialActivity;
 import android.R.color;
 import android.content.Context;
 import android.graphics.Canvas;

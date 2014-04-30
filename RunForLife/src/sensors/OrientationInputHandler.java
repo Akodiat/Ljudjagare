@@ -125,7 +125,7 @@ public class OrientationInputHandler implements SensorEventListener
 		}
 
 		headingAngleOrientation =  (float) (-(180/Math.PI) * fusedOrientation[0]);
-		listener.onCompassChanged(headingAngleOrientation);
+		listener.onOrientationChanged(headingAngleOrientation);
 		
 //		//android.util.Log.d("Compass", "Sensor changed");
 //		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)

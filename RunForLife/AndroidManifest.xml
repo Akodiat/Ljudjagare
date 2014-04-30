@@ -108,7 +108,7 @@ Google Maps Android API v2, but are recommended.
             android:label="@string/title_settings" >
         </activity>
         <activity
-            android:name="se.chalmers.group42.runforlife.TutorialActivity"
+            android:name="se.chalmers.group42.gameModes.TutorialActivity"
             android:label="@string/title_activity_tutorial" >
         </activity>
     </application>

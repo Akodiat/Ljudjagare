@@ -1,6 +1,14 @@
-package se.chalmers.group42.runforlife;
+package se.chalmers.group42.gameModes;
 
+import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.FXHandler;
+import se.chalmers.group42.runforlife.R;
+import se.chalmers.group42.runforlife.R.id;
+import se.chalmers.group42.runforlife.R.layout;
+import se.chalmers.group42.runforlife.R.menu;
 import sensors.GyroGPSFusion;
+import sensors.GyroInputHandler;
+import sensors.GyroInputListener;
 import sensors.OrientationInputListener;
 import utils.DrawableView;
 import android.R.color;
@@ -16,12 +24,13 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class TutorialActivity extends Activity implements OrientationInputListener, OnSeekBarChangeListener {
+public class TutorialActivity extends Activity implements GyroInputListener, OnSeekBarChangeListener {
 
 	private FXHandler fx;
 	
 	public static int MAX_PROGRESS = 1000;
 
+	private float 	orientation;
 	private int 	x,y;
 	private int		coinX, coinY;
 	private	int 	curr100;
@@ -33,9 +42,11 @@ public class TutorialActivity extends Activity implements OrientationInputListen
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tutorial);
+		
+		orientation = 0;
 
 		//Gyro input
-		new GyroGPSFusion(this, this);
+		new GyroInputHandler(this, this);
 
 		drawableView = (DrawableView) 	findViewById(R.id.drawView);
 		drawableView.setBackgroundColor(color.background_dark);
@@ -87,15 +98,23 @@ public class TutorialActivity extends Activity implements OrientationInputListen
 		getMenuInflater().inflate(R.menu.tutorial, menu);
 		return true;
 	}
-
+	
 	@Override
-	public void onCompassChanged(float headingAngleOrientation) {
+	public void onNewDeltaAngle(float deltaAngle) {
+		orientation += Math.toDegrees(deltaAngle);
+		while(orientation<0)
+			orientation += 360;
+		orientation %= 360;
+	}
+
+	
+	private void onOrientationChanged(float orientation) {
 		//distanceText.setText("Distance: "+ getDistance() + "m");
 		
-		if (headingAngleOrientation > 180)
-			headingAngleOrientation -= 360;
+		if (orientation > 180)
+			orientation -= 360;
 
-		fx.update(fx.getNavigationFX(), headingAngleOrientation, getDistance());
+		fx.update(fx.getNavigationFX(), orientation, getDistance());
 
 		if (isCoinFound() && !hasBeenAnnounced) {
 			fx.stopLoop();

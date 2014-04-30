@@ -4,7 +4,7 @@ public interface OrientationInputListener {
 	/**
 	 * Called by a OrientationInputHandler when the compass value
 	 * is changed.
-	 * @param headingAngleOrientation the updated orientation value
+	 * @param orientation the updated orientation value
 	 */
-	public void onCompassChanged(float headingAngleOrientation);
+	public void onOrientationChanged(float orientation);
 }
