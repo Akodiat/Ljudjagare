@@ -186,8 +186,6 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		Bitmap bg = Bitmap.createBitmap(ll.getWidth(), ll.getHeight(), Bitmap.Config.ARGB_8888);
 		canvas = new Canvas(bg);
 
-		//Clear
-		//canvas.drawColor(color.darker_gray);
 		
 		Bitmap b= BitmapFactory.decodeResource(getResources(), R.drawable.arrow);
 		Matrix matrix = new Matrix();
@@ -195,8 +193,9 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		//Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmapOrg,width,height,true);
 
 		Bitmap rotatedBitmap = Bitmap.createBitmap(b , 0, 0, b.getWidth(), b.getHeight(), matrix, true);
-        canvas.drawBitmap(rotatedBitmap, x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
-				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
+        canvas.drawBitmap(rotatedBitmap, 
+        		x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getWidth()/2, 
+				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getHeight()/2, 
 				paint);
      
 		
@@ -204,7 +203,7 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		canvas.drawCircle(
 				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
 				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
-				30, paint);
+				15, paint);
 		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 		//drawableView.postInvalidate();
 		distanceText.setText("Distance: " + getDistance() +" m");
