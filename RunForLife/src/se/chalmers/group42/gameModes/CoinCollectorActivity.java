@@ -171,8 +171,8 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	@Override
-	public void onCompassChanged(float headingAngleOrientation) {
-		super.onCompassChanged(headingAngleOrientation);
+	public void onOrientationChanged(float headingAngleOrientation) {
+		super.onOrientationChanged(headingAngleOrientation);
 
 		// Update compass value
 		this.compassFromNorth = headingAngleOrientation;

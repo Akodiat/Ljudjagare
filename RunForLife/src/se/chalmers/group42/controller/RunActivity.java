@@ -313,7 +313,7 @@ public class RunActivity extends SwipeableActivity implements
 		setNotGreenToRun();
 	}
 
-	public void onCompassChanged(float headingAngleOrientation) {
+	public void onOrientationChanged(float headingAngleOrientation) {
 		// TODO Auto-generated method stub
 	}
 
