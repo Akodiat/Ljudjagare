@@ -9,8 +9,10 @@ import utils.DrawableView;
 import android.R.color;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
@@ -185,7 +187,18 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		canvas = new Canvas(bg);
 
 		//Clear
-		canvas.drawColor(color.darker_gray);
+		//canvas.drawColor(color.darker_gray);
+		
+		Bitmap b= BitmapFactory.decodeResource(getResources(), R.drawable.arrow);
+		Matrix matrix = new Matrix();
+		matrix.postRotate(orientation);
+		//Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmapOrg,width,height,true);
+
+		Bitmap rotatedBitmap = Bitmap.createBitmap(b , 0, 0, b.getWidth(), b.getHeight(), matrix, true);
+        canvas.drawBitmap(rotatedBitmap, x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
+				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
+				paint);
+     
 		
 		//Paint
 		canvas.drawCircle(
