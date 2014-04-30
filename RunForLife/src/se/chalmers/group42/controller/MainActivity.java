@@ -118,7 +118,7 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 		}
 
 		// Show help dialog at first run of the app
-		boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun2", true);
+		boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun", true);
 		if (firstrun){
 
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
