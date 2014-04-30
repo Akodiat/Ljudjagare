@@ -3,6 +3,7 @@ package se.chalmers.group42.runforlife;
 import sensors.GyroGPSFusion;
 import sensors.OrientationInputListener;
 import utils.DrawableView;
+import android.R.color;
 import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -15,9 +16,11 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class TutorialActivity extends Activity implements OrientationInputListener {
+public class TutorialActivity extends Activity implements OrientationInputListener, OnSeekBarChangeListener {
 
 	private FXHandler fx;
+	
+	public static int MAX_PROGRESS = 1000;
 
 	private int 	x,y;
 	private int		coinX, coinY;
@@ -34,47 +37,33 @@ public class TutorialActivity extends Activity implements OrientationInputListen
 		//Gyro input
 		new GyroGPSFusion(this, this);
 
-		drawableView = (DrawableView) 	findViewById(R.id.drawableView1);
-
-		distanceText = (TextView)		findViewById(R.id.textView_distance);
+		drawableView = (DrawableView) 	findViewById(R.id.drawView);
+		drawableView.setBackgroundColor(color.background_dark);
+		
+		distanceText = (TextView)		findViewById(R.id.textView_TutDistance);
 		
 		x = y = 500;
+		coinX = (int) (MAX_PROGRESS * Math.random());
+		coinY = (int) (MAX_PROGRESS * Math.random());
 
 		//SeekBar x
-		((SeekBar)findViewById(R.id.seekBar_x))
-		.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-			public void onProgressChanged(SeekBar seekBar,
-					int progress, boolean fromUser) {
-				x = progress;
-				drawableView.setXCoord(x);
-				drawableView.invalidate();
-				drawableView.postInvalidate();
-			}
-			public void onStartTrackingTouch(SeekBar seekBar) {}
-			public void onStopTrackingTouch(SeekBar seekBar) {}
-		});
+		SeekBar sbX = (SeekBar)findViewById(R.id.seekBar_x);
+		sbX.setOnSeekBarChangeListener(this);
+		sbX.setMax(MAX_PROGRESS);
 
 		//SeekBar y
-		((SeekBar)findViewById(R.id.seekBar_y))
-		.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-			public void onProgressChanged(SeekBar seekBar,
-					int progress, boolean fromUser) {
-				y = progress;
-				drawableView.setYCoord(y);
-				drawableView.invalidate();
+		SeekBar sbY = (SeekBar)findViewById(R.id.seekBar_y);
+		sbY.setOnSeekBarChangeListener(this);
+		sbX.setMax(MAX_PROGRESS);
 
-				drawableView.postInvalidate();
-			}
-			public void onStartTrackingTouch(SeekBar seekBar) {}
-			public void onStopTrackingTouch(SeekBar seekBar) {}
-		});
-
-		// Initialize audio
+		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
-		//fx.update(fx.getNavigationFX(), 0, 1000);
+		//fx.update(fx.getNavigationFX(), 0, MAX_DISTANCE);
 
 		//Start playing
 		fx.loop(fx.getNavigationFX());
+		
+		drawableView.invalidate();
 	}
 	@Override
 	protected void onResume() {
@@ -131,7 +120,7 @@ public class TutorialActivity extends Activity implements OrientationInputListen
 				float delayRatio, newDist = getDistance() % 100;
 				delayRatio = (float) Math.pow(newDist / 100, 2);
 
-				Log.d("dist", "ratio: " + delayRatio);
+				
 				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 						* delayRatio + Constants.MIN_DELAY);
 			}
@@ -139,10 +128,30 @@ public class TutorialActivity extends Activity implements OrientationInputListen
 
 	}
 	public int getDistance(){
-		return (int) Math.sqrt(x*x + y*y);
+		return (int) Math.sqrt(Math.pow(x-coinX, 2) + Math.pow(y-coinY, 2));
 	}
 	public boolean isCoinFound() {
 		return getDistance() < Constants.MIN_DISTANCE; // && Math.abs(angle - coinAngle) < 5;
 	}
+	
+	public void onProgressChanged(SeekBar seekBar,
+			int progress, boolean fromUser) {
+		if			(seekBar.getId() == R.id.seekBar_x) {
+			x = progress;
+			drawableView.setXCoord(x);
+		}
+		else if(	seekBar.getId() == R.id.seekBar_y) {
+			y = progress;
+			drawableView.setYCoord(y);
+		}
+		else return;
+		drawableView.invalidate();
+		//drawableView.postInvalidate();
+		distanceText.setText("Distance: " + getDistance() +" m");
+		//Log.d("TUTORIAL", "Distance: " + getDistance() +" m");
+		
+	}
+	public void onStartTrackingTouch(SeekBar seekBar) {}
+	public void onStopTrackingTouch(SeekBar seekBar) {}
 
 }

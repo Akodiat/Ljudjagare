@@ -4,38 +4,44 @@
     android:layout_height="match_parent"
     android:background="@drawable/background" >
 
-  <LinearLayout
+    <utils.DrawableView
+        android:id="@+id/drawView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bkgd_img"
+        android:visibility="visible" />
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:weightSum="100" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textView_TutDistance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Distance: 300 m"
-            android:textAppearance="?android:attr/textAppearanceMedium" />  
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <SeekBar
             android:id="@+id/seekBar_x"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
+            android:layout_height="wrap_content"
             android:max="1000"
-            android:progress="200"/>
+            android:progress="200" />
 
         <SeekBar
             android:id="@+id/seekBar_y"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="1000"
-            android:progress="200"/> />
+            android:progress="200" />
 
-        <utils.DrawableView
-            android:id="@+id/drawableView1"
-            android:layout_width="wrap_content"
-            android:layout_weight="85"
-            android:layout_height="172dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="85" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -61,7 +67,6 @@
                 android:layout_toRightOf="@id/gps_icon"
                 android:contentDescription="@string/image_desc_headphones"
                 android:src="@drawable/headphones_disabled" />
-
         </RelativeLayout>
     </LinearLayout>
 
@@ -76,8 +81,8 @@
         android:background="@drawable/run_button"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/run_button_text"
-        android:textSize="35sp"
         android:textColor="#FFFFFF"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
     <Button
