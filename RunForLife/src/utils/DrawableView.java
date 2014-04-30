@@ -7,9 +7,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.SurfaceView;
 import android.view.View;
 
-public class DrawableView extends View{
+public class DrawableView extends SurfaceView{
 	private Paint paint;
 	private int w,h;
 	
@@ -58,12 +59,13 @@ public class DrawableView extends View{
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		this.setBackgroundColor(color.background_dark);
+		this.setBackgroundColor(color.holo_orange_dark);
 		//Log.d("TUTORIAL", "Circle at x: "+x+"\ty:"+y);
 		canvas.drawCircle(
 				x	* w/TutorialActivity.MAX_PROGRESS, 
 				y	* h/TutorialActivity.MAX_PROGRESS, 
 				100, paint);
+		canvas.drawRect(10, 7, 15, 12, paint);
 	}
 
 }

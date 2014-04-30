@@ -4,25 +4,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/background" >
 
-    <utils.DrawableView
-        android:id="@+id/drawView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bkgd_img"
-        android:visibility="visible" />
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:weightSum="100" >
-
-        <TextView
-            android:id="@+id/textView_TutDistance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Distance: 300 m"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <SeekBar
             android:id="@+id/seekBar_x"
@@ -31,22 +19,25 @@
             android:max="1000"
             android:progress="200" />
 
-        <SeekBar
-            android:id="@+id/seekBar_y"
+        <TextView
+            android:id="@+id/textView_TutDistance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="1000"
-            android:progress="200" />
+            android:text="Distance: 300 m"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Space
+        <LinearLayout
+            android:id="@+id/drawingLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="85" />
+            android:layout_height="314dp"
+            android:background="@drawable/bkgd_img"
+            android:orientation="vertical" >
+
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="15"
+            android:layout_height="match_parent"
             android:background="#1c1c1f"
             android:orientation="vertical"
             android:paddingBottom="15dp"
@@ -67,9 +58,11 @@
                 android:layout_toRightOf="@id/gps_icon"
                 android:contentDescription="@string/image_desc_headphones"
                 android:src="@drawable/headphones_disabled" />
-        </RelativeLayout>
-    </LinearLayout>
 
+        </RelativeLayout>
+
+    </LinearLayout>
+    
     <Button
         android:id="@+id/run_button"
         android:layout_width="100dp"
@@ -85,21 +78,15 @@
         android:textSize="35sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/button_stop"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="25dp"
-        android:layout_marginRight="110dp"
-        android:layout_toLeftOf="@id/run_button"
-        android:background="@drawable/stop_button"
-        android:fontFamily="sans-serif-condensed"
-        android:text="STOP"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="invisible" />
+    <SeekBar
+        android:id="@+id/seekBar_y"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:max="1000"
+        android:progress="200"
+        android:rotation="90" />
 
 </RelativeLayout>

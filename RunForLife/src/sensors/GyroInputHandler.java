@@ -19,14 +19,10 @@ public class GyroInputHandler implements SensorEventListener
 	// accelerometer vector
 	private Vector3 accel;
 
-	private float fusedBearing;
-
 	private GyroInputListener listener;
 
 	public GyroInputHandler(GyroInputListener listener, Context context) {
 		this.listener = listener;
-
-		fusedBearing = 0;
 
 		accel 	= new Vector3(0, 0, 0);
 		gyro 	= new Vector3(0, 0, 0);
@@ -84,7 +80,6 @@ public class GyroInputHandler implements SensorEventListener
 
 			listener.onNewDeltaAngle(dV);
 
-			Log.d("GYROSCOPE", "v: "+Math.round(v) + "\t\tfusedBearing: " + fusedBearing);
 			break;
 		}
 
