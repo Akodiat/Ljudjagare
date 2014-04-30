@@ -186,13 +186,12 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 		//Clear
 		canvas.drawColor(color.darker_gray);
+		
+		//Paint
 		canvas.drawCircle(
 				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
 				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
 				30, paint);
-		
-
-		
 		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 		//drawableView.postInvalidate();
 		distanceText.setText("Distance: " + getDistance() +" m");

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background" >
 
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -14,6 +15,13 @@
 
         <SeekBar
             android:id="@+id/seekBar_x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progress="200" />
+
+        <SeekBar
+            android:id="@+id/seekBar_y"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="1000"
@@ -77,16 +85,5 @@
         android:textColor="#FFFFFF"
         android:textSize="35sp"
         android:textStyle="bold" />
-
-    <SeekBar
-        android:id="@+id/seekBar_y"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="60dp"
-        android:max="1000"
-        android:progress="200"
-        android:rotation="90" />
 
 </RelativeLayout>

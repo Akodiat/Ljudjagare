@@ -59,7 +59,7 @@ public class DrawableView extends SurfaceView{
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		this.setBackgroundColor(color.holo_orange_dark);
+//		this.setBackgroundColor(color.);
 		//Log.d("TUTORIAL", "Circle at x: "+x+"\ty:"+y);
 		canvas.drawCircle(
 				x	* w/TutorialActivity.MAX_PROGRESS, 
