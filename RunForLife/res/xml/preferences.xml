@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:persistent="true">
 
     <PreferenceCategory android:title="Running" >
         <EditTextPreference
@@ -8,19 +8,32 @@
             android:summary="700 meters interval between each checkpoint"
             android:dialogTitle="Interval distance (meters)" />
     </PreferenceCategory>
+    
     <PreferenceCategory android:title="CheckPoints" >
         <EditTextPreference
             android:key="nrPoints"
             android:title="CheckPoints"
             android:summary="4 number of checkpoints"
-            android:dialogTitle="Number of points" />
+            android:dialogTitle="Number of points" />   
     </PreferenceCategory>
+    
     <PreferenceCategory android:title="Sound" >
         <CheckBoxPreference
             android:key="sound"
             android:title="Stereo sound"
             android:summary="Toggle stereo sound"
             android:defaultValue="true" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Navigation"> 
+        <SwitchPreference 
+            android:key="gyro"
+            android:summaryOn="Using gyro for navigation" 
+            android:summaryOff="Using GPS bearing for navigation" 
+            android:title="Orientation"
+            android:switchTextOn="Use gyroscope" 
+            android:switchTextOff="Use GPS bearing"
+            android:persistent="true"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

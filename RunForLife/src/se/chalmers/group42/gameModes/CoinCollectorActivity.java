@@ -157,7 +157,7 @@ public class CoinCollectorActivity extends RunActivity {
 		}
 
 		// If a current coin is set
-		if (this.coinLocation != null)
+		if (this.coinLocation != null && !usingGyro())
 			adjustPanoration();
 	}
 
@@ -171,17 +171,20 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	@Override
-	public void onOrientationChanged(float headingAngleOrientation) {
-		super.onOrientationChanged(headingAngleOrientation);
-
-		// Update compass value
-		this.compassFromNorth = headingAngleOrientation;
-
-		// If a current coin is set
-		if (usingCompass() && this.coinLocation != null) {
+	public void onOrientationChanged(float orientation) {
+		super.onOrientationChanged(orientation);
+		human.getLocation().setBearing(orientation);
+		if(this.coinLocation != null){
 			adjustPanoration();
-			pointArrowToSource_Compass(headingAngleOrientation);
 		}
+//		// Update compass value
+//		this.compassFromNorth = headingAngleOrientation;
+//
+//		// If a current coin is set
+//		if (usingCompass() && this.coinLocation != null) {
+//			adjustPanoration();
+//			pointArrowToSource_Compass(headingAngleOrientation);
+//		}
 	}
 
 	private boolean isAtCoin() {
@@ -214,16 +217,10 @@ public class CoinCollectorActivity extends RunActivity {
 		}
 	}
 
-	private boolean usingCompass() {
-		return Constants.USING_COMPASS; // human.getLocation().getSpeed() < 1;
-	}
-
 	private void adjustPanoration() {
 
 		// negate to invert angle
-		float angle = -(usingCompass() ? compassFromNorth
-				+ human.getLocation().bearingTo(coinLocation)
-				: getRotation_GPS());
+		float angle = -(getRotation());
 
 		float distance = human.getLocation().distanceTo(coinLocation) 
 				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
@@ -286,11 +283,11 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	/**
-	 * Gets the rotation according to the GPS bearing Rotating an upwards
-	 * pointing arrow with this value will make the arrow point in the direction
+	 * Gets the rotation according to the GPS bearing or the GyroGPSFusion, depending on the value of usingGyro(). 
+	 * Rotating an upwards pointing arrow with this value will make the arrow point in the direction
 	 * of the source
 	 */
-	public float getRotation_GPS() {
+	public float getRotation() {
 		float bearingTo = human.getLocation().bearingTo(coinLocation);
 		if (bearingTo < 0) {
 			bearingTo += 360;
@@ -301,20 +298,6 @@ public class CoinCollectorActivity extends RunActivity {
 
 	private float GPS_Bearing(){
 		return 	human.getOldLocation().bearingTo(human.getLocation());
-	}
-
-	/**
-	 * Gets the rotation according to the compass Rotating an upwards pointing
-	 * arrow with this value will make the arrow point in the direction of the
-	 * source
-	 */
-	public float getRotation_Compass() {
-		float bearingTo = human.getLocation().bearingTo(coinLocation);
-		if (bearingTo < 0) {
-			bearingTo += 360;
-		}
-		return bearingTo - compassFromNorth;
-
 	}
 
 	private ArrayList<Location> generateRoute(int checkpoints, double radius, Location origo){

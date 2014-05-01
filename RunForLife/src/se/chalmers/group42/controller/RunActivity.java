@@ -7,8 +7,10 @@ import java.util.Map;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.View;
@@ -67,8 +69,12 @@ public class RunActivity extends SwipeableActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 		
-		//Setting up Sensor input
+		//Setting up GPS input needed to get GPS updates
 		gpsInputHandler = new GPSInputHandler(this, this);
+		
+		//Setting up orientation input.
+		if(usingGyro())
+			new GyroGPSFusion(this, this);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
@@ -320,5 +326,10 @@ public class RunActivity extends SwipeableActivity implements
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
 		dataHandler.newLocation(location);
+	}
+	
+	protected boolean usingGyro(){
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		return sharedPreferences.getBoolean("gyro", false);
 	}
 }
