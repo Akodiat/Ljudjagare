@@ -166,12 +166,14 @@ public class MainActivity extends Activity implements Callbacks {
 	private void selectItem(int position) {
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction ft;
+		boolean fragmentMainVisible;
 		switch (position) {
 		case 0:
 			// Insert the fragment by replacing any existing fragment
 			ft = fragmentManager.beginTransaction();
 			Fragment mainRunFragment = new MainRunFragment();
-			ft.replace(R.id.content_frame, mainRunFragment);
+			ft.replace(R.id.content_frame, mainRunFragment, "mainRunFragment");
+//			ft.addToBackStack(null);
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
@@ -180,8 +182,12 @@ public class MainActivity extends Activity implements Callbacks {
 			break;
 		case 1:
 			ft = fragmentManager.beginTransaction();
-			Fragment completedRunListFragment = new HistoryListFragment();
-			ft.replace(R.id.content_frame, completedRunListFragment);
+			fragmentMainVisible = fragmentManager.findFragmentByTag("mainRunFragment").isVisible();
+			Fragment historyListFragment = new HistoryListFragment();
+			ft.replace(R.id.content_frame, historyListFragment, "historyListFragment");
+			if(fragmentMainVisible){
+				ft.addToBackStack(null);
+			}
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
@@ -190,8 +196,12 @@ public class MainActivity extends Activity implements Callbacks {
 			break;
 		case 2:
 			ft = fragmentManager.beginTransaction();
+			fragmentMainVisible = fragmentManager.findFragmentByTag("mainRunFragment").isVisible();
 			Fragment helpFragment = new HelpFragment();
-			ft.replace(R.id.content_frame, helpFragment);
+			ft.replace(R.id.content_frame, helpFragment, "helpFragment");
+			if(fragmentMainVisible){
+				ft.addToBackStack(null);
+			}
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
