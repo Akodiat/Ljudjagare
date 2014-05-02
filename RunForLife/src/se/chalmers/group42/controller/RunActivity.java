@@ -56,7 +56,7 @@ import com.google.android.gms.maps.model.LatLng;
  * 
  */
 public class RunActivity extends SwipeableActivity implements
-		MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
+		RunMapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
 		GPSInputListener, OrientationInputListener {
 
 	private Button runButton, stopButton, finishButton;
@@ -77,7 +77,7 @@ public class RunActivity extends SwipeableActivity implements
 	private GPSInputHandler gpsInputHandler;
 	
 	private RunFragment runFragment;
-	private MapFragment mapFragment;
+	private RunMapFragment mapFragment;
 	private StatsFragment statsFragment;
 	
 	private MySQLiteHelper db;
@@ -100,7 +100,7 @@ public class RunActivity extends SwipeableActivity implements
 		 */
 
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
-				getSupportFragmentManager());
+				getFragmentManager());
 
 		// Set up the ViewPager with the sections adapter
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -136,7 +136,7 @@ public class RunActivity extends SwipeableActivity implements
 		}
 
 		runFragment = new RunFragment();
-		mapFragment = new MapFragment();
+		mapFragment = new RunMapFragment();
 		statsFragment = new StatsFragment();
 
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
@@ -193,8 +193,6 @@ public class RunActivity extends SwipeableActivity implements
 				}
 			});
 
-
-
 			// Setting up statusIconHandler
 			IntentFilter filter = new IntentFilter(
 					"android.intent.action.HEADSET_PLUG");
@@ -216,7 +214,6 @@ public class RunActivity extends SwipeableActivity implements
 		setMapFragment(mapFragment);
 		setStatsFragment(statsFragment);
 	}
-
 
 	// These are implemented in CoinCollector, etc. instead. This method should
 	// perhaps be abstract.
@@ -292,7 +289,7 @@ public class RunActivity extends SwipeableActivity implements
 	}
 
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+		RunMapFragment mapFrag = (RunMapFragment) getFragmentManager()
 				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 		mapFrag.handleGetDirectionsResult(directionPoints);
 	}
@@ -317,7 +314,7 @@ public class RunActivity extends SwipeableActivity implements
 
 	public void updateDisplay(long seconds, int distance, double currentspeed,
 			int coins) {
-		RunFragment runFrag = (RunFragment) getSupportFragmentManager()
+		RunFragment runFrag = (RunFragment) getFragmentManager()
 				.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
 		if (getRunFragment().isAdded()) {
 			runFrag.updateDisp(seconds, distance, currentspeed, coins);
@@ -444,17 +441,16 @@ public class RunActivity extends SwipeableActivity implements
 			mapFragment.setArguments(locs);
 			statsFragment.setArguments(stats);
 		}else{
-			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
+			RunFragment runFrag = (RunFragment) getFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
 			if (getRunFragment().isAdded()) {
 				runFrag.setDisplay(args);
 			}		
-			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+			RunMapFragment mapFrag = (RunMapFragment) getFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 			if (getMapFragment().isAdded()) {
 				mapFrag.displayFinishedMap(locs);
 			}
 		}
 	}
-
 }

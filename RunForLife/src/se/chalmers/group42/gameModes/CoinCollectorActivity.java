@@ -3,7 +3,7 @@ package se.chalmers.group42.gameModes;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import se.chalmers.group42.controller.MapFragment;
+import se.chalmers.group42.controller.RunMapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.controller.RunFragment;
 import se.chalmers.group42.runforlife.Constants;
@@ -70,7 +70,7 @@ public class CoinCollectorActivity extends RunActivity {
 	public void sendFinalRoute(ArrayList<Location> finalRoute, float distance) {
 		this.finalRoute = finalRoute;
 		coinLocation = finalRoute.get(0);
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+		RunMapFragment mapFrag = (RunMapFragment) getFragmentManager()
 				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 
 		mapFrag.handleNewCoin(coinLocation);
@@ -133,12 +133,12 @@ public class CoinCollectorActivity extends RunActivity {
 
 			generateRandomRoute(Integer.parseInt(distance));
 
-			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+			RunMapFragment mapFrag = (RunMapFragment) getFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 			mapFrag.zoomToPosition(location);
 			mapFrag.setCheckpoints(checkpoints);
 
-			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
+			RunFragment runFrag = (RunFragment) getFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
 			runFrag.setMax(checkpoints);
 		}
@@ -206,7 +206,7 @@ public class CoinCollectorActivity extends RunActivity {
 					- Constants.MIN_DISTANCE;
 			curr100 = ((int) (distance / 100)) * 100;
 
-			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+			RunMapFragment mapFrag = (RunMapFragment) getFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 			mapFrag.handleNewCoin(coinLocation);
 			// Show collected coin on the map

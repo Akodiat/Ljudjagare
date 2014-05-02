@@ -7,11 +7,11 @@ import se.chalmers.group42.runforlife.R.string;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 
@@ -19,7 +19,7 @@ import android.util.Log;
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public abstract class SwipeableActivity extends FragmentActivity implements ActionBar.TabListener{
+public abstract class SwipeableActivity extends Activity implements ActionBar.TabListener{
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -111,7 +111,6 @@ public abstract class SwipeableActivity extends FragmentActivity implements Acti
 	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-
 	}
 	
 	public Fragment getRunFragment() {

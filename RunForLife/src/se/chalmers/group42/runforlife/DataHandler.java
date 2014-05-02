@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import se.chalmers.group42.controller.MapFragment;
+import se.chalmers.group42.controller.RunMapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.controller.StatsFragment;
 import se.chalmers.group42.database.*;
@@ -70,7 +70,7 @@ public class DataHandler {
 						//adds the distance from the last point to the current point
 						distance += prev.distanceTo(curr);
 						
-						MapFragment mapFrag = (MapFragment) runAct.getSupportFragmentManager().findFragmentByTag(
+						RunMapFragment mapFrag = (RunMapFragment) runAct.getFragmentManager().findFragmentByTag(
 				                "android:switcher:"+R.id.pager+":1");
 						if(runAct.getStatsFragment().isAdded()){
 							mapFrag.drawMyPath(location);
@@ -176,7 +176,7 @@ public class DataHandler {
 		coin.setDistance(d);
 		
 		db.addCoin(coin);
-		StatsFragment statsFrag = (StatsFragment) runAct.getSupportFragmentManager().findFragmentByTag(
+		StatsFragment statsFrag = (StatsFragment) runAct.getFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":2");
 		if(runAct.getStatsFragment().isAdded()){
 			statsFrag.updateTableData(d,seconds);

@@ -1,6 +1,6 @@
 package se.chalmers.group42.gameModes;
 
-import se.chalmers.group42.controller.MapFragment;
+import se.chalmers.group42.controller.RunMapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
@@ -102,7 +102,7 @@ public class EscapeActivity extends RunActivity {
 	
 	private void updateMarker() {
 		Log.d("Monster", "Distance: "+ human.getLocation().distanceTo(monster.getLocation()));
-		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
+		RunMapFragment mapFrag = (RunMapFragment) getFragmentManager().findFragmentByTag(
 				"android:switcher:"+R.id.pager+":1");
 		//mapFrag.handleNewCoin(monster.getLocation());
 		// Show collected coin on the map
