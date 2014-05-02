@@ -37,7 +37,7 @@
                 android:paddingRight="10sp"
                 android:text="@string/app_decription"
                 android:textColor="#1c1c1f"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <RelativeLayout
@@ -46,47 +46,29 @@
             android:layout_weight="60" >
 
             <android.support.v4.view.ViewPager
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
-            <ImageView
-                android:id="@+id/previous_mode_image"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"
-                android:paddingLeft="10dp"
-                android:src="@drawable/prev_mode"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/next_mode_image"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:paddingRight="10dp"
-                android:src="@drawable/next_mode" />
         </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
         android:background="#1c1c1f"
         android:orientation="vertical"
         android:paddingBottom="13dp"
-        android:paddingTop="13dp" 
-        android:layout_alignParentBottom="true">
+        android:paddingTop="13dp" >
 
         <ImageView
             android:id="@+id/gps_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/image_desc_gps"
-            android:src="@drawable/ic_action_location_off" 
-            android:paddingLeft="10dp"/>
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_action_location_off" />
 
         <ImageView
             android:id="@+id/headphones_icon"

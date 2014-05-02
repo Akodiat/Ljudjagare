@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.IntentFilter;
@@ -105,27 +104,31 @@ public class MainRunFragment extends Fragment implements
 										}
 									}).show();
 
-				} else
+				} else {
 					setPrefs();
 					new ModeController(mainActivity).launchMode((int) mPager
 							.getCurrentItem());
+				}
 			}
 		});
 
+		// Get slide fragment XML.
+		View modeView = inflater.inflate(R.layout.fragment_screen_slide_page,
+				null);
+
 		// Handle previous and next pointers.
-		if (mPager.getCurrentItem() == 0) {
-			view.findViewById(R.id.previous_mode_image).setVisibility(
+
+		switch (mPager.getCurrentItem()) {
+		case 0:
+			modeView.findViewById(R.id.previous_mode_image).setVisibility(
 					View.INVISIBLE);
-			view.findViewById(R.id.next_mode_image).setVisibility(View.VISIBLE);
-		} else if (mPager.getCurrentItem() == (NUM_MODES - 1)) {
-			view.findViewById(R.id.previous_mode_image).setVisibility(
+			modeView.findViewById(R.id.next_mode_image).setVisibility(
 					View.VISIBLE);
-			view.findViewById(R.id.next_mode_image).setVisibility(
+		case 1:
+			modeView.findViewById(R.id.previous_mode_image).setVisibility(
+					View.VISIBLE);
+			modeView.findViewById(R.id.next_mode_image).setVisibility(
 					View.INVISIBLE);
-		} else {
-			view.findViewById(R.id.previous_mode_image).setVisibility(
-					View.VISIBLE);
-			view.findViewById(R.id.next_mode_image).setVisibility(View.VISIBLE);
 		}
 
 		// Set up statusIconHandler
@@ -188,10 +191,12 @@ public class MainRunFragment extends Fragment implements
 	public void onLocationChanged(Location location) {
 		// Unneeded
 	}
-	public void setPrefs(){
-    	SharedPreferences preferences = getActivity().getSharedPreferences("MODE", Context.MODE_PRIVATE);
-    	SharedPreferences.Editor editor = preferences.edit();
-    	editor.putString("application_mode", "RUN_MODE");
-    	editor.commit();
+
+	public void setPrefs() {
+		SharedPreferences preferences = getActivity().getSharedPreferences(
+				"MODE", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = preferences.edit();
+		editor.putString("application_mode", "RUN_MODE");
+		editor.commit();
 	}
 }

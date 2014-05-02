@@ -18,6 +18,7 @@ package se.chalmers.group42.controller;
 
 import se.chalmers.group42.runforlife.R;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import android.support.v4.app.Fragment;
 
 public class ScreenSlidePageFragment extends Fragment {
+
 	/**
 	 * The argument key for the page number this fragment represents.
 	 */
@@ -34,12 +36,12 @@ public class ScreenSlidePageFragment extends Fragment {
 	/**
 	 * Images to be used for modes.
 	 */
-	private int[] images = { R.drawable.coin_collect, R.drawable.placeholder};
+	private int[] images = { R.drawable.coin_collect, R.drawable.placeholder };
 
 	/**
 	 * The name of each mode.
 	 */
-	private String[] imageDesc = { "COIN COLLECTOR", "TUTORIAL"};
+	private String[] imageDesc = { "COIN COLLECTOR", "TUTORIAL" };
 
 	/**
 	 * The fragment's mode number.
@@ -66,6 +68,7 @@ public class ScreenSlidePageFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
 		// Inflate the layout containing image and text
 		ViewGroup rootView = (ViewGroup) inflater.inflate(
 				R.layout.fragment_screen_slide_page, container, false);
@@ -84,5 +87,35 @@ public class ScreenSlidePageFragment extends Fragment {
 	 */
 	public int getModeNumber() {
 		return mModeNumber;
+	}
+
+	/**
+	 * A fragment representing the image side of the mode selector.
+	 */
+	public static class ModeFrontFragment extends Fragment {
+		public ModeFrontFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			return inflater.inflate(R.layout.fragment_screen_slide_page,
+					container, false);
+		}
+	}
+
+	/**
+	 * A fragment representing the info side of the mode selector.
+	 */
+	public static class ModeBackFragment extends Fragment {
+		public ModeBackFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			return inflater.inflate(R.layout.fragment_screen_slide_page_back,
+					container, false);
+		}
 	}
 }
