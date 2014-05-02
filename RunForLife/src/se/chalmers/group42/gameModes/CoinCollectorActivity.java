@@ -1,6 +1,7 @@
 package se.chalmers.group42.gameModes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import se.chalmers.group42.controller.FinishedRunActivity;
 import se.chalmers.group42.controller.MapFragment;
@@ -220,7 +221,7 @@ public class CoinCollectorActivity extends RunActivity {
 	private void adjustPanoration() {
 
 		// negate to invert angle
-		float angle = (-getRotation());
+		float angle = -getRotation();
 
 		float distance = human.getLocation().distanceTo(coinLocation) 
 				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
@@ -264,17 +265,6 @@ public class CoinCollectorActivity extends RunActivity {
 
 	}
 
-	/**
-	 * Play long sound without audible repetition.
-	 */
-	// @Override
-	// protected void playLongSound() {
-	// super.playSound();
-	//
-	// if (!fx.getNavigationFX().isPlaying())
-	// fx.loopLong(fx.getNavigationFX());
-	// }
-
 	@Override
 	protected void stopSound() {
 		super.stopSound();
@@ -292,10 +282,16 @@ public class CoinCollectorActivity extends RunActivity {
 		if (bearingTo < 0) {
 			bearingTo += 360;
 		}
-		return bearingTo - 
+		float tempAngle = bearingTo - 
 				(usingGyro() ? 
 						this.orientation : 
 							human.getLocation().getBearing());
+		if(tempAngle > 180){
+			tempAngle = tempAngle - 360;
+		}else if(tempAngle < -180){
+			tempAngle = tempAngle + 360;
+		}
+		return tempAngle;
 
 	}
 
@@ -428,6 +424,10 @@ public class CoinCollectorActivity extends RunActivity {
 					.getLongitude(), routeTest.get(i + 1).getLatitude(),
 					routeTest.get(i + 1).getLongitude(),
 					GMapV2Direction.MODE_WALKING);
+		}
+
+		if (Math.random() > 0.5 ){
+			Collections.reverse(route);
 		}
 
 		return route;

@@ -47,17 +47,19 @@ public class FXHandler {
 	@SuppressLint("UseSparseArrays")
 	public void initSound(Context context) {
 		env = SoundEnv.getInstance((Activity) context);
-		
+
 		// Load sound into memory. Has to be mono .wav file.
-		Buffer navFXFrontBuffer, navFXBehindBuffer;
+		Buffer navFXFrontBuffer, navFXBehindBuffer, navFXToSourceBuffer;
 		try {
 			navFXFrontBuffer = env.addBuffer("nav_fx");
 			navFXBehindBuffer = env.addBuffer("nav_fx_behind");
+			navFXToSourceBuffer = env.addBuffer("techno2");
 
 			// Add the audio buffer as a source in the 3D room and
 			// create FX instance.
 			navFX = new FX(env.addSource(navFXFrontBuffer),
-					env.addSource(navFXBehindBuffer));
+					env.addSource(navFXBehindBuffer), 
+					env.addSource(navFXToSourceBuffer));
 		} catch (IOException e) {
 			Log.e(Constants.TAG, "Could not initialize OpenAL4Android", e);
 		}
@@ -96,7 +98,7 @@ public class FXHandler {
 	public Speech getSpeech(int i){
 		return speech.get(i);
 	}
-	
+
 	public void initSoundPool(Context context) {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 
@@ -111,7 +113,7 @@ public class FXHandler {
 		speech.add(new Speech(soundPool.load(context, R.raw.say800, 1)));
 		speech.add(new Speech(soundPool.load(context, R.raw.say900, 1)));
 		speech.add(new Speech(soundPool.load(context, R.raw.say1000, 1)));
-		
+
 		coin = soundPool.load(context, R.raw.dragon, 1);
 		sayCoinReached = soundPool.load(context, R.raw.coin_reached, 1);
 		sayNewCoin = soundPool.load(context, R.raw.new_coin, 1);
@@ -142,8 +144,11 @@ public class FXHandler {
 	 *            the sound to be looped
 	 */
 	public void loop(FX fx) {
-		env.setListenerOrientation(fx.angle());
+		//env.setListenerOrientation(fx.angle());
 		fx.play();
+		if(Math.abs(fx.angle()) < Constants.TOSOURCE_ANGLE && fx.angle() != 0){
+			delay = 6857;
+		}
 
 		// Send message to handler with delay.
 		Message msg = handler.obtainMessage(Constants.MSG);
@@ -198,18 +203,29 @@ public class FXHandler {
 	 * @param distance
 	 *            the current distance from goal
 	 */
-	public void update(FX fx, float angle, float distance) {
+	public void update(FX fx, float angle, float distance) {		
 		fx.setAngle(angle);
 
-		if (fx.angle() < 0 && fx.angle() > -Constants.FRONT_ANGLE)
+		env.setListenerOrientation(fx.angle());
+
+		if (Math.abs(fx.angle()) < Constants.TOSOURCE_ANGLE){
+			fx.setPitch(1);
+			//env.setListenerOrientation(fx.angle());
+		}
+		else if (fx.angle() < 0 && fx.angle() > -Constants.FRONT_ANGLE ){
 			fx.setPitch((1 - Constants.MIN_PITCH) / Constants.FRONT_ANGLE * fx.angle() + 1);
-		else if (fx.angle() >= 0 && fx.angle() < Constants.FRONT_ANGLE)
+			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.7);
+			env.setListenerOrientation(fx.angle() - tempAngle);
+//			env.setListenerOrientation(-90);
+		}
+		else if (fx.angle() >= 0 && fx.angle() < Constants.FRONT_ANGLE){
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-Constants.FRONT_ANGLE) * fx.angle() + 1);
+			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.7);
+			env.setListenerOrientation(fx.angle() + tempAngle);
+//			env.setListenerOrientation(90);
+		} 
 		
 		fx.setDistance(distance);
-
-		// tell the user how close to goal he/she is
-		//distanceAnnouncer(distance);
 	}
 
 	public void loopCoin(float distance) {
@@ -245,30 +261,30 @@ public class FXHandler {
 		soundPool.play(sayNewCoin, 1, 1, 1, 0, 1);
 	}
 
-//	public void distanceAnnouncer(float distance) {
-//		int rConst = 1; // meters from coin destination
-//
-//		if (distance < 1000 + rConst && distance > 1000 - rConst)
-//			sayDistance(say1000);
-//		if (distance < 900 + rConst && distance > 900 - rConst)
-//			sayDistance(say900);
-//		if (distance < 800 + rConst && distance > 800 - rConst)
-//			sayDistance(say800);
-//		if (distance < 700 + rConst && distance > 700 - rConst)
-//			sayDistance(say700);
-//		if (distance < 600 + rConst && distance > 600 - rConst)
-//			sayDistance(say600);
-//		if (distance < 500 + rConst && distance > 500 - rConst)
-//			sayDistance(say500);
-//		if (distance < 400 + rConst && distance > 400 - rConst)
-//			sayDistance(say400);
-//		if (distance < 300 + rConst && distance > 300 - rConst)
-//			sayDistance(say300);
-//		if (distance < 200 + rConst && distance > 200 - rConst)
-//			sayDistance(say200);
-//		if (distance < 100 + rConst && distance > 100 - rConst)
-//			sayDistance(say100);
-//	}
+	//	public void distanceAnnouncer(float distance) {
+	//		int rConst = 1; // meters from coin destination
+	//
+	//		if (distance < 1000 + rConst && distance > 1000 - rConst)
+	//			sayDistance(say1000);
+	//		if (distance < 900 + rConst && distance > 900 - rConst)
+	//			sayDistance(say900);
+	//		if (distance < 800 + rConst && distance > 800 - rConst)
+	//			sayDistance(say800);
+	//		if (distance < 700 + rConst && distance > 700 - rConst)
+	//			sayDistance(say700);
+	//		if (distance < 600 + rConst && distance > 600 - rConst)
+	//			sayDistance(say600);
+	//		if (distance < 500 + rConst && distance > 500 - rConst)
+	//			sayDistance(say500);
+	//		if (distance < 400 + rConst && distance > 400 - rConst)
+	//			sayDistance(say400);
+	//		if (distance < 300 + rConst && distance > 300 - rConst)
+	//			sayDistance(say300);
+	//		if (distance < 200 + rConst && distance > 200 - rConst)
+	//			sayDistance(say200);
+	//		if (distance < 100 + rConst && distance > 100 - rConst)
+	//			sayDistance(say100);
+	//	}
 
 	/**
 	 * Plays announcements to user in new thread.

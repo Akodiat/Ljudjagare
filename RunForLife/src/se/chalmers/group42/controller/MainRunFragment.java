@@ -10,8 +10,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.location.Location;
 import android.view.Display;
@@ -103,6 +106,7 @@ public class MainRunFragment extends Fragment implements
 									}).show();
 
 				} else
+					setPrefs();
 					new ModeController(mainActivity).launchMode((int) mPager
 							.getCurrentItem());
 			}
@@ -184,5 +188,10 @@ public class MainRunFragment extends Fragment implements
 	public void onLocationChanged(Location location) {
 		// Unneeded
 	}
-
+	public void setPrefs(){
+    	SharedPreferences preferences = getActivity().getSharedPreferences("MODE", Context.MODE_PRIVATE);
+    	SharedPreferences.Editor editor = preferences.edit();
+    	editor.putString("application_mode", "RUN_MODE");
+    	editor.commit();
+	}
 }
