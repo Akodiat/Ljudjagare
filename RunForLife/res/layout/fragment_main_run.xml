@@ -85,16 +85,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/image_desc_gps"
-            android:src="@drawable/gps_disabled" />
+            android:src="@drawable/ic_action_location_off" 
+            android:paddingLeft="10dp"/>
 
         <ImageView
             android:id="@+id/headphones_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-17dp"
+            android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/gps_icon"
             android:contentDescription="@string/image_desc_headphones"
-            android:src="@drawable/headphones_disabled" />
+            android:src="@drawable/ic_action_headphones_off" />
     </RelativeLayout>
 
     <Button

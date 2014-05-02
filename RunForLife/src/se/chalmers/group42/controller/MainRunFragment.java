@@ -160,28 +160,28 @@ public class MainRunFragment extends Fragment implements
 	public void onGPSConnect() {
 		if (!gpsOn) {
 			gpsOn = true;
-			gpsIcon.setImageResource(R.drawable.gps_activated);
+			gpsIcon.setImageResource(R.drawable.ic_action_location_found);
 		}
 	}
 
 	@Override
 	public void onGPSDisconnect() {
 		gpsOn = false;
-		gpsIcon.setImageResource(R.drawable.gps_disabled);
+		gpsIcon.setImageResource(R.drawable.ic_action_location_off);
 	}
 
 	@Override
 	public void onHeadphonesIn() {
 		if (!headphonesIn) {
 			headphonesIn = true;
-			headPhonesIcon.setImageResource(R.drawable.headphones_activated);
+			headPhonesIcon.setImageResource(R.drawable.ic_action_headphones);
 		}
 	}
 
 	@Override
 	public void onHeadphonesOut() {
 		headphonesIn = false;
-		headPhonesIcon.setImageResource(R.drawable.headphones_disabled);
+		headPhonesIcon.setImageResource(R.drawable.ic_action_headphones_off);
 	}
 
 	@Override
