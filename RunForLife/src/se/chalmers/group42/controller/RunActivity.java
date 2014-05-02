@@ -18,6 +18,7 @@ import android.support.v4.view.ViewPager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -144,11 +145,11 @@ public class RunActivity extends SwipeableActivity implements
 
 		// Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
+		btnImage = (ImageView) findViewById(R.id.run_button_img);
 		headPhonesIcon = (ImageView) findViewById(R.id.headphones_icon);
 		runButton = (Button) findViewById(R.id.run_button);
 		stopButton = (Button) findViewById(R.id.button_stop);
 		finishButton = (Button) findViewById(R.id.done_button);
-		
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -164,8 +165,6 @@ public class RunActivity extends SwipeableActivity implements
 			gpsInputHandler = new GPSInputHandler(this, this);
 
 			this.dataHandler = new DataHandler(db, this);
-
-			btnImage = (ImageView) findViewById(R.id.run_button_img);
 			
 			runButton.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -203,13 +202,13 @@ public class RunActivity extends SwipeableActivity implements
 
 		}else if(mode.equals("DISPLAY_MODE")){
 			setUpDisplay(false);
-
 			runButton.setVisibility(View.GONE);
 			stopButton.setVisibility(View.GONE);
 			gpsIcon.setVisibility(View.GONE);
 			headPhonesIcon.setVisibility(View.GONE);
 			finishButton.setVisibility(View.VISIBLE);
 			btnImage.setVisibility(View.GONE);
+			
 		}
 
 		setRunFragment(runFragment);
@@ -394,7 +393,6 @@ public class RunActivity extends SwipeableActivity implements
 			}
 		}
 
-
 		FinishedRoute fin = db.getFinishedRoute(id);
 		Bundle args = new Bundle();
 		args.putLong("time", fin.getTotTime());
@@ -438,7 +436,7 @@ public class RunActivity extends SwipeableActivity implements
 
 		stats.putLongArray("times", times);
 		stats.putIntArray("dists", dists);
-
+		
 		if(!stopped){
 			runFragment.setArguments(args);
 			mapFragment.setArguments(locs);
