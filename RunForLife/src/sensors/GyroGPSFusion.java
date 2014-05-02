@@ -13,12 +13,6 @@ import android.util.Log;
  */
 public class GyroGPSFusion implements GyroInputListener, GPSInputListener
 {
-	// angular speeds from gyro
-	private Vector3 gyro;
-
-	// accelerometer vector
-	private Vector3 accel;
-
 	private float fusedBearing;
 
 	private OrientationInputListener listener;
@@ -26,7 +20,7 @@ public class GyroGPSFusion implements GyroInputListener, GPSInputListener
 	public GyroGPSFusion(OrientationInputListener listener, Context context) {
 		this.listener = listener;
 
-		new GPSInputHandler(this, context);
+		new GPSInputHandler	(this, context);
 		new GyroInputHandler(this, context);
 
 		fusedBearing = 0;
@@ -42,8 +36,7 @@ public class GyroGPSFusion implements GyroInputListener, GPSInputListener
 	@Override
 	public void onLocationChanged(Location location) {
 		if(location.hasBearing()){
-			//this.gpsBearing = location.getBearing();
-			fusedBearing = location.getBearing(); //+= (fusedBearing - location.getBearing()) / 2;
+			fusedBearing = location.getBearing();
 			listener.onOrientationChanged(fusedBearing);
 		}
 	}
@@ -51,9 +44,12 @@ public class GyroGPSFusion implements GyroInputListener, GPSInputListener
 	@Override
 	public void onNewDeltaAngle(float deltaAngle) {
 		//updateGyroBearing(dV);
-		fusedBearing += Math.toDegrees(deltaAngle);
+		fusedBearing -= Math.toDegrees(deltaAngle);
 		while(fusedBearing<0)
 			fusedBearing += 360;
 		fusedBearing %= 360;
+
+		if(listener != null)
+			listener.onOrientationChanged(fusedBearing);
 	}
 }

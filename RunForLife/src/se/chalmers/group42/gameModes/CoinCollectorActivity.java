@@ -164,13 +164,14 @@ public class CoinCollectorActivity extends RunActivity {
 	private void pointArrowToSource_Compass() {
 		ImageView arrow = (ImageView) this
 				.findViewById(R.id.imageView_arrow);
-		arrow.setRotation(getRotation());
+		if(arrow != null)
+			arrow.setRotation(getRotation());
 	}
 
 	@Override
 	public void onOrientationChanged(float orientation) {
 		super.onOrientationChanged(orientation);
-		human.getLocation().setBearing(orientation);
+		//human.getLocation().setBearing(orientation);
 		this.orientation = orientation;
 		if(this.coinLocation != null){
 			adjustPanoration();
@@ -292,7 +293,9 @@ public class CoinCollectorActivity extends RunActivity {
 			bearingTo += 360;
 		}
 		return bearingTo - 
-				(usingGyro() ? this.orientation : human.getLocation().getBearing());
+				(usingGyro() ? 
+						this.orientation : 
+							human.getLocation().getBearing());
 
 	}
 
