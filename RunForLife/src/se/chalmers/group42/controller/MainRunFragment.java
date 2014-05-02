@@ -89,11 +89,24 @@ public class MainRunFragment extends Fragment implements
 			public void onClick(View view) {
 				int selectedMode = mPager.getCurrentItem();
 
-				if (selectedMode == 0 && !gpsOn || !headphonesIn)
-					System.out.print("Ja");
+				if (selectedMode == 0 && (!gpsOn || !headphonesIn)) {
+					// show informative dialog
 
-				new ModeController(mainActivity).launchMode((int) mPager
-						.getCurrentItem());
+					new AlertDialog.Builder(getActivity())
+							.setMessage(
+									"This mode needs GPS to be turned on and headphones to be plugged in.")
+							.setPositiveButton(android.R.string.yes,
+									new DialogInterface.OnClickListener() {
+										public void onClick(
+												DialogInterface dialog,
+												int which) {
+											// continue to initial state
+										}
+									}).show();
+
+				} else
+					new ModeController(mainActivity).launchMode((int) mPager
+							.getCurrentItem());
 			}
 		});
 
@@ -125,9 +138,8 @@ public class MainRunFragment extends Fragment implements
 	/**
 	 * A pager adapter that represents 3 modes in sequence.
 	 */
-	private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter{
-		public ScreenSlidePagerAdapter(
-				FragmentManager fragmentManager) {
+	private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+		public ScreenSlidePagerAdapter(FragmentManager fragmentManager) {
 			super(fragmentManager);
 		}
 
