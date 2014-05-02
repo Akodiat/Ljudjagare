@@ -3,6 +3,8 @@ package se.chalmers.group42.controller;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.R.id;
 import se.chalmers.group42.runforlife.R.layout;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,6 +36,15 @@ public class StatsFragment extends Fragment{
 				container, false);
 		Log.i("Fragment", "Stats Fragment created");
 		table = (TableLayout) rootView.findViewById(R.id.tableLayout);
+		
+		SharedPreferences pref = getActivity().getSharedPreferences("MODE", Context.MODE_PRIVATE);
+		String mode = pref.getString("application_mode", "");
+		if(mode.equals("DISPLAY_MODE")){
+			Bundle stats = getArguments();
+			if(stats != null){
+				displayFinishedStats(stats);
+			}
+		}
 		return rootView;
 	}
 	
@@ -70,5 +81,18 @@ public class StatsFragment extends Fragment{
 		row.addView(dist);
 		row.addView(pace);
 		table.addView(row);
+	}
+	
+	public void displayFinishedStats(Bundle stats){
+		
+		//clear
+		
+		
+		long[] times = stats.getLongArray("times");
+		int[] dists = stats.getIntArray("dists");
+		
+		for(int row = 0 ; row < times.length ; row++){
+			updateTableData(dists[row],times[row]);
+		}
 	}
 }

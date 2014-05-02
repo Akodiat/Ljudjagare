@@ -9,6 +9,8 @@ import se.chalmers.group42.runforlife.R.id;
 import se.chalmers.group42.runforlife.R.layout;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
@@ -108,7 +110,16 @@ public class MapFragment extends Fragment {
 				}
 			});
 		}
-
+		
+		SharedPreferences pref = getActivity().getSharedPreferences("MODE", Context.MODE_PRIVATE);
+		String mode = pref.getString("application_mode", "");
+		if(mode.equals("DISPLAY_MODE")){
+			Bundle locs = getArguments();
+			if(locs != null){
+				displayFinishedMap(locs);
+			}
+		}
+		
 		return rootView;
 	}
 
@@ -248,7 +259,47 @@ public class MapFragment extends Fragment {
 	}
 
 	public void setCheckpoints(int checkpoints) {
-		this.checkpoints = checkpoints;
+		this.checkpoints = checkpoints;	
+	}
+	
+	public void displayFinishedMap(Bundle locs){
 		
+		map.clear();
+		map.setMyLocationEnabled(false);
+		
+		double[] latitudes = locs.getDoubleArray("latitudes");
+		double[] longitudes = locs.getDoubleArray("longitudes");
+
+		double[] coinlat = locs.getDoubleArray("coinlat");
+		double[] coinlng = locs.getDoubleArray("coinlng");
+
+		LatLng l = null;
+		//draw path
+		for(int i = 0 ; i < latitudes.length; i++){
+			l = new LatLng(latitudes[i],longitudes[i]);
+
+			routeLine.add(l);
+			myPolyRoute = map.addPolyline(routeLine);
+		}
+
+		if(l != null){
+			CameraUpdate cameraUpdate= CameraUpdateFactory.
+					newLatLngZoom(l, 16);
+			if(cameraUpdate!=null){
+				map.animateCamera(cameraUpdate);
+			}
+		}
+		
+		//draw coin
+		for(int i = 0 ; i < coinlat.length ; i++){
+			l = new LatLng(coinlat[i],coinlng[i]);
+			showCollectedCoin(l);
+		}
+	}
+	public void showCollectedCoin(LatLng l){
+		Marker marker = map.addMarker(new MarkerOptions()
+		.position(l)
+		.title("Coin")
+		.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_coin)));
 	}
 }

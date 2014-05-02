@@ -13,6 +13,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="8dp" >
+        
+        <TextView
+            android:id="@+id/finished_run"
+            android:layout_marginTop="-5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center_horizontal"
+            android:text="Finished!"
+            android:textAllCaps="true"
+            android:textColor="#111111"
+            android:textSize="40sp" 
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/finished_run_desc"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:text="Below follows the score. You can also check the map to see how you ran."
+            android:textColor="#1c1c1f"
+            android:textSize="13sp" 
+            android:visibility="gone"/>
+        
 
         <TableLayout
             android:id="@+id/statistics_table"

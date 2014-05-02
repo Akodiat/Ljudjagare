@@ -2,6 +2,7 @@ package se.chalmers.group42.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.app.ActionBar;
@@ -23,6 +24,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import se.chalmers.group42.database.Coins;
+import se.chalmers.group42.database.FinishedRoute;
+import se.chalmers.group42.database.MySQLiteHelper;
+import se.chalmers.group42.database.Point;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.DataHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;
@@ -54,7 +59,7 @@ public class RunActivity extends SwipeableActivity implements
 		MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
 		GPSInputListener, OrientationInputListener {
 
-	private Button runButton, stopButton;
+	private Button runButton, stopButton, finishButton;
 
 	private ImageView btnImage;
 
@@ -70,18 +75,20 @@ public class RunActivity extends SwipeableActivity implements
 	protected GetDirectionsAsyncTask asyncTask;
 
 	private GPSInputHandler gpsInputHandler;
+	
+	private RunFragment runFragment;
+	private MapFragment mapFragment;
+	private StatsFragment statsFragment;
+	
+	private MySQLiteHelper db;
+	
+	private int routeId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
-		// Setting up GPS input needed to get GPS updates
-		gpsInputHandler = new GPSInputHandler(this, this);
-
-		// Setting up orientation input.
-		if (usingGyro())
-			new GyroGPSFusion(this, this);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
@@ -108,12 +115,12 @@ public class RunActivity extends SwipeableActivity implements
 		 * reference to the Tab
 		 */
 		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
+		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				actionBar.setSelectedNavigationItem(position);
+			}
+		});
 
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -128,54 +135,88 @@ public class RunActivity extends SwipeableActivity implements
 					.setTabListener(this));
 		}
 
-		setRunFragment(new RunFragment());
-		setMapFragment(new MapFragment());
-		setStatsFragment(new StatsFragment());
+		runFragment = new RunFragment();
+		mapFragment = new MapFragment();
+		statsFragment = new StatsFragment();
 
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
-		this.dataHandler = new DataHandler(app.getDatabase(), this);
-
-		btnImage = (ImageView) findViewById(R.id.run_button_img);
-
-		// Setting up pause button
-		runButton = (Button) findViewById(R.id.run_button);
-		runButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if (dataHandler.isRunning()) {
-					pause();
-					if (!isOkToRun()) {
-						setNotGreenToRun();
-					}
-				} else {
-					if (dataHandler.isPaused())
-						resume();
-					else
-						start();
-				}
-				// dataHandler.pauseWatch();
-			}
-		});
-
-		// Setting up stop button
-		stopButton = (Button) findViewById(R.id.button_stop);
-		stopButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				stop();
-			}
-		});
+		db = app.getDatabase();
 
 		// Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
 		headPhonesIcon = (ImageView) findViewById(R.id.headphones_icon);
+		runButton = (Button) findViewById(R.id.run_button);
+		stopButton = (Button) findViewById(R.id.button_stop);
+		finishButton = (Button) findViewById(R.id.done_button);
+		
+		finishButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 
-		// Setting up statusIconHandler
-		IntentFilter filter = new IntentFilter(
-				"android.intent.action.HEADSET_PLUG");
-		StatusIconHandler receiver = new StatusIconHandler(this, this);
-		registerReceiver(receiver, filter);
+		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
+		String mode = pref.getString("application_mode", "");
+
+		if(mode.equals("RUN_MODE")){
+			//Setting up Sensor input
+			gpsInputHandler = new GPSInputHandler(this, this);
+
+			this.dataHandler = new DataHandler(db, this);
+
+			btnImage = (ImageView) findViewById(R.id.run_button_img);
+			
+			runButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					if (dataHandler.isRunning()) {
+						pause();
+						if (!isOkToRun()) {
+							setNotGreenToRun();
+						}
+					} else {
+						if (dataHandler.isPaused())
+							resume();
+						else
+							start();
+					}
+					// dataHandler.pauseWatch();
+				}
+			});
+
+			// Setting up stop button
+			stopButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					stop();
+				}
+			});
+
+
+
+			// Setting up statusIconHandler
+			IntentFilter filter = new IntentFilter(
+					"android.intent.action.HEADSET_PLUG");
+			StatusIconHandler receiver = new StatusIconHandler(this, this);
+			registerReceiver(receiver, filter);
+
+		}else if(mode.equals("DISPLAY_MODE")){
+			setUpDisplay(false);
+
+			runButton.setVisibility(View.GONE);
+			stopButton.setVisibility(View.GONE);
+			gpsIcon.setVisibility(View.GONE);
+			headPhonesIcon.setVisibility(View.GONE);
+			finishButton.setVisibility(View.VISIBLE);
+			btnImage.setVisibility(View.GONE);
+		}
+
+		setRunFragment(runFragment);
+		setMapFragment(mapFragment);
+		setStatsFragment(statsFragment);
 	}
+
 
 	// These are implemented in CoinCollector, etc. instead. This method should
 	// perhaps be abstract.
@@ -210,23 +251,26 @@ public class RunActivity extends SwipeableActivity implements
 	}
 
 	public void stop() {
-		btnImage.setImageResource(R.drawable.play_button);
+		runButton.setText("►");
 		stopSound();
+
+		routeId = dataHandler.getCurrentRoute();
+
 		dataHandler.runStatus = RunStatus.STOPPED;
 
 		dataHandler.resetWatch();
-		Intent finishedRunActivityIntent = new Intent(RunActivity.this,
-				FinishedRunActivity.class);
-		finishedRunActivityIntent.putExtra(Constants.EXTRA_ID,
-				dataHandler.getCurrentRoute());
-		startActivity(finishedRunActivityIntent);
-		if (asyncTask != null) {
-			asyncTask.cancel(true);
-		}
 
-		android.os.Process.killProcess(android.os.Process.myPid());
+		gpsInputHandler.pause();
 
+		runButton.setVisibility(View.GONE);
+		stopButton.setVisibility(View.GONE);
+		gpsIcon.setVisibility(View.GONE);
+		headPhonesIcon.setVisibility(View.GONE);
+		finishButton.setVisibility(View.VISIBLE);
+		btnImage.setVisibility(View.GONE);
+		setUpDisplay(true);
 	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -340,4 +384,77 @@ public class RunActivity extends SwipeableActivity implements
 				.getDefaultSharedPreferences(this);
 		return sharedPreferences.getBoolean("gyro", false);
 	}
+	
+	public void setUpDisplay(Boolean stopped){
+		int id = routeId;
+		if(!stopped){
+			Bundle extras = getIntent().getExtras();
+			if (extras != null) {
+				id = extras.getInt(Constants.EXTRA_ID);
+			}
+		}
+
+
+		FinishedRoute fin = db.getFinishedRoute(id);
+		Bundle args = new Bundle();
+		args.putLong("time", fin.getTotTime());
+		args.putInt("distance", fin.getDist());
+		args.putDouble("speed", fin.getSpeed());
+
+		Bundle locs = new Bundle();
+		List<Point> points = db.getAllPointsByRoute(id);
+		double[] latitudes = new double[points.size()];
+		double[] longitudes = new double[points.size()];
+		for (int i = 0; i < points.size(); i++) {
+			latitudes[i] = points.get(i).getLatitude();
+			longitudes[i] = points.get(i).getLongitude();
+		}
+		locs.putDoubleArray("latitudes", latitudes);
+		locs.putDoubleArray("longitudes", longitudes);
+
+		List<Coins> coins = db.getAllCoinsByRoute(id);
+		int nrCoins = coins.size();
+
+		args.putInt("nrCoins", nrCoins);
+
+		double[] coinlat = new double[nrCoins];
+		double[] coinlng = new double[nrCoins];
+
+		long[] times = new long[nrCoins];
+		int[] dists = new int[nrCoins];
+
+		for (int i = 0; i < nrCoins; i++) {
+			Location l = coins.get(i).getLocation();
+			coinlat[i] = l.getLatitude();
+			coinlng[i] = l.getLongitude();
+
+			times[i] = coins.get(i).getTime();
+			dists[i] = coins.get(i).getDistance();
+		}
+		locs.putDoubleArray("coinlat", coinlat);
+		locs.putDoubleArray("coinlng", coinlng);
+
+		Bundle stats = new Bundle();
+
+		stats.putLongArray("times", times);
+		stats.putIntArray("dists", dists);
+
+		if(!stopped){
+			runFragment.setArguments(args);
+			mapFragment.setArguments(locs);
+			statsFragment.setArguments(stats);
+		}else{
+			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
+					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
+			if (getRunFragment().isAdded()) {
+				runFrag.setDisplay(args);
+			}		
+			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
+			if (getMapFragment().isAdded()) {
+				mapFrag.displayFinishedMap(locs);
+			}
+		}
+	}
+
 }

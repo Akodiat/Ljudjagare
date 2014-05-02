@@ -17,6 +17,7 @@
 package se.chalmers.group42.controller;
 
 import se.chalmers.group42.controller.HistoryListFragment.Callbacks;
+import se.chalmers.group42.gameModes.CoinCollectorActivity;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.R;
 import android.media.AudioManager;
@@ -26,8 +27,10 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -257,14 +260,20 @@ public class MainActivity extends Activity implements Callbacks {
 	}
 
 	@Override
-	public void onHistoryItemSelected(String id) {
+public void onHistoryItemSelected(String id) {
+		
+		SharedPreferences preferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+    	SharedPreferences.Editor editor = preferences.edit();
+    	editor.putString("application_mode", "DISPLAY_MODE");
+    	editor.commit();
+		
 		// for the selected item ID.
-		Intent detailIntent = new Intent(this, FinishedRunActivity.class);
+		Intent detailIntent = new Intent(this, CoinCollectorActivity.class);
 		detailIntent.putExtra(Constants.EXTRA_ID, Integer.parseInt(id));
-		// TODO Sharedpreferences
+		
 		// Skicak med runläge eller finishedläge
 		startActivity(detailIntent);
-
 	}
+
 
 }
