@@ -106,7 +106,7 @@
                     android:id="@+id/avg_pace_table"
                     android:layout_weight="1.0"
                     android:gravity="right"
-                    android:text="0.0m/s"
+                    android:text="0.0min/km"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
 

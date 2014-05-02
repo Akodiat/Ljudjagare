@@ -108,8 +108,8 @@ public class RunFragment extends Fragment {
 		txTime.setText(time.format("%H:%M:%S"));
 		txAvgSpd.setText(speed + "m/s");
 		txCurrSpd.setText(currentSpeed + "m/s");
-		txAvgPace.setText(pace + "m/s");
-		txCurrPace.setText(currentPace + "m/s");
+		txAvgPace.setText(pace + "km/min");
+		txCurrPace.setText(currentPace + "min/km");
 
 	}
 }
