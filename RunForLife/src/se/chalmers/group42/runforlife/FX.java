@@ -4,7 +4,7 @@ import org.pielot.openal.Source;
 
 public class FX {
 
-	private Source source, forwardSource, behindSource;
+	private Source source, forwardSource, behindSource, toSource;
 	private float distance;
 	private boolean isPlaying;
 
@@ -19,14 +19,19 @@ public class FX {
 	 */
 	private float pitch;
 
-	public FX(Source forwardSource, Source behindSource) {
-		this.source = forwardSource;
+	public FX(Source forwardSource, Source behindSource, Source toSource) {
+		source = forwardSource;
+		this.toSource = toSource;
 		this.forwardSource = forwardSource;
 		this.behindSource = behindSource;
 		this.distance = Constants.MAX_DISTANCE;
 		this.angle = 0;
 		this.pitch = 1; // original pitch at first
 
+		this.toSource.setPosition(0, 0, -10);
+		this.toSource.setRolloffFactor(0);
+		this.behindSource.setPosition(0, 0, -10);
+		this.behindSource.setRolloffFactor(0);
 		source.setPosition(0, 0, -10); // set position in front on user
 		source.setRolloffFactor(0); // no roll-off
 	}
@@ -56,8 +61,11 @@ public class FX {
 
 		if (Math.abs(angle) > Constants.FRONT_ANGLE && Math.abs(angle) <= 180) {
 			source = behindSource;
-		} else
+		} else if(Math.abs(angle) > Constants.TOSOURCE_ANGLE){
 			source = forwardSource;
+		} else{
+			source = toSource;
+		}
 	}
 
 	public float angle() {
@@ -79,10 +87,6 @@ public class FX {
 
 	public boolean isPlaying() {
 		return isPlaying;
-	}
-
-	public boolean isBehindUser() {
-		return Math.abs(angle) > 90;
 	}
 
 	public void setVolume(float volume) {
