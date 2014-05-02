@@ -1,5 +1,6 @@
 package se.chalmers.group42.controller;
 
+import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.R;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class HelpFragment extends Fragment{
+	
+	private FXHandler fx;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
