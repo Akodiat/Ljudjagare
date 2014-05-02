@@ -22,10 +22,11 @@ import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.R;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -45,7 +46,7 @@ import android.widget.ListView;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends FragmentActivity implements Callbacks {
+public class MainActivity extends Activity implements Callbacks {
 
 	private DrawerLayout navDrawerLayout;
 	private ListView navDrawerList;
@@ -53,6 +54,8 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 	private ActionBarDrawerToggle actionBarDrawerToggle;
 	private CharSequence appTitle;
 	private CharSequence navDrawerTitle;
+	private FragmentManager fm = getFragmentManager();
+	private FragmentTransaction ft;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,11 +98,11 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 		getActionBar().setHomeButtonEnabled(true);
 
 		actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-		navDrawerLayout, /* DrawerLayout object */
-		R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
-		R.string.drawer_open, /* "open drawer" description */
-		R.string.drawer_close /* "close drawer" description */
-		) {
+				navDrawerLayout, /* DrawerLayout object */
+				R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
+				R.string.drawer_open, /* "open drawer" description */
+				R.string.drawer_close /* "close drawer" description */
+				) {
 
 			/** Called when a drawer has settled in a completely closed state. */
 			public void onDrawerClosed(View view) {
@@ -135,27 +138,27 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 
 			// set dialog message
 			alertDialogBuilder
-					.setMessage(
-							"Welcome to Run for Life! Would you like to learn how to play?")
+			.setMessage(
+					"Welcome to Run for Life! Would you like to learn how to play?")
 					.setCancelable(false)
 					.setPositiveButton("Yes",
 							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// if this button is clicked, open help
-									// fragment
-									selectItem(2);
-								}
-							})
+						public void onClick(DialogInterface dialog,
+								int id) {
+							// if this button is clicked, open help
+							// fragment
+							selectItem(2);
+						}
+					})
 					.setNegativeButton("No",
 							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// if this button is clicked, just close the
-									// dialog box and do nothing
-									dialog.cancel();
-								}
-							});
+						public void onClick(DialogInterface dialog,
+								int id) {
+							// if this button is clicked, just close the
+							// dialog box and do nothing
+							dialog.cancel();
+						}
+					});
 
 			// create alert dialog
 			AlertDialog alertDialog = alertDialogBuilder.create();
@@ -165,7 +168,7 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 
 			// Save the state
 			getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
-					.putBoolean("firstrun", false).commit();
+			.putBoolean("firstrun", false).commit();
 		}
 	}
 
@@ -174,9 +177,6 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 	 * be chosen from the Navigation Drawer-menu.
 	 */
 	private void selectItem(int position) {
-		FragmentManager fm = getSupportFragmentManager();
-		FragmentTransaction ft;
-		boolean fragmentMainVisible;
 		switch (position) {
 		case 0:
 			// Insert the fragment by replacing any existing fragment
@@ -192,14 +192,12 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 			break;
 		case 1:
 			ft = fm.beginTransaction();
-			fragmentMainVisible = fm.findFragmentByTag("mainRunFragment")
-					.isVisible();
 			Fragment historyListFragment = new HistoryListFragment();
 			ft.replace(R.id.content_frame, historyListFragment,
 					"historyListFragment");
-			if (fragmentMainVisible) {
-				ft.addToBackStack(null);
-			}
+//			if (fragmentMainVisible) {
+//				ft.addToBackStack(null);
+//			}
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
@@ -208,13 +206,11 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 			break;
 		case 2:
 			ft = fm.beginTransaction();
-			fragmentMainVisible = fm.findFragmentByTag("mainRunFragment")
-					.isVisible();
 			Fragment helpFragment = new HelpFragment();
 			ft.replace(R.id.content_frame, helpFragment, "helpFragment");
-			if (fragmentMainVisible) {
-				ft.addToBackStack(null);
-			}
+//			if (fragmentMainVisible) {
+//				ft.addToBackStack(null);
+//			}
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
@@ -246,7 +242,8 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 					.beginTransaction();
 			SettingsFragment fragmentSettings = new SettingsFragment();
 			ft.replace(R.id.content_frame, fragmentSettings);
-			ft.addToBackStack(null);
+//			ft.hide(mMyMainFragment);
+//			ft.addToBackStack(null);
 			ft.commit();
 
 			// fragmentManager.beginTransaction().replace(R.id.content_frame,
@@ -271,19 +268,28 @@ public class MainActivity extends FragmentActivity implements Callbacks {
 	}
 
 	@Override
-public void onHistoryItemSelected(String id) {
-		
+	public void onHistoryItemSelected(String id) {
+
 		SharedPreferences preferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
-    	SharedPreferences.Editor editor = preferences.edit();
-    	editor.putString("application_mode", "DISPLAY_MODE");
-    	editor.commit();
-		
+		SharedPreferences.Editor editor = preferences.edit();
+		editor.putString("application_mode", "DISPLAY_MODE");
+		editor.commit();
+
 		// for the selected item ID.
 		Intent detailIntent = new Intent(this, CoinCollectorActivity.class);
 		detailIntent.putExtra(Constants.EXTRA_ID, Integer.parseInt(id));
-		
+
 		// Skicak med runläge eller finishedläge
 		startActivity(detailIntent);
+	}
+	@Override
+	public void onBackPressed(){
+		if((fm.findFragmentByTag("mainRunFragment")==null)){
+			selectItem(0);
+		}
+		else{
+			super.onBackPressed();
+		}
 	}
 
 
