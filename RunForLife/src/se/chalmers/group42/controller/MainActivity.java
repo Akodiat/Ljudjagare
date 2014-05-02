@@ -21,11 +21,10 @@ import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.R;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -41,8 +40,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends Activity implements Callbacks {
+public class MainActivity extends FragmentActivity implements Callbacks {
 
 	private DrawerLayout navDrawerLayout;
 	private ListView navDrawerList;
@@ -92,11 +92,11 @@ public class MainActivity extends Activity implements Callbacks {
 		getActionBar().setHomeButtonEnabled(true);
 
 		actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-				navDrawerLayout, /* DrawerLayout object */
-				R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
-				R.string.drawer_open, /* "open drawer" description */
-				R.string.drawer_close /* "close drawer" description */
-				) {
+		navDrawerLayout, /* DrawerLayout object */
+		R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
+		R.string.drawer_open, /* "open drawer" description */
+		R.string.drawer_close /* "close drawer" description */
+		) {
 
 			/** Called when a drawer has settled in a completely closed state. */
 			public void onDrawerClosed(View view) {
@@ -120,30 +120,39 @@ public class MainActivity extends Activity implements Callbacks {
 		}
 
 		// Show help dialog at first run of the app
-		boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun", true);
-		if (firstrun){
+		boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+				.getBoolean("firstrun", true);
+		if (firstrun) {
 
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+					this);
 
 			// set title
 			alertDialogBuilder.setTitle("Welcome");
 
 			// set dialog message
 			alertDialogBuilder
-			.setMessage("Welcome to Run for Life! Would you like to learn how to play?")
-			.setCancelable(false)
-			.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					// if this button is clicked, open help fragment
-					selectItem(2);
-				}
-			})
-			.setNegativeButton("No",new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					// if this button is clicked, just close the dialog box and do nothing
-					dialog.cancel();
-				}
-			});
+					.setMessage(
+							"Welcome to Run for Life! Would you like to learn how to play?")
+					.setCancelable(false)
+					.setPositiveButton("Yes",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									// if this button is clicked, open help
+									// fragment
+									selectItem(2);
+								}
+							})
+					.setNegativeButton("No",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									// if this button is clicked, just close the
+									// dialog box and do nothing
+									dialog.cancel();
+								}
+							});
 
 			// create alert dialog
 			AlertDialog alertDialog = alertDialogBuilder.create();
@@ -152,10 +161,8 @@ public class MainActivity extends Activity implements Callbacks {
 			alertDialog.show();
 
 			// Save the state
-			getSharedPreferences("PREFERENCE", MODE_PRIVATE)
-			.edit()
-			.putBoolean("firstrun", false)
-			.commit();
+			getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+					.putBoolean("firstrun", false).commit();
 		}
 	}
 
@@ -164,16 +171,16 @@ public class MainActivity extends Activity implements Callbacks {
 	 * be chosen from the Navigation Drawer-menu.
 	 */
 	private void selectItem(int position) {
-		FragmentManager fragmentManager = getFragmentManager();
+		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft;
 		boolean fragmentMainVisible;
 		switch (position) {
 		case 0:
 			// Insert the fragment by replacing any existing fragment
-			ft = fragmentManager.beginTransaction();
+			ft = fm.beginTransaction();
 			Fragment mainRunFragment = new MainRunFragment();
 			ft.replace(R.id.content_frame, mainRunFragment, "mainRunFragment");
-//			ft.addToBackStack(null);
+			// ft.addToBackStack(null);
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
@@ -181,11 +188,13 @@ public class MainActivity extends Activity implements Callbacks {
 			navDrawerLayout.closeDrawer(navDrawerList);
 			break;
 		case 1:
-			ft = fragmentManager.beginTransaction();
-			fragmentMainVisible = fragmentManager.findFragmentByTag("mainRunFragment").isVisible();
+			ft = fm.beginTransaction();
+			fragmentMainVisible = fm.findFragmentByTag("mainRunFragment")
+					.isVisible();
 			Fragment historyListFragment = new HistoryListFragment();
-			ft.replace(R.id.content_frame, historyListFragment, "historyListFragment");
-			if(fragmentMainVisible){
+			ft.replace(R.id.content_frame, historyListFragment,
+					"historyListFragment");
+			if (fragmentMainVisible) {
 				ft.addToBackStack(null);
 			}
 			ft.commit();
@@ -195,11 +204,12 @@ public class MainActivity extends Activity implements Callbacks {
 			navDrawerLayout.closeDrawer(navDrawerList);
 			break;
 		case 2:
-			ft = fragmentManager.beginTransaction();
-			fragmentMainVisible = fragmentManager.findFragmentByTag("mainRunFragment").isVisible();
+			ft = fm.beginTransaction();
+			fragmentMainVisible = fm.findFragmentByTag("mainRunFragment")
+					.isVisible();
 			Fragment helpFragment = new HelpFragment();
 			ft.replace(R.id.content_frame, helpFragment, "helpFragment");
-			if(fragmentMainVisible){
+			if (fragmentMainVisible) {
 				ft.addToBackStack(null);
 			}
 			ft.commit();
@@ -228,8 +238,9 @@ public class MainActivity extends Activity implements Callbacks {
 		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		} else if (item.getItemId() == R.id.action_settings) {
-			FragmentManager fragmentManager = getFragmentManager();
-			android.app.FragmentTransaction ft = fragmentManager.beginTransaction();
+			android.app.FragmentManager fragmentManager = getFragmentManager();
+			android.app.FragmentTransaction ft = fragmentManager
+					.beginTransaction();
 			SettingsFragment fragmentSettings = new SettingsFragment();
 			ft.replace(R.id.content_frame, fragmentSettings);
 			ft.addToBackStack(null);

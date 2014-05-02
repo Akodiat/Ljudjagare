@@ -1,7 +1,7 @@
 package se.chalmers.group42.controller;
 
 import se.chalmers.group42.runforlife.R;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
