@@ -37,7 +37,7 @@
                 android:paddingRight="10sp"
                 android:text="@string/app_decription"
                 android:textColor="#1c1c1f"
-                android:textSize="13sp"/>
+                android:textSize="14sp"/>
         </LinearLayout>
 
         <RelativeLayout

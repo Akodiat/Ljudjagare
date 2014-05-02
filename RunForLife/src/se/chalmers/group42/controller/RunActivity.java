@@ -8,10 +8,15 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ScaleDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +56,8 @@ public class RunActivity extends SwipeableActivity implements
 
 	private Button runButton, stopButton;
 
+	private ImageView btnImage;
+
 	// Class for handling database
 	protected DataHandler dataHandler;
 
@@ -61,19 +68,19 @@ public class RunActivity extends SwipeableActivity implements
 	private static final LatLng HOME_MARCUS = new LatLng(58.489657, 13.777925);
 
 	protected GetDirectionsAsyncTask asyncTask;
-	
+
 	private GPSInputHandler gpsInputHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
-		
-		//Setting up GPS input needed to get GPS updates
+
+		// Setting up GPS input needed to get GPS updates
 		gpsInputHandler = new GPSInputHandler(this, this);
-		
-		//Setting up orientation input.
-		if(usingGyro())
+
+		// Setting up orientation input.
+		if (usingGyro())
 			new GyroGPSFusion(this, this);
 
 		// Setting up the action bar
@@ -91,7 +98,7 @@ public class RunActivity extends SwipeableActivity implements
 		// Set up the ViewPager with the sections adapter
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-		
+
 		// Offscreenlimit set to 2 to avoid fragments being destroyed
 		mViewPager.setOffscreenPageLimit(2);
 
@@ -127,6 +134,8 @@ public class RunActivity extends SwipeableActivity implements
 
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
 		this.dataHandler = new DataHandler(app.getDatabase(), this);
+
+		btnImage = (ImageView) findViewById(R.id.run_button_img);
 
 		// Setting up pause button
 		runButton = (Button) findViewById(R.id.run_button);
@@ -166,7 +175,6 @@ public class RunActivity extends SwipeableActivity implements
 				"android.intent.action.HEADSET_PLUG");
 		StatusIconHandler receiver = new StatusIconHandler(this, this);
 		registerReceiver(receiver, filter);
-
 	}
 
 	// These are implemented in CoinCollector, etc. instead. This method should
@@ -182,27 +190,27 @@ public class RunActivity extends SwipeableActivity implements
 		// START
 		dataHandler.newRoute();
 		dataHandler.startWatch();
-		runButton.setText("║");
+		btnImage.setImageResource(R.drawable.pause_button);
 		dataHandler.runStatus = RunStatus.RUNNING;
 		playSound();
 	}
 
 	private void resume() {
-		runButton.setText("║");
+		btnImage.setImageResource(R.drawable.pause_button);
 		stopButton.setVisibility(View.INVISIBLE);
 		playSound();
 		dataHandler.runStatus = RunStatus.RUNNING;
 	}
 
 	private void pause() {
-		runButton.setText("►");
+		btnImage.setImageResource(R.drawable.play_button);
 		stopButton.setVisibility(View.VISIBLE);
 		stopSound();
 		dataHandler.runStatus = RunStatus.PAUSED;
 	}
 
 	public void stop() {
-		runButton.setText("►");
+		btnImage.setImageResource(R.drawable.play_button);
 		stopSound();
 		dataHandler.runStatus = RunStatus.STOPPED;
 
@@ -215,7 +223,7 @@ public class RunActivity extends SwipeableActivity implements
 		if (asyncTask != null) {
 			asyncTask.cancel(true);
 		}
-		
+
 		android.os.Process.killProcess(android.os.Process.myPid());
 
 	}
@@ -282,7 +290,7 @@ public class RunActivity extends SwipeableActivity implements
 	}
 
 	private void setNotGreenToRun() {
-		runButton.setText("►");
+		btnImage.setImageResource(R.drawable.play_button);
 	}
 
 	public void onGPSConnect() {
@@ -327,9 +335,10 @@ public class RunActivity extends SwipeableActivity implements
 		// TODO Auto-generated method stub
 		dataHandler.newLocation(location);
 	}
-	
-	protected boolean usingGyro(){
-		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+	protected boolean usingGyro() {
+		SharedPreferences sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
 		return sharedPreferences.getBoolean("gyro", false);
 	}
 }
