@@ -31,10 +31,7 @@ LocationListener
 	private static final 	LatLng STOCKHOLM 		= new LatLng(59.327476, 18.070829);
 	private Location		currentLocation;	//Location retrieved through GPS
 
-	private static final LocationRequest REQUEST = LocationRequest.create()
-			.setInterval(1000)         // 1 second
-			.setFastestInterval(16)    // 16ms = 60fps
-			.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY); 
+	private LocationRequest REQUEST; 
 
 	private LocationClient 	locationClient;
 	private GPSInputListener 	listener;
@@ -42,8 +39,16 @@ LocationListener
 	private LocationManager locationManager;
 
 
-	public GPSInputHandler(GPSInputListener listener, Context context) {
+	public GPSInputHandler(GPSInputListener listener, Context context){
+		this(listener, context, 1000);
+	}
+	public GPSInputHandler(GPSInputListener listener, Context context, long updateInterval) {
 		this.listener = listener;
+		
+		REQUEST = LocationRequest.create()
+		.setInterval(updateInterval)         // milliseconds
+		.setFastestInterval(16)    // 16ms = 60fps
+		.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
 		locationClient = new LocationClient(context, this, this);
 

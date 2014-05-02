@@ -1,11 +1,7 @@
 package sensors;
 
-import utils.Vector3;
-
 import android.content.Context;
-import android.hardware.*;
 import android.location.Location;
-import android.util.Log;
 
 /**
  * Class for fusing Gyroscope and GPS into a reliable user direction
@@ -20,7 +16,7 @@ public class GyroGPSFusion implements GyroInputListener, GPSInputListener
 	public GyroGPSFusion(OrientationInputListener listener, Context context) {
 		this.listener = listener;
 
-		new GPSInputHandler	(this, context);
+		new GPSInputHandler	(this, context, 5000); //Updating every 5 seconds
 		new GyroInputHandler(this, context);
 
 		fusedBearing = 0;
