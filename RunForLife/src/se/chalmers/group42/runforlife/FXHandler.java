@@ -214,13 +214,13 @@ public class FXHandler {
 		}
 		else if (fx.angle() < 0 && fx.angle() > -Constants.FRONT_ANGLE ){
 			fx.setPitch((1 - Constants.MIN_PITCH) / Constants.FRONT_ANGLE * fx.angle() + 1);
-			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.5);
+			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.7);
 			env.setListenerOrientation(fx.angle() - tempAngle);
 //			env.setListenerOrientation(-90);
 		}
 		else if (fx.angle() >= 0 && fx.angle() < Constants.FRONT_ANGLE){
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-Constants.FRONT_ANGLE) * fx.angle() + 1);
-			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.5);
+			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.7);
 			env.setListenerOrientation(fx.angle() + tempAngle);
 //			env.setListenerOrientation(90);
 		} 
