@@ -3,7 +3,6 @@ package se.chalmers.group42.gameModes;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import se.chalmers.group42.controller.FinishedRunActivity;
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.controller.RunFragment;
