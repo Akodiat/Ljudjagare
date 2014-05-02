@@ -57,9 +57,6 @@ public class ScreenSlidePageFragment extends Fragment {
 		return fragment;
 	}
 
-	public ScreenSlidePageFragment() {
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

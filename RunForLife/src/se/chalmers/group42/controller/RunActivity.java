@@ -285,8 +285,7 @@ public class RunActivity extends SwipeableActivity implements
 	}
 
 	private void setGreenToRun() {
-		if (isOkToRun() && !dataHandler.isRunning())
-			runButton.setText("GO");
+		//
 	}
 
 	private void setNotGreenToRun() {

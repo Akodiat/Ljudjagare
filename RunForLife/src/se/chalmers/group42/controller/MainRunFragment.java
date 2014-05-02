@@ -154,32 +154,6 @@ public class MainRunFragment extends Fragment implements
 		}
 	}
 
-	// private class ModeNotLaunchableDialogFragment extends DialogFragment {
-	//
-	// public static ModeNotLaunchableDialogFragment newInstance(int title) {
-	// MyAlertDialogFragment frag = new MyAlertDialogFragment();
-	// Bundle args = new Bundle();
-	// args.putInt("title", title);
-	// frag.setArguments(args);
-	// return frag;
-	// }
-	//
-	// @Override
-	// public Dialog onCreateDialog(Bundle savedInstanceState) {
-	// // Use the Builder class for convenient dialog construction
-	// AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-	// builder.setMessage("For this mode to work, headphones need to be plugged in and GPS needs to be turned on")
-	// .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-	// public void onClick(DialogInterface dialog, int id) {
-	// // Do nothing.
-	// }
-	// });
-	//
-	// // Create the AlertDialog object and return it
-	// return builder.create();
-	// }
-	// }
-
 	@Override
 	public void onGPSConnect() {
 		if (!gpsOn) {
