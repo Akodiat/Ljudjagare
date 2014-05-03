@@ -166,28 +166,6 @@ public class FXHandler {
 		handlerActive = false;
 	}
 
-	/**
-	 * Calculate the delay between each repetition on loop.
-	 * 
-	 * @param fx
-	 *            the sound to update
-	 * @return the delay time in milliseconds
-	 */
-//	public void delayInterval(FX fx) {
-//		float delayRatio;
-//
-//		// Calculate value between 0 and 1, where 0 is when a user has
-//		// reached
-//		// destination:
-//		if (fx.distance() <= Constants.MAX_DISTANCE)
-//			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
-//		else
-//			delayRatio = 1;
-//
-//		delay = (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
-//				+ Constants.MIN_DELAY;
-//	}
-
 	public Handler getHandler() {
 		return handler;
 	}
@@ -220,23 +198,7 @@ public class FXHandler {
 			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.85);
 			env.setListenerOrientation(fx.angle() + tempAngle);
 		} 
-//		
-//		fx.setDistance(distance);
 	}
-
-//	// Används?
-//	public void loopCoin(float distance) {
-//		if (coinPlayable) {
-//			soundPool.play(coin, 0, 0, 1, Constants.LOOP, 1);
-//			coinPlayable = false;
-//		}
-//
-//		soundPool.setVolume(coin, (1 / (-Constants.MIN_DISTANCE)) * distance
-//				+ 2, (1 / (-Constants.MIN_DISTANCE)) * distance + 2);
-//
-//		// decrease volume on the navigate sound until coin is reached.
-//		navFX.setVolume((1 / Constants.MIN_DISTANCE) * distance - 1);
-//	}
 
 	public void sayDistance(Speech speech) {
 		if (speech.isPlayable()) {
