@@ -76,7 +76,7 @@ public class HelpFragment extends Fragment{
 		leftButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandler.update(fxHandler.getNavigationFX(), 90, 1000);
+				fxHandler.update(fxHandler.getNavigationFX(), 90);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -90,7 +90,7 @@ public class HelpFragment extends Fragment{
 		leftForwButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandler.update(fxHandler.getNavigationFX(), 45, 1000);
+				fxHandler.update(fxHandler.getNavigationFX(), 45);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -104,7 +104,7 @@ public class HelpFragment extends Fragment{
 		rightForwButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandler.update(fxHandler.getNavigationFX(), -45, 1000);
+				fxHandler.update(fxHandler.getNavigationFX(), -45);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -118,7 +118,7 @@ public class HelpFragment extends Fragment{
 		rightButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandler.update(fxHandler.getNavigationFX(), -90, 1000);
+				fxHandler.update(fxHandler.getNavigationFX(), -90);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -133,7 +133,7 @@ public class HelpFragment extends Fragment{
 		wrongDirectionButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandler.update(fxHandler.getNavigationFX(), 180, 1000);
+				fxHandler.update(fxHandler.getNavigationFX(), 180);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -189,7 +189,7 @@ public class HelpFragment extends Fragment{
 		technoSoundButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandler.update(fxHandler.getNavigationFX(), 0, 1000);
+				fxHandler.update(fxHandler.getNavigationFX(), 0);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
