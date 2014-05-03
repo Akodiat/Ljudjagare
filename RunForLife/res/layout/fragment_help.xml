@@ -17,7 +17,7 @@
             android:id="@+id/textViewHelp1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your objective is to pick up coins. When you start running a coin will be generated. To pick up the coin you run to its location. When running in the correct direction towards the coin you will hear this sound:"
+            android:text="Your objective is to pick up coins. When you start running a coin will be generated. To pick up the coin you run to its location. When running towards the coin you will hear this sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
 
@@ -28,15 +28,53 @@
             android:text="Play Sound" />
 
         <TextView
-            android:id="@+id/textViewHelp2"
+            android:id="@+id/textViewHelp4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="For each 100 meter interval around the coin there are checkpoints. When crossing an interval like this you will hear how many hundred meters are left:"
+            android:text="If the sound is to the left or right it will appear in the different ears:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/buttonLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Left" />
+
+            <Button
+                android:id="@+id/buttonLeftForw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LeftForw" />
+
+            <Button
+                android:id="@+id/buttonRightForw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RightForw" />
+
+            <Button
+                android:id="@+id/buttonRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Right" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewHelp5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you are heading in the wrong direction you will hear an error sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonBehind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Play Sound" />
@@ -45,7 +83,7 @@
             android:id="@+id/textViewHelp3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The closer you get to the coin within each interval the faster the sound frequency will be:"
+            android:text="For each 100 meter interval around the coin there are checkpoints. The closer you get to the coin within each interval the faster the sound frequency will be:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
 
@@ -64,7 +102,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100 m" />
+                android:text="0 m" />
 
             <Button
                 android:id="@+id/button3"
@@ -72,39 +110,31 @@
                 android:layout_height="wrap_content"
                 android:text="Play Sound" />
         </LinearLayout>
-
+        
         <TextView
-            android:id="@+id/textViewHelp4"
+            android:id="@+id/textViewHelp9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If the sound is to the left or right it will appear in the different ears:"
+            android:text="When running in a straight course in the correct direction towards the coin the blipping sound will stop and you will hear an affirmiting techno sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" >
-            <Button
-                android:id="@+id/buttonLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Left" />
-            <Button
-                android:id="@+id/buttonRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Right" />
-        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewHelp5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="If you are heading in the wrong direction you will hear an error sound:"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
         <Button
-            android:id="@+id/buttonBehind"
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play Sound" />
+
+        <TextView
+            android:id="@+id/textViewHelp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="When crossing a 100 meters interval this you will hear how many hundred meters are left:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Play Sound" />
@@ -116,12 +146,13 @@
             android:text="When picking up a coin you will hear this sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
+
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Play Sound" />
-        
+
         <TextView
             android:id="@+id/textViewHelp7"
             android:layout_width="wrap_content"
@@ -129,20 +160,20 @@
             android:text="After a coin is picked up a new coin is generated:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
+
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Play Sound" />
-        
+
         <TextView
             android:id="@+id/textViewHelp8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Now you repeat the process until all coins are collected."
+            android:text="Keep picking up coins until all are collected."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
-        
     </LinearLayout>
 
 </ScrollView>
