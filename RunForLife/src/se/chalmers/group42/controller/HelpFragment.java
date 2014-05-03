@@ -1,5 +1,8 @@
 package se.chalmers.group42.controller;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.R;
 import android.app.Fragment;
@@ -14,10 +17,11 @@ import android.widget.SeekBar;
 
 public class HelpFragment extends Fragment{
 
-	private FXHandler fx;
+	private FXHandler fxHandler;
 	private Button correctDirectionButton, hundredMetersButton, frequencyButton, 
 		leftButton, rightButton, wrongDirectionButton, coinPickButton, newCoinButton;
 	private SeekBar frequencySeekbar;
+	private Timer timer;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,18 +31,37 @@ public class HelpFragment extends Fragment{
 				container, false);
 
 		// Initialize audio
-		(fx = new FXHandler()).initSound(getActivity());
+		(fxHandler = new FXHandler()).initSound(getActivity());
 		
-		//Setting up buttons
+		//Setting up
 		correctDirectionButton = (Button) rootView.findViewById(R.id.button1);
+		hundredMetersButton = (Button) rootView.findViewById(R.id.button2);
+		frequencyButton = (Button) rootView.findViewById(R.id.button3);
+		leftButton = (Button) rootView.findViewById(R.id.buttonLeft);
+		rightButton = (Button) rootView.findViewById(R.id.buttonRight);
+		wrongDirectionButton = (Button) rootView.findViewById(R.id.buttonBehind);
+		coinPickButton = (Button) rootView.findViewById(R.id.button4);
+		newCoinButton = (Button) rootView.findViewById(R.id.button5);
+		frequencySeekbar = (SeekBar) rootView.findViewById(R.id.seekBar1);
+		timer = new Timer();
 		
 		//Button actions
+		//Correct direction sound
 		correctDirectionButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fx.loop(fx.getNavigationFX());
+				fxHandler.loop(fxHandler.getNavigationFX());
+				timer.schedule(new TimerTask() {
+					@Override
+					public void run() {
+						fxHandler.stopLoop();
+					}
+				}, 2000);
 			}
 		});
+		
+		//Hundred meters sound
+		
 
 		return rootView;
 	}
