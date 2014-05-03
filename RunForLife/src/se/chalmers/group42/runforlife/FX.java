@@ -89,8 +89,8 @@ public class FX {
 		return isPlaying;
 	}
 
-	public void setVolume(float volume) {
-		forwardSource.setGain(volume);
-		behindSource.setGain(volume);
-	}
+//	public void setVolume(float volume) {
+//		forwardSource.setGain(volume);
+//		behindSource.setGain(volume);
+//	}
 }

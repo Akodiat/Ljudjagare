@@ -135,8 +135,7 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 		fx.update(
 				fx.getNavigationFX(), 
-				getAngleToCoin(), 
-				getDistanceToCoin());
+				getAngleToCoin());
 
 		if (isCoinFound() && !hasBeenAnnounced) {
 			fx.stopLoop();

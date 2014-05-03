@@ -90,7 +90,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
 				SensorManager.SENSOR_DELAY_GAME);
 
-		fx.update(fx.getNavigationFX(), angle, distance);
+		fx.update(fx.getNavigationFX(), angle);
 		fx.loop(fx.getNavigationFX());
 	}
 
@@ -115,7 +115,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		currentAngle.setText(Float.toString(distance) + "Angle: "
 				+ Float.toString(angle));
 
-		fx.update(fx.getNavigationFX(), angle, distance);
+		fx.update(fx.getNavigationFX(), angle);
 
 		if (isCoinFound() && !hasBeenAnnounced) {
 			fx.stopLoop();

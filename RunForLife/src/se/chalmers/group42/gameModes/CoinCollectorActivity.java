@@ -14,12 +14,10 @@ import se.chalmers.group42.runforlife.R;
 import utils.LocationHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,7 +32,7 @@ import com.google.android.gms.maps.model.LatLng;
 public class CoinCollectorActivity extends RunActivity {
 	public static LatLng DEFAULT_POSITION = new LatLng(58.705477, 11.990884);
 	public static int GAME_MODE_ID = 0;
-	private static final int DIALOG_REALLY_EXIT_ID = 0;
+	//private static final int DIALOG_REALLY_EXIT_ID = 0;
 
 	private Human human; // Containing the player position and score
 	private float orientation; // Compass angle
@@ -46,9 +44,9 @@ public class CoinCollectorActivity extends RunActivity {
 	private FXHandler fx;
 	private boolean generateRoute = true;
 
-	private int curr100, prev100;
+	private int curr100;
 
-	private int checkpoints = 4;
+	private int checkpoints;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +57,6 @@ public class CoinCollectorActivity extends RunActivity {
 
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
-	}
-
-	public int getScore() {
-		return human.getScore();
 	}
 
 	// Get the finalRoute from mapFragment when the route is calculated.
@@ -111,16 +105,11 @@ public class CoinCollectorActivity extends RunActivity {
 	@Override
 	public void onLocationChanged(Location location) {
 		super.onLocationChanged(location);
-
-		// map.animateCamera(CameraUpdateFactory.newLatLngZoom(new
-		// LatLng(location.getLatitude(), location.getLongitude()), 12.0f));
-
 		// Update human location
 		this.human.setLocation(location);
 
 		if (generateRoute) {
 			generateRoute = false;
-
 
 			//Retrieving distancevalue from preferences
 			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -148,9 +137,6 @@ public class CoinCollectorActivity extends RunActivity {
 			dataHandler.onAquiredCoin(human.getLocation());
 			// Increase the player score by one
 			this.human.modScore(1);
-
-			// Play sound of a coin
-			fx.foundCoin();
 
 			// And generate a new coin to search for
 			generateNewCoin();
@@ -188,7 +174,6 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private boolean isAtCoin() {
-		double dist = human.getLocation().distanceTo(coinLocation);
 		return (// If closer than minimum distance
 				human.getLocation().distanceTo(coinLocation) < Constants.MIN_DISTANCE
 				// Or the accuracy is less than 50 meters but still larger
@@ -200,6 +185,9 @@ public class CoinCollectorActivity extends RunActivity {
 
 	private void generateNewCoin() {
 		if (human.getScore() < checkpoints) {
+			// Play sound of a coin
+			fx.foundCoin();
+
 			coinLocation = this.finalRoute.get(human.getScore());
 
 			float distance = human.getLocation().distanceTo(coinLocation) 
@@ -213,12 +201,12 @@ public class CoinCollectorActivity extends RunActivity {
 			mapFrag.showCollectedCoin(human.getLocation());
 
 		} else {
+			fx.playRouteFinished();
 			stop();
 		}
 	}
 
 	private void adjustPanoration() {
-
 		// negate to invert angle
 		float angle = -getRotation();
 
@@ -226,11 +214,10 @@ public class CoinCollectorActivity extends RunActivity {
 				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
 
 		if (fx.getNavigationFX().isPlaying())
-			fx.update(fx.getNavigationFX(), (angle), distance);
+			fx.update(fx.getNavigationFX(), (angle));
 
 		if (distance <= 100) {
 			curr100 = 0;
-			//float delayRatio = distance / 100;
 			float delayRatio = (float) Math.pow(distance / 100, 2);
 			fx.sayDistance(fx.getSpeech(curr100));
 			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
@@ -238,19 +225,18 @@ public class CoinCollectorActivity extends RunActivity {
 		} else {
 			// if user has moved forward to new 100s
 			if (distance - curr100 <= 0) {
-
-				prev100 = curr100; // set previous
 				int currHundred = ((int) (distance / 100));
 				curr100 = currHundred * 100;
 				fx.sayDistance(fx.getSpeech(currHundred));
 			}
-
 			else if (!(distance - curr100 > 100)) {
 				float delayRatio, newDist = distance % 100;
-				//delayRatio = newDist / 100;
 				delayRatio = (float) Math.pow(newDist / 100, 2);
 				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 						* delayRatio + Constants.MIN_DELAY);
+			}
+			else {
+				fx.updateDelay(Constants.MAX_DELAY);
 			}
 		}
 	}
@@ -267,7 +253,6 @@ public class CoinCollectorActivity extends RunActivity {
 	@Override
 	protected void stopSound() {
 		super.stopSound();
-
 		fx.stopLoop();
 	}
 
@@ -285,17 +270,13 @@ public class CoinCollectorActivity extends RunActivity {
 				(usingGyro() ? 
 						this.orientation : 
 							human.getLocation().getBearing());
+		// Marcus added this, was problem before
 		if(tempAngle > 180){
 			tempAngle = tempAngle - 360;
 		}else if(tempAngle < -180){
 			tempAngle = tempAngle + 360;
 		}
 		return tempAngle;
-
-	}
-
-	private float GPS_Bearing(){
-		return 	human.getOldLocation().bearingTo(human.getLocation());
 	}
 
 	private ArrayList<Location> generateRoute(int checkpoints, double radius, Location origo){
@@ -306,7 +287,8 @@ public class CoinCollectorActivity extends RunActivity {
 		for(int i = 0; i <= checkpoints; i++){
 
 			double addLat = Math.sin(currentCheckpoint) * radius;
-			double addLong = Math.cos(currentCheckpoint) * radius / Math.cos(Math.toRadians(human.getLocation().getLatitude()));
+			double addLong = Math.cos(currentCheckpoint) * radius
+					/ Math.cos(Math.toRadians(human.getLocation().getLatitude()));
 
 			currentCheckpoint -= radiansPerCheckpoint;
 
@@ -351,18 +333,19 @@ public class CoinCollectorActivity extends RunActivity {
 		double addLng;
 		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
 		addLat = Math.sin(bearingTo) * distanceFromLocation;
-		addLng = Math.cos(bearingTo) * distanceFromLocation / Math.cos(Math.toRadians(human.getLocation().getLatitude()));
+		addLng = Math.cos(bearingTo) * distanceFromLocation
+				/ Math.cos(Math.toRadians(human.getLocation().getLatitude()));
 		routePoint.setLatitude(routePoint.getLatitude() + addLat);
 		routePoint.setLongitude(routePoint.getLongitude() + addLng);
 
 		ArrayList<Location> route = new ArrayList<Location>();
 		route.add(human.getLocation());
 		route.add(routePoint);
-		Location routePoint2 = new Location("route2");
 		double differLat = human.getLocation().getLatitude()
 				- routePoint.getLatitude();
 		double differLng = (human.getLocation().getLongitude()
-				- routePoint.getLongitude()) * Math.cos(Math.toRadians(human.getLocation().getLatitude()));
+				- routePoint.getLongitude()) 
+				* Math.cos(Math.toRadians(human.getLocation().getLatitude()));
 
 		double hypotenusa = Math.sqrt((Math.pow(differLat, 2) + Math.pow(differLng, 2)));
 
@@ -379,44 +362,21 @@ public class CoinCollectorActivity extends RunActivity {
 		angle = Math.toRadians(angle);
 
 		for(int i = 0; i < routeTest.size(); i++){
-			//float angleToRoute = human.getLocation().bearingTo(routeTest.get(i));
-			//float angleToNew = angleToRoute + angle;
-			double diffLong = -(human.getLocation().getLongitude() - routeTest.get(i).getLongitude()) * Math.cos(Math.toRadians(human.getLocation().getLatitude()));
-			double diffLat = -(human.getLocation().getLatitude() - routeTest.get(i).getLatitude());
+			double diffLong = -(human.getLocation().getLongitude()
+					- routeTest.get(i).getLongitude()) 
+					* Math.cos(Math.toRadians(human.getLocation().getLatitude()));
+			double diffLat = -(human.getLocation().getLatitude() 
+					- routeTest.get(i).getLatitude());
 
 			// Rotation around human location, rotation matrix
 			double newLong = Math.cos(angle) * diffLong + Math.sin(angle) * diffLat;
 			double newLat =  -Math.sin(angle) * diffLong + Math.cos(angle) * diffLat;
 
-			routeTest.get(i).setLongitude(human.getLocation().getLongitude() + newLong/ Math.cos(Math.toRadians(human.getLocation().getLatitude())));
+			routeTest.get(i).setLongitude(human.getLocation().getLongitude() 
+					+ newLong
+					/ Math.cos(Math.toRadians(human.getLocation().getLatitude())));
 			routeTest.get(i).setLatitude(human.getLocation().getLatitude() + newLat);
 		}
-
-		//		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
-		//				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
-		//		mapFrag.randomTest(routeTest, routePoint);
-
-
-		//		if (Math.random() > 0.5) {
-		//			routePoint2.setLatitude(human.getLocation().getLatitude()
-		//					+ differLng);
-		//			routePoint2.setLongitude(human.getLocation().getLongitude()
-		//					- differLat);
-		//		} else {
-		//			routePoint2.setLatitude(human.getLocation().getLatitude()
-		//					- differLng);
-		//			routePoint2.setLongitude(human.getLocation().getLongitude()
-		//					+ differLat);
-		//		}
-		//		route.add(routePoint2);
-		//		route.add(human.getLocation());
-
-		//		for (int i = 0; i < route.size() - 1; i++) {
-		//			findDirections(route.get(i).getLatitude(), route.get(i)
-		//					.getLongitude(), route.get(i + 1).getLatitude(),
-		//					route.get(i + 1).getLongitude(),
-		//					GMapV2Direction.MODE_WALKING);
-		//		}
 
 		for (int i = 0; i < routeTest.size() - 1; i++) {
 			findDirections(routeTest.get(i).getLatitude(), routeTest.get(i)
@@ -424,11 +384,10 @@ public class CoinCollectorActivity extends RunActivity {
 					routeTest.get(i + 1).getLongitude(),
 					GMapV2Direction.MODE_WALKING);
 		}
-
+		// Deciding which way of the route you are going to run
 		if (Math.random() > 0.5 ){
 			Collections.reverse(route);
 		}
-
 		return route;
 	}
 }

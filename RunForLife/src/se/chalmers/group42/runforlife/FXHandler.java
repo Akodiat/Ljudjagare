@@ -24,7 +24,7 @@ public class FXHandler {
 	private Handler handler;
 
 	// FX representing a coin (that the user is picking up).
-	private int coin, sayCoinReached, sayNewCoin, finishedTone, goodJob;
+	private int coin, sayCoinReached, sayNewCoin, finishedTone, goodJob, runFinished;
 
 	// FX representing the navigation sound (
 	private FX navFX;
@@ -34,10 +34,9 @@ public class FXHandler {
 	private SoundPool soundPool;
 
 	private ArrayList<Speech> speech = new ArrayList<Speech>();
-	//private Speech say100, say200, say300, say400, say500, say600, say700,
-	//		say800, say900, say1000;
 
-	private boolean handlerActive = false, coinPlayable = true;
+	private boolean handlerActive = false;
+			//, coinPlayable = true;
 
 	private float delay;
 
@@ -114,12 +113,12 @@ public class FXHandler {
 		speech.add(new Speech(soundPool.load(context, R.raw.say900, 1)));
 		speech.add(new Speech(soundPool.load(context, R.raw.say1000, 1)));
 
-		coin = soundPool.load(context, R.raw.dragon, 1);
 		sayCoinReached = soundPool.load(context, R.raw.coin_reached, 1);
 		sayNewCoin = soundPool.load(context, R.raw.new_coin, 1);
 		goodJob = soundPool.load(context, R.raw.good_job, 1);
 		finishedTone = soundPool.load(context, R.raw.finished_tone, 1);
 		coin = soundPool.load(context, R.raw.coin, 1);
+		runFinished = soundPool.load(context, R.raw.run_finished, 1);
 	}
 
 	public FX getNavigationFX() {
@@ -147,7 +146,7 @@ public class FXHandler {
 		//env.setListenerOrientation(fx.angle());
 		fx.play();
 		if(Math.abs(fx.angle()) < Constants.TOSOURCE_ANGLE && fx.angle() != 0){
-			delay = 6857;
+			delay = Constants.DELAY_OF_TO_SOURCE;
 		}
 
 		// Send message to handler with delay.
@@ -174,20 +173,20 @@ public class FXHandler {
 	 *            the sound to update
 	 * @return the delay time in milliseconds
 	 */
-	public void delayInterval(FX fx) {
-		float delayRatio;
-
-		// Calculate value between 0 and 1, where 0 is when a user has
-		// reached
-		// destination:
-		if (fx.distance() <= Constants.MAX_DISTANCE)
-			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
-		else
-			delayRatio = 1;
-
-		delay = (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
-				+ Constants.MIN_DELAY;
-	}
+//	public void delayInterval(FX fx) {
+//		float delayRatio;
+//
+//		// Calculate value between 0 and 1, where 0 is when a user has
+//		// reached
+//		// destination:
+//		if (fx.distance() <= Constants.MAX_DISTANCE)
+//			delayRatio = fx.distance() / Constants.MAX_DISTANCE;
+//		else
+//			delayRatio = 1;
+//
+//		delay = (Constants.MAX_DELAY - Constants.MIN_DELAY) * delayRatio
+//				+ Constants.MIN_DELAY;
+//	}
 
 	public Handler getHandler() {
 		return handler;
@@ -200,46 +199,44 @@ public class FXHandler {
 	 *            the sound to be updated
 	 * @param angle
 	 *            the new angle
-	 * @param distance
-	 *            the current distance from goal
 	 */
-	public void update(FX fx, float angle, float distance) {		
+	public void update(FX fx, float angle) {		
 		fx.setAngle(angle);
 
 		env.setListenerOrientation(fx.angle());
 
 		if (Math.abs(fx.angle()) < Constants.TOSOURCE_ANGLE){
 			fx.setPitch(1);
-			//env.setListenerOrientation(fx.angle());
 		}
 		else if (fx.angle() < 0 && fx.angle() > -Constants.FRONT_ANGLE ){
 			fx.setPitch((1 - Constants.MIN_PITCH) / Constants.FRONT_ANGLE * fx.angle() + 1);
-			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.7);
+			// To easier hear if the sound is on the right or left
+			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.85);
 			env.setListenerOrientation(fx.angle() - tempAngle);
-//			env.setListenerOrientation(-90);
 		}
 		else if (fx.angle() >= 0 && fx.angle() < Constants.FRONT_ANGLE){
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-Constants.FRONT_ANGLE) * fx.angle() + 1);
-			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.7);
+			// To easier hear if the sound is on the right or left
+			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.85);
 			env.setListenerOrientation(fx.angle() + tempAngle);
-//			env.setListenerOrientation(90);
 		} 
-		
-		fx.setDistance(distance);
+//		
+//		fx.setDistance(distance);
 	}
 
-	public void loopCoin(float distance) {
-		if (coinPlayable) {
-			soundPool.play(coin, 0, 0, 1, Constants.LOOP, 1);
-			coinPlayable = false;
-		}
-
-		soundPool.setVolume(coin, (1 / (-Constants.MIN_DISTANCE)) * distance
-				+ 2, (1 / (-Constants.MIN_DISTANCE)) * distance + 2);
-
-		// decrease volume on the navigate sound until coin is reached.
-		navFX.setVolume((1 / Constants.MIN_DISTANCE) * distance - 1);
-	}
+//	// Används?
+//	public void loopCoin(float distance) {
+//		if (coinPlayable) {
+//			soundPool.play(coin, 0, 0, 1, Constants.LOOP, 1);
+//			coinPlayable = false;
+//		}
+//
+//		soundPool.setVolume(coin, (1 / (-Constants.MIN_DISTANCE)) * distance
+//				+ 2, (1 / (-Constants.MIN_DISTANCE)) * distance + 2);
+//
+//		// decrease volume on the navigate sound until coin is reached.
+//		navFX.setVolume((1 / Constants.MIN_DISTANCE) * distance - 1);
+//	}
 
 	public void sayDistance(Speech speech) {
 		if (speech.isPlayable()) {
@@ -261,31 +258,19 @@ public class FXHandler {
 		soundPool.play(sayNewCoin, 1, 1, 1, 0, 1);
 	}
 
-	//	public void distanceAnnouncer(float distance) {
-	//		int rConst = 1; // meters from coin destination
-	//
-	//		if (distance < 1000 + rConst && distance > 1000 - rConst)
-	//			sayDistance(say1000);
-	//		if (distance < 900 + rConst && distance > 900 - rConst)
-	//			sayDistance(say900);
-	//		if (distance < 800 + rConst && distance > 800 - rConst)
-	//			sayDistance(say800);
-	//		if (distance < 700 + rConst && distance > 700 - rConst)
-	//			sayDistance(say700);
-	//		if (distance < 600 + rConst && distance > 600 - rConst)
-	//			sayDistance(say600);
-	//		if (distance < 500 + rConst && distance > 500 - rConst)
-	//			sayDistance(say500);
-	//		if (distance < 400 + rConst && distance > 400 - rConst)
-	//			sayDistance(say400);
-	//		if (distance < 300 + rConst && distance > 300 - rConst)
-	//			sayDistance(say300);
-	//		if (distance < 200 + rConst && distance > 200 - rConst)
-	//			sayDistance(say200);
-	//		if (distance < 100 + rConst && distance > 100 - rConst)
-	//			sayDistance(say100);
-	//	}
 
+	public void updateDelay(float f) {
+		delay = f;
+	}
+
+	public void playRouteFinished() {
+		soundPool.stop(coin); // stop play coin
+
+		// play in new thread to not be interrupted
+		(new Thread(new RunFinishedRunnable())).start();
+
+	}
+	
 	/**
 	 * Plays announcements to user in new thread.
 	 */
@@ -305,13 +290,22 @@ public class FXHandler {
 			} // wait
 		}
 	}
+	
+	/**
+	 * Plays announcements to user in new thread.
+	 */
+	private class RunFinishedRunnable implements Runnable {
 
-	public void updateDelay(float f) {
-		delay = f;
-	}
-
-	public void isPrevious(boolean b) {
-		// TODO Auto-generated method stub
-
+		@Override
+		public void run() {
+			try {
+				playCoin();
+				Thread.sleep(2500);
+				soundPool.play(runFinished, 1, 1, 1, 0, 1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // wait
+		}
 	}
 }
