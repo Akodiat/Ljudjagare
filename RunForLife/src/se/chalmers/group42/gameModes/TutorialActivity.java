@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -39,6 +40,9 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tutorial);
+		
+		//Providing an up button
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		orientation = 0;
 
@@ -241,5 +245,16 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 	}
 	public void onStartTrackingTouch(SeekBar seekBar) {}
 	public void onStopTrackingTouch(SeekBar seekBar) {}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
 }

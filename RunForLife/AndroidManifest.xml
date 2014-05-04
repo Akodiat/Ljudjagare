@@ -106,7 +106,8 @@ Google Maps Android API v2, but are recommended.
         </activity>
         <activity
             android:name="se.chalmers.group42.gameModes.TutorialActivity"
-            android:label="@string/title_activity_tutorial" >
+            android:label="@string/title_activity_tutorial"
+            android:parentActivityName="se.chalmers.group42.controller.MainActivity" >
         </activity>
     </application>
 
