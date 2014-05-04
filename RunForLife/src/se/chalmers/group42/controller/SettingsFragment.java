@@ -34,7 +34,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
         //Initializing distance summary text
         String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
         Preference distancePref = (Preference) findPreference("distance");
-        distancePref.setSummary(distance + " meters interval between each checkpoint");
+        distancePref.setSummary(distance + " meter radius of the track to generate");
         
         //Initializing distance summary text
         String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
