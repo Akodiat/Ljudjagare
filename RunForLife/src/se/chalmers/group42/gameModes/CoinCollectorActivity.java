@@ -18,6 +18,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -71,6 +72,61 @@ public class CoinCollectorActivity extends RunActivity {
 
 		final TextView textViewToChange = (TextView) findViewById(R.id.textView_distance);
 		textViewToChange.setText(distance + " m");
+	}
+
+	// Ask if you really want to close the activity
+	// From,
+	// http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
+	@Override
+	public void onBackPressed() {
+		quitRunActivity();
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			quitRunActivity();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	private void quitRunActivity(){
+		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
+		String appMode = pref.getString("application_mode", "");
+		//If within run-mode the user is asked if he really wants to exit the run
+		if(appMode.equals("RUN_MODE")){
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setCancelable(false);
+			builder.setMessage("Do you  want to exit the run?");
+			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// if user pressed "yes", then he is allowed to exit from
+					// application
+					// Ska vara "finish()" egentligen men det fungerar inte?
+					//						android.os.Process.killProcess(android.os.Process.myPid());
+					fx.stopLoop();
+					finish();
+				}
+			});
+			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// if user select "No", just cancel this dialog and continue
+					// with app
+					dialog.cancel();
+				}
+			});
+			AlertDialog alert = builder.create();
+			alert.show();
+		}
+		//If within display/finish-mode no run is lost if exited, and no dialog is needed
+		else{
+			finish();
+		}
 	}
 
 	@Override

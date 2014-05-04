@@ -45,6 +45,7 @@ import se.chalmers.group42.runforlife.StatusIconHandler;
 import se.chalmers.group42.runforlife.DataHandler.RunStatus;
 import sensors.*;
 
+import com.google.android.gms.internal.fx;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -294,17 +295,6 @@ GPSInputListener, OrientationInputListener {
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		// Respond to the action bar's Up/Home button
-		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
 	public void sendFinalRoute(ArrayList<Location> finalRoute, float distance) {
 		// TODO
 	}
@@ -473,41 +463,4 @@ GPSInputListener, OrientationInputListener {
 			}
 		}
 	}
-
-	// Ask if you really want to close the activity
-	// From,
-	// http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
-	@Override
-	public void onBackPressed() {
-		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
-		String appMode = pref.getString("application_mode", "");
-		if(appMode.equals("RUN_MODE")){
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setCancelable(false);
-			builder.setMessage("Do you  want to exit the run?");
-			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// if user pressed "yes", then he is allowed to exit from
-					// application
-					// Ska vara "finish()" egentligen men det fungerar inte?
-					android.os.Process.killProcess(android.os.Process.myPid());
-				}
-			});
-			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// if user select "No", just cancel this dialog and continue
-					// with app
-					dialog.cancel();
-				}
-			});
-			AlertDialog alert = builder.create();
-			alert.show();
-		}
-		else{
-			android.os.Process.killProcess(android.os.Process.myPid());
-		}
-	}
-
 }
