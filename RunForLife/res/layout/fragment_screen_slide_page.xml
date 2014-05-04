@@ -7,23 +7,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="20" 
-        android:paddingBottom="30dp">
+        android:paddingBottom="30dp"
+        android:weightSum="20" >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="19"
-            android:padding="10dp" 
-            android:background="@drawable/coin_pic">
+            android:background="@drawable/coin_pic" >
+
+            <ImageButton
+                android:id="@+id/info_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_about" />
 
             <ImageView
                 android:id="@+id/select_mode_image"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:contentDescription="Image visualizing a game mode"
+                android:padding="10dp"
                 android:src="@drawable/coin_collect" />
 
+            <ImageView
+                android:id="@+id/previous_mode_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_action_previous_item"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/next_mode_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_action_next_item"
+                android:visibility="invisible" />
         </RelativeLayout>
 
         <TextView

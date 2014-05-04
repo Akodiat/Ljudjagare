@@ -8,7 +8,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.ListFragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import se.chalmers.group42.database.FinishedRoute;
 import se.chalmers.group42.database.MySQLiteHelper;
 import se.chalmers.group42.database.Route;
+import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.RunForLifeApplication;
 import se.chalmers.group42.runforlife.dummy.DummyContent;
 
@@ -158,7 +161,7 @@ public class HistoryListFragment extends ListFragment {
 		// Reset the active callbacks interface to the dummy implementation.
 		mCallbacks = sDummyCallbacks;
 	}
-
+	
 	@Override
 	public void onListItemClick(ListView listView, View view, int position,
 			long id) {
