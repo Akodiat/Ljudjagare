@@ -74,9 +74,6 @@ public class CoinCollectorActivity extends RunActivity {
 		textViewToChange.setText(distance + " m");
 	}
 
-	// Ask if you really want to close the activity
-	// From,
-	// http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
 	@Override
 	public void onBackPressed() {
 		quitRunActivity();
@@ -98,6 +95,9 @@ public class CoinCollectorActivity extends RunActivity {
 		String appMode = pref.getString("application_mode", "");
 		//If within run-mode the user is asked if he really wants to exit the run
 		if(appMode.equals("RUN_MODE")){
+			// Ask if you really want to close the activity
+			// From,
+			// http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setCancelable(false);
 			builder.setMessage("Do you  want to exit the run?");
