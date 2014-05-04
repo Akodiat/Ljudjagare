@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 /**
  * 
@@ -48,8 +49,11 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
         Preference distancePref = (Preference) findPreference("distance");
         distancePref.setSummary(distance + " meters interval between each checkpoint");
         
+        //Changing checkpoint summary text
         String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
         Preference pointsPref = (Preference) findPreference("nrPoints");
         pointsPref.setSummary(points + " number of checkpoint");
+        
+        Toast.makeText(getActivity(), "Your settings have been saved", Toast.LENGTH_LONG).show();
     }
 }
