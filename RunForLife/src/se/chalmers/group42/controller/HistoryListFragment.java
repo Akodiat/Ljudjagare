@@ -22,7 +22,6 @@ import se.chalmers.group42.database.MySQLiteHelper;
 import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.RunForLifeApplication;
-import se.chalmers.group42.runforlife.dummy.DummyContent;
 
 /**
  * A list fragment representing a list of Completed Runs. This fragment also
