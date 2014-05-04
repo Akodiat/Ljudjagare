@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -14,12 +17,14 @@ import android.graphics.drawable.ScaleDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -57,8 +62,8 @@ import com.google.android.gms.maps.model.LatLng;
  * 
  */
 public class RunActivity extends SwipeableActivity implements
-		MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
-		GPSInputListener, OrientationInputListener {
+MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
+GPSInputListener, OrientationInputListener {
 
 	private Button runButton, stopButton, finishButton;
 
@@ -76,20 +81,22 @@ public class RunActivity extends SwipeableActivity implements
 	protected GetDirectionsAsyncTask asyncTask;
 
 	private GPSInputHandler gpsInputHandler;
-	
+
 	private RunFragment runFragment;
 	private MapFragment mapFragment;
 	private StatsFragment statsFragment;
-	
-	private MySQLiteHelper db;
-	
-	private int routeId;
 
+	private MySQLiteHelper db;
+
+	private int routeId;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
+		//Providing an up button
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
@@ -158,14 +165,14 @@ public class RunActivity extends SwipeableActivity implements
 		});
 
 		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
-		String mode = pref.getString("application_mode", "");
+		String appMode = pref.getString("application_mode", "");
 
-		if(mode.equals("RUN_MODE")){
+		if(appMode.equals("RUN_MODE")){
 			//Setting up Sensor input
 			gpsInputHandler = new GPSInputHandler(this, this);
 
 			this.dataHandler = new DataHandler(db, this);
-			
+
 			runButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
@@ -189,10 +196,12 @@ public class RunActivity extends SwipeableActivity implements
 				@Override
 				public void onClick(View view) {
 					stop();
+					SharedPreferences preferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = preferences.edit();
+					editor.putString("application_mode", "DISPLAY_MODE");
+					editor.commit();
 				}
 			});
-
-
 
 			// Setting up statusIconHandler
 			IntentFilter filter = new IntentFilter(
@@ -200,7 +209,7 @@ public class RunActivity extends SwipeableActivity implements
 			StatusIconHandler receiver = new StatusIconHandler(this, this);
 			registerReceiver(receiver, filter);
 
-		}else if(mode.equals("DISPLAY_MODE")){
+		}else if(appMode.equals("DISPLAY_MODE")){
 			setUpDisplay(false);
 			runButton.setVisibility(View.GONE);
 			stopButton.setVisibility(View.GONE);
@@ -208,7 +217,7 @@ public class RunActivity extends SwipeableActivity implements
 			headPhonesIcon.setVisibility(View.GONE);
 			finishButton.setVisibility(View.VISIBLE);
 			btnImage.setVisibility(View.GONE);
-			
+
 		}
 
 		setRunFragment(runFragment);
@@ -282,7 +291,17 @@ public class RunActivity extends SwipeableActivity implements
 	public void sendMapLocation(LatLng latLng) {
 		findDirections(HOME_MARCUS.latitude, HOME_MARCUS.longitude,
 				latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING);
+	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
@@ -383,7 +402,7 @@ public class RunActivity extends SwipeableActivity implements
 				.getDefaultSharedPreferences(this);
 		return sharedPreferences.getBoolean("gyro", false);
 	}
-	
+
 	public void setUpDisplay(Boolean stopped){
 		int id = routeId;
 		if(!stopped){
@@ -436,7 +455,7 @@ public class RunActivity extends SwipeableActivity implements
 
 		stats.putLongArray("times", times);
 		stats.putIntArray("dists", dists);
-		
+
 		if(!stopped){
 			runFragment.setArguments(args);
 			mapFragment.setArguments(locs);
@@ -452,6 +471,42 @@ public class RunActivity extends SwipeableActivity implements
 			if (getMapFragment().isAdded()) {
 				mapFrag.displayFinishedMap(locs);
 			}
+		}
+	}
+
+	// Ask if you really want to close the activity
+	// From,
+	// http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
+	@Override
+	public void onBackPressed() {
+		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
+		String appMode = pref.getString("application_mode", "");
+		if(appMode.equals("RUN_MODE")){
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setCancelable(false);
+			builder.setMessage("Do you  want to exit the run?");
+			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// if user pressed "yes", then he is allowed to exit from
+					// application
+					// Ska vara "finish()" egentligen men det fungerar inte?
+					android.os.Process.killProcess(android.os.Process.myPid());
+				}
+			});
+			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// if user select "No", just cancel this dialog and continue
+					// with app
+					dialog.cancel();
+				}
+			});
+			AlertDialog alert = builder.create();
+			alert.show();
+		}
+		else{
+			android.os.Process.killProcess(android.os.Process.myPid());
 		}
 	}
 
