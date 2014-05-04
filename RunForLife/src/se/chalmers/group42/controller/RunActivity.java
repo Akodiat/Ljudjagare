@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -14,11 +17,14 @@ import android.graphics.drawable.ScaleDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,6 +45,7 @@ import se.chalmers.group42.runforlife.StatusIconHandler;
 import se.chalmers.group42.runforlife.DataHandler.RunStatus;
 import sensors.*;
 
+import com.google.android.gms.internal.fx;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -56,8 +63,8 @@ import com.google.android.gms.maps.model.LatLng;
  * 
  */
 public class RunActivity extends SwipeableActivity implements
-		MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
-		GPSInputListener, OrientationInputListener {
+MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
+GPSInputListener, OrientationInputListener {
 
 	private Button runButton, stopButton, finishButton;
 
@@ -75,20 +82,22 @@ public class RunActivity extends SwipeableActivity implements
 	protected GetDirectionsAsyncTask asyncTask;
 
 	private GPSInputHandler gpsInputHandler;
-	
+
 	private RunFragment runFragment;
 	private MapFragment mapFragment;
 	private StatsFragment statsFragment;
-	
-	private MySQLiteHelper db;
-	
-	private int routeId;
 
+	private MySQLiteHelper db;
+
+	private int routeId;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
+		//Providing an up button
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Setting up the action bar
 		final ActionBar actionBar = getActionBar();
@@ -144,11 +153,11 @@ public class RunActivity extends SwipeableActivity implements
 
 		// Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
+		btnImage = (ImageView) findViewById(R.id.run_button_img);
 		headPhonesIcon = (ImageView) findViewById(R.id.headphones_icon);
 		runButton = (Button) findViewById(R.id.run_button);
 		stopButton = (Button) findViewById(R.id.button_stop);
 		finishButton = (Button) findViewById(R.id.done_button);
-		
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -157,16 +166,14 @@ public class RunActivity extends SwipeableActivity implements
 		});
 
 		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
-		String mode = pref.getString("application_mode", "");
+		String appMode = pref.getString("application_mode", "");
 
-		if(mode.equals("RUN_MODE")){
+		if(appMode.equals("RUN_MODE")){
 			//Setting up Sensor input
 			gpsInputHandler = new GPSInputHandler(this, this);
 
 			this.dataHandler = new DataHandler(db, this);
 
-			btnImage = (ImageView) findViewById(R.id.run_button_img);
-			
 			runButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
@@ -190,10 +197,12 @@ public class RunActivity extends SwipeableActivity implements
 				@Override
 				public void onClick(View view) {
 					stop();
+					SharedPreferences preferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = preferences.edit();
+					editor.putString("application_mode", "DISPLAY_MODE");
+					editor.commit();
 				}
 			});
-
-
 
 			// Setting up statusIconHandler
 			IntentFilter filter = new IntentFilter(
@@ -201,15 +210,15 @@ public class RunActivity extends SwipeableActivity implements
 			StatusIconHandler receiver = new StatusIconHandler(this, this);
 			registerReceiver(receiver, filter);
 
-		}else if(mode.equals("DISPLAY_MODE")){
+		}else if(appMode.equals("DISPLAY_MODE")){
 			setUpDisplay(false);
-
 			runButton.setVisibility(View.GONE);
 			stopButton.setVisibility(View.GONE);
 			gpsIcon.setVisibility(View.GONE);
 			headPhonesIcon.setVisibility(View.GONE);
 			finishButton.setVisibility(View.VISIBLE);
 			btnImage.setVisibility(View.GONE);
+
 		}
 
 		setRunFragment(runFragment);
@@ -283,7 +292,6 @@ public class RunActivity extends SwipeableActivity implements
 	public void sendMapLocation(LatLng latLng) {
 		findDirections(HOME_MARCUS.latitude, HOME_MARCUS.longitude,
 				latLng.latitude, latLng.longitude, GMapV2Direction.MODE_WALKING);
-
 	}
 
 	@Override
@@ -384,7 +392,7 @@ public class RunActivity extends SwipeableActivity implements
 				.getDefaultSharedPreferences(this);
 		return sharedPreferences.getBoolean("gyro", false);
 	}
-	
+
 	public void setUpDisplay(Boolean stopped){
 		int id = routeId;
 		if(!stopped){
@@ -393,7 +401,6 @@ public class RunActivity extends SwipeableActivity implements
 				id = extras.getInt(Constants.EXTRA_ID);
 			}
 		}
-
 
 		FinishedRoute fin = db.getFinishedRoute(id);
 		Bundle args = new Bundle();
@@ -456,5 +463,4 @@ public class RunActivity extends SwipeableActivity implements
 			}
 		}
 	}
-
 }

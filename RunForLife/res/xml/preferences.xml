@@ -5,15 +5,17 @@
         <EditTextPreference
             android:key="distance"
             android:title="Distance"
-            android:summary="700 meters interval between each checkpoint"
-            android:dialogTitle="Interval distance (meters)" />
+            android:inputType="number"
+            android:defaultValue="700"
+            android:dialogTitle="Radius distance (meters)" />
     </PreferenceCategory>
     
     <PreferenceCategory android:title="CheckPoints" >
         <EditTextPreference
             android:key="nrPoints"
             android:title="CheckPoints"
-            android:summary="4 number of checkpoints"
+            android:inputType="number"
+            android:defaultValue="4"
             android:dialogTitle="Number of points" />   
     </PreferenceCategory>
     

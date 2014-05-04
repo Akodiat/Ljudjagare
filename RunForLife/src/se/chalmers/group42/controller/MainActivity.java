@@ -183,7 +183,6 @@ public class MainActivity extends Activity implements Callbacks {
 			ft = fm.beginTransaction();
 			Fragment mainRunFragment = new MainRunFragment();
 			ft.replace(R.id.content_frame, mainRunFragment, "mainRunFragment");
-			// ft.addToBackStack(null);
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
@@ -195,9 +194,6 @@ public class MainActivity extends Activity implements Callbacks {
 			Fragment historyListFragment = new HistoryListFragment();
 			ft.replace(R.id.content_frame, historyListFragment,
 					"historyListFragment");
-//			if (fragmentMainVisible) {
-//				ft.addToBackStack(null);
-//			}
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
@@ -208,9 +204,6 @@ public class MainActivity extends Activity implements Callbacks {
 			ft = fm.beginTransaction();
 			Fragment helpFragment = new HelpFragment();
 			ft.replace(R.id.content_frame, helpFragment, "helpFragment");
-//			if (fragmentMainVisible) {
-//				ft.addToBackStack(null);
-//			}
 			ft.commit();
 			// update selected item and title, then close the drawer
 			navDrawerList.setItemChecked(position, true);
@@ -242,12 +235,7 @@ public class MainActivity extends Activity implements Callbacks {
 					.beginTransaction();
 			SettingsFragment fragmentSettings = new SettingsFragment();
 			ft.replace(R.id.content_frame, fragmentSettings);
-//			ft.hide(mMyMainFragment);
-//			ft.addToBackStack(null);
 			ft.commit();
-
-			// fragmentManager.beginTransaction().replace(R.id.content_frame,
-			// fragmentSettings).addToBackStack("settings").commit();
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -282,6 +270,7 @@ public class MainActivity extends Activity implements Callbacks {
 		// Skicak med runläge eller finishedläge
 		startActivity(detailIntent);
 	}
+	//Method overriden to assure transit back to the mainfragment
 	@Override
 	public void onBackPressed(){
 		if((fm.findFragmentByTag("mainRunFragment")==null)){

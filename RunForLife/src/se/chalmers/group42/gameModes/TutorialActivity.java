@@ -63,8 +63,8 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		distanceText = (TextView)		findViewById(R.id.textView_TutDistance);
 
 		x = y = 500;
-		coinX = (int) (MAX_PROGRESS * Math.random());
-		coinY = (int) (MAX_PROGRESS * Math.random());
+		
+		generateNewCoin();
 
 		//SeekBar x
 		SeekBar sbX = (SeekBar)findViewById(R.id.seekBar_x);
@@ -135,14 +135,13 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 		fx.update(
 				fx.getNavigationFX(), 
-				getAngleToCoin(), 
-				getDistanceToCoin());
+				getAngleToCoin());
 
 		if (isCoinFound() && !hasBeenAnnounced) {
 			fx.stopLoop();
 			fx.foundCoin();
 			hasBeenAnnounced = true;
-			// generateNewCoin();
+			generateNewCoin();
 		}
 
 		if (getDistanceToCoin() < 100) {
@@ -167,6 +166,10 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 			}
 		}
 
+	}
+	private void generateNewCoin() {
+		coinX = (int) (MAX_PROGRESS * Math.random());
+		coinY = (int) (MAX_PROGRESS * Math.random());
 	}
 	public int getDistanceToCoin(){
 		return (int) Math.sqrt(Math.pow(x-coinX, 2) + Math.pow(y-coinY, 2));

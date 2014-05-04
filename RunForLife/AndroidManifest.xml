@@ -44,18 +44,19 @@ Google Maps Android API v2, but are recommended.
             android:screenOrientation="nosensor" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="se.chalmers.group42.controller.RunActivity"
             android:label="run_activity"
+            android:parentActivityName="se.chalmers.group42.controller.MainActivity"
             android:screenOrientation="nosensor" >
         </activity>
         <activity
             android:name="se.chalmers.group42.gameModes.CoinCollectorActivity"
             android:label="coin_collector_activity"
+            android:parentActivityName="se.chalmers.group42.controller.MainActivity"
             android:screenOrientation="nosensor" >
         </activity>
         <activity
@@ -102,10 +103,6 @@ Google Maps Android API v2, but are recommended.
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="se.chalmers.group42.runforlife.CompletedRunListActivity" />
-        </activity>
-        <activity
-            android:name="se.chalmers.group42.controller.SettingsActivity"
-            android:label="@string/title_settings" >
         </activity>
         <activity
             android:name="se.chalmers.group42.gameModes.TutorialActivity"

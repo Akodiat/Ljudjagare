@@ -1,7 +1,6 @@
 package se.chalmers.group42.runforlife;
 
 public class Constants {
-
 	public static final int FX_01 = 1;
 	public static final int FX_02 = 2;
 	public static final int LOOP = -1;
@@ -38,17 +37,16 @@ public class Constants {
 	 * A value of 10 would be 10 degrees to each side (20).
 	 */
 	public static final int ACCURACY = 10;
-	
-	// 6857
+
 	public static final int MAX_DELAY = 1000;
 	public static final int MIN_DELAY = 0;
+	public static final int DELAY_OF_TO_SOURCE = 6857;
 	
 	public static final int BEHIND_ANGLE = 40;
 	public static final int FRONT_ANGLE = 140;
-	public static final int TOSOURCE_ANGLE = 15;
+	public static final int TOSOURCE_ANGLE = 20;
 	
 	public static final int APPROACHING_COIN = 100;
-
 	
 	public static final String EXTRA_ID = "asdasdasdasd";
 }

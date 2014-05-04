@@ -143,8 +143,7 @@ public class EscapeActivity extends RunActivity {
 				// }
 
 				if (fx.getNavigationFX().isPlaying())
-					fx.update(fx.getNavigationFX(), (angle), human.getLocation()
-							.distanceTo(monster.getLocation()));
+					fx.update(fx.getNavigationFX(), (angle));
 
 	}
 
