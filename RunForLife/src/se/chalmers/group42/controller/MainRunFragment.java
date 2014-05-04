@@ -8,8 +8,6 @@ import sensors.GPSInputHandler;
 import sensors.GPSInputListener;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.IntentFilter;
@@ -23,9 +21,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.os.Bundle;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v13.app.FragmentStatePagerAdapter;
 
 public class MainRunFragment extends Fragment implements
 		StatusIconEventListener, GPSInputListener {
@@ -57,7 +57,7 @@ public class MainRunFragment extends Fragment implements
 
 		// Instantiate ViewPager and PagerAdapter.
 		mPager = (ViewPager) view.findViewById(R.id.pager);
-		mPagerAdapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
+		mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
 		mPager.setAdapter(mPagerAdapter);
 
 		// Setting up status icons
@@ -94,7 +94,7 @@ public class MainRunFragment extends Fragment implements
 
 					new AlertDialog.Builder(getActivity())
 							.setMessage(
-									"This mode needs GPS to be turned on and headphones to be plugged in.")
+									"This mode requires GPS to be turned on and headphones to be plugged in.")
 							.setPositiveButton(android.R.string.yes,
 									new DialogInterface.OnClickListener() {
 										public void onClick(

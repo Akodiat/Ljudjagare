@@ -16,6 +16,12 @@
             android:layout_weight="19"
             android:background="@drawable/coin_pic" >
 
+            <ImageButton
+                android:id="@+id/info_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_about" />
+
             <ImageView
                 android:id="@+id/select_mode_image"
                 android:layout_width="fill_parent"

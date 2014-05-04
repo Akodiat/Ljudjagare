@@ -18,13 +18,14 @@ package se.chalmers.group42.controller;
 
 import se.chalmers.group42.runforlife.R;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 
 public class ScreenSlidePageFragment extends Fragment {
 
