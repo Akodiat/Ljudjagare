@@ -45,7 +45,7 @@ public class ModeController {
 	 * @return 
 	 */
 	private void launchCoinCollector() {
-		Intent runActivityIntent = new Intent(context, CoinCollectorActivity.class);
+		Intent runActivityIntent = new Intent(context, FreerunActivity.class);
 		context.startActivity(runActivityIntent);
 	}
 }

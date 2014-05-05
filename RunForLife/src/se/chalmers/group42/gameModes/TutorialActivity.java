@@ -68,6 +68,8 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 		x = y = 500;
 		
+		curr100 = ((int) (getDistanceToCoin()/100))*100;
+		
 		generateNewCoin();
 
 		//SeekBar x
@@ -148,16 +150,18 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 			generateNewCoin();
 		}
 
-		if (getDistanceToCoin() < 100) {
-			curr100 = 0;
-			float delayRatio = (float) Math.pow(getDistanceToCoin() / 100, 2);
-
-			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
-					* delayRatio + Constants.MIN_DELAY);
-		} else {
+//		if (getDistanceToCoin() < 100) {
+//			curr100 = 0;
+//			float delayRatio = (float) Math.pow(getDistanceToCoin() / 100, 2);
+//
+//			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
+//					* delayRatio + Constants.MIN_DELAY);
+//		} else {
 			// if user has moved forward to new 100s
 			if (getDistanceToCoin() - curr100 < 0) {
-				curr100 = ((int) (getDistanceToCoin() / 100)) * 100;
+				int current100 = ((int) (getDistanceToCoin() / 100));
+				fx.sayDistance(fx.getSpeech(current100));
+				curr100 = current100 * 100;
 			}
 
 			else if (!(getDistanceToCoin() - curr100 >= 100)) {
@@ -168,7 +172,9 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 						* delayRatio + Constants.MIN_DELAY);
 			}
-		}
+			else
+				fx.updateDelay(Constants.MAX_DELAY);
+//		}
 
 	}
 	private void generateNewCoin() {
@@ -191,22 +197,15 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 	public void onProgressChanged(SeekBar seekBar,
 			int progress, boolean fromUser) {
-		if			(seekBar.getId() == R.id.seekBar_x) {
+		if(seekBar.getId() 		== R.id.seekBar_x)
 			x = progress;
-			//			drawableView.setXCoord(x);
-		}
-		else if(	seekBar.getId() == R.id.seekBar_y) {
+		else if(seekBar.getId() == R.id.seekBar_y)
 			y = progress;
-			//			drawableView.setYCoord(y);
-		}
 		else return;
-		//drawableView.invalidate();
 
 		draw();
-		//drawableView.postInvalidate();
+		
 		distanceText.setText("Distance: " + getDistanceToCoin() +" m");
-		//Log.d("TUTORIAL", "Distance: " + getDistance() +" m");
-
 	}
 	
 	public void draw(){

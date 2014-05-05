@@ -90,26 +90,26 @@ public class MainRunFragment extends Fragment implements
 			public void onClick(View view) {
 				int selectedMode = mPager.getCurrentItem();
 
-				if (selectedMode == 0 && (!gpsOn || !headphonesIn)) {
-					// show informative dialog
-
-					new AlertDialog.Builder(getActivity())
-							.setMessage(
-									"This mode requires GPS to be turned on and headphones to be plugged in.")
-							.setPositiveButton(android.R.string.yes,
-									new DialogInterface.OnClickListener() {
-										public void onClick(
-												DialogInterface dialog,
-												int which) {
-											// continue to initial state
-										}
-									}).show();
-
-				} else {
+//				if (selectedMode == 0 && (!gpsOn || !headphonesIn)) {
+//					// show informative dialog
+//
+//					new AlertDialog.Builder(getActivity())
+//							.setMessage(
+//									"This mode requires GPS to be turned on and headphones to be plugged in.")
+//							.setPositiveButton(android.R.string.yes,
+//									new DialogInterface.OnClickListener() {
+//										public void onClick(
+//												DialogInterface dialog,
+//												int which) {
+//											// continue to initial state
+//										}
+//									}).show();
+//
+//				} else {
 					setPrefs();
 					new ModeController(mainActivity).launchMode((int) mPager
 							.getCurrentItem());
-				}
+//				}
 			}
 		});
 

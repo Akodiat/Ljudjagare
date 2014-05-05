@@ -46,6 +46,7 @@ public class FreerunActivity extends RunActivity {
 
 		// Initialize audio
 		(fx = new FXHandler2()).initSound(this);
+		fx.loop(fx.getNavigationFX());
 		
 	}
 
@@ -85,7 +86,7 @@ public class FreerunActivity extends RunActivity {
 		this.human.setLocation(location);
 		
 		if(coinLocation == null)
-			generatePoint(RADIUS, location);
+			generateCoin(RADIUS, location);
 
 		// If a coin is found..
 		if (isAtCoin() && dataHandler.isRunning()) {
@@ -98,7 +99,7 @@ public class FreerunActivity extends RunActivity {
 			
 
 			// And generate a new coin to search for
-			generatePoint(RADIUS, location);
+			generateCoin(RADIUS, location);
 		}
 
 		// If a current coin is set
@@ -204,7 +205,7 @@ public class FreerunActivity extends RunActivity {
 		return tempAngle;
 	}
 
-	private Location generatePoint(double radius, Location origo){
+	private Location generateCoin(double radius, Location origo){
 
 		double v = 2 * Math.PI * Math.random();
 
@@ -217,6 +218,14 @@ public class FreerunActivity extends RunActivity {
 		Location location = new Location("new Location");
 		location.setLongitude(origo.getLongitude() + addLong);
 		location.setLatitude(origo.getLatitude() + addLat);
+		
+
+		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
+				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
+
+		// Show collected coin on the map
+		mapFrag.handleNewCoin(location);
+		mapFrag.showCollectedCoin(human.getLocation());
 
 
 		return location;
