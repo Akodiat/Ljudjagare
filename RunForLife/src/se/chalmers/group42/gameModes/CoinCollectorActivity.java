@@ -48,6 +48,8 @@ public class CoinCollectorActivity extends RunActivity {
 	private int curr100;
 
 	private int checkpoints;
+	
+	private SharedPreferences sharedPref;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,9 @@ public class CoinCollectorActivity extends RunActivity {
 		human = new Human();
 		//curr100 = Constants.RUN_DISTANCE;
 		coinLocation = LocationHelper.locationFromLatlng(DEFAULT_POSITION);
+
+		//Retrieving distancevalue from preferences
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
@@ -135,8 +140,6 @@ public class CoinCollectorActivity extends RunActivity {
 		if (generateRoute) {
 			generateRoute = false;
 
-			//Retrieving distancevalue from preferences
-			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 			//Setting value to 700 meters if no values have been set
 			String distance = sharedPref.getString("distance", "700");
 
@@ -325,10 +328,7 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private ArrayList<Location> generateRandomRoute(double distance) {
-		// Calculation random positions
 
-//		//Retrieving distancevalue from preferences
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 //		//Setting value to 700 meters if no values have been set
 		Boolean random = sharedPref.getBoolean("route", false);
 		String random1 = sharedPref.getString("random1", "0");
