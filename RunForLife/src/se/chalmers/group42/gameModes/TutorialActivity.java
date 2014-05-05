@@ -206,14 +206,20 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 	}
 
 	public void onRunButton(View view) {
+		
 		float deltaDistance = 30;
 		
 		x += deltaDistance * Math.cos(Math.toRadians(orientation-90));
 		y += deltaDistance * Math.sin(Math.toRadians(orientation-90));
 
+		//Checking for edge of the world
+		if(x<0) x=0; else if (x>MAX_PROGRESS) x=MAX_PROGRESS;
+		if(y<0) y=0; else if (y>MAX_PROGRESS) y=MAX_PROGRESS;
+		
 		draw();
 
 		distanceText.setText("Distance: " + getDistanceToCoin() +" m");
+	
 	}
 	
 	public void onDoneButton(View view) {
