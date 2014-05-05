@@ -51,9 +51,10 @@ public class RunFragment extends Fragment {
 
 		TextView txDist = (TextView) getView().findViewById(R.id.dist_table);
 
-		if (distance >= 1000)
-			txDist.setText(Math.round((distance / 1000) * 100) / 100.0d + "km");
-		else
+		if (distance >= 1000){
+			double d = distance;
+			txDist.setText(Math.round((d / 1000) * 100) / 100.0d + "km");
+		}else
 			txDist.setText(distance + "m");
 
 		double s = seconds;
@@ -153,10 +154,11 @@ public class RunFragment extends Fragment {
 			// *************SET Distance*************
 			int distance = args.getInt("distance");
 
-			if (distance >= 1000)
+			if (distance >= 1000){
+				double d = distance;
 				((TextView) view.findViewById(R.id.dist_table)).setText(Math
-						.round((distance / 1000) * 100) / 100.0d + "km");
-			else
+						.round((d / 1000) * 100) / 100.0d + "km");
+			}else
 				((TextView) view.findViewById(R.id.dist_table))
 						.setText(distance + "m");
 
