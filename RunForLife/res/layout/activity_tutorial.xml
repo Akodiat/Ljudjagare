@@ -86,7 +86,7 @@
         android:layout_marginRight="15dp"
         android:background="@drawable/run_button"
         android:fontFamily="sans-serif-condensed"
-        android:text="@string/run_button_text"
+        android:text="DONE"
         android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
