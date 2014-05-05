@@ -11,6 +11,8 @@ public class RunForLifeApplication extends Application{
 	    super.onCreate();
 
 	    db = new MySQLiteHelper(this);
+//	    db.onUpgrade(db.getWritableDatabase(), 0, 1);
+	    
 	}
 	
 	public MySQLiteHelper getDatabase(){
