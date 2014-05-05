@@ -23,7 +23,7 @@ public class HelpFragment extends Fragment{
 
 	private FXHandler fxHandler, fxHandlerNormal, fxHandlerFrequency;
 	private Button correctDirectionButton, hundredMetersButton, frequencyButton, 
-	leftButton, leftForwButton, rightForwButton, rightButton, wrongDirectionButton, coinPickButton, newCoinButton, technoSoundButton;
+	leftButton, leftForwButton, rightForwButton, rightButton, wrongDirectionButton, coinPickButton, newCoinButton, technoSoundButton, runFinishedButton;
 	private SeekBar frequencySeekbar;
 	private TextView distanceText;
 	private Timer timer;
@@ -55,6 +55,7 @@ public class HelpFragment extends Fragment{
 		coinPickButton = (Button) rootView.findViewById(R.id.button4);
 		newCoinButton = (Button) rootView.findViewById(R.id.button5);
 		technoSoundButton = (Button) rootView.findViewById(R.id.button6);
+		runFinishedButton = (Button) rootView.findViewById(R.id.button7);
 		timer = new Timer();
 
 		//Button actions
@@ -62,13 +63,14 @@ public class HelpFragment extends Fragment{
 		correctDirectionButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				fxHandlerNormal.loop(fxHandlerNormal.getNavigationFX());
-				fxHandlerNormal.getNavigationFX().play();
+				//Re-initiation needed to reset the angle to 0 degrees
+				(fxHandlerNormal = new FXHandler()).initSound(getActivity());
+				fxHandlerNormal.updateDelay(500);
+				fxHandlerNormal.loop(fxHandlerNormal.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
 					public void run() {
-//						fxHandlerNormal.stopLoop();
-						fxHandlerNormal.getNavigationFX().stop();
+						fxHandlerNormal.stopLoop();
 					}
 				}, 2000);
 			}
@@ -219,7 +221,13 @@ public class HelpFragment extends Fragment{
 		coinPickButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandler.sayCoinReached();
+				fxHandler.playCoin();
+				timer.schedule(new TimerTask() {
+					@Override
+					public void run() {
+						fxHandler.sayGoodJob();
+					}
+				}, 1000);
 			}
 		});
 
@@ -230,6 +238,15 @@ public class HelpFragment extends Fragment{
 				fxHandler.sayNewCoin();
 			}
 		});
+		
+		//Run finished
+		runFinishedButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				fxHandler.sayRunFinished();
+			}
+		});
+		
 		return rootView;
 	}
 }

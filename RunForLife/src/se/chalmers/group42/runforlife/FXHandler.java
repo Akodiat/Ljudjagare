@@ -216,11 +216,18 @@ public class FXHandler {
 		soundPool.play(sayCoinReached, 1, 1, 1, 0, 1);
 	}
 
+	public void sayGoodJob(){
+		soundPool.play(goodJob, 1, 1, 1, 0, 1);
+	}
+
 	public void sayNewCoin() {
 		soundPool.play(sayNewCoin, 1, 1, 1, 0, 1);
 	}
 
-
+	public void sayRunFinished() {
+		soundPool.play(runFinished, 1, 1, 1, 0, 1);
+	}
+	
 	public void updateDelay(float f) {
 		delay = f;
 	}
@@ -243,9 +250,9 @@ public class FXHandler {
 			try {
 				playCoin();
 				Thread.sleep(2500);
-				soundPool.play(goodJob, 1, 1, 1, 0, 1);
+				sayGoodJob();
 				Thread.sleep(2000);
-				soundPool.play(sayNewCoin, 1, 1, 1, 0, 1);
+				sayNewCoin();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -263,7 +270,7 @@ public class FXHandler {
 			try {
 				playCoin();
 				Thread.sleep(2500);
-				soundPool.play(runFinished, 1, 1, 1, 0, 1);
+				sayRunFinished();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

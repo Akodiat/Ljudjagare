@@ -171,9 +171,15 @@
             android:id="@+id/textViewHelp8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Keep picking up coins until all are collected."
+            android:text="Keep picking up coins until all are collected. When the run is finished you will hear this sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="25sp" />
+        
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play Sound" />
     </LinearLayout>
 
 </ScrollView>
