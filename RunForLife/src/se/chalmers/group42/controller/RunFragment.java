@@ -131,11 +131,15 @@ public class RunFragment extends Fragment {
 	public void setDisplay(Bundle args){
 		
 		//********REMOVE PACE****
-		view.findViewById(R.id.curr_pace_desc).setVisibility(View.GONE);
-		view.findViewById(R.id.curr_pace_table).setVisibility(View.GONE);
+//		view.findViewById(R.id.curr_pace_desc).setVisibility(View.GONE);
+		TextView txp = (TextView) view.findViewById(R.id.curr_pace_desc);
+		txp.setText("Pace");
+		view.findViewById(R.id.avg_pace_table).setVisibility(View.GONE);
 		//********REMOVE SPEED****
-		view.findViewById(R.id.curr_speed_desc).setVisibility(View.GONE);
-		view.findViewById(R.id.curr_speed_table).setVisibility(View.GONE);
+//		view.findViewById(R.id.curr_speed_desc).setVisibility(View.GONE);
+		TextView txs = (TextView) view.findViewById(R.id.curr_speed_desc);
+		txs.setText("Speed");
+		view.findViewById(R.id.avg_speed_table).setVisibility(View.GONE);
 		
 		//******SET FINISH**
 //		view.findViewById(R.id.finished_run).setVisibility(View.VISIBLE);
@@ -165,7 +169,7 @@ public class RunFragment extends Fragment {
 			// *************SET SPEED/pace***************
 			double speed = args.getDouble("speed");
 			speed = Math.round(speed * 100) / 100.0d;
-			((TextView) view.findViewById(R.id.avg_speed_table)).setText(speed
+			((TextView) view.findViewById(R.id.curr_speed_table)).setText(speed
 					+ "km/h");
 
 			double pace;
@@ -174,7 +178,7 @@ public class RunFragment extends Fragment {
 			else
 				pace = 0;
 
-			((TextView) view.findViewById(R.id.avg_pace_table)).setText(pace
+			((TextView) view.findViewById(R.id.curr_pace_table)).setText(pace
 					+ "min/km");
 
 			// *******************SET PROGRESS********************

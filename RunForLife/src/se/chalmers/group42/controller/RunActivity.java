@@ -90,6 +90,8 @@ public class RunActivity extends SwipeableActivity implements
 	private MySQLiteHelper db;
 
 	private int routeId;
+	
+	private String appMode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -166,7 +168,7 @@ public class RunActivity extends SwipeableActivity implements
 		});
 
 		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
-		String appMode = pref.getString("application_mode", "");
+		appMode = pref.getString("application_mode", "");
 
 		if (appMode.equals("RUN_MODE")) {
 			// Setting up Sensor input
@@ -219,7 +221,8 @@ public class RunActivity extends SwipeableActivity implements
 			//Set actionbar title text
 			getActionBar().setTitle("Finished Run");
 			
-			setUpDisplay(false);
+			setUpDisplay();
+			
 			runButton.setVisibility(View.GONE);
 			stopButton.setVisibility(View.GONE);
 			gpsIcon.setVisibility(View.GONE);
@@ -292,7 +295,7 @@ public class RunActivity extends SwipeableActivity implements
 		headPhonesIcon.setVisibility(View.GONE);
 		finishButton.setVisibility(View.VISIBLE);
 		btnImage.setVisibility(View.GONE);
-		setUpDisplay(true);
+		setUpDisplay();
 	}
 
 	@Override
@@ -407,9 +410,9 @@ public class RunActivity extends SwipeableActivity implements
 		return sharedPreferences.getBoolean("gyro", false);
 	}
 
-	public void setUpDisplay(Boolean stopped) {
+	public void setUpDisplay() {
 		int id = routeId;
-		if (!stopped) {
+		if (appMode.equals("DISPLAY_MODE")) {
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
 				id = extras.getInt(Constants.EXTRA_ID);
@@ -462,7 +465,7 @@ public class RunActivity extends SwipeableActivity implements
 		stats.putLongArray("times", times);
 		stats.putIntArray("dists", dists);
 
-		if (!stopped) {
+		if (appMode.equals("DISPLAY_MODE")) {
 			runFragment.setArguments(args);
 			mapFragment.setArguments(locs);
 			statsFragment.setArguments(stats);
