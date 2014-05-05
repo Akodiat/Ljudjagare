@@ -1,10 +1,14 @@
 package se.chalmers.group42.gameModes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.R;
 import sensors.GyroInputHandler;
 import sensors.GyroInputListener;
+import utils.Vector2;
 import android.app.Activity;
 import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
@@ -24,17 +28,18 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 	public static int MAX_PROGRESS = 1000;
 
-	private float 	orientation;
-	private int 	x,y;
-	private int		coinX, coinY;
-	private	int 	curr100;
-	private int 	score = 0;
-	private int updateCounter = 0;
+	private float 			orientation;
+	private int 			x,y;
+	private int				coinX, coinY;
+	private	int 			curr100;
+	private int 			score = 0;
+	private List<Vector2> 	foundCoins;
+	private int 			updateCounter = 0;
 	//	private DrawableView drawableView;
-	private Canvas 	canvas;
-	private Paint 	paint1;
-	private Paint 	paint2;
-	private TextView distanceText;
+	private Canvas 			canvas;
+	private Paint 			paint1;
+	private Paint 			paint2;
+	private TextView 		distanceText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,8 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		orientation = 0;
+		
+		foundCoins = new ArrayList<Vector2>();
 
 		//Gyro input
 		new GyroInputHandler(this, this);
@@ -151,6 +158,7 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		//	fx.stopLoop();
 			fx.foundCoin();
 			increaseScore();
+			foundCoins.add(new Vector2(coinX, coinY));
 			generateNewCoin();
 		}
 
@@ -248,6 +256,11 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 				coinX	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
 				coinY	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
 				30, paint2);
+		
+		for (Vector2 coin : foundCoins) {
+			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.arrow),
+					coin.getX(), coin.getY(), null);
+		}
 
 
 		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
