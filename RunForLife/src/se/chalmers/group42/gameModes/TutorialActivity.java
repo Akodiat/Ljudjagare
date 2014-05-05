@@ -74,10 +74,7 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		//		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 
 		distanceText = (TextView)		findViewById(R.id.textView_TutDistance);
-		
-		((TextView) findViewById(R.id.textView_score)).setText(
-				"Score: 0"
-				);
+
 
 		x = y = 500;
 
@@ -217,6 +214,11 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		draw();
 
 		distanceText.setText("Distance: " + getDistanceToCoin() +" m");
+	}
+	
+	public void onDoneButton(View view) {
+		fx.stopLoop();
+		finish();
 	}
 
 	public void draw(){
