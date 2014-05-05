@@ -34,7 +34,10 @@ public class RunFragment extends Fragment {
 		if(mode.equals("DISPLAY_MODE")){
 			Bundle args = getArguments();
 			if(args != null){
+				int maxCoins = args.getInt("maxCoins");
+				setMax(maxCoins);
 				setDisplay(args);
+				
 			}
 		}
 		return rootView;
@@ -98,9 +101,9 @@ public class RunFragment extends Fragment {
 	}
 
 	public void setMax(int max) {
-		progressBar = (ProgressBar) getView().findViewById(R.id.progressBar1);
+		progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
 		progressBar.setMax(max);
-		TextView txProg = (TextView) getView().findViewById(R.id.progressText2);
+		TextView txProg = (TextView) view.findViewById(R.id.progressText2);
 		txProg.setText(progressStatus + "/" + progressBar.getMax() + " Coins");
 	}
 
@@ -134,8 +137,8 @@ public class RunFragment extends Fragment {
 		view.findViewById(R.id.curr_speed_table).setVisibility(View.GONE);
 		
 		//******SET FINISH**
-		view.findViewById(R.id.finished_run).setVisibility(View.VISIBLE);
-		view.findViewById(R.id.finished_run_desc).setVisibility(View.VISIBLE);
+//		view.findViewById(R.id.finished_run).setVisibility(View.VISIBLE);
+//		view.findViewById(R.id.finished_run_desc).setVisibility(View.VISIBLE);
 		
 		if (args != null) {
 

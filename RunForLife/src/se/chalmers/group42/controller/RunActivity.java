@@ -150,7 +150,7 @@ GPSInputListener, OrientationInputListener {
 
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
 		db = app.getDatabase();
-
+		
 		// Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
 		btnImage = (ImageView) findViewById(R.id.run_button_img);
@@ -238,7 +238,12 @@ GPSInputListener, OrientationInputListener {
 
 	private void start() {
 		// START
-		dataHandler.newRoute();
+		//Retrieving distancevalue from preferences
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		String nrPoints = sharedPref.getString("nrPoints", "3");
+		
+		
+		dataHandler.newRoute(Integer.parseInt(nrPoints));
 		dataHandler.startWatch();
 		btnImage.setImageResource(R.drawable.pause_button);
 		dataHandler.runStatus = RunStatus.RUNNING;
@@ -418,12 +423,14 @@ GPSInputListener, OrientationInputListener {
 		}
 		locs.putDoubleArray("latitudes", latitudes);
 		locs.putDoubleArray("longitudes", longitudes);
-
+		
 		List<Coins> coins = db.getAllCoinsByRoute(id);
 		int nrCoins = coins.size();
-
+		int maxCoins = fin.getMaxCoins();
+		
 		args.putInt("nrCoins", nrCoins);
-
+		args.putInt("maxCoins", maxCoins);
+		
 		double[] coinlat = new double[nrCoins];
 		double[] coinlng = new double[nrCoins];
 
@@ -451,6 +458,9 @@ GPSInputListener, OrientationInputListener {
 			mapFragment.setArguments(locs);
 			statsFragment.setArguments(stats);
 		}else{
+			findViewById(R.id.finished_run).setVisibility(View.VISIBLE);
+			findViewById(R.id.finished_run_desc).setVisibility(View.VISIBLE);
+			
 			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
 			if (getRunFragment().isAdded()) {

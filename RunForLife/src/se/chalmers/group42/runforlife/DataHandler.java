@@ -96,8 +96,9 @@ public class DataHandler {
 	}
 	
 	//Adds a new route to the database
-	public void newRoute(){
+	public void newRoute(int coins){
 		Route currentRoute = new Route();
+		currentRoute.setMaxCoins(coins);
 		routeId = db.addRoute(currentRoute);
 		
 	}

@@ -5,6 +5,7 @@ import android.text.format.Time;
 public class Route {
 	private int id;
 	private String date;
+	private int maxCoins = 0;
 	
 	public Route(){
 		super();
@@ -27,6 +28,13 @@ public class Route {
 	 */
 	public void setDate(String date) {
 		this.date = date;
+	}
+	
+	public int getMaxCoins() {
+		return maxCoins;
+	}
+	public void setMaxCoins(int maxCoins) {
+		this.maxCoins = maxCoins;
 	}
 	@Override
 	public String toString(){
