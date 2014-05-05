@@ -34,16 +34,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/image_desc_gps"
+            android:paddingLeft="10dp"
             android:src="@drawable/ic_action_location_off" />
 
         <ImageView
             android:id="@+id/headphones_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-17dp"
+            android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/gps_icon"
             android:contentDescription="@string/image_desc_headphones"
-            android:src="@drawable/ic_action_headphones_off" />
+            android:src="@drawable/ic_action_headphones" />
     </RelativeLayout>
 
     <Button
@@ -86,14 +87,18 @@
 
     <Button
         android:id="@+id/button_stop"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="-20dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/stop_button"
+        android:layout_centerInParent="true"
+        android:gravity="center"
         android:fontFamily="sans-serif-condensed"
-        android:text="■"
+        android:text="STOP"
+        android:paddingBottom="5dp"
         android:textColor="#FFFFFF"
-        android:textSize="45sp"
+        android:textSize="23sp"
         android:visibility="invisible" />
 
 </RelativeLayout>
