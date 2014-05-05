@@ -32,7 +32,7 @@ public class MainRunFragment extends Fragment implements
 	private View view;
 	private Activity mainActivity;
 	private Button runButton;
-	private ImageView gpsIcon, headPhonesIcon, headPhonesIconOut;
+	private ImageView gpsIcon, headPhonesIcon;
 	private boolean gpsOn, headphonesIn;
 
 	/**
@@ -58,12 +58,12 @@ public class MainRunFragment extends Fragment implements
 		// Instantiate ViewPager and PagerAdapter.
 		mPager = (ViewPager) view.findViewById(R.id.pager);
 		mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
+		mPager.setPageTransformer(true, new DepthPageTransformer());
 		mPager.setAdapter(mPagerAdapter);
 
 		// Setting up status icons
 		gpsIcon = (ImageView) view.findViewById(R.id.gps_icon);
 		headPhonesIcon = (ImageView) view.findViewById(R.id.headphones_icon);
-		headPhonesIconOut = (ImageView) view.findViewById(R.id.headphones_icon_not);
 
 		// Setting up Sensor input
 		new GPSInputHandler(this, mainActivity);
@@ -90,47 +90,28 @@ public class MainRunFragment extends Fragment implements
 			public void onClick(View view) {
 				int selectedMode = mPager.getCurrentItem();
 
-				if (selectedMode == 0 && (!gpsOn || !headphonesIn)) {
-					// show informative dialog
-
-					new AlertDialog.Builder(getActivity())
-							.setMessage(
-									"This mode requires GPS to be turned on and headphones to be plugged in.")
-							.setPositiveButton(android.R.string.yes,
-									new DialogInterface.OnClickListener() {
-										public void onClick(
-												DialogInterface dialog,
-												int which) {
-											// continue to initial state
-										}
-									}).show();
-
-				} else {
+//				if (selectedMode == 0 && (!gpsOn || !headphonesIn)) {
+//					// show informative dialog
+//
+//					new AlertDialog.Builder(getActivity())
+//							.setMessage(
+//									"This mode requires GPS to be turned on and headphones to be plugged in.")
+//							.setPositiveButton(android.R.string.yes,
+//									new DialogInterface.OnClickListener() {
+//										public void onClick(
+//												DialogInterface dialog,
+//												int which) {
+//											// continue to initial state
+//										}
+//									}).show();
+//
+//				} else {
 					setPrefs();
 					new ModeController(mainActivity).launchMode((int) mPager
 							.getCurrentItem());
-				}
+//				}
 			}
 		});
-
-		// Get slide fragment XML.
-		View modeView = inflater.inflate(R.layout.fragment_screen_slide_page,
-				null);
-
-		// Handle previous and next pointers.
-
-		switch (mPager.getCurrentItem()) {
-		case 0:
-			modeView.findViewById(R.id.previous_mode_image).setVisibility(
-					View.INVISIBLE);
-			modeView.findViewById(R.id.next_mode_image).setVisibility(
-					View.VISIBLE);
-		case 1:
-			modeView.findViewById(R.id.previous_mode_image).setVisibility(
-					View.VISIBLE);
-			modeView.findViewById(R.id.next_mode_image).setVisibility(
-					View.INVISIBLE);
-		}
 
 		// Set up statusIconHandler
 		IntentFilter filter = new IntentFilter(
@@ -179,7 +160,6 @@ public class MainRunFragment extends Fragment implements
 		if (!headphonesIn) {
 			headphonesIn = true;
 			headPhonesIcon.setImageResource(R.drawable.ic_action_headphones);
-			headPhonesIconOut.setVisibility(View.INVISIBLE);
 		}
 	}
 
@@ -187,7 +167,6 @@ public class MainRunFragment extends Fragment implements
 	public void onHeadphonesOut() {
 		headphonesIn = false;
 		headPhonesIcon.setImageResource(R.drawable.ic_action_headphones_off);
-		headPhonesIconOut.setVisibility(View.VISIBLE);
 	}
 
 	@Override

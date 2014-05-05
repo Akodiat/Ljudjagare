@@ -34,16 +34,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/image_desc_gps"
-            android:src="@drawable/gps_disabled" />
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_action_location_off" />
 
         <ImageView
             android:id="@+id/headphones_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-17dp"
+            android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/gps_icon"
             android:contentDescription="@string/image_desc_headphones"
-            android:src="@drawable/headphones_disabled" />
+            android:src="@drawable/ic_action_headphones" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -53,35 +54,34 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="-20dp"
         android:layout_marginRight="15dp" >
-		
+
         <Button
-        android:id="@+id/done_button"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="-20dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/run_button"
-        android:fontFamily="sans-serif-condensed"
-        android:text="OK"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp" 
-        android:visibility="gone"/>
-        
-        
+            android:id="@+id/done_button"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="-20dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/run_button"
+            android:fontFamily="sans-serif-condensed"
+            android:text="OK"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/run_button"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@drawable/run_button"/>
-        
-        <ImageView 
+            android:background="@drawable/run_button" />
+
+        <ImageView
             android:id="@+id/run_button_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="30dp"
             android:contentDescription="play game"
+            android:padding="30dp"
             android:src="@drawable/play_button" />
             />
     </RelativeLayout>

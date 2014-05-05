@@ -13,32 +13,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="8dp" >
-        
-        <TextView
-            android:id="@+id/finished_run"
-            android:layout_marginTop="-5dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:gravity="center_horizontal"
-            android:text="Finished!"
-            android:textAllCaps="true"
-            android:textColor="#111111"
-            android:textSize="40sp" 
-            android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/finished_run_desc"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:paddingLeft="10sp"
-            android:paddingRight="10sp"
-            android:text="Below follows the score. You can also check the map to see how you ran."
-            android:textColor="#1c1c1f"
-            android:textSize="13sp" 
-            android:visibility="gone"/>
-        
+        <!-- <TextView -->
+        <!-- android:id="@+id/finished_run" -->
+        <!-- android:layout_marginTop="-5dp" -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:fontFamily="sans-serif-condensed" -->
+        <!-- android:gravity="center_horizontal" -->
+        <!-- android:text="Finished!" -->
+        <!-- android:textAllCaps="true" -->
+        <!-- android:textColor="#111111" -->
+        <!-- android:textSize="40sp" -->
+        <!-- android:visibility="gone"/> -->
+
+
+        <!-- <TextView -->
+        <!-- android:id="@+id/finished_run_desc" -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:gravity="center_horizontal" -->
+        <!-- android:paddingLeft="10sp" -->
+        <!-- android:paddingRight="10sp" -->
+        <!-- android:text="Below follows the score. You can also check the map to see how you ran." -->
+        <!-- android:textColor="#1c1c1f" -->
+        <!-- android:textSize="13sp" -->
+        <!-- android:visibility="gone"/> -->
 
         <TableLayout
             android:id="@+id/statistics_table"
@@ -56,8 +56,8 @@
                     android:id="@+id/time_desc"
                     android:layout_marginRight="8dp"
                     android:text="Time"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/time_table"
@@ -79,8 +79,8 @@
                     android:id="@+id/dist_desc"
                     android:layout_marginRight="8dp"
                     android:text="Distance"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dist_table"
@@ -101,9 +101,9 @@
                 <TextView
                     android:id="@+id/curr_pace_desc"
                     android:layout_marginRight="8dp"
-                    android:text="Current pace"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:text="Pace"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/curr_pace_table"
@@ -119,21 +119,14 @@
                 android:id="@+id/tableRow4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="9dp" >
-
-                <TextView
-                    android:id="@+id/avg_pace_desc"
-                    android:layout_marginRight="8dp"
-                    android:text="Average pace"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:paddingTop="9dp" 
+                android:gravity="right">
 
                 <TextView
                     android:id="@+id/avg_pace_table"
-                    android:layout_weight="1.0"
                     android:gravity="right"
-                    android:text="0.0min/km"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:text="Average: 0.0min/km"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </TableRow>
 
             <!-- 2 columns -->
@@ -148,8 +141,8 @@
                     android:id="@+id/curr_speed_desc"
                     android:layout_marginRight="8dp"
                     android:text="Current speed"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/curr_speed_table"
@@ -161,25 +154,19 @@
 
             <!-- 2 columns -->
 
-            <TableRow
+          <TableRow
                 android:id="@+id/tableRow6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="9dp" >
-
-                <TextView
-                    android:id="@+id/avg_speed_desc"
-                    android:layout_marginRight="8dp"
-                    android:text="Average speed"
-                    android:textStyle="bold"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:paddingTop="9dp" 
+                android:gravity="right" >
 
                 <TextView
                     android:id="@+id/avg_speed_table"
                     android:layout_weight="1.0"
                     android:gravity="right"
-                    android:text="0.0m/s"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:text="Average: 0.0m/s"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </TableRow>
         </TableLayout>
 

@@ -1,26 +1,12 @@
-/*
- * Copyright 2012 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package se.chalmers.group42.controller;
 
 import se.chalmers.group42.runforlife.R;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,7 +31,7 @@ public class ScreenSlidePageFragment extends Fragment {
 
 	private String[] infoTexts = {
 			"In this mode, the goal is to localize coins using the sound coming from your headphones."
-					+ "Read more on how it works in the help section.",
+					+ " Read more on how it works in the help section.",
 			"The tutorial mode is for you to get familiar with the application and how to recognize its audio." };
 
 	/**
@@ -94,18 +80,19 @@ public class ScreenSlidePageFragment extends Fragment {
 		final TextView infoText = (TextView) rootView
 				.findViewById(R.id.info_text);
 
-		rootView.findViewById(R.id.info_button).setOnClickListener(
-				new OnClickListener() {
-					public void onClick(View v) {
-						if (!isInInfoState) {
-							modeImage.setVisibility(View.INVISIBLE);
-							infoText.setText(infoTexts[mModeNumber]);
-							infoText.setVisibility(View.VISIBLE);
+		final ImageView arrowRight = (ImageView) rootView
+				.findViewById(R.id.next_mode_image);
+		final ImageView arrowLeft = (ImageView) rootView
+				.findViewById(R.id.previous_mode_image);
 
-							isInInfoState = true;
-						}
-					}
-				});
+		// Set arrows to guide user.
+		if (mModeNumber == 0) {
+			arrowRight.setVisibility(View.VISIBLE);
+			arrowLeft.setVisibility(View.INVISIBLE);
+		} else {
+			arrowRight.setVisibility(View.INVISIBLE);
+			arrowLeft.setVisibility(View.VISIBLE);
+		}
 
 		// When in the info view, user can click anywhere on the mode selector.
 		rootView.findViewById(R.id.mode_selector).setOnClickListener(
@@ -115,8 +102,59 @@ public class ScreenSlidePageFragment extends Fragment {
 							modeImage.setVisibility(View.VISIBLE);
 							infoText.setVisibility(View.INVISIBLE);
 
+							// Set arrows to guide user.
+							if (mModeNumber == 0) {
+								arrowRight.setVisibility(View.VISIBLE);
+								arrowLeft.setVisibility(View.INVISIBLE);
+							} else {
+								arrowRight.setVisibility(View.INVISIBLE);
+								arrowLeft.setVisibility(View.VISIBLE);
+							}
+
 							isInInfoState = false;
 						}
+
+						else {
+							if (!isInInfoState) {
+								modeImage.setVisibility(View.INVISIBLE);
+								infoText.setText(infoTexts[mModeNumber]);
+								infoText.setVisibility(View.VISIBLE);
+
+								// Hide arrows
+								arrowRight.setVisibility(View.INVISIBLE);
+								arrowLeft.setVisibility(View.INVISIBLE);
+
+								isInInfoState = true;
+							}
+						}
+					}
+
+				});
+
+		rootView.findViewById(R.id.mode_selector).setOnTouchListener(
+				new OnTouchListener() {
+					@Override
+					public boolean onTouch(View view, MotionEvent event) {
+						if (event.getAction() == MotionEvent.ACTION_DOWN
+								&& event.getAction() == MotionEvent.ACTION_MOVE) {
+							arrowRight.setVisibility(View.INVISIBLE);
+							arrowLeft.setVisibility(View.INVISIBLE);
+
+							return true;
+						}
+
+						else {
+							// Set arrows to guide user.
+							if (mModeNumber == 0) {
+								arrowRight.setVisibility(View.VISIBLE);
+								arrowLeft.setVisibility(View.INVISIBLE);
+							} else {
+								arrowRight.setVisibility(View.INVISIBLE);
+								arrowLeft.setVisibility(View.VISIBLE);
+							}
+						}
+
+						return false;
 					}
 				});
 

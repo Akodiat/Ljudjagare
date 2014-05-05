@@ -63,8 +63,8 @@ import com.google.android.gms.maps.model.LatLng;
  * 
  */
 public class RunActivity extends SwipeableActivity implements
-MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
-GPSInputListener, OrientationInputListener {
+		MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
+		GPSInputListener, OrientationInputListener {
 
 	private Button runButton, stopButton, finishButton;
 
@@ -90,13 +90,13 @@ GPSInputListener, OrientationInputListener {
 	private MySQLiteHelper db;
 
 	private int routeId;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_run);
 
-		//Providing an up button
+		// Providing an up button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Setting up the action bar
@@ -124,12 +124,12 @@ GPSInputListener, OrientationInputListener {
 		 * reference to the Tab
 		 */
 		mViewPager
-		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			@Override
-			public void onPageSelected(int position) {
-				actionBar.setSelectedNavigationItem(position);
-			}
-		});
+				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+					@Override
+					public void onPageSelected(int position) {
+						actionBar.setSelectedNavigationItem(position);
+					}
+				});
 
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -168,8 +168,8 @@ GPSInputListener, OrientationInputListener {
 		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
 		String appMode = pref.getString("application_mode", "");
 
-		if(appMode.equals("RUN_MODE")){
-			//Setting up Sensor input
+		if (appMode.equals("RUN_MODE")) {
+			// Setting up Sensor input
 			gpsInputHandler = new GPSInputHandler(this, this);
 
 			this.dataHandler = new DataHandler(db, this);
@@ -197,7 +197,8 @@ GPSInputListener, OrientationInputListener {
 				@Override
 				public void onClick(View view) {
 					stop();
-					SharedPreferences preferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+					SharedPreferences preferences = getSharedPreferences(
+							"MODE", Context.MODE_PRIVATE);
 					SharedPreferences.Editor editor = preferences.edit();
 					editor.putString("application_mode", "DISPLAY_MODE");
 					editor.commit();
@@ -210,7 +211,7 @@ GPSInputListener, OrientationInputListener {
 			StatusIconHandler receiver = new StatusIconHandler(this, this);
 			registerReceiver(receiver, filter);
 
-		}else if(appMode.equals("DISPLAY_MODE")){
+		} else if (appMode.equals("DISPLAY_MODE")) {
 			setUpDisplay(false);
 			runButton.setVisibility(View.GONE);
 			stopButton.setVisibility(View.GONE);
@@ -225,7 +226,6 @@ GPSInputListener, OrientationInputListener {
 		setMapFragment(mapFragment);
 		setStatsFragment(statsFragment);
 	}
-
 
 	// These are implemented in CoinCollector, etc. instead. This method should
 	// perhaps be abstract.
@@ -279,7 +279,6 @@ GPSInputListener, OrientationInputListener {
 		btnImage.setVisibility(View.GONE);
 		setUpDisplay(true);
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -347,14 +346,14 @@ GPSInputListener, OrientationInputListener {
 	public void onGPSConnect() {
 		if (!gpsOn) {
 			gpsOn = true;
-			gpsIcon.setImageResource(R.drawable.gps_activated);
+			gpsIcon.setImageResource(R.drawable.ic_action_location_found);
 			setGreenToRun();
 		}
 
 	}
 
 	public void onGPSDisconnect() {
-		gpsIcon.setImageResource(R.drawable.gps_disabled);
+		gpsIcon.setImageResource(R.drawable.ic_action_location_off);
 		gpsOn = false;
 		if (dataHandler.isPaused()) {
 			setNotGreenToRun();
@@ -364,13 +363,13 @@ GPSInputListener, OrientationInputListener {
 	public void onHeadphonesIn() {
 		if (!headphonesIn) {
 			headphonesIn = true;
-			headPhonesIcon.setImageResource(R.drawable.headphones_activated);
+			headPhonesIcon.setImageResource(R.drawable.ic_action_headphones);
 			setGreenToRun();
 		}
 	}
 
 	public void onHeadphonesOut() {
-		headPhonesIcon.setImageResource(R.drawable.headphones_disabled);
+		headPhonesIcon.setImageResource(R.drawable.ic_action_headphones_off);
 		headphonesIn = false;
 		if (dataHandler.runStatus == RunStatus.RUNNING) {
 			pause();
@@ -393,9 +392,9 @@ GPSInputListener, OrientationInputListener {
 		return sharedPreferences.getBoolean("gyro", false);
 	}
 
-	public void setUpDisplay(Boolean stopped){
+	public void setUpDisplay(Boolean stopped) {
 		int id = routeId;
-		if(!stopped){
+		if (!stopped) {
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
 				id = extras.getInt(Constants.EXTRA_ID);
@@ -446,16 +445,16 @@ GPSInputListener, OrientationInputListener {
 		stats.putLongArray("times", times);
 		stats.putIntArray("dists", dists);
 
-		if(!stopped){
+		if (!stopped) {
 			runFragment.setArguments(args);
 			mapFragment.setArguments(locs);
 			statsFragment.setArguments(stats);
-		}else{
+		} else {
 			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
 			if (getRunFragment().isAdded()) {
 				runFrag.setDisplay(args);
-			}		
+			}
 			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
 			if (getMapFragment().isAdded()) {

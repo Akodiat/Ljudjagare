@@ -8,7 +8,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="30dp"
-        android:id="@+id/mode_selector"
         android:weightSum="20" >
 
         <RelativeLayout
@@ -23,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="#00FFFFFF"
+                android:padding="3dp"
                 android:src="@drawable/ic_action_about" />
 
             <TextView
@@ -33,8 +33,8 @@
                 android:gravity="center"
                 android:padding="15dp"
                 android:textColor="#FFFFFF"
-                android:visibility="invisible" 
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/select_mode_image"
@@ -42,7 +42,7 @@
                 android:layout_height="fill_parent"
                 android:contentDescription="Image visualizing a game mode"
                 android:padding="10dp"
-                android:src="@drawable/coin_collect" />
+                android:src="@drawable/coin_collector" />
 
             <ImageView
                 android:id="@+id/previous_mode_image"
@@ -60,7 +60,13 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_action_next_item"
-                android:visibility="invisible" />
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:id="@+id/mode_selector"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+            </RelativeLayout>
         </RelativeLayout>
 
         <TextView
