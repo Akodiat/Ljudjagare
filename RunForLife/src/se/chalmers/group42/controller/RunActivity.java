@@ -173,6 +173,9 @@ public class RunActivity extends SwipeableActivity implements
 			gpsInputHandler = new GPSInputHandler(this, this);
 
 			this.dataHandler = new DataHandler(db, this);
+			
+			//Set actionbar title text
+			getActionBar().setTitle("Run");
 
 			runButton.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -212,6 +215,10 @@ public class RunActivity extends SwipeableActivity implements
 			registerReceiver(receiver, filter);
 
 		} else if (appMode.equals("DISPLAY_MODE")) {
+			
+			//Set actionbar title text
+			getActionBar().setTitle("Finished Run");
+			
 			setUpDisplay(false);
 			runButton.setVisibility(View.GONE);
 			stopButton.setVisibility(View.GONE);
@@ -265,6 +272,9 @@ public class RunActivity extends SwipeableActivity implements
 	}
 
 	public void stop() {
+		//Set actionbar title text
+		getActionBar().setTitle("Finished Run");
+		
 		runButton.setText("►");
 		stopSound();
 
