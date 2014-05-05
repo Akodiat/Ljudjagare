@@ -17,6 +17,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -50,7 +51,7 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		orientation = 0;
-		
+
 		foundCoins = new ArrayList<Vector2>();
 
 		//Gyro input
@@ -155,7 +156,7 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 				getAngleToCoin());
 
 		if (isCoinFound()) {
-		//	fx.stopLoop();
+			//	fx.stopLoop();
 			fx.foundCoin();
 			increaseScore();
 			foundCoins.add(new Vector2(coinX, coinY));
@@ -193,7 +194,7 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		score++;
 		((TextView) findViewById(R.id.textView_score)).setText(
 				"Score: " + score
-		);
+				);
 	}
 	private void generateNewCoin() {
 		coinX = (int) (MAX_PROGRESS * Math.random());
@@ -251,12 +252,14 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
 				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
 				15, paint1);
-
-		canvas.drawCircle(
-				coinX	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
-				coinY	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
-				30, paint2);
 		
+		if(isCheating())
+			canvas.drawCircle(
+					coinX	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
+					coinY	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
+					30, paint2);
+
+
 		for (Vector2 coin : foundCoins) {
 			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.arrow),
 					coin.getX(), coin.getY(), null);
@@ -265,6 +268,10 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 	}
+	private boolean isCheating(){
+		return ((CheckBox) findViewById(R.id.checkBox_cheating)).isChecked();
+	}
+
 	public void onStartTrackingTouch(SeekBar seekBar) {}
 	public void onStopTrackingTouch(SeekBar seekBar) {}
 
