@@ -46,7 +46,7 @@ public class HelpFragment extends Fragment{
 		frequencySeekbar = (SeekBar) rootView.findViewById(R.id.seekBar1);
 		frequencySeekbar.setProgress(100);
 		frequencyButton = (Button) rootView.findViewById(R.id.button3);
-		distanceText = (TextView) rootView.findViewById(R.id.textView1);
+		distanceText = (TextView) rootView.findViewById(R.id.textView_score);
 		leftButton = (Button) rootView.findViewById(R.id.buttonLeft);
 		leftForwButton = (Button) rootView.findViewById(R.id.buttonLeftForw);
 		rightForwButton = (Button) rootView.findViewById(R.id.buttonRightForw);
