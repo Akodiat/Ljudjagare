@@ -17,13 +17,14 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class TutorialActivity extends Activity implements GyroInputListener, OnSeekBarChangeListener {
+public class TutorialActivity extends Activity implements GyroInputListener {
 
 	private FXHandler fx;
 
@@ -73,6 +74,10 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		//		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 
 		distanceText = (TextView)		findViewById(R.id.textView_TutDistance);
+		
+		((TextView) findViewById(R.id.textView_score)).setText(
+				"Score: 0"
+				);
 
 		x = y = 500;
 
@@ -80,17 +85,6 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		generateNewCoin();
 
 		curr100 = ((int) (getDistanceToCoin()/100))*100;
-
-
-		//SeekBar x
-		SeekBar sbX = (SeekBar)findViewById(R.id.seekBar_x);
-		sbX.setOnSeekBarChangeListener(this);
-		sbX.setMax(MAX_PROGRESS);
-
-		//SeekBar y
-		SeekBar sbY = (SeekBar)findViewById(R.id.seekBar_y);
-		sbY.setOnSeekBarChangeListener(this);
-		sbX.setMax(MAX_PROGRESS);
 
 		// Initialise audio
 		(fx = new FXHandler()).initSound(this);
@@ -214,13 +208,11 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		return getDistanceToCoin() < Constants.MIN_DISTANCE; // && Math.abs(angle - coinAngle) < 5;
 	}
 
-	public void onProgressChanged(SeekBar seekBar,
-			int progress, boolean fromUser) {
-		if(seekBar.getId() 		== R.id.seekBar_x)
-			x = progress;
-		else if(seekBar.getId() == R.id.seekBar_y)
-			y = progress;
-		else return;
+	public void onRunButton(View view) {
+		float deltaDistance = 30;
+		
+		x += deltaDistance * Math.cos(Math.toRadians(orientation-90));
+		y += deltaDistance * Math.sin(Math.toRadians(orientation-90));
 
 		draw();
 
@@ -261,8 +253,11 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 
 		for (Vector2 coin : foundCoins) {
-			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.arrow),
-					coin.getX(), coin.getY(), null);
+			Bitmap coinBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.map_coin);
+			canvas.drawBitmap(coinBitmap,
+					coin.getX()	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS 	- coinBitmap.getWidth()/2, 
+					coin.getY()	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS 	- coinBitmap.getHeight()/2,
+					null);
 		}
 
 
