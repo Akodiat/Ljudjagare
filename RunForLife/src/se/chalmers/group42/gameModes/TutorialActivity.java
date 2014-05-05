@@ -136,32 +136,17 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 
 
 	private void onOrientationChanged() {
-		//distanceText.setText("Distance: "+ getDistance() + "m");
-
-
-		//		if (orientation > 180)
-		//			orientation -= 360;
-
 		fx.update(
 				fx.getNavigationFX(), 
 				getAngleToCoin());
 
 		if (isCoinFound()) {
-			//	fx.stopLoop();
 			fx.foundCoin();
 			increaseScore();
 			foundCoins.add(new Vector2(coinX, coinY));
 			generateNewCoin();
 		}
 
-		//		if (getDistanceToCoin() < 100) {
-		//			curr100 = 0;
-		//			float delayRatio = (float) Math.pow(getDistanceToCoin() / 100, 2);
-		//
-		//			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
-		//					* delayRatio + Constants.MIN_DELAY);
-		//		} else {
-		// if user has moved forward to new 100s
 		if (getDistanceToCoin() - curr100 < 0) {
 			int current100 = ((int) (getDistanceToCoin() / 100));
 			fx.sayDistance(fx.getSpeech(current100));
@@ -178,8 +163,6 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		}
 		else
 			fx.updateDelay(Constants.MAX_DELAY);
-		//		}
-
 	}
 	private void increaseScore() {
 		score++;
@@ -213,22 +196,22 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 	}
 
 	public void onRunButton(View view) {
-		
+
 		float deltaDistance = 30;
-		
+
 		x += deltaDistance * Math.cos(Math.toRadians(orientation-90));
 		y += deltaDistance * Math.sin(Math.toRadians(orientation-90));
 
 		//Checking for edge of the world
 		if(x<0) x=0; else if (x>MAX_PROGRESS) x=MAX_PROGRESS;
 		if(y<0) y=0; else if (y>MAX_PROGRESS) y=MAX_PROGRESS;
-		
+
 		draw();
 
 		distanceText.setText("Distance: " + getDistanceToCoin() +" m");
-	
+
 	}
-	
+
 	public void onDoneButton(View view) {
 		fx.stopLoop();
 		finish();
@@ -236,22 +219,20 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 
 	public void draw(){
 		LinearLayout ll = (LinearLayout) findViewById(R.id.drawingLayout);
-		Bitmap bg = Bitmap.createBitmap(
+		Bitmap drawing = Bitmap.createBitmap(
 				ll.getWidth() 	> 0 ? ll.getWidth()  : 800, 
 						ll.getHeight()	> 0 ? ll.getHeight() : 800, 
 								Bitmap.Config.ARGB_8888);
-		canvas = new Canvas(bg);
+		canvas = new Canvas(drawing);
 
-
-		Bitmap b= BitmapFactory.decodeResource(getResources(), R.drawable.arrow);
+		Bitmap arrow= BitmapFactory.decodeResource(getResources(), R.drawable.arrow);
 		Matrix matrix = new Matrix();
 		matrix.postRotate(orientation);
-		//Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmapOrg,width,height,true);
 
-		Bitmap rotatedBitmap = Bitmap.createBitmap(b , 0, 0, b.getWidth(), b.getHeight(), matrix, true);
-		canvas.drawBitmap(rotatedBitmap, 
-				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getWidth()/2, 
-				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getHeight()/2, 
+		Bitmap rotatedArrow = Bitmap.createBitmap(arrow , 0, 0, arrow.getWidth(), arrow.getHeight(), matrix, true);
+		canvas.drawBitmap(rotatedArrow, 
+				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS - rotatedArrow.getWidth()/2, 
+				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS - rotatedArrow.getHeight()/2, 
 				null);
 
 		//Paint
@@ -259,7 +240,7 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
 				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
 				15, paint1);
-		
+
 		if(isCheating())
 			canvas.drawCircle(
 					coinX	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
@@ -276,7 +257,7 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		}
 
 
-		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
+		ll.setBackgroundDrawable((new BitmapDrawable(drawing)));
 	}
 	private boolean isCheating(){
 		return ((CheckBox) findViewById(R.id.checkBox_cheating)).isChecked();
