@@ -22,38 +22,68 @@ import android.widget.Toast;
  * 
  */
 public class SettingsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // Load the preferences from an XML resource
-        addPreferencesFromResource(R.xml.preferences);
-        
-        //Setting up listener for preferences
-        getPreferenceScreen().getSharedPreferences()
-        .registerOnSharedPreferenceChangeListener(this);
-        
-        //Initializing distance summary text
-        String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
-        Preference distancePref = (Preference) findPreference("distance");
-        distancePref.setSummary(distance + " meter radius of the track to generate");
-        
-        //Initializing distance summary text
-        String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
-        Preference pointsPref = (Preference) findPreference("nrPoints");
-        pointsPref.setSummary(points + " number of checkpoint");
-    }
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-    	//Changing distance summary text
-        String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
-        Preference distancePref = (Preference) findPreference("distance");
-        distancePref.setSummary(distance + " meters interval between each checkpoint");
-        
-        //Changing checkpoint summary text
-        String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
-        Preference pointsPref = (Preference) findPreference("nrPoints");
-        pointsPref.setSummary(points + " number of checkpoint");
-        
-        Toast.makeText(getActivity(), "Your settings have been saved", Toast.LENGTH_LONG).show();
-    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		// Load the preferences from an XML resource
+		addPreferencesFromResource(R.xml.preferences);
+
+		//Setting up listener for preferences
+		getPreferenceScreen().getSharedPreferences()
+		.registerOnSharedPreferenceChangeListener(this);
+
+		//Initializing distance summary text
+		String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
+		Preference distancePref = (Preference) findPreference("distance");
+		distancePref.setSummary(distance + " meter radius of the track to generate");
+
+		//Initializing points summary text
+		String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
+		Preference pointsPref = (Preference) findPreference("nrPoints");
+		pointsPref.setSummary(points + " number of checkpoint");
+
+		//Initializing random summary text
+		Boolean random = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getBoolean("route", false);
+		Preference randomPref = (Preference) findPreference("route");
+		randomPref.setSummary(Boolean.toString(random));
+
+		//Initializing random summary text
+		String random1 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random1", "");
+		Preference random1Pref = (Preference) findPreference("random1");
+		random1Pref.setSummary(random1);
+
+		//Initializing random summary text
+		String random2 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random2", "");
+		Preference random2Pref = (Preference) findPreference("random2");
+		random2Pref.setSummary(random2);
+	}
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+		//Changing distance summary text
+		String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
+		Preference distancePref = (Preference) findPreference("distance");
+		distancePref.setSummary(distance + " meters interval between each checkpoint");
+
+		//Changing checkpoint summary text
+		String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
+		Preference pointsPref = (Preference) findPreference("nrPoints");
+		pointsPref.setSummary(points + " number of checkpoint");
+
+		//Changing random summary text
+		Boolean random = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getBoolean("route", false);
+		Preference randomPref = (Preference) findPreference("route");
+		randomPref.setSummary(Boolean.toString(random));
+
+		//Changing random summary text
+		String random1 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random1", "");
+		Preference random1Pref = (Preference) findPreference("random1");
+		random1Pref.setSummary(random1);
+
+		//Changing random summary text
+		String random2 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random2", "");
+		Preference random2Pref = (Preference) findPreference("random2");
+		random2Pref.setSummary(random2);
+
+		Toast.makeText(getActivity(), "Your settings have been saved", Toast.LENGTH_LONG).show();
+	}
 }

@@ -1,41 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:persistent="true">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:persistent="true" >
 
     <PreferenceCategory android:title="Running" >
         <EditTextPreference
-            android:key="distance"
-            android:title="Distance"
-            android:inputType="number"
             android:defaultValue="700"
-            android:dialogTitle="Radius distance (meters)" />
+            android:dialogTitle="Radius distance (meters)"
+            android:inputType="number"
+            android:key="distance"
+            android:title="Distance" />
     </PreferenceCategory>
     
     <PreferenceCategory android:title="CheckPoints" >
         <EditTextPreference
-            android:key="nrPoints"
-            android:title="CheckPoints"
-            android:inputType="number"
             android:defaultValue="4"
-            android:dialogTitle="Number of points" />   
+            android:dialogTitle="Number of points"
+            android:inputType="number"
+            android:key="nrPoints"
+            android:title="CheckPoints" />
     </PreferenceCategory>
     
-    <PreferenceCategory android:title="Sound" >
+    <PreferenceCategory android:title="Route" >
         <CheckBoxPreference
-            android:key="sound"
-            android:title="Stereo sound"
-            android:summary="Toggle stereo sound"
-            android:defaultValue="true" />
+            android:defaultValue="false"
+            android:key="route"
+            android:summary="..."
+            android:title="Use own route settings" />
+
+        <EditTextPreference
+            android:defaultValue="0"
+            android:dialogTitle="Random 1"
+            android:inputType="numberDecimal"
+            android:key="random1"
+            android:title="Random 1" />
+        <EditTextPreference
+            android:defaultValue="0"
+            android:dialogTitle="Random 2"
+            android:inputType="numberDecimal"
+            android:key="random2"
+            android:title="Random 2" />
     </PreferenceCategory>
     
-    <PreferenceCategory android:title="Navigation"> 
-        <SwitchPreference 
+    <PreferenceCategory android:title="Navigation" >
+        <SwitchPreference
             android:key="gyro"
-            android:summaryOn="Using gyro for navigation" 
-            android:summaryOff="Using GPS bearing for navigation" 
-            android:title="Orientation"
-            android:switchTextOn="Use gyroscope" 
+            android:persistent="true"
+            android:summaryOff="Using GPS bearing for navigation"
+            android:summaryOn="Using gyro for navigation"
             android:switchTextOff="Use GPS bearing"
-            android:persistent="true"/>
+            android:switchTextOn="Use gyroscope"
+            android:title="Orientation" />
     </PreferenceCategory>
 
 </PreferenceScreen>

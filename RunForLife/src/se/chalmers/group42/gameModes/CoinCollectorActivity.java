@@ -53,7 +53,7 @@ public class CoinCollectorActivity extends RunActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		human = new Human();
-		curr100 = Constants.RUN_DISTANCE;
+		//curr100 = Constants.RUN_DISTANCE;
 		coinLocation = LocationHelper.locationFromLatlng(DEFAULT_POSITION);
 
 		// Initialize audio
@@ -78,7 +78,7 @@ public class CoinCollectorActivity extends RunActivity {
 	public void onBackPressed() {
 		quitRunActivity();
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -89,7 +89,7 @@ public class CoinCollectorActivity extends RunActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	private void quitRunActivity(){
 		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
 		String appMode = pref.getString("application_mode", "");
@@ -106,8 +106,6 @@ public class CoinCollectorActivity extends RunActivity {
 				public void onClick(DialogInterface dialog, int which) {
 					// if user pressed "yes", then he is allowed to exit from
 					// application
-					// Ska vara "finish()" egentligen men det fungerar inte?
-					//						android.os.Process.killProcess(android.os.Process.myPid());
 					fx.stopLoop();
 					finish();
 				}
@@ -115,8 +113,7 @@ public class CoinCollectorActivity extends RunActivity {
 			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// if user select "No", just cancel this dialog and continue
-					// with app
+					// if user select "No", just cancel this dialog and continue with app
 					dialog.cancel();
 				}
 			});
@@ -148,6 +145,11 @@ public class CoinCollectorActivity extends RunActivity {
 			checkpoints = Integer.parseInt(nrPoints);
 
 			generateRandomRoute(Integer.parseInt(distance));
+
+
+			float tempDistance = human.getLocation().distanceTo(coinLocation) 
+					- Constants.MIN_DISTANCE;
+			curr100 = ((int) (tempDistance / 100)) * 100;
 
 			MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
@@ -243,28 +245,20 @@ public class CoinCollectorActivity extends RunActivity {
 		if (fx.getNavigationFX().isPlaying())
 			fx.update(fx.getNavigationFX(), (angle));
 
-		if (distance <= 100) {
-			curr100 = 0;
-			float delayRatio = (float) Math.pow(distance / 100, 2);
-			fx.sayDistance(fx.getSpeech(curr100));
+		// if user has moved forward to new 100s
+		if (distance - curr100 <= 0) {
+			int currHundred = ((int) (distance / 100));
+			fx.sayDistance(fx.getSpeech(currHundred));
+			curr100 = currHundred * 100;
+		}
+		else if (!(distance - curr100 > 100)) {
+			float delayRatio, newDist = distance % 100;
+			delayRatio = (float) Math.pow(newDist / 100, 2);
 			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 					* delayRatio + Constants.MIN_DELAY);
-		} else {
-			// if user has moved forward to new 100s
-			if (distance - curr100 <= 0) {
-				int currHundred = ((int) (distance / 100));
-				curr100 = currHundred * 100;
-				fx.sayDistance(fx.getSpeech(currHundred));
-			}
-			else if (!(distance - curr100 > 100)) {
-				float delayRatio, newDist = distance % 100;
-				delayRatio = (float) Math.pow(newDist / 100, 2);
-				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
-						* delayRatio + Constants.MIN_DELAY);
-			}
-			else {
-				fx.updateDelay(Constants.MAX_DELAY);
-			}
+		}
+		else {
+			fx.updateDelay(Constants.MAX_DELAY);
 		}
 	}
 
@@ -333,9 +327,38 @@ public class CoinCollectorActivity extends RunActivity {
 	private ArrayList<Location> generateRandomRoute(double distance) {
 		// Calculation random positions
 
+//		//Retrieving distancevalue from preferences
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+//		//Setting value to 700 meters if no values have been set
+		Boolean random = sharedPref.getBoolean("random", false);
+		String random1 = sharedPref.getString("random1", "0");
+		String random2 = sharedPref.getString("random2", "0");
+
+		double randomA = Double.parseDouble(random1);
+		double randomB = Double.parseDouble(random2);
+//		String nrPoints = sharedPref.getString("nrPoints", "3");
+//
+//		checkpoints = Integer.parseInt(nrPoints);
+//
+//		generateRandomRoute(Integer.parseInt(distance));
+		
 		finalRoute.clear();
-		double a = Math.random();
-		double b = Math.random();
+		
+		double a;
+		double b;
+		
+		if(random){
+			a = randomA;
+		} else{
+			a = Math.random();
+		}
+		
+		if(random){
+			b = randomB;
+		} else{
+			b = Math.random();
+		}
+
 
 		double r = 50 / Constants.LAT_LNG_TO_METER;
 
@@ -412,7 +435,7 @@ public class CoinCollectorActivity extends RunActivity {
 					GMapV2Direction.MODE_WALKING);
 		}
 		// Deciding which way of the route you are going to run
-		if (Math.random() > 0.5 ){
+		if (Math.random() > 0.5 && !random){
 			Collections.reverse(route);
 		}
 		return route;
