@@ -330,7 +330,7 @@ public class CoinCollectorActivity extends RunActivity {
 //		//Retrieving distancevalue from preferences
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 //		//Setting value to 700 meters if no values have been set
-		Boolean random = sharedPref.getBoolean("random", false);
+		Boolean random = sharedPref.getBoolean("route", false);
 		String random1 = sharedPref.getString("random1", "0");
 		String random2 = sharedPref.getString("random2", "0");
 
