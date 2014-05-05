@@ -22,7 +22,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.app.Fragment;
@@ -37,17 +36,27 @@ public class ScreenSlidePageFragment extends Fragment {
 	/**
 	 * Images to be used for modes.
 	 */
-	private int[] images = { R.drawable.coin_collect, R.drawable.placeholder };
+	private int[] images = { R.drawable.coin_collector, R.drawable.tutorial };
 
 	/**
 	 * The name of each mode.
 	 */
 	private String[] imageDesc = { "COIN COLLECTOR", "TUTORIAL" };
 
+	private String[] infoTexts = {
+			"In this mode, the goal is to localize coins using the sound coming from your headphones."
+					+ "Read more on how it works in the help section.",
+			"The tutorial mode is for you to get familiar with the application and how to recognize its audio." };
+
 	/**
 	 * The fragment's mode number.
 	 */
 	private int mModeNumber;
+
+	/**
+	 * True if the mode view is in its info state.
+	 */
+	private boolean isInInfoState = false;
 
 	/**
 	 * Factory method for this class.
@@ -71,14 +80,45 @@ public class ScreenSlidePageFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		// Inflate the layout containing image and text
-		ViewGroup rootView = (ViewGroup) inflater.inflate(
+		final ViewGroup rootView = (ViewGroup) inflater.inflate(
 				R.layout.fragment_screen_slide_page, container, false);
 
-		((ImageView) rootView.findViewById(R.id.select_mode_image))
-				.setImageResource(images[mModeNumber]);
+		final ImageView modeImage = (ImageView) rootView
+				.findViewById(R.id.select_mode_image);
+		modeImage.setImageResource(images[mModeNumber]);
 
 		((TextView) rootView.findViewById(R.id.select_mode_text))
 				.setText(imageDesc[mModeNumber]);
+
+		// Text that will appear when hitting the info button.
+		final TextView infoText = (TextView) rootView
+				.findViewById(R.id.info_text);
+
+		rootView.findViewById(R.id.info_button).setOnClickListener(
+				new OnClickListener() {
+					public void onClick(View v) {
+						if (!isInInfoState) {
+							modeImage.setVisibility(View.INVISIBLE);
+							infoText.setText(infoTexts[mModeNumber]);
+							infoText.setVisibility(View.VISIBLE);
+
+							isInInfoState = true;
+						}
+					}
+				});
+
+		// When in the info view, user can click anywhere on the mode selector.
+		rootView.findViewById(R.id.mode_selector).setOnClickListener(
+				new OnClickListener() {
+					public void onClick(View v) {
+						if (isInInfoState) {
+							modeImage.setVisibility(View.VISIBLE);
+							infoText.setVisibility(View.INVISIBLE);
+
+							isInInfoState = false;
+						}
+					}
+				});
 
 		return rootView;
 	}
@@ -90,33 +130,4 @@ public class ScreenSlidePageFragment extends Fragment {
 		return mModeNumber;
 	}
 
-	/**
-	 * A fragment representing the image side of the mode selector.
-	 */
-	public static class ModeFrontFragment extends Fragment {
-		public ModeFrontFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			return inflater.inflate(R.layout.fragment_screen_slide_page,
-					container, false);
-		}
-	}
-
-	/**
-	 * A fragment representing the info side of the mode selector.
-	 */
-	public static class ModeBackFragment extends Fragment {
-		public ModeBackFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			return inflater.inflate(R.layout.fragment_screen_slide_page_back,
-					container, false);
-		}
-	}
 }

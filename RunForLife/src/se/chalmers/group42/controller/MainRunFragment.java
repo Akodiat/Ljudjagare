@@ -32,7 +32,7 @@ public class MainRunFragment extends Fragment implements
 	private View view;
 	private Activity mainActivity;
 	private Button runButton;
-	private ImageView gpsIcon, headPhonesIcon;
+	private ImageView gpsIcon, headPhonesIcon, headPhonesIconOut;
 	private boolean gpsOn, headphonesIn;
 
 	/**
@@ -63,6 +63,7 @@ public class MainRunFragment extends Fragment implements
 		// Setting up status icons
 		gpsIcon = (ImageView) view.findViewById(R.id.gps_icon);
 		headPhonesIcon = (ImageView) view.findViewById(R.id.headphones_icon);
+		headPhonesIconOut = (ImageView) view.findViewById(R.id.headphones_icon_not);
 
 		// Setting up Sensor input
 		new GPSInputHandler(this, mainActivity);
@@ -178,6 +179,7 @@ public class MainRunFragment extends Fragment implements
 		if (!headphonesIn) {
 			headphonesIn = true;
 			headPhonesIcon.setImageResource(R.drawable.ic_action_headphones);
+			headPhonesIconOut.setVisibility(View.INVISIBLE);
 		}
 	}
 
@@ -185,6 +187,7 @@ public class MainRunFragment extends Fragment implements
 	public void onHeadphonesOut() {
 		headphonesIn = false;
 		headPhonesIcon.setImageResource(R.drawable.ic_action_headphones_off);
+		headPhonesIconOut.setVisibility(View.VISIBLE);
 	}
 
 	@Override
