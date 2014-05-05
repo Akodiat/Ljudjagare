@@ -86,7 +86,7 @@
                     android:id="@+id/dist_table"
                     android:layout_weight="1.0"
                     android:gravity="right"
-                    android:text="0.0m"
+                    android:text="0m"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
 
@@ -155,7 +155,7 @@
                     android:id="@+id/curr_speed_table"
                     android:layout_weight="1.0"
                     android:gravity="right"
-                    android:text="0.0m/s"
+                    android:text="0.0km/h"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
 
@@ -178,7 +178,7 @@
                     android:id="@+id/avg_speed_table"
                     android:layout_weight="1.0"
                     android:gravity="right"
-                    android:text="0.0m/s"
+                    android:text="0.0km/h"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
         </TableLayout>
