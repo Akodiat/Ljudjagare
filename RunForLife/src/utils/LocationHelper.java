@@ -81,4 +81,11 @@ public class LocationHelper {
 		//Updates bearing to match the travelled direction
 		location.setBearing(bearing);
 	}
+	
+	public static float[] getCoordFromDistBear(float distance, float bearing){
+		float[] xy = new float[2];
+		xy[0] = (float) (distance * Math.cos(bearing));
+		xy[1] = (float) (distance * Math.sin(bearing));
+		return xy;
+	}
 }

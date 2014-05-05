@@ -12,6 +12,7 @@ public class FinishedRoute extends Route{
 		super();
 		this.setId(r.getId());
 		this.setDate(r.getDate());
+		this.setMaxCoins(r.getMaxCoins());
 		this.dist = dist;
 		this.speed = speed;
 		this.totTime = totTime;

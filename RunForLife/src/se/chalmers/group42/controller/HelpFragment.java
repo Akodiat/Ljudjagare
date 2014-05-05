@@ -46,7 +46,7 @@ public class HelpFragment extends Fragment{
 		frequencySeekbar = (SeekBar) rootView.findViewById(R.id.seekBar1);
 		frequencySeekbar.setProgress(100);
 		frequencyButton = (Button) rootView.findViewById(R.id.button3);
-		distanceText = (TextView) rootView.findViewById(R.id.textView1);
+		distanceText = (TextView) rootView.findViewById(R.id.textView_score);
 		leftButton = (Button) rootView.findViewById(R.id.buttonLeft);
 		leftForwButton = (Button) rootView.findViewById(R.id.buttonLeftForw);
 		rightForwButton = (Button) rootView.findViewById(R.id.buttonRightForw);
@@ -62,11 +62,13 @@ public class HelpFragment extends Fragment{
 		correctDirectionButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandlerNormal.loop(fxHandlerNormal.getNavigationFX());
+//				fxHandlerNormal.loop(fxHandlerNormal.getNavigationFX());
+				fxHandlerNormal.getNavigationFX().play();
 				timer.schedule(new TimerTask() {
 					@Override
 					public void run() {
-						fxHandlerNormal.stopLoop();
+//						fxHandlerNormal.stopLoop();
+						fxHandlerNormal.getNavigationFX().stop();
 					}
 				}, 2000);
 			}
@@ -77,6 +79,7 @@ public class HelpFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				fxHandler.update(fxHandler.getNavigationFX(), 90);
+				fxHandler.updateDelay(500);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -91,6 +94,7 @@ public class HelpFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				fxHandler.update(fxHandler.getNavigationFX(), 45);
+				fxHandler.updateDelay(500);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -105,6 +109,7 @@ public class HelpFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				fxHandler.update(fxHandler.getNavigationFX(), -45);
+				fxHandler.updateDelay(500);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -119,6 +124,7 @@ public class HelpFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				fxHandler.update(fxHandler.getNavigationFX(), -90);
+				fxHandler.updateDelay(500);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -134,6 +140,7 @@ public class HelpFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				fxHandler.update(fxHandler.getNavigationFX(), 180);
+				fxHandler.updateDelay(500);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
@@ -189,14 +196,14 @@ public class HelpFragment extends Fragment{
 		technoSoundButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				fxHandler.update(fxHandler.getNavigationFX(), 0);
+				fxHandler.update(fxHandler.getNavigationFX(), (float) 0.1);
 				fxHandler.loop(fxHandler.getNavigationFX());
 				timer.schedule(new TimerTask() {
 					@Override
 					public void run() {
 						fxHandler.stopLoop();
 					}
-				}, 2000);
+				}, Constants.DELAY_OF_TO_SOURCE);
 			}
 		});
 

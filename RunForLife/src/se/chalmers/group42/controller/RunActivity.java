@@ -150,7 +150,7 @@ public class RunActivity extends SwipeableActivity implements
 
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
 		db = app.getDatabase();
-
+		
 		// Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
 		btnImage = (ImageView) findViewById(R.id.run_button_img);
@@ -238,7 +238,12 @@ public class RunActivity extends SwipeableActivity implements
 
 	private void start() {
 		// START
-		dataHandler.newRoute();
+		//Retrieving distancevalue from preferences
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		String nrPoints = sharedPref.getString("nrPoints", "3");
+		
+		
+		dataHandler.newRoute(Integer.parseInt(nrPoints));
 		dataHandler.startWatch();
 		btnImage.setImageResource(R.drawable.pause_button);
 		dataHandler.runStatus = RunStatus.RUNNING;
@@ -417,12 +422,14 @@ public class RunActivity extends SwipeableActivity implements
 		}
 		locs.putDoubleArray("latitudes", latitudes);
 		locs.putDoubleArray("longitudes", longitudes);
-
+		
 		List<Coins> coins = db.getAllCoinsByRoute(id);
 		int nrCoins = coins.size();
-
+		int maxCoins = fin.getMaxCoins();
+		
 		args.putInt("nrCoins", nrCoins);
-
+		args.putInt("maxCoins", maxCoins);
+		
 		double[] coinlat = new double[nrCoins];
 		double[] coinlng = new double[nrCoins];
 
@@ -449,6 +456,7 @@ public class RunActivity extends SwipeableActivity implements
 			runFragment.setArguments(args);
 			mapFragment.setArguments(locs);
 			statsFragment.setArguments(stats);
+
 		} else {
 			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");

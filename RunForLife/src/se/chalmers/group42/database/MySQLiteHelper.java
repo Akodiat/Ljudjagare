@@ -30,8 +30,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 	// Routes Table Columns names
 	private static final String KEY_ID = "id";
 	private static final String KEY_DATE = "date";
-
-	private static final String[] COLUMNS_ROUTES = {KEY_ID, KEY_DATE};
+	private static final String KEY_MAXCOINS = "maxcoins";
+	
+	private static final String[] COLUMNS_ROUTES = {KEY_ID, KEY_DATE, KEY_MAXCOINS};
 
 	// Finished Routes table columns names
 	private static final String KEY_FINISHED_ID = "finished_id";
@@ -73,7 +74,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		// SQL statement to create route table
 		String CREATE_ROUTES_TABLE = "CREATE TABLE "+TABLE_ROUTES+" ( " +
 				KEY_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " + 						
-				KEY_DATE+" INTEGER)"; 
+				KEY_DATE+" INTEGER," +
+				KEY_MAXCOINS+" INTEGER)"; 
 
 		// create position table
 		db.execSQL(CREATE_ROUTES_TABLE);
@@ -147,7 +149,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 		ContentValues values = new ContentValues();			//Content values
 		values.put(KEY_DATE, r.getDate());
-
+		values.put(KEY_MAXCOINS, r.getMaxCoins());
+		
 		Long row = db.insert(TABLE_ROUTES, null, values);	//insert
 
 		db.close(); //close
@@ -172,7 +175,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		Route r = new Route();							//build object
 		r.setId(cursor.getInt(0));
 		r.setDate(cursor.getString(1));
-
+		r.setMaxCoins(cursor.getInt(2));
+		
 		Log.d("getRoute", r.toString());				//log
 
 		return r; 
@@ -192,6 +196,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 				Route r = new Route();
 				r.setId(cursor.getInt(0));
 				r.setDate(cursor.getString(1));
+				r.setMaxCoins(cursor.getInt(2));
 				routes.add(r);
 			}while(cursor.moveToNext());
 		}
@@ -210,7 +215,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		ContentValues values = new ContentValues();
 		values.put(KEY_ID, route.getId());
 		values.put(KEY_DATE, route.getDate());
-
+		values.put(KEY_MAXCOINS, route.getMaxCoins());
 		int i = db.update(TABLE_ROUTES, values, KEY_ID+" = ? ", new String[] {String.valueOf(route.getId())});
 
 		db.close();
@@ -505,6 +510,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 		f.setSpeed(cursor.getDouble(2));
 		f.setTotTime(cursor.getLong(3));
 		f.setDate(r.getDate());
+		f.setMaxCoins(r.getMaxCoins());
 
 		Log.d("getFinished", f.toString());
 		return f;
@@ -526,6 +532,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 				f.setTotTime(cursor.getLong(3));
 				f.setDate(r.getDate());
 				routes.add(f);
+				
 			}while(cursor.moveToPrevious());
 		}
 

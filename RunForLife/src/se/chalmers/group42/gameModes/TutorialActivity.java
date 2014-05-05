@@ -1,10 +1,14 @@
 package se.chalmers.group42.gameModes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.R;
 import sensors.GyroInputHandler;
 import sensors.GyroInputListener;
+import utils.Vector2;
 import android.app.Activity;
 import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
@@ -24,27 +28,30 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 	public static int MAX_PROGRESS = 1000;
 
-	private float 	orientation;
-	private int 	x,y;
-	private int		coinX, coinY;
-	private	int 	curr100;
-	private boolean hasBeenAnnounced = false;
-	private int updateCounter = 0;
+	private float 			orientation;
+	private int 			x,y;
+	private int				coinX, coinY;
+	private	int 			curr100;
+	private int 			score = 0;
+	private List<Vector2> 	foundCoins;
+	private int 			updateCounter = 0;
 	//	private DrawableView drawableView;
-	private Canvas 	canvas;
-	private Paint 	paint1;
-	private Paint 	paint2;
-	private TextView distanceText;
+	private Canvas 			canvas;
+	private Paint 			paint1;
+	private Paint 			paint2;
+	private TextView 		distanceText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tutorial);
-		
+
 		//Providing an up button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		orientation = 0;
+		
+		foundCoins = new ArrayList<Vector2>();
 
 		//Gyro input
 		new GyroInputHandler(this, this);
@@ -57,18 +64,22 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		paint1.setColor(Color.parseColor("#CD5C5C"));
 		paint2 = new Paint();
 		paint2.setColor(Color.parseColor("#5CCD5C"));
-		
-//		Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
-//		canvas = new Canvas(bg); 
-//		canvas.drawRect(50, 50, 200, 200, paint); 
-//		LinearLayout ll = (LinearLayout) findViewById(R.id.drawingLayout);
-//		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
+
+		//		Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
+		//		canvas = new Canvas(bg); 
+		//		canvas.drawRect(50, 50, 200, 200, paint); 
+		//		LinearLayout ll = (LinearLayout) findViewById(R.id.drawingLayout);
+		//		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 
 		distanceText = (TextView)		findViewById(R.id.textView_TutDistance);
 
 		x = y = 500;
-		
+
+
 		generateNewCoin();
+
+		curr100 = ((int) (getDistanceToCoin()/100))*100;
+
 
 		//SeekBar x
 		SeekBar sbX = (SeekBar)findViewById(R.id.seekBar_x);
@@ -86,6 +97,8 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 		//Start playing
 		fx.loop(fx.getNavigationFX());
+
+
 
 		//drawableView.invalidate();
 	}
@@ -122,7 +135,7 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 		Log.d("GYROSCOPE", "v: "+Math.round(orientation));
 
 		onOrientationChanged();
-		
+
 		//This could be done a lot nicer in C
 		updateCounter++;
 		if((updateCounter %= 40) == 0)
@@ -132,44 +145,55 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 	private void onOrientationChanged() {
 		//distanceText.setText("Distance: "+ getDistance() + "m");
-		
 
-//		if (orientation > 180)
-//			orientation -= 360;
+
+		//		if (orientation > 180)
+		//			orientation -= 360;
 
 		fx.update(
 				fx.getNavigationFX(), 
 				getAngleToCoin());
 
-		if (isCoinFound() && !hasBeenAnnounced) {
-			fx.stopLoop();
+		if (isCoinFound()) {
+		//	fx.stopLoop();
 			fx.foundCoin();
-			hasBeenAnnounced = true;
+			increaseScore();
+			foundCoins.add(new Vector2(coinX, coinY));
 			generateNewCoin();
 		}
 
-		if (getDistanceToCoin() < 100) {
-			curr100 = 0;
-			float delayRatio = (float) Math.pow(getDistanceToCoin() / 100, 2);
+		//		if (getDistanceToCoin() < 100) {
+		//			curr100 = 0;
+		//			float delayRatio = (float) Math.pow(getDistanceToCoin() / 100, 2);
+		//
+		//			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
+		//					* delayRatio + Constants.MIN_DELAY);
+		//		} else {
+		// if user has moved forward to new 100s
+		if (getDistanceToCoin() - curr100 < 0) {
+			int current100 = ((int) (getDistanceToCoin() / 100));
+			fx.sayDistance(fx.getSpeech(current100));
+			curr100 = current100 * 100;
+		}
+
+		else if (!(getDistanceToCoin() - curr100 >= 100)) {
+			float delayRatio, newDist = getDistanceToCoin() % 100;
+			delayRatio = (float) Math.pow(newDist / 100, 2);
+
 
 			fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
 					* delayRatio + Constants.MIN_DELAY);
-		} else {
-			// if user has moved forward to new 100s
-			if (getDistanceToCoin() - curr100 < 0) {
-				curr100 = ((int) (getDistanceToCoin() / 100)) * 100;
-			}
-
-			else if (!(getDistanceToCoin() - curr100 >= 100)) {
-				float delayRatio, newDist = getDistanceToCoin() % 100;
-				delayRatio = (float) Math.pow(newDist / 100, 2);
-
-
-				fx.updateDelay((Constants.MAX_DELAY - Constants.MIN_DELAY)
-						* delayRatio + Constants.MIN_DELAY);
-			}
 		}
+		else
+			fx.updateDelay(Constants.MAX_DELAY);
+		//		}
 
+	}
+	private void increaseScore() {
+		score++;
+		((TextView) findViewById(R.id.textView_score)).setText(
+				"Score: " + score
+		);
 	}
 	private void generateNewCoin() {
 		coinX = (int) (MAX_PROGRESS * Math.random());
@@ -181,9 +205,9 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 	public float getAngleToCoin(){
 		return orientation + (float) Math.toDegrees(
 				Math.atan2(	x - coinX, 
-							y - coinY)
+						y - coinY)
 				);
-		
+
 	}
 	public boolean isCoinFound() {
 		return getDistanceToCoin() < Constants.MIN_DISTANCE; // && Math.abs(angle - coinAngle) < 5;
@@ -191,61 +215,59 @@ public class TutorialActivity extends Activity implements GyroInputListener, OnS
 
 	public void onProgressChanged(SeekBar seekBar,
 			int progress, boolean fromUser) {
-		if			(seekBar.getId() == R.id.seekBar_x) {
+		if(seekBar.getId() 		== R.id.seekBar_x)
 			x = progress;
-			//			drawableView.setXCoord(x);
-		}
-		else if(	seekBar.getId() == R.id.seekBar_y) {
+		else if(seekBar.getId() == R.id.seekBar_y)
 			y = progress;
-			//			drawableView.setYCoord(y);
-		}
 		else return;
-		//drawableView.invalidate();
 
 		draw();
-		//drawableView.postInvalidate();
-		distanceText.setText("Distance: " + getDistanceToCoin() +" m");
-		//Log.d("TUTORIAL", "Distance: " + getDistance() +" m");
 
+		distanceText.setText("Distance: " + getDistanceToCoin() +" m");
 	}
-	
+
 	public void draw(){
 		LinearLayout ll = (LinearLayout) findViewById(R.id.drawingLayout);
 		Bitmap bg = Bitmap.createBitmap(
 				ll.getWidth() 	> 0 ? ll.getWidth()  : 800, 
-				ll.getHeight()	> 0 ? ll.getHeight() : 800, 
-				Bitmap.Config.ARGB_8888);
+						ll.getHeight()	> 0 ? ll.getHeight() : 800, 
+								Bitmap.Config.ARGB_8888);
 		canvas = new Canvas(bg);
 
-		
+
 		Bitmap b= BitmapFactory.decodeResource(getResources(), R.drawable.arrow);
 		Matrix matrix = new Matrix();
 		matrix.postRotate(orientation);
 		//Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmapOrg,width,height,true);
 
 		Bitmap rotatedBitmap = Bitmap.createBitmap(b , 0, 0, b.getWidth(), b.getHeight(), matrix, true);
-        canvas.drawBitmap(rotatedBitmap, 
-        		x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getWidth()/2, 
+		canvas.drawBitmap(rotatedBitmap, 
+				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getWidth()/2, 
 				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS - rotatedBitmap.getHeight()/2, 
 				null);
-     
+
 		//Paint
 		canvas.drawCircle(
 				x	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
 				y	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
 				15, paint1);
-		
+
 		canvas.drawCircle(
 				coinX	* canvas.getWidth()/TutorialActivity.MAX_PROGRESS, 
 				coinY	* canvas.getHeight()/TutorialActivity.MAX_PROGRESS, 
-				15, paint2);
+				30, paint2);
 		
+		for (Vector2 coin : foundCoins) {
+			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.arrow),
+					coin.getX(), coin.getY(), null);
+		}
+
 
 		ll.setBackgroundDrawable((new BitmapDrawable(bg)));
 	}
 	public void onStartTrackingTouch(SeekBar seekBar) {}
 	public void onStopTrackingTouch(SeekBar seekBar) {}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {

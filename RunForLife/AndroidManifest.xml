@@ -60,6 +60,11 @@ Google Maps Android API v2, but are recommended.
             android:screenOrientation="nosensor" >
         </activity>
         <activity
+            android:name="se.chalmers.group42.gameModes.FreerunActivity"
+            android:label="freerun_activity"
+            android:screenOrientation="nosensor" >
+        </activity>
+        <activity
             android:name="se.chalmers.group42.gameModes.EscapeActivity"
             android:label="escape_activity"
             android:screenOrientation="nosensor" >
@@ -79,7 +84,8 @@ Google Maps Android API v2, but are recommended.
         <activity
             android:name="se.chalmers.group42.gameModes.TutorialActivity"
             android:label="@string/title_activity_tutorial"
-            android:parentActivityName="se.chalmers.group42.controller.MainActivity" >
+            android:parentActivityName="se.chalmers.group42.controller.MainActivity"
+            android:screenOrientation="nosensor">
         </activity>
     </application>
 
