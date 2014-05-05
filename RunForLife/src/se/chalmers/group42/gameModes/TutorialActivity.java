@@ -195,10 +195,17 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		return (int) Math.sqrt(Math.pow(x-coinX, 2) + Math.pow(y-coinY, 2));
 	}
 	public float getAngleToCoin(){
-		return orientation + (float) Math.toDegrees(
+		float tempAngle = orientation + (float) Math.toDegrees(
 				Math.atan2(	x - coinX, 
 						y - coinY)
 				);
+		// Marcus added this, was problem before
+		if(tempAngle > 180){
+			tempAngle = tempAngle - 360;
+		}else if(tempAngle < -180){
+			tempAngle = tempAngle + 360;
+		}
+		return tempAngle;
 
 	}
 	public boolean isCoinFound() {
