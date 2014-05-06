@@ -64,7 +64,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 			if(key.equals("distance")){
 				String distance = sharedPreferences.getString(key, "700");
 				Preference distancePref = (Preference) findPreference("distance");
-				distancePref.setSummary(distance + " meters interval between each checkpoint");
+				distancePref.setSummary(distance + " meters to the checkpoint furthest away");
 			} else if(key.equals("nrPoints")){
 				String points = sharedPreferences.getString(key, "4");
 				Preference pointsPref = (Preference) findPreference("nrPoints");
