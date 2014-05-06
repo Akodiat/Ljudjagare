@@ -173,8 +173,11 @@ public class RunActivity extends SwipeableActivity implements
 		if (appMode.equals("RUN_MODE")) {
 			// Setting up Sensor input
 			gpsInputHandler = new GPSInputHandler(this, this);
-
-			this.dataHandler = new DataHandler(db, this);
+			dataHandler = new DataHandler(db, this);
+			
+			if(usingGyro()) //Gyro sensor if requested
+				new GyroGPSFusion(this, this);
+			
 			
 			//Set actionbar title text
 			getActionBar().setTitle("Run");

@@ -97,6 +97,10 @@ public class FXHandler {
 	public Speech getSpeech(int i){
 		return speech.get(i);
 	}
+	
+	public int getSpeechLimit(){
+		return speech.size();
+	}
 
 	public void initSoundPool(Context context) {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
