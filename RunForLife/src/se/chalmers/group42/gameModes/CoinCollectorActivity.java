@@ -6,12 +6,13 @@ import java.util.Collections;
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.controller.RunFragment;
+import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;
 import se.chalmers.group42.runforlife.Human;
 import se.chalmers.group42.runforlife.R;
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -48,6 +49,8 @@ public class CoinCollectorActivity extends RunActivity {
 	private int curr100;
 
 	private int checkpoints;
+	
+	private SharedPreferences sharedPref;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,9 @@ public class CoinCollectorActivity extends RunActivity {
 		human = new Human();
 		//curr100 = Constants.RUN_DISTANCE;
 		coinLocation = LocationHelper.locationFromLatlng(DEFAULT_POSITION);
+
+		//Retrieving distancevalue from preferences
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
@@ -107,6 +113,10 @@ public class CoinCollectorActivity extends RunActivity {
 					// if user pressed "yes", then he is allowed to exit from
 					// application
 					fx.stopLoop();
+					if(dataHandler.isPaused() || dataHandler.isRunning()){
+						Route r = db.getRoute(dataHandler.getCurrentRoute());
+						db.deleteRoute(r);
+					}
 					finish();
 				}
 			});
@@ -135,8 +145,6 @@ public class CoinCollectorActivity extends RunActivity {
 		if (generateRoute) {
 			generateRoute = false;
 
-			//Retrieving distancevalue from preferences
-			SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 			//Setting value to 700 meters if no values have been set
 			String distance = sharedPref.getString("distance", "700");
 
@@ -248,7 +256,8 @@ public class CoinCollectorActivity extends RunActivity {
 		// if user has moved forward to new 100s
 		if (distance - curr100 <= 0) {
 			int currHundred = ((int) (distance / 100));
-			fx.sayDistance(fx.getSpeech(currHundred));
+			if(currHundred<fx.getSpeechLimit())
+				fx.sayDistance(fx.getSpeech(currHundred));
 			curr100 = currHundred * 100;
 		}
 		else if (!(distance - curr100 > 100)) {
@@ -325,10 +334,7 @@ public class CoinCollectorActivity extends RunActivity {
 	}
 
 	private ArrayList<Location> generateRandomRoute(double distance) {
-		// Calculation random positions
 
-//		//Retrieving distancevalue from preferences
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 //		//Setting value to 700 meters if no values have been set
 		Boolean random = sharedPref.getBoolean("route", false);
 		String random1 = sharedPref.getString("random1", "0");

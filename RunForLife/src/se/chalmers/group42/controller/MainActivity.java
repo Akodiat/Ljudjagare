@@ -44,7 +44,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentActivity;
 
 public class MainActivity extends Activity implements Callbacks {
 

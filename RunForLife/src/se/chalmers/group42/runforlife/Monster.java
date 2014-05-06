@@ -3,13 +3,11 @@ package se.chalmers.group42.runforlife;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import se.chalmers.group42.gameModes.EscapeActivity;
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 import android.location.Location;
 import android.util.Log;
 
 public class Monster {
-	private 	EscapeActivity activity;
 	private 	Location 	location;				//Location of the monster
 	private		Location 	target;					//Location of the target (that the monster hunts)
 	private 	float 		speed;					//Meters per second
@@ -18,8 +16,7 @@ public class Monster {
 	private 	long 		delayTime = 1500;		//Delay in milliseconds
 
 
-	public Monster(EscapeActivity activity, Location location, float speed){
-		this.activity 	= activity;
+	public Monster(Location location, float speed){
 		this.location 	= location;
 		this.target		= location;
 		this.speed 		= speed;
@@ -54,6 +51,5 @@ public class Monster {
 			Log.d("Monster", "moving " + distance + "m in " + direction +"deg.");
 			LocationHelper.moveLocation(target, direction, -distance);
 		//}
-		//activity.onMonsterLocationChanged();
 	}
 }

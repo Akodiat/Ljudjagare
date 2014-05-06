@@ -6,7 +6,7 @@ import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler2;
 import se.chalmers.group42.runforlife.Human;
 import se.chalmers.group42.runforlife.R;
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.location.Location;

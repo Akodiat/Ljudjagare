@@ -1,4 +1,4 @@
-package utils;
+package se.chalmers.group42.utils;
 
 import android.location.Location;
 import com.google.android.gms.maps.model.LatLng;

@@ -1,6 +1,6 @@
 package se.chalmers.group42.runforlife;
 
-import sensors.GPSInputHandler;
+import se.chalmers.group42.sensors.GPSInputHandler;
 
 public interface StatusIconEventListener {
 

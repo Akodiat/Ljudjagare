@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 public class ShooterActivity extends Activity implements SensorEventListener {
 
+	@SuppressWarnings("unused")
 	private float angle, distance, prevDistance, coinAngle;
 
 	private SensorManager mSensorManager;
@@ -32,6 +33,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 	TextView currentAngle;
 	SeekBar currentDistance;
 
+	@SuppressWarnings("unused")
 	private Timer timer;
 
 	private Random random;
@@ -161,6 +163,7 @@ public class ShooterActivity extends Activity implements SensorEventListener {
 		hasBeenAnnounced = false;
 	}
 
+	@SuppressWarnings("unused")
 	private class RunCloser extends TimerTask {
 		public void run() {
 			// distance = -5;

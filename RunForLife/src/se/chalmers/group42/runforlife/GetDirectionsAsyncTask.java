@@ -7,10 +7,16 @@ import org.w3c.dom.Document;
 import se.chalmers.group42.controller.RunActivity;
 
 import com.google.android.gms.maps.model.LatLng;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+/**
+ * @author Emil Adz 
+ *
+ * From http://stackoverflow.com/questions/16125868/draw-driving-route-between-2-geopoints-on-googlemap-supportmapfragment
+ */
 public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Object, ArrayList<LatLng>>
 {
 	public static final String USER_CURRENT_LAT = "user_current_lat";
@@ -44,7 +50,7 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
 	}
 
 	@Override
-	public void onPostExecute(ArrayList result)
+	public void onPostExecute(ArrayList<LatLng> result)
 	{
 		//Checks if activity is finished before displaying the dialog
 		if (!(activity.isFinishing())) {
@@ -82,8 +88,9 @@ public class GetDirectionsAsyncTask extends AsyncTask<Map<String, String>, Objec
 		}
 	}
 
+	@SuppressLint("ShowToast")
 	private void processException()
 	{
-		//        Toast.makeText(activity, "Error retriving data", 3000).show();
+		        Toast.makeText(activity, "Error retriving data", 3000).show();
 	}
 }

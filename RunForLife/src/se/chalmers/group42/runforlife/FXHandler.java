@@ -97,6 +97,10 @@ public class FXHandler {
 	public Speech getSpeech(int i){
 		return speech.get(i);
 	}
+	
+	public int getSpeechLimit(){
+		return speech.size();
+	}
 
 	public void initSoundPool(Context context) {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
@@ -189,13 +193,13 @@ public class FXHandler {
 		else if (fx.angle() < 0 && fx.angle() > -Constants.FRONT_ANGLE ){
 			fx.setPitch((1 - Constants.MIN_PITCH) / Constants.FRONT_ANGLE * fx.angle() + 1);
 			// To easier hear if the sound is on the right or left
-			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.85);
+			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.90);
 			env.setListenerOrientation(fx.angle() - tempAngle);
 		}
 		else if (fx.angle() >= 0 && fx.angle() < Constants.FRONT_ANGLE){
 			fx.setPitch((1 - Constants.MIN_PITCH) / (-Constants.FRONT_ANGLE) * fx.angle() + 1);
 			// To easier hear if the sound is on the right or left
-			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.85);
+			float tempAngle = (float) ((90 - Math.abs(fx.angle())) * 0.90);
 			env.setListenerOrientation(fx.angle() + tempAngle);
 		} 
 	}

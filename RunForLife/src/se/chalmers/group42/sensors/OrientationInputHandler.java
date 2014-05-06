@@ -1,9 +1,9 @@
-package sensors;
+package se.chalmers.group42.sensors;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import utils.Vector3;
+import se.chalmers.group42.utils.Vector3;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -19,8 +19,6 @@ import android.os.PowerManager;
  */
 public class OrientationInputHandler implements SensorEventListener
 {
-	private SensorManager mSensorManager = null;
-
 	// angular speeds from gyro
 	private float[] gyro = new float[3];
 

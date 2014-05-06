@@ -3,8 +3,6 @@ package se.chalmers.group42.controller;
 import java.util.Locale;
 
 import se.chalmers.group42.runforlife.R;
-import se.chalmers.group42.runforlife.R.string;
-
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;

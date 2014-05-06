@@ -1,8 +1,6 @@
 package se.chalmers.group42.controller;
 
 import se.chalmers.group42.runforlife.R;
-import se.chalmers.group42.runforlife.R.id;
-import se.chalmers.group42.runforlife.R.layout;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;

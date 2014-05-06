@@ -45,7 +45,7 @@ import se.chalmers.group42.runforlife.RunForLifeApplication;
 import se.chalmers.group42.runforlife.StatusIconEventListener;
 import se.chalmers.group42.runforlife.StatusIconHandler;
 import se.chalmers.group42.runforlife.DataHandler.RunStatus;
-import sensors.*;
+import se.chalmers.group42.sensors.*;
 
 import com.google.android.gms.internal.fx;
 import com.google.android.gms.maps.model.LatLng;
@@ -89,9 +89,11 @@ public class RunActivity extends SwipeableActivity implements
 	private MapFragment mapFragment;
 	private StatsFragment statsFragment;
 
-	private MySQLiteHelper db;
+	public MySQLiteHelper db;
 
 	private int routeId;
+	
+	private String appMode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -168,13 +170,16 @@ public class RunActivity extends SwipeableActivity implements
 		});
 
 		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
-		String appMode = pref.getString("application_mode", "");
+		appMode = pref.getString("application_mode", "");
 
 		if (appMode.equals("RUN_MODE")) {
 			// Setting up Sensor input
 			gpsInputHandler = new GPSInputHandler(this, this);
-
-			this.dataHandler = new DataHandler(db, this);
+			dataHandler = new DataHandler(db, this);
+			
+			if(usingGyro()) //Gyro sensor if requested
+				new GyroGPSFusion(this, this);
+			
 			
 			//Set actionbar title text
 			getActionBar().setTitle("Run");
@@ -221,7 +226,8 @@ public class RunActivity extends SwipeableActivity implements
 			//Set actionbar title text
 			getActionBar().setTitle("Finished Run");
 			
-			setUpDisplay(false);
+			setUpDisplay();
+			
 			runButton.setVisibility(View.GONE);
 			stopButton.setVisibility(View.GONE);
 			gpsIcon.setVisibility(View.GONE);
@@ -294,7 +300,7 @@ public class RunActivity extends SwipeableActivity implements
 		headPhonesIcon.setVisibility(View.GONE);
 		finishButton.setVisibility(View.VISIBLE);
 		btnImage.setVisibility(View.GONE);
-		setUpDisplay(true);
+		setUpDisplay();
 	}
 
 	@Override
@@ -420,8 +426,9 @@ public class RunActivity extends SwipeableActivity implements
 		return sharedPreferences.getBoolean("gyro", false);
 	}
 
-	public void setUpDisplay(Boolean stopped) {
-		if (!stopped) {
+	public void setUpDisplay() {
+		int id = routeId;
+		if (appMode.equals("DISPLAY_MODE")) {
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
 				routeId = extras.getInt(Constants.EXTRA_ID);
@@ -474,7 +481,7 @@ public class RunActivity extends SwipeableActivity implements
 		stats.putLongArray("times", times);
 		stats.putIntArray("dists", dists);
 
-		if (!stopped) {
+		if (appMode.equals("DISPLAY_MODE")) {
 			runFragment.setArguments(args);
 			mapFragment.setArguments(locs);
 			statsFragment.setArguments(stats);
