@@ -4,7 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import se.chalmers.group42.runforlife.Constants;
-import se.chalmers.group42.runforlife.FX;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.runforlife.Speech;
@@ -14,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;

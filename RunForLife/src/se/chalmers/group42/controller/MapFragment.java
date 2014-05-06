@@ -25,7 +25,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 //import se.chalmers.proofofconceptlj.Polyline;
 
@@ -55,17 +54,12 @@ public class MapFragment extends Fragment {
 		}
 	}
 
-	private static 		LatLng CURRENT_POSITION = new LatLng(58.705477, 11.990884);
 	private GoogleMap map;
 	private SupportMapFragment fragment;
 	private ArrayList<Location> finalRoute = new ArrayList<Location>();
 	private ArrayList<Marker> markers = new ArrayList<Marker>();
-	//	private int marks;
-	private Boolean directionFinished = false;
-	private Marker marker;
 
 	private PolylineOptions routeLine = new PolylineOptions().width(10).color(Color.RED);
-	private Polyline			myPolyRoute;
 	private boolean isConnected = false;
 	private float distance = 0;
 	private int checkpoints;
@@ -104,7 +98,7 @@ public class MapFragment extends Fragment {
 				}
 			});
 		}
-		
+
 		SharedPreferences pref = getActivity().getSharedPreferences("MODE", Context.MODE_PRIVATE);
 		String mode = pref.getString("application_mode", "");
 		if(mode.equals("DISPLAY_MODE")){
@@ -113,7 +107,7 @@ public class MapFragment extends Fragment {
 				displayFinishedMap(locs);
 			}
 		}
-		
+
 		return rootView;
 	}
 
@@ -134,7 +128,7 @@ public class MapFragment extends Fragment {
 	}
 
 	public void showCollectedCoin(Location locationOfCoin){
-		Marker marker = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(new LatLng(locationOfCoin.getLatitude(),
 				locationOfCoin.getLongitude()))
 				.title("Coin")
@@ -149,49 +143,15 @@ public class MapFragment extends Fragment {
 	}
 
 	public void randomTest(ArrayList<Location> routeTest, Location routePoint){
-		marker = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(new LatLng(routePoint.getLatitude(), routePoint.getLongitude()))
 		.title("Random2").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
 		for(int i = 0; i < routeTest.size(); i++){
-			marker = map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 			.position(new LatLng(routeTest.get(i).getLatitude(), routeTest.get(i).getLongitude()))
 			.title("Random: " + i).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
 		}
-
-
-		//		Location random = new Location("");
-		//		random.setLatitude(CURRENT_POSITION.latitude);
-		//		random.setLongitude(CURRENT_POSITION.longitude);
-		//		
-		//		double a = Math.random();
-		//		double b = Math.random();
-		//
-		//		double r = 50 / Constants.LAT_LNG_TO_METER;
-		//
-		//		double w = r * Math.sqrt(a);
-		//		double t = 2 * Math.PI * b;
-		//		double x = w * Math.cos(t);
-		//		double y = w * Math.sin(t);
-		//		double xNew = x / Math.cos(random.getLatitude());
-		//
-		//		Location random2 = new Location("");
-		//		random2.setLongitude(xNew + random.getLongitude());
-		//		random2.setLatitude(random.getLatitude()+y);
-		//
-		//		float bearingTo = random.bearingTo(random2);
-		//		double addLat;
-		//		double addLng;
-		//		double distanceFromLocation = 1000/Constants.LAT_LNG_TO_METER; 
-		//		addLat = Math.sin(bearingTo)*distanceFromLocation;
-		//		addLng = Math.cos(bearingTo)*distanceFromLocation / Math.cos(random.getLatitude());
-		//
-		//		random2.setLatitude(random2.getLatitude() + addLat);
-		//		random2.setLongitude(random2.getLongitude() + addLng);
-		//		
-		//		marker = map.addMarker(new MarkerOptions()
-		//		.position(new LatLng(random2.getLatitude(), random2.getLongitude()))
-		//		.title("Random2").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 	}
 
 	public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
@@ -222,22 +182,21 @@ public class MapFragment extends Fragment {
 		// newPolyline.remove();
 		// }
 
-//		if (finalRoute.size() == 1) {
-//			// soundSource.set(wholeWayLocation);
-//			//map.clear();
-//			markers.add(map.addMarker(new MarkerOptions()
-//			.position(
-//					new LatLng(wholeWayLocation.getLatitude(),
-//							wholeWayLocation.getLongitude()))
-//							.title("First!")
-//							.icon(BitmapDescriptorFactory
-//									.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
-//		}
+		//		if (finalRoute.size() == 1) {
+		//			// soundSource.set(wholeWayLocation);
+		//			//map.clear();
+		//			markers.add(map.addMarker(new MarkerOptions()
+		//			.position(
+		//					new LatLng(wholeWayLocation.getLatitude(),
+		//							wholeWayLocation.getLongitude()))
+		//							.title("First!")
+		//							.icon(BitmapDescriptorFactory
+		//									.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
+		//		}
 
 		map.addPolyline(rectLine);
 
 		if (finalRoute.size() == checkpoints) {
-			directionFinished = true;
 			mCallback.sendFinalRoute(finalRoute, distance);
 		}
 	}
@@ -246,7 +205,7 @@ public class MapFragment extends Fragment {
 		if(isConnected || location.getAccuracy() <= 20){
 			LatLng p = new LatLng(location.getLatitude(),location.getLongitude());
 			routeLine.add(p);
-			myPolyRoute = map.addPolyline(routeLine);
+			map.addPolyline(routeLine);
 		}else{
 			isConnected = true;
 		}
@@ -255,12 +214,12 @@ public class MapFragment extends Fragment {
 	public void setCheckpoints(int checkpoints) {
 		this.checkpoints = checkpoints;	
 	}
-	
+
 	public void displayFinishedMap(Bundle locs){
-		
+
 		map.clear();
 		map.setMyLocationEnabled(false);
-		
+
 		double[] latitudes = locs.getDoubleArray("latitudes");
 		double[] longitudes = locs.getDoubleArray("longitudes");
 
@@ -273,7 +232,7 @@ public class MapFragment extends Fragment {
 			l = new LatLng(latitudes[i],longitudes[i]);
 
 			routeLine.add(l);
-			myPolyRoute = map.addPolyline(routeLine);
+			map.addPolyline(routeLine);
 		}
 
 		if(l != null){
@@ -283,7 +242,7 @@ public class MapFragment extends Fragment {
 				map.animateCamera(cameraUpdate);
 			}
 		}
-		
+
 		//draw coin
 		for(int i = 0 ; i < coinlat.length ; i++){
 			l = new LatLng(coinlat[i],coinlng[i]);
@@ -291,7 +250,7 @@ public class MapFragment extends Fragment {
 		}
 	}
 	public void showCollectedCoin(LatLng l){
-		Marker marker = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(l)
 		.title("Coin")
 		.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_coin)));
