@@ -1,4 +1,4 @@
-package sensors;
+package se.chalmers.group42.sensors;
 
 import se.chalmers.group42.controller.RunActivity;
 import utils.LocationHelper;

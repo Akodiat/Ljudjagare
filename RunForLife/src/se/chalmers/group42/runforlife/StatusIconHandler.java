@@ -3,23 +3,22 @@ package se.chalmers.group42.runforlife;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.ContentObserver;
-import android.media.AudioManager;
-import android.os.Handler;
 
+
+/**
+ * @author Joakim
+ *
+ *	Handles the case when the headphones are pluggid in or out
+ */
 public class StatusIconHandler extends BroadcastReceiver {
 
 	private StatusIconEventListener listener;
-	private Context context;
-
 	public StatusIconHandler(StatusIconEventListener listener, Context context) {
 		this.listener = listener;
-		this.context = context;
 	}
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-
 		// android.util.Log.d("StatusIcon", "Recieved broadcast: "+
 		// intent.getAction());
 		if (intent.getAction() == "android.intent.action.HEADSET_PLUG") {
@@ -42,6 +41,5 @@ public class StatusIconHandler extends BroadcastReceiver {
 		// microphone - 1 if headset has a microphone, 0 otherwise
 		//
 		// Constant Value: "android.intent.action.HEADSET_PLUG"
-
 	}
 }

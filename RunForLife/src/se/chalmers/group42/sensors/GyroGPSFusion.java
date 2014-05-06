@@ -1,4 +1,4 @@
-package sensors;
+package se.chalmers.group42.sensors;
 
 import android.content.Context;
 import android.location.Location;

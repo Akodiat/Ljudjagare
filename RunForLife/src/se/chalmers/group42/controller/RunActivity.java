@@ -43,7 +43,7 @@ import se.chalmers.group42.runforlife.RunForLifeApplication;
 import se.chalmers.group42.runforlife.StatusIconEventListener;
 import se.chalmers.group42.runforlife.StatusIconHandler;
 import se.chalmers.group42.runforlife.DataHandler.RunStatus;
-import sensors.*;
+import se.chalmers.group42.sensors.*;
 
 import com.google.android.gms.internal.fx;
 import com.google.android.gms.maps.model.LatLng;

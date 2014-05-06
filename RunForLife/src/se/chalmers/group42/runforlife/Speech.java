@@ -1,5 +1,11 @@
 package se.chalmers.group42.runforlife;
 
+
+/**
+ * @author Linus
+ *
+ *	Keep track of the speeches, for example "100 meters".
+ */
 public class Speech {
 
 	private int id;

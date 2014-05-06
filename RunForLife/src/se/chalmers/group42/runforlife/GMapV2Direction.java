@@ -18,9 +18,13 @@ import org.w3c.dom.NodeList;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import android.content.Context;
 import android.util.Log;
 
+/**
+ * @author Emil Adz 
+ *
+ * From http://stackoverflow.com/questions/16125868/draw-driving-route-between-2-geopoints-on-googlemap-supportmapfragment
+ */
 public class GMapV2Direction {
 	public final static String MODE_DRIVING = "driving";
 	public final static String MODE_WALKING = "walking";
@@ -105,11 +109,9 @@ public class GMapV2Direction {
 		return node1.getTextContent();
 	}
 
-	@SuppressWarnings("unchecked")
-	public ArrayList getDirection (Document doc) {
+	public ArrayList<LatLng> getDirection (Document doc) {
 		NodeList nl1, nl2, nl3;
-		@SuppressWarnings("rawtypes")
-		ArrayList listGeopoints = new ArrayList();
+		ArrayList<LatLng> listGeopoints = new ArrayList<LatLng>();
 		nl1 = doc.getElementsByTagName("step");
 		if (nl1.getLength() > 0) {
 			for (int i = 0; i < nl1.getLength(); i++) {
@@ -153,8 +155,8 @@ public class GMapV2Direction {
 		return -1;
 	}
 
-	private ArrayList decodePoly(String encoded) {
-		ArrayList poly = new ArrayList();
+	private ArrayList<LatLng> decodePoly(String encoded) {
+		ArrayList<LatLng> poly = new ArrayList<LatLng>();
 		int index = 0, len = encoded.length();
 		int lat = 0, lng = 0;
 		while (index < len) {
