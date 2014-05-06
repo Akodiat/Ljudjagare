@@ -8,7 +8,7 @@ import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.sensors.GyroInputHandler;
 import se.chalmers.group42.sensors.GyroInputListener;
-import utils.Vector2;
+import se.chalmers.group42.utils.Vector2;
 import android.app.Activity;
 import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;

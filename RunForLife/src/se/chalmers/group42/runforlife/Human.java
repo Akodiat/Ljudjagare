@@ -1,6 +1,6 @@
 package se.chalmers.group42.runforlife;
 
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 
 import com.google.android.gms.maps.model.LatLng;
 import android.location.Location;

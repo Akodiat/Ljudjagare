@@ -3,7 +3,7 @@ package se.chalmers.group42.sensors;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import utils.Vector3;
+import se.chalmers.group42.utils.Vector3;
 
 import android.content.Context;
 import android.hardware.Sensor;

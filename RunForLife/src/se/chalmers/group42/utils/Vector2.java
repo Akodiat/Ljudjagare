@@ -1,4 +1,4 @@
-package utils;
+package se.chalmers.group42.utils;
 
 public class Vector2 {
 	private int x, y;

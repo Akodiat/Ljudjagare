@@ -4,7 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import se.chalmers.group42.gameModes.EscapeActivity;
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 import android.location.Location;
 import android.util.Log;
 

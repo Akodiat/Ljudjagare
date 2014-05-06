@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.pielot.openal.Buffer;
 import org.pielot.openal.SoundEnv;
 
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

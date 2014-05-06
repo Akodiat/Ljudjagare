@@ -7,7 +7,7 @@ import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.Human;
 import se.chalmers.group42.runforlife.Monster;
 import se.chalmers.group42.runforlife.R;
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;

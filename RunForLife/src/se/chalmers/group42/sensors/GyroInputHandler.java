@@ -1,6 +1,6 @@
 package se.chalmers.group42.sensors;
 
-import utils.Vector3;
+import se.chalmers.group42.utils.Vector3;
 
 import android.content.Context;
 import android.hardware.*;

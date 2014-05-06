@@ -1,7 +1,7 @@
 package se.chalmers.group42.sensors;
 
 import se.chalmers.group42.controller.RunActivity;
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;

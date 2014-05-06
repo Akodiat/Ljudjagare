@@ -11,7 +11,7 @@ import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;
 import se.chalmers.group42.runforlife.Human;
 import se.chalmers.group42.runforlife.R;
-import utils.LocationHelper;
+import se.chalmers.group42.utils.LocationHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
