@@ -44,24 +44,6 @@
                 android:padding="10dp"
                 android:src="@drawable/coin_collector" />
 
-            <ImageView
-                android:id="@+id/previous_mode_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_action_previous_item"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/next_mode_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_action_next_item"
-                android:visibility="visible" />
-
             <RelativeLayout
                 android:id="@+id/mode_selector"
                 android:layout_width="fill_parent"

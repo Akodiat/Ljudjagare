@@ -10,6 +10,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 
 public class ScreenSlidePageFragment extends Fragment {
@@ -23,6 +24,11 @@ public class ScreenSlidePageFragment extends Fragment {
 	 * Images to be used for modes.
 	 */
 	private int[] images = { R.drawable.coin_collector, R.drawable.tutorial };
+
+	private int[] modeIndicators = { R.drawable.mode_indicator,
+			R.drawable.mode_indicator_2 };
+
+	private ImageView modeIndicator;
 
 	/**
 	 * The name of each mode.
@@ -40,6 +46,9 @@ public class ScreenSlidePageFragment extends Fragment {
 	 * The fragment's mode number.
 	 */
 	private int mModeNumber;
+
+	private ImageView modeImage;
+	private TextView infoText;
 
 	/**
 	 * True if the mode view is in its info state.
@@ -67,51 +76,30 @@ public class ScreenSlidePageFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Inflate the layout containing image and text
+		// Inflate the layout containing image and text.
 		final ViewGroup rootView = (ViewGroup) inflater.inflate(
 				R.layout.fragment_screen_slide_page, container, false);
 
-		final ImageView modeImage = (ImageView) rootView
-				.findViewById(R.id.select_mode_image);
+		// Set mode indicator images.
+		modeImage = (ImageView) rootView.findViewById(R.id.select_mode_image);
+		
+		// Set descriptive text in the bottom.
+		((TextView) rootView.findViewById(R.id.select_mode_text))
+		.setText(imageDesc[mModeNumber]);
+
 		modeImage.setImageResource(images[mModeNumber]);
 
-		((TextView) rootView.findViewById(R.id.select_mode_text))
-				.setText(imageDesc[mModeNumber]);
-
 		// Text that will appear when hitting the info button.
-		final TextView infoText = (TextView) rootView
-				.findViewById(R.id.info_text);
-
-		final ImageView arrowRight = (ImageView) rootView
-				.findViewById(R.id.next_mode_image);
-		final ImageView arrowLeft = (ImageView) rootView
-				.findViewById(R.id.previous_mode_image);
-
-		// Set arrows to guide user.
-		if (mModeNumber == 0) {
-			arrowRight.setVisibility(View.VISIBLE);
-			arrowLeft.setVisibility(View.INVISIBLE);
-		} else {
-			arrowRight.setVisibility(View.INVISIBLE);
-			arrowLeft.setVisibility(View.VISIBLE);
-		}
+		infoText = (TextView) rootView.findViewById(R.id.info_text);
 
 		// When in the info view, user can click anywhere on the mode selector.
 		rootView.findViewById(R.id.mode_selector).setOnClickListener(
 				new OnClickListener() {
 					public void onClick(View v) {
+
 						if (isInInfoState) {
 							modeImage.setVisibility(View.VISIBLE);
 							infoText.setVisibility(View.INVISIBLE);
-
-							// Set arrows to guide user.
-							if (mModeNumber == 0) {
-								arrowRight.setVisibility(View.VISIBLE);
-								arrowLeft.setVisibility(View.INVISIBLE);
-							} else {
-								arrowRight.setVisibility(View.INVISIBLE);
-								arrowLeft.setVisibility(View.VISIBLE);
-							}
 
 							isInInfoState = false;
 						}
@@ -122,42 +110,12 @@ public class ScreenSlidePageFragment extends Fragment {
 								infoText.setText(infoTexts[mModeNumber]);
 								infoText.setVisibility(View.VISIBLE);
 
-								// Hide arrows
-								arrowRight.setVisibility(View.INVISIBLE);
-								arrowLeft.setVisibility(View.INVISIBLE);
-
 								isInInfoState = true;
 							}
 						}
+
 					}
 
-				});
-
-		rootView.findViewById(R.id.mode_selector).setOnTouchListener(
-				new OnTouchListener() {
-					@Override
-					public boolean onTouch(View view, MotionEvent event) {
-						if (event.getAction() == MotionEvent.ACTION_DOWN
-								&& event.getAction() == MotionEvent.ACTION_MOVE) {
-							arrowRight.setVisibility(View.INVISIBLE);
-							arrowLeft.setVisibility(View.INVISIBLE);
-
-							return true;
-						}
-
-						else {
-							// Set arrows to guide user.
-							if (mModeNumber == 0) {
-								arrowRight.setVisibility(View.VISIBLE);
-								arrowLeft.setVisibility(View.INVISIBLE);
-							} else {
-								arrowRight.setVisibility(View.INVISIBLE);
-								arrowLeft.setVisibility(View.VISIBLE);
-							}
-						}
-
-						return false;
-					}
 				});
 
 		return rootView;
@@ -168,6 +126,20 @@ public class ScreenSlidePageFragment extends Fragment {
 	 */
 	public int getModeNumber() {
 		return mModeNumber;
+	}
+
+	/**
+	 * Initialize Coin Collector View
+	 */
+	public void toCollectorView() {
+		
+	}
+
+	/**
+	 * Initialize Tutorial View
+	 */
+	public void toTutorialView() {
+
 	}
 
 }

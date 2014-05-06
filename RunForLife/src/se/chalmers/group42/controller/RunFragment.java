@@ -124,7 +124,7 @@ public class RunFragment extends Fragment {
 		txTime.setText(time.format("%H:%M:%S"));
 		txAvgSpd.setText("Average: " + speed + "km/h");
 		txCurrSpd.setText(currentSpeed + "km/h");
-		txAvgPace.setText("Average " + pace + "min/km");
+		txAvgPace.setText("Average: " + pace + "min/km");
 		txCurrPace.setText(currentPace + "min/km");
 	}
 	

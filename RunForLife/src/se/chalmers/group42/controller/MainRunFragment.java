@@ -34,6 +34,7 @@ public class MainRunFragment extends Fragment implements
 	private Button runButton;
 	private ImageView gpsIcon, headPhonesIcon;
 	private boolean gpsOn, headphonesIn;
+	private ImageView modeIndicator;
 
 	/**
 	 * The number of modes in the application.
@@ -43,6 +44,9 @@ public class MainRunFragment extends Fragment implements
 	private ViewPager mPager;
 
 	private PagerAdapter mPagerAdapter;
+
+	private int[] modeIndicators = { R.drawable.mode_indicator,
+			R.drawable.mode_indicator_2 };
 
 	@Override
 	public void onAttach(final Activity activity) {
@@ -60,10 +64,12 @@ public class MainRunFragment extends Fragment implements
 		mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
 		mPager.setPageTransformer(true, new DepthPageTransformer());
 		mPager.setAdapter(mPagerAdapter);
+		mPager.setOnPageChangeListener(new DetailOnPageChangeListener());
 
 		// Setting up status icons
 		gpsIcon = (ImageView) view.findViewById(R.id.gps_icon);
 		headPhonesIcon = (ImageView) view.findViewById(R.id.headphones_icon);
+		modeIndicator = (ImageView) view.findViewById(R.id.mode_indicator);
 
 		// Setting up Sensor input
 		new GPSInputHandler(this, mainActivity);
@@ -90,26 +96,26 @@ public class MainRunFragment extends Fragment implements
 			public void onClick(View view) {
 				int selectedMode = mPager.getCurrentItem();
 
-//				if (selectedMode == 0 && (!gpsOn || !headphonesIn)) {
-//					// show informative dialog
-//
-//					new AlertDialog.Builder(getActivity())
-//							.setMessage(
-//									"This mode requires GPS to be turned on and headphones to be plugged in.")
-//							.setPositiveButton(android.R.string.yes,
-//									new DialogInterface.OnClickListener() {
-//										public void onClick(
-//												DialogInterface dialog,
-//												int which) {
-//											// continue to initial state
-//										}
-//									}).show();
-//
-//				} else {
-					setPrefs();
-					new ModeController(mainActivity).launchMode((int) mPager
-							.getCurrentItem());
-//				}
+				// if (selectedMode == 0 && (!gpsOn || !headphonesIn)) {
+				// // show informative dialog
+				//
+				// new AlertDialog.Builder(getActivity())
+				// .setMessage(
+				// "This mode requires GPS to be turned on and headphones to be plugged in.")
+				// .setPositiveButton(android.R.string.yes,
+				// new DialogInterface.OnClickListener() {
+				// public void onClick(
+				// DialogInterface dialog,
+				// int which) {
+				// // continue to initial state
+				// }
+				// }).show();
+				//
+				// } else {
+				setPrefs();
+				new ModeController(mainActivity).launchMode((int) mPager
+						.getCurrentItem());
+				// }
 			}
 		});
 
@@ -181,4 +187,18 @@ public class MainRunFragment extends Fragment implements
 		editor.putString("application_mode", "RUN_MODE");
 		editor.commit();
 	}
+
+	/**
+	 * Get the current view position from the ViewPager by extending
+	 * SimpleOnPageChangeListener class and adding your method
+	 */
+	public class DetailOnPageChangeListener extends
+			ViewPager.SimpleOnPageChangeListener {
+
+		@Override
+		public void onPageSelected(int position) {
+			modeIndicator.setImageResource(modeIndicators[position]);
+		}
+	}
+
 }

@@ -50,6 +50,16 @@
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/mode_indicator"
+                android:layout_width="36dp"
+                android:layout_height="18dp"
+                android:layout_alignBottom="@id/pager"
+                android:layout_marginBottom="34dp"
+                android:paddingRight="8dp"
+                android:layout_alignRight="@id/pager"
+                android:src="@drawable/mode_indicator" />
         </RelativeLayout>
     </LinearLayout>
 
