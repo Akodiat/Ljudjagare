@@ -4,8 +4,6 @@ import se.chalmers.group42.utils.Vector3;
 
 import android.content.Context;
 import android.hardware.*;
-import android.location.Location;
-import android.util.Log;
 
 /**
  * Class for fusing Gyroscope and GPS into a reliable user direction

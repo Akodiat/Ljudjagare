@@ -19,8 +19,6 @@ import android.os.PowerManager;
  */
 public class OrientationInputHandler implements SensorEventListener
 {
-	private SensorManager mSensorManager = null;
-
 	// angular speeds from gyro
 	private float[] gyro = new float[3];
 
