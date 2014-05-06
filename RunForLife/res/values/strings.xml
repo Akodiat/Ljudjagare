@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Run For Life</string>
-    <string name="app_decription">RunForLife™ is an revolutionary excerising application that builds around audio. Read the guide and start running!</string>
+    <string name="app_decription">RunForLife™ is an revolutionary excersing application that builds around audio. Read the guide and start running!</string>
     <string name="action_log_in">Log in</string>
     <string name="action_history">History</string>
     <string name="action_highscores">Highscores</string>

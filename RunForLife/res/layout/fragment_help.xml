@@ -18,8 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Your objective is to pick up coins. When you start running a coin will be generated. To pick up the coin you run to its location. When running towards the coin you will hear this sound:"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button1"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="If the sound is to the left or right it will appear in the different ears:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:text="If you are heading in the wrong direction you will hear an error sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonBehind"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:text="For each 100 meter interval around the coin there are checkpoints. The closer you get to the coin within each interval the faster the sound frequency will be:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:text="When running in a straight course in the correct direction towards the coin the blipping sound will stop and you will hear an affirmiting techno sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button6"
@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:text="When crossing a 100 meters interval this you will hear how many hundred meters are left:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button2"
@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:text="When picking up a coin you will hear this sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button4"
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
             android:text="After a coin is picked up a new coin is generated:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button5"
@@ -173,7 +173,7 @@
             android:layout_height="wrap_content"
             android:text="Keep picking up coins until all are collected. When the run is finished you will hear this sound:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
         
         <Button
             android:id="@+id/button7"
