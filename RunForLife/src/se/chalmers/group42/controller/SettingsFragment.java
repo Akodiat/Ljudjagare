@@ -60,26 +60,28 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		//Changing distance summary text
-		if(key.equals("distance")){
-			String distance = sharedPreferences.getString(key, "700");
-			Preference distancePref = (Preference) findPreference("distance");
-			distancePref.setSummary(distance + " meters interval between each checkpoint");
-		} else if(key.equals("nrPoints")){
-			String points = sharedPreferences.getString(key, "4");
-			Preference pointsPref = (Preference) findPreference("nrPoints");
-			pointsPref.setSummary(points + " number of checkpoint");
-		} else if(key.equals("route")){
-			boolean random = sharedPreferences.getBoolean(key, false);
-			Preference randomPref = (Preference) findPreference("route");
-			randomPref.setSummary(Boolean.toString(random));
-		} else if(key.equals("random1")){
-			String random1 = sharedPreferences.getString(key, "0");
-			Preference random1Pref = (Preference) findPreference("random1");
-			random1Pref.setSummary(random1);
-		} else if(key.equals("random2")){
-			String random2 = sharedPreferences.getString(key, "0");
-			Preference random2Pref = (Preference) findPreference("random2");
-			random2Pref.setSummary(random2);
+		if(sharedPreferences == null){
+			if(key.equals("distance")){
+				String distance = sharedPreferences.getString(key, "700");
+				Preference distancePref = (Preference) findPreference("distance");
+				distancePref.setSummary(distance + " meters interval between each checkpoint");
+			} else if(key.equals("nrPoints")){
+				String points = sharedPreferences.getString(key, "4");
+				Preference pointsPref = (Preference) findPreference("nrPoints");
+				pointsPref.setSummary(points + " number of checkpoint");
+			} else if(key.equals("route")){
+				boolean random = sharedPreferences.getBoolean(key, false);
+				Preference randomPref = (Preference) findPreference("route");
+				randomPref.setSummary(Boolean.toString(random));
+			} else if(key.equals("random1")){
+				String random1 = sharedPreferences.getString(key, "0");
+				Preference random1Pref = (Preference) findPreference("random1");
+				random1Pref.setSummary(random1);
+			} else if(key.equals("random2")){
+				String random2 = sharedPreferences.getString(key, "0");
+				Preference random2Pref = (Preference) findPreference("random2");
+				random2Pref.setSummary(random2);
+			}
 		}
 		Toast.makeText(getActivity(), "Your settings have been saved", Toast.LENGTH_LONG).show();
 	}
