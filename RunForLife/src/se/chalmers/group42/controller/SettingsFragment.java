@@ -60,7 +60,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		//Changing distance summary text
-		if(sharedPreferences == null){
+		if(sharedPreferences != null){
 			if(key.equals("distance")){
 				String distance = sharedPreferences.getString(key, "700");
 				Preference distancePref = (Preference) findPreference("distance");
