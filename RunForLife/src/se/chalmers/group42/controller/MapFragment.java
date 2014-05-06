@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -98,6 +99,11 @@ public class MapFragment extends Fragment {
 				displayFinishedMap(locs);
 			}
 		}
+		
+		//Hide arrow if not using gyroscope
+		if(!PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("gyro", false))
+			rootView.findViewById(R.id.imageView_arrow).setVisibility(View.GONE);
+		
 		return rootView;
 	}
 
