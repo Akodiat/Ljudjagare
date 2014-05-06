@@ -6,6 +6,7 @@ import java.util.Collections;
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.controller.RunFragment;
+import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;
@@ -112,6 +113,10 @@ public class CoinCollectorActivity extends RunActivity {
 					// if user pressed "yes", then he is allowed to exit from
 					// application
 					fx.stopLoop();
+					if(dataHandler.isPaused() || dataHandler.isRunning()){
+						Route r = db.getRoute(dataHandler.getCurrentRoute());
+						db.deleteRoute(r);
+					}
 					finish();
 				}
 			});

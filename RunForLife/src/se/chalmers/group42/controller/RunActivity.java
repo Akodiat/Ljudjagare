@@ -87,7 +87,7 @@ public class RunActivity extends SwipeableActivity implements
 	private MapFragment mapFragment;
 	private StatsFragment statsFragment;
 
-	private MySQLiteHelper db;
+	public MySQLiteHelper db;
 
 	private int routeId;
 	
