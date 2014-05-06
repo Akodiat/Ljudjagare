@@ -40,7 +40,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 		//Initializing points summary text
 		String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "4");
 		Preference pointsPref = (Preference) findPreference("nrPoints");
-		pointsPref.setSummary(points + " number of checkpoint");
+		pointsPref.setSummary(points + " number of checkpoints");
 
 		//Initializing random summary text
 		Boolean random = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getBoolean("route", false);
@@ -64,11 +64,11 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 			if(key.equals("distance")){
 				String distance = sharedPreferences.getString(key, "700");
 				Preference distancePref = (Preference) findPreference("distance");
-				distancePref.setSummary(distance + " meters to the checkpoint furthest away");
+				distancePref.setSummary(distance + " meter radius of the track to generate");
 			} else if(key.equals("nrPoints")){
 				String points = sharedPreferences.getString(key, "4");
 				Preference pointsPref = (Preference) findPreference("nrPoints");
-				pointsPref.setSummary(points + " number of checkpoint");
+				pointsPref.setSummary(points + " number of checkpoints");
 			} else if(key.equals("route")){
 				boolean random = sharedPreferences.getBoolean(key, false);
 				Preference randomPref = (Preference) findPreference("route");
