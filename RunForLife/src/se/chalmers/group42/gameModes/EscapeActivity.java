@@ -11,8 +11,6 @@ import se.chalmers.group42.utils.LocationHelper;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
-
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -62,7 +60,7 @@ public class EscapeActivity extends RunActivity {
 //				"\tLat: " 	+ monsterLocation.getLatitude() +
 //				"\tLng: " 	+ monsterLocation.getLongitude());
 
-		monster = new Monster(this, monsterLocation, MONSTER_SPEED);
+		monster = new Monster(monsterLocation, MONSTER_SPEED);
 		monster.setTarget(human.getLocation());
 
 		android.util.Log.d("Monster", "Distance2: "+ human.getLocation().distanceTo(monster.getLocation()));
@@ -117,6 +115,7 @@ public class EscapeActivity extends RunActivity {
 		this.compassFromNorth = headingAngleOrientation;
 	}
 
+	@SuppressWarnings("unused")
 	private boolean eatenByMonster() {
 		return (// If closer than minimum distance
 				human.getLocation().distanceTo(monster.getLocation()) < Constants.MIN_DISTANCE

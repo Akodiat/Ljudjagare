@@ -20,8 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class TutorialActivity extends Activity implements GyroInputListener {
@@ -217,6 +215,7 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		finish();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void draw(){
 		LinearLayout ll = (LinearLayout) findViewById(R.id.drawingLayout);
 		Bitmap drawing = Bitmap.createBitmap(
@@ -262,10 +261,7 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 	private boolean isCheating(){
 		return ((CheckBox) findViewById(R.id.checkBox_cheating)).isChecked();
 	}
-
-	public void onStartTrackingTouch(SeekBar seekBar) {}
-	public void onStopTrackingTouch(SeekBar seekBar) {}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -276,5 +272,4 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
 }
