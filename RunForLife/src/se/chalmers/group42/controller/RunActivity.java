@@ -503,6 +503,10 @@ public class RunActivity extends SwipeableActivity implements
 			statsFragment.setArguments(stats);
 
 		} else {
+			findViewById(R.id.finished_run).setVisibility(View.VISIBLE);
+			findViewById(R.id.finished_run_desc).setVisibility(View.VISIBLE);
+			findViewById(R.id.imageView_arrow).setVisibility(View.GONE);
+			
 			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
 			if (getRunFragment().isAdded()) {

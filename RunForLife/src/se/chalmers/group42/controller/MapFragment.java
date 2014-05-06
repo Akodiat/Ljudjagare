@@ -94,6 +94,7 @@ public class MapFragment extends Fragment {
 		if(mode.equals("DISPLAY_MODE")){
 			Bundle locs = getArguments();
 			if(locs != null){
+				rootView.findViewById(R.id.imageView_arrow).setVisibility(View.GONE);
 				displayFinishedMap(locs);
 			}
 		}
@@ -188,6 +189,8 @@ public class MapFragment extends Fragment {
 
 	public void displayFinishedMap(Bundle locs){
 
+		
+		
 		map.clear();
 		map.setMyLocationEnabled(false);
 
