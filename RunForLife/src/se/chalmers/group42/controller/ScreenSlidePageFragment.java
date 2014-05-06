@@ -30,9 +30,11 @@ public class ScreenSlidePageFragment extends Fragment {
 	private String[] imageDesc = { "COIN COLLECTOR", "TUTORIAL" };
 
 	private String[] infoTexts = {
-			"In this mode, the goal is to localize coins using the sound coming from your headphones."
-					+ " Read more on how it works in the help section.",
-			"The tutorial mode is for you to get familiar with the application and how to recognize its audio." };
+			"In this mode, the goal is to localize coins using the sound coming" +
+			" from your headphones. Read more on how it works in the help section.",
+			"The tutorial mode lets you hunt for coins in a safe environment," +
+			" without having to run at all. \nTry out the sound navigation by rotating the " +
+			"phone and pressing RUN to move forward." };
 
 	/**
 	 * The fragment's mode number.
