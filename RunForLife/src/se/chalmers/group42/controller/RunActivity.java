@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,6 +35,7 @@ import se.chalmers.group42.database.Coins;
 import se.chalmers.group42.database.FinishedRoute;
 import se.chalmers.group42.database.MySQLiteHelper;
 import se.chalmers.group42.database.Point;
+import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.DataHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;
@@ -301,6 +303,17 @@ public class RunActivity extends SwipeableActivity implements
 		getMenuInflater().inflate(R.menu.run, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.action_delete) {
+			//DELETE
+			final Route r = db.getFinishedRoute(routeId);
+        	db.deleteRoute(r);
+        	finish();
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
 	@Override
 	public void sendMapLocation(LatLng latLng) {
@@ -408,22 +421,21 @@ public class RunActivity extends SwipeableActivity implements
 	}
 
 	public void setUpDisplay(Boolean stopped) {
-		int id = routeId;
 		if (!stopped) {
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
-				id = extras.getInt(Constants.EXTRA_ID);
+				routeId = extras.getInt(Constants.EXTRA_ID);
 			}
 		}
 
-		FinishedRoute fin = db.getFinishedRoute(id);
+		FinishedRoute fin = db.getFinishedRoute(routeId);
 		Bundle args = new Bundle();
 		args.putLong("time", fin.getTotTime());
 		args.putInt("distance", fin.getDist());
 		args.putDouble("speed", fin.getSpeed());
 
 		Bundle locs = new Bundle();
-		List<Point> points = db.getAllPointsByRoute(id);
+		List<Point> points = db.getAllPointsByRoute(routeId);
 		double[] latitudes = new double[points.size()];
 		double[] longitudes = new double[points.size()];
 		for (int i = 0; i < points.size(); i++) {
@@ -433,7 +445,7 @@ public class RunActivity extends SwipeableActivity implements
 		locs.putDoubleArray("latitudes", latitudes);
 		locs.putDoubleArray("longitudes", longitudes);
 		
-		List<Coins> coins = db.getAllCoinsByRoute(id);
+		List<Coins> coins = db.getAllCoinsByRoute(routeId);
 		int nrCoins = coins.size();
 		int maxCoins = fin.getMaxCoins();
 		

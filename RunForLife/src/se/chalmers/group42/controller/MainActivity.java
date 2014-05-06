@@ -221,7 +221,6 @@ public class MainActivity extends Activity implements Callbacks {
 		actionBarDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	// Method needed to get the hamburgermenu working
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns

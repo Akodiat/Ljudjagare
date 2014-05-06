@@ -87,11 +87,6 @@ public class HistoryListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		RunForLifeApplication app = (RunForLifeApplication) getActivity().getApplication();
-		this.db = app.getDatabase();
-		
-		setList();
 	}
 
 	@Override
@@ -104,7 +99,6 @@ public class HistoryListFragment extends ListFragment {
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
-	
 	
 		getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 
@@ -122,7 +116,7 @@ public class HistoryListFragment extends ListFragment {
 	    			public void onClick(DialogInterface dialog, int which) {
 	    				//DELETE
 	    	        	db.deleteRoute(r);
-	    	        	routes.remove(pos);
+//	    	        	routes.remove(pos);
 	    	        	setList();
 	    			}
 	    		});
@@ -149,7 +143,7 @@ public class HistoryListFragment extends ListFragment {
 			throw new IllegalStateException(
 					"Activity must implement fragment's callbacks.");
 		}
-
+		
 		mCallbacks = (Callbacks) activity;
 	}
 
@@ -159,6 +153,13 @@ public class HistoryListFragment extends ListFragment {
 
 		// Reset the active callbacks interface to the dummy implementation.
 		mCallbacks = sDummyCallbacks;
+	}
+	
+	//On resume is called when the fragment is brought visible
+	@Override
+	public void onResume() {
+		super.onResume();
+		setList();
 	}
 	
 	@Override
@@ -205,8 +206,9 @@ public class HistoryListFragment extends ListFragment {
 		mActivatedPosition = position;
 	}
 	public void setList(){
+		RunForLifeApplication app = (RunForLifeApplication) getActivity().getApplication();
+		this.db = app.getDatabase();
 		routes = db.getAllFinishedRoutes();
-		
 		setListAdapter(new ArrayAdapter<FinishedRoute>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,routes));
 	}
