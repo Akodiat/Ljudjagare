@@ -2,6 +2,8 @@ package se.chalmers.group42.gameModes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
@@ -26,7 +28,9 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 
 	private FXHandler fx;
 
-	public static int MAX_PROGRESS = 1000;
+	public static int 	MAX_PROGRESS 	= 1000;
+	public static int 	DELAY_TIME		= 50;
+	public static float SPEED			= 75;
 
 	private float 			orientation;
 	private int 			x,y;
@@ -40,8 +44,13 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 	private Paint 			paint1;
 	private Paint 			paint2;
 	private TextView 		distanceText;
-	
+	private Timer			timer;
+	private TimerTask		movingTask;
+	private boolean 		moving = false;
+
 	private GyroInputHandler gyro;
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +99,16 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		//Start playing
 		fx.loop(fx.getNavigationFX());
 
+		movingTask = new TimerTask() {
+			@Override
+			public void run() {
+				move();	
+			}
+		};
 
-
-		//drawableView.invalidate();
+		timer = new Timer();
 	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -197,8 +212,30 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 	}
 
 	public void onRunButton(View view) {
-
-		float deltaDistance = 30;
+		if(moving) {
+			pauseMovement();
+			moving = false;
+		} else {
+			resumeMovement();
+			moving = true;
+		}
+	}
+	private void pauseMovement(){
+		movingTask.cancel();
+		timer.cancel();
+	}
+	private void resumeMovement(){
+		timer = new Timer();
+		movingTask = new TimerTask() {
+			@Override
+			public void run() {
+				move();	
+			}
+		};
+		timer.schedule(movingTask, 0, DELAY_TIME);
+	}
+	private void move() {
+		float deltaDistance = SPEED * DELAY_TIME/1000;
 
 		x += deltaDistance * Math.cos(Math.toRadians(orientation-90));
 		y += deltaDistance * Math.sin(Math.toRadians(orientation-90));
@@ -207,9 +244,14 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		if(x<0) x=0; else if (x>MAX_PROGRESS) x=MAX_PROGRESS;
 		if(y<0) y=0; else if (y>MAX_PROGRESS) y=MAX_PROGRESS;
 
-		draw();
 
-		distanceText.setText("Distance: " + getDistanceToCoin() +" m");
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				draw();
+				distanceText.setText("Distance: " + getDistanceToCoin() +" m");
+			}
+		});
 
 	}
 
@@ -264,7 +306,7 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 	private boolean isCheating(){
 		return ((CheckBox) findViewById(R.id.checkBox_cheating)).isChecked();
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
