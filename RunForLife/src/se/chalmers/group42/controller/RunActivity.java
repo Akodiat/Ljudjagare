@@ -314,9 +314,25 @@ public class RunActivity extends SwipeableActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_delete) {
 			//DELETE
-			final Route r = db.getFinishedRoute(routeId);
-        	db.deleteRoute(r);
-        	finish();
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    		builder.setCancelable(false);
+    		builder.setMessage("Do you  want to delete the run?");
+    		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    			@Override
+    			public void onClick(DialogInterface dialog, int which) {
+    	        	final Route r = db.getFinishedRoute(routeId);
+    	        	db.deleteRoute(r);
+    	        	finish();
+    			}
+    		});
+    		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+    			@Override
+    			public void onClick(DialogInterface dialog, int which) {
+    				dialog.cancel();
+    			}
+    		});
+    		AlertDialog alert = builder.create();
+    		alert.show();
 		}
 		return super.onOptionsItemSelected(item);
 	}
