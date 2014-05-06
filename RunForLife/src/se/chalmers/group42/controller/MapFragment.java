@@ -85,16 +85,6 @@ public class MapFragment extends Fragment {
 			map.setOnMapLongClickListener(new OnMapLongClickListener() {
 				@Override
 				public void onMapLongClick(LatLng latLng) {
-					//					map.clear();
-					//					mCallback.sendMapLocation(latLng);
-					//
-					//					MarkerOptions markerOptions = new MarkerOptions();
-					//					markerOptions.position(latLng);
-					//					markerOptions.title(latLng.latitude + " : "
-					//							+ latLng.longitude);
-					//					map.addMarker(markerOptions);
-					//randomTest();
-
 				}
 			});
 		}
@@ -107,7 +97,6 @@ public class MapFragment extends Fragment {
 				displayFinishedMap(locs);
 			}
 		}
-
 		return rootView;
 	}
 
@@ -158,13 +147,11 @@ public class MapFragment extends Fragment {
 		PolylineOptions rectLine = new PolylineOptions().width(10).color(
 				Color.BLUE);
 		int points = directionPoints.size() - 1;
-		// int halfway=0;
 		Location distanceHelper = new Location("");
 		distanceHelper.setLatitude(directionPoints.get(0).latitude);
 		distanceHelper.setLongitude(directionPoints.get(0).longitude);
 
 		for (int i = 0; i < directionPoints.size(); i++) {
-			// points ++;
 			Location distancePoint = new Location("");
 			distancePoint.setLatitude(directionPoints.get(i).latitude);
 			distancePoint.setLongitude(directionPoints.get(i).longitude);
@@ -177,22 +164,6 @@ public class MapFragment extends Fragment {
 		wholeWayLocation.setLatitude(directionPoints.get(points).latitude);
 		wholeWayLocation.setLongitude(directionPoints.get(points).longitude);
 		finalRoute.add(wholeWayLocation);
-		// if (newPolyline != null)
-		// {
-		// newPolyline.remove();
-		// }
-
-		//		if (finalRoute.size() == 1) {
-		//			// soundSource.set(wholeWayLocation);
-		//			//map.clear();
-		//			markers.add(map.addMarker(new MarkerOptions()
-		//			.position(
-		//					new LatLng(wholeWayLocation.getLatitude(),
-		//							wholeWayLocation.getLongitude()))
-		//							.title("First!")
-		//							.icon(BitmapDescriptorFactory
-		//									.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
-		//		}
 
 		map.addPolyline(rectLine);
 
