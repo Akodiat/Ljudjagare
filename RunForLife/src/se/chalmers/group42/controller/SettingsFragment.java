@@ -33,12 +33,12 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 		.registerOnSharedPreferenceChangeListener(this);
 
 		//Initializing distance summary text
-		String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
+		String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "700");
 		Preference distancePref = (Preference) findPreference("distance");
 		distancePref.setSummary(distance + " meter radius of the track to generate");
 
 		//Initializing points summary text
-		String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
+		String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "4");
 		Preference pointsPref = (Preference) findPreference("nrPoints");
 		pointsPref.setSummary(points + " number of checkpoint");
 
@@ -48,42 +48,44 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 		randomPref.setSummary(Boolean.toString(random));
 
 		//Initializing random summary text
-		String random1 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random1", "");
+		String random1 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random1", "0");
 		Preference random1Pref = (Preference) findPreference("random1");
 		random1Pref.setSummary(random1);
 
 		//Initializing random summary text
-		String random2 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random2", "");
+		String random2 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random2", "0");
 		Preference random2Pref = (Preference) findPreference("random2");
 		random2Pref.setSummary(random2);
 	}
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		//Changing distance summary text
-		String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "");
-		Preference distancePref = (Preference) findPreference("distance");
-		distancePref.setSummary(distance + " meters interval between each checkpoint");
-
-		//Changing checkpoint summary text
-		String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "");
-		Preference pointsPref = (Preference) findPreference("nrPoints");
-		pointsPref.setSummary(points + " number of checkpoint");
-
-		//Changing random summary text
-		Boolean random = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getBoolean("route", false);
-		Preference randomPref = (Preference) findPreference("route");
-		randomPref.setSummary(Boolean.toString(random));
-
-		//Changing random summary text
-		String random1 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random1", "");
-		Preference random1Pref = (Preference) findPreference("random1");
-		random1Pref.setSummary(random1);
-
-		//Changing random summary text
-		String random2 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random2", "");
-		Preference random2Pref = (Preference) findPreference("random2");
-		random2Pref.setSummary(random2);
-
+		if(key.equals("distance")){
+			String distance = sharedPreferences.getString(key, "700");
+			//String distance = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("distance", "700");
+			Preference distancePref = (Preference) findPreference("distance");
+			distancePref.setSummary(distance + " meters interval between each checkpoint");
+		} else if(key.equals("nrPoints")){
+			String points = sharedPreferences.getString(key, "4");
+			//String points = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("nrPoints", "4");
+			Preference pointsPref = (Preference) findPreference("nrPoints");
+			pointsPref.setSummary(points + " number of checkpoint");
+		} else if(key.equals("route")){
+			boolean random = sharedPreferences.getBoolean(key, false);
+			//Boolean random = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getBoolean("route", false);
+			Preference randomPref = (Preference) findPreference("route");
+			randomPref.setSummary(Boolean.toString(random));
+		} else if(key.equals("random1")){
+			String random1 = sharedPreferences.getString(key, "0");
+			//String random1 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random1", "0");
+			Preference random1Pref = (Preference) findPreference("random1");
+			random1Pref.setSummary(random1);
+		} else if(key.equals("random2")){
+			String random2 = sharedPreferences.getString(key, "0");
+			//String random2 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random2", "0");
+			Preference random2Pref = (Preference) findPreference("random2");
+			random2Pref.setSummary(random2);
+		}
 		Toast.makeText(getActivity(), "Your settings have been saved", Toast.LENGTH_LONG).show();
 	}
 }
