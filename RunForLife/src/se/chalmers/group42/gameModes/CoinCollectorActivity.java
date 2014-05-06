@@ -96,46 +96,6 @@ public class CoinCollectorActivity extends RunActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	private void quitRunActivity(){
-		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
-		String appMode = pref.getString("application_mode", "");
-		//If within run-mode the user is asked if he really wants to exit the run
-		if(appMode.equals("RUN_MODE")){
-			// Ask if you really want to close the activity
-			// From,
-			// http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setCancelable(false);
-			builder.setMessage("Do you  want to exit the run?");
-			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// if user pressed "yes", then he is allowed to exit from
-					// application
-					fx.stopLoop();
-					if(dataHandler.isPaused() || dataHandler.isRunning()){
-						Route r = db.getRoute(dataHandler.getCurrentRoute());
-						db.deleteRoute(r);
-					}
-					finish();
-				}
-			});
-			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// if user select "No", just cancel this dialog and continue with app
-					dialog.cancel();
-				}
-			});
-			AlertDialog alert = builder.create();
-			alert.show();
-		}
-		//If within display/finish-mode no run is lost if exited, and no dialog is needed
-		else{
-			finish();
-		}
-	}
-
 	@Override
 	public void onLocationChanged(Location location) {
 		super.onLocationChanged(location);

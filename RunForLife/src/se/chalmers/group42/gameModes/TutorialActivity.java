@@ -40,6 +40,8 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 	private Paint 			paint1;
 	private Paint 			paint2;
 	private TextView 		distanceText;
+	
+	private GyroInputHandler gyro;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 		foundCoins = new ArrayList<Vector2>();
 
 		//Gyro input
-		new GyroInputHandler(this, this);
+		gyro = new GyroInputHandler(this, this);
 
 		//		drawableView = (DrawableView) 	findViewById(R.id.drawView);
 		//		drawableView.setBackgroundColor(color.holo_purple);
@@ -106,6 +108,7 @@ public class TutorialActivity extends Activity implements GyroInputListener {
 
 		Message msg = fx.getHandler().obtainMessage(Constants.MSG_STOP);
 		fx.getHandler().sendMessage(msg);
+		gyro.stop();
 	}
 
 	@Override

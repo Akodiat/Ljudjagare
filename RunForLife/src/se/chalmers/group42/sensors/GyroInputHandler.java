@@ -16,6 +16,8 @@ public class GyroInputHandler implements SensorEventListener
 
 	// accelerometer vector
 	private Vector3 accel;
+	
+	SensorManager sensorManager;
 
 	private GyroInputListener listener;
 
@@ -25,13 +27,18 @@ public class GyroInputHandler implements SensorEventListener
 		accel 	= new Vector3(0, 0, 0);
 		gyro 	= new Vector3(0, 0, 0);
 
-		SensorManager sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+		sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
 
 		Sensor accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		Sensor gyroscope	 = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+		
 
 		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
 		sensorManager.registerListener(this, gyroscope, 	SensorManager.SENSOR_DELAY_FASTEST);
+	}
+	
+	public void stop() {
+		sensorManager.unregisterListener(this);
 	}
 
 	@Override

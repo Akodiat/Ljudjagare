@@ -65,8 +65,8 @@ import com.google.android.gms.maps.model.LatLng;
  * 
  */
 public class RunActivity extends SwipeableActivity implements
-		MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
-		GPSInputListener, OrientationInputListener {
+MapFragment.OnHeadlineSelectedListener, StatusIconEventListener,
+GPSInputListener, OrientationInputListener {
 
 	private Button runButton, stopButton, finishButton;
 
@@ -85,6 +85,8 @@ public class RunActivity extends SwipeableActivity implements
 
 	private GPSInputHandler gpsInputHandler;
 
+	private GyroGPSFusion gyroGPSFusion;
+
 	private RunFragment runFragment;
 	private MapFragment mapFragment;
 	private StatsFragment statsFragment;
@@ -92,7 +94,7 @@ public class RunActivity extends SwipeableActivity implements
 	public MySQLiteHelper db;
 
 	private int routeId;
-	
+
 	private String appMode;
 
 	@Override
@@ -128,12 +130,12 @@ public class RunActivity extends SwipeableActivity implements
 		 * reference to the Tab
 		 */
 		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
+		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				actionBar.setSelectedNavigationItem(position);
+			}
+		});
 
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -154,7 +156,7 @@ public class RunActivity extends SwipeableActivity implements
 
 		RunForLifeApplication app = (RunForLifeApplication) getApplication();
 		db = app.getDatabase();
-		
+
 		// Setting up icons
 		gpsIcon = (ImageView) findViewById(R.id.gps_icon);
 		btnImage = (ImageView) findViewById(R.id.run_button_img);
@@ -176,11 +178,11 @@ public class RunActivity extends SwipeableActivity implements
 			// Setting up Sensor input
 			gpsInputHandler = new GPSInputHandler(this, this);
 			dataHandler = new DataHandler(db, this);
-			
+
 			if(usingGyro()) //Gyro sensor if requested
-				new GyroGPSFusion(this, this);
-			
-			
+				gyroGPSFusion = new GyroGPSFusion(this, this);
+
+
 			//Set actionbar title text
 			getActionBar().setTitle("Run");
 
@@ -222,12 +224,12 @@ public class RunActivity extends SwipeableActivity implements
 			registerReceiver(receiver, filter);
 
 		} else if (appMode.equals("DISPLAY_MODE")) {
-			
+
 			//Set actionbar title text
 			getActionBar().setTitle("Finished Run");
-			
+
 			setUpDisplay();
-			
+
 			runButton.setVisibility(View.GONE);
 			stopButton.setVisibility(View.GONE);
 			gpsIcon.setVisibility(View.GONE);
@@ -256,8 +258,8 @@ public class RunActivity extends SwipeableActivity implements
 		//Retrieving distancevalue from preferences
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		String nrPoints = sharedPref.getString("nrPoints", "3");
-		
-		
+
+
 		dataHandler.newRoute(Integer.parseInt(nrPoints));
 		dataHandler.startWatch();
 		btnImage.setImageResource(R.drawable.pause_button);
@@ -282,7 +284,7 @@ public class RunActivity extends SwipeableActivity implements
 	public void stop() {
 		//Set actionbar title text
 		getActionBar().setTitle("Finished Run");
-		
+
 		runButton.setText("►");
 		stopSound();
 
@@ -309,30 +311,30 @@ public class RunActivity extends SwipeableActivity implements
 		getMenuInflater().inflate(R.menu.run, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_delete) {
 			//DELETE
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    		builder.setCancelable(false);
-    		builder.setMessage("Do you  want to delete the run?");
-    		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-    			@Override
-    			public void onClick(DialogInterface dialog, int which) {
-    	        	final Route r = db.getFinishedRoute(routeId);
-    	        	db.deleteRoute(r);
-    	        	finish();
-    			}
-    		});
-    		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-    			@Override
-    			public void onClick(DialogInterface dialog, int which) {
-    				dialog.cancel();
-    			}
-    		});
-    		AlertDialog alert = builder.create();
-    		alert.show();
+			builder.setCancelable(false);
+			builder.setMessage("Do you  want to delete the run?");
+			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					final Route r = db.getFinishedRoute(routeId);
+					db.deleteRoute(r);
+					finish();
+				}
+			});
+			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+			});
+			AlertDialog alert = builder.create();
+			alert.show();
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -467,14 +469,14 @@ public class RunActivity extends SwipeableActivity implements
 		}
 		locs.putDoubleArray("latitudes", latitudes);
 		locs.putDoubleArray("longitudes", longitudes);
-		
+
 		List<Coins> coins = db.getAllCoinsByRoute(routeId);
 		int nrCoins = coins.size();
 		int maxCoins = fin.getMaxCoins();
-		
+
 		args.putInt("nrCoins", nrCoins);
 		args.putInt("maxCoins", maxCoins);
-		
+
 		double[] coinlat = new double[nrCoins];
 		double[] coinlng = new double[nrCoins];
 
@@ -506,7 +508,7 @@ public class RunActivity extends SwipeableActivity implements
 			findViewById(R.id.finished_run).setVisibility(View.VISIBLE);
 			findViewById(R.id.finished_run_desc).setVisibility(View.VISIBLE);
 			findViewById(R.id.imageView_arrow).setVisibility(View.GONE);
-			
+
 			RunFragment runFrag = (RunFragment) getSupportFragmentManager()
 					.findFragmentByTag("android:switcher:" + R.id.pager + ":0");
 			if (getRunFragment().isAdded()) {
@@ -517,6 +519,50 @@ public class RunActivity extends SwipeableActivity implements
 			if (getMapFragment().isAdded()) {
 				mapFrag.displayFinishedMap(locs);
 			}
+		}
+	}
+	protected void quitRunActivity(){
+		SharedPreferences pref = getSharedPreferences("MODE", MODE_PRIVATE);
+		String appMode = pref.getString("application_mode", "");
+		//If within run-mode the user is asked if he really wants to exit the run
+		if(appMode.equals("RUN_MODE")){
+			// Ask if you really want to close the activity
+			// From,
+			// http://www.c-sharpcorner.com/UploadFile/88b6e5/display-alert-on-back-button-pressed-in-android-studio/
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setCancelable(false);
+			builder.setMessage("Do you  want to exit the run?");
+			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// if user pressed "yes", then he is allowed to exit from
+					// application
+
+					stopSound();
+					
+					if(usingGyro())
+						gyroGPSFusion.stop();
+					
+					if(dataHandler.isPaused() || dataHandler.isRunning()){
+						Route r = db.getRoute(dataHandler.getCurrentRoute());
+						db.deleteRoute(r);
+					}
+					finish();
+				}
+			});
+			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// if user select "No", just cancel this dialog and continue with app
+					dialog.cancel();
+				}
+			});
+			AlertDialog alert = builder.create();
+			alert.show();
+		}
+		//If within display/finish-mode no run is lost if exited, and no dialog is needed
+		else{
+			finish();
 		}
 	}
 }

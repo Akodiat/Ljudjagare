@@ -12,14 +12,22 @@ public class GyroGPSFusion implements GyroInputListener, GPSInputListener
 	private float fusedBearing;
 
 	private OrientationInputListener listener;
+	
+	GPSInputHandler GPS;
+	GyroInputHandler Gyro;
 
 	public GyroGPSFusion(OrientationInputListener listener, Context context) {
 		this.listener = listener;
 
-		new GPSInputHandler	(this, context, 5000); //Updating every 5 seconds
-		new GyroInputHandler(this, context);
+		GPS  = 	new GPSInputHandler	(this, context, 5000); //Updating every 5 seconds
+		Gyro = 	new GyroInputHandler(this, context);
 
 		fusedBearing = 0;
+	}
+	
+	public void stop(){
+		Gyro.stop();
+		GPS.pause();
 	}
 
 
