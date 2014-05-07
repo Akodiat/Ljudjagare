@@ -274,7 +274,84 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Results
+Results - Application Simulating Sound Sources when running
+\end_layout
+
+\begin_layout Standard
+
+\color green
+Skriva helt vad man har gjort för någonting.
+ Hur appen funkar? eller annat?
+\end_layout
+
+\begin_layout Standard
+This bachelor thesis has result in an fully working android application
+ that with sound can be used to enhance the motivation for running exercise.
+ The following chapter will present this result and describe what is included
+ in the application.
+ 
+\end_layout
+
+\begin_layout Section
+Presentation of the application
+\end_layout
+
+\begin_layout Standard
+The main screen 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-main-screen"
+
+\end_inset
+
+ A, is shown when the application is started.
+ To help new users a dialog telling how the application is supposed to be
+ used is shown the first time it is started as well as directions to the
+ help section.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-39-07.png
+	scale 10
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-11-16-33.png
+	scale 10
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-main-screen"
+
+\end_inset
+
+The main screen and navigation drawer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
