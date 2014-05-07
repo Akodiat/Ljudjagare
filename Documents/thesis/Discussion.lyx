@@ -277,10 +277,48 @@ thepage
 Discussion
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 
 \color green
-Bla bla
+\lang swedish
+Introduktion Påminner läsaren om det övergripande problemet i studien, sammanhan
+get, rapportens syfte, och vilken typ av undersökning som gjorts för att
+ komma fram till resultatet 
+\end_layout
+
+\begin_layout Description
+
+\color green
+\lang swedish
+\begin_inset Quotes eld
+\end_inset
+
+Sammanfattning
+\begin_inset Quotes erd
+\end_inset
+
+ En (kort) översikt över studiens genomförande, datainsamling, analysstrategi
+ och resultat (i viss mån) 
+\end_layout
+
+\begin_layout Description
+
+\color green
+\lang swedish
+Diskussion - vad vi har kommit fram till - Belyser och lyfter fram det anmärknin
+gsvärda, nya, överraskande, intressanta och sätter det i relation till det
+ kända inom fältet, genom: 
+\end_layout
+
+\begin_layout Description
+
+\color green
+\lang swedish
+Konsekvens: Detta innebär...
+ (vad betyder det?) Påverkar resultatet och slutsatserna vi drar vår förståelse
+ för problematiken i fråga? Kommer det vi har kommit fram till att påverka
+ hur man genomför andra studier inom detta område? Kritisk reflektion: stämmer
+ överrens? Går emot? Hur ska detta tolkas ? 
 \end_layout
 
 \begin_layout Section
