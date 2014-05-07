@@ -278,16 +278,31 @@ Sensor fusion: Combining sensor values to calculate user direction
 \end_layout
 
 \begin_layout Standard
-Our implementation of sensor fusion.
+Sensor fusion, as described in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:Sensor-fusion"
+
+\end_inset
+
+, is the concept of combining multiple sensors in order to increase the
+ accuracy of a measurement.
+ The method proposed below will utilize the accelerometer, gyroscope and
+ GPS bearing in order to get faster and more accurate orientation values
+ than when using the GPS bearing values alone.
 \end_layout
 
 \begin_layout Standard
-Converting gyroscope coordinates into global coordinate system using acceleromet
-er:
+Since the gyroscope values measures rotation in the local coordinate system
+ of the device, the gyroscope readings has to be converted into the global
+ coordinate system.
+ Since the accelerometer readings contain the acceleration toward the ground,
+ these can be used to determine the orientation of the axis orthogonal to
+ the ground in the device coordinate system.
 \end_layout
 
 \begin_layout Standard
-Given that 
+Given that the vector 
 \begin_inset Formula $\mathbf{g}=\begin{Bmatrix}g{}_{x}\\
 g{}_{y}\\
 g{}_{z}
@@ -306,17 +321,165 @@ a{}_{z}
 \begin_inset Formula $\mathbf{g}\times\mathbf{a}$
 \end_inset
 
-, is gives the rotational speed, here referred to as 
+, gives the rotational speed, here referred to as 
 \begin_inset Formula $\omega$
 \end_inset
 
-, around the axis orthogonal to the ground.
+, around the axis orthogonal to the ground 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rocketmagnet2012"
+
+\end_inset
+
+.
+ Rotations around other axes are not needed, since altitude of sound sources
+ will not be considered.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \mathbf{g}\times\mathbf{a}=(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})+(g{}_{z}*a{}_{z})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, because this for unknown reasons doesn't work, we negate two of
+ the addends:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega=-(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})-(g{}_{z}*a{}_{z})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Each sensor value update event also has a time stamp, 
+\begin_inset Formula $t$
+\end_inset
+
+, associated with it.
+ If the n:th event has the time stamp 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ the difference in time, 
+\begin_inset Formula $\triangle t_{n}$
+\end_inset
+
+, is equal to 
+\begin_inset Formula $t_{n}-t_{n-1}$
+\end_inset
+
+.
+ Subsequently multiplying 
+\begin_inset Formula $\omega$
+\end_inset
+
+ [radians/time] with 
+\begin_inset Formula $\triangle t$
+\end_inset
+
+ [time] will give the radians rotated since the last event, 
+\begin_inset Formula $\triangle v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\triangle v_{n}=\omega_{n}*\triangle t_{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to calculate the current direction (at the time of the n:th element)
+ one simply sum up all previous rotations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v_{n}=\sum_{i=0}^{n}\omega_{i}(t_{i}-t_{i-1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, this method only calculates an angle relative to a start angle.
+ In other words, the user would clearly perceive a direction of the sound
+ is coming from, the sound levels updating correctly when the user is turning
+ around, but the perceived direction is not the same as the one the coin
+ is actually located in.
+\end_layout
+
+\begin_layout Standard
+This can however be solved by involving the GPS bearing.
+ As previously stated, the GPS bearing updates only when the user is in
+ motion.
+ When a new GPS bearing 
+\begin_inset Formula $\beta_{u}$
+\end_inset
+
+ is acquired at time 
+\begin_inset Formula $u$
+\end_inset
+
+, the user orientation 
+\begin_inset Formula $o_{u}$
+\end_inset
+
+ is set to be equal to 
+\begin_inset Formula $\beta_{u}$
+\end_inset
+
+.
+ Until the next GPS bearing update however, the user orientation is affected
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ by 
+\begin_inset Formula $\omega_{n}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+o_{n}=\begin{cases}
+\beta_{n} & if\: new\: GPS\: bearing\\
+o_{n-1}+\omega_{i}(t_{i}-t_{i-1}) & else
+\end{cases}
 \end{equation}
 
 \end_inset

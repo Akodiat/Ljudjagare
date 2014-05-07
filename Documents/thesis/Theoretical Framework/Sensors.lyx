@@ -301,11 +301,32 @@ GPS
 
 \begin_layout Standard
 The Global Positioning System - GPS is used to determine the global coordinates
- of the device in latitudes and longitudes through satellites.
- This is utilized for determining the user position relative to the virtual
- objects in the game, such as coins and monsters.
- Furthermore, by keeping track of previous GPS locations, it is getting
- user coordinates as well as the user bearing
+ of a device in latitudes and longitudes through the use of satellites
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NCOSBPNT2014"
+
+\end_inset
+
+.
+ In this project, this is mainly utilized to calculate the user position
+ relative to the virtual sound sources, such as coins and monsters.
+ However, by keeping track of previous GPS locations, it is possible to
+ get a user bearing.
+ This bearing is the direction that the user has been traveling during the
+ most recent sensor updates and has the great advantage of not being dependent
+ on how the user carries the device at all
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AndroidOpenSourceproject"
+
+\end_inset
+
+.
+ The disadvantage is however that the user has to be in motion for the bearing
+ to update correctly.
+ If the user is standing still or turning around rapidly the bearing will
+ not change.
 \end_layout
 
 \begin_layout Subsection
@@ -521,6 +542,13 @@ Coordinate system of the accelerometer
 
 \begin_layout Subsection
 Sensor fusion
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Sensor-fusion"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
