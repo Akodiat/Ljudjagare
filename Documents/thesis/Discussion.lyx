@@ -277,6 +277,47 @@ thepage
 Discussion
 \end_layout
 
+\begin_layout Standard
+
+\color green
+\lang swedish
+Förklarar vad resultatet innebär, bland annat.
+ Diskuterar även metoden och relationen mellan resultatet och metoden.
+ Skulle man kunnat göra på något annat vis, etc.
+ Kan även koppla tillbaka till teorin.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+\lang swedish
+Tänk dig trulig tonåring som svarar 
+\begin_inset Quotes eld
+\end_inset
+
+och?
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Provocera fram svar.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+\lang swedish
+Lyfter fram resultatet och därmed ert bidrag till kunskap om ämnet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Description
 
 \color green
@@ -322,6 +363,7 @@ gsvärda, nya, överraskande, intressanta och sätter det i relation till det
 
 \begin_layout Standard
 The fact that...
+ However...
 \end_layout
 
 \begin_layout Description
@@ -335,8 +377,13 @@ Konsekvens: Detta innebär...
  överens? Går emot? Hur ska detta tolkas ? 
 \end_layout
 
+\begin_layout Standard
+This means that...
+ 
+\end_layout
+
 \begin_layout Section
-Future work
+Future work?
 \end_layout
 
 \begin_layout Standard
