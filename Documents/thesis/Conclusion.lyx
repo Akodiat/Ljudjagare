@@ -277,5 +277,37 @@ thepage
 Conclusion
 \end_layout
 
+\begin_layout Standard
+
+\noun on
+\color green
+\lang swedish
+Slutsatsen
+\noun default
+ är ett oerhört kort kapitel där man skall svara på frågan: 
+\begin_inset Quotes eld
+\end_inset
+
+Men vad kom ni fram till då?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color green
+\lang swedish
+\begin_inset Quotes eld
+\end_inset
+
+Sammanfattningsvis så...
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document

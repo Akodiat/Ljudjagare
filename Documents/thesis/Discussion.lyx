@@ -286,6 +286,11 @@ get, rapportens syfte, och vilken typ av undersökning som gjorts för att
  komma fram till resultatet 
 \end_layout
 
+\begin_layout Standard
+This project have developed an sound based running app ...
+ by investigating android development smartphone sensors, etc ...
+\end_layout
+
 \begin_layout Description
 
 \color green
@@ -301,6 +306,11 @@ Sammanfattning
  och resultat (i viss mån) 
 \end_layout
 
+\begin_layout Standard
+The project resulted in...
+ 
+\end_layout
+
 \begin_layout Description
 
 \color green
@@ -308,6 +318,10 @@ Sammanfattning
 Diskussion - vad vi har kommit fram till - Belyser och lyfter fram det anmärknin
 gsvärda, nya, överraskande, intressanta och sätter det i relation till det
  kända inom fältet, genom: 
+\end_layout
+
+\begin_layout Standard
+The fact that...
 \end_layout
 
 \begin_layout Description
@@ -318,7 +332,7 @@ Konsekvens: Detta innebär...
  (vad betyder det?) Påverkar resultatet och slutsatserna vi drar vår förståelse
  för problematiken i fråga? Kommer det vi har kommit fram till att påverka
  hur man genomför andra studier inom detta område? Kritisk reflektion: stämmer
- överrens? Går emot? Hur ska detta tolkas ? 
+ överens? Går emot? Hur ska detta tolkas ? 
 \end_layout
 
 \begin_layout Section
