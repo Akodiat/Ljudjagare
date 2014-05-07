@@ -304,10 +304,42 @@ reference "fig:The-main-screen"
 
 \end_inset
 
- A, is shown when the application is started.
+ A, is showed when the application is started.
  To help new users a dialog telling how the application is supposed to be
- used is shown the first time it is started as well as directions to the
+ used is showed the first time it is started as well as directions to the
  help section.
+ In the lower left corner of the main screen two status icon is showed,
+ one telling if you have a GPS-connection and one telling if your headphones
+ is connected.
+ If the GPS-connection or headphones are missed a cross is put above the
+ icons.
+ In the middle of the screen a mode selector is displayed.
+ By swiping right or left it is possible to choose between two modes, Coin
+ Collector and tutorial mode, which will be explained later.
+ If the image for coin collector or tutorial mode is pressed a text is showed
+ describing how this mode is played.
+ In the upper right corner it is possible to change some settings.
+ This settings is connected to the Coin Collector mode and is concerning
+ how long the route is going to be as well how many coins (checkpoints)
+ that should be collected.
+ By pressing the hamburger icon in the upper left corner or by sliding from
+ the left side on the screen the navigation drawer is displayed 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-main-screen"
+
+\end_inset
+
+ B.
+ From this drawer you can navigate to different pages, the main screen,
+ the history view and the help section.
+ In the history view a list of all the runs is saved containing all the
+ data from the run.
+ More of this will described later.
+ The help section contain information about how the application is suppose
+ to be used.
+ The help section also contains different sounds that is used in the application
+ and describes when each sound is used.
  
 \end_layout
 
@@ -320,6 +352,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-39-07.png
+	lyxscale 20
 	scale 10
 
 \end_inset
@@ -327,6 +360,7 @@ status open
  
 \begin_inset Graphics
 	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-11-16-33.png
+	lyxscale 20
 	scale 10
 
 \end_inset
@@ -346,6 +380,99 @@ The main screen and navigation drawer
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The main objective of this thesis has been to implement a way to navigate
+ with the help of sound and this has been implemented in the game mode,
+ Coin Collector.
+ By selecting Coin Collector in the main screen and then press the 
+\begin_inset Quotes eld
+\end_inset
+
+Next-button
+\begin_inset Quotes erd
+\end_inset
+
+ the game mode is started as long a GPS-connection and headphones are plugged
+ in.
+ If GPS-connection or headphones are missing a pop up is showed telling
+ what is missing.
+ To be able to use the application in a proper way a GPS-connection and
+ headphones has to be used.
+ When the 
+\begin_inset Quotes eld
+\end_inset
+
+Next-button
+\begin_inset Quotes erd
+\end_inset
+
+ is pressed the game mode is started.
+ The first thing that happens is that the route that the user is going to
+ run is generated out from the settings that was specified from the main
+ screen.
+ For example if three coins (checkpoints) is selected, three coins is going
+ to be generated in a specified distance from the user.
+ The coins is generated in a circle from you and by integration with Google
+ maps the coins is going to be located on reachable location such as roads
+ and trails.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-40-40.png
+	lyxscale 20
+	scale 10
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-40-52.png
+	lyxscale 20
+	scale 10
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-41-59.png
+	lyxscale 20
+	scale 10
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
