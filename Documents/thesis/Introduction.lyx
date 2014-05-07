@@ -375,19 +375,15 @@ Purpose
 \end_layout
 
 \begin_layout Standard
-Investigate how sound, sensors and design patterns can be implemented to
- encourage running.
+The purpose of the bachelor project is to design and implement an application
+ for android smart phones, it will be easy and fun to use so that it will
+ encourage running amongst the sedentary society of the present time.
+ The goal of the application is that it will contain functionality that
+ depend on the hardware sensors that we can find in the modern smart phones
+ as well as the ability to track ones performance while using the application.
+ By the end of the project the application will be a fully functional running
+ game that will be possible to take out and use.
  
-\end_layout
-
-\begin_layout Section
-Goals
-\end_layout
-
-\begin_layout Standard
-The goal of the assignment is to create a fully functional running game
- that is fun to use.
- To do this, the following milestones have been created.
 \end_layout
 
 \begin_layout Section
