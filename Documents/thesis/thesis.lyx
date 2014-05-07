@@ -178,7 +178,7 @@ customHeadersFooters
 \begin_layout Standard
 \begin_inset External
 	template PDFPages
-	filename /home/joakim/workspace/Ljudjägare/Documents/run_with_sound_coverpage.pdf
+	filename cover.pdf
 	extra LaTeX "pages=1-2"
 
 \end_inset
