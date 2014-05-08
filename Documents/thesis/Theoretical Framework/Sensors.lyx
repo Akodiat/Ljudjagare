@@ -278,16 +278,14 @@ Android sensors: Differences and comparison
 \end_layout
 
 \begin_layout Standard
-In this project it was important to determine the 
-\emph on
-user direction
-\emph default
-, the direction in which user is facing.
+In this project it was important to determine the user direction; the direction
+ in which user is facing.
  Since the orientation of the phone relative to the user is unknown (a user
  may carry a phone in many ways), the problem of acquiring a user direction
  is not elementary.
- Using a combination of multiple sensors however, a sufficiently accurate
- user direction can be calculated.
+ However, a sufficiently accurate user direction can be calculated using
+ a combination of multiple sensors.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -312,7 +310,7 @@ key "NCOSBPNT2014"
  In this project, this is mainly utilized to calculate the user position
  relative to the virtual sound sources, such as coins and monsters.
  However, by keeping track of previous GPS locations, it is possible to
- get a user bearing.
+ acquire a user bearing.
  This bearing is the direction that the user has been traveling during the
  most recent sensor updates and has the great advantage of not being dependent
  on how the user carries the device at all
@@ -553,8 +551,8 @@ name "sub:Sensor-fusion"
 
 \begin_layout Standard
 Just general info about what sensor fusion is.
- Combining multiple sensors to get a better accuracy then one would with
- only one.
+ Combining multiple sensors to acquire a better accuracy then one would
+ with only one.
 \end_layout
 
 \end_body

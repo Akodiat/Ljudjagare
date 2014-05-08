@@ -375,7 +375,11 @@ key "Lawitzki2012"
 
 \end_inset
 
-.
+, the approach of calculating the user orientation has been a lot more complicat
+ed in this project.
+ While Lawitzky had the smartphone firmly attached to the user giving him
+ the possibility to measure orientation with great accuracy this project
+ had the requirement letting users wear their phones in any way they preferred.
 \end_layout
 
 \begin_layout Description
