@@ -347,7 +347,7 @@ reference "fig:The-main-screen"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -423,6 +423,50 @@ Next-button
  The coins is generated in a circle from you and by integration with Google
  maps the coins is going to be located on reachable location such as roads
  and trails.
+ To start the run the 
+\begin_inset Quotes eld
+\end_inset
+
+play-button
+\begin_inset Quotes erd
+\end_inset
+
+ in the lower right corner of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Coin collector"
+
+\end_inset
+
+ is pressed.
+ Now starts a clicking sound simulating the source of the coin, but in order
+ to hear the coin from the correct direction the user has to run for approximate
+ly 10 meters to acquire a bearing from the GPS.
+ Out of this bearing the sound is balanced between the ears to imitate that
+ the sound is coming from a specific direction.
+ The user is now supposed to run in the direction of the sound in order
+ to reach the coin.
+ To easier understand the distance to the coin a voice feedback is implemented,
+ telling the number of hundreds meters to the coin.
+ For example, if the user just passes 200 meters until he reach the coin
+ a voice saying 
+\begin_inset Quotes eld
+\end_inset
+
+200 meters
+\begin_inset Quotes erd
+\end_inset
+
+ is played.
+ The playback speed of the sound is also played faster the closer to every
+ hundred meter to confirm for the user that he is getting closer.
+ When the user passes a hundred meter border the playback speed is restored
+ to a slow speed again.
+ To further enhance the navigation a different, unpleasant sound is played
+ when the user is heading in the wrong direction.
+ When the user on the other hand is heading right against the coin a techno
+ sound starts playing to confirm the user that he his heading in the exact
+ right direction.
  
 \end_layout
 
@@ -456,10 +500,16 @@ status open
 
 \end_inset
 
-
+ 
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Coin collector"
+
+\end_inset
+
 ...
 \end_layout
 
