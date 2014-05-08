@@ -364,6 +364,18 @@ gsvärda, nya, överraskande, intressanta och sätter det i relation till det
 \begin_layout Standard
 The fact that...
  However...
+ Comparing with the master thesis 
+\emph on
+Application of Dynamic Binaural Signals in Acoustic Games
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lawitzki2012"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
