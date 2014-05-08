@@ -351,7 +351,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-39-07.png
+	filename Figures/Screenshot_2014-05-07-09-39-07.png
 	lyxscale 20
 	scale 10
 
@@ -359,7 +359,7 @@ status open
 
  
 \begin_inset Graphics
-	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-11-16-33.png
+	filename Figures/Screenshot_2014-05-07-11-16-33.png
 	lyxscale 20
 	scale 10
 
@@ -433,12 +433,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-40-40.png
+	filename Figures/Screenshot_2014-05-07-09-40-40.png
 	lyxscale 20
 	scale 10
 
@@ -446,7 +442,7 @@ status open
 
  
 \begin_inset Graphics
-	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-40-52.png
+	filename Figures/Screenshot_2014-05-07-09-40-52.png
 	lyxscale 20
 	scale 10
 
@@ -454,7 +450,7 @@ status open
 
  
 \begin_inset Graphics
-	filename C:/Users/marcus/Google Drive/Skolarbete/Läsår 13-14/Kandidatarbete/Ljudejägare/Images/Screenshot_2014-05-07-09-41-59.png
+	filename Figures/Screenshot_2014-05-07-09-41-59.png
 	lyxscale 20
 	scale 10
 
@@ -469,10 +465,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
