@@ -334,7 +334,7 @@ reference "fig:The-main-screen"
  From this drawer you can navigate to different pages, the main screen,
  the history view and the help section.
  In the history view a list of all the runs is saved containing all the
- data from the run.
+ data from the runs.
  More of this will described later.
  The help section contain information about how the application is suppose
  to be used.
@@ -396,12 +396,12 @@ The main objective of this thesis has been to implement a way to navigate
 \begin_inset Quotes eld
 \end_inset
 
-Next-button
+Next
 \begin_inset Quotes erd
 \end_inset
 
- the game mode is started as long a GPS-connection and headphones are plugged
- in.
+ button the game mode is started as long a GPS-connection and headphones
+ are plugged in.
  If GPS-connection or headphones are missing a pop up is showed telling
  what is missing.
  To be able to use the application in a proper way a GPS-connection and
@@ -446,8 +446,8 @@ ly 10 meters to acquire a bearing from the GPS.
  the sound is coming from a specific direction.
  The user is now supposed to run in the direction of the sound in order
  to reach the coin.
- To easier understand the distance to the coin a voice feedback is implemented,
- telling the number of hundreds meters to the coin.
+ To easier understand the distance until the coin is reached a voice feedback
+ is implemented, telling the number of hundreds meters to the coin.
  For example, if the user just passes 200 meters until he reach the coin
  a voice saying 
 \begin_inset Quotes eld
@@ -459,10 +459,11 @@ ly 10 meters to acquire a bearing from the GPS.
 
  is played.
  The playback speed of the sound is also played faster the closer to every
- hundred meter to confirm for the user that he is getting closer.
+ hundred meter the user gets to confirm that the distance to the coin is
+ decreasing.
  When the user passes a hundred meter border the playback speed is restored
  to a slow speed again.
- To further enhance the navigation a different, unpleasant sound is played
+ To further enhance the navigation, a different, unpleasant sound is played
  when the user is heading in the wrong direction.
  When the user on the other hand is heading right against the coin a techno
  sound starts playing to confirm the user that he his heading in the exact
@@ -470,8 +471,8 @@ ly 10 meters to acquire a bearing from the GPS.
  In all other cases the ticking sound is played except that the pitch of
  the sound changes depending on how close to the right course the user are.
  If the user is almost on the right course the sound has an high pitch and
- if the user is out of course the sound has an high pitch.
- When the user reaches a coin a sound indicating a that the coin has been
+ if the user is out of course the sound has an low pitch.
+ When the user reaches a coin a sound indicating that the coin has been
  reached is played as well as a voice telling the user that a new coin is
  generated.
  The user now have to collect all the coins and when all the coins is collected
@@ -479,13 +480,15 @@ ly 10 meters to acquire a bearing from the GPS.
  Since the last coin always is generated on the location that the user had
  when the route is generated the user is now back to where he started.
  
+\color red
+Prata om vyerna
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -535,7 +538,98 @@ name "fig:Coin collector"
 \end_layout
 
 \begin_layout Standard
-...
+When the run is finished the view from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Coin collector"
+
+\end_inset
+
+ is changed to a new view containing information about the run 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Coin Collector finished"
+
+\end_inset
+
+.
+ On the first fragment named 
+\begin_inset Quotes eld
+\end_inset
+
+RUN
+\begin_inset Quotes erd
+\end_inset
+
+ can the user find information about the distance, time and speed of the
+ run as well how many coins that was collected in relation to how many coins
+ the route was containing.
+ If the user swipes over to the 
+\begin_inset Quotes eld
+\end_inset
+
+MAP
+\begin_inset Quotes erd
+\end_inset
+
+ fragment, information about where the user has been running is displayed.
+ The route that the user has taken is marked by red lines on the map and
+ the dark coins is marking where the coins was collected.
+ The last fragment 
+\begin_inset Quotes eld
+\end_inset
+
+STATS
+\begin_inset Quotes erd
+\end_inset
+
+ contains information about when the coin was collected, at what distance
+ and what pace the user had.
+ To exit this view the 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+ button is pressed sending the user back to the start screen of the application
+ as well as saving the run to the database so that the user can access it
+ from the history view.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Coin Collector finished"
+
+\end_inset
+
+Bilder med finish läge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
