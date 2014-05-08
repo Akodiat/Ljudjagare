@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master thesis.lyx
+\master Results.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -273,15 +273,15 @@ thepage
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Usability evaluation
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Observations
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Interviews
 \end_layout
 

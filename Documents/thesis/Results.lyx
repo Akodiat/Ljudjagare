@@ -518,6 +518,16 @@ name "fig:Coin collector"
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "Results - UsabilityEvaluation.lyx"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
