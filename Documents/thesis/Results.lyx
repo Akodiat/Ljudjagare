@@ -439,7 +439,7 @@ reference "fig:Coin collector"
 \end_inset
 
  is pressed.
- Now starts a clicking sound simulating the source of the coin, but in order
+ Now starts a ticking sound simulating the source of the coin, but in order
  to hear the coin from the correct direction the user has to run for approximate
 ly 10 meters to acquire a bearing from the GPS.
  Out of this bearing the sound is balanced between the ears to imitate that
@@ -467,6 +467,17 @@ ly 10 meters to acquire a bearing from the GPS.
  When the user on the other hand is heading right against the coin a techno
  sound starts playing to confirm the user that he his heading in the exact
  right direction.
+ In all other cases the ticking sound is played except that the pitch of
+ the sound changes depending on how close to the right course the user are.
+ If the user is almost on the right course the sound has an high pitch and
+ if the user is out of course the sound has an high pitch.
+ When the user reaches a coin a sound indicating a that the coin has been
+ reached is played as well as a voice telling the user that a new coin is
+ generated.
+ The user now have to collect all the coins and when all the coins is collected
+ a voice is going to tell the user that the run is finished.
+ Since the last coin always is generated on the location that the user had
+ when the route is generated the user is now back to where he started.
  
 \end_layout
 
@@ -518,15 +529,19 @@ name "fig:Coin collector"
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset CommandInset include
-LatexCommand input
-filename "Results - UsabilityEvaluation.lyx"
-
 \end_inset
 
 
 \end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Results - UsabilityEvaluation.lyx"
 
 \end_inset
 
