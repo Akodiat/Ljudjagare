@@ -274,7 +274,219 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Data from the usability evaluation
+Appendix A: Usability evaluation
+\end_layout
+
+\begin_layout Standard
+The test was carried out by letting the user do a number of tasks.
+ The data was then gathered by asking interview questions.
+ Before doing the tasks involved in the testing however, the functionality
+ was explained with the following text.
+\end_layout
+
+\begin_layout Section
+Explanation
+\end_layout
+
+\begin_layout Standard
+The sound is balanced in your ear to imitate that the sound is coming from
+ a specified direction.
+ When you are running straight to the sound source the sound is playing
+ with equal volume in both ears and with a high pitch.
+ If the sound source is on your right it will be higher volume in the right
+ headphone and lower in the left and with a medium pitch.
+ If the sound source is behind you it is equal volume and a low (dark) pitch.
+ 
+\end_layout
+
+\begin_layout Standard
+To easier tell if you are heading in the right direction the playback speed
+ (uppspelningshastighet) is incremented the closer you come to every one
+ hundred meter(Förklara hur det fungerar för testpersonen).
+ For every hundred meter you pass you get feedback how far it is to the
+ sounds source, for example “500 meters”.
+ 
+\end_layout
+
+\begin_layout Section
+Tasks
+\end_layout
+
+\begin_layout Enumerate
+Start the app
+\end_layout
+
+\begin_layout Enumerate
+Go to settings and choose: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Distance: 700 
+\end_layout
+
+\begin_layout Enumerate
+Checkpoints: 4 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Start coin collector 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Choose Coin collector 
+\end_layout
+
+\begin_layout Enumerate
+Press run 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Collect the amount of coins 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Loop the number of times equivalent to the number of coins 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Follow the sound to the current coin 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Finish the run 
+\end_layout
+
+\begin_layout Enumerate
+Check finished run status 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Check run stats 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Look under Run tab 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Check your tracks on the map 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Look under Map tab 
+\end_layout
+
+\begin_layout Enumerate
+Does the track seem legit? Yes or No:____
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Check coin stats 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Look under Stats tab 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Take printscreens of the three screens.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Loop through Run-, Map- and Stats screen by swiping
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Take print screen (Default key combination is pressing home button and lock
+ button simultaneously) 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Exit the finished run 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Press Checkmark-button
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Interview questions: 
+\end_layout
+
+\begin_layout Enumerate
+Gender? (f/m)
+\end_layout
+
+\begin_layout Enumerate
+Age? 
+\end_layout
+
+\begin_layout Enumerate
+How often do you exercise? 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+3-7 d/week 
+\end_layout
+
+\begin_layout Enumerate
+1-2 d/week 
+\end_layout
+
+\begin_layout Enumerate
+1-4 d/month 
+\end_layout
+
+\begin_layout Enumerate
+Fewer 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+What type of exercise do you perform?(Running, gym, other) 
+\end_layout
+
+\begin_layout Enumerate
+Have you used other apps while running? (If so, which ones?) 
+\end_layout
+
+\begin_layout Enumerate
+Do you like the concept of using an app to motivate running? 
+\end_layout
+
+\begin_layout Enumerate
+Did you understand in which direction you were supposed to run? Explain.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Was the design of the application easy to understand.
+ Did you understand what you were supposed to press in order to achieve
+ your goal?
 \end_layout
 
 \begin_layout Standard
