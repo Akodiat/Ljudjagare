@@ -379,8 +379,16 @@ key "Lawitzki2012"
 ed in this project.
  Lawitzky had the smartphone firmly attached to the user, giving him the
  possibility to measure orientation with great accuracy.
- This project had the requirement letting users wear their phones in any
- way they preferred.
+ 
+\end_layout
+
+\begin_layout Standard
+This project had the requirement of allowing users to wear their phones
+ in any way they preferred.
+ Hence, while a firmly attached phone would have made the user orientation
+ a lot more accurate, it would be too impractical for this project.
+ The workaround of using a GPS bearing and gyroscope combination is controversia
+l...
 \end_layout
 
 \begin_layout Description
