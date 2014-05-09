@@ -275,11 +275,11 @@ Sound
 \begin_layout Standard
 The functionality and usability of the application are vastly depending
  on how the user perceives and interprets the audio coming from the device.
- If the user were to get confused by the audio, they would probably not
- be able to follow its instructions - and hence the whole purpose of the
- application would be ruined.
- It’s therefore vital to have an audio core that is easy to interpret and
- follow, and that behaves as expected.
+ If a user were to become confused by the sound, they would probably not
+ be able to follow its instructions - hence defeating the purpose of the
+ application.
+ It’s therefore vital to have an audio core that is easy to understand behaves
+ as expected.
 \end_layout
 
 \begin_layout Subsection
