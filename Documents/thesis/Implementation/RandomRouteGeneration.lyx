@@ -335,33 +335,54 @@ reference "tab:Random algo"
 \end_inset
 
 .
- First two random numbers, a and b, with a value between 0 and 1 is generated.
- Then the constant r calculated.
- r is the radius of which the location can be generated within converted
- from meters into the Geographic coordinate system.
- By multiplying the distance r with the random number a, a random distance
- w, is calculated.
- On line number 8 the random number b is multiplied by 2*pi.
+ First is a random number generated, a, with a value between 0 and 1.
+ On line number 5 the random number a is multiplied by 2*pi.
  2*pi is a complete revolution in the unit circle and by multiplying it
- by a random number a random angle, t, from the unit circle.
+ with the random number a random angle, t, is acquired.
  To get the distance to be added to the location of the user in terms of
  longitude, x, cosine is taken on the variable t and then multiplied by
- the distance w.
+ the constant, diameter.
  The same is done to get the latitude, y, but with sine on the variable
  t instead of cosine.
- 
-\end_layout
-
-\begin_layout Standard
-Since the longitude coordinates is shrinking the further away from the equator
- the user i located a method the counteract this is implemented.
+ The constant diameter has been converted from the unit of meters to the
+ unit of latitude and longitude by dividing with a constant 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+constantToConvertFromMetersToLatLong
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ Since the longitude coordinates is shrinking the further away from the
+ equator the user i located, 
+\color red
+referens
+\color inherit
+ a method the counteract this is implemented.
  By taking cosine of the latitude of the user location a factor of how far
- from the equator the user is located.
+ from the equator the user is located i acquired.
  By dividing the calculated longitude to be added, x, with the factor a
  new variable, x_corrected, is acquired.
  Without this correction the possible location of the random location would
- not lie in a circle but instead inside an ellipse.
- As seen on line 13-14 the calculated latitude, y, and x_corrected, is added
+ not lie on a circle but instead on an ellipse.
+ As seen on line 10-11 the calculated latitude, y, and x_corrected, is added
  to the location of the user and a random location is acquired.
  
 \end_layout
@@ -390,7 +411,7 @@ To fill...
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="2">
+<lyxtabular version="3" rows="11" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -571,7 +592,7 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $b=random[0..1]$
+\begin_inset Formula $t=2*\pi*a$
 \end_inset
 
 
@@ -608,7 +629,7 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $r=radiusInMeters/constantToConvertFromMetersToLatLong$
+\begin_inset Formula $diameter=diameterInMeters/constantToConvertFromMetersToLatLong$
 \end_inset
 
 
@@ -645,7 +666,7 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $w=r$
+\begin_inset Formula $x=diameter*cos(t)$
 \end_inset
 
 
@@ -682,7 +703,7 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $t=2*\pi*b$
+\begin_inset Formula $y=diameter*sin(t)$
 \end_inset
 
 
@@ -719,7 +740,7 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $x=w*cos(t)$
+\begin_inset Formula $xCorrected=x/cos(startLatitide)$
 \end_inset
 
 
@@ -756,80 +777,6 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $y=w*sin(t)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-11
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-\begin_inset Formula $xCorrected=x/cos(startLatitide)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-12
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
 \begin_inset Formula $locationOfRandomLatitude=startLatitude+y$
 \end_inset
 
@@ -856,7 +803,7 @@ Longitude from the location of the user
 \uwave off
 \noun off
 \color none
-14
+11
 \end_layout
 
 \end_inset
@@ -889,17 +836,9 @@ Longitude from the location of the user
 \end_layout
 
 \begin_layout Standard
-To avoid that the location is generated to close to you it is instead generated
- within a range around the desired radius, see figure random 2.
- This is done by generate a location randomly around you within a circle
- of radius r.
- Then the bearing between you and the recently generated location is calculated.
- From the bearing the ratio between the catheters is calculated and multiplied
- with the desired distance d.
- From this the distance of how much to add to the latitude and longitude
- is given and added to the current longitude and latitude.
- To make this randomly generated location reachable a request of directions
- from your current location to the new location is send to Google Maps.
+To make this randomly generated location reachable a geocoding API request
+ of directions from your current location to the new location is send to
+ Google Maps{https://developers.google.com/maps/documentation/geocoding/}.
  The answer from Google maps directions is a list of locations of the shortest
  route to the destination.
  It is a big chance that the generated location is not on the road but instead
@@ -927,14 +866,6 @@ status open
 \end_inset
 
 
-\begin_inset Graphics
-	filename Figures/routing.png
-	lyxscale 60
-	width 40page%
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -952,8 +883,8 @@ Random...
 \end_layout
 
 \begin_layout Standard
-To end up on the same location as you start when out are out running a routing
- algorithm was implemented.
+To end up on the same location as the user started on a routing algorithm
+ was implemented.
  It creates a route based on the first generated random location.
  To create a route that not just go to one point and back the algorithm
  tries to make a route that is a circle of checkpoints and it end up on

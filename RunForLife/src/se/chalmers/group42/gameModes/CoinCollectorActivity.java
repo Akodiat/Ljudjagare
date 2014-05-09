@@ -321,7 +321,7 @@ public class CoinCollectorActivity extends RunActivity {
 		}
 
 		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
-		double r = 50 / Constants.LAT_LNG_TO_METER;
+//		double r = 50 / Constants.LAT_LNG_TO_METER;
 
 //		double w = r * Math.sqrt(a);
 		double t = 2 * Math.PI * b;
