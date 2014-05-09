@@ -365,7 +365,7 @@ Location wise, this distance does however only determine that the GPS receiver
  is located somewhere at the surface on a sphere with the radius being the
  distance and the center being the satellite.
  To acquire the GPS receiver's location on the sphere, the method trilateration
- as shown in Figure is used.
+ as shown in XXXX is used.
  
 \end_layout
 
@@ -380,6 +380,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Figures/trilateration.png
+	width 40page%
 
 \end_inset
 
@@ -411,8 +412,98 @@ key "Bajaj2002"
 \end_layout
 
 \begin_layout Standard
-In this project, this is mainly utilized to calculate the user position
- relative to the virtual sound sources, such as coins and monsters.
+In the context of GPS technology, trilateration is a way to narrow down
+ the possible locations by determining where spheres intersect.
+ All visible satellites each provide one sphere of possible locations.
+ Two satellites will narrow down the possible location to a circle at the
+ intersection of Satellite A's and Satellite B's spheres as shown in Fig
+ XXXX.
+ Furthermore the third satellite, Satellite C, will narrow down this circle
+ into two points.
+ Normally, this information is enough since often only one of the provided
+ points is located on the earths surface.
+ It is however useful to use more satellites to acquire a confirmed location.
+ Also, another satellite might be used to synchronize the GPS receivers
+ internal clock.
+ When a receiver is having a fixed position it can be used along with another
+ satellites position to determine their intermediate distance, which in
+ combination with the speed of light will give the travel time of a PNC
+ between them.
+ By adding the calculated travel time to the departure time of the PNC the
+ correct current time in the GPS receiver is acquired.
+ This is good practice since the clock in the satellites that is being synchroni
+zed to is atomic and thereby very accurate
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bajaj2002"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The positioning accuracy is however affected by some factors of which one
+ has to do with the speed of light only being constant in vacuum.
+ This might cause a slight delay to a PNC as it gets slowed down by electrically
+ charged particles in the ionosphere and troposphere
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Drawil2012"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Another factor is the so called satellite ephemeris error, which is caused
+ by differences in the anticipated and the actual position of a satellite.
+ Both this error and the error caused by the electrically charged particles
+ can be adjusted for giving a final accuracy of a few meters
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Drawil2012"
+
+\end_inset
+
+.
+ The adjustment is done with the technique differential GPS, which in short
+ consists of comparing the data acquired with the data in a nearby stationary
+ GPS receiver with a known location.
+ It is likely that the location offset in the stationary receiver is the
+ same in mobile GPS receivers nearby, which thereby will receive correction
+ signals
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bajaj2002"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Differential GPS can however not adjust to the multipath error which occurs
+ when PNC's bounces on the surrounding topography, as buildings or hilly
+ terrain.
+ To avoid this error the receiver needs to have a clear view to the satellites.
+ Otherwise the multipath error might, according to Drawil, Amar and Basir
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Drawil2012"
+
+\end_inset
+
+, cause an error up to 80 meters.
+\end_layout
+
+\begin_layout Standard
+In this project, the GPS technology is mainly utilized to calculate the
+ user position relative to the virtual sound sources, such as coins and
+ monsters.
  However, by keeping track of previous GPS locations, it is possible to
  acquire a user bearing.
  This bearing is the direction that the user has been traveling during the
@@ -603,7 +694,7 @@ reference "fig:gyroCoord"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
