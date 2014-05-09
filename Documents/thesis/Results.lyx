@@ -278,15 +278,8 @@ Results - Application Simulating Sound Sources when running
 \end_layout
 
 \begin_layout Standard
-
-\color green
-Skriva helt vad man har gjort för någonting.
- Hur appen funkar? eller annat?
-\end_layout
-
-\begin_layout Standard
-This bachelor thesis has result in an fully working android application
- that with sound can be used to enhance the motivation for running exercise.
+This bachelor thesis has result in an android application that with sound
+ can be used to enhance the motivation for running exercise.
  The following chapter will present this result and describe what is included
  in the application.
  
@@ -480,8 +473,76 @@ ly 10 meters to acquire a bearing from the GPS.
  Since the last coin always is generated on the location that the user had
  when the route is generated the user is now back to where he started.
  
-\color red
-Prata om vyerna
+\end_layout
+
+\begin_layout Standard
+The run can at any time be paused by pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+Pause
+\begin_inset Quotes erd
+\end_inset
+
+ button that under a run will take the place of the 
+\begin_inset Quotes eld
+\end_inset
+
+Play
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ This will pause the sound and the collecting of the user locations.
+ The run can be continued by again pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+Play
+\begin_inset Quotes erd
+\end_inset
+
+ button or the user can finish the run by pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+Stop
+\begin_inset Quotes erd
+\end_inset
+
+ button that will be showed when the run is paused.
+ The user can at any time inspect the three different fragments that show
+ information about the run so far.
+ The first fragment 
+\begin_inset Quotes eld
+\end_inset
+
+RUN
+\begin_inset Quotes erd
+\end_inset
+
+ shows information about distance, time, speed and pace.
+ The second fragment 
+\begin_inset Quotes eld
+\end_inset
+
+MAP
+\begin_inset Quotes erd
+\end_inset
+
+ shows information about the users location and where it has been running
+ on the map.
+ The last fragment 
+\begin_inset Quotes eld
+\end_inset
+
+STATS
+\begin_inset Quotes erd
+\end_inset
+
+ shows statistics about how many coins that has been collected and at what
+ time and distance.
+ 
 \end_layout
 
 \begin_layout Standard
