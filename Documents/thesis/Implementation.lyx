@@ -278,10 +278,10 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-
-\color green
-Our implementation of sound, sensors, routes, database, design and the game
- modes
+The following chapter describes how the the different systems were implemented
+ into the application.
+ The implementation part is based on the theoretical framework from chapter
+ two and the different system elements are presented in the same order.
 \end_layout
 
 \begin_layout Standard
