@@ -50,7 +50,7 @@
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
-\master thesis.lyx
+\master Discussion.lyx
 \begin_modules
 customHeadersFooters
 \end_modules
@@ -102,10 +102,10 @@ customHeadersFooters
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
-\branch Sound
-\selected 1
+\branch NoChildDocument
+\selected 0
 \filename_suffix 0
-\color #faf0e6
+\color #ff0000
 \end_branch
 \index Index
 \shortcut idx
@@ -273,148 +273,75 @@ thepage
 
 \end_layout
 
-\begin_layout Chapter
-Discussion
+\begin_layout Section
+Future work: efficiency, modularity and other game modes
 \end_layout
 
 \begin_layout Standard
-
-\color green
-\lang swedish
-Förklarar vad resultatet innebär, bland annat.
- Diskuterar även metoden och relationen mellan resultatet och metoden.
- Skulle man kunnat göra på något annat vis, etc.
- Kan även koppla tillbaka till teorin.
+The application was not designed with any emphasis on efficiency and the
+ code can probably be improved a lot in that manner.
+ The rendering in the tutorial mode is sometimes slow, some saved running
+ logs take a lot of time to open and the application drains quite a lot
+ of power from the phone because of the sensor usage.
+ The research on code optimization is extensive and the application could
+ in all likelihood be improved a lot if given the time and effort.
 \end_layout
 
 \begin_layout Standard
+Instead of efficiency however, the application has from the beginning been
+ constructed in order to be as modular and easy to extend as possible.
+ This will allow for implementation of future game modes that will further
+ utilize the combination of binaural sound and smartphone sensors.
+ One of the main issues with Coin Collector, currently the only game mode
+ finished, is that the sometimes extensive distance to the sound source
+ makes volume variation relative to distance impractical; if it is too far
+ away it is impossible to hear.
+ In Coin Collector this is solved by using frequency to indicate distance
+ (as explained in 
+\begin_inset Note Note
+status open
 
-\color green
-\lang swedish
-Tänk dig trulig tonåring som svarar 
-\begin_inset Quotes eld
+\begin_layout Plain Layout
+Reference here
+\end_layout
+
 \end_inset
 
-och?
-\begin_inset Quotes erd
-\end_inset
-
-.
- Provocera fram svar.
- 
-\end_layout
-
-\begin_layout Standard
-
-\color green
-\lang swedish
-Lyfter fram resultatet och därmed ert bidrag till kunskap om ämnet.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
+, but that limits the types of sounds that can be used.
+ With closer sound sources, the sound might be more natural.
+ An example of game modes enabling closer sound sources follows below.
 \end_layout
 
 \begin_layout Description
-
-\color green
-\lang swedish
-Introduktion Påminner läsaren om det övergripande problemet i studien, sammanhan
-get, rapportens syfte, och vilken typ av undersökning som gjorts för att
- komma fram till resultatet 
-\end_layout
-
-\begin_layout Standard
-This project have developed an sound based running app ...
- by investigating android development smartphone sensors, etc ...
-\end_layout
-
-\begin_layout Description
-
-\color green
-\lang swedish
-\begin_inset Quotes eld
+Free
+\begin_inset space ~
 \end_inset
 
-Sammanfattning
-\begin_inset Quotes erd
-\end_inset
-
- En (kort) översikt över studiens genomförande, datainsamling, analysstrategi
- och resultat (i viss mån) 
+running Instead of running along a pre-generated route of coins (sound sources)
+ the user starts running anywhere he/she wants.
+ The coins are then generated close to the user position at random intervals
+ during the run, giving the impression of running in an area scattered with
+ coins.
+ The user will only hear a coin when it is close enough, but since there
+ is no need to take a specific coin in any specific order this is no issue.
 \end_layout
 
 \begin_layout Standard
-The project resulted in...
- 
-\end_layout
-
-\begin_layout Description
 
 \color green
-\lang swedish
-Diskussion - vad vi har kommit fram till - Belyser och lyfter fram det anmärknin
-gsvärda, nya, överraskande, intressanta och sätter det i relation till det
- kända inom fältet, genom: 
+Escaping a moving sound source.
+ A monster is hunting you, you better get far enough from it before it gets
+ you!
 \end_layout
 
 \begin_layout Standard
-The fact that...
- However...
- Comparing with the master thesis 
-\emph on
-Application of Dynamic Binaural Signals in Acoustic Games
-\emph default
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Lawitzki2012"
-
-\end_inset
-
-, the approach of calculating the user orientation has been a lot more complicat
-ed in this project.
- Lawitzky had the smartphone firmly attached to the user, giving him the
- possibility to measure orientation with great accuracy.
- 
-\end_layout
-
-\begin_layout Standard
-This project had the requirement of allowing users to wear their phones
- in any way they preferred.
- Hence, while a firmly attached phone would have made the user orientation
- a lot more accurate, it would be too impractical for this project.
- The workaround of using a GPS bearing and gyroscope combination is controversia
-l...
-\end_layout
-
-\begin_layout Description
 
 \color green
-\lang swedish
-Konsekvens: Detta innebär...
- (vad betyder det?) Påverkar resultatet och slutsatserna vi drar vår förståelse
- för problematiken i fråga? Kommer det vi har kommit fram till att påverka
- hur man genomför andra studier inom detta område? Kritisk reflektion: stämmer
- överens? Går emot? Hur ska detta tolkas ? 
-\end_layout
-
-\begin_layout Standard
-This means that...
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Discussion - Future work.lyx"
-
-\end_inset
-
-
+Hunting a moving sound source.
+ You hear your prey somewhere near you, as you run closer it notices you
+ and starts to gallop in the opposite direction.
+ Either you run fast enough to catch it, or you run long enough to tire
+ it out.
 \end_layout
 
 \end_body
