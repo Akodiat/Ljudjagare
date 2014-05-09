@@ -290,17 +290,16 @@ To be able to quickly use the application when the user want to get out
 There are several methods to generate a location that is reachable.
  One way is to first randomly generate a location.
  This location is then evaluated if it lies in an appropriate environment
- by extracting the color this location has on a map.
- By classifying all the colors on a map by its 
-\lang british
-colour,
-\lang english
- for example blue is equal to water, light green is equal to grass, and
- so on one can compare the color on a location and then classify it thereafter.
+ by extracting the color that the location has on a map.
+ By classifying all the colors on a map by its color for example blue is
+ equal to water, light green is equal to grass, and so on one can compare
+ the color on a location and then classify it thereafter.
  If the color is blue the location is most likely located in water of some
  kind.
  In this scenario a new random location has to be generated and evaluated
  in the same way.
+ Only if the location has an color that is accepted, for example light green
+ it is saved and can be used in the route.
  In order to implement this an accurate map is required that i linked to
  some kind of coordinate system.
  It must also be possible to extract the color of the random location.
@@ -308,6 +307,12 @@ colour,
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "google maps random"
+
+\end_inset
+
 Another approach is to use Google maps and the function directions.
  As before a random location is generated.
  Then a request to Google direction is sent with the walking direction from
@@ -316,6 +321,21 @@ Another approach is to use Google maps and the function directions.
  to the location.
  This closest point is then extracted and is used as the random location.
  {https://developers.google.com/maps/documentation/android/} 
+\end_layout
+
+\begin_layout Standard
+In this project the second approach is implemented and it is described how
+ in chapter 3, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Random-route-implementation"
+
+\end_inset
+
+.
+ 
+\color red
+The different approaches is also discussed in chapter 5...
 \end_layout
 
 \end_body

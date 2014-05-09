@@ -295,18 +295,13 @@ public class CoinCollectorActivity extends RunActivity {
 
 	private ArrayList<Location> generateRandomRoute(double distance) {
 
-//		//Setting value to 700 meters if no values have been set
+//		//Is used to be able to set the random values in the seetings-menu in the app
 		Boolean random = sharedPref.getBoolean("route", false);
 		String random1 = sharedPref.getString("random1", "0");
 		String random2 = sharedPref.getString("random2", "0");
 
 		double randomA = Double.parseDouble(random1);
 		double randomB = Double.parseDouble(random2);
-//		String nrPoints = sharedPref.getString("nrPoints", "3");
-//
-//		checkpoints = Integer.parseInt(nrPoints);
-//
-//		generateRandomRoute(Integer.parseInt(distance));
 		
 		finalRoute.clear();
 		
@@ -337,7 +332,8 @@ public class CoinCollectorActivity extends RunActivity {
 		Location routePoint = new Location("route");
 		routePoint.setLongitude(xNew + human.getLocation().getLongitude());
 		routePoint.setLatitude(human.getLocation().getLatitude() + y);
-
+		
+		//Random location within a circle is now acquired
 
 		double bearingTo = human.getLocation().bearingTo(routePoint);
 		if (bearingTo < 0) {

@@ -275,6 +275,13 @@ thepage
 
 \begin_layout Section
 Random route generation algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Random-route-implementation"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -295,7 +302,15 @@ To be able to quickly use the application when the user want to get out
  The checkpoints must be generated at reachable locations.
  It can for example not be placed in a lake or a building but instead on
  a road or trail.
- To accomplish this the application uses Google Maps and its routing features.
+ To accomplish this the application uses Google Maps and its routing features
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "google maps random"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -304,16 +319,23 @@ First of all a random location is generated in a predefined distance from
  your location that is set by the GPS.
  The location can be generated in a circle around you with the radius equals
  to the distance, see figure random 1.
- d{http://gis.stackexchange.com/questions/25877/how-to-generate-random-locations-n
-earby-my-location}.
- 
+ d 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "atok2013"
 
 \end_inset
 
-First two random numbers, a and b, with a value between 0 and 1 is generated.
+.
+ This random algorithm is now explained with the help of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Random algo"
+
+\end_inset
+
+.
+ First two random numbers, a and b, with a value between 0 and 1 is generated.
  Then the constant r calculated.
  r is the radius of which the location can be generated within converted
  from meters into the Geographic coordinate system.
@@ -355,6 +377,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Random algo"
+
+\end_inset
+
 To fill...
 \end_layout
 
@@ -866,14 +894,14 @@ To avoid that the location is generated to close to you it is instead generated
  This is done by generate a location randomly around you within a circle
  of radius r.
  Then the bearing between you and the recently generated location is calculated.
- From the bearing the ratio between the catheti is calculated and multiplied
+ From the bearing the ratio between the catheters is calculated and multiplied
  with the desired distance d.
  From this the distance of how much to add to the latitude and longitude
  is given and added to the current longitude and latitude.
  To make this randomly generated location reachable a request of directions
  from your current location to the new location is send to Google Maps.
- The answer from Google maps directions is a list of locations that you
- have to run by in order to reach the destination.
+ The answer from Google maps directions is a list of locations of the shortest
+ route to the destination.
  It is a big chance that the generated location is not on the road but instead
  in the forest or in a lake.
  But by taking out the last location that is given by Google maps direction
@@ -888,11 +916,12 @@ To avoid that the location is generated to close to you it is instead generated
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Figures/Random_generation.png
+	lyxscale 50
 	width 40page%
 
 \end_inset
@@ -900,6 +929,7 @@ status collapsed
 
 \begin_inset Graphics
 	filename Figures/routing.png
+	lyxscale 60
 	width 40page%
 
 \end_inset
@@ -943,7 +973,7 @@ To end up on the same location as you start when out are out running a routing
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
