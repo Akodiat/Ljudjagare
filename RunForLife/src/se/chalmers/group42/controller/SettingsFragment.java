@@ -83,6 +83,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 				random2Pref.setSummary(random2);
 			}
 		}
-		Toast.makeText(getActivity(), "Your settings have been saved", Toast.LENGTH_LONG).show();
+		if(getActivity() != null)
+			Toast.makeText(getActivity(), "Your settings have been saved", Toast.LENGTH_LONG).show();
 	}
 }

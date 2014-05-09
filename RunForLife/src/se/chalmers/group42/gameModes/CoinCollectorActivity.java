@@ -320,35 +320,18 @@ public class CoinCollectorActivity extends RunActivity {
 			b = Math.random();
 		}
 
-
+		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
 		double r = 50 / Constants.LAT_LNG_TO_METER;
 
-		double w = r * Math.sqrt(a);
+//		double w = r * Math.sqrt(a);
 		double t = 2 * Math.PI * b;
-		double x = w * Math.cos(t);
-		double y = w * Math.sin(t);
+		double x = distanceFromLocation * Math.cos(t);
+		double y = distanceFromLocation * Math.sin(t);
 		double xNew = x / Math.cos(Math.toRadians(human.getLocation().getLatitude()));
 
 		Location routePoint = new Location("route");
 		routePoint.setLongitude(xNew + human.getLocation().getLongitude());
 		routePoint.setLatitude(human.getLocation().getLatitude() + y);
-		
-		//Random location within a circle is now acquired
-
-		double bearingTo = human.getLocation().bearingTo(routePoint);
-		if (bearingTo < 0) {
-			bearingTo += 360;
-		}
-		bearingTo = Math.toRadians(bearingTo);
-
-		double addLat;
-		double addLng;
-		double distanceFromLocation = distance / Constants.LAT_LNG_TO_METER;
-		addLat = Math.sin(bearingTo) * distanceFromLocation;
-		addLng = Math.cos(bearingTo) * distanceFromLocation
-				/ Math.cos(Math.toRadians(human.getLocation().getLatitude()));
-		routePoint.setLatitude(routePoint.getLatitude() + addLat);
-		routePoint.setLongitude(routePoint.getLongitude() + addLng);
 
 		ArrayList<Location> route = new ArrayList<Location>();
 		route.add(human.getLocation());
@@ -397,9 +380,9 @@ public class CoinCollectorActivity extends RunActivity {
 					GMapV2Direction.MODE_WALKING);
 		}
 		// Deciding which way of the route you are going to run
-		if (Math.random() > 0.5 && !random){
-			Collections.reverse(route);
-		}
+//		if (Math.random() > 0.5 && !random){
+//			Collections.reverse(route);
+//		}
 		return route;
 	}
 }
