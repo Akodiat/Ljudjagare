@@ -326,12 +326,53 @@ running Instead of running along a pre-generated route of coins (sound sources)
  is no need to take a specific coin in any specific order this is no issue.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+Escape This game mode would be based on escaping one or several 
+\begin_inset Quotes eld
+\end_inset
 
-\color green
-Escaping a moving sound source.
- A monster is hunting you, you better get far enough from it before it gets
- you!
+monsters
+\begin_inset Quotes erd
+\end_inset
+
+ (sound sources).
+ The monsters would hunt the user and the user needs to run away from them
+ fast enough to not get caught.
+ Apart from distance-relative volume, this will also require the development
+ of an algorithm for moving sound sources appropriately.
+ The easiest and most straight-forward way of doing that is to simply move
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+monsters
+\begin_inset Quotes erd
+\end_inset
+
+ forward the user at a certain velocity, disregarding buildings and roads.
+\end_layout
+
+\begin_layout Description
+Endurance
+\begin_inset space ~
+\end_inset
+
+hunt Similar to the escape mode, the sound source is the prey instead of
+ the user.
+ When the user is close enough to the prey (sound source), the prey notices
+ the user and starts to move in the opposite direction.
+ When the prey has moved far enough from the user (almost out of audible
+ distance, depending on an exhaustion factor) the prey will stop to take
+ a rest.
+ The run will continue until the user catches the prey (either by running
+ fast enough or by exhausting it) or alternatively, until the user gives
+ up.
+\end_layout
+
+\begin_layout Standard
+One downside with the above game modes compared to Coin Collector is that
+ the user will not necessarily end up at the start location when finished.
+ 
 \end_layout
 
 \begin_layout Standard
