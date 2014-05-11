@@ -549,7 +549,7 @@ STATS
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -667,6 +667,30 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/run_finished_run.png
+	lyxscale 20
+	scale 10
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename Figures/run_finished_map.png
+	lyxscale 20
+	scale 10
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename Figures/run_finished_stats.png
+	lyxscale 20
+	scale 10
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -681,10 +705,6 @@ Bilder med finish läge
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 

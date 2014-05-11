@@ -629,7 +629,7 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $diameter=diameterInMeters/constantToConvertFromMetersToLatLong$
+\begin_inset Formula $distance=distanceInMeters/constantToConvertFromMetersToLatLong$
 \end_inset
 
 
@@ -666,7 +666,7 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $x=diameter*cos(t)$
+\begin_inset Formula $x=distance*cos(t)$
 \end_inset
 
 
@@ -703,7 +703,7 @@ Longitude from the location of the user
 \begin_layout Plain Layout
 
 \family typewriter
-\begin_inset Formula $y=diameter*sin(t)$
+\begin_inset Formula $y=distance*sin(t)$
 \end_inset
 
 
@@ -848,6 +848,8 @@ To make this randomly generated location reachable a geocoding API request
  but it is reachable.
  This location is then set as a checkpoint.
  
+\color red
+Detta senare!
 \end_layout
 
 \begin_layout Standard
@@ -859,7 +861,15 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Figures/Random_generation.png
+	filename Figures/Random_generation2.png
+	lyxscale 50
+	width 40page%
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename Figures/routing2.png
 	lyxscale 50
 	width 40page%
 
@@ -869,7 +879,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Random...
+Random...Vill Joakim göra dessa? :)
 \end_layout
 
 \end_inset
@@ -883,20 +893,9 @@ Random...
 \end_layout
 
 \begin_layout Standard
-To end up on the same location as the user started on a routing algorithm
- was implemented.
- It creates a route based on the first generated random location.
- To create a route that not just go to one point and back the algorithm
- tries to make a route that is a circle of checkpoints and it end up on
- the same location as the user started on.
- This is done by first generating the a random location.
- This location is then mirrored over the geographic coordinate system but
- with the origo on the starting location of the user (Figure random 4).
- By taking the difference in the latitude, y, and longitude, x, between
- the users location and the newly generated location and adding/subtract
- them to the inverted axis (the difference in x direction is added to the
- y axis and the difference in y direction is added to the x axis) a mirrored
- location is achieved.
+In order to make a route that is circular and make the user end up on the
+ same location as the start location the following algorithm was implemented.
+ This algorithm is based on the random location generated earlier
 \end_layout
 
 \begin_layout Standard

@@ -29,12 +29,6 @@
 
         <EditTextPreference
             android:defaultValue="0"
-            android:dialogTitle="Random 1"
-            android:inputType="numberDecimal"
-            android:key="random1"
-            android:title="Random 1" />
-        <EditTextPreference
-            android:defaultValue="0"
             android:dialogTitle="Random 2"
             android:inputType="numberDecimal"
             android:key="random2"

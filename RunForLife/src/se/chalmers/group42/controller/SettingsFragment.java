@@ -48,11 +48,6 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 		randomPref.setSummary(Boolean.toString(random));
 
 		//Initializing random summary text
-		String random1 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random1", "0");
-		Preference random1Pref = (Preference) findPreference("random1");
-		random1Pref.setSummary(random1);
-
-		//Initializing random summary text
 		String random2 = PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString("random2", "0");
 		Preference random2Pref = (Preference) findPreference("random2");
 		random2Pref.setSummary(random2);
@@ -73,10 +68,6 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 				boolean random = sharedPreferences.getBoolean(key, false);
 				Preference randomPref = (Preference) findPreference("route");
 				randomPref.setSummary(Boolean.toString(random));
-			} else if(key.equals("random1")){
-				String random1 = sharedPreferences.getString(key, "0");
-				Preference random1Pref = (Preference) findPreference("random1");
-				random1Pref.setSummary(random1);
 			} else if(key.equals("random2")){
 				String random2 = sharedPreferences.getString(key, "0");
 				Preference random2Pref = (Preference) findPreference("random2");
