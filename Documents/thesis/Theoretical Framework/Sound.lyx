@@ -343,9 +343,12 @@ key "acoustics_and_audio"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Graphics
+	filename /Users/nanobii/Downloads/pinna.gif
 
-\color red
-Linus, fixa bild :)
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -432,7 +435,7 @@ ed and generic HRTFs, with the virtual sound's position only moving in the
 \end_layout
 
 \begin_layout Subsection
-Human-Computer Interaction using nonspeech sounds
+Human-Computer Interaction using audio
 \end_layout
 
 \begin_layout Standard
@@ -444,7 +447,7 @@ In Auditory Display: Sonification, Audification, And Auditory Interfaces,
  the screen while being on the move.
  By giving information to the user through sound, the need to look at a
  screen would be eliminated - hence letting the user focus on their surroundings.
- Another advantage of using audio feedback is that it the user's attention
+ Another advantage of using audio feedback is that it grabs the user's attention
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -480,8 +483,17 @@ key "kramer"
 \end_inset
 
 .
- Because of the same reason that audio feedback is attention-grabbing, it
- is also harder to ignore.
+ Buxton (1989) suggested that there were two type of sounds: information
+ and noise - the former helping us and the latter derailing us.
+ It's therefore vital that the sounds being used in an application are designed
+ to be informative.
+ Naturally, what a person interpret as an informative sound might be noise
+ to another.
+ 
+\end_layout
+
+\begin_layout Standard
+To avoid annoyance 
 \end_layout
 
 \begin_layout Standard
@@ -498,18 +510,21 @@ key "hci_handbook"
  that describing something fairly simple might take many words.
  By using nonspeech sounds, information can be presented both at a faster
  rate and through shorter messages; instead of having something described
- with words, the user can recall the meaning of a sound.
+ with words, the user can instead recall the meaning of a sound.
  Continuous sounds often gradually fade into the background until the sound
  changes or stops playing - often referred to as habitutation.
  Because of the large dynamic range of speech, habituation can not easily
- be achieved using it, and hence adding to the annoyance 
-\end_layout
+ be achieved using it, and hence adding to the annoyance of audio feedback
+ previously mentioned.
+ Overall, nonspeech sounds been been proven to be a better choice when providing
+ the user with continuous information 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hci_handbook"
 
-\begin_layout Standard
-Just as with languages, the meaning of non-speech sounds varies depending
- on what a person have learnt to associate a specific sound with .
- However, non-speech sounds has the advantage of it being more universal
- - th
+\end_inset
+
+.
 \end_layout
 
 \end_body
