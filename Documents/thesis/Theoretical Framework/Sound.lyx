@@ -290,55 +290,148 @@ Sound localization
 There are several auditory cues for humans to determine where a sound source
  is located.
  Two of these cues are the interaural level difference (ILD) and the interaural
- time difference (ITD).
- ILD basically stands for the difference in volume between the closest ear
- and the ear being farthest from the sound.
+ time difference (ITD) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hrtf_article"
+
+\end_inset
+
+.
+ ILD stands for the difference in volume between the closest ear and the
+ ear being the farthest from the sound.
  ITD, on the other hand, describes the time difference between the sound
  reaching each ear.
- Both are results of the head and torso shadowing the sound waves {KTH-SAKEN
- som källa}.
+ Both are results of the head and torso shadowing the sound waves 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "itd_ild"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-When the sound reaches the pinna, which is essential to many of the directional
- properties of our hearing, the incoming sound is being filtered even further.
- The pinna is located in the outer ear, together with the eardrum and ear
- canal, and is the visible part of the ear.
- As a result of the shadowing actions caused by the shape of the pinna -
- along with the directional characteristics of the torso and head - humans
- are able determine where a specific sound source is located.
- It even makes it possible for us to differentiate between sounds appearing
- from the front and back respectively (Kleiner, 2012).
- Its properties are of great value when synthesizing binaural sounds seeming
- to appear from a certain point in space, creating a surround environment
- using only two speakers.
- As Mendel Kleiner mentions in Acoustics and Audio Technology (2012), such
- binaural localization is very useful when simulating virtual realities
- (like in 3D games and architecture) - as with our application.
+When the sound reaches the pinna, located in the outer ear, the incoming
+ sound is being filtered even further 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hrtf_article"
+
+\end_inset
+
+.
+ Along with the directional characteristics of the torso and head, it helps
+ us determine where a specific sound source is located.
+ The filtering properties of the pinna even makes it possible for us to
+ differentiate between sounds appearing from the front and from above, as
+ can be seen on the PICTURE BELOW.
+ It shows the frequency response measured from the two directions.
+ Naturally, the filtering properties of the pinna are of great value when
+ trying to recreate a natural environment using only two speakers.
+ Such environments can be very useful when simulating virtual realities
+ (like in 3D games and architecture) - as with our application 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "acoustics_and_audio"
+
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Standard
-To generate virtual audio environments, one can use so called head-related
- transfer functions (HRTFs) (Simulation of virtual auditory space with HRTF,
- 2004).
+\begin_inset Graphics
+	filename /Users/nanobii/Downloads/pinna.gif
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To create virtual audio environments, one can use so called head-related
+ transfer functions (HRTFs) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "3d_sim"
+
+\end_inset
+
+.
  They aim to describe how a sound input is filtered before reaching the
  eardrum - as a result of the reflection caused by the pinna, torso and
  head - and hence being perceived by us humans.
  Using only stereo headphones it’s therefore possible, with the help of
  HRTF, to create the illusion of a sound signal being heard in an anechoic
- chamber.
- That, however, assumes individualized HRTF measurements {HRTF-BOKEN}.
+ chamber 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hrtf_article"
+
+\end_inset
+
+.
+ That, however, assumes individualized HRTF measurements.
  Since the pinna is shaped differently on every person, the result might
- be more or less convincing depending on how well the measurements are made.
- Ways to capture data in the best way possible are currently being researched,
- as General information on SOFA (2014) suggests.
- SOFA is a common format to store spatial data measurements in.
+ be more or less convincing depending on how well the measurements are made
  
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hrtf_article"
+
+\end_inset
+
+.
+ Ways to capture data in the best way possible, hence overcoming measuring
+ problems, are currently being developed by Spatially Oriented Format for
+ Acoustics (SOFA) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SOFA"
+
+\end_inset
+
+.
+ SOFA is a file format in which acoustic data is stored that eliminates
+ the problem with researchers storing their data in different ways.
 \end_layout
 
 \begin_layout Standard
-NÅGON BILD HÄR
+At present, very few studies seems to have been done on sound localization
+ through spatial audio.
+ A study done on four sighted inviduals showed an average error of 8° in
+ localizing sound 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "problems_3D"
+
+\end_inset
+
+.
+ Under the same conditions, four blind inviduals showed an average error
+ of about 4°.
+ The test was done by placing speakers around the subject at ear level,
+ hence not covering elevation localization.
+ Sounds coming from above and below our ears proves to be a lot hardcore
+ to localize, judging by the result of a study made in 2009 at the Florida
+ International University 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "problems_3D"
+
+\end_inset
+
+.
+ Experiments were made by playing short sounds spatialized using both invidualiz
+ed and generic HRTFs, with the virtual sound's position only moving in the
+ vertical plane.
+ They suggest not only that the accuracy of the elevation perception decreases
+ as the virtual sound is moved up and down.
+ But also that the HRTFs being used has a great impact on the elevational
+ accuracy (the invidualized HRTFs provided greater performance).
 \end_layout
 
 \begin_layout Subsection
@@ -346,52 +439,52 @@ Human-Computer Interaction using sound
 \end_layout
 
 \begin_layout Standard
-VÄLDIGT LÅNGT IFRÅN KLAR MED DETTA KAPITEL!
+Just as with languages, the meaning of non-speech sounds varies depending
+ on what a person have learnt to associate a specific sound with .
+ However, non-speech sounds has the advantage of it being more universal
+ - th
 \end_layout
 
 \begin_layout Standard
-People associate different sounds to different things.
- Hence, a sound can be positive to one person but negative to another.
- It’s therefore vital for the application’s sounds to not confuse the listeners
- by sending off a wrong signal.
- When the user is in moving towards the goal, for example, it makes sense
- for the sound to give off a positive vibe.
- If the user is moving in the wrong direction it should be clear that something
- is wrong.
- 
-\end_layout
-
-\begin_layout Standard
-The are several reasons to why using sounds to interact with the user is
- advantageous.
- First of all, it reduces the demands on visual attention (http://books.google.se/
-books?id=npLEMUzgQ_0C&pg=PA224&lpg=PA224&dq=human+interaction+sound+effects&sour
-ce=bl&ots=VGl8yPZlGx&sig=bBeF1gC0QIEgU2VtFZZ_m9eJI1U&hl=sv&sa=X&ei=aK5DU4DPOMTiy
-wOl1oJQ&redir_esc=y#v=onepage&q=human%20interaction%20sound%20effects&f=false).
+In Auditory Display: Sonification, Audification, And Auditory Interfaces
+ (1994), Kramer mentions several reasons to why using audio feedback can
+ be advantageous over visual feedback.
+ First of all, it reduces the demands on visual attention.
  An issue with today’s smartphones is that it’s hard to pay attention to
- a screen when being on the move.
+ the screen while being on the move.
  By giving information to the user through sound, the need to look at a
- screen would be eliminated and hence lets the user focus on their surroundings
- - a vital part when running.
- XXX also mentions that sound is attention grabbing.
- They explain this by saying that one can choose not to watch something,
- but it’s more difficult to choose not to hear something.
+ screen would be eliminated - hence letting the user focus on their surroundings.
+ Another advantage is with using audio feedback is that it grabs the user's
+ attention 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kramer"
+
+\end_inset
+
+.
+ A person can easily choose to not see something, but it’s more difficult
+ to choose not to hear something.
  
 \end_layout
 
 \begin_layout Standard
-While using sounds enables the user to focus on its surroundings, it has
- its limitations.
- In XXX (1994), Kramer presented a few difficulties with using sound to
- interact with the user.
- According to him, one of the biggest problems is the low resolution - meaning
- that it’s hard for a user to perceive small differences in sounds, such
- as changes in sound volume and panoration.
- Another problem mentioned in the book is the annoyance that can arise because
- of the attention grabbing properties previously mentioned.
- If the user dislikes the sound being used it’s hard to ignore and will
- therefore bring annoyance.
- 
+While depending on audio feedback rather than visual enables the user to
+ focus more on its surroundings, it has its disadvantages - one of the biggest
+ being the low resolution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kramer"
+
+\end_inset
+
+.
+ It is difficult to perceive small differences in sounds, such as changes
+ in sound intensity and panoration.
+ Furthermore, Kramer (1994) mentions that the attention-grabbing property
+ previously mentioned might lead to annoyance amongts some users.
+ Because of the same reason that audio feedback is attention-grabbing, it
+ is also harder to ignore.
 \end_layout
 
 \end_body
