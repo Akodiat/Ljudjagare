@@ -325,7 +325,7 @@ dom number codes (PNC).
  Each PNC consists of information of the satellite's position and time at
  the moment of transmission.
  When acquiring a PNC, its travel time(
-\begin_inset Formula $Δt$
+\begin_inset Formula $\triangle t$
 \end_inset
 
 ) is calculated by the GPS receiver by subtracting the departure time(
@@ -349,11 +349,11 @@ reference "eq:distance2"
 \end_inset
 
 ), which in combination with the travel time(
-\begin_inset Formula $Δt$
+\begin_inset Formula $\triangle t$
 \end_inset
 
 ) is enough information to calculate the distance(
-\begin_inset Formula $Δx$
+\begin_inset Formula $\triangle x$
 \end_inset
 
 ) between the satellite and receiver (see 
