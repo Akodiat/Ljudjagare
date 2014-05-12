@@ -324,11 +324,46 @@ To establish locations of devices the satellites continuously send out pseudoran
 dom number codes (PNC).
  Each PNC consists of information of the satellite's position and time at
  the moment of transmission.
- When acquiring a PNC, its travel time is calculated by the GPS receiver
- by subtracting the departure time from the arrival time.
- A PNC travels at the speed of light(c), which in combination with the travel
- time(t) is enough information to calculate the distance(x) between the
- satellite and receiver
+ When acquiring a PNC, its travel time(
+\begin_inset Formula $Δt$
+\end_inset
+
+) is calculated by the GPS receiver by subtracting the departure time(
+\begin_inset Formula $t_{departure}$
+\end_inset
+
+) from the arrival time(
+\begin_inset Formula $t_{arrival}$
+\end_inset
+
+) as in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:distance2"
+
+\end_inset
+
+.
+ A PNC travels at the speed of light(
+\begin_inset Formula $c$
+\end_inset
+
+), which in combination with the travel time(
+\begin_inset Formula $Δt$
+\end_inset
+
+) is enough information to calculate the distance(
+\begin_inset Formula $Δx$
+\end_inset
+
+) between the satellite and receiver (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:distance1"
+
+\end_inset
+
+)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -342,7 +377,7 @@ key "Bajaj2002"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\triangle x=c\cdot\triangle t
+\triangle x=c\cdot\triangle t\label{eq:distance1}
 \end{equation}
 
 \end_inset
@@ -361,7 +396,7 @@ Källa nödvändigt?
 
 \begin_inset Formula 
 \begin{equation}
-\triangle x=c\cdot(t_{arrival}-t_{departure})
+\triangle x=c\cdot(t_{arrival}-t_{departure})\label{eq:distance2}
 \end{equation}
 
 \end_inset
