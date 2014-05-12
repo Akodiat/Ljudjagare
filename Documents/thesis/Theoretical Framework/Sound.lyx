@@ -399,7 +399,7 @@ key "SOFA"
 \begin_layout Standard
 At present, very few studies seems to have been done on sound localization
  through spatial audio.
- A study done on four sighted inviduals showed that the average error in
+ A study made on four sighted inviduals showed that the average error in
  localizing sound was of 8° 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -432,27 +432,20 @@ ed and generic HRTFs, with the virtual sound's position only moving in the
 \end_layout
 
 \begin_layout Subsection
-Human-Computer Interaction using sound
+Human-Computer Interaction using nonspeech sounds
 \end_layout
 
 \begin_layout Standard
-Just as with languages, the meaning of non-speech sounds varies depending
- on what a person have learnt to associate a specific sound with .
- However, non-speech sounds has the advantage of it being more universal
- - th
-\end_layout
-
-\begin_layout Standard
-In Auditory Display: Sonification, Audification, And Auditory Interfaces
- (1994), Kramer mentions several reasons to why using audio feedback can
+In Auditory Display: Sonification, Audification, And Auditory Interfaces,
+ Kramer (1994) mentions several reasons to why using audio feedback can
  be advantageous over visual feedback.
  First of all, it reduces the demands on visual attention.
- An issue with today’s smartphones is that it’s hard to pay attention to
+ An issue with today’s smartphones is that it is hard to pay attention to
  the screen while being on the move.
  By giving information to the user through sound, the need to look at a
  screen would be eliminated - hence letting the user focus on their surroundings.
- Another advantage is with using audio feedback is that it grabs the user's
- attention 
+ Another advantage of using audio feedback is that it the user's attention
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kramer"
@@ -478,10 +471,45 @@ key "kramer"
 .
  It is difficult to perceive small differences in sounds, such as changes
  in sound intensity and panoration.
- Furthermore, Kramer (1994) mentions that the attention-grabbing property
- previously mentioned might lead to annoyance amongts some users.
+ Furthermore, the attention-grabbing property previously mentioned might
+ lead to annoyance amongts some users 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kramer"
+
+\end_inset
+
+.
  Because of the same reason that audio feedback is attention-grabbing, it
  is also harder to ignore.
+\end_layout
+
+\begin_layout Standard
+When it comes to providing the user with continuous information, nonspeech
+ sounds seem to have some advantages over speech 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hci_handbook"
+
+\end_inset
+
+.
+ Just as with textual feedback, speech lacks expressive capability, meaning
+ that describing something fairly simple might take many words.
+ By using nonspeech sounds, information can be presented both at a faster
+ rate and through shorter messages; instead of having something described
+ with words, the user can recall the meaning of a sound.
+ Continuous sounds often gradually fade into the background until the sound
+ changes or stops playing - often referred to as habitutation.
+ Because of the large dynamic range of speech, habituation can not easily
+ be achieved using it, and hence adding to the annoyance 
+\end_layout
+
+\begin_layout Standard
+Just as with languages, the meaning of non-speech sounds varies depending
+ on what a person have learnt to associate a specific sound with .
+ However, non-speech sounds has the advantage of it being more universal
+ - th
 \end_layout
 
 \end_body
