@@ -278,8 +278,8 @@ The functionality and usability of the application are vastly depending
  If a user were to become confused by the sound, they would probably not
  be able to follow its instructions - hence defeating the purpose of the
  application.
- It’s therefore vital to have an audio core that is easy to understand behaves
- as expected.
+ It’s therefore vital to have an audio core that is easy to understand and
+ behaves as expected.
 \end_layout
 
 \begin_layout Subsection
@@ -327,7 +327,8 @@ key "hrtf_article"
  The filtering properties of the pinna even makes it possible for us to
  differentiate between sounds appearing from the front and from above, as
  can be seen on the PICTURE BELOW.
- It shows the frequency response measured from the two directions.
+ The picture shows a difference in measured frequency response depending
+ on the location of the sound source.
  Naturally, the filtering properties of the pinna are of great value when
  trying to recreate a natural environment using only two speakers.
  Such environments can be very useful when simulating virtual realities
@@ -385,7 +386,7 @@ key "hrtf_article"
 \end_inset
 
 .
- Ways to capture data in the best way possible, hence overcoming measuring
+ Ways to capture data in the best way possible, hence overcoming the measuring
  problems, are currently being developed by Spatially Oriented Format for
  Acoustics (SOFA) 
 \begin_inset CommandInset citation
@@ -395,15 +396,15 @@ key "SOFA"
 \end_inset
 
 .
- SOFA is a file format in which acoustic data is stored that eliminates
- the problem with researchers storing their data in different ways.
+ SOFA is a file format in which acoustic data is stored, eliminating the
+ problem with researchers storing their data in different ways.
 \end_layout
 
 \begin_layout Standard
 At present, very few studies seems to have been done on sound localization
  through spatial audio.
  A study made on four sighted inviduals showed that the average error in
- localizing sound was of 8° 
+ localizing sound was 8° 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "problems_3D"
@@ -429,7 +430,7 @@ key "problems_3D"
 ed and generic HRTFs, with the virtual sound's position only moving in the
  vertical plane.
  The study suggest not only that the accuracy of the elevation perception
- decreases as the virtual sound is moved up and down.
+ decreases as the virtual sound is moved further up and down.
  But also that the HRTFs being used has a great impact on the elevational
  accuracy (the invidualized HRTFs provided greater performance).
 \end_layout
@@ -462,41 +463,6 @@ key "kramer"
 \end_layout
 
 \begin_layout Standard
-While depending on audio feedback rather than visual enables the user to
- focus more on its surroundings, it has its disadvantages - one of the biggest
- being the low resolution 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kramer"
-
-\end_inset
-
-.
- It is difficult to perceive small differences in sounds, such as changes
- in sound intensity and panoration.
- Furthermore, the attention-grabbing property previously mentioned might
- lead to annoyance amongts some users 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kramer"
-
-\end_inset
-
-.
- Buxton (1989) suggested that there were two type of sounds: information
- and noise - the former helping us and the latter derailing us.
- It's therefore vital that the sounds being used in an application are designed
- to be informative.
- Naturally, what a person interpret as an informative sound might be noise
- to another.
- 
-\end_layout
-
-\begin_layout Standard
-To avoid annoyance 
-\end_layout
-
-\begin_layout Standard
 When it comes to providing the user with continuous information, nonspeech
  sounds seem to have some advantages over speech 
 \begin_inset CommandInset citation
@@ -525,6 +491,60 @@ key "hci_handbook"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Studies of enviromental noises and speech show that excessive sound volume
+ is the primary reason for annoyance to the user 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hci_handbook"
+
+\end_inset
+
+; a loud sound is attention-grabbing even though its intended message is
+ unimportant.
+ To avoid annoyance, it's therefore suggested to avoid using sound volume
+ as a cue in applications.
+ Instead, the authors of The Human-Computer Interaction Handbook (2007)
+ recommends using pitch and rhythm as primary cues, as changes in stimuli
+ are easier detected by the human auditory system.
+\end_layout
+
+\begin_layout Standard
+While depending on audio feedback rather than visual enables the user to
+ focus more on its surroundings, it has its disadvantages - one of the biggest
+ being the low resolution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kramer"
+
+\end_inset
+
+.
+ It is difficult to perceive small differences in sounds, such as changes
+ in sound intensity and panoration.
+ Furthermore, the attention-grabbing property previously mentioned might
+ lead to annoyance amongts some users 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kramer"
+
+\end_inset
+
+.
+ It's suggested that there are two type of sounds: information and noise
+ - the former helping us and the latter derailing us 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hci_handbook"
+
+\end_inset
+
+.
+ Naturally, a sound that one person interprets as informative might be noise
+ to another; designing the right sounds to use in an application is a process
+ that should not be overlooked.
 \end_layout
 
 \end_body
