@@ -359,8 +359,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
-	filename Figures/routing2.png
+	filename Figures/routing.svg
 	lyxscale 50
 	width 40page%
 
@@ -376,7 +378,7 @@ name "fig:random route"
 
 \end_inset
 
-Random...Vill Joakim göra dessa? :)
+Random...
 \end_layout
 
 \end_inset
