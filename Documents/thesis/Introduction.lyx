@@ -388,16 +388,32 @@ The purpose of the bachelor project is to design and implement an application
 \end_layout
 
 \begin_layout Section
-Method
+Report Outline
 \end_layout
 
 \begin_layout Standard
-Ha med i method: Arbetssätt? Scrum User evaluation
+The following describes the overall layout of the report.
 \end_layout
 
 \begin_layout Standard
-(genomförande) Behöver inte vara kronologiskt Implementerat, designat BETA,
- testat, omdesignat 
+Chapter two takes up the theoretical framework behind the most important
+ parts of the application.
+ The subsections of chapter two are the different parts, they are Sound,
+ Sensors, Database and also the design patterns that of the application.
+ 
+\end_layout
+
+\begin_layout Standard
+The third chapter describes how the different parts in chapter two and the
+ features of the application was implemented into the application.
+\end_layout
+
+\begin_layout Standard
+The last part consists of the report consists of the result, discussion
+ and the conclusion.
+ This describes the end result of the application and the features in it.
+ It discusses the whole design and implementation process and also possible
+ future work.
 \end_layout
 
 \end_body
