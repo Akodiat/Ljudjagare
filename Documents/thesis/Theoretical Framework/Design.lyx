@@ -329,7 +329,7 @@ key "Tidwell2011"
  which is used in the final step of a transaction.
  The pattern is applies by creating a button that actually looks like a
  clear button, and not a link or another navigation element.
- It is often good practice to make the button 
+ It is often good practice to also make a 
 \shape italic
 Prominent 
 \begin_inset Quotes eld
@@ -341,7 +341,74 @@ Done
 
  Button
 \shape default
- 
+ large and with bold 
+\lang british
+colours
+\lang english
+ and well defined borders, thus making it stand out.
+ The placement of the button should be after the elements related to the
+ work flow of a task, which usually is on the bottom right of a page.
+ In the example in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:prominent"
+
+\end_inset
+
+ the sign up-button is prominent and thereby clearly telling the user that
+ is should be pressed after the form has been filled in.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/prominent_done_button.PNG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:prominent"
+
+\end_inset
+
+Example of a 
+\shape italic
+Prominent 
+\begin_inset Quotes eld
+\end_inset
+
+Done
+\begin_inset Quotes erd
+\end_inset
+
+ Button
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -363,18 +430,6 @@ key "Lehtimaeki2013"
 \end_inset
 
 .
- 
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-Fråga: Sätta referensen här eller i slutet av stycket?
-\end_layout
-
-\end_inset
-
-This consistency creates a more comfortable user experience since the user
- knows what can be done with the present design components.
  
 \end_layout
 
@@ -429,8 +484,8 @@ name "fig:ActionBar"
 
 \end_inset
 
-Figure of an Action Bar and its components App Icon (1), View control (2),
- Action Buttons (3) and Action overflow menu (4)
+An Action Bar and its components App Icon (1), View control (2), Action
+ Buttons (3) and Action overflow menu (4)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "actionbar2014"
@@ -463,7 +518,11 @@ The most important feature of the action bar is perhaps, as the name suggests,
 status open
 
 \begin_layout Plain Layout
-Fråga: Får man göra såhär med hänvisning med siffror?
+
+\lang british
+Fråga
+\lang english
+: Får man göra såhär med hänvisning med siffror?
 \end_layout
 
 \end_inset
@@ -732,7 +791,7 @@ name "fig:navdrawerIcon"
 
 \end_inset
 
-Figure showing an app icon provided with the navigation drawer indicator
+An app icon provided with the navigation drawer indicator
 \begin_inset CommandInset citation
 LatexCommand cite
 key "NavigationDrawer2014"
