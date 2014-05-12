@@ -340,9 +340,11 @@ reference "fig:The-main-screen"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-07-09-39-07.png
 	lyxscale 20
@@ -552,6 +554,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-07-09-40-40.png
 	lyxscale 20
@@ -667,6 +671,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/run_finished_run.png
 	lyxscale 20
