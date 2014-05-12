@@ -274,7 +274,7 @@ thepage
 \end_layout
 
 \begin_layout Section
-Future work: efficiency, modularity and other game modes
+Future work: efficiency, modularity and prospects
 \end_layout
 
 \begin_layout Standard
@@ -376,13 +376,39 @@ One downside with the above game modes compared to Coin Collector is that
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
 
-\color green
-Hunting a moving sound source.
- You hear your prey somewhere near you, as you run closer it notices you
- and starts to gallop in the opposite direction.
- Either you run fast enough to catch it, or you run long enough to tire
- it out.
+\begin_layout Plain Layout
+Database
+\end_layout
+
+\end_inset
+
+ As the current application only handles a single user another improvement
+ would be to add network functionality.
+ With a central server keeping track of the sound sources multiple users
+ can perceive and navigate to the same sounds.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Google Glass bla bla.
+\end_layout
+
+\end_inset
+
+ While the previously discussed head-mounted smartphone would be impractical
+ for the user, a device similar to Google Glass would be an improvement.
+ Since Google Glass is worn like ordinary glasses and has built-in orientation
+ sensors it would mean increased measurement reliability (when the sensors
+ change the user has actually turned their head).
+ Furthermore, the user could also be provided with a visual representation
+ of the sound source (for example a coin), hence augmenting the experience
+ further.
 \end_layout
 
 \end_body
