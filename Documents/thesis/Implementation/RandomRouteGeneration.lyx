@@ -327,15 +327,27 @@ reference "fig:random route"
 \end_inset
 
  a circular route has been generated in red with four checkpoints and a
- distance.
+ distance k.
  This is done by setting the starting point of the circle at the position
  of the user and moving the origin to the middle of the theoretical red
  circle.
  By dividing a full revolution (2 pi) by the number of checkpoints, the
- angle y, between them is calculated.
+ angle x, between them is calculated.
  To get the next checkpoint, the calculated angle is added to the starting
  position and create checkpoint 2.
  The same is done for every checkpoint until all have been created.
+ 
+\end_layout
+
+\begin_layout Standard
+This theoretical route is then rotated around the location of the user by
+ an random angle y.
+ The random angle is calculated by multiplying a full revolution (2 pi)
+ by a random number between 0 and 1.
+ The rotation is done by multiplying the difference in latitude and longitude
+ of every checkpoint compared to the location of the user, with a two-dimensiona
+l rotation matrix with the angle y.
+ The random green route is now generated.
  
 \end_layout
 
@@ -378,11 +390,26 @@ Random...Vill Joakim göra dessa? :)
 \end_layout
 
 \begin_layout Standard
+To make this randomly generated route reachable a geocoding API request
+ of directions from your current location to the new locations is send to
+ Google Maps{https://developers.google.com/maps/documentation/geocoding/}.
+ The answer from Google is a list of locations of the shortest route to
+ the destination.
+ It is a big chance that the generated locations is not on the road but
+ instead in the forest or in a lake.
+ But by taking out the last location that is given by Google maps direction
+ you find a location that is as close as possible to the generated locations
+ but it is reachable.
+ This locations is then set as a checkpoints.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float table
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -395,7 +422,11 @@ name "tab:Random algo"
 \end_inset
 
 To fill...
- denna är nu fel...
+
+\color red
+ denna är nu fel..
+\color inherit
+.
 \end_layout
 
 \end_inset
@@ -815,62 +846,6 @@ Longitude from the location of the user
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In order to make a route that is circular and make the user end up on the
- same location as the start location the following algorithm was implemented.
- This algorithm is based on the random location generated earlier
-\end_layout
-
-\begin_layout Standard
-To make this randomly generated location reachable a geocoding API request
- of directions from your current location to the new location is send to
- Google Maps{https://developers.google.com/maps/documentation/geocoding/}.
- The answer from Google maps directions is a list of locations of the shortest
- route to the destination.
- It is a big chance that the generated location is not on the road but instead
- in the forest or in a lake.
- But by taking out the last location that is given by Google maps direction
- you find a location that is as close as possible to the generated location
- but it is reachable.
- This location is then set as a checkpoint.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Figures/Random_testing_range.png
-	lyxscale 30
-	height 30theight%
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Random...
- maps
-\end_layout
 
 \end_inset
 
