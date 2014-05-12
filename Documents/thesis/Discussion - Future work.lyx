@@ -404,9 +404,9 @@ Google Glass bla bla.
  While the previously discussed head-mounted smartphone would be impractical
  for the user, a device similar to Google Glass would be an improvement.
  Since Google Glass is worn like ordinary glasses and has built-in orientation
- sensors it would mean increased measurement reliability (when the sensors
- change the user has actually turned their head).
- Furthermore, the user could also be provided with a visual representation
+ sensors the measurements would equal those from a head-mounted smartphone
+ (the user has actually turned their head when the sensors give new values).
+ Furthermore, the user could then also be provided with a visual representation
  of the sound source (for example a coin), hence augmenting the experience
  further.
 \end_layout
