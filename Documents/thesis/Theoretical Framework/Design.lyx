@@ -361,6 +361,7 @@ reference "fig:prominent"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -368,6 +369,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Figures/prominent_done_button.PNG
+	width 40page%
 
 \end_inset
 
@@ -394,7 +396,85 @@ Done
 \begin_inset Quotes erd
 \end_inset
 
- Button
+ Button.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Carousel pattern
+\end_layout
+
+\begin_layout Standard
+Another design pattern is the 
+\shape italic
+Carousel
+\shape default
+, which is a horizontal swipe- or scrollable list of items that are visually
+ interesting
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tidwell2011"
+
+\end_inset
+
+.
+ The pattern is useful when the user does not know exactly what item he/she
+ wants and thereby wants to browse between the options.
+ A picture representing an item and optionally some metadata such as name,
+ is usually enough representation in a 
+\shape italic
+Carousel
+\shape default
+.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:carousel"
+
+\end_inset
+
+ it is clear that the item in the middle is in focus since it is enlarged.
+ By seeing the elements immediately around the focused item the user will
+ get a clue about the possibility to browse.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/cover-flow.png
+	width 40page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:carousel"
+
+\end_inset
+
+Concept of the carousel pattern.
 \end_layout
 
 \end_inset
@@ -409,10 +489,6 @@ Done
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Carousel pattern
 \end_layout
 
 \begin_layout Section
