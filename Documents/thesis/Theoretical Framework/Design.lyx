@@ -318,8 +318,30 @@ Done
 \end_inset
 
  Button
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tidwell2011"
+
+\end_inset
+
+,
 \shape default
- .v
+ which is used in the final step of a transaction.
+ The pattern is applies by creating a button that actually looks like a
+ clear button, and not a link or another navigation element.
+ It is often good practice to make the button 
+\shape italic
+Prominent 
+\begin_inset Quotes eld
+\end_inset
+
+Done
+\begin_inset Quotes erd
+\end_inset
+
+ Button
+\shape default
+ 
 \end_layout
 
 \begin_layout Subsection
