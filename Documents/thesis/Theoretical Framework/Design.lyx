@@ -274,13 +274,66 @@ thepage
 \end_layout
 
 \begin_layout Section
+Standard Design patterns
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tidwell2011"
+
+\end_inset
+
+ it is stated that 
+\begin_inset Quotes eld
+\end_inset
+
+The applications that are easy to use are designed to be familiar
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is further discussed that when parts of an app are recognizable and
+ have clear relationships between each other the users will be able to apply
+ previous knowledge and understand what to do.
+ Design patterns is a way to capture and group common structures together,
+ thus easing the usability when applied.
+ 
+\end_layout
+
+\begin_layout Subsection
+Prominent Done button
+\end_layout
+
+\begin_layout Standard
+One common design pattern is the 
+\shape italic
+Prominent 
+\begin_inset Quotes eld
+\end_inset
+
+Done
+\begin_inset Quotes erd
+\end_inset
+
+ Button
+\shape default
+ .v
+\end_layout
+
+\begin_layout Subsection
+Carousel pattern
+\end_layout
+
+\begin_layout Section
 Android design patterns
 \end_layout
 
 \begin_layout Standard
 Android standard design patterns are used where applicable in the application.
- A great advantage of using design patterns is that the app becomes consistent
- to other apps on the Android platform
+ A great advantage of using Android design patterns is that the app becomes
+ consistent to other apps on the Android platform
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaeki2013"
@@ -319,8 +372,8 @@ reference "fig:ActionBar"
 \end_inset
 
 , which can perform actions to the app.
- Since it has been around for a few years long it is one of the most recognizabl
-e patterns
+ It has been around for a long time and is one of the most recognizable
+ patterns
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaeki2013"
@@ -362,7 +415,7 @@ key "actionbar2014"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -518,16 +571,53 @@ Navigation Drawer
 \end_layout
 
 \begin_layout Standard
-Google suggests that actions should be put to the right and navigations
- to the left.
+Android Developers (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NavigationDrawer2014"
+
+\end_inset
+
+) suggests that actions should be put to the right and navigation to the
+ left.
  However there is a risk that putting navigational options into the action
- bar, as mentioned above, may make the view cluttered due to limited space.
+ bar, as in (4) in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ActionBar"
+
+\end_inset
+
+, may make the view cluttered due to limited space.
  To avoid this the design pattern Navigation Drawer can be used.
  The Navigation Drawer is a menu that may be dragged from the left part
  of the screen to partly cover the current view.
  It is accessed by swiping inwards from the left outside part of the screen
- or by pressing the app logo as shown in Fig X.X..
- {https://developer.android.com/design/patterns/navigation-drawer.html} 
+ or by pressing the app logo as shown in the leftmost figure in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:navdrawer"
+
+\end_inset
+
+.
+ The menu is then used to open a desired screen as shown in the middle and
+ rightmost figures in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:navdrawer"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NavigationDrawer2014"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -547,16 +637,28 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Figure indicating how the navigation drawer may be accesed either by swiping
- from the left or by pressing the app icon.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:navdrawer"
+
+\end_inset
+
+Leftmost figure indicating how the navigation drawer may be accessed either
+ by swiping from the left or by pressing the app icon
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NavigationDrawer2014"
+
+\end_inset
+
+.
+ The middle figure shows the opened navigation drawer and its links to different
+ views.
+ In the rightmost figure a view has been opened.
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -567,9 +669,16 @@ Figure indicating how the navigation drawer may be accesed either by swiping
 
 \begin_layout Standard
 When a view is provided with a navigation drawer it is important to let
- the user know that by putting the navigation drawer indicator of three
- stripes to the left of the app icon as in Fig X.X.
- {https://developer.android.com/design/patterns/navigation-drawer.html}
+ the user know about its existence by putting the navigation drawer indicator
+ of three stripes to the left of the app icon as in
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:navdrawerIcon"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -595,15 +704,24 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:navdrawerIcon"
+
+\end_inset
+
 Figure showing an app icon provided with the navigation drawer indicator
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NavigationDrawer2014"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -616,16 +734,22 @@ Figure showing an app icon provided with the navigation drawer indicator
 Navigation Drawer provides quick access to different views of the application
  without forcing the user to go back via some main menu like a dashboard.
  The dashboard is basically a landing screen consisting of big icons which
- take the user to different parts of the app.
+ take the user to different parts of the app
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+.
  The Dashboard pattern used to be one of Google’s official recommendations
- but has been more or less replaced by Navigation Drawer since it provides
+ but has been more or less replaced by the Navigation Drawer since it provides
  more direct access throughout an application.
  The avoidance of the dashboard pattern is especially effective at an applicatio
-n’s startup since the user then can be taken directly into the view that
+n’s start-up since the user then can be taken directly into the view that
  is mostly used instead of picking it.
  From there the user may quickly switch to other views with the navigation
- drawer eliminating redundant clicks back and forth from a dashboard.
- {Smashing, s332} 
+ drawer, thus eliminating redundant clicks back and forth from a dashboard.
 \end_layout
 
 \begin_layout Subsection
@@ -638,29 +762,30 @@ As mentioned above the Navigation Drawer provides quick navigation between
  However there are times when functionality that logically belongs to the
  same view does not fit into a single screen.
  This can be solved by putting the different parts on different tabs that
- the user can swipe horizontally between.
- {Smashing 322}
+ the user can swipe horizontally between
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
 As long as the number of tabs are limited to three or less it is considered
  as a good solution.
  If the number exceeds three however it may be better to use the pattern
- called title strip where the user may swipe between unlimited number of
- tabs.
- {Smashing 324} 
-\end_layout
+ called title strip where the user may swipe between an unlimited number
+ of tabs
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
 
-\begin_layout Section
-Standard Design patterns
-\end_layout
+\end_inset
 
-\begin_layout Subsection
-Prominent Done button
-\end_layout
-
-\begin_layout Subsection
-Carousel pattern
+.
 \end_layout
 
 \end_body
