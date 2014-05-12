@@ -315,76 +315,66 @@ reference "google maps random"
 \end_layout
 
 \begin_layout Standard
-First of all a random location is generated in a predefined distance from
- your location that is set by the GPS.
- The location can be generated in a circle around you with the radius equals
- to the distance, see figure random 1.
- d 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "atok2013"
-
-\end_inset
-
-.
- This random algorithm is now explained with the help of 
+First is an theoretical route generated based on the number of checkpoints
+ and the distance that has been set in the settings by the user.
+ All the calculations has been done with the geographic coordinate system
+ using latitude and longitude.
+ As seen in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Random algo"
+reference "fig:random route"
 
 \end_inset
 
-.
- First is a random number generated, a, with a value between 0 and 1.
- On line number 5 the random number a is multiplied by 2*pi.
- 2*pi is a complete revolution in the unit circle and by multiplying it
- with the random number a random angle, t, is acquired.
- To get the distance to be added to the location of the user in terms of
- longitude, x, cosine is taken on the variable t and then multiplied by
- the constant, diameter.
- The same is done to get the latitude, y, but with sine on the variable
- t instead of cosine.
- The constant diameter has been converted from the unit of meters to the
- unit of latitude and longitude by dividing with a constant 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-constantToConvertFromMetersToLatLong
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-.
- Since the longitude coordinates is shrinking the further away from the
- equator the user i located, 
-\color red
-referens
-\color inherit
- a method the counteract this is implemented.
- By taking cosine of the latitude of the user location a factor of how far
- from the equator the user is located i acquired.
- By dividing the calculated longitude to be added, x, with the factor a
- new variable, x_corrected, is acquired.
- Without this correction the possible location of the random location would
- not lie on a circle but instead on an ellipse.
- As seen on line 10-11 the calculated latitude, y, and x_corrected, is added
- to the location of the user and a random location is acquired.
+ a circular route has been generated in red with four checkpoints and a
+ distance.
+ This is done by setting the starting point of the circle at the position
+ of the user and moving the origin to the middle of the theoretical red
+ circle.
+ By dividing a full revolution (2 pi) by the number of checkpoints, the
+ angle y, between them is calculated.
+ To get the next checkpoint, the calculated angle is added to the starting
+ position and create checkpoint 2.
+ The same is done for every checkpoint until all have been created.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/routing2.png
+	lyxscale 50
+	width 40page%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:random route"
+
+\end_inset
+
+Random...Vill Joakim göra dessa? :)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -392,7 +382,7 @@ referens
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -405,6 +395,7 @@ name "tab:Random algo"
 \end_inset
 
 To fill...
+ denna är nu fel...
 \end_layout
 
 \end_inset
@@ -836,6 +827,12 @@ Longitude from the location of the user
 \end_layout
 
 \begin_layout Standard
+In order to make a route that is circular and make the user end up on the
+ same location as the start location the following algorithm was implemented.
+ This algorithm is based on the random location generated earlier
+\end_layout
+
+\begin_layout Standard
 To make this randomly generated location reachable a geocoding API request
  of directions from your current location to the new location is send to
  Google Maps{https://developers.google.com/maps/documentation/geocoding/}.
@@ -848,54 +845,6 @@ To make this randomly generated location reachable a geocoding API request
  but it is reachable.
  This location is then set as a checkpoint.
  
-\color red
-Detta senare!
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Figures/Random_generation2.png
-	lyxscale 50
-	width 40page%
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename Figures/routing2.png
-	lyxscale 50
-	width 40page%
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Random...Vill Joakim göra dessa? :)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In order to make a route that is circular and make the user end up on the
- same location as the start location the following algorithm was implemented.
- This algorithm is based on the random location generated earlier
 \end_layout
 
 \begin_layout Standard

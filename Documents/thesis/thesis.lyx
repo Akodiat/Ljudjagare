@@ -176,14 +176,6 @@ customHeadersFooters
 \begin_body
 
 \begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "/Users/nanobii/Development/workspace/Ljudjagare/Documents/References_Linus"
-options "bibtotoc,plain"
-
-\end_inset
-
-
 \begin_inset External
 	template PDFPages
 	filename cover.pdf
@@ -228,14 +220,6 @@ get
 
 \begin_layout Standard
 \begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "acompat,/Users/nanobii/Development/workspace/Ljudjagare/Documents/References_Linus"
-options "bibtotoc,plain"
-
 \end_inset
 
 
@@ -457,25 +441,6 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "Implementation.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch chapter-3
-status open
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "UsabilityEvaluation.lyx"
 
 \end_inset
 
