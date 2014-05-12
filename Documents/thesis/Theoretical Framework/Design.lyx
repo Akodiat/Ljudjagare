@@ -278,16 +278,17 @@ Android design patterns
 \end_layout
 
 \begin_layout Standard
-Android standard design patterns are used where applicable in the app.
+Android standard design patterns are used where applicable in the application.
  A great advantage of using design patterns is that the app becomes consistent
- to other apps on the Android platform.
+ to other apps on the Android platform
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaeki2013"
 
 \end_inset
 
-
+.
+ 
 \begin_inset Marginal
 status open
 
@@ -297,8 +298,8 @@ Fråga: Sätta referensen här eller i slutet av stycket?
 
 \end_inset
 
-{Smashing s 288} This consistency creates a more comfortable user experience
- since the user knows what can be done with the present design components.
+This consistency creates a more comfortable user experience since the user
+ knows what can be done with the present design components.
  
 \end_layout
 
@@ -309,11 +310,24 @@ Action Bar pattern
 \begin_layout Standard
 One of the most defining design components in Android is the Action Bar
  pattern.
- {Smashing 292} As the name suggests it is a bar containing components which
- can perform actions to the app.
- (see Fig X.X).
- Since it has been around for quite long it is one of the most recognizable
- patterns.{Smashing 292} 
+ As the name suggests it is a bar containing components, as the ones numbered
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ActionBar"
+
+\end_inset
+
+, which can perform actions to the app.
+ Since it has been around for a few years long it is one of the most recognizabl
+e patterns
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -334,8 +348,21 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ActionBar"
+
+\end_inset
+
 Figure of an Action Bar and its components App Icon (1), View control (2),
  Action Buttons (3) and Action overflow menu (4)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "actionbar2014"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -350,10 +377,6 @@ Figure of an Action Bar and its components App Icon (1), View control (2),
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-{http://developer.android.com/design/patterns/actionbar.html}
 \end_layout
 
 \begin_layout Standard
@@ -370,50 +393,127 @@ Fråga: Får man göra såhär med hänvisning med siffror?
 
 \end_inset
 
- in Fig X.X.
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ActionBar"
+
+\end_inset
+
+.
  To decide if an action is important one might consider how frequent it
- will be used and whether it is typical and contextual for the view in question.
- {Smashing 299} A final criteria might be whether the action may work as
- a good selling point of the application, as for example if it represents
- a cool feature.
- {http://developer.android.com/design/patterns/actionbar.html}
+ will be used and whether it is typical and contextual for the view in question
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+.
+ A final criteria might be whether the action may work as a good selling
+ point of the application, as for example if it represents a cool feature
+\begin_inset CommandInset citation
+LatexCommand cite
+key "actionbar2014"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-The actions that, according to the above criterias of importance, does not
+The actions that, according to the above criteria of importance, does not
  belong among the Action Buttons should be put in the overflow menu instead.
- The overflow menu is opened by a click on the menu button in the picture
- marked with three dots Fig x.x (4).
+ The overflow menu is opened by a click on the menu button (4) in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ActionBar"
+
+\end_inset
+
+.
  If the phone however does have a hardware menu button, it will instead
  be used to open the overflow menu and the three dotted button will not
- be visible.
- {http://developer.android.com/design/patterns/actionbar.html}
+ be visible
+\begin_inset CommandInset citation
+LatexCommand cite
+key "actionbar2014"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-An advantage with the Action Bar pattern is that it displays the app logo(1)
- which establishes the identity of the app.{http://developer.android.com/design/pat
-terns/actionbar.html} When an app has different views the app logo becomes
- a consistent identifier letting the user know which app is currently running.
+An advantage with the Action Bar pattern is that it displays the app logo
+ (1) in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ActionBar"
+
+\end_inset
+
+ which establishes the identity of the app.
+ When an app has different views the app logo becomes a consistent identifier
+ letting the user know which app is currently running.
  The app logo can also have the function of an up button taking the user
- one step up in the hierarchy (as is the case in Fig X.X) or a home button
- taking the user to the home view.{http://developer.android.com/design/patterns/act
-ionbar.html} The button of the app logo may also be used to open a side menu
- called navigation drawer, which will be covered in section 2.6.2) with more
- navigation options.
- {Smashing 293}
+ one step up in the hierarchy (as is the case in (1) in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ActionBar"
+
+\end_inset
+
+) or a home button taking the user to the home view
+\begin_inset CommandInset citation
+LatexCommand cite
+key "actionbar2014"
+
+\end_inset
+
+.
+ The button of the app logo may also be used to open a side menu called
+ navigation drawer, which will be covered in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Navigation-Drawer"
+
+\end_inset
+
+) with more navigation options
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Another component giving a sense of location is the View control(2), which
- apart from displaying the name of the app or the current view may provide
- navigation options to different views.
- In the picture (Fig X.X) navigation may be done by choosing views from a
- drop down menu(2).
+Another component giving a sense of location is the View control as (2)
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ActionBar"
+
+\end_inset
+
+, which apart from displaying the name of the app or the current view may
+ provide navigation options to different views.
+ In this case navigation may be done by choosing views from a drop down
+ menu.
  
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Navigation-Drawer"
+
+\end_inset
+
 Navigation Drawer
 \end_layout
 

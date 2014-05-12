@@ -340,7 +340,11 @@ key "Bajaj2002"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\triangle x=c\cdot\triangle t$
+\begin_inset Formula 
+\begin{equation}
+\triangle x=c\cdot\triangle t
+\end{equation}
+
 \end_inset
 
 
@@ -351,10 +355,15 @@ key "Hewitt2006"
 \end_inset
 
 
-\end_layout
+\color red
+Källa nödvändigt?
+\color inherit
 
-\begin_layout Standard
-\begin_inset Formula $\triangle x=c\cdot(t_{arrival}-t_{departure})$
+\begin_inset Formula 
+\begin{equation}
+\triangle x=c\cdot(t_{arrival}-t_{departure})
+\end{equation}
+
 \end_inset
 
 
@@ -365,7 +374,21 @@ Location wise, this distance does however only determine that the GPS receiver
  is located somewhere at the surface on a sphere with the radius being the
  distance and the center being the satellite.
  To acquire the GPS receiver's location on the sphere, the method trilateration
- as shown in XXXX is used.
+ as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Trilateration"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bajaj2002"
+
+\end_inset
+
+ is used.
  
 \end_layout
 
@@ -391,15 +414,14 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Location finding using trilateration
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Trilateration"
 
 \end_inset
 
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
+Location finding using trilateration
+\end_layout
 
 \end_inset
 
@@ -415,15 +437,21 @@ key "Bajaj2002"
 In the context of GPS technology, trilateration is a way to narrow down
  the possible locations by determining where spheres intersect.
  All visible satellites each provide one sphere of possible locations.
- Two satellites will narrow down the possible location to a circle at the
- intersection of Satellite A's and Satellite B's spheres as shown in Fig
- XXXX.
+ Two satellites will narrow down the possible location to a circle as shown
+ at the intersection of Satellite A's and Satellite B's spheres in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Trilateration"
+
+\end_inset
+
+.
  Furthermore the third satellite, Satellite C, will narrow down this circle
  into two points.
- Normally, this information is enough since often only one of the provided
- points is located on the earths surface.
+ Normally, this information is enough since often only one of the two provided
+ points is located on the Earths surface.
  It is however useful to use more satellites to acquire a confirmed location.
- Also, another satellite might be used to synchronize the GPS receivers
+ Also, another satellite might be used to synchronize the GPS receiver's
  internal clock.
  When a receiver is having a fixed position it can be used along with another
  satellites position to determine their intermediate distance, which in
@@ -431,8 +459,8 @@ In the context of GPS technology, trilateration is a way to narrow down
  between them.
  By adding the calculated travel time to the departure time of the PNC the
  correct current time in the GPS receiver is acquired.
- This is good practice since the clock in the satellites that is being synchroni
-zed to is atomic and thereby very accurate
+ This is good practice since the clock in the satellite that is being synchroniz
+ed to is atomic and thereby very accurate
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -470,9 +498,9 @@ key "Drawil2012"
 \end_inset
 
 .
- The adjustment is done with the technique differential GPS, which in short
- consists of comparing the data acquired with the data in a nearby stationary
- GPS receiver with a known location.
+ The adjustment is done with a technique called differential GPS, which
+ in short consists of comparing the data acquired with the data in a nearby
+ stationary GPS receiver with a known location.
  It is likely that the location offset in the stationary receiver is the
  same in mobile GPS receivers nearby, which thereby will receive correction
  signals
@@ -486,9 +514,9 @@ key "Bajaj2002"
 \end_layout
 
 \begin_layout Standard
-Differential GPS can however not adjust to the multipath error which occurs
- when PNC's bounces on the surrounding topography, as buildings or hilly
- terrain.
+Differential GPS can however not adjust to the so called multipath error
+ which occurs when PNC's bounces on the surrounding topography, as buildings
+ or hilly terrain.
  To avoid this error the receiver needs to have a clear view to the satellites.
  Otherwise the multipath error might, according to Drawil, Amar and Basir
 \begin_inset CommandInset citation
