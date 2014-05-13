@@ -4,6 +4,8 @@
 \begin_header
 \textclass scrbook
 \begin_preamble
+\usepackage[english]{chscite}
+\usepackage{url}
 % increases link area for cross-references and autoname them
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \addto\extrasenglish{%
@@ -21,6 +23,7 @@
 % that links to image floats jumps to the beginning
 % of the float and not to its caption
 \usepackage[figure]{hypcap}
+
 
 % the pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
@@ -93,7 +96,7 @@ customHeadersFooters
 \use_esint 1
 \use_mhchem 1
 \use_mathdots 1
-\cite_engine natbib_authoryear
+\cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -708,8 +711,8 @@ restore the right header line
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "References/References_Marcus,References/References_Daniel,References/References,References/References_Joakim,References/References_Anton,References/References_Linus"
-options "plainnat"
+bibfiles "References/References_Daniel,References/References,References/References_Anton,References/References_Linus,References/References_Marcus,References/References_Joakim"
+options "chscite"
 
 \end_inset
 
