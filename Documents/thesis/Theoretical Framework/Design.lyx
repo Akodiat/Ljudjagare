@@ -561,24 +561,15 @@ name "fig:ActionBar"
 \end_inset
 
 An Action Bar and its components App Icon (1), View control (2), Action
- Buttons (3) and Action overflow menu (4)
-\begin_inset Note Note
-status open
+ Buttons (3) and Action overflow menu (4).
+\end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "actionbar2014"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
@@ -783,6 +774,8 @@ key "NavigationDrawer2014"
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -806,27 +799,18 @@ name "fig:navdrawer"
 \end_inset
 
 Leftmost figure indicating how the navigation drawer may be accessed either
- by swiping from the left or by pressing the app icon
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset CommandInset citation
-LatexCommand cite
-key "NavigationDrawer2014"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
+ by swiping from the left or by pressing the app icon.
  The middle figure shows the opened navigation drawer and its links to different
  views.
  In the rightmost figure a view has been opened.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NavigationDrawer2014"
 
 \end_inset
 
@@ -839,6 +823,7 @@ key "NavigationDrawer2014"
 \end_layout
 
 \begin_layout Standard
+\noindent
 When a view is provided with a navigation drawer it is important to let
  the user know about its existence by putting the navigation drawer indicator
  of three stripes to the left of the app icon as in
@@ -881,24 +866,15 @@ name "fig:navdrawerIcon"
 
 \end_inset
 
-An app icon provided with the navigation drawer indicator
-\begin_inset Note Note
-status open
+An app icon provided with the navigation drawer indicator.
+\end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "NavigationDrawer2014"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 

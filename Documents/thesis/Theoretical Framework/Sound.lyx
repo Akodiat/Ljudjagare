@@ -377,24 +377,15 @@ name "fig:hrtf"
 \end_inset
 
 Figure showing the difference in measured frequency response depending on
- the location of the sound source 
-\begin_inset Note Note
-status open
+ the location of the sound source.
+\end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pinna_pic"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
