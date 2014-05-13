@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="routing.eps">
+   sodipodi:docname="routing.svg">
   <defs
      id="defs4">
     <marker
@@ -140,7 +140,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -222,7 +222,7 @@
          y="432.36218"
          x="439.99997"
          id="tspan3950"
-         sodipodi:role="line">v</tspan></text>
+         sodipodi:role="line">y</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3948-8"
@@ -259,7 +259,7 @@
          y="310.93362"
          x="67.14286"
          id="tspan6260"
-         sodipodi:role="line">k</tspan></text>
+         sodipodi:role="line">d</tspan></text>
     <g
        transform="translate(47.5,-320)"
        id="g8969-7">
