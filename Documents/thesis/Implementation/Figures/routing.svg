@@ -112,7 +112,7 @@
      inkscape:cy="345.56276"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:window-width="1356"
      inkscape:window-height="700"
      inkscape:window-x="0"
@@ -437,7 +437,7 @@
     </g>
     <path
        style="fill:none;stroke:#4d86bf;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 320,312.36218 -100,0"
+       d="m 320,312.36218 -140,0"
        id="path9121"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
