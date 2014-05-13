@@ -274,6 +274,12 @@ thepage
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Database:-Relational-model"
+
+\end_inset
+
 Database: Relational model and visual representation
 \end_layout
 
@@ -298,14 +304,15 @@ The first step when designing the database is to design a is to make a visual
  representation of the database, this is done with a so called Entity/Relation-D
 iagram(ER-Diagram).
  An ER-Diagram consists of three main parts: entities, relations and attributes
- (
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
+after "ch. 4.1"
 key "database2009"
 
 \end_inset
 
- , kap 4.1).
+.
  The entities are the different object that we want to store in the database
  and the attributes are the different data of the object.
  In the previous example the Room could be the entity and room number, room

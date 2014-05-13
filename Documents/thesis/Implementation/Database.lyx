@@ -278,20 +278,10 @@ Database: Design and Implementation
 \end_layout
 
 \begin_layout Standard
-Skriv om:
-\end_layout
-
-\begin_layout Standard
-When exercising it is very important to keep track of your improvements
- over a larger time span.
- During the users running route we accumulate some information such as the
- time and distance of the route as well as information about the game objectives
-, these data needs to be stored somewhere so that the user can access it
- and gain knowledge about their improvement.
- To accomplish this a database is required.
- The database that was implemented is an embedded database, which means
- that the data is stored locally on the users device.
- 
+This subsection describes the implemented database that was used to save
+ data of the users running history.
+ It describes the system that manages the database as well as a description
+ and some visual representation of the database.
 \end_layout
 
 \begin_layout Subsection
@@ -319,7 +309,9 @@ key "sqlite"
 \end_inset
 
 .
- 
+ An embedded database means that the database is stored locally on the device
+ that it is running on, this implies taht the user will only be able to
+ review their running history from their own device and application.
 \end_layout
 
 \begin_layout Standard
@@ -339,8 +331,15 @@ The design of the database
 \end_layout
 
 \begin_layout Standard
-An ER-Diagram (See 2.4) was used to visualize how the database should be
- implemented into the application.
+An ER-Diagram (See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Database:-Relational-model"
+
+\end_inset
+
+) was used to visualize how the database should be implemented into the
+ application.
  The ER-Diagram helped to keep track on what the different elements of the
  database consists of as well as how the relate to each other.
  
@@ -388,28 +387,29 @@ The implemented database represented by an ER-diagram.
 \end_layout
 
 \begin_layout Standard
-(placering av ref)The 
+The implemented database is centered around the entity “Route” (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "er-dia"
 
 \end_inset
 
- is the ER-Diagram of the implemented database, it is centered around the
- entity “Route”, the route is basically the users running session, it contains
- a unique identifier and the date that the route started.
+), the route is basically the users running session, it contains a unique
+ identifier and the date that the route started, also the Route saves data
+ of the number of coins that was generated for the route, this number is
+ set by the user in the settings menu before the running session.
  The “Point” entity represents a specific location of the users route and
  is noticeably different by the double border, this means that the entity
  is a weak entity.
- A weak entity is dependent on another entity to exist (
+ A weak entity is dependent on another entity to exist 
 \begin_inset CommandInset citation
 LatexCommand cite
+after " ch. 4.4"
 key "database2009"
 
 \end_inset
 
-, kap 4.4), in our case a point can not exist without being connected to
- a route.
+ in our case a point can not exist without being connected to a route.
  In practice the weak entity in our database is that the point table has
  an additional column with the route that is connected to the point.
  This allows retrieval of all the points that is connected to a specific
@@ -481,10 +481,10 @@ reference "table-1"
 
 \end_inset
 
- is a visualisation of how the tables in the database could look with some
+ is a visualization of how the tables in the database could look with some
  data in them.
  The column in the points and coins table named “R.ID” (red/blue lines) represent
-s which route that the row is accosiated with.
+s which route that the row is associated with.
  This is how the weak relations that was represented with double borders
  in 
 \begin_inset CommandInset ref
