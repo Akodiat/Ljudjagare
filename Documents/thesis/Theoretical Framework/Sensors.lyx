@@ -791,6 +791,10 @@ Coordinate system of the accelerometer
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
 \begin_layout Subsection
 Sensor fusion
 \begin_inset CommandInset label
@@ -802,10 +806,15 @@ name "sub:Sensor-fusion"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Just general info about what sensor fusion is.
  Combining multiple sensors to acquire a better accuracy then one would
  with only one.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
