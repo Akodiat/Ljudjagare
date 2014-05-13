@@ -96,7 +96,7 @@ customHeadersFooters
 \use_esint 1
 \use_mhchem 1
 \use_mathdots 1
-\cite_engine basic
+\cite_engine natbib_authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -288,11 +288,6 @@ In this project it was important to determine the user direction; the direction
  
 \end_layout
 
-\begin_layout Standard
-Strengths and weaknesses with different sensors.
- 
-\end_layout
-
 \begin_layout Subsection
 GPS
 \end_layout
@@ -301,7 +296,7 @@ GPS
 The Global Positioning System - GPS is used to determine the global coordinates
  of a device in latitudes and longitudes through the use of satellites
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "NCOSBPNT2014"
 
 \end_inset
@@ -311,7 +306,7 @@ key "NCOSBPNT2014"
  orbits circulating the earth in a manner that assures visibility of at
  least five of them no matter of time and location on the earth
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Bajaj2002"
 
 \end_inset
@@ -365,7 +360,7 @@ reference "eq:distance1"
 
 )
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Bajaj2002"
 
 \end_inset
@@ -418,7 +413,7 @@ reference "fig:Trilateration"
 
 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Bajaj2002"
 
 \end_inset
@@ -497,7 +492,7 @@ reference "fig:Trilateration"
  This is good practice since the clock in the satellite that is being synchroniz
 ed to is atomic and thereby very accurate
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Bajaj2002"
 
 \end_inset
@@ -512,7 +507,7 @@ The positioning accuracy is however affected by some factors of which one
  This might cause a slight delay to a PNC as it gets slowed down by electrically
  charged particles in the ionosphere and troposphere
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Drawil2012"
 
 \end_inset
@@ -527,7 +522,7 @@ Another factor is the so called satellite ephemeris error, which is caused
  Both this error and the error caused by the electrically charged particles
  can be adjusted for giving a final accuracy of a few meters
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Drawil2012"
 
 \end_inset
@@ -540,7 +535,7 @@ key "Drawil2012"
  same in mobile GPS receivers nearby, which thereby will receive correction
  signals
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Bajaj2002"
 
 \end_inset
@@ -555,7 +550,7 @@ Differential GPS can however not adjust to the so called multipath error
  To avoid this error the receiver needs to have a clear view to the satellites.
  Otherwise the multipath error might, according to Drawil, Amar and Basir
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Drawil2012"
 
 \end_inset
@@ -573,7 +568,7 @@ In this project, the GPS technology is mainly utilized to calculate the
  most recent sensor updates and has the great advantage of not being dependent
  on how the user carries the device at all
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "AndroidOpenSourceproject"
 
 \end_inset
@@ -592,7 +587,7 @@ Accelerometer
 \begin_layout Standard
 The accelerometer gives the linear acceleration of device 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "AndroidOpenSourceproject2014"
 
 \end_inset
@@ -689,7 +684,7 @@ Gyroscope
 \begin_layout Standard
 Gives the rotational speed of the device around each of its axises 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "AndroidOpenSourceproject2014"
 
 \end_inset
