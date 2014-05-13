@@ -304,7 +304,7 @@ key "NCOSBPNT2014"
 .
  The 24 satellites that are being used for this are put out in six different
  orbits circulating the earth in a manner that assures visibility of at
- least five of them no matter of time and location on the earth
+ least five of them no matter of time and location on the earth 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -358,7 +358,7 @@ reference "eq:distance1"
 
 \end_inset
 
-)
+) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -411,7 +411,7 @@ reference "fig:Trilateration"
 
 \end_inset
 
-
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -458,6 +458,16 @@ Location finding using trilateration
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bajaj2002"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -484,13 +494,16 @@ reference "fig:Trilateration"
  Also, another satellite might be used to synchronize the GPS receiver's
  internal clock.
  When a receiver is having a fixed position it can be used along with another
- satellites position to determine their intermediate distance, which in
- combination with the speed of light will give the travel time of a PNC
- between them.
+ satellites position to determine their intermediate distance(
+\begin_inset Formula $\triangle x$
+\end_inset
+
+), which in combination with the speed of light will give the travel time
+ of a PNC between them.
  By adding the calculated travel time to the departure time of the PNC the
  correct current time in the GPS receiver is acquired.
  This is good practice since the clock in the satellite that is being synchroniz
-ed to is atomic and thereby very accurate
+ed to is atomic and thereby very accurate 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -505,7 +518,7 @@ key "Bajaj2002"
 The positioning accuracy is however affected by some factors of which one
  has to do with the speed of light only being constant in vacuum.
  This might cause a slight delay to a PNC as it gets slowed down by electrically
- charged particles in the ionosphere and troposphere
+ charged particles in the ionosphere and troposphere 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Drawil2012"
@@ -520,7 +533,7 @@ key "Drawil2012"
 Another factor is the so called satellite ephemeris error, which is caused
  by differences in the anticipated and the actual position of a satellite.
  Both this error and the error caused by the electrically charged particles
- can be adjusted for giving a final accuracy of a few meters
+ can be adjusted for giving a final accuracy of a few meters 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Drawil2012"
@@ -533,7 +546,7 @@ key "Drawil2012"
  stationary GPS receiver with a known location.
  It is likely that the location offset in the stationary receiver is the
  same in mobile GPS receivers nearby, which thereby will receive correction
- signals
+ signals 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -549,6 +562,7 @@ Differential GPS can however not adjust to the so called multipath error
  or hilly terrain.
  To avoid this error the receiver needs to have a clear view to the satellites.
  Otherwise the multipath error might, according to Drawil, Amar and Basir
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Drawil2012"
@@ -566,7 +580,7 @@ In this project, the GPS technology is mainly utilized to calculate the
  acquire a user bearing.
  This bearing is the direction that the user has been traveling during the
  most recent sensor updates and has the great advantage of not being dependent
- on how the user carries the device at all
+ on how the user carries the device at all 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndroidOpenSourceproject"
