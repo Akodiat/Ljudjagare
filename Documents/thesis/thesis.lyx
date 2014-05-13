@@ -194,12 +194,6 @@ customHeadersFooters
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
 \begin_inset Note Note
 status open
 
@@ -280,7 +274,7 @@ pagestyle{plain}
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The summary should not have page headers.
@@ -312,6 +306,15 @@ filename "Summary.lyx"
 
 \begin_layout Standard
 \begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
