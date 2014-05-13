@@ -326,9 +326,14 @@ key "hrtf_article"
  us determine where a specific sound source is located.
  The filtering properties of the pinna even makes it possible for us to
  differentiate between sounds appearing from the front and from above, as
- can be seen on the PICTURE BELOW.
- The picture shows a difference in measured frequency response depending
- on the location of the sound source.
+ can be seen on 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hrtf"
+
+\end_inset
+
+.
  Naturally, the filtering properties of the pinna are of great value when
  trying to recreate a natural environment using only two speakers.
  Such environments can be very useful when simulating virtual realities
@@ -344,8 +349,48 @@ key "acoustics_and_audio"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/pinna.gif
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hrtf"
+
+\end_inset
+
+Figure showing the difference in measured frequency response depending on
+ the location of the sound source 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pinna_pic"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -433,6 +478,20 @@ ed and generic HRTFs, with the virtual sound's position only moving in the
  decreases as the virtual sound is moved further up and down.
  But also that the HRTFs being used has a great impact on the elevational
  accuracy (the invidualized HRTFs provided greater performance).
+\end_layout
+
+\begin_layout Standard
+A general problem with non-invidualized HRTFs is that, due to different
+ shapes of the pinna, confusion whether a sound is appearing from the front
+ or back might appear 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "back_front_hrtf"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
