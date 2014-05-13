@@ -322,6 +322,8 @@ Spatial audio using external libraries
 \end_layout
 
 \begin_layout Standard
+
+\color green
 OpenSL ES is a cross-platform API that enables audio functionality in native
  applications on multimedia devices 
 \begin_inset CommandInset citation
@@ -352,6 +354,8 @@ key "opensl"
 \end_layout
 
 \begin_layout Standard
+
+\color green
 After implementing a simple test application using OpenSL ES and its spatial
  audio features, testing it on our own phones* did indeed result in a SL_RESULT_
 FEATURE_UNSUPPORTED being thrown.
@@ -362,6 +366,8 @@ FEATURE_UNSUPPORTED being thrown.
 \end_layout
 
 \begin_layout Standard
+
+\color green
 OpenAL is, just like OpenSL ES, an API that enables the creation of spatial
  sound environments independent on the soundcard setup.
  As a result it eliminates the problem with programmers having to write
@@ -371,6 +377,8 @@ OpenAL is, just like OpenSL ES, an API that enables the creation of spatial
 \end_layout
 
 \begin_layout Standard
+
+\color green
 The OpenAL version we used has been adapted to Android by Martins Mozeiko
  and Chris Robinson.
  They have patched the code to make it work on Android.
@@ -386,6 +394,8 @@ The OpenAL version we used has been adapted to Android by Martins Mozeiko
 \end_layout
 
 \begin_layout Standard
+
+\color green
 Our sound sources places in the 3D environment are static (since that’s
  how our application works).
  The only thing getting updated as the user is moving is the angle of the
@@ -394,24 +404,37 @@ Our sound sources places in the 3D environment are static (since that’s
 \end_layout
 
 \begin_layout Subsection
+
+\color green
 Feedback to the user
 \end_layout
 
 \begin_layout Standard
+
+\color green
 One of the biggest part of the application is the 
 \end_layout
 
 \begin_layout Standard
+
+\color green
 Something about 
 \end_layout
 
 \begin_layout Standard
+
+\color green
 As mentioned in the theory chapter, non-invidualised HRTFs suffer from back-fron
 t confusion.
- It would therefore be r
+ It would therefore be risky to rely single-handedly on the 3D properties
+ of HRTFs in an application depending entirely on the directional properties
+ of its audio.
+ To avoid 
 \end_layout
 
 \begin_layout Standard
+
+\color green
 BILD PÅ HUR LJUDET ÄR FÖRDELAT
 \end_layout
 
