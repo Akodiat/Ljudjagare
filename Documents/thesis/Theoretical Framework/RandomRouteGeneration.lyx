@@ -129,6 +129,8 @@ customHeadersFooters
 \begin_body
 
 \begin_layout Left Header
+
+\lang british
 \begin_inset Argument
 status open
 
@@ -194,6 +196,8 @@ Enable page headers and add the chapter to the header line.
 \end_layout
 
 \begin_layout Right Header
+
+\lang british
 \begin_inset Argument
 status open
 
@@ -219,6 +223,8 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
+
+\lang british
 \begin_inset Argument
 status open
 
@@ -248,6 +254,8 @@ thepage
 \end_layout
 
 \begin_layout Right Footer
+
+\lang british
 \begin_inset Argument
 status open
 
@@ -274,10 +282,14 @@ thepage
 \end_layout
 
 \begin_layout Section
-Random route generation algorithm
+
+\lang british
+Various methods for the random route generation algorithm
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 To be able to quickly use the application when the user want to get out
  and run the sound sources (checkpoints) are generated out of a predefined
  algorithm.
@@ -286,27 +298,43 @@ To be able to quickly use the application when the user want to get out
  a road or trail.
 \end_layout
 
-\begin_layout Standard
-There are several methods to generate a location that is reachable.
- One way is to first randomly generate a location.
- This location is then evaluated if it lies in an appropriate environment
- by extracting the color that the location has on a map.
- By classifying all the colors on a map by its color for example blue is
- equal to water, light green is equal to grass, and so on one can compare
- the color on a location and then classify it thereafter.
- If the color is blue the location is most likely located in water of some
- kind.
- In this scenario a new random location has to be generated and evaluated
- in the same way.
- Only if the location has an color that is accepted, for example light green
- it is saved and can be used in the route.
- In order to implement this an accurate map is required that i linked to
- some kind of coordinate system.
- It must also be possible to extract the color of the random location.
- 
+\begin_layout Paragraph
+
+\lang british
+Colour classification method
 \end_layout
 
 \begin_layout Standard
+
+\lang british
+There are several methods to generate a location that is reachable.
+ One way is to first randomly generate a location.
+ This location is then evaluated if it lies in an appropriate environment
+ by extracting the colour that the location has on a map.
+ By classifying all the colours on a map by its colour for example blue
+ is equal to water, light green is equal to grass, and so on one can compare
+ the colour on a location and then classify it thereafter.
+ If the colour is blue the location is most likely located in water of some
+ kind.
+ In this scenario a new random location has to be generated and evaluated
+ in the same way.
+ Only if the location has an colour that is accepted, for example light
+ green it is saved and can be used in the route.
+ In order to implement this an accurate map is required that i linked to
+ some kind of coordinate system.
+ It must also be possible to extract the colour of the random location.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\lang british
+Geocoding API request method
+\end_layout
+
+\begin_layout Standard
+
+\lang british
 \begin_inset CommandInset label
 LatexCommand label
 name "google maps random"
@@ -332,6 +360,8 @@ key "GoogleDevelopers2014"
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 In this project the second approach is implemented and it is described how
  in chapter 3, 
 \begin_inset CommandInset ref
