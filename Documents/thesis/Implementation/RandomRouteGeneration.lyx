@@ -285,17 +285,6 @@ name "sec:Random-route-implementation"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-
-\color red
-Har inte refererat bilderna till texten rätt än!
-\end_layout
-
-\end_inset
-
 To be able to quickly use the application when the user want to get out
  and run the sound sources (checkpoints) are generated out of a predefined
  algorithm.
