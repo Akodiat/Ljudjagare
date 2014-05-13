@@ -96,7 +96,7 @@ customHeadersFooters
 \use_esint 1
 \use_mhchem 1
 \use_mathdots 1
-\cite_engine basic
+\cite_engine natbib_authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -315,12 +315,20 @@ name "google maps random"
 
 Another approach is to use Google maps and the function directions.
  As before a random location is generated.
- Then a request to Google direction is sent with the walking direction from
- the users location to the random location.
+ Then a geocoding API request is sent to Google asking for the walking direction
+ from the users location to the random location.
  The answer from Google gives the direction to the closest reachable point
- to the location.
- This closest point is then extracted and is used as the random location.
- {https://developers.google.com/maps/documentation/geocoding/} 
+ nearby the location.
+ This closest point is then extracted and is used as the random location
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "GoogleDevelopers2014"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard

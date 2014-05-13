@@ -96,7 +96,7 @@ customHeadersFooters
 \use_esint 1
 \use_mhchem 1
 \use_mathdots 1
-\cite_engine basic
+\cite_engine natbib_authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -313,17 +313,23 @@ reference "google maps random"
 .
  In this sub chapter it is explained how the algorithm using Google Maps
  geocoding API has been implemented in this project.
- 
+ All the calculations has been done with the geographic coordinate system
+ using latitude and longitude and has been inspired from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "atok2013"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Every time the algorithm is running is an theoretical route generated based
- on the number of checkpoints and the distance that has been set in the
- settings by the user.
+Every time the algorithm runs is a theoretical route generated based on
+ the number of checkpoints and the distance that has been set in the settings
+ by the user.
  If the algorithm is based on the same settings this theoretical route will
  always look the same.
- All the calculations has been done with the geographic coordinate system
- using latitude and longitude.
  As seen in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -331,10 +337,10 @@ reference "fig:random route"
 
 \end_inset
 
- a circular route has been generated in red with four checkpoints and a
+ a circular dotted route has been generated with four checkpoints and a
  distance k.
  This is done by setting the starting point of the circle at the position
- of the user and moving the origin to the middle of the theoretical red
+ of the user and moving the origin to the middle of the theoretical dotted
  circle.
  By dividing a full revolution (2 *
 \family roman
@@ -427,7 +433,16 @@ l rotation matrix with the angle y.
 \end_layout
 
 \begin_layout Standard
-The random green route is now generated.
+The new longitude and latitude is then added to the location of the user
+ for every checkpoint and a random route is now generated, continuous lined
+ circle in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:random route"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -442,7 +457,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/routing.svg
+	filename Figures/routing.eps
 	lyxscale 50
 	width 40page%
 
@@ -474,15 +489,23 @@ Random...
 \begin_layout Standard
 To make this randomly generated route reachable a geocoding API request
  of directions from your current location to the new locations is send to
- Google Maps{https://developers.google.com/maps/documentation/geocoding/}.
+ Google Maps 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "GoogleDevelopers2014"
+
+\end_inset
+
+.
  The answer from Google is a list of locations of the shortest route to
  the destination.
- It is a big chance that the generated locations is not on the road but
- instead in the forest or in a lake.
- But by taking out the last location that is given by Google maps direction
- you find a location that is as close as possible to the generated locations
+ It is a big chance that the generated locations is not on a road but instead
+ in the forest or in a lake.
+ But by taking out the last location that is given by Google for every checkpoin
+t you find the location that is as close as possible to the generated locations
  but it is reachable.
- This locations is then set as a checkpoints.
+ This locations is then set as a checkpoints and the random route algorithm
+ is finished.
  
 \end_layout
 
