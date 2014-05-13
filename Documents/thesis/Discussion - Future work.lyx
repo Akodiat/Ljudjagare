@@ -385,10 +385,14 @@ Database
 
 \end_inset
 
- As the current application only handles a single user another improvement
- would be to add network functionality.
- With a central server keeping track of the sound sources multiple users
- can perceive and navigate to the same sounds.
+ The embedded database that was implemented was sufficient for the purpose
+ of the project but a better option would be to have a server based database
+ system that would have a web interface or it could even be merged with
+ Facebook or other social media to allow the user to share their progress
+ as well as read about the achievements that their friends have made.
+ This would make it easier for the users to access their data from different
+ devices and the progress would not have been lost even if the user would
+ replace their current smartphone.
 \end_layout
 
 \begin_layout Standard
