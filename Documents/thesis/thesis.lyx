@@ -709,7 +709,7 @@ restore the right header line
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "References/References_Marcus,References/References_Daniel,References/References,References/References_Joakim,References/References_Anton,References/References_Linus"
-options "bibtotoc,plainnat"
+options "plainnat"
 
 \end_inset
 
