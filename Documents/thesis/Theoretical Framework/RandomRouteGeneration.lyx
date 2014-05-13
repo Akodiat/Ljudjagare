@@ -320,7 +320,7 @@ Another approach is to use Google maps and the function directions.
  The answer from Google gives the direction to the closest reachable point
  to the location.
  This closest point is then extracted and is used as the random location.
- {https://developers.google.com/maps/documentation/android/} 
+ {https://developers.google.com/maps/documentation/geocoding/} 
 \end_layout
 
 \begin_layout Standard

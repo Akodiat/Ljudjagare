@@ -302,8 +302,8 @@ To be able to quickly use the application when the user want to get out
  The checkpoints must be generated at reachable locations.
  It can for example not be placed in a lake or a building but instead on
  a road or trail.
- To accomplish this the application uses Google Maps and its routing features
- 
+ To accomplish this the application uses Google Maps geocoding API and its
+ routing features 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "google maps random"
@@ -311,12 +311,17 @@ reference "google maps random"
 \end_inset
 
 .
+ In this sub chapter it is explained how the algorithm using Google Maps
+ geocoding API has been implemented in this project.
  
 \end_layout
 
 \begin_layout Standard
-First is an theoretical route generated based on the number of checkpoints
- and the distance that has been set in the settings by the user.
+Every time the algorithm is running is an theoretical route generated based
+ on the number of checkpoints and the distance that has been set in the
+ settings by the user.
+ If the algorithm is based on the same settings this theoretical route will
+ always look the same.
  All the calculations has been done with the geographic coordinate system
  using latitude and longitude.
  As seen in 
@@ -331,23 +336,98 @@ reference "fig:random route"
  This is done by setting the starting point of the circle at the position
  of the user and moving the origin to the middle of the theoretical red
  circle.
- By dividing a full revolution (2 pi) by the number of checkpoints, the
- angle x, between them is calculated.
- To get the next checkpoint, the calculated angle is added to the starting
+ By dividing a full revolution (2 *
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+π) by the number of checkpoints, the angle x, between them is calculated.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x=2*\text{π}/numberOfCheckpoints$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To get the next checkpoint, the calculated angle is added to the starting
  position and create checkpoint 2.
  The same is done for every checkpoint until all have been created.
  
 \end_layout
 
 \begin_layout Standard
-This theoretical route is then rotated around the location of the user by
- an random angle y.
- The random angle is calculated by multiplying a full revolution (2 pi)
- by a random number between 0 and 1.
+To make the routes different from each other every time the algorithm runs
+ the theoretical route is rotated around the location of the user by an
+ random angle y.
+ The random angle is calculated by multiplying a full revolution (2 *
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+π) by a random number between 0 and 1.
  The rotation is done by multiplying the difference in latitude and longitude
  of every checkpoint compared to the location of the user, with a two-dimensiona
 l rotation matrix with the angle y.
- The random green route is now generated.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $newLongitude=cos(y)*differanceInLongitude+sin(y)*differenceInLatitude$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $newLatitude=-sin(y)*differanceInLongitude+cos(y)*differenceInLatitude$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The random green route is now generated.
  
 \end_layout
 
