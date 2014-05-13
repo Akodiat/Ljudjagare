@@ -562,9 +562,18 @@ name "fig:ActionBar"
 
 An Action Bar and its components App Icon (1), View control (2), Action
  Buttons (3) and Action overflow menu (4)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "actionbar2014"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -573,10 +582,6 @@ key "actionbar2014"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -802,9 +807,18 @@ name "fig:navdrawer"
 
 Leftmost figure indicating how the navigation drawer may be accessed either
  by swiping from the left or by pressing the app icon
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "NavigationDrawer2014"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -868,9 +882,18 @@ name "fig:navdrawerIcon"
 \end_inset
 
 An app icon provided with the navigation drawer indicator
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset citation
 LatexCommand cite
 key "NavigationDrawer2014"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
