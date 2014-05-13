@@ -331,35 +331,15 @@ reference "fig:random route"
  This is done by setting the starting point of the circle at the position
  of the user and moving the origin to the middle of the theoretical dotted
  circle.
- By dividing a full revolution (2 *
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-π) by the number of checkpoints, the angle x, between them is calculated.
+ By dividing a full revolution (
+\begin_inset Formula $2*\pi$
+\end_inset
+
+) by the number of checkpoints, the angle x, between them is calculated.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $x=2*\text{π}/numberOfCheckpoints$
+\begin_inset Formula $x=2*\pi/numberOfCheckpoints$
 \end_inset
 
 
@@ -376,31 +356,11 @@ To get the next checkpoint, the calculated angle is added to the starting
 To make the routes different from each other every time the algorithm runs
  the theoretical route is rotated around the location of the user by an
  random angle y.
- The random angle is calculated by multiplying a full revolution (2 *
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-π) by a random number between 0 and 1.
+ The random angle is calculated by multiplying a full revolution (
+\begin_inset Formula $2*\pi$
+\end_inset
+
+) by a random number between 0 and 1.
  The rotation is done by multiplying the difference in latitude and longitude
  of every checkpoint compared to the location of the user, with a two-dimensiona
 l rotation matrix with the angle y.
