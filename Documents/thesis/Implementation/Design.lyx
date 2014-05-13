@@ -96,7 +96,7 @@ customHeadersFooters
 \use_esint 1
 \use_mhchem 1
 \use_mathdots 1
-\cite_engine basic
+\cite_engine natbib_authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -287,10 +287,21 @@ Establishment of requirements
 \end_layout
 
 \begin_layout Standard
-As a starting point inspiration was taken from the apps Endomondo {https://play.g
-oogle.com/store/apps/details?id=com.endomondo.android, 2014-03-28} and “Zombies,
- Run!” {https://play.google.com/store/apps/details?id=com.sixtostart.zombiesrun,
- 2014-03-28}.
+As a starting point inspiration was taken from the apps Endomondo 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Endomondo2014"
+
+\end_inset
+
+ and “Zombies, Run!” 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "SixtoStart2014"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -299,10 +310,10 @@ These apps are in some sense their opposites.
  Endomondo focuses on the running experience and lets the user quickly get
  started with a run.
  “Zombies, Run!” on the other hand focuses more on external game elements
- like what items were picked up during a run and the upgrading of the users
- basecamp.
- Also Endomondo is very detailed in its statistics while “Zombies, Run!”
- is not.
+ like outrunning zombies, picking up items and the upgrading the user's
+ base camp.
+ Also Endomondo puts a lot of focus on detailed statistics which is not
+ the case for “Zombies, Run!”.
 \end_layout
 
 \begin_layout Standard
