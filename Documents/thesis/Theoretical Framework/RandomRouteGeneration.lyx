@@ -96,7 +96,7 @@ customHeadersFooters
 \use_esint 1
 \use_mhchem 1
 \use_mathdots 1
-\cite_engine natbib_authoryear
+\cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -284,7 +284,7 @@ thepage
 \begin_layout Section
 
 \lang british
-Various methods for the random route generation algorithm
+Generation of random locations: Different approaches
 \end_layout
 
 \begin_layout Standard
@@ -293,9 +293,10 @@ Various methods for the random route generation algorithm
 To be able to quickly use the application when the user want to get out
  and run the sound sources (checkpoints) are generated out of a predefined
  algorithm.
- The checkpoints must be generated at reachable locations.
- It can for example not be placed in a lake or a building but instead on
- a road or trail.
+ The checkpoints must be generated at reachable locations and can for example
+ not be placed in a lake or a building but instead on a road or trail.
+ There are several methods to generate a location that is reachable and
+ two methods is described in this chapter.
 \end_layout
 
 \begin_layout Paragraph
@@ -307,8 +308,7 @@ Colour classification method
 \begin_layout Standard
 
 \lang british
-There are several methods to generate a location that is reachable.
- One way is to first randomly generate a location.
+One way is to first randomly generate a location.
  This location is then evaluated if it lies in an appropriate environment
  by extracting the colour that the location has on a map.
  By classifying all the colours on a map by its colour for example blue
@@ -320,7 +320,7 @@ There are several methods to generate a location that is reachable.
  in the same way.
  Only if the location has an colour that is accepted, for example light
  green it is saved and can be used in the route.
- In order to implement this an accurate map is required that i linked to
+ In order to implement this an accurate map is required that is linked to
  some kind of coordinate system.
  It must also be possible to extract the colour of the random location.
  

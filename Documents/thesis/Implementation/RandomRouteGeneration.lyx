@@ -96,7 +96,7 @@ customHeadersFooters
 \use_esint 1
 \use_mhchem 1
 \use_mathdots 1
-\cite_engine natbib_authoryear
+\cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -274,10 +274,10 @@ thepage
 \end_layout
 
 \begin_layout Section
-Random route generation algorithm
+Generation of random locations
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Random-route-implementation"
+name "sec:Random-route-implementation-1-1"
 
 \end_inset
 
@@ -288,9 +288,8 @@ name "sec:Random-route-implementation"
 To be able to quickly use the application when the user want to get out
  and run the sound sources (checkpoints) are generated out of a predefined
  algorithm.
- The checkpoints must be generated at reachable locations.
- It can for example not be placed in a lake or a building but instead on
- a road or trail.
+ The checkpoints must be generated at reachable locations and can for example
+ not be placed in a lake or a building but instead on a road or trail.
  To accomplish this the application uses Google Maps geocoding API and its
  routing features 
 \begin_inset CommandInset ref
@@ -322,7 +321,7 @@ Every time the algorithm runs is a theoretical route generated based on
  As seen in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:random route"
+reference "fig:random route-1-1"
 
 \end_inset
 
@@ -335,11 +334,23 @@ reference "fig:random route"
 \begin_inset Formula $2*\pi$
 \end_inset
 
-) by the number of checkpoints, the angle x, between them is calculated.
+) by the number of checkpoints, the angle x, between them is calculated
+ as in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:angle checkpoints"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $x=2*\pi/numberOfCheckpoints$
+\begin_inset Formula 
+\begin{equation}
+x=\frac{2*\pi}{numberOfCheckpoints}\label{eq:angle checkpoints}
+\end{equation}
+
 \end_inset
 
 
@@ -363,19 +374,41 @@ To make the routes different from each other every time the algorithm runs
 ) by a random number between 0 and 1.
  The rotation is done by multiplying the difference in latitude and longitude
  of every checkpoint compared to the location of the user, with a two-dimensiona
-l rotation matrix with the angle y.
+l rotation matrix with the angle y as in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:newLongitude"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:newLatitude"
+
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $newLongitude=cos(y)*differanceInLongitude+sin(y)*differenceInLatitude$
+\begin_inset Formula 
+\begin{equation}
+newLongitude=\cos\left(y\right)*differanceInLongitude+sin(y)*differenceInLatitude\label{eq:newLongitude}
+\end{equation}
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $newLatitude=-sin(y)*differanceInLongitude+cos(y)*differenceInLatitude$
+\begin_inset Formula 
+\begin{equation}
+newLatitude=-sin(y)*differanceInLongitude+cos(y)*differenceInLatitude\label{eq:newLatitude}
+\end{equation}
+
 \end_inset
 
 
@@ -387,7 +420,7 @@ The new longitude and latitude is then added to the location of the user
  circle in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:random route"
+reference "fig:random route-1-1"
 
 \end_inset
 
@@ -418,7 +451,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:random route"
+name "fig:random route-1-1"
 
 \end_inset
 
