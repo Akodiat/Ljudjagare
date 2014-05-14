@@ -308,6 +308,13 @@ Colour classification method
 \begin_layout Standard
 
 \lang british
+Vi har hittat på dem själva.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang british
 One way is to first randomly generate a location.
  This location is then evaluated if it lies in an appropriate environment
  by extracting the colour that the location has on a map.
