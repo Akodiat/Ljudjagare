@@ -286,7 +286,14 @@ Sensor fusion is the concept of combining multiple sensors in order to increase
 \end_layout
 
 \begin_layout Standard
-Since the gyroscope values measures rotation in the local coordinate system
+As covered in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:Gyroscope"
+
+\end_inset
+
+, the gyroscope values measures rotation in the local coordinate system
  of the device, the gyroscope readings has to be converted into the global
  coordinate system.
  Since the accelerometer readings contain the acceleration toward the ground,
@@ -342,8 +349,8 @@ key "Rocketmagnet2012"
 \end_layout
 
 \begin_layout Standard
-However, because this for unknown reasons doesn't work, we negate two of
- the addends:
+However, in order to make the rotation correct around all axes, trials show
+ that two of the addend requires negation.
 \end_layout
 
 \begin_layout Standard
@@ -419,7 +426,8 @@ v_{n}=\sum_{i=0}^{n}\omega_{i}(t_{i}-t_{i-1})
 \end_layout
 
 \begin_layout Standard
-However, this method only calculates an angle relative to a start angle.
+However, this method only calculates a current angle relative to a start
+ angle.
  In other words, the user would clearly perceive a direction of the sound
  is coming from, the sound levels updating correctly when the user is turning
  around, but the perceived direction is not the same as the one the coin
@@ -478,6 +486,13 @@ o_{n-1}+\omega_{i}(t_{i}-t_{i-1}) & else
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+This will cause the user direction to automatically adjust itself.
+ Trials show that it works quite well while moving slowly, but since higher
+ speeds creates more frequent adjustments and more confusion for the user
+ the gyro-gps fusion is only implemented as optional in the final application.
 \end_layout
 
 \end_body

@@ -278,8 +278,12 @@ Android sensors: Differences and comparison
 \end_layout
 
 \begin_layout Standard
-In this project it was important to determine the user direction; the direction
- in which user is facing.
+In order to correctly play the sound, it was important to determine the
+ direction in which user is facing; the 
+\emph on
+user direction
+\emph default
+.
  Since the orientation of the phone relative to the user is unknown (a user
  may carry a phone in many ways), the problem of acquiring a user direction
  is not elementary.
@@ -599,7 +603,8 @@ Accelerometer
 \end_layout
 
 \begin_layout Standard
-The accelerometer gives the linear acceleration of device 
+The accelerometer gives the linear acceleration of device in the device's
+ coordinate system
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndroidOpenSourceproject2014"
@@ -607,14 +612,14 @@ key "AndroidOpenSourceproject2014"
 \end_inset
 
 .
- 
-\end_layout
+ As illustrated in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Coordinate-system- Accelerometer"
 
-\begin_layout Standard
-These values can be used together with magnetic field sensor to obtain device
- orientation, or together with the gyroscope to obtain rotation in a global
- coordinate system.
- The accelerometer gives values as a 3-dimentional vector 
+\end_inset
+
+, the accelerometer gives values as a 3-dimentional vector 
 \family roman
 \series medium
 \shape up
@@ -647,6 +652,24 @@ a{}_{3}
 
  is the upward moving speed.
  
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Although the coordinate system is based on the device, a gravitational accelerat
+ion is always measured toward the ground.
+ This makes it possible to convert measurements in the coordinate system
+ of the device into a global coordinate system.
+ For example, these values can be used together with magnetic field sensor
+ to obtain device orientation (basically a compass), or together with the
+ gyroscope to obtain rotation in a global coordinate system.
 \end_layout
 
 \begin_layout Standard
@@ -669,7 +692,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Coordinate system of the accelerometer
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Coordinate-system- Accelerometer"
+
+\end_inset
+
+Coordinate system and measured vector of the accelerometer.
 \end_layout
 
 \end_inset
@@ -687,8 +716,16 @@ Magnetic field
 \end_layout
 
 \begin_layout Standard
-Determines the magnetic field strength.
- Can be used together with accelerometer obtain device orientation.
+The magnetic field sensor determines current magnetic field strength 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "AndroidOpenSourceproject2014"
+
+\end_inset
+
+.
+ As mentioned above, it can be used together with the accelerometer obtain
+ device orientation.
 \end_layout
 
 \begin_layout Subsection
@@ -706,7 +743,7 @@ key "AndroidOpenSourceproject2014"
 .
  While it has a lot less disturbances than a accelerometer and magnetometer
  compass, it only determines change of direction and not the direction itself.
- The accelerometer gives values as a 3-dimentional vector 
+ The gyroscope gives values as a 3-dimentional vector 
 \family roman
 \series medium
 \shape up
@@ -766,7 +803,7 @@ reference "fig:gyroCoord"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -788,7 +825,7 @@ name "fig:gyroCoord"
 
 \end_inset
 
-Coordinate system of the accelerometer
+Coordinate system and measurement vector of the gyroscope.
 \end_layout
 
 \end_inset
