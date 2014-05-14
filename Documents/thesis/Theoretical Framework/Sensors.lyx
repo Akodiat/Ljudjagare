@@ -671,7 +671,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/coord_system_accel.eps
+	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_accel.eps
 	lyxscale 20
 	width 40text%
 
@@ -719,6 +719,13 @@ key "AndroidOpenSourceproject2014"
 
 \begin_layout Subsection
 Gyroscope
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Gyroscope"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -798,7 +805,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/coord_system_gyro.eps
+	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_gyro.eps
 	lyxscale 20
 	width 40text%
 
@@ -822,12 +829,12 @@ Coordinate system and measurement vector of the gyroscope.
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
-\end_inset
-
+\begin_layout Standard
 
 \end_layout
 

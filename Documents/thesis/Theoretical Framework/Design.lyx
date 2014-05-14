@@ -340,6 +340,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/prominent_done_button.PNG
 	width 40page%
@@ -424,6 +426,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/cover-flow.png
 	width 40page%
@@ -466,8 +470,8 @@ Android design patterns
 
 \begin_layout Standard
 Android standard design patterns are used where applicable in the application.
- A great advantage of using Android design patterns is that the app becomes
- consistent to other apps on the Android platform
+ A great advantage of using Android design patterns is that the application
+ becomes consistent to other application on the Android platform
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaeki2013"
@@ -479,15 +483,46 @@ key "Lehtimaeki2013"
 \end_layout
 
 \begin_layout Standard
-Portions of this page are reproduced from work created and shared by the
- Android Open Source Project (https://code.google.com/policies.html) and used
- according to terms described in the Creative Commons 2.5 Attribution License
- (http://creativecommons.org/licenses/by/2.5/).
-\begin_inset Marginal
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-Is this the right way to do it? https://developer.android.com/license.html
+Portions of this section (the images) are reproduced from work created and
+ 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "shared by the Android Open Source Project"
+target "https://code.google.com/policies.html"
+
+\end_inset
+
+
+\color inherit
+ and used according to terms described in the 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Creative Commons 2.5 Attribution License "
+target "http://creativecommons.org/licenses/by/2.5/"
+
+\end_inset
+
+
+\color inherit
+.
 \end_layout
 
 \end_inset
