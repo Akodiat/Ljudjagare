@@ -285,18 +285,10 @@ key "Tidwell2011"
 
 \end_inset
 
- it is stated that 
-\begin_inset Quotes eld
-\end_inset
-
-The applications that are easy to use are designed to be familiar
-\begin_inset Quotes erd
-\end_inset
-
-.
- It is further discussed that when parts of an app are recognizable and
- have clear relationships between each other the users will be able to apply
- previous knowledge and understand what to do.
+ it is stated that easily used applications are designed to be familiar.
+ It is further discussed that when parts of an application are recognizable
+ and have clear relationships between each other the users will be able
+ to apply previous knowledge and understand what to do.
  Design patterns is a way to capture and group common structures together,
  thus easing the usability when applied.
  
@@ -309,15 +301,7 @@ Prominent Done button
 \begin_layout Standard
 One common design pattern is the 
 \shape italic
-Prominent 
-\begin_inset Quotes eld
-\end_inset
-
-Done
-\begin_inset Quotes erd
-\end_inset
-
- Button
+Prominent Done Button
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Tidwell2011"
@@ -329,19 +313,8 @@ key "Tidwell2011"
  which is used in the final step of a transaction.
  The pattern is applies by creating a button that actually looks like a
  clear button, and not a link or another navigation element.
- It is often good practice to also make a 
-\shape italic
-Prominent 
-\begin_inset Quotes eld
-\end_inset
-
-Done
-\begin_inset Quotes erd
-\end_inset
-
- Button
-\shape default
- large and with bold 
+ It is often good practice to also make a Prominent Done Button large and
+ with bold 
 \lang british
 colours
 \lang english
@@ -410,7 +383,7 @@ Done
 \end_layout
 
 \begin_layout Subsection
-Carousel pattern
+Carousel- and filmstrip pattern
 \end_layout
 
 \begin_layout Standard
@@ -429,12 +402,8 @@ key "Tidwell2011"
 .
  The pattern is useful when the user does not know exactly what item he/she
  wants and thereby wants to browse between the options.
- A picture representing an item and optionally some metadata such as name,
- is usually enough representation in a 
-\shape italic
-Carousel
-\shape default
-.
+ A picture representing an item and optionally some meta data such as name,
+ is usually enough representation in a Carousel.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -506,7 +475,23 @@ key "Lehtimaeki2013"
 \end_inset
 
 .
- 
+ Below follows a description of the patterns that are used.
+\end_layout
+
+\begin_layout Standard
+Portions of this page are reproduced from work created and shared by the
+ Android Open Source Project and used according to terms described in the
+ Creative Commons 2.5 Attribution License.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Is this the right way to do it? https://developer.android.com/license.html
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -514,7 +499,10 @@ Action Bar pattern
 \end_layout
 
 \begin_layout Standard
-One of the most defining design components in Android is the Action Bar
+One of the most defining design components in Android is the 
+\shape italic
+Action Bar
+\shape default
  pattern.
  As the name suggests it is a bar containing components, as the ones numbered
  in 
@@ -590,11 +578,7 @@ The most important feature of the action bar is perhaps, as the name suggests,
 status open
 
 \begin_layout Plain Layout
-
-\lang british
-Fråga
-\lang english
-: Får man göra såhär med hänvisning med siffror?
+Question: Are we allowed to point to numbers like this?
 \end_layout
 
 \end_inset
@@ -617,7 +601,7 @@ key "Lehtimaeki2013"
 
 .
  A final criteria might be whether the action may work as a good selling
- point of the application, as for example if it represents a cool feature
+ point of the application, as for example if it represents a neat feature
 \begin_inset CommandInset citation
 LatexCommand cite
 key "actionbar2014"
@@ -664,14 +648,14 @@ reference "fig:ActionBar"
  When an app has different views the app logo becomes a consistent identifier
  letting the user know which app is currently running.
  The app logo can also have the function of an up button taking the user
- one step up in the hierarchy (as is the case in (1) in 
+ one step up in the hierarchy, as is the case in (1) in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ActionBar"
 
 \end_inset
 
-) or a home button taking the user to the home view
+, or a home button taking the user to the home view
 \begin_inset CommandInset citation
 LatexCommand cite
 key "actionbar2014"
@@ -774,56 +758,6 @@ key "NavigationDrawer2014"
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Figures/navigation_drawer_overview.png
-	width 100text%
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:navdrawer"
-
-\end_inset
-
-Leftmost figure indicating how the navigation drawer may be accessed either
- by swiping from the left or by pressing the app icon.
- The middle figure shows the opened navigation drawer and its links to different
- views.
- In the rightmost figure a view has been opened.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "NavigationDrawer2014"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
 When a view is provided with a navigation drawer it is important to let
  the user know about its existence by putting the navigation drawer indicator
  of three stripes to the left of the app icon as in
