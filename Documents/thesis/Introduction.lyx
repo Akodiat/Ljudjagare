@@ -274,14 +274,24 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Introduction
+Introduction 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Källor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 There are various reasons to why people run; some people do it to stay healthy,
- some do it for the competition.
+ others do it for the competition.
  However, a large part of the population seems to struggle finding motivation
- to run - or to exercise at all for that matter.
+ to run or to exercise at all for that matter.
  A way to motivate those people could be to make running more entertaining
  by adding game-like elements, hence abstracting away from the aspects of
  exercising that might be considered as unattractive.
@@ -289,27 +299,36 @@ There are various reasons to why people run; some people do it to stay healthy,
 \end_layout
 
 \begin_layout Section
-Background
+Background 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dåtid?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 In recent years smartphones containing GPS (Global Positioning System) sensors
- have become more and more common {citation needed}.
+ have become increasingly common {citation needed}.
  As a result of this, multiple smartphone applications making use of the
- GPS for tracking the user position and movement have originated.
+ GPS for tracking the user position and movement have emerged.
  One such example, 
 \emph on
 Endomondo Sports Tracker
 \emph default
- {
-\begin_inset CommandInset href
-LatexCommand href
-name "Endomondo"
-target "https://play.google.com/store/apps/details?id=com.endomondo.android"
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Endomondo2014"
 
 \end_inset
 
-, 2014-03-28} launched in 2008 {
+,2014-03-28} launched in 2008 {
 \begin_inset CommandInset href
 LatexCommand href
 name "Endomondo"
@@ -349,19 +368,37 @@ ng the user.
  The sound would only disappear if the user ran fast enough over a period
  of time, thereby evading the zombies.
  However, the zombie sound effects are not directional.
- Thus, the user didn’t have to run in any specific direction to evade these
+ Thus, the user did not have to run in any specific direction to evade these
  monsters.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+undvik direction
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Meanwhile, directional sound or rather binaural sound, had been around in
- computer games for several years {citation needed}.
+Meanwhile, binaural sound had been around in computer games for several
+ years {citation needed}.
  [----| Include some example here |----] In these games, however, the sound
  generation was based on the movement of the virtual character, not the
  movement of the actual user.
  The possibility of tracking the head movements of the actual user using
  a smartphone was however studied as a master thesis by Paul Lawitzki in
- 2012 called Application of Dynamic Binaural Signals in Acoustic Games.
+ 2012 called Application of Dynamic Binaural Signals in Acoustic Games 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lawitzki2012"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -372,23 +409,44 @@ Combining both the orientation sensors of the modern smartphone with GPS
 \end_layout
 
 \begin_layout Section
-Purpose
+Purpose 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Vi kan inte stå för att den motiverar löpning
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The purpose of the bachelor project is to design and implement an application
- for android smartphones: It will be easy and fun to use so that it will
- encourage running amongst the sedentary society of the present time.
+The purpose of the bachelor project is to design and implement an android
+ application, which will be easy and fun, for android smartphones.
+ It will be easy and fun to use so that it will encourage running amongst
+ the sedentary society of the present time.
  The goal of the application is that it will contain functionality that
  depend on the hardware sensors that we can find in the modern smartphones
  as well as the ability to track ones performance while using the application.
- By the end of the project the application will be a fully functional running
- game that will be possible to take out and use in real life.
+ The application will be a fully functional running game that will be possible
+ to take out and use in real life.
  
 \end_layout
 
 \begin_layout Section
-Report Outline
+Report Outline 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Initially, this report discusses...
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -398,9 +456,10 @@ The following section describes the overall layout of the report.
 \begin_layout Standard
 Chapter two takes up the theoretical framework behind the most important
  parts of the application.
- The subsections of chapter two are Sound, Sensors, Database and also the
- design patterns that of the application, it also describes how a random
- location is generated by using predefined algorithms.
+ The subsections of chapter two are Sound, Sensors, Database and the Design
+ patterns of the application.
+ Furthermore, it describes how a random location is generated by using predefine
+d algorithms.
  
 \end_layout
 
