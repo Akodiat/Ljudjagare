@@ -314,7 +314,14 @@ Dåtid?
 
 \begin_layout Standard
 In recent years smartphones containing GPS (Global Positioning System) sensors
- have become increasingly common {citation needed}.
+ have become increasingly common 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Presswire2012"
+
+\end_inset
+
+.
  As a result of this, multiple smartphone applications making use of the
  GPS for tracking the user position and movement have emerged.
  One such example, 

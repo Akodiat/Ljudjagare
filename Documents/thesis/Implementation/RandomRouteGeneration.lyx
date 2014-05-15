@@ -277,7 +277,7 @@ thepage
 Generation of random locations
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Random-route-implementation-1-1"
+name "sec:Random-route-implementation"
 
 \end_inset
 
@@ -285,15 +285,14 @@ name "sec:Random-route-implementation-1-1"
 \end_layout
 
 \begin_layout Standard
+As presented in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Generation-of-random"
 
-\color red
-Skriv om, Linus text
-\color inherit
- To be able to quickly use the application when the user want to get out
- and run the sound sources (checkpoints) are generated out of a predefined
- algorithm.
- The checkpoints must be generated at reachable locations and can for example
- not be placed in a lake or a building but instead on a road or trail.
+\end_inset
+
+ the sound sources (checkpoints) are generated out of a predefined algorithm.
  To accomplish this the application uses Google Maps geocoding API and its
  routing features 
 \begin_inset CommandInset ref
@@ -303,8 +302,8 @@ reference "google maps random"
 \end_inset
 
 .
- In this sub chapter it is explained how the algorithm using Google Maps
- geocoding API has been implemented in this project.
+ In this section it is explained how the algorithm using the geocoding API
+ has been implemented in this project.
  All the calculations has been done with the geographic coordinate system
  using latitude and longitude and has been inspired from 
 \begin_inset CommandInset citation

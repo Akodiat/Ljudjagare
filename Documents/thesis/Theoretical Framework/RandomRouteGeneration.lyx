@@ -285,24 +285,27 @@ thepage
 
 \lang british
 Generation of random locations: Different approaches
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Generation-of-random"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
-\color red
 \lang british
-Skriv om! Linus hade text
-\color inherit
- To be able to quickly use the application when the user want to get out
- and run the sound sources (checkpoints) are generated out of a predefined
- algorithm.
+For the user to be able to instantly use the application to get out and
+ run the sound sources (checkpoints) are generated out of a predefined algorithm.
  The checkpoints must be generated at reachable locations and can for example
  not be placed in a lake or a building but instead on a road or trail.
  During the project two methods to generate a location that is reachable
  was invented and is described in this chapter.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 
 \lang british
 Colour classification method
@@ -311,7 +314,8 @@ Colour classification method
 \begin_layout Standard
 
 \lang british
-One way is to first randomly generate a location.
+The first method is to randomly generate a location nearby the location
+ of the user.
  This location is then evaluated if it lies in an appropriate environment
  by extracting the colour that the location has on a map.
  By classifying all the colours on a map by its colour for example blue
@@ -329,10 +333,10 @@ One way is to first randomly generate a location.
  
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 
 \lang british
-Geocoding API request method
+Google geocoding API request method
 \end_layout
 
 \begin_layout Standard
@@ -345,7 +349,7 @@ name "google maps random"
 \end_inset
 
 Another approach is to use Google maps and its geocoding API.
- As before a random location is generated.
+ A random location is generated as in the first method.
  Then a geocoding API request is sent to Google asking for the walking direction
  from the users location to the random location.
  The answer from Google gives the direction to the closest reachable point
