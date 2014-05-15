@@ -289,27 +289,23 @@ Generation of random locations: Different approaches
 
 \begin_layout Standard
 
+\color red
 \lang british
-To be able to quickly use the application when the user want to get out
+Skriv om! Linus hade text
+\color inherit
+ To be able to quickly use the application when the user want to get out
  and run the sound sources (checkpoints) are generated out of a predefined
  algorithm.
  The checkpoints must be generated at reachable locations and can for example
  not be placed in a lake or a building but instead on a road or trail.
- There are several methods to generate a location that is reachable and
- two methods is described in this chapter.
+ During the project two methods to generate a location that is reachable
+ was invented and is described in this chapter.
 \end_layout
 
 \begin_layout Paragraph
 
 \lang british
 Colour classification method
-\end_layout
-
-\begin_layout Standard
-
-\lang british
-Vi har hittat på dem själva.
- 
 \end_layout
 
 \begin_layout Standard
@@ -348,7 +344,7 @@ name "google maps random"
 
 \end_inset
 
-Another approach is to use Google maps and the function directions.
+Another approach is to use Google maps and its geocoding API.
  As before a random location is generated.
  Then a geocoding API request is sent to Google asking for the walking direction
  from the users location to the random location.

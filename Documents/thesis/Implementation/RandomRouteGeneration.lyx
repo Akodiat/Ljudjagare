@@ -285,7 +285,11 @@ name "sec:Random-route-implementation-1-1"
 \end_layout
 
 \begin_layout Standard
-To be able to quickly use the application when the user want to get out
+
+\color red
+Skriv om, Linus text
+\color inherit
+ To be able to quickly use the application when the user want to get out
  and run the sound sources (checkpoints) are generated out of a predefined
  algorithm.
  The checkpoints must be generated at reachable locations and can for example
@@ -331,11 +335,14 @@ reference "fig:random route-1-1"
  of the user and moving the origin to the middle of the theoretical dotted
  circle.
  By dividing a full revolution (
-\begin_inset Formula $2*\pi$
+\begin_inset Formula $2\pi$
 \end_inset
 
-) by the number of checkpoints, the angle x, between them is calculated
- as in 
+) by the number of checkpoints x, the angle 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, between them is calculated as in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:angle checkpoints"
@@ -348,7 +355,7 @@ reference "eq:angle checkpoints"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x=\frac{2*\pi}{numberOfCheckpoints}\label{eq:angle checkpoints}
+\alpha=\frac{2*\pi}{x}\label{eq:angle checkpoints}
 \end{equation}
 
 \end_inset
@@ -366,15 +373,54 @@ To get the next checkpoint, the calculated angle is added to the starting
 \begin_layout Standard
 To make the routes different from each other every time the algorithm runs
  the theoretical route is rotated around the location of the user by an
- random angle y.
+ random angle 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
  The random angle is calculated by multiplying a full revolution (
-\begin_inset Formula $2*\pi$
+\begin_inset Formula $2\pi$
 \end_inset
 
 ) by a random number between 0 and 1.
- The rotation is done by multiplying the difference in latitude and longitude
- of every checkpoint compared to the location of the user, with a two-dimensiona
-l rotation matrix with the angle y as in 
+ The rotation is done by multiplying the difference in longitude, 
+\begin_inset Formula $\theta$
+\end_inset
+
+, and latitude, 
+\begin_inset Formula $\phi$
+\end_inset
+
+, of every checkpoint compared to the location of the user, with a two-dimension
+al rotation matrix with the angle 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ as in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:newLongitude"
@@ -395,7 +441,7 @@ reference "eq:newLatitude"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-newLongitude=\cos\left(y\right)*differanceInLongitude+sin(y)*differenceInLatitude\label{eq:newLongitude}
+\theta_{new}=\cos\left(\beta\right)*\theta+sin(\beta)*\phi\label{eq:newLongitude}
 \end{equation}
 
 \end_inset
@@ -406,7 +452,7 @@ newLongitude=\cos\left(y\right)*differanceInLongitude+sin(y)*differenceInLatitud
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-newLatitude=-sin(y)*differanceInLongitude+cos(y)*differenceInLatitude\label{eq:newLatitude}
+\phi_{new}=-sin(\beta)*\theta+cos(\beta)*\phi\label{eq:newLatitude}
 \end{equation}
 
 \end_inset
@@ -415,9 +461,16 @@ newLatitude=-sin(y)*differanceInLongitude+cos(y)*differenceInLatitude\label{eq:n
 \end_layout
 
 \begin_layout Standard
-The new longitude and latitude is then added to the location of the user
- for every checkpoint and a random route is now generated, continuous lined
- circle in 
+The new longitude, 
+\begin_inset Formula $\theta_{new}$
+\end_inset
+
+, and latitude, 
+\begin_inset Formula $\phi_{new}$
+\end_inset
+
+, is then added to the location of the user for every checkpoint and a random
+ route is now generated, the continuous lined circle in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:random route-1-1"
@@ -479,7 +532,7 @@ key "GoogleDevelopers2014"
 \end_inset
 
 .
- The answer from Google is a list of locations of the shortest route to
+ The response from Google is a list of locations of the shortest route to
  the destination.
  It is a big chance that the generated locations is not on a road but instead
  in the forest or in a lake.
