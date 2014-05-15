@@ -748,14 +748,14 @@ Navigation Drawer
 \end_layout
 
 \begin_layout Standard
-Android Developers (
+Android Developers 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "NavigationDrawer2014"
 
 \end_inset
 
-) suggests that actions should be put to the right and navigation to the
+ suggests that actions should be put to the right and navigation to the
  left.
  However there is a risk that putting navigational options into the action
  bar, as in (4) in 
