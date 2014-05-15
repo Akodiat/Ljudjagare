@@ -383,11 +383,11 @@ To make the routes different from each other every time the algorithm runs
 
 ) by a random number between 0 and 1.
  The rotation is done by multiplying the difference in longitude, 
-\begin_inset Formula $\theta$
+\begin_inset Formula $\lambda$
 \end_inset
 
 , and latitude, 
-\begin_inset Formula $\phi$
+\begin_inset Formula $\varphi$
 \end_inset
 
 , of every checkpoint compared to the location of the user, with a two-dimension
@@ -440,7 +440,7 @@ reference "eq:newLatitude"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\theta_{new}=\cos\left(\beta\right)*\theta+sin(\beta)*\phi\label{eq:newLongitude}
+\lambda_{new}=\cos\left(\beta\right)*\theta+sin(\beta)*\phi\label{eq:newLongitude}
 \end{equation}
 
 \end_inset
@@ -451,7 +451,7 @@ reference "eq:newLatitude"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\phi_{new}=-sin(\beta)*\theta+cos(\beta)*\phi\label{eq:newLatitude}
+\varphi_{new}=-sin(\beta)*\theta+cos(\beta)*\phi\label{eq:newLatitude}
 \end{equation}
 
 \end_inset
@@ -461,11 +461,11 @@ reference "eq:newLatitude"
 
 \begin_layout Standard
 The new longitude, 
-\begin_inset Formula $\theta_{new}$
+\begin_inset Formula $\lambda_{new}$
 \end_inset
 
 , and latitude, 
-\begin_inset Formula $\phi_{new}$
+\begin_inset Formula $\varphi_{new}$
 \end_inset
 
 , is then added to the location of the user for every checkpoint and a random
@@ -485,7 +485,7 @@ reference "fig:random route-1-1"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -507,7 +507,12 @@ name "fig:random route-1-1"
 
 \end_inset
 
-Random...
+A theoretical route represented by a dotted circle is rotated around the
+ location of the user by an angle 
+\begin_inset Formula $\beta$
+\end_inset
+
+, forming a random route 
 \end_layout
 
 \end_inset
