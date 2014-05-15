@@ -510,55 +510,25 @@ Using the data
 
 \begin_layout Standard
 The purpose of the database is that it should be possible to recreate a
- stored route in the future.
- By extracting the points that are associated to the route we can draw the
- path that the user ran on a map and with the distance and time that we
- stored when we finished the route we can calculate the average speed and
- pace that the user ran in.
- 
+ previously saved route in the future.
+ By extracting the latitudes and longitudes that are associated to the route
+ from the Point table we can draw the path that the user ran on a map.
+ Distance and time is retrieved from the FinishedRoute table and with that
+ information we can calculate the average speed and pace that the user ran
+ in.
+ With the locations from the Coin table we can draw the coins on the map
+ with the path to see exactly where every coin was collected.
+ The information in the Coin table is used to display the exact time and
+ distance for when the user retrieved each coin.
+ Since all the the routes are stored with the date that they were created
+ on, a neat list is easily displayed for the user to brows through their
+ running history.
 \end_layout
 
 \begin_layout Standard
-An special activity was implemented, called finished view, this view is
- where the data about a route is shown to the user.
- The user reaches this view first when it has finished a running session,
- and it displays a summary of the run.
- This finished view is very similar to what the user sees on the screen
- during the running session but now the values are frozen and the buttons
- have changed appearance.
-\end_layout
-
-\begin_layout Standard
-The finished view consists of three different parts, the run-, map- and
- stats screen.
- The run screen displays a variety of information of the run, such as time,
- distance and average speed.
- These data are retrieved from the FinishedRoute table in the database.
- Basic formulas are used to calculate the average, that is distance divided
- by time.
- The map screen displays a map that shows the path that the user ran as
- well as the location of the coin that was collected.
- The path is drawn by retrieving all the points associated to the specific
- route from the “Points” table of the database, then a line is drawn between
- all the points and thus forming the trail that the user ran.
- The coins are placed on the map in the similar way, the locations of the
- coins are retrieved from the database and displayed on the map with a small
- coin icon.
- The stats screen displays the time and distance of each collected coin
- in the form of a table.
- 
-\end_layout
-
-\begin_layout Standard
-A history list was implemented that contain all the routes in FinishedRoute,
- this is where the user can access all its previous running sessions.
- The elements in the list displays the date of the run as well as the time
- and distance of the run.
- These list elements are selectable and when a element is selected it will
- open a new window which is the finished view mentioned in the previous
- piece of this report.
- The route that was selected will be displayed in the finished view, this
- allows the user to examine and compare all its previous runs.
+With this information the user can for example view their average speed
+ from some weeks ago or if the user got a specially good randomized route
+ he/she can view the route on the map to enjoy it once more.
 \end_layout
 
 \end_body
