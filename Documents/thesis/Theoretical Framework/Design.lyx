@@ -274,7 +274,15 @@ thepage
 \end_layout
 
 \begin_layout Section
-Standard Design patterns
+Graphical design
+\end_layout
+
+\begin_layout Standard
+To make the application blabla
+\end_layout
+
+\begin_layout Subsection
+Standard design patterns
 \end_layout
 
 \begin_layout Standard
@@ -294,7 +302,7 @@ key "Tidwell2011"
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Prominent Done button
 \end_layout
 
@@ -384,7 +392,7 @@ Done
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Carousel- and filmstrip pattern
 \end_layout
 
@@ -464,7 +472,7 @@ Concept of the carousel pattern.
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Android design patterns
 \end_layout
 
@@ -482,55 +490,7 @@ key "Lehtimaeki2013"
  Below follows a description of the patterns that are used.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Portions of this section (the images) are reproduced from work created and
- 
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "shared by the Android Open Source Project"
-target "https://code.google.com/policies.html"
-
-\end_inset
-
-
-\color inherit
- and used according to terms described in the 
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Creative Commons 2.5 Attribution License "
-target "http://creativecommons.org/licenses/by/2.5/"
-
-\end_inset
-
-
-\color inherit
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Paragraph
 Action Bar pattern
 \end_layout
 
@@ -598,6 +558,19 @@ key "actionbar2014"
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[1]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -645,6 +618,37 @@ key "actionbar2014"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext[1]{
+\backslash
+ref{fig:ActionBar} and 
+\backslash
+ref{fig:navdrawerIcon} are reproduced from work created and 
+\backslash
+textcolor{blue}{
+\backslash
+href{https://code.google.com/policies.html}{shared by the Android Open Source
+ Project}}(https://code.google.com/policies.html) and used according to terms
+ described in the 
+\backslash
+textcolor{blue}{
+\backslash
+href{http://creativecommons.org/licenses/by/2.5/}{Creative Commons 2.5 Attribution
+ License}}(http://creativecommons.org/licenses/by/2.5/).}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -733,7 +737,7 @@ reference "fig:ActionBar"
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Navigation-Drawer"
@@ -769,7 +773,7 @@ reference "fig:ActionBar"
  or by pressing the app logo as shown in the leftmost figure in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:navdrawer"
+reference "fig:navdrawerIcon"
 
 \end_inset
 
@@ -778,7 +782,7 @@ reference "fig:navdrawer"
  rightmost figures in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:navdrawer"
+reference "fig:navdrawerIcon"
 
 \end_inset
 
@@ -878,7 +882,7 @@ n’s start-up since the user then can be taken directly into the view that
  drawer, thus eliminating redundant clicks back and forth from a dashboard.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph
 Swipe Views
 \end_layout
 
