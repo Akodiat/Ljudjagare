@@ -350,6 +350,8 @@ monsters
 \end_inset
 
  forward the user at a certain velocity, disregarding buildings and roads.
+ With time however, more advanced path-finding algorithms could be researched
+ and implemented.
 \end_layout
 
 \begin_layout Description
@@ -359,8 +361,8 @@ Endurance
 
 hunt Similar to the escape mode, the sound source is the prey instead of
  the user.
- When the user is close enough to the prey (sound source), the prey notices
- the user and starts to move in the opposite direction.
+ When the user is close enough to the prey (sound source), it notices the
+ user and starts to move in the opposite direction.
  When the prey has moved far enough from the user (almost out of audible
  distance, depending on an exhaustion factor) the prey will stop to take
  a rest.
@@ -386,13 +388,15 @@ Database
 \end_inset
 
  The embedded database that was implemented was sufficient for the purpose
- of the project but a better option would be to have a server based database
- system that would have a web interface or it could even be merged with
- Facebook or other social media to allow the user to share their progress
- as well as read about the achievements that their friends have made.
+ of the project.
+ However, a better option would be to have a server-based database system
+ with a web interface.
+ It could even be merged with Facebook, or other social media, to allow
+ the user to share their progress and read about their friends' achievements.
  This would make it easier for the users to access their data from different
- devices and the progress would not have been lost even if the user would
- replace their current smartphone.
+ devices.
+ Furthermore, the progress will not be lost if the user replaces their current
+ smartphone.
 \end_layout
 
 \begin_layout Standard
