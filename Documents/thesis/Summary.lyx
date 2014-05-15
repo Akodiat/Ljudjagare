@@ -90,6 +90,13 @@ Abstract
 Abstract/Summary text
 \end_layout
 
+\begin_layout Standard
+This report describes the application [name] and the theory needed to develop
+ it.
+ Initially, a theoretical introduction to binaural sound is presented, followed
+ by a walk-through of the sensors needed and evaluated in the application.
+\end_layout
+
 \begin_layout Chapter*
 
 \lang swedish
