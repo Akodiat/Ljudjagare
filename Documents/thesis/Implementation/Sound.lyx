@@ -313,12 +313,12 @@ key "ndk"
 .
  However, it enables developers to use operations that aren’t accessible
  using only Java - such as handling 3D audio.
- Currently, there seems to be two APIs available providing this functionality:
- OpenSL ES and Open AL.
+ Currently, there seem to be two APIs available providing this functionality:
+ OpenSL ES and OpenAL Soft.
 \end_layout
 
 \begin_layout Subsection
-Spatial audio using external libraries
+Spatial audio in an Android application
 \end_layout
 
 \begin_layout Standard
@@ -352,35 +352,47 @@ key "opensl"
 \end_layout
 
 \begin_layout Standard
-OpenAL is, just like OpenSL ES, an API that enables the creation of spatial
- sound environments independent on the soundcard setup.
- As a result it eliminates the problem with programmers having to write
+OpenAL Soft is another API that enables the creation of spatial sound environmen
+ts independent on the soundcard setup 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "openal"
+
+\end_inset
+
+.
+ As a result, it eliminates the problem with programmers having to write
  different code to each device because of each soundcard supporting different
  instructions.
- It's currently 
-\end_layout
+ It is licensed under GNU Lesser General Public License, meaning that one
+ can freely include it in software --- even for proprietary (closed source)
+ and commercial use 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lgpl"
 
-\begin_layout Standard
-The OpenAL version we used has been adapted to Android by Martins Mozeiko
- and Chris Robinson.
- They have patched the code to make it work on Android.
- (http://repo.or.cz/w/openal-soft/android.git) To make it easier to access
- native functions we are using a small library provided by Martien Pielot,
- called OpenAL4Android (http://pielot.org/2011/11/10/openal4android-2/).
- It serves as an intermediary between the native OpelAL code and our Java
- application and contains all methods necessary to create a binaural environment.
- Apart from moving the sound source in three dimensions, it’s also possible
- to move the ‘listener’, meaning where in the 3D space the listener is supposed
- to interpret the audio signal from.
+\end_inset
+
+.
+ Unlike OpenSL ES, OpenAL Soft is not part of the NDK provided by Android.
+ To access its functions it's necessary to interact with code written in
+ another language than Java.
  
 \end_layout
 
 \begin_layout Standard
-Our sound sources places in the 3D environment are static (since that’s
- how our application works).
- The only thing getting updated as the user is moving is the angle of the
- ‘listener’ to sound source.
+Because of OpenSL being mostly unsupported, /app/ was developed using OpenAL
+ and OpenAl4Android as audio core.
+ OpenAL4Android is a small library provided by Martien Pielot that serves
+ as an intermediary between the native OpelAL Soft code and the Java application
  
+\begin_inset CommandInset citation
+LatexCommand cite
+key "openal_android"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection

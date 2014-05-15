@@ -41,6 +41,9 @@
 % enables calculations
 \usepackage{calc}
 
+% application name
+\newcommand{\app}{Run For Life}
+
 % fancy page header/footer settings
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
@@ -716,16 +719,6 @@ restore the right header line
 LatexCommand bibtex
 bibfiles "References/References_Daniel,References/References,References/References_Anton,References/References_Linus,References/References_Marcus,References/References_Joakim"
 options "chscite"
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-No et al in bibliography
-\end_layout
 
 \end_inset
 
