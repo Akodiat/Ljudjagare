@@ -592,8 +592,8 @@ Accelerometer
 \end_layout
 
 \begin_layout Standard
-The accelerometer gives the linear acceleration of device in the device's
- coordinate system
+The accelerometer gives the linear acceleration of device in meters per
+ square second in the device's coordinate system
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndroidOpenSourceproject2014"
@@ -608,7 +608,7 @@ reference "fig:Coordinate-system- Accelerometer"
 
 \end_inset
 
-, the accelerometer gives values as a 3-dimentional vector 
+, the accelerometer gives values as a 3-dimensional vector 
 \family roman
 \series medium
 \shape up
@@ -671,7 +671,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/coord_system_accel.eps
+	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_accel.eps
 	lyxscale 20
 	width 40text%
 
@@ -688,6 +688,8 @@ name "fig:Coordinate-system- Accelerometer"
 \end_inset
 
 Coordinate system and measured vector of the accelerometer.
+ The accelerometer measures linear acceleration on the x-, y-, and z-axis
+ in meters per square second.
 \end_layout
 
 \end_inset
@@ -729,7 +731,8 @@ name "sub:Gyroscope"
 \end_layout
 
 \begin_layout Standard
-Gives the rotational speed of the device around each of its axises 
+Gives the rotational speed of the device in radians per second around each
+ of its axes 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "AndroidOpenSourceproject2014"
@@ -739,7 +742,46 @@ key "AndroidOpenSourceproject2014"
 .
  While it has a lot less disturbances than a accelerometer and magnetometer
  compass, it only determines change of direction and not the direction itself.
- The gyroscope gives values as a 3-dimentional vector 
+ Hence, a gyroscope can report that the phone has rotated 90 degrees around
+ the x-axis; but without knowing at what angle it started, one cannot know
+ at which angle it has ended up (only that it is 90 degrees larger).
+\end_layout
+
+\begin_layout Standard
+As seen in 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gyroCoord"
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ the gyroscope has the same coordinate system as the accelerometer, the
+ axes here labeled x, y and z.
+ The values are measured by the gyroscope as a 3-dimensional vector 
 \family roman
 \series medium
 \shape up
@@ -762,36 +804,15 @@ g{}_{3}
 \begin_inset Formula $g{}_{1}$
 \end_inset
 
- is the rotation around the x-axis of the device (green in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:gyroCoord"
-
-\end_inset
-
-), 
+ is the rotation around the x-axis of the device, 
 \begin_inset Formula $g{}_{2}$
 \end_inset
 
- is the rotation around the y-axis (blue in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:gyroCoord"
-
-\end_inset
-
-) and 
+ is the rotation around the y-axis and 
 \begin_inset Formula $g{}_{3}$
 \end_inset
 
- is the rotation around the z-axis (red in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:gyroCoord"
-
-\end_inset
-
-).
+ is the rotation around the z-axis.
  
 \end_layout
 
@@ -805,7 +826,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/coord_system_gyro.eps
+	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_gyro.eps
 	lyxscale 20
 	width 40text%
 
@@ -822,6 +843,8 @@ name "fig:gyroCoord"
 \end_inset
 
 Coordinate system and measurement vector of the gyroscope.
+ The gyroscope measures the rotational speed around the x-,y- and z-axis
+ in radians per second.
 \end_layout
 
 \end_inset
@@ -831,10 +854,6 @@ Coordinate system and measurement vector of the gyroscope.
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
