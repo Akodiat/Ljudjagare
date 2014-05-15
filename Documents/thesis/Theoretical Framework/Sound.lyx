@@ -273,13 +273,13 @@ Sound
 \end_layout
 
 \begin_layout Standard
-The functionality and usability of the application are vastly depending
- on how the user perceives and interprets the audio coming from the device.
+The functionality and usability of the application are depending on how
+ the user perceives and interprets the audio coming from the device.
  If a user were to become confused by the sound, they would probably not
- be able to follow its instructions - hence defeating the purpose of the
+ be able to follow its instructions, hence defeating the purpose of the
  application.
- It’s therefore vital to have an audio core that is easy to understand and
- behaves as expected.
+ It is therefore vital to have an audio core that is easy to understand
+ and behaves as expected.
 \end_layout
 
 \begin_layout Subsection
@@ -299,9 +299,8 @@ key "hrtf_article"
 
 .
  ILD stands for the difference in volume between the closest ear and the
- ear being the farthest from the sound.
- ITD, on the other hand, describes the time difference between the sound
- reaching each ear.
+ ear being the farthest from a sound.
+ ITD, on the other hand, is the time between the sound reaching each ear.
  Both are results of the head and torso shadowing the sound waves 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -313,8 +312,8 @@ key "itd_ild"
 \end_layout
 
 \begin_layout Standard
-When the sound reaches the pinna, located in the outer ear, the incoming
- sound is being filtered even further 
+When the sound reaches the pinna, located in the outer ear, it is being
+ filtered even further 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hrtf_article"
@@ -322,11 +321,11 @@ key "hrtf_article"
 \end_inset
 
 .
- Along with the directional characteristics of the torso and head, it helps
- us determine where a specific sound source is located.
- The filtering properties of the pinna even makes it possible for us to
- differentiate between sounds appearing from the front and from above, as
- can be seen on 
+ Along with the directional characteristics of the torso and head, the pinna
+ helps us determine where a specific sound source is located.
+ Its filtering properties even makes it possible for us to differentiate
+ between sounds appearing from the front and from above, as can be seen
+ on 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:hrtf"
@@ -334,10 +333,10 @@ reference "fig:hrtf"
 \end_inset
 
 .
- Naturally, the filtering properties of the pinna are of great value when
- trying to recreate a natural environment using only two speakers.
+ Naturally, the properties of the pinna are of great value when trying to
+ recreate a natural environment using only two speakers.
  Such environments can be very useful when simulating virtual realities
- (like in 3D games and architecture) - as with our application 
+ (like in 3D games and architecture) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "acoustics_and_audio"
@@ -376,8 +375,8 @@ name "fig:hrtf"
 
 \end_inset
 
-Figure showing the difference in measured frequency response depending on
- the location of the sound source.
+The measured frequency response varies depending on the location of the
+ sound source.
 \end_layout
 
 \end_inset
@@ -407,12 +406,11 @@ key "3d_sim"
 \end_inset
 
 .
- They aim to describe how a sound input is filtered before reaching the
+ They aim to describe how a sound signal is filtered before reaching the
  eardrum - as a result of the reflection caused by the pinna, torso and
  head - and hence being perceived by us humans.
- Using only stereo headphones it’s therefore possible, with the help of
- HRTF, to create the illusion of a sound signal being heard in an anechoic
- chamber 
+ With HRTFs, it's possible to create the illusion of a sound signal being
+ heard in an anechoic chamber using stereo headphones 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hrtf_article"
@@ -421,7 +419,7 @@ key "hrtf_article"
 
 .
  That, however, assumes individualized HRTF measurements.
- Since the pinna is shaped differently on every person, the result might
+ Since the pinna is shaped differently on each person, the result might
  be more or less convincing depending on how well the measurements are made
  
 \begin_inset CommandInset citation
@@ -499,14 +497,13 @@ Human-Computer Interaction using audio
 \end_layout
 
 \begin_layout Standard
-In Auditory Display: Sonification, Audification, And Auditory Interfaces,
- Kramer (1994) mentions several reasons to why using audio feedback can
- be advantageous over visual feedback.
- First of all, it reduces the demands on visual attention.
+Kramer (1994) mentions several reasons to why using audio feedback can be
+ advantageous over visual feedback.
+ Firstly, it reduces the demands on visual attention.
  An issue with today’s smartphones is that it is hard to pay attention to
  the screen while being on the move.
  By giving information to the user through sound, the need to look at a
- screen would be eliminated - hence letting the user focus on their surroundings.
+ screen would be eliminated, enabling the user to focus on their surroundings.
  Another advantage of using audio feedback is that it grabs the user's attention
  
 \begin_inset CommandInset citation
@@ -516,8 +513,8 @@ key "kramer"
 \end_inset
 
 .
- A person can easily choose to not see something, but it’s more difficult
- to choose not to hear something.
+ A person can easily choose not to see something; on the contrary, it’s
+ difficult to choose not to hear something.
  
 \end_layout
 
@@ -538,10 +535,10 @@ key "hci_handbook"
  with words, the user can instead recall the meaning of a sound.
  Continuous sounds often gradually fade into the background until the sound
  changes or stops playing - often referred to as habitutation.
- Because of the large dynamic range of speech, habituation can not easily
- be achieved using it, and hence adding to the annoyance of audio feedback
- previously mentioned.
- Overall, nonspeech sounds been been proven to be a better choice when providing
+ Because of the large dynamic range of speech, habituation cannot easily
+ be achieved using it, hence adding to the annoyance of audio feedback previousl
+y mentioned.
+ Overall, nonspeech sounds have been proven to be a better choice when providing
  the user with continuous information 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -563,7 +560,7 @@ key "hci_handbook"
 
 ; a loud sound is attention-grabbing even though its intended message is
  unimportant.
- To avoid annoyance, it's therefore suggested to avoid using sound volume
+ To avoid annoyance, it is therefore suggested to avoid using sound volume
  as a cue in applications.
  Instead, the authors of The Human-Computer Interaction Handbook (2007)
  recommends using pitch and rhythm as primary cues, as changes in stimuli
@@ -592,8 +589,8 @@ key "kramer"
 \end_inset
 
 .
- It's suggested that there are two type of sounds: information and noise
- - the former helping us and the latter derailing us 
+ According to Spears and Jacko (2007), there are two type of sounds: information
+ and noise - the former helping us and the latter derailing us 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hci_handbook"

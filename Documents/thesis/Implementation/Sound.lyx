@@ -269,15 +269,15 @@ thepage
 \end_layout
 
 \begin_layout Section
-Audio in an Android application
+Sound in an Android application
 \end_layout
 
 \begin_layout Standard
 The application programming interfaces (APIs) provided by Android as a part
  of the Software Development Kit (SDK) provides several classes for handling
  audio, like AudioTrack, MediaPlayer and SoundPool.
- However, none of these provides any support for 3D audio operations as
- for now 
+ However, none of these currently provides any support for 3D audio operations
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ndk_beginners_guide"
@@ -285,8 +285,8 @@ key "ndk_beginners_guide"
 \end_inset
 
 .
- To implement binaural audio, one needs to access operations that aren’t
- covered in the SDK.
+ To use binaural audio effects in an Android application, one needs to access
+ operations that aren’t available in the SDK.
  Fortunately, Android provides an API for accessing low level functions
  called Native Development Kit (NDK) 
 \begin_inset CommandInset citation
@@ -322,8 +322,6 @@ Spatial audio using external libraries
 \end_layout
 
 \begin_layout Standard
-
-\color green
 OpenSL ES is a cross-platform API that enables audio functionality in native
  applications on multimedia devices 
 \begin_inset CommandInset citation
@@ -354,31 +352,15 @@ key "opensl"
 \end_layout
 
 \begin_layout Standard
-
-\color green
-After implementing a simple test application using OpenSL ES and its spatial
- audio features, testing it on our own phones* did indeed result in a SL_RESULT_
-FEATURE_UNSUPPORTED being thrown.
- That basically means the phone is not compiled with the correct profile
- supporting the feature implemented in the application {OpenSL EL manual}.
- That makes the API useless to our purpose - implementing 3D audio - and
- hence blabalbalbal 
-\end_layout
-
-\begin_layout Standard
-
-\color green
 OpenAL is, just like OpenSL ES, an API that enables the creation of spatial
  sound environments independent on the soundcard setup.
  As a result it eliminates the problem with programmers having to write
  different code to each device because of each soundcard supporting different
  instructions.
- 
+ It's currently 
 \end_layout
 
 \begin_layout Standard
-
-\color green
 The OpenAL version we used has been adapted to Android by Martins Mozeiko
  and Chris Robinson.
  They have patched the code to make it work on Android.
@@ -394,8 +376,6 @@ The OpenAL version we used has been adapted to Android by Martins Mozeiko
 \end_layout
 
 \begin_layout Standard
-
-\color green
 Our sound sources places in the 3D environment are static (since that’s
  how our application works).
  The only thing getting updated as the user is moving is the angle of the
@@ -404,37 +384,41 @@ Our sound sources places in the 3D environment are static (since that’s
 \end_layout
 
 \begin_layout Subsection
-
-\color green
 Feedback to the user
 \end_layout
 
 \begin_layout Standard
-
-\color green
-One of the biggest part of the application is the 
+To communicate with the user, the application takes advantage of the 3D
+ audio funcionality provided by the OpenAL API.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\color green
-Something about 
+Depending on where on the map a sound source is placed, a virtual such 
 \end_layout
 
 \begin_layout Standard
+Using the 3D audio functionality provided by OpenAL, the application's.
+ The sound instructing the user in what direction to move is a pure sine
+ wave, synthesized in Propellerhead Reason 7.
+\end_layout
 
-\color green
+\begin_layout Standard
+meaning its amplitude is non-changing.
+ Neither does it contain It does not contain any overtones, it is completely
+ steady in terms of volume and is, xxx, a rather uninteresting sound .
+\end_layout
+
+\begin_layout Standard
 As mentioned in the theory chapter, non-invidualised HRTFs suffer from back-fron
 t confusion.
  It would therefore be risky to rely single-handedly on the 3D properties
  of HRTFs in an application depending entirely on the directional properties
  of its audio.
- To avoid 
+ 
 \end_layout
 
 \begin_layout Standard
-
-\color green
 BILD PÅ HUR LJUDET ÄR FÖRDELAT
 \end_layout
 
