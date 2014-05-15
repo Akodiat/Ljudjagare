@@ -603,7 +603,7 @@ key "AndroidOpenSourceproject2014"
 .
  As illustrated in 
 \begin_inset CommandInset ref
-LatexCommand formatted
+LatexCommand ref
 reference "fig:Coordinate-system- Accelerometer"
 
 \end_inset
@@ -658,7 +658,7 @@ ion is always measured toward the ground.
  of the device into a global coordinate system.
  For example, these values can be used together with magnetic field sensor
  to obtain device orientation (basically a compass), or together with the
- gyroscope to obtain rotation in a global coordinate system.
+ gyroscope to obtain device rotation in a global coordinate system.
 \end_layout
 
 \begin_layout Standard
@@ -671,7 +671,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_accel.eps
+	filename Figures/coord_system_accel.eps
 	lyxscale 20
 	width 40text%
 
@@ -805,7 +805,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_gyro.eps
+	filename Figures/coord_system_gyro.eps
 	lyxscale 20
 	width 40text%
 
