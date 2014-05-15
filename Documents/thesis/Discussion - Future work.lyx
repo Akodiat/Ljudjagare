@@ -397,6 +397,8 @@ Database
  devices.
  Furthermore, the progress will not be lost if the user replaces their current
  smartphone.
+ Finally a server-based system would allow users to share their sound sources
+ with friends and collaborate on finding or avoiding them.
 \end_layout
 
 \begin_layout Standard
@@ -412,8 +414,18 @@ Google Glass bla bla.
  While the previously discussed head-mounted smartphone would be impractical
  for the user, a device similar to Google Glass would be an improvement.
  Since Google Glass is worn like ordinary glasses and has built-in orientation
- sensors the measurements would equal those from a head-mounted smartphone
- (the user has actually turned their head when the sensors give new values).
+ sensors the measurements would equal those from the head-mounted smartphone
+ investigated by Lawitzki 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lawitzki2012"
+
+\end_inset
+
+.
+ As the Google Glass will have a fixed position relative to the ears the
+ user will always have turned their head whenever the sensors have provided
+ a new value.
  Furthermore, the user could then also be provided with a visual representation
  of the sound source (for example a coin), hence augmenting the experience
  further.
