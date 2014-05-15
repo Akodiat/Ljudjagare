@@ -329,7 +329,7 @@ reference "fig:random route-1-1"
 \end_inset
 
  a circular dotted route has been generated with four checkpoints and a
- distance k.
+ distance, d.
  This is done by setting the starting point of the circle at the position
  of the user and moving the origin to the middle of the theoretical dotted
  circle.
@@ -337,7 +337,7 @@ reference "fig:random route-1-1"
 \begin_inset Formula $2\pi$
 \end_inset
 
-) by the number of checkpoints x, the angle 
+) by the number of checkpoints, x, the angle, 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -372,7 +372,7 @@ To get the next checkpoint, the calculated angle is added to the starting
 \begin_layout Standard
 To make the routes different from each other every time the algorithm runs
  the theoretical route is rotated around the location of the user by an
- random angle 
+ random angle, 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -391,7 +391,7 @@ To make the routes different from each other every time the algorithm runs
 \end_inset
 
 , of every checkpoint compared to the location of the user, with a two-dimension
-al rotation matrix with the angle 
+al rotation matrix with the angle, 
 \family roman
 \series medium
 \shape up
@@ -407,7 +407,7 @@ al rotation matrix with the angle
 \begin_inset Formula $\beta$
 \end_inset
 
-
+,
 \family default
 \series default
 \shape default
