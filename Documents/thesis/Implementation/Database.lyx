@@ -278,10 +278,13 @@ Database: Design and Implementation
 \end_layout
 
 \begin_layout Standard
-This subsection describes the implemented database that was used to save
- data of the users running history.
- It describes the system that manages the database as well as a description
- and some visual representation of the database.
+This Subsection describes how the database was designed and implemented
+ into the application to allow the information of the users running sessions
+ be stored in a proper way so that it can be retrieved and used at another
+ time.
+ The section takes up both the system that manages the functionality of
+ the database as well as a visual representation of the design and the tables
+ that tables it consists of.
 \end_layout
 
 \begin_layout Subsection
@@ -289,8 +292,8 @@ Database management system
 \end_layout
 
 \begin_layout Standard
-The Database Management System (DBMS) is the system that is used for the
- application to communicate with the database.
+The Database Management System (DBMS) is the system used for the application
+ to communicate with the database.
  It makes the necessary request to the database using Structured Query Language
  (SQL).
  The DBMS handles request such as adding or retrieving data from the database.
@@ -394,10 +397,12 @@ reference "er-dia"
 
 \end_inset
 
-), the route is basically the users running session, it contains a unique
- identifier and the date that the route started, also the Route saves data
- of the number of coins that was generated for the route, this number is
- set by the user in the settings menu before the running session.
+).
+ A route is basically the users running session, it contains a unique identifier
+ and the date that the route started.
+ Also the route saves data of the number of coins that was generated for
+ the route, this number is set by the user in the settings menu before the
+ running session.
  The “Point” entity represents a specific location of the users route and
  is noticeably different by the double border, this means that the entity
  is a weak entity.
@@ -416,7 +421,7 @@ key "database2009"
  route.
  Each point stores data about the location of the user at the time that
  the point was added, that is latitude and latitude, as well as the timestamp,
- and a unique id.
+ and a unique ID.
  The “Coin” entity works in a similar fashion as the point but it stores
  data of each of the collected coins.
  When a coin is collected it is stored in the database as a unique id with
@@ -485,8 +490,8 @@ reference "table-1"
  data in them.
  The column in the points and coins table named “R.ID” (red/blue lines) represent
 s which route that the row is associated with.
- This is how the weak relations that was represented with double borders
- in 
+ This is how the supporting relationships that are represented with double
+ borders in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "er-dia"
@@ -500,13 +505,13 @@ reference "er-dia"
 \end_layout
 
 \begin_layout Subsection
-Using the database - Statistics
+Using the data
 \end_layout
 
 \begin_layout Standard
 The purpose of the database is that it should be possible to recreate a
  stored route in the future.
- By extracting the points that is associated to the route we can draw the
+ By extracting the points that are associated to the route we can draw the
  path that the user ran on a map and with the distance and time that we
  stored when we finished the route we can calculate the average speed and
  pace that the user ran in.
