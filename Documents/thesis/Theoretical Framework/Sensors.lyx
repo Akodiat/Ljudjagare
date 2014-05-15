@@ -278,8 +278,8 @@ Android sensors: Differences and comparison
 \end_layout
 
 \begin_layout Standard
-In order to correctly play the sound, it was important to determine the
- direction in which user is facing; the 
+In order to correctly play the sound, it is important to determine the direction
+ in which user is facing; the 
 \emph on
 user direction
 \emph default
@@ -307,8 +307,8 @@ key "NCOSBPNT2014"
 
 .
  The 24 satellites that are being used for this are put out in six different
- orbits circulating the earth in a manner that assures visibility of at
- least five of them no matter of time and location on the earth 
+ orbits circling the earth in a manner that assures visibility of at least
+ five of them no matter of time and location on the earth 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -319,8 +319,11 @@ key "Bajaj2002"
 \end_layout
 
 \begin_layout Standard
-To establish locations of devices the satellites continuously send out pseudoran
-dom number codes (PNC).
+To establish locations of devices the satellites continuously send out 
+\emph on
+pseudorandom number codes (PNC)
+\emph default
+.
  Each PNC consists of information of the satellite's position and time at
  the moment of transmission.
  When acquiring a PNC, its travel time(
@@ -396,7 +399,10 @@ key "Bajaj2002"
 Location wise, this distance does however only determine that the GPS receiver
  is located somewhere at the surface on a sphere with the radius being the
  distance and the center being the satellite.
- To acquire the GPS receiver's location on the sphere, the method trilateration
+ To acquire the GPS receiver's location on the sphere, the method 
+\emph on
+trilateration
+\emph default
  as shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -486,7 +492,7 @@ reference "fig:Trilateration"
  It is however useful to use more satellites to acquire a confirmed location.
  Also, another satellite might be used to synchronize the GPS receiver's
  internal clock.
- When a receiver is having a fixed position it can be used along with another
+ When a receiver has a fixed position it can be used along with another
  satellites position to determine their intermediate distance(
 \begin_inset Formula $\triangle x$
 \end_inset
@@ -495,8 +501,8 @@ reference "fig:Trilateration"
  of a PNC between them.
  By adding the calculated travel time to the departure time of the PNC the
  correct current time in the GPS receiver is acquired.
- This is good practice since the clock in the satellite that is being synchroniz
-ed to is atomic and thereby very accurate 
+ This is good practice since the satellite's clock, that is being synchronized
+ against, is atomic and thereby very accurate 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -523,23 +529,30 @@ key "Drawil2012"
 \end_layout
 
 \begin_layout Standard
-Another factor is the so called satellite ephemeris error, which is caused
- by differences in the anticipated and the actual position of a satellite.
+Another factor is the so called 
+\emph on
+satellite ephemeris error
+\emph default
+, which is caused by differences in the anticipated and the actual position
+ of a satellite.
  Both this error and the error caused by the electrically charged particles
- can be adjusted for giving a final accuracy of a few meters 
+ can be adjusted for giving a final accuracy with an error of a few meters
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Drawil2012"
 
 \end_inset
 
-.
- The adjustment is done with a technique called differential GPS, which
- in short consists of comparing the data acquired with the data in a nearby
- stationary GPS receiver with a known location.
- It is likely that the location offset in the stationary receiver is the
- same in mobile GPS receivers nearby, which thereby will receive correction
- signals 
+.The adjustment is done with a technique called 
+\emph on
+differential GPS
+\emph default
+, which consists of using a stationary receiver with a known location.If
+ this known location differentiates from the location provided by the satellites
+ it is likely that this difference will also be present in the mobile GPS
+ receivers nearby.
+ These receivers will then receive a correction signal to adjust their location
+ against 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -550,9 +563,13 @@ key "Bajaj2002"
 \end_layout
 
 \begin_layout Standard
-Differential GPS can however not adjust to the so called multipath error
- which occurs when PNC's bounces on the surrounding topography, as buildings
- or hilly terrain.
+Differential GPS cannot adjust to the so called 
+\emph on
+multipath error
+\emph default
+ though.
+ This error occurs when PNC's bounces on the surrounding topography, as
+ buildings or hilly terrain, and thereby gets delayed.
  To avoid this error the receiver needs to have a clear view to the satellites.
  Otherwise the multipath error might, according to Drawil, Amar and Basir
  
@@ -671,7 +688,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_accel.eps
+	filename C:/home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_accel.eps
 	lyxscale 20
 	width 40text%
 
@@ -826,7 +843,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename /home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_gyro.eps
+	filename C:/home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_gyro.eps
 	lyxscale 20
 	width 40text%
 
