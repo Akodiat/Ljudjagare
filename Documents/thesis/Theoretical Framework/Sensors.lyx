@@ -292,316 +292,14 @@ user direction
  
 \end_layout
 
-\begin_layout Subsection
-GPS
-\end_layout
-
 \begin_layout Standard
-The Global Positioning System - GPS is used to determine the global coordinates
- of a device in latitudes and longitudes through the use of satellites
-\begin_inset CommandInset citation
-LatexCommand cite
-key "NCOSBPNT2014"
-
-\end_inset
-
-.
- The 24 satellites that are being used for this are put out in six different
- orbits circling the earth in a manner that assures visibility of at least
- five of them no matter of time and location on the earth 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-To establish locations of devices the satellites continuously send out 
-\emph on
-pseudorandom number codes (PNC)
-\emph default
-.
- Each PNC consists of information of the satellite's position and time at
- the moment of transmission.
- When acquiring a PNC, its travel time(
-\begin_inset Formula $\triangle t$
-\end_inset
-
-) is calculated by the GPS receiver by subtracting the departure time(
-\begin_inset Formula $t_{departure}$
-\end_inset
-
-) from the arrival time(
-\begin_inset Formula $t_{arrival}$
-\end_inset
-
-) as in Formula 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:distance2"
-
-\end_inset
-
-.
- A PNC travels at the speed of light(
-\begin_inset Formula $c$
-\end_inset
-
-), which in combination with the travel time(
-\begin_inset Formula $\triangle t$
-\end_inset
-
-) is enough information to calculate the distance(
-\begin_inset Formula $\triangle x$
-\end_inset
-
-) between the satellite and receiver (see Formula 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:distance1"
-
-\end_inset
-
-) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\triangle x=c\cdot\triangle t\label{eq:distance1}
-\end{equation}
+\begin_inset CommandInset include
+LatexCommand input
+filename "Sensors - GPS.lyx"
 
 \end_inset
 
 
-\begin_inset Formula 
-\begin{equation}
-\triangle x=c\cdot(t_{arrival}-t_{departure})\label{eq:distance2}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Location wise, this distance does however only determine that the GPS receiver
- is located somewhere at the surface on a sphere with the radius being the
- distance and the center being the satellite.
- To acquire the GPS receiver's location on the sphere, the method 
-\emph on
-trilateration
-\emph default
- as shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Trilateration"
-
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
-
-\end_inset
-
- is used.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Figures/trilateration.png
-	width 40page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Trilateration"
-
-\end_inset
-
-Location finding using trilateration
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In the context of GPS technology, trilateration is a way to narrow down
- the possible locations by determining where spheres intersect.
- All visible satellites each provide one sphere of possible locations.
- Two satellites will narrow down the possible location to a circle as shown
- at the intersection of Satellite A's and Satellite B's spheres in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Trilateration"
-
-\end_inset
-
-.
- Furthermore the third satellite, Satellite C, will narrow down this circle
- into two points.
- Normally, this information is enough since often only one of the two provided
- points is located on the Earths surface.
- It is however useful to use more satellites to acquire a confirmed location.
- Also, another satellite might be used to synchronize the GPS receiver's
- internal clock.
- When a receiver has a fixed position it can be used along with another
- satellites position to determine their intermediate distance(
-\begin_inset Formula $\triangle x$
-\end_inset
-
-), which in combination with the speed of light will give the travel time
- of a PNC between them.
- By adding the calculated travel time to the departure time of the PNC the
- correct current time in the GPS receiver is acquired.
- This is good practice since the satellite's clock, that is being synchronized
- against, is atomic and thereby very accurate 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-The positioning accuracy is however affected by some factors of which one
- has to do with the speed of light only being constant in vacuum.
- This might cause a slight delay to a PNC as it gets slowed down by electrically
- charged particles in the ionosphere and troposphere 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Drawil2012"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Another factor is the so called 
-\emph on
-satellite ephemeris error
-\emph default
-, which is caused by differences in the anticipated and the actual position
- of a satellite.
- Both this error and the error caused by the electrically charged particles
- can be adjusted for giving a final accuracy with an error of a few meters
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Drawil2012"
-
-\end_inset
-
-.The adjustment is done with a technique called 
-\emph on
-differential GPS
-\emph default
-, which consists of using a stationary receiver with a known location.If
- this known location differentiates from the location provided by the satellites
- it is likely that this difference will also be present in the mobile GPS
- receivers nearby.
- These receivers will then receive a correction signal to adjust their location
- against 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Differential GPS cannot adjust to the so called 
-\emph on
-multipath error
-\emph default
- though.
- This error occurs when PNC's bounces on the surrounding topography, as
- buildings or hilly terrain, and thereby gets delayed.
- To avoid this error the receiver needs to have a clear view to the satellites.
- Otherwise the multipath error might, according to Drawil, Amar and Basir
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Drawil2012"
-
-\end_inset
-
-, cause an error up to 80 meters.
-\end_layout
-
-\begin_layout Standard
-In this project, the GPS technology is mainly utilized to calculate the
- user position relative to the virtual sound sources, such as coins and
- monsters.
- However, by keeping track of previous GPS locations, it is possible to
- acquire a user bearing.
- This bearing is the direction that the user has been traveling during the
- most recent sensor updates and has the great advantage of not being dependent
- on how the user carries the device at all 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "AndroidOpenSourceproject"
-
-\end_inset
-
-.
- The disadvantage is however that the user has to be in motion for the bearing
- to update correctly.
- If the user is standing still or turning around rapidly the bearing will
- not change.
 \end_layout
 
 \begin_layout Subsection
@@ -680,6 +378,7 @@ ion is always measured toward the ground.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -688,7 +387,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_accel.eps
+	filename Figures/coord_system_accel.eps
 	lyxscale 20
 	width 40text%
 
@@ -835,6 +534,7 @@ g{}_{3}
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -843,7 +543,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/home/joakim/workspace/Ljudjägare/Documents/thesis/Theoretical Framework/Figures/coord_system_gyro.eps
+	filename Figures/coord_system_gyro.eps
 	lyxscale 20
 	width 40text%
 
