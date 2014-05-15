@@ -420,6 +420,16 @@ Vi kan inte stå för att den motiverar löpning
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+More text? Repeat directionality
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -442,6 +452,17 @@ status open
 
 \begin_layout Plain Layout
 Initially, this report discusses...
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use labels.
+ More text
 \end_layout
 
 \end_inset
