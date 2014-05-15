@@ -280,7 +280,7 @@ Future work: efficiency, modularity and prospects
 \begin_layout Standard
 The application was not designed with any emphasis on efficiency and the
  code can probably be improved a lot in that manner.
- The rendering in the tutorial mode is sometimes slow, some saved running
+ The rendering in the tutorial mode is sometimes slow; some saved running
  logs take a lot of time to open and the application drains quite a lot
  of power from the phone because of the sensor usage.
  The research on code optimization is extensive and the application could
@@ -307,7 +307,7 @@ Reference here
 
 \end_inset
 
-, but that limits the types of sounds that can be used.
+), but that limits the types of sounds that can be used.
  With closer sound sources, the sound might be more natural.
  An example of game modes enabling closer sound sources follows below.
 \end_layout
@@ -322,7 +322,7 @@ running Instead of running along a pre-generated route of coins (sound sources)
  The coins are then generated close to the user position at random intervals
  during the run, giving the impression of running in an area scattered with
  coins.
- The user will only hear a coin when it is close enough, but since there
+ The user will only hear a coin when it is close enough; but since there
  is no need to take a specific coin in any specific order this is no issue.
 \end_layout
 
