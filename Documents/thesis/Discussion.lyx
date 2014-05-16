@@ -328,7 +328,22 @@ get, rapportens syfte, och vilken typ av undersökning som gjorts för att
 \end_layout
 
 \begin_layout Standard
-This project have developed an sound based running app ...
+This project have developed an sound based running application named 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+...
  by investigating android development smartphone sensors, etc ...
 \end_layout
 
