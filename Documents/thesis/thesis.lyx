@@ -608,7 +608,7 @@ filename "Acknowledgments.lyx"
 
 \begin_layout Standard
 \begin_inset Branch Appendix
-status open
+status collapsed
 
 \begin_layout Standard
 \start_of_appendix

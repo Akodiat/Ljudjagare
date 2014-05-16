@@ -314,7 +314,21 @@ key "ndk"
  However, it enables developers to use operations that aren’t accessible
  using only Java - such as handling 3D audio.
  Currently, there seem to be two APIs available providing this functionality:
- OpenSL ES and OpenAL Soft.
+ OpenSL ES and OpenAL Soft --- both using general HRTFs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "opensl"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "openal"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -381,8 +395,22 @@ key "lgpl"
 \end_layout
 
 \begin_layout Standard
-Because of OpenSL being mostly unsupported, /app/ was developed using OpenAL
- and OpenAl4Android as audio core.
+Because of OpenSL being mostly unsupported, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+ was developed using OpenAL and OpenAl4Android as audio core.
  OpenAL4Android is a small library provided by Martien Pielot that serves
  as an intermediary between the native OpelAL Soft code and the Java application
  
@@ -400,8 +428,55 @@ Feedback to the user
 \end_layout
 
 \begin_layout Standard
-To communicate with the user, the application takes advantage of the 3D
- audio funcionality provided by the OpenAL API.
+To communicate with the user, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+ takes advantage of the 3D audio funcionality provided by the OpenAL Soft
+ API.
+ By positioning sound sources in a virtual acoustic space using X, Y and
+ Z coordinates, it's possible to create an illusion of them appearing from
+ a certain direction.
+ The whole concept with the application is for the sound to guide the user
+ to a certain point generated.
+\end_layout
+
+\begin_layout Standard
+The user's position relative to the virtual sound source is determined using
+ GPS technology (see chapter 3).
+ 
+\end_layout
+
+\begin_layout Standard
+As described in chapter XX, a point to where the user is supposed to go
+ is generated using GPS technology.
+ It also keeps of the distance and angle between the user in relative to
+ the point; both of which are important when modulating the sound to communicate
+ with the user.
+\end_layout
+
+\begin_layout Standard
+As mentioned in chapter 2.1, using sound level as a cue is not recommended;
+ how far from the virtual listener the virtual sound source is placed is
+ hence unneccessary.
+ What's important is the angle to it.
+ 
+\end_layout
+
+\begin_layout Standard
+The point (0,0,0) is the position of the virtual listener, that is, from
+ where the user should interpret the sounds from.
  
 \end_layout
 
