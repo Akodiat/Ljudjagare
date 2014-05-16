@@ -38,6 +38,8 @@
 % enables calculations
 \usepackage{calc}
 
+\newcommand{\app}{Run For Life}
+
 % fancy page header/footer settings
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
@@ -428,7 +430,42 @@ Feedback to the user
 \end_layout
 
 \begin_layout Standard
-To communicate with the user, 
+Before going into detail, it might be worth quickly describing how the spatial
+ positioning of the audio is decided in our application.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Generation-of-random"
+
+\end_inset
+
+, it is described how points can be generated on a map using GPS technology.
+ As the user is moving, their angular offset in terms of such a generated
+ point can be calculated using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Sensor-fusion"
+
+\end_inset
+
+, varying from -180° to 180°.
+ An angular offset of 0° would hence mean that the user is moving perfectly
+ in the right direction.
+ With regards to the study in XXX, showing that virtual sounds positioned
+ above or below the listener are difficult to localize, it has not been
+ taken into account when developing the audio core of the application.
+ 
+\end_layout
+
+\begin_layout Standard
+The sound instructing the user in what direction to move is a pure sine
+ wave synthesized in 
+\emph on
+Propellerhead Reason 7
+\emph default
+.
+ Sine waves are generally seen as boring and uninteresting sounds, making
+ a good fit for applications like 
 \begin_inset ERT
 status open
 
@@ -443,70 +480,134 @@ app
 
 \end_inset
 
- takes advantage of the 3D audio funcionality provided by the OpenAL Soft
- API.
- By positioning sound sources in a virtual acoustic space using X, Y and
- Z coordinates, it's possible to create an illusion of them appearing from
- a certain direction.
- The whole concept with the application is for the sound to guide the user
- to a certain point generated.
-\end_layout
-
-\begin_layout Standard
-The user's position relative to the virtual sound source is determined using
- GPS technology (see chapter 3).
  
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sine_reference"
 
-\begin_layout Standard
-As described in chapter XX, a point to where the user is supposed to go
- is generated using GPS technology.
- It also keeps of the distance and angle between the user in relative to
- the point; both of which are important when modulating the sound to communicate
- with the user.
-\end_layout
+\end_inset
 
-\begin_layout Standard
-As mentioned in chapter 2.1, using sound level as a cue is not recommended;
- how far from the virtual listener the virtual sound source is placed is
- hence unneccessary.
- What's important is the angle to it.
+.
+ Apart from from being completely free of modulations on frequency and amplitude
+, it does not contain overtones.
+ It is in a sense 
+\begin_inset Quotes eld
+\end_inset
+
+pure
+\begin_inset Quotes erd
+\end_inset
+
  
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sine_reference"
 
-\begin_layout Standard
-The point (0,0,0) is the position of the virtual listener, that is, from
- where the user should interpret the sounds from.
+\end_inset
+
+.
+ Since the user should be focusing on the direction of which the sound is
+ appearing from (panoration), it would make sense for the sound itself to
+ be as neutral as possible.
+ Taking advantage of the 3D audio funcionality provided by the OpenAL Soft
+ API, the sine wave is positioned around the user's head using the angular
+ offset previously mentioned.
+ For example, a sound with an angular offset of -90° would appear to come
+ from the left, while 130° would appear to come from four o'clock.
  
-\end_layout
-
-\begin_layout Standard
-Depending on where on the map a sound source is placed, a virtual such 
-\end_layout
-
-\begin_layout Standard
-Using the 3D audio functionality provided by OpenAL, the application's.
- The sound instructing the user in what direction to move is a pure sine
- wave, synthesized in Propellerhead Reason 7.
-\end_layout
-
-\begin_layout Standard
-meaning its amplitude is non-changing.
- Neither does it contain It does not contain any overtones, it is completely
- steady in terms of volume and is, xxx, a rather uninteresting sound .
 \end_layout
 
 \begin_layout Standard
 As mentioned in the theory chapter, non-invidualised HRTFs suffer from back-fron
 t confusion.
- It would therefore be risky to rely single-handedly on the 3D properties
- of HRTFs in an application depending entirely on the directional properties
- of its audio.
- 
+ It would be risky to rely single-handedly on the 3D properties of HRTFs
+ in an application depending entirely on the directional properties of its
+ audio.
+ For that reason, some other factors were introduced apart from the spatial
+ panoration to make it easier to navigate correctly:
+\end_layout
+
+\begin_layout Paragraph
+Pitch
 \end_layout
 
 \begin_layout Standard
-BILD PÅ HUR LJUDET ÄR FÖRDELAT
+When the user moves, the pitch of the sound changes depending on the angular
+ offset; the bigger the offset, the lower the pitch.
+ To lower the pitch essentially means to lower the frequency of a sound,
+ assuming it's distinguishable from noise 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ne"
+
+\end_inset
+
+.
+ It makes the sound appear to be darker.
+ On the contrary, the sound will become brighter as the user is facing the
+ generated point.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Rate
+\end_layout
+
+\begin_layout Standard
+In chapter 2.1 it was mentioned that using sound level as a cue is not recommende
+d.
+ To inform the user about the current distance to the generated coin, a
+ short sine wave is repeated throughout the run.
+ The interval between each repetition depends on the distance to the point;
+ the sound will repeat faster the closer to the point the user is.
+ Both the change in pitch and change in rate can be related to recommendations
+ seen in chapter 2.1.2.
+\end_layout
+
+\begin_layout Standard
+Apart from modulating the sound in previous mentioned ways, there are times
+ when the sound is totally exchanged to another.
+ If the user is moving in the correct direction (+/- 20°) an electronic
+ beat is played, to indicate to the user that they use in the correct direction.
+ If the user is running in the wrong direction (+/- 40°), however, the looping
+ sound is exchanged to a sound indicating something is wrong.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /Users/nanobii/Desktop/wadawd.png
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sound_table"
+
+\end_inset
+
+How sound is modulated blabla
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
