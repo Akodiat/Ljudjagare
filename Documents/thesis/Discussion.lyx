@@ -364,7 +364,53 @@ gsvärda, nya, överraskande, intressanta och sätter det i relation till det
 \begin_layout Standard
 The fact that...
  However...
- Comparing with the master thesis 
+ 
+\end_layout
+
+\begin_layout Standard
+Currently, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+ uses the GPS bearing to decide the user direction.
+ A disadvantage of this is that the user needs to be in motion in order
+ for the application to get an accurate angle of the user.
+ Often the reason for stopping to run is that the user is unsure of the
+ direction of the sound.
+ However, when the user is stationary the GPS will not get any significant
+ location updates and hence cannot calculate any direction of travel.
+ If a user does not know this it might prove very hard to use the application.
+ Furthermore, the GPS cannot detect the user’s head movements; something
+ which lowers the sound perception slightly.
+ An example of this would be if the user runs in a certain direction and
+ turn the head 90 degrees.
+ Then this will then not affect how the sound is played back.
+ 
+\end_layout
+
+\begin_layout Standard
+The great advantage with using the GPS bearing was however that it allowed
+ users to wear their phones in any way they preferred.
+ This was something that this project required, as it seemed more realistic
+ that the users would run with their phones in a pocket or in a sports bracelet
+ on the arm than that they would attach the phone to its head or carry it
+ in their hand like a compass.
+ 
+\end_layout
+
+\begin_layout Standard
+Comparing with the master thesis 
 \emph on
 Application of Dynamic Binaural Signals in Acoustic Games
 \emph default
@@ -375,20 +421,37 @@ key "Lawitzki2012"
 
 \end_inset
 
-, the approach of calculating the user orientation has been a lot more complicat
-ed in this project.
- Lawitzky had the smartphone firmly attached to the user, giving him the
- possibility to measure orientation with great accuracy.
- 
+, the approach of calculating the user orientation has as such been a lot
+ more complicated in this project.
+ Lawitzky had the smartphone firmly attached to the head of the user, giving
+ him the possibility to measure orientation with great accuracy.
+ Since the phone was then at a fixed position relative to the ears of the
+ user, the perception of the sound was a lot better.
 \end_layout
 
 \begin_layout Standard
-This project had the requirement of allowing users to wear their phones
- in any way they preferred.
- Hence, while a firmly attached phone would have made the user orientation
+The alternative of combining gyroscope and accelerometer data described
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Sensor-fusion"
+
+\end_inset
+
+ was an attempt to a compromise between the GPS-bearing alternative and
+ the orientation sensor fusion described by Lawitzky.
+ It worked quite good while moving slowly but at higher speeds the sound
+ starts to jump around too much, making the user confused.
+ Probably some better algorithm for choosing when to use the gyroscope readings
+ and when to adjust the direction with the GPS-bearing, perhaps taking speed
+ into consideration, would improve the user experience.
+\end_layout
+
+\begin_layout Standard
+Hence, while a firmly attached phone would have made the user orientation
  a lot more accurate, it would be too impractical for this project.
  The workaround of using a GPS bearing and gyroscope combination is controversia
-l...
+l… 
 \end_layout
 
 \begin_layout Description

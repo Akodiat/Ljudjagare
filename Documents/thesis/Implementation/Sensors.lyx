@@ -275,6 +275,13 @@ thepage
 
 \begin_layout Section
 Sensor fusion: Combining sensor values to calculate user direction
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sensor-fusion"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
