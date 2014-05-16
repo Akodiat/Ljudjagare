@@ -300,7 +300,7 @@ name "sec:Generation-of-random"
 For the user to be able to instantly use the application to get out and
  run the sound sources (checkpoints) are generated out of a predefined algorithm.
  The checkpoints must be generated at reachable locations and can for example
- not be placed in a lake or a building but instead on a road or trail.
+ not be placed in a lake or a building, but instead on a road or trail.
  During the project two methods to generate a location that is reachable
  was invented and is described in this chapter.
 \end_layout
@@ -314,21 +314,21 @@ Colour classification method
 \begin_layout Standard
 
 \lang british
-The first method is to randomly generate a location nearby the location
- of the user.
- This location is then evaluated if it lies in an appropriate environment
+The first method generates a random location nearby the location of the
+ user.
+ This location is evaluated if it is located in an appropriate environment
  by extracting the colour that the location has on a map.
- By classifying all the colours on a map by its colour for example blue
- is equal to water, light green is equal to grass, and so on one can compare
- the colour on a location and then classify it thereafter.
- If the colour is blue the location is most likely located in water of some
- kind.
+ By classifying all the colours on a map by its colour, for example blue
+ is equal to water and light green is equal to grass, one can compare the
+ colour of a location and classify it thereafter.
+ If the colour is blue, the location is most likely located in water of
+ some kind.
  In this scenario a new random location has to be generated and evaluated
  in the same way.
- Only if the location has an colour that is accepted, for example light
- green it is saved and can be used in the route.
- In order to implement this an accurate map is required that is linked to
- some kind of coordinate system.
+ Only if the location has a colour that is accepted, for example light green,
+ it is saved and can be used in the route.
+ For this to be implemented, the map has to have accurate colour regions
+ and be linked to some kind of coordinate system.
  It must also be possible to extract the colour of the random location.
  
 \end_layout
@@ -348,14 +348,7 @@ name "google maps random"
 
 \end_inset
 
-Another approach is to use Google maps and its geocoding API.
- A random location is generated as in the first method.
- Then a geocoding API request is sent to Google asking for the walking direction
- from the users location to the random location.
- The answer from Google gives the direction to the closest reachable point
- nearby the location.
- This closest point is then extracted and is used as the random location
- 
+Another approach is to use Google maps and its geocoding API 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "GoogleDevelopers2014"
@@ -363,13 +356,19 @@ key "GoogleDevelopers2014"
 \end_inset
 
 .
+ A random location is generated as in the first method.
+ Then a geocoding API request is sent to Google asking for the directions
+ from the users location to the random location.
+ The response from Google contains the directions to the closest reachable
+ point to the requested location.
+ This closest point is then extracted and is used as the random location.
  
 \end_layout
 
 \begin_layout Standard
 
 \lang british
-In this project the second approach is implemented and it is described how
+In this project the second approach is implemented and this is described
  in chapter 3, 
 \begin_inset CommandInset ref
 LatexCommand ref

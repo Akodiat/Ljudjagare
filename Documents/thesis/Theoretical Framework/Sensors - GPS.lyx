@@ -585,5 +585,94 @@ key "AndroidOpenSourceproject"
  not change.
 \end_layout
 
+\begin_layout Standard
+There are several formats that can be used to represent a location on the
+ earth.
+ This projects is using the geographic coordinate system with longitude
+ and latitude 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GreatBritain2002"
+
+\end_inset
+
+.
+ As seen in the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Figure-showing-latLong"
+
+\end_inset
+
+ the latitude, 
+\begin_inset Formula $\varphi$
+\end_inset
+
+, is the angle between the equator and the poles.
+ It is zero at the equator, 90º N at the north pole and 90º S at the south
+ pole.
+ The longitude, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, is the angle east or west of the reference meridian.
+ The reference meridian goes from one pole to the other and passes through
+ the Royal Observatory, Greenwich in England.
+ This Greenwich meridian has a longitude value of 0º and the antipodal meridian
+ has the values of 180º W and 180º E.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Figures/Latitude_and_longitude_graticule_on_a_sphere.png
+	lyxscale 50
+	width 40page%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Figure-showing-latLong"
+
+\end_inset
+
+Figure showing definition of latitude (φ) and longitude (λ) on a sphere.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mercator2010"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
