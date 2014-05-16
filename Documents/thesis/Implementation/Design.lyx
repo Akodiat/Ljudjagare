@@ -366,7 +366,7 @@ name "sub:Main-screen"
 
 \end_inset
 
-Main screen 
+Main screen
 \end_layout
 
 \begin_layout Standard
@@ -387,34 +387,71 @@ reference "chap:Discussion"
 \end_layout
 
 \begin_layout Standard
-The choice of game mode has been implemented with the filmstrip pattern.
- The main reason for this is that it is easily browse able 
+To easily browse between different game modes the swipeable pattern filmstrip
+ was chosen.
+ Since filmstrip is not a standard pattern in Android it was implemented
+ with as 
+\emph on
+ViewPager
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ViewPager2014"
+
+\end_inset
+
+, which is a layout supporting horizontal swiping.
+ The ViewPager was set up with an adapter
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Adpater2014a"
+
+\end_inset
+
+ handling each page on the filmstrip.
+ The pattern was considered appropriate to our app since it provides a default
+ value of a chosen game mode and thereby supports a quick start.
+ In the context of choosing between different game modes filmstrip also
+ serves a good cause since new users get a clear understanding of a, to
+ them unknown, game mode by viewing its picture and name supplied by its
+ page on the filmstrip.
+ If the user needs more information to choose game mode an information icon
+ in the upper right corner of the current filmstrip page indicates that
+ more information will be shown if clicked.
+ Further the affordance of swiping is assured with the dots in the bottom
+ right corner.
 \end_layout
 
 \begin_layout Standard
-<BILD på hur vyerna hänger samman>
-\end_layout
+Below the filmstrip there is a bar containing icons and a next-button.
+ The tendency of users reading content from top to bottom and from left
+ to right 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tidwell2011"
 
-\begin_layout Standard
-provided with information about whether the GPS and headphones are connected.
- The user may then be able to fix these errors by enabling the GPS and inserting
- the headphones.
+\end_inset
+
+ has been taken in account to make sure the user gets to this bar after
+ choosing game mode.
+ The icons are symbols notifying the user whether the GPS and headphones
+ are connected or not.
+ To make sure that the icons are perceived as icons and not buttons they
+ have been re-designed until they looked discrete enough.
+ It was also important to notify the user if disconnection occurred.
+ By putting a cross over the symbol in the icon in case of disconnection
+ the user is meant to clearly notice that something is not right, getting
+ the opportunity to fix it by enabling the GPS and/or inserting the headphones.
  
 \end_layout
 
 \begin_layout Standard
-To easily browse between different game modes the swipeable pattern carousel
- was chosen{Källa från Designing interfaces boken}.
- Since carousel is not a standard pattern in Android the external library
- Fancy Cover Flow was implemented{https://github.com/davidschreiber/FancyCoverFlo
-w}.
- 
-\end_layout
-
-\begin_layout Standard
-
-\color green
-Coverflow for game selection, well known pattern
+The tendency of reading from left to right, as mentioned before, is well
+ taken in account in the bar to make sure that a possible disconnection
+ is discovered before the next-button is pressed.
+ To let the user know that the next-button takes the user to the next view
+ it is implemented as a Prominent Done Button.
 \end_layout
 
 \begin_layout Standard
@@ -425,18 +462,6 @@ As mentioned earlier the running session is not started at the landing screen
  The running session is thereby easily started with a prominent done button
  in the bottom right of the screen.
  {Källa från Designin Interfaces} 
-\end_layout
-
-\begin_layout Standard
-Filmstrip
-\end_layout
-
-\begin_layout Standard
-
-\color green
-Prominent done button.
- Likhet mellan grönt-grönt, rött-rött.
- <hitta källa i designing interface-boken>
 \end_layout
 
 \begin_layout Standard
