@@ -412,7 +412,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/trilateration.png
+	filename Figures/trilateration.eps
 	width 40page%
 
 \end_inset
@@ -432,16 +432,6 @@ name "fig:Trilateration"
 
 Location finding using trilateration
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
 
 \end_inset
 
