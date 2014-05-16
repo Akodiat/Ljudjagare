@@ -371,23 +371,32 @@ Main screen
 
 \begin_layout Standard
 Since the application's main focus is the running part it was decided to,
- on start up, take the user directly into the view that starts a running
+ on start up, take the user directly into the screen that starts a running
  session.
- This reduces the excise for the user by one click when he/she wants to
- start a run, which is the use case believed to be used most frequently.
- Instead the screen provides a clear overview of what the app does and lets
- the user start a run from there.
+ This reduces the excise for the user by one click (compared to going via
+ a dashboard, which is lifted in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Discussion"
+
+\end_inset
+
+) when he/she wants to start a run, which is the use case believed to be
+ used most frequently.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\color green
-Undvikande av dashboard
+The choice of game mode has been implemented with the filmstrip pattern.
+ The main reason for this is that it is easily browse able 
 \end_layout
 
 \begin_layout Standard
-Having said that, the user will at startup arrive into a landing screen
- providing information about whether the GPS and headphones are connected.
+<BILD på hur vyerna hänger samman>
+\end_layout
+
+\begin_layout Standard
+provided with information about whether the GPS and headphones are connected.
  The user may then be able to fix these errors by enabling the GPS and inserting
  the headphones.
  

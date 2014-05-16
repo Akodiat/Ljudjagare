@@ -371,15 +371,7 @@ name "fig:prominent"
 
 Example of a 
 \shape italic
-Prominent 
-\begin_inset Quotes eld
-\end_inset
-
-Done
-\begin_inset Quotes erd
-\end_inset
-
- Button.
+Prominent Done Button.
 \end_layout
 
 \end_inset
@@ -424,6 +416,28 @@ reference "fig:carousel"
  it is clear that the item in the middle is in focus since it is enlarged.
  By seeing the elements immediately around the focused item the user will
  get a clue about the possibility to browse.
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+Filmstrip
+\emph default
+ pattern basically is a Carousel for mobile devices.
+ A difference between Filmstrip and Carousel is that Filmstrip usually fills
+ up the whole screen horizontally
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tidwell2011"
+
+\end_inset
+
+.
+ This is generally good practice when the screen is small, which is the
+ case for mobile devices.
+ There is no space for clues of the adjacent elements on the sides, which
+ usually is solved by small dots in the bottom of the screen as in figure.
+ LÄGG TILL FIGUR
 \end_layout
 
 \begin_layout Standard
