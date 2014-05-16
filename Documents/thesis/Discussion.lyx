@@ -415,7 +415,7 @@ Comparing with the master thesis
 \emph on
 Application of Dynamic Binaural Signals in Acoustic Games
 \emph default
-
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lawitzki2012"
@@ -424,8 +424,21 @@ key "Lawitzki2012"
 
 , the approach of calculating the user orientation has as such been a lot
  more complicated in this project.
- Lawitzky had the smartphone firmly attached to the head of the user, giving
- him the possibility to measure orientation with great accuracy.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citeasnoun{Lawitzki2012}
+\end_layout
+
+\end_inset
+
+ had the smartphone firmly attached to the head of the user, giving him
+ the possibility to measure orientation with great accuracy.
  Since the phone was then at a fixed position relative to the ears of the
  user, the perception of the sound was a lot better.
 \end_layout
@@ -435,7 +448,7 @@ The alternative of combining gyroscope and accelerometer data described
  in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Sensor-fusion"
+reference "sec:Sensor-fusion"
 
 \end_inset
 
