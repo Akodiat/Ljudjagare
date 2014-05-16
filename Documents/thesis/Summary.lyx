@@ -87,14 +87,69 @@ Abstract
 \end_layout
 
 \begin_layout Standard
-Abstract/Summary text
+
+\color green
+1 Purpose and scope: Why do we care about the problem? What practical, scientifi
+c, theoretical or artistic gap is your research filling?
 \end_layout
 
 \begin_layout Standard
-This report describes the application [name] and the theory needed to develop
- it.
- Initially, a theoretical introduction to binaural sound is presented, followed
- by a walk-through of the sensors needed and evaluated in the application.
+This report describes the development of an exercise application 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+ for android smartphones.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+ combines the fascinating sensors found in the present smartphones with
+ audio playback into an engaging game.
+ Initially, a theoretical introduction to binural sound is presented, followed
+ by a walk-through of the sensors as well as the design patterns we followed
+ when designing application.
+ Furthermore the report describes the implementation process of the application.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+2 Result: As a result of completing the above procedure, what did you learn/inve
+nt/create?
+\end_layout
+
+\begin_layout Standard
+The project resulted in an application that is used to 
+\end_layout
+
+\begin_layout Standard
+
+\color green
+3 Conclusion/implications/ recommendations: What are the larger implications
+ of your findings, especially for the problem/gap identified in step 1?
 \end_layout
 
 \begin_layout Chapter*
