@@ -555,8 +555,7 @@ key "Drawil2012"
 
 \begin_layout Standard
 In this project, the GPS technology is mainly utilized to calculate the
- user position relative to the virtual sound sources, such as coins and
- monsters.
+ user position relative to the virtual sound sources.
  However, by keeping track of previous GPS locations, it is possible to
  acquire a user bearing.
  This bearing is the direction that the user has been traveling during the
