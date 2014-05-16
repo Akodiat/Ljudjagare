@@ -406,7 +406,8 @@ The great advantage with using the GPS bearing was however that it allowed
  that the users would run with their phones in a pocket or in a sports bracelet
  on the arm than that they would attach the phone to its head or carry it
  in their hand like a compass.
- 
+ Hence, while a firmly attached phone would have made the user orientation
+ a lot more accurate, it would be too impractical for this project.
 \end_layout
 
 \begin_layout Standard
@@ -445,13 +446,6 @@ reference "sub:Sensor-fusion"
  Probably some better algorithm for choosing when to use the gyroscope readings
  and when to adjust the direction with the GPS-bearing, perhaps taking speed
  into consideration, would improve the user experience.
-\end_layout
-
-\begin_layout Standard
-Hence, while a firmly attached phone would have made the user orientation
- a lot more accurate, it would be too impractical for this project.
- The workaround of using a GPS bearing and gyroscope combination is controversia
-l… 
 \end_layout
 
 \begin_layout Description
