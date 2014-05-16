@@ -289,14 +289,22 @@ Establishment of requirements
 \end_layout
 
 \begin_layout Standard
-As a starting point inspiration was taken from the apps Endomondo 
+As a starting point inspiration was taken from the apps 
+\emph on
+Endomondo
+\emph default
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Endomondo2014"
 
 \end_inset
 
- and “Zombies, Run!” 
+ and 
+\emph on
+Zombies, Run!
+\emph default
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "SixtoStart2014"
@@ -309,26 +317,40 @@ key "SixtoStart2014"
 
 \begin_layout Standard
 These apps are in some sense their opposites.
- Endomondo focuses on the running experience and lets the user quickly get
- started with a run.
- “Zombies, Run!” on the other hand focuses more on external game elements
- like outrunning zombies, picking up items and the upgrading the user's
- base camp.
- Also Endomondo puts a lot of focus on detailed statistics which is not
- the case for “Zombies, Run!”.
+ 
+\emph on
+Endomondo
+\emph default
+ focuses on the running experience and lets the user quickly get started
+ with a run.
+ 
+\emph on
+Zombies, Run!
+\emph default
+ on the other hand focuses more on external game elements like outrunning
+ zombies, picking up items and the upgrading the user's base camp.
+ 
+\emph on
+Endomondo
+\emph default
+ puts a lot of focus on detailed statistics which is not the case for 
+\emph on
+Zombies, Run!
+\emph default
+.
+ It would certainly be a challenge to combine the best of these two worlds
+ into one single application.
 \end_layout
 
 \begin_layout Standard
-The desired requirement is to combine the best of the two worlds represented
- by the two apps.
- It is wanted to get the app to be as straight forward as Endomondo when
- starting a new run while still letting the app be fun and having game elements
- like in “Zombies, Run!”.
+The requirements that was established was to make the application straight
+ forward when starting a new run, detailed when viewing statistics of previous
+ runs and fun by including game elements.
  
 \end_layout
 
 \begin_layout Subsection
-Design of alternatives
+Design of alternatives and prototyping
 \end_layout
 
 \begin_layout Standard
@@ -338,52 +360,23 @@ Beskriv designvalen och förklara varför de är bra
 \end_layout
 
 \begin_layout Subsubsection
-General
-\end_layout
-
-\begin_layout Standard
-When starting an app a splash screen may sometimes be motivated since it
- gives the user feedback that the app is loading.
- When the loading takes a long time, in games for example, it is a good
- idea to use a splash screen.
- However, the fact that the loading of the splash screen itself requires
- resources suggests that it is better avoided.
- In Run for Life a splash screen would probably take almost as long time
- to load as the app’s start screen (also known as landing screen), which
- would make it inefficient.
- A better solution was making the landing screen light weight and low in
- its demanding of resources
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Lehtimaeki2013"
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Main-screen"
 
 \end_inset
 
-.
- Thereby the Run For Life-start screen was chosen not to include loading
- of all the heavy algorithms that are needed to calculate a route.
- Instead the screen provides a clear overview of what the app does and lets
- the user start a run from there.
-\end_layout
-
-\begin_layout Subsubsection
 Main screen 
 \end_layout
 
 \begin_layout Standard
-At first the dashboard pattern was considered for the landing screen.
- The reason for this is that it clearly presents all different parts of
- the app with big icons leading to them.
- The pattern was earlier officially recommended by Google and have thereby
- become well known to users.
- The pattern could have been used to let the user choose if he/she wants
- to start the run-mode, view the history or something else.
- {Smashing, 318-319} However, the fact that the app’s main focus is the
- running part it seemed like a better idea to on startup take the user directly
- into the view that starts a running session.
+Since the application's main focus is the running part it was decided to,
+ on start up, take the user directly into the view that starts a running
+ session.
  This reduces the excise for the user by one click when he/she wants to
- start a run.
- 
+ start a run, which is the use case believed to be used most frequently.
+ Instead the screen provides a clear overview of what the app does and lets
+ the user start a run from there.
 \end_layout
 
 \begin_layout Standard
@@ -470,8 +463,75 @@ Navigation Drawer -> History Motiverat eftersom det kommer vara många olika
 Implementation of prototype (Beta)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
+Evaluation
+\end_layout
 
+\begin_layout Paragraph
+Diskussion:
+\end_layout
+
+\begin_layout Standard
+During the design process the including of a 
+\emph on
+splash screen
+\emph default
+ was considered.
+ When starting an application a splash screen may sometimes be motivated
+ since it gives the user feedback that the application is loading.
+ This is often applied in games where the loading takes a long time.
+ However, the fact that the loading of the splash screen itself requires
+ resources suggests that it is better avoided 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+.
+ In Run for Life a splash screen would probably take almost as long time
+ to load as the application's start screen, which would make it inefficient.
+ A solution was making the start screen light weight and low in its demanding
+ of resources
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Lehtimaeki2013"
+
+\end_inset
+
+.
+ Thereby the Run For Life-start screen was chosen not to include the loading
+ of the resource demanding algorithms needed to calculate a route.
+\end_layout
+
+\begin_layout Standard
+At first the 
+\emph on
+dashboard 
+\emph default
+pattern
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+ was considered for the start screen.
+ The reason for this is that a dashboard clearly presents an application's
+ different parts with big icons leading to them.
+ The pattern was earlier officially recommended by Google and have thereby
+ become well known to users.
+ The pattern could have been used to let the user choose if he/she wanted
+ to start a run, view the history or something else.
+ However, as mentioned in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Main-screen"
+
+\end_inset
+
+ it was desired to keep the excise as low as possible when starting a run,
+ which is why the dashboard was omitted.
 \end_layout
 
 \end_body
