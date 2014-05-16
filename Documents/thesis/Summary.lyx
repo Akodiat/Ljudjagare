@@ -94,7 +94,8 @@ c, theoretical or artistic gap is your research filling?
 \end_layout
 
 \begin_layout Standard
-This report describes the development of an exercise application 
+This report describes the development of an exercise application called
+ 
 \begin_inset ERT
 status open
 
@@ -128,9 +129,10 @@ app
  combines the fascinating sensors found in the present smartphones with
  audio playback into an engaging game.
  Initially, a theoretical introduction to binural sound is presented, followed
- by a walk-through of the sensors as well as the design patterns we followed
- when designing application.
- Furthermore the report describes the implementation process of the application.
+ by a walk-through of the sensors as well as the design patterns that was
+ followed when developing application.
+ Furthermore the report describes the implementation process and the choices
+ that were made when creating the application.
  
 \end_layout
 
@@ -142,7 +144,28 @@ nt/create?
 \end_layout
 
 \begin_layout Standard
-The project resulted in an application that is used to 
+The project resulted in an application that has a appealing user interface
+ and is a game that may enhance the users regular exercise sessions.
+ This is done by providing a randomized running route, audio feedback to
+ guide the user in the right direction as well as a providing challenge
+ by urging the user to collect all the checkpoints along the route.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+ also presents the opportunity for the user to view the history of their
+ previous running sessions.
 \end_layout
 
 \begin_layout Standard
@@ -150,6 +173,10 @@ The project resulted in an application that is used to
 \color green
 3 Conclusion/implications/ recommendations: What are the larger implications
  of your findings, especially for the problem/gap identified in step 1?
+\end_layout
+
+\begin_layout Standard
+TODO
 \end_layout
 
 \begin_layout Chapter*
