@@ -407,6 +407,68 @@ This means that...
  
 \end_layout
 
+\begin_layout Section
+Implementation choices of the random route generation algorithm
+\end_layout
+
+\begin_layout Standard
+As earlier stated the random route algorithm in this project has used Google
+ Maps and its geocoding API {Länk till kapitel 2}.
+ The decision to choose this method instead of the other presented method
+ that used colour to classify locations was based on the available tools
+ and knowledge at the beginning of the project.
+ The method with the colour classification was actually the first method
+ that was taken into consideration.
+ Different approaches was evaluated in order to make this method viable.
+ The basic and most important aspect to this method was to have an accurate
+ map with an corresponding coordinate system attach to it.
+ Different maps was considered, for example Google Maps
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.google.com/maps/
+\end_layout
+
+\end_inset
+
+ and OpenStreetMap
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.openstreetmap.org/
+\end_layout
+
+\end_inset
+
+.
+ The hard part was to extract the colour from the interesting location.
+ This could be done by taking a print screen of the map and analyze the
+ image with an algorithm that determine the colour of the location.
+ There might also be functions available from the map-providers and by sending
+ a request to the them get an answer containing the colour of the location.
+ This problem was never solved because the idea of using Google Maps and
+ its functions to find directions was now invented.
+ The method using Google Maps geocoding API was at that time more preferable
+ since a lot of its functions was supported within Android and the APIs
+ from Google.
+\end_layout
+
+\begin_layout Standard
+The two methods both have their pros and cons.
+ The bad thing with the method using the geocoding API is that it must be
+ quite a lot of roads and trails nearby for the request to find any good
+ directions.
+ If there is only one straight road nearby the sound sources is going to
+ be mapped to the road and the distance between them will be very different.
+ A conclusion of this method is that it is working good in a city or a village
+ where there are a lot of roads and walkways.
+ The colour classification model on the other hand does not depend on the
+ location as much and might be better to consider while on the countryside.
+ 
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
