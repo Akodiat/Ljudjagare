@@ -316,7 +316,7 @@ key "atok2013"
 \end_layout
 
 \begin_layout Standard
-Every time the algorithm runs is a theoretical route generated based on
+Every time the algorithm runs, a theoretical route is generated based on
  the number of checkpoints and the distance that has been set in the settings
  by the user.
  If the algorithm is based on the same settings this theoretical route will
@@ -482,7 +482,6 @@ reference "fig:random route-1-1"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open

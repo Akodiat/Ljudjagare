@@ -649,7 +649,19 @@ name "fig:Figure-showing-latLong"
 
 \end_inset
 
-Figure showing definition of latitude (φ) and longitude (λ) on a sphere.
+Figure showing definition of latitude (
+\begin_inset Formula $\varphi$
+\end_inset
+
+) and longitude (
+\begin_inset Formula $\lambda$
+\end_inset
+
+) on a sphere.
+\end_layout
+
+\end_inset
+
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -657,15 +669,6 @@ key "Mercator2010"
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
