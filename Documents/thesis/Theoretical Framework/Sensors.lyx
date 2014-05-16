@@ -307,8 +307,8 @@ Accelerometer
 \end_layout
 
 \begin_layout Standard
-The accelerometer gives the linear acceleration of device in meters per
- square second in the device's coordinate system
+The accelerometer gives the linear acceleration of the device in meters
+ per square second in the device's coordinate system
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndroidOpenSourceproject2014"
@@ -456,8 +456,9 @@ key "AndroidOpenSourceproject2014"
 \end_inset
 
 .
- While it has a lot less disturbances than a accelerometer and magnetometer
- compass, it only determines change of direction and not the direction itself.
+ While it has a lot less disturbances than an accelerometer and magnetometer
+ compass, it only determines the change of direction and not the direction
+ itself.
  Hence, a gyroscope can report that the phone has rotated 90 degrees around
  the x-axis; but without knowing at what angle it started, one cannot know
  at which angle it has ended up (only that it is 90 degrees larger).
