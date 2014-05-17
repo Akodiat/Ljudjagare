@@ -457,7 +457,7 @@ reference "eq:newLatitude"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\lambda_{new}=\cos\left(\beta\right)*\theta+sin(\beta)*\phi\label{eq:newLongitude}
+\lambda_{new}=\cos\left(\beta\right)*\theta+sin(\beta)*\varphi\label{eq:newLongitude}
 \end{equation}
 
 \end_inset
@@ -468,7 +468,7 @@ reference "eq:newLatitude"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\varphi_{new}=-sin(\beta)*\theta+cos(\beta)*\phi\label{eq:newLatitude}
+\varphi_{new}=-sin(\beta)*\theta+cos(\beta)*\varphi\label{eq:newLatitude}
 \end{equation}
 
 \end_inset
