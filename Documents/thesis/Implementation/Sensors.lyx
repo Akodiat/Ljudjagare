@@ -303,9 +303,9 @@ reference "sub:Gyroscope"
 , the gyroscope values measures rotation in the local coordinate system
  of the device, the gyroscope readings has to be converted into the global
  coordinate system.
- Since the accelerometer readings contain the acceleration toward the ground,
- these can be used to determine the orientation of the axis orthogonal to
- the ground in the device coordinate system.
+ Because the accelerometer readings contain the acceleration toward the
+ ground, these can be used to determine the orientation of the axis orthogonal
+ to the ground in the device coordinate system.
 \end_layout
 
 \begin_layout Standard
@@ -340,8 +340,8 @@ key "Rocketmagnet2012"
 \end_inset
 
 .
- Rotations around other axes are not needed, since altitude of sound sources
- will not be considered.
+ Rotations around the other axes are not required, since the altitude of
+ sound sources will not be considered.
 \end_layout
 
 \begin_layout Standard

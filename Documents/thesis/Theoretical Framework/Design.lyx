@@ -337,7 +337,7 @@ reference "fig:prominent"
 \end_inset
 
  the sign up-button is prominent and thereby clearly telling the user that
- is should be pressed after the form has been filled in.
+ it should be pressed after the form has been filled in.
 \end_layout
 
 \begin_layout Standard
@@ -867,6 +867,19 @@ key "NavigationDrawer2014"
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[1]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -897,6 +910,12 @@ n’s start-up since the user then can be taken directly into the view that
 \end_layout
 
 \begin_layout Paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Swipe-Views"
+
+\end_inset
+
 Swipe Views
 \end_layout
 

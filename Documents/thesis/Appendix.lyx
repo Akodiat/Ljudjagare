@@ -274,6 +274,12 @@ thepage
 \end_layout
 
 \begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Appendix-A:-Usability"
+
+\end_inset
+
 Appendix A: Usability evaluation
 \end_layout
 

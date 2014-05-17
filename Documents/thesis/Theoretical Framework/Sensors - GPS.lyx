@@ -575,6 +575,12 @@ key "AndroidOpenSourceproject"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "geographic coordinate system"
+
+\end_inset
+
 There are several formats that can be used to represent a location on the
  earth.
  This projects is using the geographic coordinate system with longitude
