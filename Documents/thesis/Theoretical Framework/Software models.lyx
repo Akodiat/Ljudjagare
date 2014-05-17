@@ -278,9 +278,86 @@ Software models
 \end_layout
 
 \begin_layout Standard
+The core of Android applications is the concept 
+\emph on
+Activity
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
 
-\color green
-activities, fragments, etc
+\end_inset
+
+.
+ An Activity is a controller handling the components visible on the screen.
+ The components visible in an Activity are called 
+\emph on
+User Interface Widgets
+\emph default
+ and consists of everything from buttons to more complex components like
+ gallery widgets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lehtimaeki2013"
+
+\end_inset
+
+.
+ User Interface Widgets are collected in containers called 
+\emph on
+Layouts.
+ 
+\emph default
+Each Activity has a Layout and communicates with it during its controller
+ process.
+ 
+\end_layout
+
+\begin_layout Standard
+Layouts may also belong to a so called 
+\emph on
+Fragment
+\emph default
+ which basically is a Child-Activity on which parts of the content of the
+ owning Activity can be put.
+ Fragments are modular sections of an Activity meaning that they are flexible
+ in a way that lets them adapt to the current screen size 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fragments2014"
+
+\end_inset
+
+.
+ If an Activity contains one Fragment displaying a list and one Fragment
+ displaying a detailed view of a list element the small screen on a mobile
+ device might only show one of these Fragments while a tablet with a larger
+ screen might show them both at the same time.
+ This way the same code can be used no matter what device is intended to
+ run the application.
+ 
+\end_layout
+
+\begin_layout Standard
+The communication between Activities is done with messaging objects called
+ 
+\emph on
+Intents
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Intents2014"
+
+\end_inset
+
+.
+ These Intents can be explicit, meaning that they are used to start a certain
+ Activity within the application itself, but may also be implicit letting
+ the operating system choose another application to handle the action that
+ the intent want to perform.
+ Intents can include extra data if it is needed to perform the desired action.
 \end_layout
 
 \end_body
