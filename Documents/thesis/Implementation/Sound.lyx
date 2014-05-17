@@ -451,7 +451,7 @@ reference "sub:Sensor-fusion"
 , varying from -180° to 180°.
  An angular offset of 0° would hence mean that the user is moving perfectly
  in the right direction.
- With regards to the study in XXX, showing that virtual sounds positioned
+ With regards to the study in chapter , showing that virtual sounds positioned
  above or below the listener are difficult to localize, it has not been
  taken into account when developing the audio core of the application.
  
@@ -496,13 +496,6 @@ key "sine_reference"
 
 pure
 \begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "sine_reference"
-
 \end_inset
 
 .
@@ -565,12 +558,14 @@ d.
 \end_layout
 
 \begin_layout Standard
-Apart from modulating the sound in previous mentioned ways, there are times
- when the sound is totally exchanged to another.
- If the user is moving in the correct direction (+/- 20°) an electronic
- beat is played, to indicate to the user that they use in the correct direction.
- If the user is running in the wrong direction (+/- 40°), however, the looping
- sound is exchanged to a sound indicating something is wrong.
+Apart from the sound being modulated in previously mentioned ways, the sine
+ wave is sometimes completely exchanged to another sound.
+ If the user is moving in the correct direction, an electronic beat is played
+ to indicate they are moving in the correct direction.
+ If the user is running in the wrong direction, however, the sine wave is
+ exchanged to a sound indicating something is wrong.
+ The warning sound is similar to what you hear when a vehicle backs.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -583,7 +578,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename /Users/nanobii/Desktop/wadawd.png
+	filename /Users/nanobii/Development/workspace/Ljudjagare/Documents/thesis/Figures/wadawd.png
 
 \end_inset
 
@@ -597,7 +592,7 @@ name "fig:sound_table"
 
 \end_inset
 
-How sound is modulated blabla
+The three different sound stages.
 \end_layout
 
 \end_inset
