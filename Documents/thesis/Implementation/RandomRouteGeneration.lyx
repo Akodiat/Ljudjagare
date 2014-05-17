@@ -333,7 +333,7 @@ key "atok2013"
 
 \begin_layout Standard
 Every time the algorithm runs, a theoretical route is generated based on
- a predefined number of checkpoints and a distance, k.
+ a predefined number of checkpoints and a distance, d.
  As seen in 
 \begin_inset CommandInset ref
 LatexCommand ref
