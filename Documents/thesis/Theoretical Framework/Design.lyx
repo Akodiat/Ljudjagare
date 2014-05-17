@@ -897,6 +897,12 @@ n’s start-up since the user then can be taken directly into the view that
 \end_layout
 
 \begin_layout Paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Swipe-Views"
+
+\end_inset
+
 Swipe Views
 \end_layout
 

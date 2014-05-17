@@ -354,9 +354,41 @@ Design of alternatives and prototyping
 \end_layout
 
 \begin_layout Standard
+To decide the final design solution an iterative process took place.
+ Many alternatives were implemented and tried out before the final prototype
+ was finished.
+ Below the design decisions are motivated.
+\end_layout
 
-\color green
-Beskriv designvalen och förklara varför de är bra
+\begin_layout Subsubsection
+General
+\end_layout
+
+\begin_layout Standard
+The pattern Navigation Drawer was chosen in the main activity because of
+ its quick and easy access to the different fragments and their screens.
+ In the current version there only exist the three different fragments:
+ main, history and help.
+ This means that tabs at the moment, as mentioned in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Swipe-Views"
+
+\end_inset
+
+, would have been the preferable choice.
+ However, to enable the possibility of extension later on, and to save the
+ space on the screen that would have been covered by tabs, Navigation Drawer
+ was considered the best choice.
+\end_layout
+
+\begin_layout Standard
+The history- and help fragment was designed as simple and intuitive as possible,
+ the history fragment being a list of clickable previously completed runs
+ and the help fragment being a instructional page with sample sounds to
+ get a better understanding of the concept.
+ The main fragment however has a lot of interesting design components which
+ will be explained below.
 \end_layout
 
 \begin_layout Subsubsection
@@ -371,8 +403,8 @@ Main screen
 
 \begin_layout Standard
 Since the application's main focus is the running part it was decided to,
- on start up, take the user directly into the screen that starts a running
- session.
+ on start up, take the user directly into the screen of the activity that
+ chooses a running session.
  This reduces the excise for the user by one click (compared to going via
  a dashboard, which is lifted in 
 \begin_inset CommandInset ref
@@ -390,11 +422,11 @@ reference "chap:Discussion"
 To easily browse between different game modes the swipeable pattern filmstrip
  was chosen.
  Since filmstrip is not a standard pattern in Android it was implemented
- with as 
+ with
 \emph on
-ViewPager
+ ViewPager
 \emph default
-
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ViewPager2014"
@@ -402,14 +434,15 @@ key "ViewPager2014"
 \end_inset
 
 , which is a layout supporting horizontal swiping.
- The ViewPager was set up with an adapter
+ The ViewPager was set up with the adapter, FragmentStatePagerAdapter, handling
+ each page on the filmstrip 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Adpater2014a"
 
 \end_inset
 
- handling each page on the filmstrip.
+.
  The pattern was considered appropriate to our app since it provides a default
  value of a chosen game mode and thereby supports a quick start.
  In the context of choosing between different game modes filmstrip also
@@ -454,51 +487,138 @@ The tendency of reading from left to right, as mentioned before, is well
  it is implemented as a Prominent Done Button.
 \end_layout
 
-\begin_layout Standard
-As mentioned earlier the running session is not started at the landing screen
- to minimize processor usage.
- However it was decided that it from there should be quick and easy to start
- the run.
- The running session is thereby easily started with a prominent done button
- in the bottom right of the screen.
- {Källa från Designin Interfaces} 
-\end_layout
-
-\begin_layout Standard
-
-\color green
-Action bar 
-\end_layout
-
-\begin_layout Standard
-
-\color green
-Action bar overflow menu
-\end_layout
-
 \begin_layout Subsubsection
-Running screen 
+Run screen 
 \end_layout
 
 \begin_layout Standard
-In the running screen the pattern workspace is used.
- The reason for this is that there Too much information to fit one screen
+Since the run activity includes information about the run itself, the map
+ and the statistics of each coin taken; the pattern Swipe Views is used.
+ The reason for this is that all this information does not fit in one single
+ screen.
+ By putting it in three different fragments (run, map and stats) and by
+ letting the run activity use the adapter FragmentPagerAdapter to handle
+ the fragments, they will become swipeable tabs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Adpater2014b"
+
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Standard
+The tab from the main activity also appears in the run activity to make
+ the application consistent and let the user know directly if there is a
+ disconnection of the GPS or headphones.
+ To motivate the user to keep running, a progress bar which increases with
+ every coin taken, is displayed at the bottom of the run fragment.
+ The user may also view time, distance, speed and pace in the run fragment
+ to assure him/her of the logging of the run is taking place.
+ 
+\end_layout
 
-\color green
-Navigation Drawer -> History Motiverat eftersom det kommer vara många olika
- sidor 
+\begin_layout Standard
+The Prominent Done Button pattern is also applied in the run activity, but
+ this time as a play/pause button.
+ When the run is paused a stop button will also appear, to let the user
+ end the run if desired.
+ If the run is ended the run activity will turn into a finished state thus
+ removing the progress bar and information of current speed and pace.
+ The finished state of a run activity is the format that each finished run
+ is saved as, and is thereby reachable for each finished run from the history
+ fragment.
+ 
 \end_layout
 
 \begin_layout Subsection
-Implementation of prototype (Beta)
+User Evaluation
 \end_layout
 
-\begin_layout Subsection
-Evaluation
+\begin_layout Standard
+To make sure that the application was usable and understood by users apart
+ from ourselves, user evaluation was done to receive feedback on what to
+ improve.
+ The tasks and questionnaires are attached in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Appendix-A:-Usability"
+
+\end_inset
+
+.
+ Below follows a summary of the received feedback from the data of the interview
+s and observations that were done in connection with the user tests.
+\end_layout
+
+\begin_layout Standard
+Concerning the graphical design, some users tried clicking on the coin collector
+ picture to start a run.
+ When nothing happened they were confused.
+ This was fixed by making the next-button more prominent and thereby assuring
+ the user that it needed to be pressed in order to go further.
+ Also it was decided to show an information text when the picture of a game
+ mode was clicked on.
+ This information explained the mode but also let the user know that something
+ happened upon the click, thus eliminating the misconception that the game
+ was frozen while loading.
+\end_layout
+
+\begin_layout Standard
+It also turned out that some of the users tried to press the GPS- and headphones
+ icon, since they thought they were buttons.
+ This led to the re-design of the symbols that was explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Main-screen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Another problem that became evident during the user testing was that there
+ needed to be a more clear warning if the run was started without the GPS
+ enabled.
+ In one of the user testings the phone got its location via the mobile network,
+ which is very imprecise compared to GPS.
+ However the application still tried making sense of the location and thus
+ provided the user with random direction noises.
+ This problem was fixed by not letting a user start a run if GPS connection
+ was missing.
+\end_layout
+
+\begin_layout Standard
+Regarding the instructional sounds of a run most of the users understood
+ in what direction to run.
+ Some found it hard in the beginning but understood it after getting it
+ explained and tried out.
+ This insight led us to implement the the tutorial and a help fragment,
+ which was hinted about at the very first start up of the application.
+\end_layout
+
+\begin_layout Standard
+Most users found the beeping sound annoying after running for a while and
+ would rather like to hear music.
+ This feedback was used to replace the beeping sound when running in the
+ correct direction into an affirming techno music sound.
+ 
+\end_layout
+
+\begin_layout Standard
+In two of the tests a coin ended up in a private property and inside the
+ Liseberg theme park.
+ These kinds of errors are hard to adjust and will discussed further in
+ future work.
+\end_layout
+
+\begin_layout Standard
+The general overall opinion from the users was that they liked the concept
+ and felt entertained and motivated by it.
+ 
 \end_layout
 
 \begin_layout Paragraph
