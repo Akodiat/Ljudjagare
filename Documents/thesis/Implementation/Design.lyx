@@ -328,7 +328,7 @@ Endomondo
 Zombies, Run!
 \emph default
  on the other hand focuses more on external game elements like outrunning
- zombies, picking up items and the upgrading the user's base camp.
+ zombies, picking up items and upgrading the user's base camp.
  
 \emph on
 Endomondo
@@ -510,7 +510,7 @@ key "Adpater2014b"
 \end_layout
 
 \begin_layout Standard
-The tab from the main activity also appears in the run activity to make
+The bar from the main activity also appears in the run activity to make
  the application consistent and let the user know directly if there is a
  disconnection of the GPS or headphones.
  To motivate the user to keep running, a progress bar which increases with
@@ -533,14 +533,41 @@ The Prominent Done Button pattern is also applied in the run activity, but
  
 \end_layout
 
+\begin_layout Standard
+The map- and stats fragments are visible during a run but are most important
+ when a run is finished.
+ In the map fragment the user can see a map with the route on which coins
+ will appear as well as the next coin to run to.
+ This is preferably not viewed during a run, but was decided to be kept
+ in case of the user gets completely lost and needs exact directions.
+ In a finished run however this fragment will display the track that was
+ taken as well as the places on which coins were taken.
+ This is intended to give the user feedback and note if a better route could
+ have been taken.
+ 
+\end_layout
+
+\begin_layout Standard
+The requirement of detailed statistics was highly considered while designing
+ the stats fragment.
+ By having a table with rows for each coin taken the user will have a way
+ to receive feedback by each coin taken.
+ The information displayed is the chronological number of the coin and the
+ time, distance and pace achieved while running to it.
+ While this is great feedback during the run it is perhaps most interesting
+ when the run is finished and the data of each coin can be compared to coins
+ taken on previously finished runs.
+ 
+\end_layout
+
 \begin_layout Subsection
 User Evaluation
 \end_layout
 
 \begin_layout Standard
-To make sure that the application was usable and understood by users apart
- from ourselves, user evaluation was done to receive feedback on what to
- improve.
+To make sure that the application was usable, understood by users and filled
+ the requirement of being fun, user evaluation was done to receive feedback
+ on what to improve.
  The tasks and questionnaires are attached in 
 \begin_inset CommandInset ref
 LatexCommand ref
