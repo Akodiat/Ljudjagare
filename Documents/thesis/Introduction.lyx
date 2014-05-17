@@ -580,6 +580,11 @@ Chart visualing the percentage of platform versions used on devices linked
  to Google Play.
  Ice Cream Sandwich, Jelly Bean and KitKat has platform version 4.0 or higher.
  
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Developer2014"
@@ -587,11 +592,6 @@ key "Developer2014"
 \end_inset
 
  
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
