@@ -293,8 +293,8 @@ reference "sec:Generation-of-random"
 \end_inset
 
  the sound sources (checkpoints) are generated out of a predefined algorithm.
- To accomplish this, the application uses Google Maps geocoding API and
- its functions to find directions 
+ To accomplish this, the application uses the Google Maps geocoding API
+ and its functions to find directions 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "google maps random"
@@ -302,10 +302,17 @@ reference "google maps random"
 \end_inset
 
 .
- In this section it is explained how the algorithm using the geocoding API
- has been implemented in this project.
- All the calculations has been done with the geographic coordinate system
- using latitude and longitude and has been inspired from 
+ In this section it is explained how the algorithm has been implemented
+ in this project.
+ All the calculations is made with the geographic coordinate system using
+ latitude and longitude, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "geographic coordinate system"
+
+\end_inset
+
+, and has been inspired from 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "atok2013"
@@ -317,10 +324,7 @@ key "atok2013"
 
 \begin_layout Standard
 Every time the algorithm runs, a theoretical route is generated based on
- the number of checkpoints and the distance that has been set in the settings
- by the user.
- If the algorithm is based on the same settings this theoretical route will
- always look the same.
+ a predefined number of checkpoints and a distance, k.
  As seen in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -328,7 +332,7 @@ reference "fig:random route-1-1"
 
 \end_inset
 
- a circular dotted route has been generated with four checkpoints and a
+, a circular dotted route has been generated with four checkpoints and a
  distance, d.
  This is done by setting the starting point of the circle at the position
  of the user and moving the origin to the middle of the theoretical dotted
@@ -363,16 +367,20 @@ reference "eq:angle checkpoints"
 \end_layout
 
 \begin_layout Standard
-To get the next checkpoint, the calculated angle is added to the starting
- position and create checkpoint 2.
- The same is done for every checkpoint until all have been created.
+To get the next checkpoint, the calculated angle, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, is added to the starting position and create checkpoint 2.
+ The same calculations are made for every checkpoint until all have been
+ created.
  
 \end_layout
 
 \begin_layout Standard
-To make the routes different from each other every time the algorithm runs
- the theoretical route is rotated around the location of the user by an
- random angle, 
+To make the routes different from each other every time the algorithm runs,
+ the theoretical route is rotated around the user's location by an random
+ angle, 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -382,7 +390,7 @@ To make the routes different from each other every time the algorithm runs
 \end_inset
 
 ) by a random number between 0 and 1.
- The rotation is done by multiplying the difference in longitude, 
+ The rotation is performed by multiplying the difference in longitude, 
 \begin_inset Formula $\lambda$
 \end_inset
 
@@ -468,8 +476,9 @@ The new longitude,
 \begin_inset Formula $\varphi_{new}$
 \end_inset
 
-, is then added to the location of the user for every checkpoint and a random
- route is now generated, the continuous lined circle in 
+, is then added to the longitude and latitude of the user's location.
+ This is done for every checkpoint until a random route is generated, illustrate
+d as a continuous lined circle in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:random route-1-1"
@@ -525,8 +534,8 @@ A theoretical route represented by a dotted circle is rotated around the
 \end_layout
 
 \begin_layout Standard
-To make this randomly generated route reachable a geocoding API request
- of directions from your current location to the new locations is send to
+To make this randomly generated route reachable, a geocoding API request
+ of directions from the user's location to the new locations is send to
  Google Maps 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -535,13 +544,13 @@ key "GoogleDevelopers2014"
 \end_inset
 
 .
- The response from Google is a list of locations of the shortest route to
- the destination.
+ The response from Google is a list of locations that forms the shortest
+ route to the destination.
  It is a big chance that the generated locations is not on a road but instead
- in the forest or in a lake.
- But by taking out the last location that is given by Google for every checkpoin
-t you find the location that is as close as possible to the generated locations
- but it is reachable.
+ in a forest or a lake.
+ But by taking out the last location that is given by Google, the location
+ that is as close as possible to the generated location but reachable is
+ found.
  This locations is then set as a checkpoints and the random route algorithm
  is finished.
  
