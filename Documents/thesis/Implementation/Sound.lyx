@@ -431,7 +431,7 @@ Feedback to the user
 
 \begin_layout Standard
 Before going into detail, it might be worth quickly describing how the spatial
- positioning of the audio is decided in our application.
+ positioning of the audio is determined in our application.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -451,9 +451,10 @@ reference "sub:Sensor-fusion"
 , varying from -180° to 180°.
  An angular offset of 0° would hence mean that the user is moving perfectly
  in the right direction.
- With regards to the study in chapter , showing that virtual sounds positioned
- above or below the listener are difficult to localize, it has not been
- taken into account when developing the audio core of the application.
+ With regards to the study in chapter 2.1.2, showing that virtual sounds positione
+d above or below the listener are difficult to localize, vertical sound
+ movements has not been taken into account when developing the audio core
+ of the application.
  
 \end_layout
 
@@ -527,8 +528,8 @@ Pitch
 \begin_layout Standard
 When the user moves, the pitch of the sound changes depending on the angular
  offset; the bigger the offset, the lower the pitch.
- To lower the pitch essentially means to lower the frequency of a sound,
- assuming it's distinguishable from noise 
+ A lower pitch essentially means a lower frequency, assumin the sound it's
+ distinguishable from noise 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ne"
@@ -549,10 +550,11 @@ Rate
 \begin_layout Standard
 In chapter 2.1 it was mentioned that using sound level as a cue is not recommende
 d.
- To inform the user about the current distance to the generated coin, a
+ To inform the user about the current distance to the generated point, a
  short sine wave is repeated throughout the run.
- The interval between each repetition depends on the distance to the point;
- the sound will repeat faster the closer to the point the user is.
+ The length of the interval between each repetition depends on the distance
+ to the point; the sound will repeat faster the closer to the point the
+ user is.
  Both the change in pitch and change in rate can be related to recommendations
  seen in chapter 2.1.2.
 \end_layout
@@ -560,12 +562,11 @@ d.
 \begin_layout Standard
 Apart from the sound being modulated in previously mentioned ways, the sine
  wave is sometimes completely exchanged to another sound.
- If the user is moving in the correct direction, an electronic beat is played
- to indicate they are moving in the correct direction.
+ If the user is moving in the correct direction, with an offset of maximum
+ 20 degrees, an electronic beat is played to indicate they are heading straight
+ towards the generated point.
  If the user is running in the wrong direction, however, the sine wave is
- exchanged to a sound indicating something is wrong.
- The warning sound is similar to what you hear when a vehicle backs.
- 
+ exchanged to a sound informing the user they're doing so.
 \end_layout
 
 \begin_layout Standard
