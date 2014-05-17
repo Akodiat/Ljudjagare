@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -62,13 +62,13 @@ customHeadersFooters
 \font_roman lmodern
 \font_sans lmss
 \font_typewriter lmtt
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -92,15 +92,24 @@ customHeadersFooters
 \pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 2
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \branch NoChildDocument
 \selected 1
@@ -129,7 +138,7 @@ customHeadersFooters
 \begin_body
 
 \begin_layout Left Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -194,7 +203,7 @@ Enable page headers and add the chapter to the header line.
 \end_layout
 
 \begin_layout Right Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -219,7 +228,7 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -248,7 +257,7 @@ thepage
 \end_layout
 
 \begin_layout Right Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -450,6 +459,158 @@ The purpose of the bachelor project is to design and implement an android
  The application will be a fully functional running game that will be possible
  to take out and use in real life.
  
+\end_layout
+
+\begin_layout Section
+Method
+\end_layout
+
+\begin_layout Subsection
+Development environment and version control 
+\end_layout
+
+\begin_layout Standard
+For the development of the Run for Life application, the integrated development
+ environment (IDE), Eclipse has been used.
+ Together with the Android Development Tools (ADT) plugin, eclipse forms
+ the recommended tool for android development.
+ The ADT contains tools that simplifies the development of Android applications,
+ for example, graphical tools for the user interface and tools for debugging
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Developer2014a"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+To make collaboration easier the revision control system Git with the web-based
+ hosting service Github was used.
+ Github make it possible to edit and work on the same documents simultaneously
+ without getting the work overwritten and destroyed.
+ It also host the code online and make it possible to access earlier versions
+ of the application 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GitHub2014"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Libraries
+\end_layout
+
+\begin_layout Standard
+The standard libraries of the ADT did not cover all the needs for this project.
+ To be able to integrate with Google Maps, the Google Play services library
+ was needed.
+ This library is developed by Google and contains features like, maps, Google+
+ and analytics.
+ 
+\end_layout
+
+\begin_layout Standard
+For handling of 3D audio operations the library, OpenAL4Android has been
+ used.
+ This library serves as an intermediary between the native OpenAL Soft code
+ and the Java application 
+\color red
+(Vet inte exakt hur man ska skriva, Linus som är insatt kanske kan säga
+ det på ett smidigt sätt?)
+\end_layout
+
+\begin_layout Standard
+The application has been developed for the platform version 4.0 and above.
+ This corresponds to the API-level of 15.
+ This version has been selected since it covers a lot of new functionalities
+ as well as can be used on the majority of the devices on the market today,
+ see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Chart-visualing-the"
+
+\end_inset
+
+.
+ Statistics from the beginning of May 2014 shows that platform version 4.0
+ will cover more than 80% of the devices 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Developer2014"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Theoretical Framework/Figures/chart_android_versions.png
+	width 40page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Chart-visualing-the"
+
+\end_inset
+
+Chart visualing the percentage of platform versions used on devices linked
+ to Google Play.
+ Ice Cream Sandwich, Jelly Bean and KitKat has platform version 4.0 or higher.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Developer2014"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Programming language
+\end_layout
+
+\begin_layout Standard
+The object-oriented programming language Java has been used throughout the
+ project.
+ Java is the language most often used when developing Android applications.
+ To define the visual structure of the user interface, the markup language
+ XML (Extensible Markup Language) has been used.
+ The programming language SQL (Structured Query Language), has been used
+ to create and manage the database.
 \end_layout
 
 \begin_layout Section
