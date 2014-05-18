@@ -321,8 +321,8 @@ key "itd_ild"
 \end_layout
 
 \begin_layout Standard
-When the sound reaches the pinna, located in the outer ear, it is being
- filtered even further 
+When the sound reaches the pinna, located in the outer ear, it is filtered
+ even further 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hrtf_article"
@@ -332,7 +332,7 @@ key "hrtf_article"
 .
  Along with the directional characteristics of the torso and head, the pinna
  helps us determine where a specific sound source is located.
- Its filtering properties even makes it possible for us to differentiate
+ Its filtering properties even make it possible for us to differentiate
  between sounds appearing from the front and from above, as can be seen
  on 
 \begin_inset CommandInset ref
@@ -482,9 +482,9 @@ key "problems_3D"
 ed and generic HRTFs, with the virtual sound's position only moving in the
  vertical plane.
  The study suggest not only that the accuracy of the elevation perception
- decreases as the virtual sound is moved further up and down.
- But also that the HRTFs being used has a great impact on the elevational
- accuracy (the invidualized HRTFs provided greater performance).
+ decreases as the virtual sound is moved further up and down, but also that
+ the HRTFs being used has a great impact on the elevational accuracy (the
+ invidualized HRTFs provided greater performance).
 \end_layout
 
 \begin_layout Standard
