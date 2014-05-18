@@ -317,7 +317,7 @@ reference "google maps random"
  latitude and longitude, 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "geographic coordinate system"
+reference "fig:Figure-showing-latLong"
 
 \end_inset
 
