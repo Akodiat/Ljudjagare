@@ -333,16 +333,16 @@ key "Presswire2012"
  use of the GPS for tracking the user position and movement have emerged.
  One example is 
 \emph on
-Endomondo Sports Tracker
+Endomondo Sports Tracker (Endomondo)
 \emph default
- 
+, which was launched in 2008 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Endomondo2014"
 
 \end_inset
 
-, which was launched in 2008.
+.
  The application tracks the position and time of the smartphone while the
  user is running.
  The values obtained are used to calculate statistics such as speed, distance
