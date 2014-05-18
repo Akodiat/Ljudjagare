@@ -114,7 +114,7 @@ c, theoretical or artistic gap is your research filling?
 \end_layout
 
 \begin_layout Standard
-This report describes the development of an exercise application for android
+This report describes the development of an exercise application for Android
  smartphones called 
 \begin_inset ERT
 status open
@@ -150,7 +150,7 @@ app
  audio playback, creating an exercising game with virtual sound sources.
  The idea of combining spatial audio with smartphone sensors is new and
  the research is very limited.
- This project attempt to combine the spatial audio achievements made by
+ This project attempts to combine the spatial audio achievements made by
  
 \begin_inset ERT
 status open
@@ -171,7 +171,10 @@ Zombies, Run!
 .
  This is done by using the GPS sensor to calculate both user position and
  orientation.
- The audio was implemented using general head related transfer functions
+ The audio was implemented using general 
+\emph on
+head related transfer functions
+\emph default
  provided by 
 \noun on
 framework
@@ -268,7 +271,9 @@ The report concludes that it is still hard to make the perception of an
  orientation.
  The GPS is still too inaccurate to be used without other sensors.
  Finally, determining a user orientation is not reliable while the sensor
- is not at a fixed position relative to the user ears.
+ is not at a fixed position relative to the user ears; a head mounted sensor
+ device would probably avoid most of these problems and provide a more realistic
+ perception.
 \end_layout
 
 \begin_layout Standard
@@ -281,14 +286,119 @@ Svårt att få det bra som GPS-tekniken ser ut idag, men framtida mobiler
 
 \begin_layout Chapter*
 
-\lang swedish
+\lang american
 Sammanfattning
 \end_layout
 
 \begin_layout Standard
 
-\lang swedish
-Svensk version
+\lang american
+Denna rapport beskriver utvecklingen av en övning program för smartphones
+ av typen Android kallad 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+ kombinerar sensorerna som finns i nuvarande smartphones med 
+\emph on
+spatial audio
+\emph default
+, vilket skapar ett träningsspel med virtuella ljudkällor.
+ Idén att kombinera rumsliga ljud med smartphone -sensorer är ny och forskningen
+ är hittils mycket begränsad .
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Detta projekt försöker kombinera resultaten inom spatial audio som gjorts
+ av Lawitzki ( 2012) med löparspelselement från applikationer som 
+\emph on
+Zombies , Run!
+\emph default
+.
+ Detta görs med hjälp av GPS-sensorn för att beräkna både användarens position
+ och dess orientering.
+ Ljudet genomfördes med hjälp av allmänna 
+\emph on
+head related transfer functions
+\emph default
+ som tillhandahålls av ramverk .
+ Ett försök att använda gyroskopsensorn för att få en orientering också
+ då användaren är stationär gjordes, men ljudet blev då ofta mer förvirrande.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Projektet resulterade i en löparapplikation med ett tilltalande användargränssni
+tt.
+ Applikation är ett spel som kan förbättra användarnas ordinarie träningspass.
+ Detta görs genom att tillhandahålla en slumpmässig löprunda, ljudåterkoppling
+ för att vägleda användaren i rätt riktning samt en utmaning genom att uppmana
+ användaren att samla in ett antal kontroller (virtuella ljudkällor) längs
+ vägen.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+app
+\backslash
+
+\end_layout
+
+\end_inset
+
+ också möjliggör också för användaren att se historien om deras tidigare
+ löpande sessioner.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+I rapporten dras slutsatsen att det fortfarande är svårt att få användaren
+ att uppfatta riktningen till ett ljud.
+ Detta då det är svårt att beräkna en användarorientering.
+ GPS är fortfarande för inkorrekt för att användas utan att kombineras med
+ andra sensorer.
+ Slutligen är beräkningen av en användarorientering inte tillförlitlig så
+ länge sensorns position är fixerad förhållande till användarens öron; en
+ huvudmonterad sensoranordning skulle förmodligen undvika de flesta av dessa
+ problem och kunna tillhandahålla en mer realistisk uppfattning.
+ 
 \end_layout
 
 \end_body
