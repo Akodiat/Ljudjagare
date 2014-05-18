@@ -278,149 +278,31 @@ Result: Application Simulating Sound Sources when running
 \end_layout
 
 \begin_layout Standard
-This bachelor thesis has resulted in an android application that uses sound
- in an attempt motivate running exercise.
- The following chapter will present this result and describe what is included
+This bachelor thesis has resulted in an Android application using spatial
+ sound to communicate with the user.
+ The following chapter will present its result and describe what is included
  in the application.
  
 \end_layout
 
 \begin_layout Section
-Presentation of the application
+Home
 \end_layout
 
 \begin_layout Standard
-The main screen 
+The home screen is what the user first see when they launch the application.
+ If it is the absolute first time using the application, however, a dialog
+ box quickly describing it will pop up.
+ The dialog box also contains a link leading to the help view accessible
+ from the navigation drawer.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:The-main-screen"
 
 \end_inset
 
- A, is showed when the application is started.
- The first time a new user starts the application however, a dialog is showed
- describing how the application is supposed to be used the as well as providing
- a link to the help section.
- 
-\end_layout
-
-\begin_layout Description
-In
-\begin_inset space ~
-\end_inset
-
-the
-\begin_inset space ~
-\end_inset
-
-lower
-\begin_inset space ~
-\end_inset
-
-left
-\begin_inset space ~
-\end_inset
-
-corner of the main screen two status icons are showed: one indicating if
- the device has a GPS-connection and indicating if headphones are connected.
- The icons will be crossed if the GPS or the headphones are not connected.
- 
-\end_layout
-
-\begin_layout Description
-In
-\begin_inset space ~
-\end_inset
-
-the
-\begin_inset space ~
-\end_inset
-
-middle
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-the
-\begin_inset space ~
-\end_inset
-
-screen a mode selector is displayed.
- By swiping right or left it is possible to choose between the two implemented
- game modes: Coin Collector and tutorial mode.
- These will be explained later.
- If the image of a mode is pressed a text will be showed describing how
- the mode works.
- 
-\end_layout
-
-\begin_layout Description
-In
-\begin_inset space ~
-\end_inset
-
-the
-\begin_inset space ~
-\end_inset
-
-upper
-\begin_inset space ~
-\end_inset
-
-right
-\begin_inset space ~
-\end_inset
-
-corner a settings button is showed, making it possible to change some settings.
- These settings are connected to the Coin Collector mode and concerns how
- long the route is going to be as well how many coins (checkpoints) should
- be collected.
- 
-\end_layout
-
-\begin_layout Description
-In
-\begin_inset space ~
-\end_inset
-
-the
-\begin_inset space ~
-\end_inset
-
-upper
-\begin_inset space ~
-\end_inset
-
-left
-\begin_inset space ~
-\end_inset
-
-corner a the hamburger icon is located.
- By pressing the hamburger icon or by sliding from the left side on the
- screen the navigation drawer, shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:The-main-screen"
-
-\end_inset
-
- B, is displayed.
- From this drawer the user can navigate to different pages: the main screen,
- the history view and the help section.
-\end_layout
-
-\begin_layout Standard
-In the history view a list of all the runs is saved, allowing the user to
- access the data from the runs.
- More of this will described later.
- The help section contain information about how the application is supposed
- to be used.
- The help section also contains the different sounds used in the application
- together with a description of how the sounds should be interpreted.
- 
+ displays the main screen and its different parts:
 \end_layout
 
 \begin_layout Standard
@@ -433,7 +315,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/Screenshot_2014-05-07-09-39-07.png
+	filename Figures/home1.png
 	lyxscale 20
 	scale 10
 
@@ -457,7 +339,7 @@ name "fig:The-main-screen"
 
 \end_inset
 
-The main screen and navigation drawer
+The main screen and its navigation drawer
 \end_layout
 
 \end_inset
@@ -468,13 +350,67 @@ The main screen and navigation drawer
 \end_inset
 
 
+\end_layout
+
+\begin_layout Description
+1 The three horizontal lines indicate that a hidden menu, called a navigation
+ drawer (SEE), can be accessed by sweeping from the left or pressing the
+ icon.
+ From here, the user can choose to go back to the main screen, view statistics
+ on past runs or learn about how the application works.
+\end_layout
+
+\begin_layout Description
+2 In the settings view (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Settings"
+
+\end_inset
+
+), the user can customize the experience.
+\end_layout
+
+\begin_layout Description
+3 Using the view pager in the middle, the user can swipe between the two
+ available game modes: Coin Collector (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Coin-Collector"
+
+\end_inset
+
+) and Tutorial (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tutorial"
+
+\end_inset
+
+) mode.
+ If the user touches anywhere on the image, information regarding the selected
+ mode will replace it.
+\end_layout
+
+\begin_layout Description
+4 Pressing the next button launches the mode currently selected in the view
+ pager at the center of the window.
+\end_layout
+
+\begin_layout Description
+5 The first icon tells the user whether the device has a valid GPS connection
+ or not, and the second whether headphones are plugged in to the device
+ or not.
+ In the picture, none of the icons are not crossed out, meaning that the
+ GPS connection is valid and headphones are plugged in.
+\end_layout
+
+\begin_layout Section
+Coin Collector
 \end_layout
 
 \begin_layout Standard
-The main objective of this thesis has been to implement a way to navigate
- with the help of sound and this has been implemented in the game mode,
- Coin Collector.
- By selecting Coin Collector in the main screen and then press the 
+By pressing the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -482,29 +418,22 @@ Next
 \begin_inset Quotes erd
 \end_inset
 
- button the game mode is started as long a GPS-connection and headphones
- are plugged in.
+ button in the lower right corner while the Coin Collector mode is selected
+ in the view pager, assuming the GPS is working and the headphones are plugged
+ in.
  If GPS-connection or headphones are missing a pop up is showed telling
  what is missing.
  To be able to use the application in a proper way a GPS-connection and
  headphones has to be used.
- When the 
-\begin_inset Quotes eld
-\end_inset
+ 
+\end_layout
 
-Next-button
-\begin_inset Quotes erd
-\end_inset
-
- is pressed the game mode is started.
- The first thing that happens is that the route that the user is going to
- run is generated out from the settings that was specified from the main
- screen.
- For example if three coins (checkpoints) is selected, three coins is going
- to be generated in a specified distance from the user.
- The coins is generated in a circle from you and by integration with Google
- maps the coins is going to be located on reachable location such as roads
- and trails.
+\begin_layout Standard
+When Coin Collector is launched, a route of coins is generated based on
+ the values set in the settings view.
+ The coins are generated in a circle from you, all being within the reachable
+ and by integration with Google maps the coins is going to be located on
+ reachable location such as roads and trails.
  To start the run the 
 \begin_inset Quotes eld
 \end_inset
@@ -521,15 +450,22 @@ reference "fig:Coin collector"
 \end_inset
 
  is pressed.
- Now starts a ticking sound simulating the source of the coin, but in order
- to hear the coin from the correct direction the user has to run for approximate
-ly 10 meters to acquire a bearing from the GPS.
- Out of this bearing the sound is balanced between the ears to imitate that
- the sound is coming from a specific direction.
- The user is now supposed to run in the direction of the sound in order
- to reach the coin.
- To easier understand the distance until the coin is reached a voice feedback
- is implemented, telling the number of hundreds meters to the coin.
+ 
+\end_layout
+
+\begin_layout Standard
+Pressing the play button in the lower-, the user will start hearing a repeating
+ sound --- hereafter referred to as the navigation sound (see chapter 3.1).
+ However, in order for the navigation sound to be heard from the correct
+ direction, the GPS has to calculate the direction of which the user is
+ heading.
+ At present, the user has to move approximately 10 meters for this to be
+ done correctly.
+ Once the the calculations are done, the user is supposed to run in the
+ direction of the sound in order to reach the first coin.
+ Apart from the time between each repetition of the navigation sound being
+ decreased, a voice feedback is implemented.
+ Each hundred meters it tells the user the distance to the coin.
  For example, if the user just passes 200 meters until he reach the coin
  a voice saying 
 \begin_inset Quotes eld
@@ -540,98 +476,47 @@ ly 10 meters to acquire a bearing from the GPS.
 \end_inset
 
  is played.
- The playback speed of the sound is also played faster the closer to every
- hundred meter the user gets to confirm that the distance to the coin is
- decreasing.
  When the user passes a hundred meter border the playback speed is restored
  to a slow speed again.
- To further enhance the navigation, a different, unpleasant sound is played
- when the user is heading in the wrong direction.
- When the user on the other hand is heading right against the coin a techno
- sound starts playing to confirm the user that he his heading in the exact
- right direction.
- In all other cases the ticking sound is played except that the pitch of
- the sound changes depending on how close to the right course the user are.
- If the user is almost on the right course the sound has an high pitch and
- if the user is out of course the sound has an low pitch.
- When the user reaches a coin a sound indicating that the coin has been
- reached is played as well as a voice telling the user that a new coin is
- generated.
- The user now have to collect all the coins and when all the coins is collected
- a voice is going to tell the user that the run is finished.
- Since the last coin always is generated on the location that the user had
- when the route is generated the user is now back to where he started.
- 
 \end_layout
 
 \begin_layout Standard
-The run can at any time be paused by pressing the 
-\begin_inset Quotes eld
+As the user moves, the navigation sound is being modulated (or completely
+ exchanged), as a result of the angular offset mentioned in chapter 3.
+ Whenever a user reaches a coin, a synthesized voice informs them that the
+ coin has been reached.
+ If it's not the last coin, the same voice will let the user know that another
+ one has been generated.
+ Because of the last coin always being generated at the starting point (see
+ chapter 3.3), a finished run should result in the user being back to where
+ they started.
+\end_layout
+
+\begin_layout Standard
+The run can be paused at any time by pressing the pause button located at
+ the bottom-right, taking the place of the play button while running.
+ Pausing the run will stop the navigation sound from repeating and the GPS
+ from tracking the user's location.
+ To resume from a paused state, the user simply presses the same button
+ once again.
+ If the user wishes to quit the run completely, they can do so by pressing
+ the stop button located at the bottom (VI MASTE HA BILD).
+ It's possible to display more information about the current run, either
+ by pressing the tabs located at the top or by sweeping horizontally in
+ the desired direction.
+ The first image in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Coin collector"
+
 \end_inset
 
-Pause
-\begin_inset Quotes erd
-\end_inset
-
- button that under a run will take the place of the 
-\begin_inset Quotes eld
-\end_inset
-
-Play
-\begin_inset Quotes erd
-\end_inset
-
- button.
- This will pause the sound and the collecting of the user locations.
- The run can be continued by again pressing the 
-\begin_inset Quotes eld
-\end_inset
-
-Play
-\begin_inset Quotes erd
-\end_inset
-
- button or the user can finish the run by pressing the 
-\begin_inset Quotes eld
-\end_inset
-
-Stop
-\begin_inset Quotes erd
-\end_inset
-
- button that will be showed when the run is paused.
- The user can at any time inspect the three different fragments that show
- information about the run so far.
- The first fragment 
-\begin_inset Quotes eld
-\end_inset
-
-RUN
-\begin_inset Quotes erd
-\end_inset
-
- shows information about distance, time, speed and pace.
- The second fragment 
-\begin_inset Quotes eld
-\end_inset
-
-MAP
-\begin_inset Quotes erd
-\end_inset
-
- shows information about the users location and where it has been running
- on the map.
- The last fragment 
-\begin_inset Quotes eld
-\end_inset
-
-STATS
-\begin_inset Quotes erd
-\end_inset
-
- shows statistics about how many coins that has been collected and at what
- time and distance.
- 
+ shows the Run tab.
+ It is the tab visible when launching Coin Collector and it displays information
+ about the distance, time, speed and pace.
+ The second tab, Map, tells the user their current position and route .
+ In the Stats tab, the user can see how many coins they've collected and
+ at what distance and time.
 \end_layout
 
 \begin_layout Standard
@@ -690,14 +575,12 @@ name "fig:Coin collector"
 \end_layout
 
 \begin_layout Standard
-When the run is finished the view from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Coin collector"
-
-\end_inset
-
- is changed to a new view containing information about the run 
+When a run is finished, the screen looks similar to what it does while running;
+ the Run tab displays basic statistics, the Run tab shows the route with
+ its coins and the Stats tab looks exactly like before.
+ By pressing the OK button, the user is returned to the main screen described
+ in the beginning of the chapter.
+ For a visual represenation, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Coin Collector finished"
@@ -705,50 +588,6 @@ reference "fig:Coin Collector finished"
 \end_inset
 
 .
- On the first fragment named 
-\begin_inset Quotes eld
-\end_inset
-
-RUN
-\begin_inset Quotes erd
-\end_inset
-
- can the user find information about the distance, time and speed of the
- run as well how many coins that was collected in relation to how many coins
- the route was containing.
- If the user swipes over to the 
-\begin_inset Quotes eld
-\end_inset
-
-MAP
-\begin_inset Quotes erd
-\end_inset
-
- fragment, information about where the user has been running is displayed.
- The route that the user has taken is marked by red lines on the map and
- the dark coins is marking where the coins was collected.
- The last fragment 
-\begin_inset Quotes eld
-\end_inset
-
-STATS
-\begin_inset Quotes erd
-\end_inset
-
- contains information about when the coin was collected, at what distance
- and what pace the user had.
- To exit this view the 
-\begin_inset Quotes eld
-\end_inset
-
-OK
-\begin_inset Quotes erd
-\end_inset
-
- button is pressed sending the user back to the start screen of the application
- as well as saving the run to the database so that the user can access it
- from the history view.
- 
 \end_layout
 
 \begin_layout Standard
@@ -806,14 +645,12 @@ Bilder med finish läge
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Results - UsabilityEvaluation.lyx"
+\begin_layout Section
+Tutorial
+\end_layout
 
-\end_inset
-
-
+\begin_layout Section
+Settings
 \end_layout
 
 \end_body
