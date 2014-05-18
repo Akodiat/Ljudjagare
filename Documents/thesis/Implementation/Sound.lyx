@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -64,13 +64,13 @@ customHeadersFooters
 \font_roman lmodern
 \font_sans lmss
 \font_typewriter lmtt
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -94,15 +94,24 @@ customHeadersFooters
 \pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 2
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -126,7 +135,7 @@ customHeadersFooters
 \begin_body
 
 \begin_layout Left Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -191,7 +200,7 @@ Enable page headers and add the chapter to the header line.
 \end_layout
 
 \begin_layout Right Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -216,7 +225,7 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -245,7 +254,7 @@ thepage
 \end_layout
 
 \begin_layout Right Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -434,7 +443,7 @@ Before going into detail, it might be worth quickly describing how the spatial
  positioning of the audio is determined in our application.
  In 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand nameref
 reference "sec:Generation-of-random"
 
 \end_inset
@@ -443,18 +452,24 @@ reference "sec:Generation-of-random"
  As the user is moving, their angular offset in terms of such a generated
  point can be calculated using 
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Sensor-fusion"
+LatexCommand nameref
+reference "sec:Sensor-fusion"
 
 \end_inset
 
 , varying from -180° to 180°.
  An angular offset of 0° would hence mean that the user is moving perfectly
  in the right direction.
- With regards to the study in chapter 2.1.2, showing that virtual sounds positione
-d above or below the listener are difficult to localize, vertical sound
- movements has not been taken into account when developing the audio core
- of the application.
+ With regards to the study in 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:Human-Computer-Interaction-using"
+
+\end_inset
+
+, showing that virtual sounds positioned above or below the listener are
+ difficult to localize, vertical sound movements has not been taken into
+ account when developing the audio core of the application.
  
 \end_layout
 
@@ -548,15 +563,28 @@ Rate
 \end_layout
 
 \begin_layout Standard
-In chapter 2.1 it was mentioned that using sound level as a cue is not recommende
-d.
+In 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:Human-Computer-Interaction-using"
+
+\end_inset
+
+ it was mentioned that using sound level as a cue is not recommended.
  To inform the user about the current distance to the generated point, a
  short sine wave is repeated throughout the run.
  The length of the interval between each repetition depends on the distance
  to the point; the sound will repeat faster the closer to the point the
  user is.
  Both the change in pitch and change in rate can be related to recommendations
- seen in chapter 2.1.2.
+ seen in 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:Human-Computer-Interaction-using"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -580,11 +608,12 @@ status open
 \align center
 \begin_inset Graphics
 	filename Figures/wadawd.png
+	lyxscale 50
 
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -593,7 +622,7 @@ name "fig:sound_table"
 
 \end_inset
 
-The three different sound stages.
+The three different sound stages
 \end_layout
 
 \end_inset

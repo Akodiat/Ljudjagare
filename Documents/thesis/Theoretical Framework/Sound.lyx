@@ -503,6 +503,13 @@ key "back_front_hrtf"
 
 \begin_layout Subsection
 Human-Computer Interaction using sound
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Human-Computer-Interaction-using"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
