@@ -284,22 +284,7 @@ Sammanfattning
 
 \lang swedish
 Denna rapport beskriver utvecklingen av en träningsapplikation för smartphones
- med operativsystemet Android, kallad 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-app
-\backslash
-
-\end_layout
-
-\end_inset
-
-.
+ med operativsystemet Android, kallad Run For Life.
  
 \begin_inset ERT
 status open
