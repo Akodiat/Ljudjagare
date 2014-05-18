@@ -457,7 +457,7 @@ reference "eq:newLatitude"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\lambda_{new}=\cos\left(\beta\right)*\theta+sin(\beta)*\varphi\label{eq:newLongitude}
+\lambda_{new}=\cos\left(\beta\right)*\lambda+sin(\beta)*\varphi\label{eq:newLongitude}
 \end{equation}
 
 \end_inset
@@ -468,7 +468,7 @@ reference "eq:newLatitude"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\varphi_{new}=-sin(\beta)*\theta+cos(\beta)*\varphi\label{eq:newLatitude}
+\varphi_{new}=-sin(\beta)*\lambda+cos(\beta)*\varphi\label{eq:newLatitude}
 \end{equation}
 
 \end_inset
@@ -558,12 +558,18 @@ key "GoogleDevelopers2014"
  route to the destination.
  It is a big chance that the generated locations is not on a road but instead
  in a forest or a lake.
- But by taking out the last location that is given by Google, the location
- that is as close as possible to the generated location but reachable is
- found.
+ But the destination of the list of locations from google(the last list
+ element) is always as close to the generated location as possible but in
+ a reachable area.
  This locations is then set as a checkpoints and the random route algorithm
  is finished.
  
+\end_layout
+
+\begin_layout Standard
+But by taking out the last location that is given by Google, the location
+ that is as close as possible to the generated location but reachable is
+ found.
 \end_layout
 
 \end_body
