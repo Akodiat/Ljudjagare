@@ -287,10 +287,15 @@ Graphical design choices and usability
 \end_layout
 
 \begin_layout Standard
-To make the game pleasant to use it has been designed taking usability factors
- in account.
- The process has been to establish desired requirements, creating design
- alternatives out of it and finally putting this in the final prototype.
+The game is designed with the usability aspect in mind, meaning it is intended
+ to be easy to learn, effective to use and enjoyable from a user perspective.
+ To assure this the process of interaction design was applied.
+ This process consists of establishing desired requirements, designing alternati
+ves and prototyping and also conducting user evaluations.
+ The main component of this process was to come up with the graphical design.
+ It was however also important, as to evaluate the other parts as the sound
+ perception and if the game was experienced as fun or not.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -570,7 +575,13 @@ The requirement of detailed statistics was highly considered while designing
 \end_layout
 
 \begin_layout Subsection
-User Evaluation
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:User-evaluation"
+
+\end_inset
+
+User evaluation
 \end_layout
 
 \begin_layout Standard
