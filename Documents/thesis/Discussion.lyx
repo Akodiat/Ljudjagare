@@ -287,7 +287,7 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-This project have developed an sound based running application named Run
+This project has developed an sound based running application named Run
  for Life.
 \end_layout
 
@@ -307,16 +307,16 @@ app
 
 \end_inset
 
- uses the GPS bearing to decide the user direction.
+ use the GPS bearing to decide the user direction.
  A disadvantage of this is that the user needs to be in motion in order
  for the application to get an accurate angle of the user.
- The reason for the user to stop during a run, is often that the user is
+ The reason for the user to stop during a run is often that the user is
  unsure of the direction of the sound.
  However, when the user is stationary the GPS will not get any significant
  location updates and hence cannot calculate any direction of travel.
- If a user does not know this it might prove very hard to use the application.
+ If a user does not know this, it might prove very hard to use the application.
  Furthermore, the GPS cannot detect the user’s head movements; something
- which lowers the sound perception slightly.
+ which lowers the sound perception.
  An example of this would be if the user runs in a certain direction and
  turn the head 90 degrees.
  Then this will then not affect how the sound is played back.
@@ -325,7 +325,7 @@ app
 
 \begin_layout Standard
 The great advantage with using the GPS bearing was however that it allowed
- users to wear their phones in any way they preferred.
+ users to wear their phones in any way they prefer.
  This was something that this project required, as it seemed more realistic
  that the users would run with their phones in a pocket or in a sports bracelet
  on the arm than that they would attach the phone to its head or carry it
