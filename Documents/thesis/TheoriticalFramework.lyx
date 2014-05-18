@@ -295,10 +295,10 @@ Theoretical Framework: Sensors, sound and design
 \begin_layout Standard
 The following chapter is a compilation of the theory that supported the
  development of the application.
- It describes how the sound is interpreted by humans as well as how the
- some of the sensors in a smart phone works.
- It also describes different the various design patterns concerning the
- interface and the structure of the database.
+ It describes how the sound is interpreted by humans as well as how some
+ of the sensors in a smart phone works.
+ It also describes the various design patterns concerning the interface
+ and the structure of the database.
 \end_layout
 
 \begin_layout Standard
