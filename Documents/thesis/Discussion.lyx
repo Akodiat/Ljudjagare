@@ -287,22 +287,8 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-This project have developed an sound based running application named 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-app
-\backslash
-
-\end_layout
-
-\end_inset
-
-.
+This project have developed an sound based running application named Run
+ for Life.
 \end_layout
 
 \begin_layout Standard
@@ -324,8 +310,8 @@ app
  uses the GPS bearing to decide the user direction.
  A disadvantage of this is that the user needs to be in motion in order
  for the application to get an accurate angle of the user.
- Often the reason for stopping to run is that the user is unsure of the
- direction of the sound.
+ The reason for the user to stop during a run, is often that the user is
+ unsure of the direction of the sound.
  However, when the user is stationary the GPS will not get any significant
  location updates and hence cannot calculate any direction of travel.
  If a user does not know this it might prove very hard to use the application.
@@ -399,6 +385,15 @@ reference "sec:Sensor-fusion"
  into consideration, would improve the user experience.
 \end_layout
 
+\begin_layout Standard
+Another benefit from using sensor fusion is that it capture the sometimes
+ bad accuracy from the GPS.
+ The GPS might temporary lose its connection and by using the values from
+ the other sensors, the loss can be compensated and the application can
+ be used as normal anyway.
+ 
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -411,7 +406,14 @@ Implementation choices of the random route generation algorithm
 
 \begin_layout Standard
 As earlier stated the random route algorithm in this project has used Google
- Maps and its geocoding API {Länk till kapitel 2}.
+ Maps and its geocoding API, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Random-route-implementation"
+
+\end_inset
+
+.
  The decision to choose this method instead of the other presented method
  that used colour to classify locations was based on the available tools
  and knowledge at the beginning of the project.
@@ -458,7 +460,7 @@ The two methods both have their pros and cons.
  The bad thing with the method using the geocoding API is that it must be
  quite a lot of roads and trails nearby for the request to find any good
  directions.
- If there is only one straight road nearby the sound sources is going to
+ If there is only one straight road nearby, the sound sources is going to
  be mapped to the road and the distance between them will be very different.
  A conclusion of this method is that it is working good in a city or a village
  where there are a lot of roads and walkways.
