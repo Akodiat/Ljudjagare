@@ -297,33 +297,25 @@ Källor
 \end_layout
 
 \begin_layout Standard
-There are various reasons to why people run; some people do it to stay healthy,
+There are various reasons why people run; some people do it to stay healthy,
  others do it for the competition.
  However, a large part of the population seems to struggle finding motivation
  to run or to exercise at all for that matter.
- A way to motivate those people could be to make running more entertaining
- by adding game-like elements, hence abstracting away from the aspects of
- exercising that might be considered as unattractive.
+ A way to motivate people could be to make running more entertaining by
+ adding game elements.
  
 \end_layout
 
 \begin_layout Section
 Background 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Dåtid?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-In recent years smartphones containing GPS (Global Positioning System) sensors
- have become increasingly common 
+In recent years smartphones containing 
+\emph on
+GPS (Global Positioning System)
+\emph default
+ sensors have become increasingly common 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Presswire2012"
@@ -331,9 +323,9 @@ key "Presswire2012"
 \end_inset
 
 .
- As a result of this, multiple smartphone applications making use of the
- GPS for tracking the user position and movement have emerged.
- One such example, 
+ This has opened As a result of this, multiple smartphone applications making
+ use of the GPS for tracking the user position and movement have emerged.
+ One example is 
 \emph on
 Endomondo Sports Tracker
 \emph default
@@ -344,27 +336,23 @@ key "Endomondo2014"
 
 \end_inset
 
-,2014-03-28} launched in 2008 {
-\begin_inset CommandInset href
-LatexCommand href
-name "Endomondo"
-target "http://blog.endomondo.com/about/"
+, which was launched in 2008.
+ The application tracks the position and time of the smartphone while the
+ user is running.
+ The values obtained are used to calculate statistics such as speed, distance
+ and multiple averages 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Endomondo2014b"
 
 \end_inset
 
-, 2014-04-04}}.
- The Endomondo application tracked the position and time of the smartphone
- while the user was running and utilized those values to calculate statistics
- such as speed, distance and multiple averages.{
-\begin_inset CommandInset href
-LatexCommand href
-name "Endomondo"
-target "http://blog.endomondo.com/facts/"
+.
+ 
+\end_layout
 
-\end_inset
-
-, 2014-04-04}.
- Another application, called 
+\begin_layout Standard
+Another application, called 
 \emph on
 Zombies, Run! 
 \emph default
@@ -375,32 +363,19 @@ key "SixtoStart2014"
 
 \end_inset
 
-, launched in 2012 and had a lot of similarities with the application described
- in this report: Zombies, Run! focused more on a fun game experience than
- on running statistics and therefore provided an illusion of zombies chasing
- the user.
- This was done by generating the sound of zombies (a type of monsters) approachi
-ng the user.
- The sound would only disappear if the user ran fast enough over a period
- of time, thereby evading the zombies.
- However, the zombie sound effects are not directional.
- Thus, the user did not have to run in any specific direction to evade these
- monsters.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-undvik direction
-\end_layout
-
-\end_inset
-
-
+, launched in 2012 focuses more on a fun game experience than on running
+ statistics.
+ The game elements provides an illusion of zombies chasing the user.
+ This is done by generating the sound of zombies (a type of monsters) approachin
+g the user.
+ The sound only disappears if the user runs fast enough over a period of
+ time, thus evading the zombies.
+ Since the zombies has no location and thereby no direction relative to
+ the user, the escape can be done in any direction.
 \end_layout
 
 \begin_layout Standard
-Meanwhile, binaural sound had been around in computer games for several
+Meanwhile, binaural sound has been around in computer games for several
  years {citation needed}.
  [----| Include some example here |----] In these games, however, the sound
  generation was based on the movement of the virtual character, not the
@@ -471,15 +446,22 @@ More text? Repeat directionality
 \end_layout
 
 \begin_layout Standard
-The purpose of the bachelor project is to design and implement an android
- application, which will be easy and fun, for android smartphones.
- It will be easy and fun to use so that it will encourage running amongst
- the sedentary society of the present time.
- The goal of the application is that it will contain functionality that
- depend on the hardware sensors that we can find in the modern smartphones
- as well as the ability to track ones performance while using the application.
- The application will be a fully functional running game that will be possible
- to take out and use in real life.
+The purpose of this bachelor project is to design and implement an Android
+ application that uses location data obtained with hardware sensors to provide
+ navigation instructions to the user.
+ The navigation instructions will guide the user to a certain location by
+ manipulating a binarual sound differently depending on the user's direction
+ to the location.
+ 
+\end_layout
+
+\begin_layout Standard
+The guided sound will be implemented in a game to encourage running, thus
+ intending to prevent the sedentary in the society of the present time.
+ Apart from making running into a more fun experience the application will
+ register running activity and present statistics.
+ To enhance the usability of the application it will have a straight forward
+ graphical user interface that is easy to understand.
  
 \end_layout
 
