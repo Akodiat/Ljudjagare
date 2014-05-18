@@ -131,10 +131,10 @@ app
 
 \end_inset
 
- combines the sensors found in the present day smartphones with spatial
- audio playback, creating an exercising game with virtual sound sources.
+ combines the sensors found in present day smartphones with spatial audio
+ feedback, creating an exercising game with virtual sound sources.
  The idea of combining spatial audio with smartphone sensors is new and
- the research is very limited.
+ the research is limited.
  This project attempts to combine the spatial audio achievements made by
  
 \begin_inset ERT
@@ -154,19 +154,14 @@ citeasnoun{Lawitzki2012}
 Zombies, Run!
 \emph default
 .
- This is done by using the GPS sensor to calculate both user position and
- orientation.
+ This by using the GPS sensor to calculate both user position and orientation.
  The audio was implemented using general 
 \emph on
 head related transfer functions
 \emph default
- provided by 
-\noun on
-framework
-\noun default
 .
- An attempt at using the gyroscope sensor to get an orientation while the
- user is stationary, but it often made the sound more confusing.
+ An attempt was made using the gyroscope sensor to get an orientation while
+ the user is stationary, but it often made the sound more confusing.
 \end_layout
 
 \begin_layout Standard
@@ -210,9 +205,9 @@ nt/create?
 \begin_layout Standard
 The project resulted in an exercise application with an appealing user interface.
  The application is a game that may enhance the users regular exercise sessions.
- This is done by providing a randomized running route, audio feedback to
- guide the user in the right direction as well as a providing challenge
- by urging the user to collect all the checkpoints along the route.
+ This by providing a randomized running route, audio feedback to guide the
+ user in the right direction as well as a providing challenge by urging
+ the user to collect all the checkpoints along the route.
  
 \begin_inset ERT
 status open
