@@ -115,22 +115,7 @@ c, theoretical or artistic gap is your research filling?
 
 \begin_layout Standard
 This report describes the development of an exercise application for Android
- smartphones called 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-app
-\backslash
-
-\end_layout
-
-\end_inset
-
-.
+ smartphones called Run For Life.
  
 \begin_inset ERT
 status open
@@ -180,8 +165,8 @@ head related transfer functions
 framework
 \noun default
 .
- An attempt at using the gyroscope sensor to get an orientation while stationary
- was made, but it often made the sound more confusing.
+ An attempt at using the gyroscope sensor to get an orientation while the
+ user is stationary, but it often made the sound more confusing.
 \end_layout
 
 \begin_layout Standard
@@ -269,7 +254,8 @@ status open
 The report concludes that it is still hard to make the perception of an
  angle realistic to the user because of the difficulty in sensing a user
  orientation.
- The GPS is still too inaccurate to be used without other sensors.
+ The GPS is still too inaccurate to be used without other sensors for a
+ perfect perception of the sound direction.
  Finally, determining a user orientation is not reliable while the sensor
  is not at a fixed position relative to the user ears; a head mounted sensor
  device would probably avoid most of these problems and provide a more realistic
