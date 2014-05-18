@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -21,13 +21,13 @@
 \font_roman lmodern
 \font_sans lmss
 \font_typewriter lmtt
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -51,15 +51,24 @@
 \pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 2
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -89,8 +98,19 @@ Abstract
 \begin_layout Standard
 
 \color green
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\color green
 1 Purpose and scope: Why do we care about the problem? What practical, scientifi
 c, theoretical or artistic gap is your research filling?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -126,21 +146,77 @@ app
 
 \end_inset
 
- combines the fascinating sensors found in the present smartphones with
- audio playback into an engaging game.
- Initially, a theoretical introduction to binural sound is presented, followed
- by a walk-through of the sensors as well as the design patterns that was
+ combines the sensors found in the present day smartphones with spatial
+ audio playback, creating an exercising game with virtual sound sources.
+ The idea of combining spatial audio with smartphone sensors is new and
+ the research is very limited.
+ This project attempt to combine the spatial audio achievements made by
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citeasnoun{Lawitzki2012}
+\end_layout
+
+\end_inset
+
+ with the running game elements of applications like 
+\emph on
+Zombies, Run!
+\emph default
+.
+ This is done by using the GPS sensor to indicate both user position and
+ orientation.
+ The audio was implemented using general head related transfer functions
+ provided by 
+\noun on
+framework
+\noun default
+.
+ An attempt at using the gyroscope sensor to get an orientation while stationary
+ was made, but it often made the sound more confusing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Initially, a theoretical introduction to spatial audio is presented, followed
+ by a walk-through of the sensors used to decide the position and orientation
+ of the user.
+ The theoretical presentation also explains the design patterns that was
  followed when developing application.
  Furthermore the report describes the implementation process and the choices
  that were made when creating the application.
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+
+\color green
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 
 \color green
 2 Result: As a result of completing the above procedure, what did you learn/inve
 nt/create?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -171,8 +247,19 @@ app
 \begin_layout Standard
 
 \color green
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\color green
 3 Conclusion/implications/ recommendations: What are the larger implications
  of your findings, especially for the problem/gap identified in step 1?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
