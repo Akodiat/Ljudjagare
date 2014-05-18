@@ -481,7 +481,7 @@ key "problems_3D"
  Experiments were made by playing short sounds spatialized using both invidualiz
 ed and generic HRTFs, with the virtual sound's position only moving in the
  vertical plane.
- The study suggest not only that the accuracy of the elevation perception
+ The study suggests not only that the accuracy of the elevation perception
  decreases as the virtual sound is moved further up and down, but also that
  the HRTFs being used has a great impact on the elevational accuracy (the
  invidualized HRTFs provided greater performance).
