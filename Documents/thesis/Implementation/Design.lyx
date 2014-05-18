@@ -288,13 +288,21 @@ Graphical design choices and usability
 
 \begin_layout Standard
 The game is designed with the usability aspect in mind, meaning it is intended
- to be easy to learn, effective to use and enjoyable from a user perspective.
+ to be easy to learn, effective to use and enjoyable from a user perspective
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rogers2013"
+
+\end_inset
+
+.
  To assure this the process of interaction design was applied.
- This process consists of establishing desired requirements, designing alternati
-ves and prototyping and also conducting user evaluations.
+ This process consists of establishing requirements, designing alternatives
+ and prototyping and also conducting user evaluations.
  The main component of this process was to come up with the graphical design.
- It was however also important, as to evaluate the other parts as the sound
- perception and if the game was experienced as fun or not.
+ It was however also important to evaluate other parts as the sound perception
+ and if the game was experienced as fun or not.
  
 \end_layout
 
@@ -374,7 +382,7 @@ To decide the final design solution an iterative process took place.
  Below the design decisions are motivated.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 General
 \end_layout
 
@@ -405,7 +413,7 @@ The history- and help fragment was designed as simple and intuitive as possible,
  will be explained below.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Main-screen"
@@ -501,7 +509,7 @@ The tendency of reading from left to right, as mentioned before, is well
  it is implemented as a Prominent Done Button.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Run screen 
 \end_layout
 
