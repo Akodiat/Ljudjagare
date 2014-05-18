@@ -283,8 +283,8 @@ Sammanfattning
 \begin_layout Standard
 
 \lang swedish
-Denna rapport beskriver utvecklingen av en övning program för smartphones
- av typen Android kallad 
+Denna rapport beskriver utvecklingen av en träningsapplikation för smartphones
+ med operativsystemet Android, kallad 
 \begin_inset ERT
 status open
 
@@ -315,47 +315,50 @@ app
 
 \end_inset
 
- kombinerar sensorerna som finns i nuvarande smartphones med 
-\emph on
-spatial audio
-\emph default
-, vilket skapar ett träningsspel med virtuella ljudkällor.
- Idén att kombinera rumsliga ljud med smartphone -sensorer är ny och forskningen
- är hittils mycket begränsad .
+ kombinerar sensorerna som finns i dagens smartphones med ljud i 3D.
+ Detta skapar en träningsapplikation med inslag av spelmoment och virtuella
+ ljudkällor.
+ Idén med att kombinera 3D-ljud med smartphone -sensorer är ny och forskningen
+ är hittills mycket begränsad .
  
 \end_layout
 
 \begin_layout Standard
 
 \lang swedish
-Detta projekt försöker kombinera resultaten inom spatial audio som gjorts
- av Lawitzki ( 2012) med löparspelselement från applikationer som 
+Detta projekt försöker kombinera resultaten inom 3D-ljud som gjorts av Lawitzki
+ ( 2012) med spelelement från applikationer som 
 \emph on
 Zombies , Run!
 \emph default
 .
- Detta görs med hjälp av GPS-sensorn för att beräkna både användarens position
- och dess orientering.
- Ljudet genomfördes med hjälp av allmänna 
+ Detta görs med hjälp av GPS-sensorn för att beräkna användarens position
+ och dess färdriktning.
+ Ljudet implementerades med hjälp av så kallade, 
 \emph on
 head related transfer functions
 \emph default
- som tillhandahålls av ramverk .
- Ett försök att använda gyroskopsensorn för att få en orientering också
- då användaren är stationär gjordes, men ljudet blev då ofta mer förvirrande.
+ som tillhandahålls av följande 
+\color red
+ramverk
+\color inherit
+.
+ För att kunna få en riktning när användaren är stillastående gjordes ett
+ försök att använda gyroskopsensorn, men ljudet blev då ofta mer förvirrande
+ än att bara använda GPS-sensorn.
  
 \end_layout
 
 \begin_layout Standard
 
 \lang swedish
-Projektet resulterade i en löparapplikation med ett tilltalande användargränssni
-tt.
- Applikation är ett spel som kan förbättra användarnas ordinarie träningspass.
- Detta görs genom att tillhandahålla en slumpmässig löprunda, ljudåterkoppling
- för att vägleda användaren i rätt riktning samt en utmaning genom att uppmana
- användaren att samla in ett antal kontroller (virtuella ljudkällor) längs
- vägen.
+Projektet resulterade i en träningsapplikation med ett tilltalande användargräns
+snitt.
+ Applikationen innehåller spelmoment och hoppas kunna uppmuntra användarna
+ till mer regelbunden träning.
+ Detta görs genom att generera en slumpmässig löprunda innehållande kontroller
+ (virtuella ljudkällor) och vägleda användaren i rätt riktning mot dessa
+ kontroller, med hjälp av ljud.
  
 \begin_inset ERT
 status open
@@ -371,19 +374,19 @@ app
 
 \end_inset
 
- också möjliggör också för användaren att se historien om deras tidigare
- löpande sessioner.
+ gör det också möjligt för användaren att se en historik med deras tidigare
+ löprundor.
  
 \end_layout
 
 \begin_layout Standard
 
 \lang swedish
-I rapporten dras slutsatsen att det fortfarande är svårt att få användaren
- att uppfatta riktningen till ett ljud.
- Detta då det är svårt att beräkna en användarorientering.
- GPS är fortfarande för inkorrekt för att användas utan att kombineras med
- andra sensorer.
+I rapporten dras slutsatsen att det kan vara svårt för användaren att uppfatta
+ riktningen av ett ljud.
+ Detta då det är svårt att beräkna en tillräckligt exakt färdriktning.
+ GPS-sensorn är i nuläget för inkorrekt för att utan kombination med andra
+ sensorer.
  Slutligen är beräkningen av en användarorientering inte tillförlitlig så
  länge sensorns position är fixerad förhållande till användarens öron; en
  huvudmonterad sensoranordning skulle förmodligen undvika de flesta av dessa
