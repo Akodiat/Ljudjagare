@@ -306,7 +306,7 @@ Källor
 There are various reasons why people run; some people do it to stay healthy,
  others do it for the competition.
  However, a large part of the population seems to struggle finding motivation
- to run or to exercise at all for that matter.
+ to run, or to exercise at all for that matter.
  A way to motivate people could be to make running more entertaining by
  adding game elements.
  
@@ -321,7 +321,8 @@ In recent years smartphones containing
 \emph on
 GPS (Global Positioning System)
 \emph default
- sensors have become increasingly common 
+ sensors have become increasingly common, encouraging the development of
+ applications using it to track the user's position and movement 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Presswire2012"
@@ -329,13 +330,11 @@ key "Presswire2012"
 \end_inset
 
 .
- This has opened up for the development of smartphone applications making
- use of the GPS to track the user position and movement.
  One example is 
 \emph on
 Endomondo Sports Tracker (Endomondo)
 \emph default
-, which was launched in 2008 
+, launched in 2008 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Endomondo2014"
@@ -343,10 +342,9 @@ key "Endomondo2014"
 \end_inset
 
 .
- The application tracks the position and time of the smartphone while the
- user is running.
- The values obtained are used to calculate statistics such as speed, distance
- and multiple averages 
+ The application constantly tracks the position of the user as they are
+ moving and uses the information to calculate statistics such as speed and
+ distance 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Endomondo2014b"
@@ -358,31 +356,29 @@ key "Endomondo2014b"
 \end_layout
 
 \begin_layout Standard
-Another application, called 
-\emph on
-Zombies, Run! 
-\emph default
 
+\emph on
+Zombies, Run!
+\emph default
+, released in 2012, is another exercising application focusing more on making
+ running funnier by introducing game elements 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SixtoStart2014"
 
 \end_inset
 
-, launched in 2012 focuses more on a fun game experience than on running
- statistics.
- The game elements provides an illusion of zombies chasing the user.
- This is done by generating the sound of zombies (a type of monsters) approachin
-g the user.
- The sound only disappears if the user runs fast enough over a period of
- time, thus evading the zombies.
- Since the zombies has no location and thereby no direction relative to
+.
+ It creates the illusion of zombies chasing the user through audio modulations.
+ The only way to make the zombies dissappear is for the user to increase
+ their pace, thus evading the zombies.
+ Since the zombies have no location, and thereby no direction relative to
  the user, the escape can be done in any direction.
 \end_layout
 
 \begin_layout Standard
-Meanwhile, binaural sound has been around in computer games for several
- years {citation needed}.
+Meanwhile, spatial audio has been around in computer games for several years
+ {citation needed}.
  [----| Include some example here |----] In these games, however, the sound
  generation was based on the movement of the virtual character, not the
  movement of the actual user.

@@ -159,7 +159,7 @@ Zombies, Run!
 \emph on
 head related transfer functions
 \emph default
-.
+ provided by OpenAL Soft.
  An attempt was made using the gyroscope sensor to get an orientation while
  the user is stationary, but it often made the sound more confusing.
 \end_layout
@@ -204,7 +204,8 @@ nt/create?
 
 \begin_layout Standard
 The project resulted in an exercise application with an appealing user interface.
- The application is a game that may enhance the users regular exercise sessions.
+ The application's main mode is game-like, which may enhance the user's
+ regular exercise sessions.
  This by providing a randomized running route, audio feedback to guide the
  user in the right direction as well as a providing challenge by urging
  the user to collect all the checkpoints along the route.
@@ -249,9 +250,9 @@ status open
 The report concludes that it is still hard to make the perception of an
  angle realistic to the user because of the difficulty in sensing a user
  orientation.
- The GPS is still too inaccurate to be used without other sensors for a
- perfect perception of the sound direction.
- Finally, determining a user orientation is not reliable while the sensor
+ GPS technology is still too inaccurate to be used without other sensors
+ for a perfect perception of the sound direction.
+ Finally, determining a user's orientation is not reliable while the sensor
  is not at a fixed position relative to the user ears; a head mounted sensor
  device would probably avoid most of these problems and provide a more realistic
  perception.
