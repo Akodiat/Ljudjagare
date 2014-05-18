@@ -653,13 +653,14 @@ The following section describes the overall layout of the report.
 \end_layout
 
 \begin_layout Standard
+Theoretical Framework (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Theoretical-Framework"
 
 \end_inset
 
- covers the theoretical framework behind the most important parts of the
+) covers the theoretical framework behind the most important parts of the
  application.
  These parts are sound, Android sensors and how a random location is generated
  by using predefined algorithms.
@@ -669,13 +670,14 @@ reference "chap:Theoretical-Framework"
 \end_layout
 
 \begin_layout Standard
+Implementation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Implementation"
 
 \end_inset
 
- describes how the different parts in 
+) describes how the different parts in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Theoretical-Framework"
@@ -687,13 +689,14 @@ reference "chap:Theoretical-Framework"
 \end_layout
 
 \begin_layout Standard
+Result (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Result"
 
 \end_inset
 
- consists of the result, discussion and the conclusion.
+) consists of the result, discussion and the conclusion.
  The result describes the end product that is the application.
  In the discussion the result along with the whole design and implementation
  process is discussed.
