@@ -287,56 +287,6 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-
-\color green
-\lang swedish
-Förklarar vad resultatet innebär, bland annat.
- Diskuterar även metoden och relationen mellan resultatet och metoden.
- Skulle man kunnat göra på något annat vis, etc.
- Kan även koppla tillbaka till teorin.
-\end_layout
-
-\begin_layout Standard
-
-\color green
-\lang swedish
-Tänk dig trulig tonåring som svarar 
-\begin_inset Quotes eld
-\end_inset
-
-och?
-\begin_inset Quotes erd
-\end_inset
-
-.
- Provocera fram svar.
- 
-\end_layout
-
-\begin_layout Standard
-
-\color green
-\lang swedish
-Lyfter fram resultatet och därmed ert bidrag till kunskap om ämnet.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-
-\color green
-\lang swedish
-Introduktion Påminner läsaren om det övergripande problemet i studien, sammanhan
-get, rapportens syfte, och vilken typ av undersökning som gjorts för att
- komma fram till resultatet 
-\end_layout
-
-\begin_layout Standard
 This project have developed an sound based running application named 
 \begin_inset ERT
 status open
@@ -352,43 +302,7 @@ app
 
 \end_inset
 
-...
- by investigating android development smartphone sensors, etc ...
-\end_layout
-
-\begin_layout Description
-
-\color green
-\lang swedish
-\begin_inset Quotes eld
-\end_inset
-
-Sammanfattning
-\begin_inset Quotes erd
-\end_inset
-
- En (kort) översikt över studiens genomförande, datainsamling, analysstrategi
- och resultat (i viss mån) 
-\end_layout
-
-\begin_layout Standard
-The project resulted in...
- 
-\end_layout
-
-\begin_layout Description
-
-\color green
-\lang swedish
-Diskussion - vad vi har kommit fram till - Belyser och lyfter fram det anmärknin
-gsvärda, nya, överraskande, intressanta och sätter det i relation till det
- kända inom fältet, genom: 
-\end_layout
-
-\begin_layout Standard
-The fact that...
- However...
- 
+.
 \end_layout
 
 \begin_layout Standard
@@ -485,22 +399,6 @@ reference "sec:Sensor-fusion"
  into consideration, would improve the user experience.
 \end_layout
 
-\begin_layout Description
-
-\color green
-\lang swedish
-Konsekvens: Detta innebär...
- (vad betyder det?) Påverkar resultatet och slutsatserna vi drar vår förståelse
- för problematiken i fråga? Kommer det vi har kommit fram till att påverka
- hur man genomför andra studier inom detta område? Kritisk reflektion: stämmer
- överens? Går emot? Hur ska detta tolkas ? 
-\end_layout
-
-\begin_layout Standard
-This means that...
- 
-\end_layout
-
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -569,8 +467,8 @@ The two methods both have their pros and cons.
  
 \end_layout
 
-\begin_layout Paragraph
-Diskussion:
+\begin_layout Section
+Design choices
 \end_layout
 
 \begin_layout Standard
