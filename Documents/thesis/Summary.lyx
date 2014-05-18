@@ -286,13 +286,13 @@ Svårt att få det bra som GPS-tekniken ser ut idag, men framtida mobiler
 
 \begin_layout Chapter*
 
-\lang american
+\lang swedish
 Sammanfattning
 \end_layout
 
 \begin_layout Standard
 
-\lang american
+\lang swedish
 Denna rapport beskriver utvecklingen av en övning program för smartphones
  av typen Android kallad 
 \begin_inset ERT
@@ -337,7 +337,7 @@ spatial audio
 
 \begin_layout Standard
 
-\lang american
+\lang swedish
 Detta projekt försöker kombinera resultaten inom spatial audio som gjorts
  av Lawitzki ( 2012) med löparspelselement från applikationer som 
 \emph on
@@ -358,7 +358,7 @@ head related transfer functions
 
 \begin_layout Standard
 
-\lang american
+\lang swedish
 Projektet resulterade i en löparapplikation med ett tilltalande användargränssni
 tt.
  Applikation är ett spel som kan förbättra användarnas ordinarie träningspass.
@@ -388,7 +388,7 @@ app
 
 \begin_layout Standard
 
-\lang american
+\lang swedish
 I rapporten dras slutsatsen att det fortfarande är svårt att få användaren
  att uppfatta riktningen till ett ljud.
  Detta då det är svårt att beräkna en användarorientering.
