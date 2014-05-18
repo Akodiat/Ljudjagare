@@ -263,7 +263,20 @@ status open
 \end_layout
 
 \begin_layout Standard
-TODO
+The report concludes that it is still hard to make the perception of an
+ angle realistic to the user because of the difficulty in sensing a user
+ orientation.
+ The GPS is still too inaccurate to be used without other sensors.
+ Finally, determining a user orientation is not reliable while the sensor
+ is not at a fixed position relative to the user ears.
+\end_layout
+
+\begin_layout Standard
+
+\color green
+\lang swedish
+Svårt att få det bra som GPS-tekniken ser ut idag, men framtida mobiler
+ och enheter kommer troligen göra dessa typer av applikationer mer vanliga
 \end_layout
 
 \begin_layout Chapter*
