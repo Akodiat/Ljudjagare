@@ -1087,45 +1087,6 @@ Compatibility
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Theoretical Framework/Figures/chart_android_versions.png
-	width 40page%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Developer2014"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Programming language
 \end_layout
