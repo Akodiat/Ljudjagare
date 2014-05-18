@@ -354,6 +354,13 @@ app
 
 \begin_layout Subsection
 Coin collector
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Coin-collectoraaaa"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -410,6 +417,13 @@ reference "sec:Database:-Design-and"
 
 \begin_layout Subsection
 Tutorial
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Tutorialawdaw"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

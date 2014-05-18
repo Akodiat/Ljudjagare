@@ -288,9 +288,9 @@ Result: Application Simulating Sound Sources when running
 
 \begin_layout Standard
 This bachelor thesis has resulted in an Android application using spatial
- sound to communicate with the user.
- The following chapter will present its result and describe the final applicatio
-n and its views.
+ sound to guide with the user.
+ The following chapter presents its result and describes the final application
+ and its views.
 \end_layout
 
 \begin_layout Section
@@ -433,8 +433,14 @@ name "sec:Coin-Collector"
 \begin_layout Standard
 In Coin Collector, the user's task is to navigate to certain points (coins)
  using the sound coming from the headphones.
- The game is finished once all coins are found (see XXX for a detailed descripti
-on).
+ The game is finished once all coins are found (see 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:Coin-collectoraaaa"
+
+\end_inset
+
+ for a detailed description).
  It is made up of three different tabs, each having its own purpose; Run,
  Map and Stats.
  
@@ -626,8 +632,15 @@ The tutorial mode enables the user to try out the spatial sound of the applicati
 on without running.
  When the mode is launched, a point is generated on the screen and the sound
  starts to play.
- A detailed description of how the mode works can be found in XXX.
- To move the arrow, thxwe user simply taps the run button in the upper right
+ A detailed description of how the mode works can be found in 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:Tutorialawdaw"
+
+\end_inset
+
+.
+ To move the arrow, the user simply taps the run button in the upper right
  corner of 
 \begin_inset CommandInset ref
 LatexCommand nameref
