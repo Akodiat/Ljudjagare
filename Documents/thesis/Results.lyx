@@ -289,9 +289,8 @@ Result: Application Simulating Sound Sources when running
 \begin_layout Standard
 This bachelor thesis has resulted in an Android application using spatial
  sound to communicate with the user.
- The following chapter will present its result and describe what is included
- in the application.
- 
+ The following chapter will present its result and describe the final applicatio
+n and its views.
 \end_layout
 
 \begin_layout Section
@@ -299,11 +298,11 @@ Home
 \end_layout
 
 \begin_layout Standard
-The home screen is what the user first see when they launch the application.
- If it is the absolute first time using the application, however, a dialog
- box quickly describing it will pop up.
- The dialog box also contains a link leading to the help view accessible
- from the navigation drawer.
+The home screen is the first thing the user sees when launching the application.
+ If it is the first time using the application, however, a dialog box will
+ show up on top.
+ The dialog box describes the purpose of the application and provides a
+ link leading to the help view (also accessible from the navigation drawer).
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -362,48 +361,53 @@ The main screen and its navigation drawer
 \end_layout
 
 \begin_layout Description
-1 The three horizontal lines indicate that a hidden menu, called a navigation
- drawer (SEE), can be accessed by sweeping from the left or pressing the
- icon.
+1 The three horizontal lines indicate that a hidden menu, 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:Navigation-Drawer"
+
+\end_inset
+
+, can be accessed by sweeping from the left or by pressing the icon.
  From here, the user can choose to go back to the main screen, view statistics
- on past runs or learn about how the application works.
+ on past runs or learn about how the application works in Help.
 \end_layout
 
 \begin_layout Description
-2 In the settings view (
+2 In the 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand nameref
 reference "sec:Settings"
 
 \end_inset
 
-), the user can customize the experience.
+ view, the user can customize their experience.
 \end_layout
 
 \begin_layout Description
-3 Using the view pager in the middle, the user can swipe between the two
- available game modes: Coin Collector (
+3 Using the selector in the middle, the user can swipe between the two available
+ game modes: 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand nameref
 reference "sec:Coin-Collector"
 
 \end_inset
 
-) and Tutorial (
+ and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand nameref
 reference "sec:Tutorial"
 
 \end_inset
 
-) mode.
+ mode.
  If the user touches anywhere on the image, information regarding the selected
  mode will replace it.
 \end_layout
 
 \begin_layout Description
-4 Pressing the next button launches the mode currently selected in the view
- pager at the center of the window.
+4 Pressing the next button launches the mode currently selected in the middle
+ of the screen.
  If one of the icons feaf
 \end_layout
 
@@ -411,8 +415,8 @@ reference "sec:Tutorial"
 5 The first icon tells the user whether the device has a valid GPS connection
  or not, and the second whether headphones are plugged in to the device
  or not.
- In the picture, none of the icons are not crossed out, meaning that the
- GPS connection is valid and headphones are plugged in.
+ In the picture, none of the icons are crossed out, meaning that the GPS
+ connection is valid and headphones are plugged in.
 \end_layout
 
 \begin_layout Section
@@ -431,7 +435,7 @@ In Coin Collector, the user's task is to navigate to certain points (coins)
  using the sound coming from the headphones.
  The game is finished once all coins are found (see XXX for a detailed descripti
 on).
- It is made up of three different views, each having its own purpose; Run,
+ It is made up of three different tabs, each having its own purpose; Run,
  Map and Stats.
  
 \end_layout
@@ -479,7 +483,7 @@ name "fig:Coin collector"
 
 \end_inset
 
-The three different views of Coin Collector
+Coin Collector mode
 \end_layout
 
 \end_inset
@@ -504,7 +508,7 @@ reference "fig:Coin collector"
  It is the tab visible when launching the mode and it displays information
  about the distance, time, speed and pace.
  The second tab, Map, tells the user their current position and route .
- In the Stats tab, the user can see how many coins they've collected and
+ In the Stats tab, the user can see how many coins they have collected and
  at what distance and time.
 \end_layout
 
@@ -527,7 +531,7 @@ The run can be paused at any time by pressing the pause button located in
  Pausing the run will stop the navigation sound from repeating and the GPS
  from tracking the user's location.
  To resume from a paused state, the user simply presses the same button
- once again.
+ one more time.
  If the user wishes to quit the run completely, they can do so by pressing
  the stop button located at the bottom.
  
@@ -593,7 +597,7 @@ name "fig:Coin Collector finished"
 
 \end_inset
 
-When a run is finished, the three views look slightly different
+Finished Coin Collector mode
 \end_layout
 
 \end_inset
@@ -618,7 +622,32 @@ name "sec:Tutorial"
 \end_layout
 
 \begin_layout Standard
-The tutorial mode is a simple 
+The tutorial mode enables the user to try out the spatial sound of the applicati
+on without running.
+ When the mode is launched, a point is generated on the screen and the sound
+ starts to play.
+ A detailed description of how the mode works can be found in XXX.
+ To move the arrow, thxwe user simply taps the run button in the upper right
+ corner of 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "fig:Tutorial-mode-with"
+
+\end_inset
+
+.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Cheat
+\begin_inset Quotes erd
+\end_inset
+
+ is enabled by toggling the button at the bottom of the same figure, making
+ the generated point visible.
+ Cheating is not enabled by default.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -628,23 +657,26 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-18-10-42-37.png
+	lyxscale 20
 	scale 10
 
 \end_inset
 
-
+ 
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tutorial mode with cheat turned on and off
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tutorial-mode-with"
+
+\end_inset
+
+Tutorial mode with cheat turned on
 \end_layout
 
 \end_inset
@@ -669,20 +701,44 @@ name "sec:Settings"
 \end_layout
 
 \begin_layout Standard
+In the settings view, shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wadawdadwadawd"
+
+\end_inset
+
+, the user can customize their experience with the application.
+ Currently, the settings only apply to the Coin Collector mode, as the Tutorial
+ mode is supposed to be straight-forward and easy to start using.
+ To change the radius of the circular route generated in Coin Collector
+ or the number of points being generated, the user simply touches either
+ of the sections.
+ The user is then prompted to enter the desired value.
+ The toggle button at the bottom enables the user to try out the sensor
+ fusion adaption explained in 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Sensor-fusion"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-18-10-27-54.png
+	lyxscale 20
 	scale 10
 
 \end_inset
@@ -691,7 +747,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wadawdadwadawd"
 
+\end_inset
+
+Settings view
 \end_layout
 
 \end_inset
