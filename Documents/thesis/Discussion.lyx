@@ -419,13 +419,13 @@ reference "sec:Random-route-implementation"
 
 \end_inset
 
- earlier, the random route algorithm in this project has used Google Maps
- and its geocoding API.
- The decision to choose this method instead of the other presented method,
- using colour to classify locations, was based on the available tools and
- knowledge at the beginning of the project.
- The method with the colour classification was actually the first method
- that was taken into consideration.
+, the random route algorithm in this project has used Google Maps and its
+ geocoding API.
+ The decision to choose this method instead of the colour classification
+ method, was based on the available tools and knowledge at the beginning
+ of the project.
+ The method with the colour classification was the first method that was
+ taken into consideration.
  Different approaches was evaluated in order to make this method viable.
  The basic and most important aspect to this method was to have an accurate
  map with an corresponding coordinate system attach to it.
@@ -454,7 +454,7 @@ http://www.openstreetmap.org/
  This could be done by taking a print screen of the map and analyze the
  image with an algorithm that determine the colour of the location.
  There might also be functions available from the map-providers and by sending
- a request to the them get an answer containing the colour of the location.
+ a request to the them get a response containing the colour of the location.
  This problem was never solved because the idea of using Google Maps and
  its functions to find directions was now invented.
  The method using Google Maps geocoding API was at that time more preferable
@@ -468,7 +468,7 @@ The two methods both have their pros and cons.
  quite a lot of roads and trails nearby for the request to find any good
  directions.
  If there is only one straight road nearby, the sound sources is going to
- be mapped to the road and the distance between them will be very different.
+ be mapped to the road and the distance between them will vary a lot.
  A conclusion of this method is that it is working good in a city or a village
  where there are a lot of roads and walkways.
  The colour classification model on the other hand does not depend on the
