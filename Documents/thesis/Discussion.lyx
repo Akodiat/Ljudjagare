@@ -324,7 +324,7 @@ app
 \end_layout
 
 \begin_layout Standard
-The great advantage with using the GPS bearing was however that it allowed
+The great advantage with using the GPS bearing was however that it allows
  users to wear their phones in any way they prefer.
  This was something that this project required, as it seemed more realistic
  that the users would run with their phones in a pocket or in a sports bracelet
@@ -368,7 +368,7 @@ citeasnoun{Lawitzki2012}
 \end_layout
 
 \begin_layout Standard
-The alternative of combining gyroscope and accelerometer data described
+The alternative of combining the gyroscope and the accelerometer data described
  in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -377,7 +377,7 @@ reference "sec:Sensor-fusion"
 \end_inset
 
  was an attempt to a compromise between the GPS-bearing alternative and
- the orientation sensor fusion described by Lawitzky.
+ the orientation sensor fusion described by Lawitzki.
  It worked quite good while moving slowly but at higher speeds the sound
  starts to jump around too much, making the user confused.
  Probably some better algorithm for choosing when to use the gyroscope readings
@@ -395,13 +395,14 @@ Another benefit from using sensor fusion is that it capture the sometimes
 \end_layout
 
 \begin_layout Section
+Implementation choices of the random route generation algorithm
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:choises-random"
 
 \end_inset
 
-Implementation choices of the random route generation algorithm
+
 \end_layout
 
 \begin_layout Standard
