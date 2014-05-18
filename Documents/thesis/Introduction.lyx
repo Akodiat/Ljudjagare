@@ -497,7 +497,7 @@ Development environment and version control
 \begin_layout Standard
 For the development of the Run for Life application, the integrated development
  environment (IDE), Eclipse has been used.
- Together with the Android Development Tools (ADT) plugin, eclipse forms
+ Together with the Android Development Tools (ADT) plugin, Eclipse forms
  the recommended tool for Android development.
  The ADT contains tools that simplifies the development of Android applications,
  for example, graphical tools for the user interface and tools for debugging
@@ -515,9 +515,9 @@ key "Developer2014a"
 \begin_layout Standard
 To make collaboration easier the revision control system Git with the web-based
  hosting service Github was used.
- Github make it possible to edit and work on the same documents simultaneously
+ Github makes it possible to edit and work on the same documents simultaneously
  without getting the work overwritten and destroyed.
- It also host the code online and make it possible to access earlier versions
+ It also hosts the code online and makes it possible to access earlier versions
  of the application 
 \begin_inset CommandInset citation
 LatexCommand cite
