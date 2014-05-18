@@ -384,13 +384,12 @@ app
 \lang swedish
 I rapporten dras slutsatsen att det kan vara svårt för användaren att uppfatta
  riktningen av ett ljud.
- Detta då det är svårt att beräkna en tillräckligt exakt färdriktning.
- GPS-sensorn är i nuläget för inkorrekt för att utan kombination med andra
- sensorer.
- Slutligen är beräkningen av en användarorientering inte tillförlitlig så
- länge sensorns position är fixerad förhållande till användarens öron; en
- huvudmonterad sensoranordning skulle förmodligen undvika de flesta av dessa
- problem och kunna tillhandahålla en mer realistisk uppfattning.
+ Detta då GPS-sensorn i nuläget ej är tillräckligt exakt för att utan kombinatio
+n med andra sensorer erhålla en bra färdrikting.
+ Slutligen är det svårt att avgöra hur användaren är riktad vid ett stillaståend
+e läge, då telefonens placeringen på användaren är okänd.
+ Om en huvudmonterad enhet används, undviks problemen med den okända placeringen
+ och en mer exakt upplevelse skulle kunna uppnås.
  
 \end_layout
 
