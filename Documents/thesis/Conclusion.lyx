@@ -288,6 +288,13 @@ Conclusion
 
 \begin_layout Standard
 
+\color green
+\lang swedish
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
 \noun on
 \color green
 \lang swedish
@@ -304,7 +311,7 @@ Men vad kom ni fram till då?
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \color green
 \lang swedish
@@ -318,7 +325,7 @@ Sammanfattningsvis så...
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \color green
 \lang swedish
@@ -327,18 +334,38 @@ Svårt att få det bra som GPS-tekniken ser ut idag, men framtida mobiler
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \color green
 \lang swedish
 -Reflect on the purpose/answer the research questions
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \color green
 \lang swedish
 -Summarize the key information
+\end_layout
+
+\begin_layout Plain Layout
+
+\color green
+\lang swedish
+-Answer 
+\begin_inset Quotes eld
+\end_inset
+
+so what?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -391,21 +418,6 @@ The report concludes that it is still hard to make the perception of an
  perception.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\color green
-\lang swedish
--Answer 
-\begin_inset Quotes eld
-\end_inset
-
-so what?
-\begin_inset Quotes erd
 \end_inset
 
 
