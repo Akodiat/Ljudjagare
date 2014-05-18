@@ -135,7 +135,7 @@ customHeadersFooters
 \color #ffff00
 \end_branch
 \branch Appendix
-\selected 0
+\selected 1
 \filename_suffix 0
 \color #faf0e6
 \end_branch
@@ -612,36 +612,6 @@ filename "Acknowledgments.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch Appendix
-status collapsed
-
-\begin_layout Standard
-\start_of_appendix
-\begin_inset CommandInset include
-LatexCommand include
-filename "Appendix.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Appendix is of course optional
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -727,6 +697,40 @@ options "chscite"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Appendix
+status collapsed
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset CommandInset include
+LatexCommand include
+filename "Appendix.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Appendix is of course optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 

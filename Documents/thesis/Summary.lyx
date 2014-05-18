@@ -114,8 +114,8 @@ c, theoretical or artistic gap is your research filling?
 \end_layout
 
 \begin_layout Standard
-This report describes the development of an exercise application called
- 
+This report describes the development of an exercise application for android
+ smartphones called 
 \begin_inset ERT
 status open
 
@@ -130,7 +130,7 @@ app
 
 \end_inset
 
- for android smartphones.
+.
  
 \begin_inset ERT
 status open
@@ -169,7 +169,7 @@ citeasnoun{Lawitzki2012}
 Zombies, Run!
 \emph default
 .
- This is done by using the GPS sensor to indicate both user position and
+ This is done by using the GPS sensor to calculate both user position and
  orientation.
  The audio was implemented using general head related transfer functions
  provided by 
@@ -220,8 +220,8 @@ nt/create?
 \end_layout
 
 \begin_layout Standard
-The project resulted in an application that has a appealing user interface
- and is a game that may enhance the users regular exercise sessions.
+The project resulted in an exercise application with an appealing user interface.
+ The application is a game that may enhance the users regular exercise sessions.
  This is done by providing a randomized running route, audio feedback to
  guide the user in the right direction as well as a providing challenge
  by urging the user to collect all the checkpoints along the route.
