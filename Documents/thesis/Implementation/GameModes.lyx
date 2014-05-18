@@ -287,7 +287,9 @@ Game modes
 \end_layout
 
 \begin_layout Standard
-One of the main goals for 
+One of the purposes of the application is to prevent sedentary amongst people.
+ It would therefore make sense to reach out to an as large audience as possible.
+ To achieve this, 
 \begin_inset ERT
 status open
 
@@ -302,26 +304,9 @@ app
 
 \end_inset
 
- is to reach out to an as large audience as possible.
- To achieve this the application should have several game modes with different
- goals and themes.
- Even though only one game mode was implemented into 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-app
-\backslash
-
-\end_layout
-
-\end_inset
-
- it is designed to be modular, which means that it will be easy to expand
- the application with new game modes.
+ is designed in a modular way, making it easy to add new games.
+ In the final application, however, there are only one game and one tutorial
+ implemented.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -331,25 +316,6 @@ reference "sec:Future-work:-efficiency,"
 
  some possible game mode concepts are discussed for future development.
  
-\end_layout
-
-\begin_layout Standard
-This section describes the game modes that was implemented into 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-app
-\backslash
-
-\end_layout
-
-\end_inset
-
- .
 \end_layout
 
 \begin_layout Subsection
