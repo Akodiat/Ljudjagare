@@ -558,15 +558,21 @@ key "GoogleDevelopers2014"
  route to the destination.
  It is a big chance that the generated locations is not on a road but instead
  in a forest or a lake.
- But the destination of the list of locations from google(the last list
- element) is always as close to the generated location as possible but in
- a reachable area.
+ 
+\color yellow
+But the destination of the list of locations from google(the last list element)
+ is always as close to the generated location as possible but in a reachable
+ area
+\color inherit
+.
  This locations is then set as a checkpoints and the random route algorithm
  is finished.
  
 \end_layout
 
 \begin_layout Standard
+
+\color yellow
 But by taking out the last location that is given by Google, the location
  that is as close as possible to the generated location but reachable is
  found.
