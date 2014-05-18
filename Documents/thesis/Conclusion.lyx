@@ -343,6 +343,61 @@ Svårt att få det bra som GPS-tekniken ser ut idag, men framtida mobiler
 
 \begin_layout Standard
 
+\lang swedish
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The purpose of the bachelor project is to design and implement an android
+ application, which will be easy and fun, for android smartphones.
+ It will be easy and fun to use so that it will encourage running amongst
+ the sedentary society of the present time.
+ The goal of the application is that it will contain functionality that
+ depend on the hardware sensors that we can find in the modern smartphones
+ as well as the ability to track ones performance while using the application.
+ The application will be a fully functional running game that will be possible
+ to take out and use in real life.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The project concluded in a fully usable application that used the GPS sensor
+ together with spatial sound to create the perception of a sound coming
+ from a specific angle\SpecialChar \@.
+ The general response from users testing the application
+ was positive.
+ Some difficulties in navigation still stems from the problem of GPS inaccuracy,
+ but this is something that will most likely change with improved GPS or
+ even better: a head mounted orientation sensor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The report concludes that it is still hard to make the perception of an
+ angle realistic to the user because of the difficulty in sensing a user
+ orientation.
+ The GPS is still too inaccurate to be used without other sensors.
+ Finally, determining a user orientation is not reliable while the sensor
+ is not at a fixed position relative to the user ears; a head mounted sensor
+ device would probably avoid most of these problems and provide a more realistic
+ perception.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \color green
 \lang swedish
 -Answer 
