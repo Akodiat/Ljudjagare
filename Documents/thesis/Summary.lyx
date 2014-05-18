@@ -312,9 +312,9 @@ app
 
 \lang swedish
 Detta projekt försöker kombinera resultaten inom 3D-ljud som gjorts av Lawitzki
- ( 2012) med spelelement från applikationer som 
+ (2012) med spelelement från applikationer som 
 \emph on
-Zombies , Run!
+Zombies, Run!
 \emph default
 .
  Detta görs med hjälp av GPS-sensorn för att beräkna användarens position
