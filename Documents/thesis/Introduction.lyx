@@ -425,6 +425,28 @@ Combining both the orientation sensors of the modern smartphone with GPS
 \end_layout
 
 \begin_layout Section
+Problem assignment
+\end_layout
+
+\begin_layout Enumerate
+Translate location data obtained with sensors into navigation instructions
+ with sound.
+\end_layout
+
+\begin_layout Enumerate
+Register running activity and present its statistics.
+\end_layout
+
+\begin_layout Enumerate
+Motivate users to exercise by implementing game elements.
+\end_layout
+
+\begin_layout Enumerate
+Create a graphical user interface that is straight forward and easy to understan
+d.
+\end_layout
+
+\begin_layout Section
 Purpose 
 \begin_inset Note Note
 status open
