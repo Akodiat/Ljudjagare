@@ -565,7 +565,7 @@ Rate
 \begin_layout Standard
 In 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sub:Human-Computer-Interaction-using"
 
 \end_inset
@@ -579,7 +579,7 @@ reference "sub:Human-Computer-Interaction-using"
  Both the change in pitch and change in rate can be related to recommendations
  seen in 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sub:Human-Computer-Interaction-using"
 
 \end_inset
@@ -595,6 +595,15 @@ Apart from the sound being modulated in previously mentioned ways, the sine
  towards the generated point.
  If the user is running in the wrong direction, however, the sine wave is
  exchanged to a sound informing the user they are doing so.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sound_table"
+
+\end_inset
+
+ contains a simple visual representation of how the sound is modulated in
+ 360°, with the top being right ahead.
 \end_layout
 
 \begin_layout Standard

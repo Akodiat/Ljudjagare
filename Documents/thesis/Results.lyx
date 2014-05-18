@@ -519,7 +519,8 @@ reference "fig:Coin collector"
  displays the Run tab.
  It is the tab visible when launching the mode and it displays information
  about the distance, time, speed and pace.
- The second tab, Map, tells the user their current position and route .
+ The second tab, Map, tells the user about their current position and route
+ .
  In the Stats tab, the user can see how many coins they have collected and
  at what distance and time.
 \end_layout
@@ -551,9 +552,8 @@ The run can be paused at any time by pressing the pause button located in
 
 \begin_layout Standard
 When a run is finished, the screen looks similar to what it does while running;
- the Run tab displays basic statistics, the Run tab shows the route with
- its coins and the Stats tab displays information of where the coins have
- been found.
+ the Run tab displays basic statistics and the Run and Stats tabs displays
+ information of where the coins have been found and at what time.
  By pressing the OK button, the user is taken back to the home screen described
  in the beginning of the chapter.
  For a visual represenation, see 
@@ -640,7 +640,7 @@ on without running.
  starts to play.
  A detailed description of how the mode works can be found in 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sub:Tutorialawdaw"
 
 \end_inset
@@ -649,7 +649,7 @@ reference "sub:Tutorialawdaw"
  To move the arrow, the user simply taps the run button in the upper right
  corner of 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "fig:Tutorial-mode-with"
 
 \end_inset
@@ -729,7 +729,8 @@ reference "fig:wadawdadwadawd"
 
 , the user can customize their experience with the application.
  Currently, the settings only apply to the Coin Collector mode, as the Tutorial
- mode is supposed to be straight-forward and easy to start using.
+ mode is supposed to be straightforward and easy to play without having
+ to worry about specific settings .
  To change the radius of the circular route generated in Coin Collector
  or the number of points being generated, the user simply touches either
  of the sections.
@@ -737,7 +738,7 @@ reference "fig:wadawdadwadawd"
  The toggle button at the bottom enables the user to try out the sensor
  fusion adaption explained in 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sec:Sensor-fusion"
 
 \end_inset
