@@ -301,7 +301,7 @@ reference "sec:Generation-of-random"
 
 \end_inset
 
- the sound sources (checkpoints) are generated out of a predefined algorithm.
+, the sound sources (checkpoints) are generated out of a predefined algorithm.
  To accomplish this, the application uses the Google Maps geocoding API
  and its functions to find directions 
 \begin_inset CommandInset ref
@@ -313,7 +313,7 @@ reference "google maps random"
 .
  In this section it is explained how the algorithm has been implemented
  in this project.
- All the calculations is made with the geographic coordinate system using
+ All the calculations are made using the geographic coordinate system using
  latitude and longitude, 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -332,8 +332,8 @@ key "atok2013"
 \end_layout
 
 \begin_layout Standard
-Every time the algorithm runs, a theoretical route is generated based on
- a predefined number of checkpoints and a distance, d.
+Every time the algorithm is executed, a theoretical route is generated based
+ on a predefined number of checkpoints and a distance, d.
  As seen in 
 \begin_inset CommandInset ref
 LatexCommand ref

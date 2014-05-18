@@ -293,13 +293,12 @@ Database: Design and Implementation
 \end_layout
 
 \begin_layout Standard
-This Subsection describes how the database was designed and implemented
- into the application to allow the information of the users running sessions
- be stored in a proper way so that it can be retrieved and used at another
- time.
- The section takes up both the system that manages the functionality of
- the database as well as a visual representation of the design and the tables
- that tables it consists of.
+This subsection describes how the database was designed and thereby implemented
+ in the application to allow the information about the runs to be stored
+ in a way so that it can be retrieved and used in the future.
+ It mentions both the system that manages the functionality of the database
+ as well as a visual representation of the design and the tables that tables
+ it consists of.
 \end_layout
 
 \begin_layout Subsection

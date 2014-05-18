@@ -367,14 +367,15 @@ The main screen and its navigation drawer
 \end_layout
 
 \begin_layout Description
-1 The three horizontal lines indicate that a hidden menu, 
+1 The three horizontal lines indicate that a hidden menu can be accessed
+ by sweeping from the left or by pressing the icon, as mentioned in 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sub:Navigation-Drawer"
 
 \end_inset
 
-, can be accessed by sweeping from the left or by pressing the icon.
+.
  From here, the user can choose to go back to the main screen, view statistics
  on past runs or learn about how the application works in Help.
 \end_layout
@@ -414,7 +415,6 @@ reference "sec:Tutorial"
 \begin_layout Description
 4 Pressing the next button launches the mode currently selected in the middle
  of the screen.
- If one of the icons feaf
 \end_layout
 
 \begin_layout Description
@@ -441,7 +441,7 @@ In Coin Collector, the user's task is to navigate to certain points (coins)
  using the sound coming from the headphones.
  The game is finished once all coins are found (see 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sub:Coin-collectoraaaa"
 
 \end_inset

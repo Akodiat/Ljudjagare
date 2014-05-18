@@ -377,14 +377,12 @@ key "SixtoStart2014"
 \end_layout
 
 \begin_layout Standard
-Meanwhile, spatial audio has been around in computer games for several years
- {citation needed}.
- [----| Include some example here |----] In these games, however, the sound
- generation was based on the movement of the virtual character, not the
- movement of the actual user.
+Meanwhile, 3D sound has been included in computer games for years, In these
+ games, however, the sound generation is based on the movement of the virtual
+ character, not the movement of the actual user.
  The possibility of tracking the head movements of the actual user using
- a smartphone was however studied as a master thesis by Paul Lawitzki in
- 2012 called Application of Dynamic Binaural Signals in Acoustic Games 
+ a smartphone was studied as a master thesis by Paul Lawitzki in 2012 called
+ Application of Dynamic Binaural Signals in Acoustic Games 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lawitzki2012"
@@ -419,8 +417,7 @@ Motivate users to exercise by implementing game elements.
 \end_layout
 
 \begin_layout Enumerate
-Create a graphical user interface that is straight forward and easy to understan
-d.
+Create a graphical user interface that is straightforward and easy to understand.
 \end_layout
 
 \begin_layout Section
@@ -449,20 +446,17 @@ More text? Repeat directionality
 
 \begin_layout Standard
 The purpose of this bachelor project is to design and implement an Android
- application that uses location data obtained with hardware sensors to provide
- navigation instructions to the user.
- The navigation instructions will guide the user to a certain location by
- manipulating a binarual sound differently depending on the user's direction
- to the location.
- 
+ application combining GPS technology and spatial audio in order to guide
+ the user to a certain location, by manipulating the sound differently depending
+ on the user's direction to the location.
 \end_layout
 
 \begin_layout Standard
 The guided sound will be implemented in a game to encourage running, thus
  intending to prevent the sedentary in the society of the present time.
- Apart from making running into a more fun experience the application will
+ Apart from making running into a more fun experience, the application will
  register running activity and present statistics.
- To enhance the usability of the application it will have a straight forward
+ To enhance the usability of the application it will have a straightforward
  graphical user interface that is easy to understand.
  
 \end_layout
@@ -471,32 +465,17 @@ The guided sound will be implemented in a game to encourage running, thus
 Method
 \end_layout
 
-\begin_layout Standard
-The project had two major phases where the first one was the information
- gathering of the theory needed to understand the subject.
- In the second phase the theroetical framework obtained in the first phase
- was used to implement the application.
-\end_layout
-
-\begin_layout Standard
-We used an agile development method by having meetings everyday and working
- together most of the time.
- This way problems were found at an early stage and could be solved directly.
- The tools used during the development are described below.
- 
-\end_layout
-
 \begin_layout Subsection
 Development environment and version control 
 \end_layout
 
 \begin_layout Standard
-For the development of the Run for Life application, the integrated development
- environment (IDE), Eclipse has been used.
+When developing Run for Life, the integrated development environment (IDE)
+ Eclipse was used.
  Together with the Android Development Tools (ADT) plugin, Eclipse forms
- the recommended tool for Android development.
- The ADT contains tools that simplifies the development of Android applications,
- for example, graphical tools for the user interface and tools for debugging
+ the recommended tool for development of Android applications.
+ The ADT provides the tools necessary for creating such applications.
+ For example, graphical tools for the user interface and tools for debugging
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -511,9 +490,9 @@ key "Developer2014a"
 \begin_layout Standard
 To make collaboration easier the revision control system Git with the web-based
  hosting service Github was used.
- Github makes it possible to edit and work on the same documents simultaneously
+ Github make it possible to edit and work on the same documents simultaneously
  without getting the work overwritten and destroyed.
- It also hosts the code online and makes it possible to access earlier versions
+ It also host the code online and make it possible to access earlier versions
  of the application 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -541,15 +520,12 @@ The standard libraries of the ADT did not cover all the needs for this project.
 For handling of 3D audio operations the library, OpenAL4Android has been
  used.
  This library serves as an intermediary between the native OpenAL Soft code
- and the Java application 
-\color red
-(Vet inte exakt hur man ska skriva, Linus som är insatt kanske kan säga
- det på ett smidigt sätt?)
+ and the Java application.
 \end_layout
 
 \begin_layout Standard
 The application has been developed for the platform version 4.0 and above.
- This corresponds to the API-level of 15.
+ This corresponds to the API level of 15.
  This version has been selected since it covers a lot of new functionalities
  as well as can be used on the majority of the devices on the market today,
  see 
@@ -1112,6 +1088,10 @@ The object-oriented programming language Java has been used throughout the
  to create and manage the database.
 \end_layout
 
+\begin_layout Standard
+NÅGOT OM C-KODEN
+\end_layout
+
 \begin_layout Section
 Report Outline 
 \begin_inset Note Note
@@ -1151,10 +1131,10 @@ reference "chap:Theoretical-Framework"
 
 ) covers the theoretical framework behind the most important parts of the
  application.
- These parts are sound, Android sensors and how a random location is generated
- by using predefined algorithms.
- Furthermore the basic structure of databases and Android applications are
- explained as well as graphical design patterns.
+ These parts are sound, Android sensors and how a random location can be
+ generated by using predefined algorithms.
+ Furthermore, the basic structure of databases and Android applications
+ are explained as well as graphical design patterns.
  
 \end_layout
 

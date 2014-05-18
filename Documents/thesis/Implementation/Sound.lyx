@@ -443,26 +443,26 @@ Before going into detail, it might be worth quickly describing how the spatial
  positioning of the audio is determined in our application.
  In 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sec:Generation-of-random"
 
 \end_inset
 
 , it is described how points can be generated on a map using GPS technology.
  As the user is moving, their angular offset in terms of such a generated
- point can be calculated using 
+ point can be calculated using Sensor fusion (see 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sec:Sensor-fusion"
 
 \end_inset
 
-, varying from -180° to 180°.
+), varying from -180° to 180°.
  An angular offset of 0° would hence mean that the user is moving perfectly
  in the right direction.
  With regards to the study in 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "sub:Human-Computer-Interaction-using"
 
 \end_inset
@@ -543,8 +543,8 @@ Pitch
 \begin_layout Standard
 When the user moves, the pitch of the sound changes depending on the angular
  offset; the bigger the offset, the lower the pitch.
- A lower pitch essentially means a lower frequency, assumin the sound it's
- distinguishable from noise 
+ A lower pitch essentially means a lower frequency, assuming that the sound
+ is distinguishable from noise 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ne"
@@ -594,7 +594,7 @@ Apart from the sound being modulated in previously mentioned ways, the sine
  20 degrees, an electronic beat is played to indicate they are heading straight
  towards the generated point.
  If the user is running in the wrong direction, however, the sine wave is
- exchanged to a sound informing the user they're doing so.
+ exchanged to a sound informing the user they are doing so.
 \end_layout
 
 \begin_layout Standard
