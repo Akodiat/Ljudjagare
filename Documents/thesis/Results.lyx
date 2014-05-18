@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -62,13 +62,13 @@ customHeadersFooters
 \font_roman lmodern
 \font_sans lmss
 \font_typewriter lmtt
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -92,15 +92,24 @@ customHeadersFooters
 \pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 2
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \branch Sound
 \selected 1
@@ -129,7 +138,7 @@ customHeadersFooters
 \begin_body
 
 \begin_layout Left Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -194,7 +203,7 @@ Enable page headers and add the chapter to the header line.
 \end_layout
 
 \begin_layout Right Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -219,7 +228,7 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -248,7 +257,7 @@ thepage
 \end_layout
 
 \begin_layout Right Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -330,7 +339,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -364,7 +373,7 @@ The main screen and its navigation drawer
 2 In the settings view (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Settings"
+reference "sec:Settings"
 
 \end_inset
 
@@ -376,14 +385,14 @@ reference "sub:Settings"
  available game modes: Coin Collector (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Coin-Collector"
+reference "sec:Coin-Collector"
 
 \end_inset
 
 ) and Tutorial (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Tutorial"
+reference "sec:Tutorial"
 
 \end_inset
 
@@ -395,6 +404,7 @@ reference "sub:Tutorial"
 \begin_layout Description
 4 Pressing the next button launches the mode currently selected in the view
  pager at the center of the window.
+ If one of the icons feaf
 \end_layout
 
 \begin_layout Description
@@ -407,120 +417,28 @@ reference "sub:Tutorial"
 
 \begin_layout Section
 Coin Collector
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Coin-Collector"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-By pressing the 
-\begin_inset Quotes eld
-\end_inset
-
-Next
-\begin_inset Quotes erd
-\end_inset
-
- button in the lower right corner while the Coin Collector mode is selected
- in the view pager, assuming the GPS is working and the headphones are plugged
- in.
- If GPS-connection or headphones are missing a pop up is showed telling
- what is missing.
- To be able to use the application in a proper way a GPS-connection and
- headphones has to be used.
+In Coin Collector, the user's task is to navigate to certain points (coins)
+ using the sound coming from the headphones.
+ The game is finished once all coins are found (see XXX for a detailed descripti
+on).
+ It is made up of three different views, each having its own purpose; Run,
+ Map and Stats.
  
-\end_layout
-
-\begin_layout Standard
-When Coin Collector is launched, a route of coins is generated based on
- the values set in the settings view.
- The coins are generated in a circle from you, all being within the reachable
- and by integration with Google maps the coins is going to be located on
- reachable location such as roads and trails.
- To start the run the 
-\begin_inset Quotes eld
-\end_inset
-
-play-button
-\begin_inset Quotes erd
-\end_inset
-
- in the lower right corner of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Coin collector"
-
-\end_inset
-
- is pressed.
- 
-\end_layout
-
-\begin_layout Standard
-Pressing the play button in the lower-, the user will start hearing a repeating
- sound --- hereafter referred to as the navigation sound (see chapter 3.1).
- However, in order for the navigation sound to be heard from the correct
- direction, the GPS has to calculate the direction of which the user is
- heading.
- At present, the user has to move approximately 10 meters for this to be
- done correctly.
- Once the the calculations are done, the user is supposed to run in the
- direction of the sound in order to reach the first coin.
- Apart from the time between each repetition of the navigation sound being
- decreased, a voice feedback is implemented.
- Each hundred meters it tells the user the distance to the coin.
- For example, if the user just passes 200 meters until he reach the coin
- a voice saying 
-\begin_inset Quotes eld
-\end_inset
-
-200 meters
-\begin_inset Quotes erd
-\end_inset
-
- is played.
- When the user passes a hundred meter border the playback speed is restored
- to a slow speed again.
-\end_layout
-
-\begin_layout Standard
-As the user moves, the navigation sound is being modulated (or completely
- exchanged), as a result of the angular offset mentioned in chapter 3.
- Whenever a user reaches a coin, a synthesized voice informs them that the
- coin has been reached.
- If it's not the last coin, the same voice will let the user know that another
- one has been generated.
- Because of the last coin always being generated at the starting point (see
- chapter 3.3), a finished run should result in the user being back to where
- they started.
-\end_layout
-
-\begin_layout Standard
-The run can be paused at any time by pressing the pause button located at
- the bottom-right, taking the place of the play button while running.
- Pausing the run will stop the navigation sound from repeating and the GPS
- from tracking the user's location.
- To resume from a paused state, the user simply presses the same button
- once again.
- If the user wishes to quit the run completely, they can do so by pressing
- the stop button located at the bottom (VI MASTE HA BILD).
- It's possible to display more information about the current run, either
- by pressing the tabs located at the top or by sweeping horizontally in
- the desired direction.
- The first image in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Coin collector"
-
-\end_inset
-
- shows the Run tab.
- It is the tab visible when launching Coin Collector and it displays information
- about the distance, time, speed and pace.
- The second tab, Map, tells the user their current position and route .
- In the Stats tab, the user can see how many coins they've collected and
- at what distance and time.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -552,7 +470,7 @@ status open
 \end_inset
 
  
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -561,7 +479,7 @@ name "fig:Coin collector"
 
 \end_inset
 
-...
+The three different views of Coin Collector
 \end_layout
 
 \end_inset
@@ -575,10 +493,52 @@ name "fig:Coin collector"
 \end_layout
 
 \begin_layout Standard
+The first image in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Coin collector"
+
+\end_inset
+
+ displays the Run tab.
+ It is the tab visible when launching the mode and it displays information
+ about the distance, time, speed and pace.
+ The second tab, Map, tells the user their current position and route .
+ In the Stats tab, the user can see how many coins they've collected and
+ at what distance and time.
+\end_layout
+
+\begin_layout Standard
+Since the game is not automatically started when launching the mode from
+ the Home screen, the user has to press the play button in the lower right
+ corner for it to start.
+ This will result in the navigation sound starting to play.
+ However, in order for the navigation sound to be heard from the correct
+ direction, the GPS has to calculate the direction of which the user is
+ heading.
+ This process usually requires that the user moves a few meters in order
+ for the GPS to track the position of the user.
+ 
+\end_layout
+
+\begin_layout Standard
+The run can be paused at any time by pressing the pause button located in
+ the bottom right corner, replacing the play button while running.
+ Pausing the run will stop the navigation sound from repeating and the GPS
+ from tracking the user's location.
+ To resume from a paused state, the user simply presses the same button
+ once again.
+ If the user wishes to quit the run completely, they can do so by pressing
+ the stop button located at the bottom.
+ 
+\end_layout
+
+\begin_layout Standard
 When a run is finished, the screen looks similar to what it does while running;
  the Run tab displays basic statistics, the Run tab shows the route with
- its coins and the Stats tab looks exactly like before.
- By pressing the OK button, the user is returned to the main screen described
+ its coins and the Stats tab displays information of where the coins have
+ been found.
+ By pressing the OK button, the user is taken back to the home screen described
  in the beginning of the chapter.
  For a visual represenation, see 
 \begin_inset CommandInset ref
@@ -592,6 +552,7 @@ reference "fig:Coin Collector finished"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -623,7 +584,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -632,7 +593,7 @@ name "fig:Coin Collector finished"
 
 \end_inset
 
-Bilder med finish läge
+When a run is finished, the three views look slightly different
 \end_layout
 
 \end_inset
@@ -647,10 +608,104 @@ Bilder med finish läge
 
 \begin_layout Section
 Tutorial
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Tutorial"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The tutorial mode is a simple 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Figures/Screenshot_2014-05-18-10-42-37.png
+	scale 10
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tutorial mode with cheat turned on and off
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 Settings
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Settings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Figures/Screenshot_2014-05-18-10-27-54.png
+	scale 10
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
