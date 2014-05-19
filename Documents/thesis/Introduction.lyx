@@ -329,18 +329,6 @@ key "Presswire2012"
 
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Är denna källen på att antalet GPS ökat eller på att antalet löparappar
- ökat? Låter som det senare.
- Ingen URL i källförtäckningen och skall det verkligen vara ALL CAPS?
-\end_layout
-
-\end_inset
-
 .
  One such example is 
 \emph on
@@ -381,7 +369,8 @@ key "SixtoStart2014"
 \end_inset
 
 .
- It creates the illusion of zombies chasing the user by using audio modulations.
+ It creates the illusion of zombies chasing the user through sound modulations;
+ level and panoration automations gives the effect of zombies approaching.
  The only way to make the zombies disappear is for the user to increase
  their pace, thus evading the zombies.
  However, since the zombies only have a distance, but no specified direction
