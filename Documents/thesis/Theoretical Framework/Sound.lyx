@@ -332,9 +332,9 @@ key "hrtf_article"
 .
  Along with the directional characteristics of the torso and head, the pinna
  helps us determine where a specific sound source is located.
- Its filtering properties even make it possible for us to differentiate
- between sounds appearing from the front and from above, as can be seen
- on 
+ Its filtering properties (caused by the shape) even make it possible for
+ us to differentiate between sounds appearing from the front and from above,
+ as can be seen on 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:hrtf"
@@ -354,17 +354,6 @@ key "acoustics_and_audio"
 
 .
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Förklara att ljuded ändras ang.
- bilden
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -395,8 +384,7 @@ name "fig:hrtf"
 
 \end_inset
 
-The measured frequency response varies depending on the location of the
- sound source.
+The pinna filters the sound differently depending on its location.
 \end_layout
 
 \end_inset
