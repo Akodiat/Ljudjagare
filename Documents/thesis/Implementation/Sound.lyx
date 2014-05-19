@@ -343,7 +343,7 @@ key "openal"
 \end_layout
 
 \begin_layout Subsection
-Spatial audio in an Android application
+Binaural audio in Android
 \end_layout
 
 \begin_layout Standard
@@ -435,7 +435,7 @@ key "openal_android"
 \end_layout
 
 \begin_layout Subsection
-Feedback to the user
+Sound modulation
 \end_layout
 
 \begin_layout Standard
@@ -479,6 +479,13 @@ The sound instructing the user in what direction to move is a pure sine
 \emph on
 Propellerhead Reason 7
 \emph default
+, an application for making music 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "reason"
+
+\end_inset
+
 .
  Sine waves are generally seen as boring and uninteresting sounds, making
  a good fit for applications like 
@@ -631,7 +638,7 @@ name "fig:sound_table"
 
 \end_inset
 
-The three different sound stages
+Picture describing how the sound is modulated based on the angular offset.
 \end_layout
 
 \end_inset
