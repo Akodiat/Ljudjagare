@@ -297,7 +297,7 @@ key "ndk_beginners_guide"
 
 .
  To use binaural audio effects in an Android application, one needs to access
- operations that aren’t available in the SDK.
+ operations that are not available in the SDK.
  Fortunately, Android provides an API for accessing low level functions
  called Native Development Kit (NDK) 
 \begin_inset CommandInset citation
@@ -313,7 +313,7 @@ key "ndk"
 \begin_layout Standard
 Android’s NDK allows developers to implement part of an application using
  other languages than Java, such as C.
- The use of low-level languages doesn’t generally result in better performance
+ The use of low-level languages does not generally result in better performance
  and on top of it, it also increases the application’s complexity 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -322,7 +322,7 @@ key "ndk"
 \end_inset
 
 .
- However, it enables developers to use operations that aren’t accessible
+ However, it enables developers to use operations that are not accessible
  using only Java - such as handling 3D audio.
  Currently, there seem to be two APIs available providing this functionality:
  OpenSL ES and OpenAL Soft --- both using general HRTFs 
