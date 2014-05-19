@@ -399,7 +399,7 @@ Prominent Done Button.
 \end_layout
 
 \begin_layout Paragraph
-Carousel- and filmstrip pattern
+Carousel and Filmstrip pattern
 \end_layout
 
 \begin_layout Standard
@@ -408,7 +408,7 @@ Another design pattern is the
 Carousel
 \shape default
 , which is a horizontal swipe- or scrollable list of items that are visually
- interesting
+ interesting 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Tidwell2011"
@@ -439,7 +439,7 @@ Filmstrip
 \emph default
  pattern basically is a Carousel for mobile devices.
  A difference between Filmstrip and Carousel is that Filmstrip usually fills
- up the whole screen horizontally
+ up the whole screen horizontally 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Tidwell2011"
@@ -464,7 +464,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/cover-flow.png
+	filename Figures/filmstrip.eps
 	width 40page%
 
 \end_inset
@@ -482,7 +482,7 @@ name "fig:carousel"
 
 \end_inset
 
-Concept of the carousel pattern.
+Concept of the Carousel (a) and Filmstrip pattern (b).
 \end_layout
 
 \end_inset
