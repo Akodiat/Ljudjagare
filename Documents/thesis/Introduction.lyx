@@ -317,7 +317,7 @@ Background
 \end_layout
 
 \begin_layout Standard
-In recent years smartphones containing 
+In recent years, smartphones with 
 \emph on
 GPS (Global Positioning System)
 \emph default
@@ -329,22 +329,10 @@ key "Presswire2012"
 
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Är denna källen på att antalet GPS ökat eller på att antalet löparappar
- ökat? Låter som det senare.
- Ingen URL i källförtäckningen och skall det verkligen vara ALL CAPS?
-\end_layout
-
-\end_inset
-
 .
  One such example is 
 \emph on
-Endomondo Sports Tracker (Endomondo)
+Endomondo (Endomondo Sports Tracker)
 \emph default
 , launched in 2008 
 \begin_inset CommandInset citation
@@ -381,7 +369,7 @@ key "SixtoStart2014"
 \end_inset
 
 .
- It creates the illusion of zombies chasing the user by using audio modulations.
+ It creates the illusion of zombies chasing the user through audio modulations.
  The only way to make the zombies disappear is for the user to increase
  their pace, thus evading the zombies.
  However, since the zombies only have a distance, but no specified direction
