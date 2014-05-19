@@ -284,6 +284,13 @@ thepage
 
 \begin_layout Chapter
 Discussion
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Discussion"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
