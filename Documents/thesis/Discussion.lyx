@@ -569,8 +569,8 @@ reference "sub:Sound-localization"
  Because of this, non-invidualized HRTFs are far from suitable for everyone.
  In Run For Life, the sound has a great impact on the user experience, placing
  high demands on its ability to navigate the user.
- Unfortunately, the sound currently suffers from being deceptive - it is
- difficult to hear from what angle the sound is appearing from.
+ Unfortunately, the audio core currently suffers from being deceptive -
+ it is difficult to hear from which angle a sound is appearing from.
  In order to make it easier for the user to perceive the offset angle, we
  added more factors to the navigation sound, such as pitch and rate.
  While it improved the user experience to some extent, the initial problem
@@ -578,9 +578,19 @@ reference "sub:Sound-localization"
 \end_layout
 
 \begin_layout Standard
-It is hard to find information on what HRTF database(s) OpenAL Soft uses,
- but it's probably neither the newest nor the most general in terms of meaning
- that it; its target group.
+Whether the uncertainty in angle accuracy is a result of the incorrectness
+ of the location data or bad HRTFs provided by OpenAL Soft is difficult
+ to tell, looking at the Coin Collector mode.
+ It should be mentioned that the binaural audio seems to perform slightly
+ better when relying on the smartphone's gyroscope in Tutorial mode.
+ Judging by our own observations made during the development, the GPS seems
+ to be the application's biggest fault, but its navigational properties
+ of the audio are certainly not flawless.
+ Our conclusion is that 3D audio through generic HRTFs can work pretty well
+ in applications where the user's position and movements are not vital for
+ the whole experience.
+ At this point, however, binaural audio is not suitable for full-scale navigatio
+n applications like Run For Life.
 \end_layout
 
 \begin_layout Standard
