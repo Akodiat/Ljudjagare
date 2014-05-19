@@ -400,7 +400,7 @@ key "lgpl"
 
 .
  Unlike OpenSL ES, OpenAL Soft is not part of the NDK provided by Android.
- To access its functions it's necessary to interact with code written in
+ To access its functions it is necessary to interact with code written in
  another language than Java.
  
 \end_layout

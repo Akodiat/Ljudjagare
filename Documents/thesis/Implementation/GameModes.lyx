@@ -357,9 +357,8 @@ reference "sec:Random-route-implementation"
 Whenever a user reaches a coin, a voice informs them that the coin has been
  reached.
  Unless it is the last coin, the same voice will let the user know that
- another one has been generated and .
- Because of the last coin always being generated at the starting point (see
- 
+ another one has been generated.
+ Since the last coin always is generated at the starting point (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Random-route-implementation"
@@ -397,7 +396,7 @@ reference "sub:Gyroscope"
  user's task is to find a hidden point on the screen by controlling an arrow
  moving freely on the screen.
  If the user hears the electronic beat while tapping the button, it means
- they're heading straight towards the goal.
+ they are heading straight towards the goal.
 \end_layout
 
 \end_body

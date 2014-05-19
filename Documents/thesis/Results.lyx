@@ -556,7 +556,7 @@ When a run is finished, the screen looks similar to what it does while running;
  information of where the coins have been found and at what time.
  By pressing the OK button, the user is taken back to the home screen described
  in the beginning of the chapter.
- For a visual represenation, see 
+ For a visual representation, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Coin Collector finished"

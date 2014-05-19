@@ -428,7 +428,7 @@ key "3d_sim"
  They aim to describe how a sound signal is filtered before reaching the
  eardrum - as a result of the reflection caused by the pinna, torso and
  head - and hence being perceived by us humans.
- With HRTFs, it's possible to create the illusion of a sound signal being
+ With HRTFs, it is possible to create the illusion of a sound signal being
  heard in an anechoic chamber using stereo headphones 
 \begin_inset CommandInset citation
 LatexCommand cite
