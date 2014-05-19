@@ -430,12 +430,12 @@ Since the application's main focus is the running part it was decided to,
  a dashboard, which is lifted in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Discussion"
+reference "sec:Design-choices-disc"
 
 \end_inset
 
-) when he/she wants to start a run, which is the use case believed to be
- used most frequently.
+) when they wants to start a run, which is the use case believed to be used
+ most frequently.
  
 \end_layout
 

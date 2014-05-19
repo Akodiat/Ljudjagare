@@ -478,6 +478,13 @@ The two methods both have their pros and cons.
 
 \begin_layout Section
 Design choices
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Design-choices-disc"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
