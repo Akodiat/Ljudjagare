@@ -367,7 +367,7 @@ reference "eq:angle checkpoints"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\alpha=\frac{2*\pi}{x}\label{eq:angle checkpoints}
+\alpha=\frac{2\pi}{x}\label{eq:angle checkpoints}
 \end{equation}
 
 \end_inset
