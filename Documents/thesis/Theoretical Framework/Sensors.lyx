@@ -288,7 +288,7 @@ Android sensors: Differences and comparison
 
 \begin_layout Standard
 In order to correctly play the sound, it is important to determine the direction
- in which user is facing; the 
+ in which the user is facing; the 
 \emph on
 user direction
 \emph default
