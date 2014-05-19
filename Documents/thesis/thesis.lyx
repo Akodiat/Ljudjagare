@@ -200,7 +200,8 @@ customHeadersFooters
 
 \begin_inset External
 	template PDFPages
-	filename cover.pdf
+	filename Second page.pdf
+	display false
 	extra LaTeX "pages=2"
 
 \end_inset
