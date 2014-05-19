@@ -287,9 +287,9 @@ Graphical design choices and usability
 \end_layout
 
 \begin_layout Standard
-The game is designed with the usability aspect in mind, meaning it is intended
- to be easy to learn, effective to use and enjoyable from a user perspective
- 
+The application is designed with the usability aspect in mind, meaning it
+ is intended to be easy to learn, effective to use and enjoyable from a
+ user perspective 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Rogers2013"
@@ -616,8 +616,8 @@ Concerning the graphical design, some users tried clicking on the coin collector
  Also it was decided to show an information text when the picture of a game
  mode was clicked on.
  This information explained the mode but also let the user know that something
- happened upon the click, thus eliminating the misconception that the game
- was frozen while loading.
+ happened upon the click, thus eliminating the misconception that the applicatio
+n was frozen while loading.
 \end_layout
 
 \begin_layout Standard
