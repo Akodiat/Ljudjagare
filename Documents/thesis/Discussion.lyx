@@ -569,16 +569,16 @@ reference "sub:Sound-localization"
  Because of this, non-invidualized HRTFs are far from suitable for everyone.
  In Run For Life, the sound has a great impact on the user experience, placing
  high demands on its ability to navigate the user.
- Unfortunately, it currently suffers from being deceptive; it is difficult
- to hear from what angle the sound is appearing from.
- In order to make it easier for the user to perceive the correct direction,
- we added more factors to the navigation sound, such as pitch and rate.
- It improved the user experience to some extent, but the initial problem
- remained.
+ Unfortunately, the sound currently suffers from being deceptive - it is
+ difficult to hear from what angle the sound is appearing from.
+ In order to make it easier for the user to perceive the offset angle, we
+ added more factors to the navigation sound, such as pitch and rate.
+ While it improved the user experience to some extent, the initial problem
+ still remains.
 \end_layout
 
 \begin_layout Standard
-It is difficult to find information on what HRTF database OpenAL Soft uses,
+It is hard to find information on what HRTF database(s) OpenAL Soft uses,
  but it's probably neither the newest nor the most general in terms of meaning
  that it; its target group.
 \end_layout
