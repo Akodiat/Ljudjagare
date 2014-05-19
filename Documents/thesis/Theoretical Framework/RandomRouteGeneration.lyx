@@ -138,8 +138,6 @@ customHeadersFooters
 \begin_body
 
 \begin_layout Left Header
-
-\lang british
 \begin_inset Argument 1
 status open
 
@@ -205,8 +203,6 @@ Enable page headers and add the chapter to the header line.
 \end_layout
 
 \begin_layout Right Header
-
-\lang british
 \begin_inset Argument 1
 status open
 
@@ -232,8 +228,6 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-
-\lang british
 \begin_inset Argument 1
 status open
 
@@ -263,8 +257,6 @@ thepage
 \end_layout
 
 \begin_layout Right Footer
-
-\lang british
 \begin_inset Argument 1
 status open
 
@@ -291,8 +283,6 @@ thepage
 \end_layout
 
 \begin_layout Section
-
-\lang british
 Generation of random locations: Different approaches
 \begin_inset CommandInset label
 LatexCommand label
@@ -304,8 +294,6 @@ name "sec:Generation-of-random"
 \end_layout
 
 \begin_layout Standard
-
-\lang british
 For the user to be able to instantly use the application to get out and
  run the sound sources (checkpoints) are generated out of a predefined algorithm.
  The checkpoints must be generated at reachable locations and can for example
@@ -315,14 +303,10 @@ For the user to be able to instantly use the application to get out and
 \end_layout
 
 \begin_layout Subsection
-
-\lang british
 Colour classification method
 \end_layout
 
 \begin_layout Standard
-
-\lang british
 The first method generates a random location nearby the location of the
  user.
  This location is evaluated if it is located in an appropriate environment
@@ -343,14 +327,10 @@ The first method generates a random location nearby the location of the
 \end_layout
 
 \begin_layout Subsection
-
-\lang british
 Google geocoding API request method
 \end_layout
 
 \begin_layout Standard
-
-\lang british
 \begin_inset CommandInset label
 LatexCommand label
 name "google maps random"
@@ -375,8 +355,6 @@ key "GoogleDevelopers2014"
 \end_layout
 
 \begin_layout Standard
-
-\lang british
 In this project the second approach is implemented and this is described
  in chapter 3, 
 \begin_inset CommandInset ref
