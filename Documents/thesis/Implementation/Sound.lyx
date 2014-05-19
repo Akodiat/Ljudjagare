@@ -533,7 +533,7 @@ As mentioned in the theory chapter, non-individualized HRTFs suffer from
  in an application depending entirely on the directional properties of its
  audio.
  For that reason, some other factors were introduced apart from the spatial
- panoration to make it easier to navigate correctly:
+ panoration to make it easier to navigate correctly.
 \end_layout
 
 \begin_layout Paragraph
