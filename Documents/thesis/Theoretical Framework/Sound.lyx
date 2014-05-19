@@ -282,8 +282,8 @@ Sound
 \end_layout
 
 \begin_layout Standard
-The functionality and usability of the application are depending on how
- the user perceives and interprets the audio coming from the device.
+The functionality and usability of the application depend on how the user
+ perceives and interprets the audio coming from the device.
  If a user were to become confused by the sound, they would probably not
  be able to follow its instructions, hence defeating the purpose of the
  application.
