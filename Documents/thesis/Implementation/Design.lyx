@@ -311,7 +311,7 @@ Establishment of requirements
 \end_layout
 
 \begin_layout Standard
-As a starting point inspiration was taken from the apps 
+As a starting point inspiration was taken from the applications 
 \emph on
 Endomondo
 \emph default
@@ -404,7 +404,7 @@ reference "par:Swipe-Views"
 \end_layout
 
 \begin_layout Standard
-The history- and help fragment was designed as simple and intuitive as possible,
+The history and help fragment was designed as simple and intuitive as possible,
  the history fragment being a list of clickable previously completed runs
  and the help fragment being a instructional page with sample sounds to
  obtain a better understanding of the concept.
@@ -478,7 +478,7 @@ key "Adpater2014a"
 \end_layout
 
 \begin_layout Standard
-Below the filmstrip there is a bar containing icons and a next-button.
+Below the filmstrip there is a bar containing icons and a next button.
  The tendency of users reading content from top to bottom and from left
  to right 
 \begin_inset CommandInset citation
@@ -503,8 +503,8 @@ key "Tidwell2011"
 \begin_layout Standard
 The tendency of reading from left to right, as mentioned before, is well
  taken in account in the bar to make sure that a possible disconnection
- is discovered before the next-button is pressed.
- To let the user know that the next-button takes the user to the next view
+ is discovered before the next button is pressed.
+ To let the user know that the next button takes the user to the next view
  it is implemented as a Prominent Done Button.
 \end_layout
 
@@ -555,7 +555,7 @@ The Prominent Done Button pattern is also applied in the run activity, but
 \end_layout
 
 \begin_layout Standard
-The map- and stats fragments are visible during a run but are most important
+The map and stats fragments are visible during a run but are most important
  when a run is finished.
  In the map fragment the user can see a map with the route on which coins
  will appear as well as the next coin to run to.
@@ -611,7 +611,7 @@ s and observations that were done in connection with the user tests.
 Concerning the graphical design, some users tried clicking on the coin collector
  picture to start a run.
  When nothing happened they were confused.
- This was fixed by making the next-button more prominent and thereby assuring
+ This was fixed by making the next button more prominent and thereby assuring
  the user that it needed to be pressed in order to go further.
  Also it was decided to show an information text when the picture of a game
  mode was clicked on.
@@ -621,7 +621,7 @@ Concerning the graphical design, some users tried clicking on the coin collector
 \end_layout
 
 \begin_layout Standard
-It also turned out that some of the users tried to press the GPS- and headphones
+It also turned out that some of the users tried to press the GPS and headphones
  icon, since they thought they were buttons.
  This led to the re-design of the symbols that was explained in 
 \begin_inset CommandInset ref
