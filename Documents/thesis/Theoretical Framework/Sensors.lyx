@@ -470,7 +470,7 @@ key "AndroidOpenSourceproject2014"
  itself.
  Hence, a gyroscope can report that the phone has rotated 90 degrees around
  the x-axis; but without knowing at what angle it started, one cannot know
- at which angle it has ended up (only that it is 90 degrees larger).
+ at which angle it has ended up (only that it is 90° larger).
 \end_layout
 
 \begin_layout Standard
