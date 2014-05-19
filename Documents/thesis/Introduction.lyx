@@ -289,17 +289,7 @@ name "chap:Introduction"
 
 \end_inset
 
-Introduction 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Källor
-\end_layout
-
-\end_inset
-
-
+Introduction
 \end_layout
 
 \begin_layout Standard
@@ -369,20 +359,29 @@ key "SixtoStart2014"
 \end_inset
 
 .
- It creates the illusion of zombies chasing the user through audio modulations.
- The only way to make the zombies disappear is for the user to increase
- their pace, thus evading the zombies.
- However, since the zombies only have a distance, but no specified direction
- relative to the user, the escape can be done in any direction.
+ It uses audio cues to create the illustion of zombies chasing the user.
+ The virtual zombies have no position, meaning that only way to make the
+ zombies disappear is for the user to increase their pace, thus evading
+ the zombies.
+ However, since the zombies only have a distance and no specified direction
+ relative to the user, the user can escape in any direction.
 \end_layout
 
 \begin_layout Standard
-Meanwhile, 3D sound has been included in computer games for years, In these
- games, however, the sound generation is based on the movement of the virtual
- character, not the movement of the actual user.
- The possibility of tracking the head movements of the actual user using
- a smartphone was studied as a master thesis by Paul Lawitzki in 2012 called
- Application of Dynamic Binaural Signals in Acoustic Games 
+3D sound using HRTFs was introduced in computer games already in the nineties
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "3d_game"
+
+\end_inset
+
+.
+ In these games, however, the sound generation is based on the movement
+ of a virtual character, and not the movement of the actual user.
+ The possibility of tracking the head movements of the user using a smartphone
+ was studied as a master thesis by Paul Lawitzki in 2012 called Application
+ of Dynamic Binaural Signals in Acoustic Games 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lawitzki2012"
@@ -397,16 +396,6 @@ Examining the combination of both the orientation sensors of the modern
  smartphone with GPS and the concept of a gamified running application,
  this thesis investigates how binaural sound can be used to motivate exercise.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Sista meningen är lite konstig
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
