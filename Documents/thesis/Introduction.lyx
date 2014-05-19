@@ -475,20 +475,10 @@ The purpose of this bachelor project is to design and implement an Android
 \end_layout
 
 \begin_layout Standard
-The guided sound 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-låter som att ljudet guidas...
-\end_layout
-
-\end_inset
-
- will be implemented in a game to encourage running, thus intending to prevent
- the sedentary in the society of the present time.
- Apart from making running into a more fun experience, the application will
- register running activity and present statistics.
+The guiding sound will be implemented in a game to encourage running, thus
+ intending to prevent the sedentary in the society of the present time.
+ Apart from making running into a fun experience, the application will register
+ running activity and present statistics.
  To enhance the usability of the application it will have a straightforward
  graphical user interface that is easy to understand.
  
@@ -499,29 +489,18 @@ Method
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-VI BEHÖVER TEXT HÄR :)
-\end_layout
-
-\end_inset
-
-
+The project had two major phases where the first one was the information
+ gathering of the theory needed to understand the subject.
+ In the second phase the theroetical framework obtained in the first phase
+ was used to implement the application.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Något om hur vi jobbat? Dagliga möten etc.?
-\end_layout
-
-\end_inset
-
-
+An agile development method was used by having meetings everyday and working
+ together most of the time.
+ This way problems were found at an early stage and could be solved directly.
+ The tools used during the development are described below.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -548,9 +527,9 @@ key "Developer2014a"
 \begin_layout Standard
 To make collaboration easier the revision control system Git with the web-based
  hosting service Github was used.
- Github make it possible to edit and work on the same documents simultaneously
+ Github makes it possible to edit and work on the same documents simultaneously
  without getting the work overwritten and destroyed.
- It also host the code online and make it possible to access earlier versions
+ It also hosts the code online and make it possible to access earlier versions
  of the application 
 \begin_inset CommandInset citation
 LatexCommand cite
