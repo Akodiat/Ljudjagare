@@ -297,7 +297,7 @@ This section descibes the foundation of which this report is based on.
 \end_layout
 
 \begin_layout Section
-Background 
+Background
 \end_layout
 
 \begin_layout Standard
@@ -353,7 +353,7 @@ key "SixtoStart2014"
 \end_inset
 
 .
- It uses non-binaural audio cues to create the illusion of the user being
+ It uses non-binaural auditory cues to create the illusion of the user being
  chased by zombies.
  These cues are independent of the user's position, meaning that the route
  of which the user is running is unimportant to the game.
@@ -393,10 +393,9 @@ key "Lawitzki2012"
 
 \begin_layout Standard
 This report aims to further investigate the possibilites of using the smartphone
- and its functions together with binaural audio to create an exercising
- application with game elements; by combining GPS technology and virtual
- sound sources the user can navigate using the sound appearing from their
- headphones.
+ and its sensors together with binaural audio to create an exercising applicatio
+n with game elements; by combining GPS technology and virtual sound sources
+ the user can navigate using the sound appearing from their headphones.
 \end_layout
 
 \begin_layout Section
@@ -450,8 +449,8 @@ Method
 \begin_layout Standard
 The development process can be divided into two major phases - the first
  one being the research necessary to understand the subject.
- Using the theoretical framework obtained in the first phase, the application
- was then implemented.
+ In the second phase, the theoretical framework obtained was then used to
+ build the application.
 \end_layout
 
 \begin_layout Standard
@@ -483,11 +482,11 @@ key "Developer2014a"
 
 \begin_layout Standard
 To simplify the collaboration process, the application was developed using
- the revision control system Git, hosted on Github.
+ the revision control system Git, hosted on a free Github account.
  Git makes it possible for groups of people to edit the same documents simultane
 ously without the work getting overwritten.
- It also hosts the code online and make it possible to access earlier versions
- of the application 
+ To host projects on Github for free, its content needs to be visible for
+ others to read
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GitHub2014"
@@ -495,6 +494,7 @@ key "GitHub2014"
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -502,27 +502,25 @@ Libraries
 \end_layout
 
 \begin_layout Standard
-The standard libraries of the ADT did not cover all the needs for this project.
- To be able to integrate with Google Maps, the Google Play services library
- was needed.
- This library is developed by Google and contains features like, maps, Google+
- and analytics.
- 
+In order for the application to integrate with Google Maps, the Google Play
+ services library had to be included in the project.
+ It is developed by Google and contains features such as maps, Google+ and
+ analytics.
 \end_layout
 
 \begin_layout Standard
-For handling of 3D audio operations the library, OpenAL4Android has been
- used.
- This library serves as an intermediary between the native OpenAL Soft code
- and the Java application.
+Android's Software Development Kit (SDK) does not currently provide any
+ operations necessary to implement binaural audio.
+ By using the Android's Native Development Kit (NDK) in combination with
+ OpenAL Soft, it is possible to access low-level functions to position and
+ move audio in three dimensions.
 \end_layout
 
 \begin_layout Standard
-The application has been developed for the platform version 4.0 and above.
- This corresponds to the API level of 15.
- This version has been selected since it covers a lot of new functionalities
- as well as can be used on the majority of the devices on the market today,
- see 
+The application has been developed for devices using platform version 4.0
+ and above, corresponding to an API level of 15.
+ It offers many functionalities and is compatible with majority of the devices
+ on the market today, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Visualization-of-the"
@@ -1073,38 +1071,22 @@ Programming language
 \end_layout
 
 \begin_layout Standard
-The object-oriented programming language Java has been used throughout the
- project.
- Java is the language most often used when developing Android applications.
+Developing an application using the ADK plugin requires most of the application
+ to be written in Java 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Developer2014a"
+
+\end_inset
+
+.
  To define the visual structure of the user interface, the markup language
- XML (Extensible Markup Language) has been used.
- The programming language SQL (Structured Query Language), has been used
- to create and manage the database.
+ XML was used.
+ The database was created and managed using the programming language SQL.
 \end_layout
 
 \begin_layout Section
 Report Outline 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Initially, this report discusses...
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Use labels.
- More text
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1119,16 +1101,15 @@ reference "chap:Theoretical-Framework"
 
 \end_inset
 
-) covers the theory behind the most important parts of the application.
- These parts are sound, sensors and how a random location can be generated
- by using predefined algorithms.
- Furthermore, the basic structure of databases and Android applications
- are explained as well as graphical design patterns.
- 
+) covers the theory behind the most important parts of the application:
+ sound, sensors and how a random location can be generated by using predefined
+ algorithms.
+ Furthermore, the basic structure of databases, Android applications and
+ graphical design patterns are explained
 \end_layout
 
 \begin_layout Standard
-Implementation (
+The Implementation chapter (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Implementation"
@@ -1155,12 +1136,11 @@ reference "chap:Result"
 \end_inset
 
 ) consists of the result, discussion and the conclusion.
- The result describes the end product that is the application.
- In the discussion the result along with the whole design and implementation
+ It begins by describing the end product, that is the application.
+ Thereafter, the result along with the entire design and implementation
  process is discussed.
  Future work is also covered in this section.
- Lastly, in the conclusion, the projects major findings are reflected on
- along with the purpose.
+ Lastly, in the conclusion, the projects major findings are reflected.
 \end_layout
 
 \end_body
