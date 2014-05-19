@@ -307,9 +307,9 @@ app
 
 \end_inset
 
- is designed in a modular way, making it easy to add new games.
- In the final application, however, there is only one game and one tutorial
- implemented.
+ is designed in a modular way, making it easy to add new game modes.
+ In the final application, however, there is only one game mode and one
+ tutorial implemented.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
