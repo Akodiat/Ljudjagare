@@ -801,16 +801,16 @@ reference "fig:ActionBar"
  To avoid this the design pattern Navigation Drawer can be used.
  The Navigation Drawer is a menu that may be dragged from the left part
  of the screen or accessed by pressing the application logotype as shown
- in the leftmost figure in 
+ in the left figure in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:navdrawerIcon"
 
 \end_inset
 
-, the Navigation Drawer partly covers the current view.
- The menu is then used to open a desired screen as shown in the middle and
- rightmost figures in 
+.
+ The menu partly covers the current screen and is used to open a desired
+ screen as shown in the middle and rightmost figures in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:navdrawerIcon"
@@ -831,7 +831,7 @@ key "NavigationDrawer2014"
 \begin_layout Standard
 When a view is provided with a navigation drawer it is important to let
  the user know about its existence by putting the navigation drawer indicator
- of three stripes to the left of the application icon as in
+ of three stripes to the left of the application icon as shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:navdrawerIcon"
@@ -856,7 +856,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/navigation_drawer_indicator_big.png
+	filename Figures/navigation_drawer_overview.png
 	width 40text%
 
 \end_inset
@@ -871,7 +871,9 @@ name "fig:navdrawerIcon"
 
 \end_inset
 
-An application icon provided with the navigation drawer indicator.
+The left figure shows how the Navigation Drawer is opened.
+ The middle figure shows an opened Navigation Drawer.
+ The right figure shows when a screen is opened through the Navigation Drawer.
 \end_layout
 
 \end_inset
@@ -906,9 +908,13 @@ footnotemark[1]
 
 \begin_layout Standard
 Navigation Drawer provides quick access to different views of the application
- without forcing the user to go back via some main menu like a dashboard.
- The dashboard is basically a landing screen consisting of big icons which
- take the user to different parts of the application
+ without forcing the user to go back via some main menu like a 
+\emph on
+Dashboard
+\emph default
+.
+ The Dashboard pattern is basically a landing screen consisting of big icons
+ which take the user to different parts of the application 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -919,11 +925,11 @@ key "Lehtimaki2013"
  The Dashboard pattern used to be one of Google’s official recommendations
  but has been more or less replaced by the Navigation Drawer since it provides
  more direct access throughout an application.
- The avoidance of the dashboard pattern is especially effective at an applicatio
+ The avoidance of the Dashboard pattern is especially effective at an applicatio
 n’s start-up since the user then can be taken directly into the view that
  is mostly used instead of selecting it.
- From there the user may quickly switch to other views with the navigation
- drawer, thus eliminating redundant clicks back and forth from a dashboard.
+ From there the user may quickly switch to other views with the Navigation
+ Drawer, thus eliminating redundant clicks back and forth from a Dashboard.
 \end_layout
 
 \begin_layout Paragraph
