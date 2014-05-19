@@ -498,7 +498,7 @@ ized and generic HRTFs, with the virtual sound's position only moving in
 \end_layout
 
 \begin_layout Standard
-A general problem with non-invidualized HRTFs is that, due to different
+A general problem with non-individualized HRTFs is that, due to different
  shapes of the pinna, confusion whether a sound is appearing from the front
  or back might appear 
 \begin_inset CommandInset citation
