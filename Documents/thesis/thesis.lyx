@@ -193,8 +193,15 @@ customHeadersFooters
 \begin_layout Standard
 \begin_inset External
 	template PDFPages
+	filename cover_new.pdf
+
+\end_inset
+
+
+\begin_inset External
+	template PDFPages
 	filename cover.pdf
-	extra LaTeX "pages=1-2"
+	extra LaTeX "pages=2"
 
 \end_inset
 
