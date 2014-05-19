@@ -493,7 +493,7 @@ splash screen
  resources suggests that it is better avoided 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
@@ -503,8 +503,8 @@ key "Lehtimaeki2013"
  A solution was making the start screen light weight and low in its demanding
  of resources
 \begin_inset CommandInset citation
-LatexCommand citet
-key "Lehtimaeki2013"
+LatexCommand cite
+key "Lehtimaki2013"
 
 \end_inset
 
@@ -521,7 +521,7 @@ dashboard
 pattern
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
