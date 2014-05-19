@@ -159,7 +159,7 @@ Zombies, Run!
 \emph on
 head related transfer functions
 \emph default
- provided by OpenAL Soft.
+.
  An attempt was made using the gyroscope sensor to calculate an orientation
  while the user is stationary, but it often made the sound more confusing.
 \end_layout
@@ -258,18 +258,6 @@ The report concludes that it is still hard to make the perception of an
  perception.
 \end_layout
 
-\begin_layout Standard
-Keywords: sklfnerf, slkgerg.nik kf,af,ferifwekl
-\end_layout
-
-\begin_layout Standard
-
-\color green
-\lang swedish
-Svårt att få det bra som GPS-tekniken ser ut idag, men framtida mobiler
- och enheter kommer troligen göra dessa typer av applikationer mer vanliga
-\end_layout
-
 \begin_layout Chapter*
 
 \lang swedish
@@ -319,10 +307,6 @@ Zombies, Run!
 \emph on
 head related transfer functions
 \emph default
- som tillhandahålls av följande 
-\color red
-ramverk
-\color inherit
 .
  För att kunna få en riktning när användaren är stillastående gjordes ett
  försök att använda gyroskopsensorn, men ljudet blev då ofta mer förvirrande
@@ -355,8 +339,7 @@ app
 
 \end_inset
 
- gör det också möjligt för användaren att se en historik med sina tidigare
- löprundor.
+ gör det också möjligt för användaren att se historik om sina tidigare löprundor.
  
 \end_layout
 
@@ -370,7 +353,7 @@ n med andra sensorer erhålla en bra färdrikting.
  Slutligen är det svårt att avgöra hur användaren är riktad vid ett stillaståend
 e läge, då telefonens placeringen på användaren är okänd.
  Om en huvudmonterad enhet används, undviks problemen med den okända placeringen
- och en mer exakt upplevelse skulle kunna uppnås.
+ och riktningen till ljudkällan kan upplevas mer exakt.
  
 \end_layout
 
