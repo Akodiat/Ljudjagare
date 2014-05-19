@@ -352,7 +352,7 @@ key "GoogleDevelopers2014"
  from the users location to the random location.
  The response from Google contains the directions to the closest reachable
  point to the requested location.
- This closest point is then extracted and is used as the random location.
+ This closest point is then extracted and used as the random location.
  
 \end_layout
 
