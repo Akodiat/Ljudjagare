@@ -817,7 +817,7 @@ key "NavigationDrawer2014"
 \begin_layout Standard
 When a view is provided with a navigation drawer it is important to let
  the user know about its existence by putting the navigation drawer indicator
- of three stripes to the left of the app icon as in
+ of three stripes to the left of the application icon as in
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:navdrawerIcon"
