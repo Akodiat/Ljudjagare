@@ -606,17 +606,7 @@ footnotemark[1]
 The most important feature of the action bar is perhaps, as the name suggests,
  its actions.
  The actions that are most important in the application should be put among
- the Action Buttons as in (3)
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-Question: Are we allowed to point to numbers like this?
-\end_layout
-
-\end_inset
-
- in 
+ the Action Buttons as in (3) in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ActionBar"
