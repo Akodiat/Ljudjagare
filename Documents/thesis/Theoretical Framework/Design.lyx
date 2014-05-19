@@ -407,7 +407,7 @@ Another design pattern is the
 \shape italic
 Carousel
 \shape default
-, which is a horizontal swipe- or scrollable list of items that are visually
+, which is a horizontal swipeable or scrollable list of items that are visually
  interesting 
 \begin_inset CommandInset citation
 LatexCommand cite
