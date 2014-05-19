@@ -457,7 +457,7 @@ http://www.openstreetmap.org/
  This could be done by taking a print screen of the map and analyze the
  image with an algorithm that determine the colour of the location.
  There might also be functions available from the map-providers and by sending
- a request to the them recieve a response containing the colour of the location.
+ a request to the them receive a response containing the colour of the location.
  This problem was never solved because the idea of using Google Maps and
  its functions to find directions was now invented.
  The method using Google Maps geocoding API was at that time more preferable
