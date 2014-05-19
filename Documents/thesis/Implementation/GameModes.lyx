@@ -322,7 +322,7 @@ reference "sec:Future-work:-efficiency,"
 \end_layout
 
 \begin_layout Subsection
-Coin collector
+Coin collector mode
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Coin-collectoraaaa"
@@ -370,7 +370,7 @@ reference "sec:Random-route-implementation"
 \end_layout
 
 \begin_layout Subsection
-Tutorial
+Tutorial mode
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Tutorialawdaw"

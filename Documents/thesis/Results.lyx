@@ -300,7 +300,7 @@ This bachelor thesis has resulted in an Android application using spatial
 \end_layout
 
 \begin_layout Section
-Home
+Home screen
 \end_layout
 
 \begin_layout Standard
@@ -426,7 +426,7 @@ reference "sec:Tutorial"
 \end_layout
 
 \begin_layout Section
-Coin Collector
+Coin Collector view
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Coin-Collector"
@@ -621,7 +621,7 @@ Finished Coin Collector mode
 \end_layout
 
 \begin_layout Section
-Tutorial
+Tutorial view
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Tutorial"
