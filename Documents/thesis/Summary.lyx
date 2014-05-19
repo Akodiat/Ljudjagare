@@ -159,7 +159,7 @@ Zombies, Run!
 \emph on
 head related transfer functions
 \emph default
- provided by OpenAL Soft.
+.
  An attempt was made using the gyroscope sensor to calculate an orientation
  while the user is stationary, but it often made the sound more confusing.
 \end_layout
@@ -319,10 +319,6 @@ Zombies, Run!
 \emph on
 head related transfer functions
 \emph default
- som tillhandahålls av följande 
-\color red
-ramverk
-\color inherit
 .
  För att kunna få en riktning när användaren är stillastående gjordes ett
  försök att använda gyroskopsensorn, men ljudet blev då ofta mer förvirrande
