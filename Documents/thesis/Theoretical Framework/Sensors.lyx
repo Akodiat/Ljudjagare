@@ -316,7 +316,7 @@ Accelerometer
 
 \begin_layout Standard
 The accelerometer gives the linear acceleration of the device in meters
- per square second in the device's coordinate system
+ per square second in the device's coordinate system 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndroidOpenSourceproject2014"
