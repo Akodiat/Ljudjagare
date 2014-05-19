@@ -315,7 +315,8 @@ key "Bajaj2002"
 \end_layout
 
 \begin_layout Standard
-To establish locations of devices the satellites continuously send out 
+To establish locations of devices, the satellites continuously send out
+ 
 \emph on
 pseudorandom number codes (PNC)
 \emph default
