@@ -427,7 +427,7 @@ reference "fig:carousel"
 
 \end_inset
 
- it is clear that the item in the middle is in focus since it is enlarged.
+a it is clear that the item in the middle is in focus since it is enlarged.
  The elements immediately around the focused item will give the user a clue
  about the possibility to browse.
 \end_layout
@@ -450,7 +450,15 @@ key "Tidwell2011"
  This is generally good practice when the screen is small, which is the
  case for mobile devices.
  There is no space for clues of the adjacent elements on the sides, which
- usually is solved by small dots in the bottom of the screen as in figure.
+ usually is solved by small dots in the bottom of the screen as shown in
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:carousel"
+
+\end_inset
+
+b.
 \end_layout
 
 \begin_layout Standard
