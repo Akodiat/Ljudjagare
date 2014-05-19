@@ -412,7 +412,7 @@ key "Tidwell2011"
 \end_inset
 
 .
- The pattern is useful when the user does not know exactly what item he/she
+ The pattern is useful when the user does not know exactly what item they
  wants and thereby wants to browse between the options.
  A picture representing an item and optionally some meta data such as name,
  is usually enough representation in a Carousel.
