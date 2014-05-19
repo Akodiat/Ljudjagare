@@ -587,9 +587,9 @@ In this project, the GPS technology is mainly utilized to calculate the
  user position relative to the virtual sound sources.
  However, by keeping track of previous GPS locations, it is possible to
  acquire a user bearing.
- This bearing is the direction that the user has been traveling during the
- most recent sensor updates and has the great advantage of not being dependent
- on how the user carries the device at all 
+ This bearing is the direction in which the user has been traveling during
+ the most recent sensor updates and has the great advantage of not being
+ dependent on how the user carries the device at all 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndroidOpenSourceproject"
