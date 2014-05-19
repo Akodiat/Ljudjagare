@@ -629,7 +629,7 @@ reference "fig:Figure-showing-latLong"
 \end_inset
 
 , is the angle between the equator and the poles.
- It is zero at the equator, 90º N at the north pole and 90º S at the south
+ It is zero at the equator, 90° N at the north pole and 90º S at the south
  pole.
  The longitude, 
 \begin_inset Formula $\lambda$
@@ -638,8 +638,8 @@ reference "fig:Figure-showing-latLong"
 , is the angle east or west of the reference meridian.
  The reference meridian goes from one pole to the other and passes through
  the Royal Observatory, Greenwich in England.
- This Greenwich meridian has a longitude value of 0º and the antipodal meridian
- has the values of 180º W and 180º E.
+ This Greenwich meridian has a longitude value of 0° and the antipodal meridian
+ has the values of 180° W and 180° E.
  
 \end_layout
 
