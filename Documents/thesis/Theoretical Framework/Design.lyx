@@ -503,7 +503,7 @@ Android design patterns
 \begin_layout Standard
 Android standard design patterns are used where applicable in the application.
  A great advantage of using Android design patterns is that the application
- becomes consistent to other application on the Android platform
+ becomes consistent to other applications on the Android platform
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaeki2013"
@@ -532,7 +532,7 @@ reference "fig:ActionBar"
 
 \end_inset
 
-, which can perform actions to the app.
+, which can perform actions to the application.
  It has been around for a long time and is one of the most recognizable
  patterns
 \begin_inset CommandInset citation
@@ -605,8 +605,8 @@ footnotemark[1]
 \begin_layout Standard
 The most important feature of the action bar is perhaps, as the name suggests,
  its actions.
- The actions that are most important in the app should be put among the
- Action Buttons as in (3)
+ The actions that are most important in the application should be put among
+ the Action Buttons as in (3)
 \begin_inset Marginal
 status open
 
@@ -700,19 +700,20 @@ key "actionbar2014"
 \end_layout
 
 \begin_layout Standard
-An advantage with the Action Bar pattern is that it displays the app logo
- (1) in 
+An advantage with the Action Bar pattern is that it displays the application
+ logotype (1) in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ActionBar"
 
 \end_inset
 
- which establishes the identity of the app.
- When an app has different views the app logo becomes a consistent identifier
- letting the user know which app is currently running.
- The app logo can also have the function of an up button taking the user
- one step up in the hierarchy, as is the case in (1) in 
+ which establishes the identity of the application.
+ When an application has different views the application logo becomes a
+ consistent identifier letting the user know which application is currently
+ running.
+ The application logo can also have the function of an up button taking
+ the user one step up in the hierarchy, as is the case in (1) in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ActionBar"
@@ -727,8 +728,8 @@ key "actionbar2014"
 \end_inset
 
 .
- The button of the app logo may also be used to open a side menu called
- navigation drawer, which will be covered in 
+ The button of the application logo may also be used to open a side menu
+ called navigation drawer, which will be covered in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Navigation-Drawer"
@@ -754,8 +755,8 @@ reference "fig:ActionBar"
 
 \end_inset
 
-, which apart from displaying the name of the app or the current view may
- provide navigation options to different views.
+, which apart from displaying the name of the application or the current
+ view may provide navigation options to different views.
  In this case navigation may be done by choosing views from a drop down
  menu.
  
@@ -794,7 +795,8 @@ reference "fig:ActionBar"
  The Navigation Drawer is a menu that may be dragged from the left part
  of the screen to partly cover the current view.
  It is accessed by swiping inwards from the left outside part of the screen
- or by pressing the app logo as shown in the leftmost figure in 
+ or by pressing the application logo as shown in the leftmost figure in
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:navdrawerIcon"
@@ -864,7 +866,7 @@ name "fig:navdrawerIcon"
 
 \end_inset
 
-An app icon provided with the navigation drawer indicator.
+An application icon provided with the navigation drawer indicator.
 \end_layout
 
 \end_inset
@@ -901,7 +903,7 @@ footnotemark[1]
 Navigation Drawer provides quick access to different views of the application
  without forcing the user to go back via some main menu like a dashboard.
  The dashboard is basically a landing screen consisting of big icons which
- take the user to different parts of the app
+ take the user to different parts of the application
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaeki2013"
