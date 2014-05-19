@@ -290,7 +290,7 @@ Discussion
 
 \begin_layout Standard
 This section discusses the main problems of the project: how to use sensor
- data to calculate the user's direction, how to generate a route of accessible
+ data to calculate a user's direction, how to generate a route of accessible
  and random locations, how to correctly design the application and how to
  use binaural audio in a way that creates the perception of a sound coming
  from a specific direction.
@@ -317,10 +317,10 @@ app
 
  uses GPS technology to determine the user's direction.
  A disadvantage of this is that the user needs to be in motion in order
- for the application to provide an accurate angle of the user, relative
- to the sound source.
- The reason for the user to stop during a run is often because of uncertainty
- of the direction of the sound.
+ for the application to provide an accurate angle relative to the sound
+ source.
+ The reason why a user might stop while running is mostly because of uncertainty
+ in the perceived direction of the sound.
  However, when the user is stationary the GPS will not obtain any significant
  location updates and hence cannot calculate any direction of travel.
  If a user does not know this, it might prove very hard to use the application.

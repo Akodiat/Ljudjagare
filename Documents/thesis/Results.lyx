@@ -300,7 +300,7 @@ This bachelor thesis has resulted in an Android application using spatial
 \end_layout
 
 \begin_layout Section
-Home screen
+Home view
 \end_layout
 
 \begin_layout Standard
@@ -707,7 +707,7 @@ Tutorial mode with cheat turned on
 \end_layout
 
 \begin_layout Section
-Settings
+Settings view
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Settings"
