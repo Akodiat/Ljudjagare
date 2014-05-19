@@ -293,7 +293,7 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This section descibes the foundation of which this thesis is based on.
+This section descibes the foundation of which this report is based on.
 \end_layout
 
 \begin_layout Section
@@ -392,7 +392,7 @@ key "Lawitzki2012"
 \end_layout
 
 \begin_layout Standard
-This thesis aims to further investigate the possibilites of using the smartphone
+This report aims to further investigate the possibilites of using the smartphone
  and its functions together with binaural audio to create an exercising
  application with game elements; by combining GPS technology and virtual
  sound sources the user can navigate using the sound appearing from their
@@ -421,40 +421,21 @@ Create a graphical user interface that is straightforward and easy to understand
 \end_layout
 
 \begin_layout Section
-Purpose 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Vi kan inte stå för att den motiverar löpning
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-More text? Repeat directionality
-\end_layout
-
-\end_inset
-
-
+Purpose
 \end_layout
 
 \begin_layout Standard
 The purpose of this bachelor project is to design and implement an Android
- application combining GPS technology with spatial audio in order to guide
- the user to a certain location.
- The user will be guided by manipulating the sound differently depending
- on the user's direction and distance to the location.
+ application combining GPS technology and binaural audio to navigate the
+ user without them having to interact with the display of the smartphone.
+ Based on the user's direction and location, the sound is modulated and
+ panorated spatially, creating the effect of the sound appearing from a
+ certain angle.
 \end_layout
 
 \begin_layout Standard
-The guiding sound will be implemented in a game to encourage running, thus
- intending to prevent the sedentary in the society of the present time.
+Making the exercising a fun experience is thought to encourage running,
+ thus intending to prevent the sedentary in the society of the present time.
  Apart from making running into a fun experience, the application will register
  running activity and present statistics.
  To enhance the usability of the application it will have a straightforward
