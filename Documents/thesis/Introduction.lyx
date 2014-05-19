@@ -519,10 +519,7 @@ Development environment and version control
 When developing Run for Life, the integrated development environment (IDE)
  Eclipse was used.
  Together with the Android Development Tools (ADT) plugin, Eclipse forms
- the recommended tool for development of Android applications.
- The ADT provides the tools necessary for creating such applications.
- For example, graphical tools for the user interface and tools for debugging
- 
+ the recommended tool for development of Android applications 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Developer2014a"
@@ -530,6 +527,8 @@ key "Developer2014a"
 \end_inset
 
 .
+ The ADT provides the tools necessary for creating such applications.
+ For example, graphical tools for the user interface and tools for debugging.
  
 \end_layout
 
