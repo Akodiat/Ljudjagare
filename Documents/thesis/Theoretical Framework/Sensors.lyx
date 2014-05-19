@@ -294,7 +294,7 @@ user direction
 \emph default
 .
  Since the orientation of the phone relative to the user is unknown (a user
- may carry a phone in many ways), the problem of acquiring a user direction
+ can carry a phone in many ways), the problem of acquiring a user direction
  is not elementary.
  However, this report investigates whether a sufficiently accurate user
  direction can be calculated using a combination of multiple sensors.
