@@ -448,10 +448,10 @@ Method
 \end_layout
 
 \begin_layout Standard
-The project had two major phases where the first one was the information
- gathering of the theory needed to understand the subject.
- In the second phase the theroetical framework obtained in the first phase
- was used to implement the application.
+The development process can be divided into two major phases - the first
+ one being the research necessary to understand the subject.
+ Using the theoretical framework obtained in the first phase, the application
+ was then implemented.
 \end_layout
 
 \begin_layout Standard
@@ -467,10 +467,9 @@ Development environment and version control
 \end_layout
 
 \begin_layout Standard
-When developing Run for Life, the integrated development environment (IDE)
- Eclipse was used.
- Together with the Android Development Tools (ADT) plugin, Eclipse forms
- the recommended tool for development of Android applications 
+Run for Life was developed using an Integrated Development Environment (IDE)
+ called Eclipse, together with the Android Development Tools (ADT) plugin,
+ providing the tools necessary for creating an Android applications 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Developer2014a"
@@ -478,16 +477,15 @@ key "Developer2014a"
 \end_inset
 
 .
- The ADT provides the tools necessary for creating such applications.
- For example, graphical tools for the user interface and tools for debugging.
- 
+ It provides graphical tools for designing the user interface and for debugging,
+ among other things.
 \end_layout
 
 \begin_layout Standard
 To make collaboration easier the revision control system Git with the web-based
  hosting service Github was used.
- Github makes it possible to edit and work on the same documents simultaneously
- without getting the work overwritten and destroyed.
+ Github makes it possible to edit the same documents simultaneously without
+ the work getting overwritten and destroyed.
  It also hosts the code online and make it possible to access earlier versions
  of the application 
 \begin_inset CommandInset citation
