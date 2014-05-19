@@ -92,6 +92,22 @@ Acknowledgments
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 We would like to kindly thank Prof.
  Graham Kemp for his valuable guidance while writing this report.
  Without any external stakeholders in the project, his competent advices
