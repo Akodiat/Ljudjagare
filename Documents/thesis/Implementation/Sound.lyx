@@ -284,9 +284,16 @@ Sound in an Android application
 \end_layout
 
 \begin_layout Standard
-The application programming interfaces (APIs) provided by Android as a part
- of the Software Development Kit (SDK) provides several classes for handling
- audio, like AudioTrack, MediaPlayer and SoundPool.
+The 
+\emph on
+APIs (Application Programming Interfaces)
+\emph default
+ provided by Android as a part of the 
+\emph on
+SDK (Software Development Kit)
+\emph default
+ provides several classes for handling audio, like AudioTrack, MediaPlayer
+ and SoundPool.
  However, none of these currently provides any support for 3D audio operations
  
 \begin_inset CommandInset citation
@@ -299,7 +306,11 @@ key "ndk_beginners_guide"
  To use binaural audio effects in an Android application, one needs to access
  operations that are not available in the SDK.
  Fortunately, Android provides an API for accessing low level functions
- called Native Development Kit (NDK) 
+ called 
+\emph on
+NDK (Native Development Kit)
+\emph default
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ndk"
