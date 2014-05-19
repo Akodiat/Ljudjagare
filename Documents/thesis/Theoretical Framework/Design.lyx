@@ -783,17 +783,15 @@ reference "fig:ActionBar"
 , may make the view cluttered due to limited space.
  To avoid this the design pattern Navigation Drawer can be used.
  The Navigation Drawer is a menu that may be dragged from the left part
- of the screen to partly cover the current view.
- It is accessed by swiping inwards from the left outside part of the screen
- or by pressing the application logotype as shown in the leftmost figure
- in 
+ of the screen or accessed by pressing the application logotype as shown
+ in the leftmost figure in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:navdrawerIcon"
 
 \end_inset
 
-.
+, the Navigation Drawer partly covers the current view.
  The menu is then used to open a desired screen as shown in the middle and
  rightmost figures in 
 \begin_inset CommandInset ref
