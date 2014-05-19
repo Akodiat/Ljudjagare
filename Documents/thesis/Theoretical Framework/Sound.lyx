@@ -465,8 +465,8 @@ key "SOFA"
 \begin_layout Standard
 At present, very few studies seems to have been done on sound localization
  through spatial audio.
- A study made on four sighted inviduals showed that the average error in
- localizing sound was 8° 
+ A study made on four sighted individuals showed that the average error
+ in localizing sound was 8° 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "problems_3D"
@@ -474,7 +474,7 @@ key "problems_3D"
 \end_inset
 
 .
- Under the same conditions, four blind inviduals showed an average error
+ Under the same conditions, four blind individuals showed an average error
  of about 4°.
  The test was done by placing speakers around the subject at ear level,
  hence not covering elevation localization.
@@ -488,13 +488,13 @@ key "problems_3D"
 \end_inset
 
 .
- Experiments were made by playing short sounds spatialized using both invidualiz
-ed and generic HRTFs, with the virtual sound's position only moving in the
- vertical plane.
+ Experiments were made by playing short sounds spatialized using both individual
+ized and generic HRTFs, with the virtual sound's position only moving in
+ the vertical plane.
  The study suggests not only that the accuracy of the elevation perception
  decreases as the virtual sound is moved further up and down, but also that
  the HRTFs being used has a great impact on the elevational accuracy (the
- invidualized HRTFs provided greater performance).
+ individualized HRTFs provided greater performance).
 \end_layout
 
 \begin_layout Standard
