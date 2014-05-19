@@ -501,6 +501,10 @@ key "Bajaj2002"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 The positioning accuracy is however affected by some factors of which one
  has to do with the speed of light only being constant in vacuum.
  This might cause a slight delay to a PNC as it gets slowed down by electrically
@@ -515,7 +519,7 @@ key "Drawil2012"
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Another factor is the so called 
 \emph on
 satellite ephemeris error
@@ -549,7 +553,7 @@ key "Bajaj2002"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Differential GPS cannot adjust to the so called 
 \emph on
 multipath error
@@ -567,6 +571,11 @@ key "Drawil2012"
 \end_inset
 
 , cause an error up to 80 meters.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
