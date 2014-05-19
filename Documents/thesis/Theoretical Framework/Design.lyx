@@ -307,8 +307,12 @@ key "Tidwell2011"
  It is further discussed that when parts of an application are recognizable
  and have clear relationships between each other the users will be able
  to apply previous knowledge and understand what to do.
- Design patterns is a way to capture and group common structures together,
- thus easing the usability when applied.
+ 
+\end_layout
+
+\begin_layout Standard
+The design pattern concept is a way to capture and group common structures
+ together, thus easing the usability when applied.
  Below follows a description of the patterns that are used.
 \end_layout
 
