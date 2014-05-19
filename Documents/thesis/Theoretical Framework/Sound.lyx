@@ -366,7 +366,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Figures/pinna.gif
+	filename Figures/pinna.eps
 	scale 70
 
 \end_inset
