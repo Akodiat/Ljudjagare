@@ -537,7 +537,7 @@ The bar from the main activity also appears in the run activity to make
  To motivate the user to keep running, a progress bar which increases with
  every coin taken, is displayed at the bottom of the run fragment.
  The user may also view time, distance, speed and pace in the run fragment
- to assure him/her of the logging of the run is taking place.
+ to assure the user that the logging of the run is taking place.
  
 \end_layout
 
