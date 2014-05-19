@@ -612,8 +612,8 @@ name "geographic coordinate system"
 
 There are several formats that can be used to represent a location on the
  earth.
- This projects is using the geographic coordinate system with longitude
- and latitude 
+ This project is using the geographic coordinate system with longitude and
+ latitude 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GreatBritain2002"
