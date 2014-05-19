@@ -434,7 +434,7 @@ key "database2009"
  This allows retrieval of all the points that is connected to a specific
  route.
  Each point stores data about the location of the user at the time that
- the point was added, that is latitude and latitude, as well as the timestamp,
+ the point was added, that is latitude and longitude, as well as the timestamp,
  and a unique ID.
  The “Coin” entity works in a similar fashion as the point but it stores
  data of each of the collected coins.
