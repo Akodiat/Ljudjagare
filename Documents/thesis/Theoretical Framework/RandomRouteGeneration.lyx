@@ -329,15 +329,16 @@ The first method generates a random location nearby the location of the
 
 \begin_layout Subsection
 Google geocoding API request method
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "google maps random"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Another approach is to use Google maps and its geocoding API 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -346,7 +347,7 @@ key "GoogleDevelopers2014"
 \end_inset
 
 .
- A random location is generated as in the first method.
+ Initially, a random location is generated as in the first method.
  Then a geocoding API request is sent to Google asking for the directions
  from the users location to the random location.
  The response from Google contains the directions to the closest reachable
