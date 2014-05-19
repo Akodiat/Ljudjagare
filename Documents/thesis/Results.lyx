@@ -525,9 +525,8 @@ reference "fig:Coin collector"
 \end_layout
 
 \begin_layout Standard
-Since the game is not automatically started when launching the mode from
- the Home screen, the user has to press the play button in the lower right
- corner for it to start.
+To start the run the user has to press the play button in the lower right
+ corner.
  This will result in the navigation sound starting to play.
  However, in order for the navigation sound to be heard from the correct
  direction, the GPS has to calculate the direction of which the user is
