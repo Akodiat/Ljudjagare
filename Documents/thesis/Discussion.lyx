@@ -287,9 +287,13 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-This project has developed a sound based running application named Run for
- Life.
- 
+This chapter discusses the project of developing the sound based running
+ application named Run for Life.
+ The discussion debates the main problems of the report: how to use sensor
+ data to calculate a user direction, how to generate a route of accessible
+ and random locations, how to correctly design the application and how to
+ use binaural audio in a way that creates the perception of a sound coming
+ from a specific direction.
 \end_layout
 
 \begin_layout Section
@@ -314,7 +318,7 @@ app
  uses GPS technology to determine the user's direction.
  A disadvantage of this is that the user needs to be in motion in order
  for the application to provide an accurate angle of the user, relative
- the sound source.
+ to the sound source.
  The reason for the user to stop during a run is often because of uncertainty
  of the direction of the sound.
  However, when the user is stationary the GPS will not obtain any significant
