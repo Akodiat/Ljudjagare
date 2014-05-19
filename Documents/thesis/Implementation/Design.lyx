@@ -683,15 +683,67 @@ Since the Run Activity includes information about the run itself, the map
  screen.
  By putting it in three different Fragments (Run, Map and Stats) and by
  letting the Run Activity use the adapter FragmentPagerAdapter to handle
- the Fragments, they will become swipeable tabs 
+ the Fragments 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Adpater2014b"
 
 \end_inset
 
+, they will become swipeable tabs, as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:tabss"
+
+\end_inset
+
 .
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Figures/tabs.png
+	width 40page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:tabss"
+
+\end_inset
+
+Run, Map and Stats Fragment implemented as swipeable tabs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
