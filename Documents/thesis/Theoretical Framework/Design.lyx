@@ -904,7 +904,7 @@ key "Lehtimaeki2013"
  more direct access throughout an application.
  The avoidance of the dashboard pattern is especially effective at an applicatio
 n’s start-up since the user then can be taken directly into the view that
- is mostly used instead of picking it.
+ is mostly used instead of selecting it.
  From there the user may quickly switch to other views with the navigation
  drawer, thus eliminating redundant clicks back and forth from a dashboard.
 \end_layout
