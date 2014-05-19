@@ -412,7 +412,7 @@ reference "er-dia"
 \end_inset
 
 ).
- A route is basically the users running session, containing a unique identifier
+ A route is basically the user's running session, containing a unique identifier
  and the date that the route started.
  Also the route saves data on the number of coins that was generated for
  the route, this number is set by the user in the settings menu before the
@@ -479,7 +479,7 @@ name "table-1"
 
 \end_inset
 
-Visualisation of the tables in the database.
+Visualization of the tables in the database.
  
 \end_layout
 
