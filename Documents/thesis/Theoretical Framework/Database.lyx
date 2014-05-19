@@ -295,7 +295,7 @@ Database: Relational model and visual representation
 \begin_layout Standard
 The information retrieved from the GPS when the user is running (along with
  other information, such as time and distance) has to be stored in a way
- that makes it accessible even after the application has been shut down.
+ that makes it accessible at any time.
  This is done by using a database.
 \end_layout
 
