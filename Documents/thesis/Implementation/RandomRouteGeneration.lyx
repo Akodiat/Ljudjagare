@@ -550,9 +550,12 @@ A theoretical route represented by a dotted circle is rotated around the
 \end_layout
 
 \begin_layout Standard
-To make this randomly generated route reachable, a geocoding API request
- of directions from the user's location to the new locations is send to
- Google Maps 
+Since the locations from the previous algorithm is completely random, it
+ is a big chance that they are not on a road but instead in a forest or
+ a lake.
+ To make a randomly generated location reachable, a geocoding API request
+ of directions from the user's location to the new location is sent to Google
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "GoogleDevelopers2014"
@@ -560,28 +563,10 @@ key "GoogleDevelopers2014"
 \end_inset
 
 .
- The response from Google is a list of locations that forms the shortest
- route to the destination.
- It is a big chance that the generated locations is not on a road but instead
- in a forest or a lake.
- 
-\color yellow
-But the destination of the list of locations from google(the last list element)
- is always as close to the generated location as possible but in a reachable
- area
-\color inherit
-.
- This locations is then set as a checkpoints and the random route algorithm
- is finished.
- 
-\end_layout
-
-\begin_layout Standard
-
-\color yellow
-But by taking out the last location that is given by Google, the location
- that is as close as possible to the generated location but reachable is
- found.
+ The response from Google contains a list of locations that forms the shortest
+ route to the closest reachable location relative to the requested location.
+ This location is set as a checkpoint and the same procedure is preformed
+ for every location of the generated route.
 \end_layout
 
 \end_body
