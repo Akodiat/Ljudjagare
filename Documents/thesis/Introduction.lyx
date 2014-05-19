@@ -417,8 +417,8 @@ Purpose
 
 \begin_layout Standard
 The purpose of this bachelor project is to design and implement an Android
- application combining GPS technology and binaural audio to navigate the
- user without them having to interact with the display of the smartphone.
+ application combining GPS technology and binaural audio to guide the user
+ without them having to interact with the display of the smartphone.
  Based on the user's direction and location, the sound is modulated and
  panorated spatially, creating the effect of the sound appearing from a
  certain angle.

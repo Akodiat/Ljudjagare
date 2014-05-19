@@ -22,6 +22,8 @@
 % of the float and not to its caption
 \usepackage[figure]{hypcap}
 
+\newcommand{\app}{Run For Life}
+
 % the pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
 \let\myTOC\tableofcontents

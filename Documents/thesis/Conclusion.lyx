@@ -393,14 +393,15 @@ The purpose of the bachelor project is to design and implement an android
 \end_layout
 
 \begin_layout Standard
-The project concluded in a fully usable Android exercise application that
- used the GPS sensor together with spatial sound to create the perception
- of a sound coming from a specific direction\SpecialChar \@.
- The general response from the
- users testing the application was positive.
- Some difficulties in navigation still stems from the problem of GPS inaccuracy,
- but this is something that will most likely change with improved GPS technology
- or even better: a head mounted orientation sensor.
+The project concluded in a fully functional Android exercise application
+ combining GPS technology and binaural audio, creating the perception of
+ the sound arriving from a specific direction in order to guide the user\SpecialChar \@.
+
+ The general opinion gathered from the user evaluation was positive.
+ Some difficulties in navigation still stems from the problem of the GPS
+ being inaccurate, but this is something that will most likely change with
+ improved GPS technology or even better: a head mounted orientation sensor.
+ user evaluation
 \end_layout
 
 \begin_layout Standard
