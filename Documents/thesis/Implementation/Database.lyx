@@ -539,10 +539,64 @@ The purpose of the database is that it should be possible to recreate a
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Figures/oldrun.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:oldrun"
+
+\end_inset
+
+A display of an old run, where the $ symbols shows the location of every
+ collected checkpoint and the red line is all the GPS data from the users
+ running session.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 With this information the user can for example view their average speed
  from a run finished some weeks back.
- Another useful feature is if the user discovered a new great running route
- through the application and wants to run it again.
+ Another useful feature is if the user discovered a new great running route,
+ for example like 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:oldrun"
+
+\end_inset
+
+, by using the application and wants to run it again.
  In that case the user can go back to that run through the history and view
  which path was taken to be able to run it again.
 \end_layout
