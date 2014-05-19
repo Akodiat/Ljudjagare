@@ -570,7 +570,7 @@ name "fig:gyroCoord"
 \end_inset
 
 Coordinate system and measurement vector of the gyroscope.
- The gyroscope measures the rotational speed around the x-,y- and z-axis
+ The gyroscope measures the rotational speed around the x-, y- and z-axis
  in radians per second.
 \end_layout
 
