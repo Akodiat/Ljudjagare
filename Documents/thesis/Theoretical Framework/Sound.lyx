@@ -354,6 +354,17 @@ key "acoustics_and_audio"
 
 .
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Förklara att ljuded ändras ang.
+ bilden
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -386,23 +397,6 @@ name "fig:hrtf"
 
 The measured frequency response varies depending on the location of the
  sound source.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "pinna_pic"
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Kan vi ha kvar denna bild om vi saknar tillåtelse från upphovsrättsinnehavaren?
 \end_layout
 
 \end_inset
