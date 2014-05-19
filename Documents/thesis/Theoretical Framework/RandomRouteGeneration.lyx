@@ -294,10 +294,11 @@ name "sec:Generation-of-random"
 \end_layout
 
 \begin_layout Standard
-For the user to be able to instantly use the application to get out and
- run the sound sources (checkpoints) are generated out of a predefined algorithm.
+To enable the user to instantly use the application to get out and run the
+ sound sources (checkpoints) are generated using a predefined algorithm.
  The checkpoints must be generated at reachable locations and can for example
- not be placed in a lake or a building, but instead on a road or trail.
+ not be placed in a lake or inside a building, but instead on a road or
+ trail.
  During the project two methods to generate a location that is reachable
  was invented and is described in this chapter.
 \end_layout
