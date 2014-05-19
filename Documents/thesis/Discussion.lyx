@@ -289,10 +289,8 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-This chapter discusses the project of developing the sound based running
- application named Run for Life.
- The discussion debates the main problems of the report: how to use sensor
- data to calculate a user direction, how to generate a route of accessible
+This section discusses the main problems of the project: how to use sensor
+ data to calculate the user's direction, how to generate a route of accessible
  and random locations, how to correctly design the application and how to
  use binaural audio in a way that creates the perception of a sound coming
  from a specific direction.
