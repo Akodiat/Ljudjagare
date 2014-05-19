@@ -482,10 +482,10 @@ key "Developer2014a"
 \end_layout
 
 \begin_layout Standard
-To make collaboration easier the revision control system Git with the web-based
- hosting service Github was used.
- Github makes it possible to edit the same documents simultaneously without
- the work getting overwritten and destroyed.
+To simplify the collaboration process, the application was developed using
+ the revision control system Git, hosted on Github.
+ Git makes it possible for groups of people to edit the same documents simultane
+ously without the work getting overwritten.
  It also hosts the code online and make it possible to access earlier versions
  of the application 
 \begin_inset CommandInset citation
