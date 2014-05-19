@@ -323,7 +323,7 @@ Prominent Done button
 \begin_layout Standard
 One common design pattern is the 
 \shape italic
-Prominent Done Button
+Prominent Done Button 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Tidwell2011"
@@ -366,7 +366,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Figures/prominent_done_button.PNG
-	width 40page%
+	width 30page%
 
 \end_inset
 
