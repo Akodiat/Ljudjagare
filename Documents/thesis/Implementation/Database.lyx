@@ -315,8 +315,8 @@ The Database Management System (DBMS) is the system used for the application
 \end_layout
 
 \begin_layout Standard
-The database that was implemented uses the DBMS SQLite, it is a public domain
- system that is supported for use in Android development.
+The database that was implemented uses the DBMS SQLite, which is a public
+ domain system that is supported for use in Android development.
  Since SQLite requires no human support it is well suitable when implementing
  an embedded database for portable devices 
 \begin_inset CommandInset citation
