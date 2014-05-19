@@ -356,8 +356,8 @@ key "ndk_beginners_guide"
 \end_inset
 
 .
- It’s been part of Android’s NDK since version 2.3 and is divided into three
- different profiles: game, music and phone.
+ It has been part of Android’s NDK since version 2.3 and is divided into
+ three different profiles: game, music and phone.
  For a phone to take advantage of the functions provided by such a profile,
  it needs to have an appropriate compilation.
  The only profile enabling functions to spatially position audio is the
