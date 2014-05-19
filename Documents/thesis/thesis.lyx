@@ -319,6 +319,94 @@ filename "Summary.lyx"
 
 \end_layout
 
+\begin_layout Left Header
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Acknowledgments
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Acknowledgments
+\begin_inset Quotes erd
+\end_inset
+
+ in the left header line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Header
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Acknowledgments
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Acknowledgments
+\begin_inset Quotes erd
+\end_inset
+
+ in the right header line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Acknowledgments
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Acknowledgments.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -512,94 +600,6 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "Conclusion.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Left Header
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-Acknowledgments
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-print 
-\begin_inset Quotes eld
-\end_inset
-
-Acknowledgments
-\begin_inset Quotes erd
-\end_inset
-
- in the left header line
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Right Header
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Acknowledgments
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-print 
-\begin_inset Quotes eld
-\end_inset
-
-Acknowledgments
-\begin_inset Quotes erd
-\end_inset
-
- in the right header line
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch Acknowledgments
-status open
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Acknowledgments.lyx"
 
 \end_inset
 
