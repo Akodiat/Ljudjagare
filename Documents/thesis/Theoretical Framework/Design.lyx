@@ -563,6 +563,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename Figures/action_bar_basics.png
 	width 100text%
@@ -857,7 +859,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Figures/navigation_drawer_overview.png
-	width 40text%
+	width 100text%
 
 \end_inset
 
