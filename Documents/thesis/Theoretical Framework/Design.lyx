@@ -923,7 +923,7 @@ Swipe Views
 \end_layout
 
 \begin_layout Standard
-As mentioned above the Navigation Drawer provides quick navigation between
+As mentioned above, the Navigation Drawer provides quick navigation between
  different views.
  However there are times when functionality that logically belongs to the
  same view does not fit into a single screen.
@@ -940,9 +940,9 @@ key "Lehtimaeki2013"
 \end_layout
 
 \begin_layout Standard
-As long as the number of tabs are limited to three or less it is considered
- as a good solution.
- If the number exceeds three however it may be better to use the pattern
+This is considered as a good solution as long as the number of tabs are
+ limited to three or less.
+ If the number exceeds three however, it may be better to use the pattern
  called title strip where the user may swipe between an unlimited number
  of tabs
 \begin_inset CommandInset citation
