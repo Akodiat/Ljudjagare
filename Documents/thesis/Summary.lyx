@@ -285,10 +285,10 @@ app
 \end_inset
 
  kombinerar sensorerna som finns i dagens smartphones med ljud i 3D.
- Detta skapar en träningsapplikation med inslag av spelmoment och virtuella
- ljudkällor.
- Idén med att kombinera 3D-ljud med smartphone -sensorer är ny och forskningen
- är hittills mycket begränsad.
+ Detta resulterar i en träningsapplikation med inslag av spelmoment och
+ virtuella ljudkällor.
+ Idén med att kombinera 3D-ljud med smartphonesensorer är ny och forskningen
+ inom området är hittills mycket begränsad.
  
 \end_layout
 
@@ -301,16 +301,16 @@ Detta projekt försöker kombinera resultaten inom 3D-ljud som gjorts av Lawitzk
 Zombies, Run!
 \emph default
 .
- Detta görs med hjälp av GPS-sensorn för att beräkna användarens position
- och dess färdriktning.
- Ljudet implementerades med hjälp av så kallade, 
+ Mobiltelefonens GPS-sensor används för att beräkna användarens position
+ och färdriktning, medan ljudet implementerades med hjälp av så kallade
+ 
 \emph on
 head related transfer functions
 \emph default
 .
- För att kunna få en riktning när användaren är stillastående gjordes ett
- försök att använda gyroskopsensorn, men ljudet blev då ofta mer förvirrande
- än att bara använda GPS-sensorn.
+ För att kunna få en riktning även när användaren är stillastående gjordes
+ ett försök att använda gyroskopsensorn, men ljudet blev då ofta mer förvirrande
+ än när bara använda GPS-sensorn användes.
  
 \end_layout
 
@@ -352,8 +352,8 @@ I rapporten dras slutsatsen att det kan vara svårt för användaren att uppfatt
 n med andra sensorer erhålla en bra färdrikting.
  Slutligen är det svårt att avgöra hur användaren är riktad vid ett stillaståend
 e läge, då telefonens placeringen på användaren är okänd.
- Om en huvudmonterad enhet används, undviks problemen med den okända placeringen
- och riktningen till ljudkällan kan upplevas mer exakt.
+ Om en huvudmonterad enhet används bör problemen med den okända placeringen
+ undvikas och riktningen till ljudkällan upplevas mer exakt.
  
 \end_layout
 
