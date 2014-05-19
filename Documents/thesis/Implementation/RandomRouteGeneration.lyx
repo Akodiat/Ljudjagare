@@ -393,6 +393,51 @@ To determine the next checkpoint, the calculated angle,
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Figures/routing.eps
+	lyxscale 50
+	width 40page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:random route-1-1"
+
+\end_inset
+
+A theoretical route represented by a dotted circle is rotated around the
+ location of the user by an angle 
+\begin_inset Formula $\beta$
+\end_inset
+
+, forming a random route 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 To make the routes different from each other every time the algorithm runs,
  the theoretical route is rotated around the user's location by a random
  angle, 
@@ -505,51 +550,6 @@ reference "fig:random route-1-1"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Figures/routing.eps
-	lyxscale 50
-	width 40page%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:random route-1-1"
-
-\end_inset
-
-A theoretical route represented by a dotted circle is rotated around the
- location of the user by an angle 
-\begin_inset Formula $\beta$
-\end_inset
-
-, forming a random route 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Since the locations from the previous algorithm is completely random, it
  is a big chance that they are not on a road but instead in a forest or
  a lake.
@@ -567,6 +567,57 @@ key "GoogleDevelopers2014"
  route to the closest reachable location relative to the requested location.
  This location is set as a checkpoint and the same procedure is preformed
  for every location of the generated route.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:random_route_map"
+
+\end_inset
+
+ contains an example of a generated random route with the checkpoints located
+ along the blue route.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Figures/random_route.png
+	lyxscale 30
+	width 40page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:random_route_map"
+
+\end_inset
+
+An example of an random route, generated from the random route algorithm.
+ The blue dot is the location of the user and the yellow marker is the location
+ of the first coin.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
