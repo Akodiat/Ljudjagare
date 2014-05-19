@@ -350,8 +350,8 @@ key "Endomondo2014b"
 \emph on
 Zombies, Run!
 \emph default
-, released in 2012, is another exercise application focusing more on making
- running more enjoyable by introducing game elements 
+, released in 2012, is another exercise application focusing on making running
+ more enjoyable by introducing game elements 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SixtoStart2014"
@@ -359,16 +359,20 @@ key "SixtoStart2014"
 \end_inset
 
 .
- It uses audio cues to create the illustion of zombies chasing the user.
- The virtual zombies have no position, meaning that only way to make the
- zombies disappear is for the user to increase their pace, thus evading
- the zombies.
- However, since the zombies only have a distance and no specified direction
- relative to the user, the user can escape in any direction.
+ It uses audio cues to create the illusion of the user being chased by zombies.
+ These cues are independent of the user's position, meaning that the route
+ of which the user is running is unimportant to the game.
+ By increasing the speed, thus running faster, the user can run away from
+ the zombies, resulting in the sound effects (imitating zombies approaching)
+ being silenced.
 \end_layout
 
 \begin_layout Standard
-3D sound using HRTFs was introduced in computer games already in the nineties
+3D sound was introduced in computer games already in the nineties, used
+ by games such as 
+\shape italic
+Unreal Tournament
+\shape default
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -379,7 +383,7 @@ key "3d_game"
 .
  In these games, however, the sound generation is based on the movement
  of a virtual character, and not the movement of the actual user.
- The possibility of tracking the head movements of the user using a smartphone
+ The possibility of tracking the user's head movements to using a smartphone
  was studied as a master thesis by Paul Lawitzki in 2012 called Application
  of Dynamic Binaural Signals in Acoustic Games 
 \begin_inset CommandInset citation
@@ -392,9 +396,9 @@ key "Lawitzki2012"
 \end_layout
 
 \begin_layout Standard
-Examining the combination of both the orientation sensors of the modern
- smartphone with GPS and the concept of a gamified running application,
- this thesis investigates how binaural sound can be used to motivate exercise.
+Examining the combination of the orientation sensors of the modern smartphone
+ with GPS and the concept of a gamified running application, this thesis
+ investigates how binaural sound can be used to motivate exercise.
  
 \end_layout
 
