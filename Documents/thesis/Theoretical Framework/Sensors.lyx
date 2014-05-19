@@ -431,7 +431,8 @@ Magnetic field
 \end_layout
 
 \begin_layout Standard
-The magnetic field sensor determines current magnetic field strength 
+The magnetic field sensor determines current ambient magnetic field strength
+ in micro teslas as a 3-dimensional vector 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "AndroidOpenSourceproject2014"
