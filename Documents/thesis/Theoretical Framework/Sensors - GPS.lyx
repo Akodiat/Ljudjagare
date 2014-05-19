@@ -293,7 +293,7 @@ GPS
 \end_layout
 
 \begin_layout Standard
-The Global Positioning System - GPS is used to determine the global coordinates
+GPS (Global Positioning System) is used to determine the global coordinates
  of a device in latitudes and longitudes through the use of satellites
 \begin_inset CommandInset citation
 LatexCommand cite
