@@ -576,7 +576,7 @@ key "hci_handbook"
 \end_layout
 
 \begin_layout Standard
-Studies of enviromental noises and speech show that excessive sound volume
+Studies of environmental noises and speech show that excessive sound volume
  is the primary reason for annoyance to the user 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -607,7 +607,7 @@ key "kramer"
  It is difficult to perceive small differences in sounds, such as changes
  in sound intensity and panoration.
  Furthermore, the attention-grabbing property previously mentioned might
- lead to annoyance amongts some users 
+ lead to annoyance amongst some users 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kramer"
