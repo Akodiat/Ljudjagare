@@ -294,7 +294,7 @@ GPS
 
 \begin_layout Standard
 GPS (Global Positioning System) is used to determine the global coordinates
- of a device in latitudes and longitudes through the use of satellites
+ of a device in latitudes and longitudes through the use of satellites 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "NCOSBPNT2014"
@@ -318,7 +318,7 @@ key "Bajaj2002"
 To establish locations of devices, the satellites continuously send out
  
 \emph on
-pseudorandom number codes (PNC)
+PNC's (Pseudorandom Number Codes)
 \emph default
 .
  Each PNC consists of information of the satellite's position and time at
