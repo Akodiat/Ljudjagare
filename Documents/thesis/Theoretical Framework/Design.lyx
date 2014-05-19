@@ -536,7 +536,7 @@ reference "fig:ActionBar"
  patterns
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
@@ -617,7 +617,7 @@ reference "fig:ActionBar"
  will be used and whether it is typical and contextual for the view in question
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
@@ -894,7 +894,7 @@ Navigation Drawer provides quick access to different views of the application
  take the user to different parts of the application
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
@@ -928,7 +928,7 @@ As mentioned above, the Navigation Drawer provides quick navigation between
  the user can swipe horizontally between
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
@@ -944,7 +944,7 @@ This is considered as a good solution as long as the number of tabs are
  of tabs
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
