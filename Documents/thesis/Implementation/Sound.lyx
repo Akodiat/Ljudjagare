@@ -518,7 +518,7 @@ pure
  Since the user should be focusing on the direction of which the sound is
  appearing from (panoration), it would make sense for the sound itself to
  be as neutral as possible.
- Taking advantage of the 3D audio funcionality provided by the OpenAL Soft
+ Taking advantage of the 3D audio functionality provided by the OpenAL Soft
  API, the sine wave is positioned around the user's head using the angular
  offset previously mentioned.
  For example, a sound with an angular offset of -90° would appear to come
@@ -527,8 +527,8 @@ pure
 \end_layout
 
 \begin_layout Standard
-As mentioned in the theory chapter, non-invidualised HRTFs suffer from back-fron
-t confusion.
+As mentioned in the theory chapter, non-individualized HRTFs suffer from
+ back-front confusion.
  It would be risky to rely single-handedly on the 3D properties of HRTFs
  in an application depending entirely on the directional properties of its
  audio.
