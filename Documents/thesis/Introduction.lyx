@@ -378,8 +378,8 @@ key "3d_game"
 .
  In these games, however, the sound positioning is based on a virtual character
  - not the actual user.
- A study in 2012 examines the possibilites of tracking the user's head movements
- using a smartphone in combination with binaural audio 
+ A study in 2012 examines the possibilities of tracking the user's head
+ movements using a smartphone in combination with binaural audio 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lawitzki2012"
@@ -392,9 +392,9 @@ key "Lawitzki2012"
 \end_layout
 
 \begin_layout Standard
-This report aims to further investigate the possibilites of using the smartphone
- and its sensors together with binaural audio to create an exercising applicatio
-n with game elements; by combining GPS technology and virtual sound sources
+This report aims to further investigate the possibilities of using the smartphon
+e and its sensors together with binaural audio to create an exercising applicati
+on with game elements; by combining GPS technology and virtual sound sources
  the user can navigate using the sound appearing from their headphones.
 \end_layout
 
