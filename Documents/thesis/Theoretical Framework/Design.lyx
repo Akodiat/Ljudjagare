@@ -505,7 +505,7 @@ Android standard design patterns are used where applicable in the application.
  becomes consistent to other applications on the Android platform
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
@@ -729,7 +729,7 @@ reference "sub:Navigation-Drawer"
 ) with more navigation options
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Lehtimaeki2013"
+key "Lehtimaki2013"
 
 \end_inset
 
