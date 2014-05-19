@@ -366,7 +366,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Figures/prominent_done_button.eps
-	width 30page%
+	width 20page%
 
 \end_inset
 
@@ -514,7 +514,7 @@ Android design patterns
 \begin_layout Standard
 Android standard design patterns are used where applicable in the application.
  A great advantage of using Android design patterns is that the application
- becomes consistent to other applications on the Android platform
+ becomes consistent to other applications on the Android platform 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -544,8 +544,8 @@ reference "fig:ActionBar"
 \end_inset
 
 , which can perform actions to the application.
- It has been around for a long time and is one of the most recognizable
- patterns
+ The Action Bar has been around for a long time and is one of the most recogniza
+ble patterns 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -579,7 +579,7 @@ name "fig:ActionBar"
 
 \end_inset
 
-An Action Bar and its components Application Icon (1), View control (2),
+An Action Bar and its components: Application Icon (1), View control (2),
  Action Buttons (3) and Action overflow menu (4).
 \end_layout
 
@@ -627,6 +627,7 @@ reference "fig:ActionBar"
 .
  To decide if an action is important one might consider how frequent it
  will be used and whether it is typical and contextual for the view in question
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -711,9 +712,9 @@ reference "fig:ActionBar"
 \end_inset
 
 , which establishes the identity of the application.
- When an application has different views the application logotype becomes
- a consistent identifier letting the user know which application is currently
- running.
+ When an application has different views its logotype becomes a consistent
+ identifier of the application.
+ This lets the user know which application is currently running.
  The application logotype can also have the function of an up button taking
  the user one step up in the hierarchy, as is the case in (1) in 
 \begin_inset CommandInset ref
@@ -722,7 +723,7 @@ reference "fig:ActionBar"
 
 \end_inset
 
-, or a home button taking the user to the home view
+, or a home button taking the user to the home view 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "actionbar2014"
@@ -731,14 +732,18 @@ key "actionbar2014"
 
 .
  The button of the application logotype may also be used to open a side
- menu called navigation drawer, which will be covered in 
+ menu called 
+\emph on
+Navigation Drawer
+\emph default
+ (which will be covered in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "sub:Navigation-Drawer"
 
 \end_inset
 
-) with more navigation options
+) with more navigation options 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -752,7 +757,7 @@ key "Lehtimaki2013"
 Another component giving a sense of location is the View control as (2)
  in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand nameref
 reference "fig:ActionBar"
 
 \end_inset
