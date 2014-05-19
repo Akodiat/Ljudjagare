@@ -442,7 +442,7 @@ reference "sec:Design-choices-disc"
 \begin_layout Standard
 To easily browse between different game modes the swipeable pattern Filmstrip
  was chosen.
- Since filmstrip is not a standard pattern in Android it was implemented
+ Since Filmstrip is not a standard pattern in Android it was implemented
  with
 \emph on
  ViewPager
@@ -456,7 +456,7 @@ key "ViewPager2014"
 
 , which is a layout supporting horizontal swiping.
  The ViewPager was set up with the adapter, FragmentStatePagerAdapter, handling
- each page on the filmstrip 
+ each page on the Filmstrip 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Adpater2014a"
@@ -466,10 +466,10 @@ key "Adpater2014a"
 .
  The pattern was considered appropriate to the application since it provides
  a default value of a chosen game mode and thereby supports a quick start.
- In the context of choosing between different game modes filmstrip also
+ In the context of choosing between different game modes Filmstrip also
  serves a good cause since new users gain a clear understanding of a, to
  them unknown, game mode by viewing its picture and name supplied by its
- page on the filmstrip.
+ page on the Filmstrip.
  If the user needs more information to choose game mode an information icon
  in the upper right corner of the current filmstrip page indicates that
  more information will be shown if clicked.
@@ -478,7 +478,7 @@ key "Adpater2014a"
 \end_layout
 
 \begin_layout Standard
-Below the filmstrip there is a bar containing icons and a next button.
+Below the Filmstrip there is a bar containing icons and a next button.
  The tendency of users reading content from top to bottom and from left
  to right 
 \begin_inset CommandInset citation
@@ -513,13 +513,13 @@ Run screen
 \end_layout
 
 \begin_layout Standard
-Since the run activity includes information about the run itself, the map
+Since the Run Activity includes information about the run itself, the map
  and the statistics of each coin taken; the pattern Swipe Views is used.
  The reason for this is that all this information does not fit in one single
  screen.
- By putting it in three different fragments (run, map and stats) and by
- letting the run activity use the adapter FragmentPagerAdapter to handle
- the fragments, they will become swipeable tabs 
+ By putting it in three different Fragments (Run, Map and Stats) and by
+ letting the Run Activity use the adapter FragmentPagerAdapter to handle
+ the Fragments, they will become swipeable tabs 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Adpater2014b"
@@ -531,38 +531,38 @@ key "Adpater2014b"
 \end_layout
 
 \begin_layout Standard
-The bar from the main activity also appears in the run activity to make
+The bar from the Main Activity also appears in the Run Activity to make
  the application consistent and let the user know directly if there is a
  disconnection of the GPS or headphones.
  To motivate the user to keep running, a progress bar which increases with
- every coin taken, is displayed at the bottom of the run fragment.
- The user may also view time, distance, speed and pace in the run fragment
- to assure the user that the logging of the run is taking place.
+ every coin taken, is displayed at the bottom of the Run Fragment.
+ The user may also view time, distance, speed and pace in the Run Fragment
+ to get assure that the logging of the run is taking place.
  
 \end_layout
 
 \begin_layout Standard
-The Prominent Done Button pattern is also applied in the run activity, but
+The Prominent Done Button pattern is also applied in the Run Activity, but
  this time as a play/pause button.
  When the run is paused a stop button will also appear, to let the user
  end the run if desired.
- If the run is ended the run activity will turn into a finished state thus
- removing the progress bar and information of current speed and pace.
- The finished state of a run activity is the format that each finished run
- is saved as, and is thereby reachable for each finished run from the history
- fragment.
+ If the run is ended the Run Activity will turn into a finished state thus
+ removing the progress bar and the information of current speed and pace.
+ The finished state of a Run Activity is the format that each finished run
+ is saved as, and is thereby reachable for each finished run from the History
+ Fragment.
  
 \end_layout
 
 \begin_layout Standard
-The map and stats fragments are visible during a run but are most important
+The Map and Stats Fragments are visible during a run but are most important
  when a run is finished.
- In the map fragment the user can see a map with the route on which coins
+ In the Map Fragment the user can see a map with the route on which coins
  will appear as well as the next coin to run to.
  This is preferably not viewed during a run, but was decided to be kept
- in case of the user gets completely lost and needs exact directions.
- In a finished run however this fragment will display the track that was
- taken as well as the places on which coins were taken.
+ in case of the user getting completely lost and needing exact directions.
+ When viewing a finished run however this Fragment will display the track
+ that was taken as well as the places on which coins were taken.
  This is intended to give the user feedback and note if a better route could
  have been taken.
  
@@ -570,9 +570,9 @@ The map and stats fragments are visible during a run but are most important
 
 \begin_layout Standard
 The requirement of detailed statistics was highly considered while designing
- the stats fragment.
- By having a table with rows for each coin taken the user will have a way
- to receive feedback by each coin taken.
+ the Stats Fragment.
+ By having a table with rows for each coin the user will have a way to receive
+ feedback as each coin is retrieved.
  The information displayed is the chronological number of the coin and the
  time, distance and pace achieved while running to it.
  While this is great feedback during the run it is perhaps most interesting
