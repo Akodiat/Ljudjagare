@@ -359,17 +359,18 @@ key "SixtoStart2014"
 \end_inset
 
 .
- It uses audio cues to create the illusion of the user being chased by zombies.
+ It uses non-binaural audio cues to create the illusion of the user being
+ chased by zombies.
  These cues are independent of the user's position, meaning that the route
  of which the user is running is unimportant to the game.
- By increasing the speed, thus running faster, the user can run away from
- the zombies, resulting in the sound effects (imitating zombies approaching)
+ When increasing the speed, thus running faster, the user runs away from
+ the zombies, resulting in the sound effects (imitating approaching zombies)
  being silenced.
 \end_layout
 
 \begin_layout Standard
-3D sound was introduced in computer games already in the nineties, used
- by games such as 
+Binaural sound was introduced in computer games already in the nineties,
+ used by games such as 
 \shape italic
 Unreal Tournament
 \shape default
@@ -381,11 +382,10 @@ key "3d_game"
 \end_inset
 
 .
- In these games, however, the sound generation is based on the movement
- of a virtual character, and not the movement of the actual user.
- The possibility of tracking the user's head movements to using a smartphone
- was studied as a master thesis by Paul Lawitzki in 2012 called Application
- of Dynamic Binaural Signals in Acoustic Games 
+ In these games, however, the sound positioning is based on a virtual character
+ - not the actual user.
+ A study in 2012 examines the possibilites of tracking the user's head movements
+ using a smartphone in combination with binaural audio 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lawitzki2012"
@@ -393,12 +393,20 @@ key "Lawitzki2012"
 \end_inset
 
 .
+ By virtually position a sound in headphones, head movements create an effect
+ similar to what humans would hear in real life.
+\end_layout
+
+\begin_layout Standard
+This thesis aims to further investigate the possibilites of using the smartphone
+ and its functions in combination with binaural audio.
+ 
 \end_layout
 
 \begin_layout Standard
 Examining the combination of the orientation sensors of the modern smartphone
  with GPS and the concept of a gamified running application, this thesis
- investigates how binaural sound can be used to motivate exercise.
+ investigates how 3D sound can be used to motivate exercise.
  
 \end_layout
 
@@ -1104,10 +1112,6 @@ The object-oriented programming language Java has been used throughout the
  XML (Extensible Markup Language) has been used.
  The programming language SQL (Structured Query Language), has been used
  to create and manage the database.
-\end_layout
-
-\begin_layout Standard
-NÅGOT OM C-KODEN
 \end_layout
 
 \begin_layout Section
