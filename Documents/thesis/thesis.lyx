@@ -83,6 +83,9 @@ customHeadersFooters
 \paperfontsize 12
 \spacing single
 \use_hyperref true
+\pdf_title "Sound-guided running: Using GPS and binaural audio in an exercise application"
+\pdf_author "Marcus Bernhard; Daniel Johansson; Joakim Johansson; Linus Karlsson; Anton Palmquist"
+\pdf_subject "Computer Science and Engineering"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
@@ -240,7 +243,7 @@ get
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -426,7 +429,7 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -710,7 +713,7 @@ options "chscite"
 
 \begin_layout Standard
 \begin_inset Branch Appendix
-status collapsed
+status open
 
 \begin_layout Standard
 \start_of_appendix
