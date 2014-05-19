@@ -384,10 +384,17 @@ name "sub:Tutorialawdaw"
 The tutorial mode was implemented to allow the user to try the application's
  functionality and become familiar with the spatial sound without having
  to run.
- It takes advantange of the gyroscope sensor, explained in 
+ It takes advantage of the gyroscope sensor, explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Gyroscope"
+
+\end_inset
+
+ and converted to a global reference frame as explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sensor-fusion"
 
 \end_inset
 
