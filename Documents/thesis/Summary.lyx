@@ -160,8 +160,8 @@ Zombies, Run!
 head related transfer functions
 \emph default
  provided by OpenAL Soft.
- An attempt was made using the gyroscope sensor to get an orientation while
- the user is stationary, but it often made the sound more confusing.
+ An attempt was made using the gyroscope sensor to calculate an orientation
+ while the user is stationary, but it often made the sound more confusing.
 \end_layout
 
 \begin_layout Standard

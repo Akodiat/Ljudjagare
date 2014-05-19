@@ -314,11 +314,11 @@ app
 
  use the GPS bearing to decide the user direction.
  A disadvantage of this is that the user needs to be in motion in order
- for the application to get an accurate angle of the user, relative the
- sound source.
+ for the application to provide an accurate angle of the user, relative
+ the sound source.
  The reason for the user to stop during a run is often because of uncertainty
  of the direction of the sound.
- However, when the user is stationary the GPS will not get any significant
+ However, when the user is stationary the GPS will not obtain any significant
  location updates and hence cannot calculate any direction of travel.
  If a user does not know this, it might prove very hard to use the application.
  Furthermore, the GPS cannot detect the user’s head movements; something

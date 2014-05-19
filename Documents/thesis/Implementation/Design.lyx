@@ -338,13 +338,12 @@ key "SixtoStart2014"
 \end_layout
 
 \begin_layout Standard
-These apps are in some sense their opposites.
+These applications are in some sense their opposites.
  
 \emph on
 Endomondo
 \emph default
- focuses on the running experience and lets the user quickly get started
- with a run.
+ focuses on the running experience and lets the user quickly start a run.
  
 \emph on
 Zombies, Run!
@@ -408,7 +407,7 @@ reference "par:Swipe-Views"
 The history- and help fragment was designed as simple and intuitive as possible,
  the history fragment being a list of clickable previously completed runs
  and the help fragment being a instructional page with sample sounds to
- get a better understanding of the concept.
+ obtain a better understanding of the concept.
  The main fragment however has a lot of interesting design components which
  will be explained below.
 \end_layout
@@ -468,7 +467,7 @@ key "Adpater2014a"
  The pattern was considered appropriate to our app since it provides a default
  value of a chosen game mode and thereby supports a quick start.
  In the context of choosing between different game modes filmstrip also
- serves a good cause since new users get a clear understanding of a, to
+ serves a good cause since new users gain a clear understanding of a, to
  them unknown, game mode by viewing its picture and name supplied by its
  page on the filmstrip.
  If the user needs more information to choose game mode an information icon

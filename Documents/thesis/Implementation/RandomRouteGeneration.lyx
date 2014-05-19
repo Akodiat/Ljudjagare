@@ -376,7 +376,7 @@ reference "eq:angle checkpoints"
 \end_layout
 
 \begin_layout Standard
-To get the next checkpoint, the calculated angle, 
+To determine the next checkpoint, the calculated angle, 
 \begin_inset Formula $\alpha$
 \end_inset
 

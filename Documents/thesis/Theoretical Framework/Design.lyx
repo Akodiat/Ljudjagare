@@ -424,8 +424,8 @@ reference "fig:carousel"
 \end_inset
 
  it is clear that the item in the middle is in focus since it is enlarged.
- By seeing the elements immediately around the focused item the user will
- get a clue about the possibility to browse.
+ The elements immediately around the focused item will give the user a clue
+ about the possibility to browse.
 \end_layout
 
 \begin_layout Standard
