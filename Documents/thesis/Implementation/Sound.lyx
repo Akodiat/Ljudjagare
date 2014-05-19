@@ -470,7 +470,7 @@ reference "sec:Sensor-fusion"
 
 ), varying from -180° to 180°.
  An angular offset of 0° would hence mean that the user is moving perfectly
- in the right direction.
+ in the correct direction.
  With regards to the study in 
 \begin_inset CommandInset ref
 LatexCommand ref
