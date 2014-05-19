@@ -353,7 +353,7 @@ monsters
 
  (sound sources).
  The monsters would hunt the user and the user needs to run away from them
- fast enough to not get caught.
+ fast enough to not be caught.
  Apart from distance-relative volume, this will also require the development
  of an algorithm for moving sound sources appropriately.
  The easiest and most straight-forward way of doing that is to simply move
