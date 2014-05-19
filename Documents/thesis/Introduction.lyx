@@ -381,11 +381,11 @@ key "SixtoStart2014"
 \end_inset
 
 .
- It creates the illusion of zombies chasing the user through audio modulations.
- The only way to make the zombies dissappear is for the user to increase
+ It creates the illusion of zombies chasing the user by using audio modulations.
+ The only way to make the zombies disappear is for the user to increase
  their pace, thus evading the zombies.
- Since the zombies have no location, and thereby no direction relative to
- the user, the escape can be done in any direction.
+ However, since the zombies only have a distance, but no specified direction
+ relative to the user, the escape can be done in any direction.
 \end_layout
 
 \begin_layout Standard
