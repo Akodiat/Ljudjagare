@@ -519,8 +519,7 @@ reference "fig:Coin collector"
  displays the Run tab.
  It is the tab visible when launching the mode and it displays information
  about the distance, time, speed and pace.
- The second tab, Map, tells the user about their current position and route
- .
+ The second tab, Map, tells the user about their current position and route.
  In the Stats tab, the user can see how many coins they have collected and
  at what distance and time.
 \end_layout
