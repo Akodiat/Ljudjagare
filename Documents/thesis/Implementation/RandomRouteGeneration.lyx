@@ -303,7 +303,7 @@ reference "sec:Generation-of-random"
 
 , the sound sources (checkpoints) are generated out of a predefined algorithm.
  To accomplish this, the application uses the Google Maps geocoding API
- and its functions to find directions 
+ and its functions to find directions, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "google maps random"
@@ -321,10 +321,16 @@ reference "fig:Figure-showing-latLong"
 
 \end_inset
 
-, and has been inspired from 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "atok2013"
+, and has been inspired by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citeasnoun{atok2013}
+\end_layout
 
 \end_inset
 
