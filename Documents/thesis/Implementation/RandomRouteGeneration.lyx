@@ -394,7 +394,7 @@ To determine the next checkpoint, the calculated angle,
 
 \begin_layout Standard
 To make the routes different from each other every time the algorithm runs,
- the theoretical route is rotated around the user's location by an random
+ the theoretical route is rotated around the user's location by a random
  angle, 
 \begin_inset Formula $\beta$
 \end_inset
