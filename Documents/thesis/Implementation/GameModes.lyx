@@ -356,9 +356,9 @@ reference "sec:Random-route-implementation"
 \begin_layout Standard
 Whenever a user reaches a coin, a voice informs them that the coin has been
  reached.
- Unless it is the last coin, the same voice will let the user know that
+ Unless it is the final coin, the same voice will let the user know that
  another one has been generated.
- Since the last coin always is generated at the starting point (see 
+ Since the final coin always generates at the starting point (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Random-route-implementation"
