@@ -386,17 +386,8 @@ General
 \end_layout
 
 \begin_layout Standard
-The pattern Navigation Drawer was implemented in the Main Activity as shown
- in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Quick-navigation-through"
-
-\end_inset
-
-.
- The reason the pattern was chosen was because of its quick and easy access
- to the different Fragments and their screens.
+The pattern Navigation Drawer was chosen in the Main Activity because of
+ its quick and easy access to the different Fragments and their screens.
  In the current version there only exist the three different Fragments:
  Main, History and Help.
  This means that tabs at the moment, as mentioned in 
@@ -410,52 +401,6 @@ reference "par:Swipe-Views"
  However, to enable the possibility of extension later on, and to save the
  space on the screen that would have been covered by tabs, Navigation Drawer
  was considered the best choice.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Figures/nav_draw.png
-	lyxscale 40
-	width 40page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Quick-navigation-through"
-
-\end_inset
-
-Quick navigation through the Navigation Drawer.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -496,14 +441,7 @@ reference "sec:Design-choices-disc"
 
 \begin_layout Standard
 To easily browse between different game modes the swipeable pattern Filmstrip
- was implemented as in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Horizontal-swiping-in"
-
-\end_inset
-
-.
+ was chosen.
  Since Filmstrip is not a standard pattern in Android it was implemented
  with
 \emph on
@@ -540,61 +478,7 @@ key "Adpater2014a"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Figures/swipe.eps
-	lyxscale 40
-	width 40page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Horizontal-swiping-in"
-
-\end_inset
-
-Horizontal swiping in the Filmstrip.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Below the Filmstrip there is a bar containing icons and a next button as
- shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:bar"
-
-\end_inset
-
-.
+Below the Filmstrip there is a bar containing icons and a next button.
  The tendency of users reading content from top to bottom and from left
  to right 
 \begin_inset CommandInset citation
@@ -614,54 +498,6 @@ key "Tidwell2011"
  the user is meant to clearly notice that something is not right, getting
  the opportunity to fix it by enabling the GPS and/or inserting the headphones.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Figures/bar.png
-	lyxscale 40
-	width 40page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:bar"
-
-\end_inset
-
-The bar on the bottom of the screen showing: a connected GPS icon and a
- disconnected headphones icon to the left and and a Prominent Done Button
- to the right.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
