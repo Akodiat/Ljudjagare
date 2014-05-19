@@ -132,26 +132,12 @@ c, theoretical or artistic gap is your research filling?
 \begin_layout Standard
 This report describes the development of an exercise application for Android
  smartphones, called Run For Life.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-app
-\backslash
-
-\end_layout
-
-\end_inset
-
- combines the sensors found in present day smartphones with spatial audio
+ It combines the sensors found in present day smartphones with spatial audio
  feedback, creating an exercise application with virtual sound sources.
  The idea of combining spatial audio with smartphone sensors is new and
  the research is limited.
- This project attempts to combine the spatial audio achievements made by
+ By using the GPS sensor to calculate both the user's position and orientation,
+ the project attempts to combine the spatial audio achievements made by
  
 \begin_inset ERT
 status open
@@ -170,14 +156,13 @@ citeasnoun{Lawitzki2012}
 Zombies, Run!
 \emph default
 .
- This by using the GPS sensor to calculate both user position and orientation.
- The audio was implemented using general 
+ The audio was implemented using general, non-individualized 
 \emph on
 head related transfer functions
 \emph default
 .
- An attempt was made using the gyroscope sensor to calculate an orientation
- while the user is stationary, but it often made the sound more confusing.
+ An attempt to use the gyroscope sensor to calculate the orientation of
+ a user standing still was made, often resulting in a confusing sound.
 \end_layout
 
 \begin_layout Standard
@@ -219,12 +204,9 @@ nt/create?
 \end_layout
 
 \begin_layout Standard
-The project resulted in an exercise application with an appealing user interface.
- The application's main mode is game-like, which may enhance the user's
- regular exercise sessions.
- This by providing a randomized running route, audio feedback to guide the
- user in the right direction as well as a providing challenge by urging
- the user to collect all the checkpoints along the route.
+The application's main mode is game inspired.
+ By providing a randomized running route and audio feedback to guide the
+ user though its checkpoints, the application aims to enhance regular exercise.
  
 \begin_inset ERT
 status open
@@ -240,8 +222,10 @@ app
 
 \end_inset
 
- also presents the opportunity for the user to view the history of their
- previous running sessions.
+ also presents the opportunity for the user to view statistics of previous
+ running sessions.
+ A lot of time has been put into designing the user interface in a way that
+ makes the application appealing.
 \end_layout
 
 \begin_layout Standard
@@ -263,15 +247,15 @@ status open
 \end_layout
 
 \begin_layout Standard
-The report concludes that it is still hard to make the perception of an
- angle realistic to the user because of the difficulty in sensing a user
- orientation.
- GPS technology is still too inaccurate to be used without other sensors
- for a perfect perception of the sound direction.
+The report concludes that it is hard to make the perception of an angle
+ realistic to the user because of the difficulty in sensing a user orientation.
+ GPS technology is still too inaccurate to create a perfect perception of
+ the sound direction by itself.
  Finally, determining a user's orientation is not reliable while the sensor
- is not at a fixed position relative to the user ears; a head mounted sensor
+ is not at a fixed position relative to the user ears; a head-mounted sensor
  device would probably avoid most of these problems and provide a more realistic
  perception.
+ 
 \end_layout
 
 \begin_layout Chapter*
