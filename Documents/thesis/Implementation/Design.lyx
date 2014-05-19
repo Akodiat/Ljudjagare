@@ -386,10 +386,10 @@ General
 \end_layout
 
 \begin_layout Standard
-The pattern Navigation Drawer was chosen in the main activity because of
- its quick and easy access to the different fragments and their screens.
- In the current version there only exist the three different fragments:
- main, history and help.
+The pattern Navigation Drawer was chosen in the Main Activity because of
+ its quick and easy access to the different Fragments and their screens.
+ In the current version there only exist the three different Fragments:
+ Main, History and Help.
  This means that tabs at the moment, as mentioned in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -404,11 +404,11 @@ reference "par:Swipe-Views"
 \end_layout
 
 \begin_layout Standard
-The history and help fragment was designed as simple and intuitive as possible,
- the history fragment being a list of clickable previously completed runs
- and the help fragment being a instructional page with sample sounds to
- obtain a better understanding of the concept.
- The main fragment however has a lot of interesting design components which
+The History and Help Fragment were both designed with the intention of being
+ as simple and intuitive as possible; the History Fragment being a list
+ of clickable previously completed runs and the Help Fragment being a instructio
+nal page with sample sounds to obtain a better understanding of the concept.
+ The Main Fragment however has a lot of interesting design components which
  will be explained below.
 \end_layout
 
@@ -424,7 +424,7 @@ Main screen
 
 \begin_layout Standard
 Since the application's main focus is the running part it was decided to,
- on start up, take the user directly into the screen of the activity that
+ on start up, take the user directly into the screen of the Activity that
  chooses a running session.
  This reduces the excise for the user by one click (compared to going via
  a dashboard, which is lifted in 
@@ -440,7 +440,7 @@ reference "sec:Design-choices-disc"
 \end_layout
 
 \begin_layout Standard
-To easily browse between different game modes the swipeable pattern filmstrip
+To easily browse between different game modes the swipeable pattern Filmstrip
  was chosen.
  Since filmstrip is not a standard pattern in Android it was implemented
  with
