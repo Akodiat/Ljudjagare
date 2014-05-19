@@ -605,8 +605,8 @@ footnotemark[1]
 \begin_layout Standard
 The most important feature of the action bar is perhaps, as the name suggests,
  its actions.
- The actions that are most important in the application should be put among
- the Action Buttons as in (3) in 
+ The actions that are most important in the application should be located
+ among the Action Buttons as in (3) in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ActionBar"
@@ -667,7 +667,8 @@ href{http://creativecommons.org/licenses/by/2.5/}{Creative Commons 2.5 Attributi
 
 \begin_layout Standard
 The actions that, according to the above criteria of importance, does not
- belong among the Action Buttons should be put in the overflow menu instead.
+ belong among the Action Buttons should be located in the overflow menu
+ instead.
  The overflow menu is opened by a click on the menu button (4) in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -691,18 +692,18 @@ key "actionbar2014"
 
 \begin_layout Standard
 An advantage with the Action Bar pattern is that it displays the application
- logotype (1) in 
+ logotype, (1) in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ActionBar"
 
 \end_inset
 
- which establishes the identity of the application.
- When an application has different views the application logo becomes a
- consistent identifier letting the user know which application is currently
+, which establishes the identity of the application.
+ When an application has different views the application logotype becomes
+ a consistent identifier letting the user know which application is currently
  running.
- The application logo can also have the function of an up button taking
+ The application logotype can also have the function of an up button taking
  the user one step up in the hierarchy, as is the case in (1) in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -718,8 +719,8 @@ key "actionbar2014"
 \end_inset
 
 .
- The button of the application logo may also be used to open a side menu
- called navigation drawer, which will be covered in 
+ The button of the application logotype may also be used to open a side
+ menu called navigation drawer, which will be covered in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Navigation-Drawer"
@@ -785,8 +786,8 @@ reference "fig:ActionBar"
  The Navigation Drawer is a menu that may be dragged from the left part
  of the screen to partly cover the current view.
  It is accessed by swiping inwards from the left outside part of the screen
- or by pressing the application logo as shown in the leftmost figure in
- 
+ or by pressing the application logotype as shown in the leftmost figure
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:navdrawerIcon"
