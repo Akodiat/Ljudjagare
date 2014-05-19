@@ -336,7 +336,7 @@ The database is implemented by making a Java class that inherits the SQLite
  library, then methods have been created to do operations to the database.
  These methods contains the appropriate SQL-queries that are executed on
  the database.
- For example if the application wants to add a object to the database it
+ For example if the application wants to add an object to the database it
  calls a method from our DBMS that takes the object as an argument, this
  method executes the appropriate SQL-query to the database to add a row
  to the appropriate table.
