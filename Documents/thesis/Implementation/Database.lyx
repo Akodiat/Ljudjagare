@@ -327,12 +327,12 @@ key "sqlite"
 
 .
  An embedded database means that the database is stored locally on the device
- that it is running on, this implies taht the user will only be able to
+ that it is running on, this implies that the user will only be able to
  review their running history from their own device and application.
 \end_layout
 
 \begin_layout Standard
-The database is implemented by making a java class that inherits the SQLite
+The database is implemented by making a Java class that inherits the SQLite
  library, then methods have been created to do operations to the database.
  These methods contains the appropriate SQL-queries that are executed on
  the database.
@@ -412,9 +412,9 @@ reference "er-dia"
 \end_inset
 
 ).
- A route is basically the users running session, it contains a unique identifier
+ A route is basically the users running session, containing a unique identifier
  and the date that the route started.
- Also the route saves data of the number of coins that was generated for
+ Also the route saves data on the number of coins that was generated for
  the route, this number is set by the user in the settings menu before the
  running session.
  The “Point” entity represents a specific location of the users route and
