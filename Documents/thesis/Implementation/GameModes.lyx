@@ -308,7 +308,7 @@ app
 \end_inset
 
  is designed in a modular way, making it easy to add new games.
- In the final application, however, there are only one game and one tutorial
+ In the final application, however, there is only one game and one tutorial
  implemented.
  In 
 \begin_inset CommandInset ref
@@ -346,7 +346,7 @@ reference "sec:Random-route-implementation"
  As the user moves, the navigation sound is being panorated and modulated
  (or completely exchanged) as a result of the angular offset mentioned in
  chapter 3.
- The interval between each repetition is gradually shprtened as the user
+ The interval between each repetition is gradually shortened as the user
  approaches hundred meters.
  In connection with the user passing it, the repetition interval is set
  back to default and audio feedback telling the user the distance left to
