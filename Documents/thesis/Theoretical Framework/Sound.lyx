@@ -293,6 +293,13 @@ The functionality and usability of the application depend on how the user
 
 \begin_layout Subsection
 Sound localization
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Sound-localization"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

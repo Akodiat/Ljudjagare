@@ -297,7 +297,6 @@ Finding the direction of the user
 \end_layout
 
 \begin_layout Standard
-Currently, 
 \begin_inset ERT
 status open
 
@@ -312,7 +311,7 @@ app
 
 \end_inset
 
- use the GPS bearing to decide the user direction.
+ uses GPS technology to determine the user's direction.
  A disadvantage of this is that the user needs to be in motion in order
  for the application to provide an accurate angle of the user, relative
  the sound source.
@@ -548,6 +547,36 @@ reference "sub:Main-screen"
 
  it was desired to keep the excise as low as possible when starting a run,
  which is why the dashboard was omitted.
+\end_layout
+
+\begin_layout Section
+Using sound to navigate
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Sound-localization"
+
+\end_inset
+
+ it was mentioned that the pinna is shaped differently on every person.
+ Because of this, non-invidualized HRTFs are far from suitable for everyone.
+ In Run For Life, the sound has a great impact on the user experience, placing
+ high demands on its ability to navigate the user.
+ Unfortunately, it currently suffers from being deceptive; it is difficult
+ to hear from what angle the sound is appearing from.
+ In order to make it easier for the user to perceive the correct direction,
+ we added more factors to the navigation sound, such as pitch and rate.
+ It improved the user experience to some extent, but the initial problem
+ remained.
+\end_layout
+
+\begin_layout Standard
+It is difficult to find information on what HRTF database OpenAL Soft uses,
+ but it's probably neither the newest nor the most general in terms of meaning
+ that it; its target group.
 \end_layout
 
 \begin_layout Standard
