@@ -508,7 +508,7 @@ o_{n-1}+\omega_{i}(t_{i}-t_{i-1}) & else
 This will cause the user direction to automatically adjust itself.
  Trials show that it works quite well while moving slowly, but since higher
  speeds creates more frequent adjustments and more confusion for the user
- the gyro-gps fusion is only implemented as optional in the final application.
+ the gyro-GPS fusion is only implemented as optional in the final application.
 \end_layout
 
 \end_body
