@@ -468,14 +468,25 @@ More text? Repeat directionality
 
 \begin_layout Standard
 The purpose of this bachelor project is to design and implement an Android
- application combining GPS technology and spatial audio in order to guide
- the user to a certain location, by manipulating the sound differently depending
- on the user's direction to the location.
+ application combining GPS technology with spatial audio in order to guide
+ the user to a certain location.
+ The user will be guided by manipulating the sound differently depending
+ on the user's direction and distance to the location.
 \end_layout
 
 \begin_layout Standard
-The guided sound will be implemented in a game to encourage running, thus
- intending to prevent the sedentary in the society of the present time.
+The guided sound 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+låter som att ljudet guidas...
+\end_layout
+
+\end_inset
+
+ will be implemented in a game to encourage running, thus intending to prevent
+ the sedentary in the society of the present time.
  Apart from making running into a more fun experience, the application will
  register running activity and present statistics.
  To enhance the usability of the application it will have a straightforward
