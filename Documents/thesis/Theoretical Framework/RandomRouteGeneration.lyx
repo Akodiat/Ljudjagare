@@ -358,7 +358,7 @@ key "GoogleDevelopers2014"
 
 \begin_layout Standard
 In this project the second approach is implemented and this is described
- in chapter 3, 
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Random-route-implementation"
