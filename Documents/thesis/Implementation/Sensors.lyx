@@ -366,7 +366,7 @@ key "Rocketmagnet2012"
 
 \begin_layout Standard
 However, in order to make the rotation correct around all axes, trials show
- that two of the addend requires negation.
+ that two of the addends requires negation.
 \end_layout
 
 \begin_layout Standard
@@ -444,7 +444,7 @@ v_{n}=\sum_{i=0}^{n}\omega_{i}(t_{i}-t_{i-1})
 \begin_layout Standard
 However, this method only calculates a current angle relative to a start
  angle.
- In other words, the user would clearly perceive a direction of the sound
+ In other words, the user would clearly perceive a direction that the sound
  is coming from, the sound levels updating correctly when the user is turning
  around, but the perceived direction is not the same as the one the coin
  is actually located in.
