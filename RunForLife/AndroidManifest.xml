@@ -80,7 +80,7 @@ Google Maps Android API v2, but are recommended.
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAntUo60DSK3G7I_PG5XLtD1LaeK9liquU" />
+            android:value="AIzaSyBbh-VKeW3qiIE0uNpoYHSrVqKe0PW4mAM" />
         <activity
             android:name="se.chalmers.group42.gameModes.TutorialActivity"
             android:label="@string/title_activity_tutorial"
