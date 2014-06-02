@@ -6,7 +6,6 @@ import java.util.Collections;
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.controller.RunFragment;
-import se.chalmers.group42.database.Route;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.GMapV2Direction;
@@ -15,11 +14,17 @@ import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.utils.LocationHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Html;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +39,8 @@ import com.google.android.gms.maps.model.LatLng;
 public class CoinCollectorActivity extends RunActivity {
 	public static LatLng DEFAULT_POSITION = new LatLng(58.705477, 11.990884);
 	public static int GAME_MODE_ID = 0;
+    public CheckBox dontShowAgain;
+    public static final String PREFS_NAME = "PREFERENCE";
 	//private static final int DIALOG_REALLY_EXIT_ID = 0;
 
 	private Human human; // Containing the player position and score
@@ -64,6 +71,35 @@ public class CoinCollectorActivity extends RunActivity {
 
 		// Initialize audio
 		(fx = new FXHandler()).initSound(this);
+		
+		// Showing disclaimer!
+		
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        LayoutInflater adbInflater = LayoutInflater.from(this);
+        View eulaLayout = adbInflater.inflate(R.layout.checkbox, null);
+        dontShowAgain = (CheckBox) eulaLayout.findViewById(R.id.skip);
+        adb.setView(eulaLayout);
+        adb.setTitle("Attention!");
+        adb.setMessage(Html.fromHtml("Please run with your own and others safety in mind, " +
+        		"stay aware and give way to moving vehicles at all time. " +
+        		"YOU ARE USING THIS APPLICATION AT YOUR OWN RISK."));
+        adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                String checkBoxResult = "NOT checked";
+                if (dontShowAgain.isChecked())
+                    checkBoxResult = "checked";
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("skipMessage", checkBoxResult);
+                // Commit the edits!
+                editor.commit();
+                return;
+            }
+        });
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        String skipMessage = settings.getString("skipMessage", "NOT checked");
+        if (!skipMessage.equals("checked"))
+            adb.show();
 	}
 
 	// Get the finalRoute from mapFragment when the route is calculated.
