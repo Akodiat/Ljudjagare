@@ -1077,8 +1077,8 @@ Limitations
 \begin_layout Standard
 This project will primarily focus on implementing the functionality needed
  in order to achieve the purpose.
- The application was not designed to optimize factors as energy efficiency
- and run time.
+ The application was not designed to optimize other factors such as energy
+ efficiency and security.
 \end_layout
 
 \begin_layout Section
