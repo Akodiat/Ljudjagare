@@ -321,8 +321,15 @@ To establish locations of devices, the satellites continuously send out
 PNC's (Pseudorandom Number Codes)
 \emph default
 .
- Each PNC consists of information of the satellite's position and time at
- the moment of transmission.
+ As illustrated in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PNC"
+
+\end_inset
+
+, each PNC consists of information of the satellite's position and time
+ at the moment of transmission.
  When acquiring a PNC, its travel time (
 \begin_inset Formula $\triangle t$
 \end_inset
@@ -371,6 +378,55 @@ key "Bajaj2002"
 
 .
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/PNC.eps
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PNC"
+
+\end_inset
+
+Pseudorandom Number Codes 
+\emph default
+are sent from satellites containing information about the location of the
+ satellite and the current time.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -426,7 +482,7 @@ key "Bajaj2002"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
