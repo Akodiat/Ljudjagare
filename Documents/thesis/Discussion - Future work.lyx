@@ -425,6 +425,27 @@ Database
 \end_layout
 
 \begin_layout Standard
+A way to improve Coin Collector would be to let the user select the electronic
+ beat illustrated in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sound_table"
+
+\end_inset
+
+ and described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Sound-modulation"
+
+\end_inset
+
+ so that the beat can be any melody the user would like to listen to.
+ This would probably evade the monotony of navigating to the same sound
+ every time.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 

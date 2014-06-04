@@ -464,6 +464,12 @@ key "openal_android"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Sound-modulation"
+
+\end_inset
+
 Sound modulation
 \end_layout
 
