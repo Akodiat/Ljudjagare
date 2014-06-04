@@ -303,7 +303,7 @@ app
 \end_inset
 
  kombinerar sensorerna som finns i dagens smartphones med ljud i 3D.
- Detta resulterar i en träningsapplikation med inslag av spelmoment och
+ Följande resulterar i en träningsapplikation med inslag av spelmoment och
  virtuella ljudkällor.
  Idén med att kombinera 3D-ljud med smartphonesensorer är ny och forskningen
  inom området är hittills mycket begränsad.
@@ -313,8 +313,8 @@ app
 \begin_layout Standard
 
 \lang swedish
-Detta projekt försöker kombinera resultaten inom 3D-ljud som gjorts av Lawitzki
- (2012) med spelelement från applikationer som 
+Projektet kombinerar resultaten inom 3D-ljud som gjorts av Lawitzki (2012)
+ med spelelement från applikationer som 
 \emph on
 Zombies, Run!
 \emph default
@@ -328,15 +328,15 @@ head related transfer functions
 .
  För att kunna få en riktning även när användaren är stillastående gjordes
  ett försök att använda gyroskopsensorn, men ljudet blev då ofta mer förvirrande
- än när bara använda GPS-sensorn användes.
+ än när bara GPS-sensorn användes.
  
 \end_layout
 
 \begin_layout Standard
 
 \lang swedish
-Projektet resulterade i en träningsapplikation med ett tilltalande användargräns
-snitt.
+Resultatet av projektet är en träningsapplikation med ett tilltalande användargr
+änssnitt.
  Applikationen innehåller spelmoment och hoppas kunna uppmuntra användarna
  till mer regelbunden träning.
  Detta görs genom att generera en slumpmässig löprunda innehållande kontroller
