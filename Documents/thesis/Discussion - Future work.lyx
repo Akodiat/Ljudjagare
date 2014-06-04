@@ -293,7 +293,14 @@ Future work: efficiency, modularity and prospects
 \end_layout
 
 \begin_layout Standard
-The application was not designed with any emphasis on efficiency and the
+As described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Limitations"
+
+\end_inset
+
+, the application was not designed with any emphasis on efficiency and the
  code can probably be improved a lot in that manner.
  The rendering in the tutorial mode is sometimes slow; some saved running
  logs take a lot of time to open and the application drains quite a lot
