@@ -307,8 +307,8 @@ Translate location data obtained with sensors into navigation instructions
 \end_layout
 
 \begin_layout Standard
-This was accomplished using the GPS sensor and feeding the bearing and location
- data into the HTRF-framework described in 
+This was accomplished by using the GPS sensor and feeding the bearing and
+ location data into the HTRF-framework described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Sound-in-an-android-application"
@@ -339,7 +339,7 @@ Motivate users to exercise by implementing game elements.
 \end_layout
 
 \begin_layout Standard
-Game elements were implemented in an initial version as the game mode 
+Game elements were implemented as the game mode 
 \emph on
 Coin Collector 
 \emph default
