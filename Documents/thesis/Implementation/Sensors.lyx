@@ -325,15 +325,28 @@ g{}_{z}
 \end{Bmatrix}$
 \end_inset
 
- is the raw gyroscope readings from the device and 
+ is the raw gyroscope readings from the device (as depicted in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gyroCoord"
+
+\end_inset
+
+) and 
 \begin_inset Formula $\boldsymbol{\mathbb{\mathbf{a}}}=\begin{Bmatrix}a{}_{x}\\
 a{}_{y}\\
 a{}_{z}
 \end{Bmatrix}$
 \end_inset
 
- is the raw accelerometer readings, the scalar product of the two vectors,
- 
+ is the raw accelerometer readings (as depicted in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Coordinate-system- Accelerometer"
+
+\end_inset
+
+), the scalar product of the two vectors, 
 \begin_inset Formula $\mathbf{g}\times\mathbf{a}$
 \end_inset
 
