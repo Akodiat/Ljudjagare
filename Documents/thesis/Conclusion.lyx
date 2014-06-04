@@ -399,13 +399,13 @@ This project concluded in a fully functional Android exercise application
  The final application suffers from the location data not being accurate
  enough, in the sense that it does not track the user's movements in a desirable
  way.
- That, in combination with the audio core not being precise enough, occasionally
- makes it difficult for the user to navigate.
+ That,w in combination with the audio core not being precise enough, occasionall
+y makes it difficult for the user to navigate.
  However, data gathered from the user evaluation indicates a generally positive
  attitude towards the application.
- Ultimately, the application, as well as the project, can be concluded to
- be a success.
- The remaining issues can merely be regarded as a positive development potential.
+ Ultimately, the application, as well as the project, can be considered
+ successful in that it meets the requirements established at the start.
+ 
 \end_layout
 
 \begin_layout Standard
