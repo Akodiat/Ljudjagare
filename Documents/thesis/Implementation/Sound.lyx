@@ -280,6 +280,12 @@ thepage
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sound-in-an-android-application"
+
+\end_inset
+
 Sound in an Android application
 \end_layout
 

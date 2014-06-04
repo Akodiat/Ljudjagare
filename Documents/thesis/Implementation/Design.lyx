@@ -283,6 +283,12 @@ thepage
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Graphical-design-choices-and-usability"
+
+\end_inset
+
 Graphical design choices and usability
 \end_layout
 

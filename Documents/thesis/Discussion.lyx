@@ -296,6 +296,102 @@ This section reflects upon the findings of the project: how to use sensor
  from a specific direction.
 \end_layout
 
+\begin_layout Standard
+Initially, the completion of the problem assignment will be discussed.
+ The following goals where set up for the project.
+\end_layout
+
+\begin_layout Paragraph
+Translate location data obtained with sensors into navigation instructions
+ with sound.
+\end_layout
+
+\begin_layout Standard
+This was accomplished using the GPS sensor and feeding the bearing and location
+ data into the HTRF-framework described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sound-in-an-android-application"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Register running activity and present its statistics.
+\end_layout
+
+\begin_layout Standard
+As described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Database:-Design-and"
+
+\end_inset
+
+, the user is able to view past runs as statistics are saved in an SQLite
+ database.
+\end_layout
+
+\begin_layout Paragraph
+Motivate users to exercise by implementing game elements.
+\end_layout
+
+\begin_layout Standard
+Game elements were implemented in an initial version as the game mode 
+\emph on
+Coin Collector 
+\emph default
+described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Coin-collectoraaaa"
+
+\end_inset
+
+.
+ Future possible game modes will also be covered in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Future-work:-efficiency,"
+
+\end_inset
+
+.
+ Coin Collector was received positively by testers as described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:User-evaluation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Create a graphical user interface that is straightforward and easy to understand.
+\end_layout
+
+\begin_layout Standard
+Effort has been put into creating a user interface with good usability,
+ as is described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Graphical-design-choices-and-usability"
+
+\end_inset
+
+ and which will be later discussed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Design-choices-disc"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Finding the direction of the user
 \end_layout
