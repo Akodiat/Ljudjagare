@@ -306,15 +306,6 @@ Database management system
 \end_layout
 
 \begin_layout Standard
-The Database Management System (DBMS) is the system used for the application
- to communicate with the database.
- It makes the necessary request to the database using Structured Query Language
- (SQL).
- The DBMS handles request such as adding or retrieving data from the database.
- 
-\end_layout
-
-\begin_layout Standard
 The database that was implemented uses the DBMS SQLite, which is a public
  domain system that is supported for use in Android development.
  Since SQLite requires no human support it is well suitable when implementing
@@ -480,6 +471,9 @@ name "table-1"
 \end_inset
 
 Visualization of the tables in the database.
+ Note that the values in the cells are random values, the purpose of this
+ is to describe the tables of the database as well as the relationships
+ between them.
  
 \end_layout
 
@@ -513,9 +507,16 @@ reference "er-dia"
 \end_inset
 
  was implemented.
- We can also see that the finished routes are stored in a table with the
- additional data about time and distance.
- 
+ While all routes, both uncompleted and completed, are stored in the 
+\begin_inset Quotes eld
+\end_inset
+
+Route
+\begin_inset Quotes erd
+\end_inset
+
+ table, the finished routes are stored in a separate table with additional
+ columns.
 \end_layout
 
 \begin_layout Subsection

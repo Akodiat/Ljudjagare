@@ -415,5 +415,15 @@ key "database2009"
  
 \end_layout
 
+\begin_layout Standard
+To create and manage the database a Database Management Systems (DBMS) needs
+ to be used.
+ The DBMS is a system that allows the application to communicate with the
+ database, it makes the necessary requests to the database using Structured
+ Query Language (SQL).
+ The DBMS handles the requests such as adding and retrieving data from the
+ database.
+\end_layout
+
 \end_body
 \end_document
