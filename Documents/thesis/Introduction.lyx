@@ -427,8 +427,8 @@ The purpose of this bachelor project is to design and implement an Android
 \begin_layout Standard
 By introducing exciting elements to classic exercise, the application hopes
  to encourage physical activity and thus prevent sedentary amongst its users.
- Apart from making running into a fun experience, the application will register
- running activity and present statistics.
+ Apart from making running into an enjoyable experience, the application
+ will register running activity and present statistics.
  To enhance the usability of the application it will have a straightforward
  graphical user interface that is easy to understand.
  
@@ -446,7 +446,7 @@ The development process can be divided into two major phases - the first
 \end_layout
 
 \begin_layout Standard
-An agile development method was used by having meetings everyday and working
+An agile development method was used by having daily meetings and working
  together most of the time.
  This way problems were found at an early stage and could be solved directly.
  The tools used during the development are described below.
@@ -478,7 +478,7 @@ To simplify the collaboration process, the application was developed using
  Git makes it possible for groups of people to edit the same documents simultane
 ously without the work getting overwritten.
  To host projects on Github for free, its content needs to be visible for
- others to read
+ others to read 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GitHub2014"
@@ -510,16 +510,9 @@ Android's Software Development Kit (SDK) does not currently provide any
 
 \begin_layout Standard
 The application has been developed for devices using platform version 4.0
- and above, corresponding to an API level of 15.
+ and above, corresponding to an API level of 14.
  It offers many functionalities and is compatible with majority of the devices
- on the market today, see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Visualization-of-the"
-
-\end_inset
-
-.
+ on the market today, see Table 1.1.
  Statistics from the beginning of May 2014 shows that platform version 4.0
  will cover more than 80% of the devices 
 \begin_inset CommandInset citation
@@ -1063,7 +1056,7 @@ Programming language
 \end_layout
 
 \begin_layout Standard
-Developing an application using the ADK plugin requires most of the application
+Developing an application using the ADT plugin requires most of the application
  to be written in Java 
 \begin_inset CommandInset citation
 LatexCommand cite

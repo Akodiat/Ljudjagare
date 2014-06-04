@@ -290,13 +290,21 @@ Sound in an Android application
 \end_layout
 
 \begin_layout Standard
-The 
+The API
 \emph on
-APIs (Application Programming Interfaces)
+s (
+\emph default
+Application Programming Interfaces
+\emph on
+)
 \emph default
  provided by Android as a part of the 
 \emph on
-SDK (Software Development Kit)
+SDK (
+\emph default
+Software Development Kit
+\emph on
+)
 \emph default
  provides several classes for handling audio, like AudioTrack, MediaPlayer
  and SoundPool.
@@ -312,9 +320,13 @@ key "ndk_beginners_guide"
  To use binaural audio effects in an Android application, one needs to access
  operations that are not available in the SDK.
  Fortunately, Android provides an API for accessing low level functions
- called 
+ called NDK
 \emph on
-NDK (Native Development Kit)
+ (
+\emph default
+Native Development Kit
+\emph on
+)
 \emph default
  
 \begin_inset CommandInset citation
@@ -504,8 +516,14 @@ key "reason"
 \end_inset
 
 .
- Sine waves are generally seen as neutral and gentle sounds, making them
- a good fit for applications like 
+ Sine waves are generally seen as neutral and gentle sounds 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sine_reference"
+
+\end_inset
+
+, making them a good fit for applications like 
 \begin_inset ERT
 status open
 
@@ -517,13 +535,6 @@ app
 \backslash
 
 \end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "sine_reference"
 
 \end_inset
 

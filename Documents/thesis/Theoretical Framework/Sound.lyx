@@ -351,8 +351,8 @@ reference "fig:hrtf"
 .
  Naturally, the properties of the pinna are of great value when trying to
  recreate a natural environment using only two speakers.
- Such environments can be very useful when simulating virtual realities
- (like in 3D games and architecture) 
+ Such environments can be very useful when simulating virtual realities,
+ like in 3D games and architecture 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "acoustics_and_audio"
@@ -439,7 +439,7 @@ key "hrtf_article"
 .
  Ways to capture data in the best way possible, hence overcoming the measuring
  problems, are currently being developed by Spatially Oriented Format for
- Acoustics (SOFA) 
+ Acoustics 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SOFA"
@@ -452,7 +452,7 @@ key "SOFA"
 \end_layout
 
 \begin_layout Standard
-At present, very few studies seems to have been done on sound localization
+At present, very few studies seems to have been conducted on sound localization
  through spatial audio.
  A study made on four sighted individuals showed that the average error
  in localizing sound was 8° 
@@ -480,10 +480,8 @@ key "problems_3D"
  Experiments were made by playing short sounds spatialized using both individual
 ized and generic HRTFs, with the virtual sound's position only moving in
  the vertical plane.
- The study suggests not only that the accuracy of the elevation perception
- decreases as the virtual sound is moved further up and down, but also that
- the HRTFs being used has a great impact on the elevational accuracy (the
- individualized HRTFs provided greater performance).
+ The study shows that the accuracy of the elevation perception decreases
+ as the virtual sound is moved further up and down.
 \end_layout
 
 \begin_layout Standard

@@ -289,11 +289,11 @@ name "chap:Result"
 
 \end_inset
 
-Result: Application Simulating Sound Sources when running
+Result: Application Simulating Sound Sources while running
 \end_layout
 
 \begin_layout Standard
-This bachelor thesis has resulted in an Android application using spatial
+This bachelor project has resulted in an Android application using spatial
  sound to guide the user.
  The following chapter presents its result and describes the final application
  and its views.
@@ -368,7 +368,7 @@ The main screen and its navigation drawer
 
 \begin_layout Description
 1 The three horizontal lines indicate that a hidden menu can be accessed
- by sweeping from the left or by pressing the icon, as mentioned in 
+ by swiping from the left or by pressing the icon, as mentioned in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Navigation-Drawer"
