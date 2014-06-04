@@ -1071,6 +1071,17 @@ key "Developer2014a"
 \end_layout
 
 \begin_layout Section
+Limitations
+\end_layout
+
+\begin_layout Standard
+This project will primarily focus on implementing the functionality needed
+ in order to achieve the purpose.
+ The application was not designed to optimize factors as energy efficiency
+ and run time.
+\end_layout
+
+\begin_layout Section
 Report Outline 
 \end_layout
 
