@@ -295,8 +295,11 @@ Result: Application Simulating Sound Sources while running
 \begin_layout Standard
 This bachelor project has resulted in an Android application using spatial
  sound to guide the user.
+ It is currently available on Google Play for beta testing, named Run For
+ Life.
  The following chapter presents its result and describes the final application
  and its views.
+ 
 \end_layout
 
 \begin_layout Section
@@ -776,10 +779,6 @@ Settings view
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
