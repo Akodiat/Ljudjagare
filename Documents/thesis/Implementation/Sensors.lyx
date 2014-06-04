@@ -355,9 +355,9 @@ key "Rocketmagnet2012"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \mathbf{g}\times\mathbf{a}=(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})+(g{}_{z}*a{}_{z})
-\end{equation}
+\]
 
 \end_inset
 
@@ -371,9 +371,9 @@ However, in order to make the rotation correct around all axes, trials show
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \omega=-(g{}_{x}*a{}_{x})+(g{}_{y}*a{}_{y})-(g{}_{z}*a{}_{z})
-\end{equation}
+\]
 
 \end_inset
 
@@ -416,9 +416,9 @@ Each sensor value update event also has a time stamp,
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \triangle v_{n}=\omega_{n}*\triangle t_{n}
-\end{equation}
+\]
 
 \end_inset
 
@@ -432,9 +432,9 @@ In order to calculate the current direction (at the time of the n:th element)
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 v_{n}=\sum_{i=0}^{n}\omega_{i}(t_{i}-t_{i-1})
-\end{equation}
+\]
 
 \end_inset
 
@@ -492,12 +492,12 @@ This can however be solved by involving the GPS bearing.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 o_{n}=\begin{cases}
 \beta_{n} & if\: new\: GPS\: bearing\\
 o_{n-1}+\omega_{i}(t_{i}-t_{i-1}) & else
 \end{cases}
-\end{equation}
+\]
 
 \end_inset
 
