@@ -388,7 +388,7 @@ reference "fig:HotelExample"
 \begin_layout Standard
 The first step when designing a database is to make a visual representation
  of it.
- This can be done with a so called Entity/Relationship-Diagram(ER-Diagram).
+ This can be done with a so called ER-Diagram (Entity/Relationship-Diagram).
  An ER-Diagram consists of three main parts: entities, relationships and
  attributes 
 \begin_inset CommandInset citation
@@ -416,11 +416,11 @@ key "database2009"
 \end_layout
 
 \begin_layout Standard
-To create and manage the database a Database Management Systems (DBMS) needs
+To create and manage the database a DBMS (Database Management Systems) needs
  to be used.
  The DBMS is a system that allows the application to communicate with the
- database, it makes the necessary requests to the database using Structured
- Query Language (SQL).
+ database, it makes the necessary requests to the database using SQL (Structured
+ Query Language).
  The DBMS handles the requests such as adding and retrieving data from the
  database.
 \end_layout
