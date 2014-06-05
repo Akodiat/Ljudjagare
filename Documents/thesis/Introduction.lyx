@@ -1070,6 +1070,25 @@ key "Developer2014a"
  The database was created and managed using the programming language SQL.
 \end_layout
 
+\begin_layout Subsection
+Interaction design process
+\end_layout
+
+\begin_layout Standard
+To design a usable application, the interaction design process was applied.
+ This process consists of establishing requirements, designing alternatives
+ and creating prototypes and also conducting user evaluations on test persons
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rogers2013"
+
+\end_inset
+
+.
+ 
+\end_layout
+
 \begin_layout Section
 Limitations
 \end_layout
