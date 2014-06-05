@@ -316,8 +316,7 @@ The sound is balanced in your ear to imitate that the sound is coming from
 
 \begin_layout Standard
 To easier tell if you are heading in the right direction the playback speed
- (uppspelningshastighet) is incremented the closer you come to every one
- hundred meter(Förklara hur det fungerar för testpersonen).
+ is incremented the closer you come to every one hundred meter.
  For every hundred meter you pass you are provided with feedback of how
  far it is to the sounds source, for example “500 meters”.
  
