@@ -318,7 +318,7 @@ key "Bajaj2002"
 To establish locations of devices, the satellites continuously send out
  
 \emph on
-PNC's (Pseudorandom Number Codes)
+PNCs (Pseudorandom Number Codes)
 \emph default
 .
  As illustrated in 
@@ -328,7 +328,7 @@ reference "fig:PNC"
 
 \end_inset
 
-, each PNC consists of information of the satellite's position and time
+, each PNC consists of information of the satellite's location and time
  at the moment of transmission.
  When acquiring a PNC, its travel time (
 \begin_inset Formula $\triangle t$
@@ -387,10 +387,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename Figures/PNC.eps
 	width 100text%
@@ -411,16 +407,13 @@ name "fig:PNC"
 
 Pseudorandom Number Codes 
 \emph default
-are sent from satellites containing information about the location of the
- satellite and the current time.
+are sent from satellites and picked up by GPS receivers.
+ A PNC contains information about the satellite's location and time at the
+ moment of transmission.
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 

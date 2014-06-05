@@ -639,6 +639,7 @@ key "Lehtimaki2013"
 .
  A final criteria might be whether the action may work as a good selling
  point of the application, as for example if it represents a neat feature
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "actionbar2014"
@@ -747,7 +748,7 @@ reference "sub:Navigation-Drawer"
 
 ) with more navigation options 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "Lehtimaki2013"
 
 \end_inset
@@ -791,7 +792,7 @@ key "NavigationDrawer2014"
 
  suggests that actions should be put to the right and navigation to the
  left.
- However there is a risk that putting navigational options into the action
+ However, there is a risk that putting navigational options into the action
  bar, as in (4) in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -819,7 +820,7 @@ reference "fig:navdrawerIcon"
 
 \end_inset
 
-
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "NavigationDrawer2014"
@@ -925,8 +926,8 @@ key "Lehtimaki2013"
 
 .
  The Dashboard pattern used to be one of Google’s official recommendations
- but has been more or less replaced by the Navigation Drawer since it provides
- more direct access throughout an application.
+ but has, more or less, been replaced by the Navigation Drawer since it
+ provides more direct access throughout an application.
  The avoidance of the Dashboard pattern is especially effective at an applicatio
 n’s start-up since the user then can be taken directly into the view that
  is mostly used instead of selecting it.
@@ -947,7 +948,7 @@ Swipe Views
 \begin_layout Standard
 As mentioned above, the Navigation Drawer provides quick navigation between
  different views.
- However there are times when functionality that logically belongs to the
+ However, there are times when functionality that logically belongs to the
  same view does not fit into a single screen.
  This can be solved by putting the different parts on different tabs that
  the user can swipe horizontally between 
