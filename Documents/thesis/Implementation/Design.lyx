@@ -305,7 +305,14 @@ key "Rogers2013"
 .
  To assure this the process of interaction design was applied.
  This process consists of establishing requirements, designing alternatives
- and prototyping and also conducting user evaluations.
+ and creating prototypes and also conducting user evaluations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rogers2013"
+
+\end_inset
+
+.
  The main component of this process was to come up with the graphical design.
  It was however also important to evaluate other parts as the sound perception
  and if the game was experienced as fun or not.
