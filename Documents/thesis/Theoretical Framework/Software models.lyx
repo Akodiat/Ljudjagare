@@ -287,7 +287,15 @@ Structure of Android applications
 \end_layout
 
 \begin_layout Standard
-The core of Android applications is the concept 
+To understand the implementation in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Implementation"
+
+\end_inset
+
+, the different concepts of Android applications will here be explained.
+ The core of Android applications is the concept 
 \emph on
 Activity
 \emph default
@@ -328,7 +336,7 @@ Layouts may also belong to a so called
 \emph on
 Fragment
 \emph default
- which basically is a Child-Activity on which parts of the content of the
+ which basically is a Child-Activity in which parts of the content of the
  owning Activity can be put.
  Fragments are modular sections of an Activity meaning that they are flexible
  in a way that lets them adapt to the current screen size 
@@ -340,8 +348,8 @@ key "Fragments2014"
 
 .
  If an Activity contains one Fragment displaying a list and one Fragment
- displaying a detailed view of a list element the small screen on a mobile
- device might only show one of these Fragments while a tablet with a larger
+ displaying a detailed view of a list element, the small screen on a mobile
+ device might only show one of these Fragments, while a tablet with a larger
  screen might show them both at the same time.
  This way the same code can be used no matter what device is intended to
  run the application.
