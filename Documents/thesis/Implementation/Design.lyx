@@ -347,11 +347,7 @@ key "SixtoStart2014"
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-These applications are in some sense their opposites.
+ These applications are in some sense their opposites.
  
 \emph on
 Endomondo
@@ -589,10 +585,6 @@ Horizontal swiping in the Filmstrip.
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -681,8 +673,8 @@ The bar on the bottom of the screen showing: a connected GPS icon and a
 The tendency of reading from left to right, as mentioned before, is well
  taken in account in the bar to make sure that a possible disconnection
  is discovered before the next button is pressed.
- To let the user know that the next button takes the user to the next view
- it is implemented as a Prominent Done Button.
+ To let the user know that the next screen is reached by clicking the next
+ button, it is implemented as a Prominent Done Button.
 \end_layout
 
 \begin_layout Paragraph
@@ -868,8 +860,8 @@ Another problem that became evident during the user testing was that there
  enabled.
  In one of the user testings the phone got its location via the mobile network,
  which is very imprecise compared to GPS.
- However the application still tried making sense of the location and thus
- provided the user with random direction noises.
+ However the application still tried to make sense of the location and thus
+ provided the user with, seemingly, random direction noises.
  This problem was fixed by not letting a user start a run if GPS connection
  was missing.
 \end_layout
