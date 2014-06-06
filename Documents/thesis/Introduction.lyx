@@ -1149,14 +1149,28 @@ reference "chap:Theoretical-Framework"
 \end_layout
 
 \begin_layout Standard
-Result (
+The last parts of the report consist of the result (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Result"
 
 \end_inset
 
-) consists of the result, discussion and the conclusion.
+), discussion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Discussion"
+
+\end_inset
+
+ and the conclusion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Conclusion"
+
+\end_inset
+
+.
  It begins by describing the end product, that is the application.
  Thereafter, the result along with the entire design and implementation
  process is discussed.

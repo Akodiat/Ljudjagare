@@ -284,6 +284,13 @@ thepage
 
 \begin_layout Chapter
 Conclusion
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Conclusion"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
