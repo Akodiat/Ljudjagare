@@ -423,6 +423,7 @@ reference "par:Swipe-Views"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -433,7 +434,7 @@ status open
 \begin_inset Graphics
 	filename Figures/nav_draw.png
 	lyxscale 40
-	width 40page%
+	width 40text%
 
 \end_inset
 
@@ -550,6 +551,7 @@ key "Adpater2014a"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -560,7 +562,7 @@ status open
 \begin_inset Graphics
 	filename Figures/swipe.png
 	lyxscale 40
-	width 40page%
+	width 30text%
 
 \end_inset
 
@@ -623,6 +625,7 @@ key "Tidwell2011"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -633,7 +636,7 @@ status open
 \begin_inset Graphics
 	filename Figures/bar.png
 	lyxscale 40
-	width 40page%
+	width 30text%
 
 \end_inset
 
@@ -708,6 +711,7 @@ reference "fig:tabss"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -717,7 +721,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename Figures/tabs.png
-	width 40page%
+	lyxscale 50
+	width 30text%
 
 \end_inset
 
