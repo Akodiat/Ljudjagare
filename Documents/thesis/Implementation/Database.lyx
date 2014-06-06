@@ -297,8 +297,8 @@ This subsection describes how the database was designed and thereby implemented
  in the application to allow the information about the runs to be stored
  in a way so that it can be retrieved and used in the future.
  It mentions both the system that manages the functionality of the database
- as well as a visual representation of the design and the tables that tables
- it consists of.
+ as well as a visual representation of the design and the tables that the
+ database consists of.
 \end_layout
 
 \begin_layout Subsection
