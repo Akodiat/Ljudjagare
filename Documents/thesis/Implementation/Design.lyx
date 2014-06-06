@@ -471,8 +471,8 @@ Quick navigation through the Navigation Drawer.
 \begin_layout Standard
 The History and Help Fragment were both designed with the intention of being
  as simple and intuitive as possible; the History Fragment being a list
- of clickable previously completed runs and the Help Fragment being a instructio
-nal page with sample sounds to obtain a better understanding of the concept.
+ of clickable previously completed runs and the Help Fragment being an instructi
+onal page with sample sounds to obtain a better understanding of the concept.
  The Main Fragment however has a lot of interesting design components which
  will be explained below.
 \end_layout
@@ -492,7 +492,7 @@ Since the application's main focus is the running part it was decided to,
  on start up, take the user directly into the screen of the Activity that
  chooses a running session.
  This reduces the excise for the user by one click (compared to going via
- a dashboard, which is lifted in 
+ a Dashboard, which is lifted in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Design-choices-disc"
@@ -610,7 +610,7 @@ key "Tidwell2011"
 
 \end_inset
 
- has been taken in account to make sure the user gets to this bar after
+ has been taken in account to make sure that the user gets to this bar after
  choosing game mode.
  The icons are symbols notifying the user whether the GPS and headphones
  are connected or not.
@@ -763,7 +763,7 @@ The bar from the Main Activity also appears in the Run Activity to make
  To motivate the user to keep running, a progress bar which increases with
  every coin taken, is displayed at the bottom of the Run Fragment.
  The user may also view time, distance, speed and pace in the Run Fragment
- to get assure that the logging of the run is taking place.
+ to get assured that the logging of the run is taking place.
  
 \end_layout
 
@@ -819,7 +819,7 @@ User evaluation
 
 \begin_layout Standard
 To make sure that the application was usable, understood by users and filled
- the requirement of being fun, user evaluation was done to receive feedback
+ the requirement of being fun, a user evaluation was done to receive feedback
  on what to improve.
  The tasks and questionnaires are attached in 
 \begin_inset CommandInset ref
@@ -876,7 +876,7 @@ Regarding the instructional sounds of a run most of the users understood
  in what direction to run.
  Some found it hard in the beginning but understood it after getting it
  explained and tried out.
- This insight led us to implement the the tutorial and a help fragment,
+ This insight led us to implement the the Tutorial and a Help Fragment,
  which was hinted about at the very first start up of the application.
 \end_layout
 
@@ -899,8 +899,8 @@ techno music
 \begin_layout Standard
 In two of the tests a coin ended up in a private property and inside the
  Liseberg theme park.
- These kinds of errors are hard to adjust and will discussed further in
- future work.
+ These kinds of errors are hard to adjust and will be discussed further
+ in future work.
 \end_layout
 
 \begin_layout Standard

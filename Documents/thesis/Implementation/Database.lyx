@@ -526,13 +526,13 @@ Using the data
 \begin_layout Standard
 The purpose of the database is that it should be possible to recreate a
  previously saved route in the future.
- From the Point table the latitudes and longitudes associated with a route
+ From the point table the latitudes and longitudes associated with a route
  can be extracted and used to draw the user's running path on a map.
- Distance and time is retrieved from the FinishedRoute table and with that
- information we can calculate the average speed and pace of the run.
- With the locations from the Coin table the coins are drawn on top of the
+ Distance and time is retrieved from the finished route table and with that
+ information the average speed and pace of the run can be calculated.
+ With the locations from the coin table the coins are drawn on top of the
  path on the map to visualize the positions where every coin was collected.
- The information in the Coin table is also used to display a visible table
+ The information in the coin table is also used to display a visible table
  of the exact time and distance passed when each coin was retrieved.
  Since all the the routes are stored with the date that they were created
  on, a neat list of all finished runs is also easily displayed for the user
@@ -567,9 +567,9 @@ name "fig:oldrun"
 
 \end_inset
 
-A display of an old run, where the $ symbols shows the location of every
- collected checkpoint and the red line is all the GPS data from the users
- running session.
+A display of a finished run, where the $ symbols shows the location of every
+ collected coin and the red line is all the GPS data from the users running
+ session.
 \end_layout
 
 \end_inset
@@ -586,14 +586,14 @@ A display of an old run, where the $ symbols shows the location of every
 With this information the user can for example view their average speed
  from a run finished some weeks back.
  Another useful feature is if the user discovered a new great running route,
- for example like 
+ as the one in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:oldrun"
 
 \end_inset
 
-, by using the application and wants to run it again.
+, and wants to run it again.
  In that case the user can go back to that run through the history and view
  which path was taken to be able to run it again.
 \end_layout
