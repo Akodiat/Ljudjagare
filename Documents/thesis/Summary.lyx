@@ -131,7 +131,11 @@ c, theoretical or artistic gap is your research filling?
 
 \begin_layout Standard
 This report describes the development of an exercise application for Android
- smartphones, called Run For Life.
+ smartphones, called 
+\emph on
+Run For Life
+\emph default
+.
  It combines the sensors found in present day smartphones with spatial audio
  feedback, creating an exercise application with virtual sound sources.
  The idea of combining spatial audio with smartphone sensors is new and
@@ -286,7 +290,11 @@ thispagestyle{empty}
 
 \lang swedish
 Denna rapport beskriver utvecklingen av en träningsapplikation för smartphones
- med operativsystemet Android, kallad Run For Life.
+ med operativsystemet Android, kallad 
+\emph on
+Run For Life
+\emph default
+.
  
 \begin_inset ERT
 status open
