@@ -313,7 +313,23 @@ app
 \begin_layout Standard
 
 \lang swedish
-Projektet kombinerar resultaten inom 3D-ljud som gjorts av Lawitzki (2012)
+Projektet kombinerar resultaten inom 3D-ljud som gjorts av 
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citeasnoun{Lawitzki2012}
+\end_layout
+
+\end_inset
+
+
+\lang swedish
  med spelelement från applikationer som 
 \emph on
 Zombies, Run!
