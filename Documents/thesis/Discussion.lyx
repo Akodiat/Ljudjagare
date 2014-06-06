@@ -651,7 +651,7 @@ key "Lehtimaki2013"
  In Run for Life a splash screen would probably take almost as long time
  to load as the application's start screen, which would make it inefficient.
  A solution was making the start screen light weight and low in its demanding
- of resources
+ of resources 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -668,7 +668,7 @@ At first the
 \emph on
 dashboard 
 \emph default
-pattern
+pattern 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
