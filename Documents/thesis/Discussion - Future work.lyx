@@ -318,14 +318,11 @@ Instead of efficiency however, the application has from the beginning been
  finished, is that the sometimes extensive distance to the sound source
  makes volume variation relative to distance impractical; if it is too far
  away it is impossible to hear.
- In Coin Collector this is solved by using frequency to indicate distance
- (as explained in 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Reference here
-\end_layout
+ In Coin Collector this is solved by using the rate of the sound to indicate
+ distance (as explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Sound-modulation"
 
 \end_inset
 
