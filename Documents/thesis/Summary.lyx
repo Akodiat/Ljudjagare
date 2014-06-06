@@ -351,13 +351,11 @@ head related transfer functions
 \begin_layout Standard
 
 \lang swedish
-Resultatet av projektet är en träningsapplikation med ett tilltalande användargr
-änssnitt.
- Applikationen innehåller spelmoment och hoppas kunna uppmuntra användarna
- till mer regelbunden träning.
+Applikationen innehåller spelmoment och hoppas kunna uppmuntra användarna
+ till en mer regelbunden träning.
  Detta görs genom att generera en slumpmässig löprunda innehållande kontroller
- (virtuella ljudkällor) och vägleda användaren i rätt riktning mot dessa
- kontroller, med hjälp av ljud.
+ (virtuella ljudkällor) och med hjälp av ljus vägleda användaren i rätt
+ riktning mot dessa kontroller.
  
 \begin_inset ERT
 status open
@@ -374,6 +372,8 @@ app
 \end_inset
 
  gör det också möjligt för användaren att se historik om sina tidigare löprundor.
+ Mycket tid har lagts på att utforma ett användargränssnittet som ska vara
+ tilltalande och användarvänligt.
  
 \end_layout
 
