@@ -607,7 +607,7 @@ name "fig:random_route_map"
 
 An example of an random route, generated from the random route algorithm.
  The blue dot is the location of the user and the yellow marker is the location
- of the first check point.
+ of the first checkpoint.
 \end_layout
 
 \end_inset
