@@ -303,8 +303,8 @@ key "NCOSBPNT2014"
 
 .
  The 24 satellites that are being used for this are situated in six different
- orbits circling the earth in a manner that assures visibility of at least
- five of them no matter of time and location on the earth 
+ orbits circling the Earth in a manner that assures visibility of at least
+ five of them no matter of time and location on the Earth 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bajaj2002"
@@ -320,6 +320,13 @@ To establish locations of devices, the satellites continuously send out
 \emph on
 PNCs (Pseudorandom Number Codes)
 \emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bajaj2002"
+
+\end_inset
+
 .
  As illustrated in 
 \begin_inset CommandInset ref
@@ -369,14 +376,7 @@ reference "eq:distance1"
 
 \end_inset
 
-) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
-
-\end_inset
-
-.
+).
  
 \end_layout
 
