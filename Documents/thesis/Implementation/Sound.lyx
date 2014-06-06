@@ -529,24 +529,9 @@ key "sine_reference"
 
 \end_inset
 
-, making them a good fit for applications like 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-app
-\backslash
-
-\end_layout
-
-\end_inset
-
-.
- Apart from from being completely free of modulations on frequency and amplitude
-, it does not contain overtones.
+, making them a good fit for applications like Run For Life.
+ Apart from being completely free of modulations on frequency and amplitude,
+ it does not contain overtones.
  It is in a sense 
 \begin_inset Quotes eld
 \end_inset
