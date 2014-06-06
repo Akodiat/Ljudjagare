@@ -434,7 +434,7 @@ app
  Furthermore, the GPS cannot detect the user’s head movements; something
  which lowers the sound perception.
  An example of this would be if the user runs in a certain direction and
- turn the head 90 degrees.
+ turns the head 90 degrees.
  Then this will not affect how the sound is played back.
  
 \end_layout
@@ -444,7 +444,7 @@ The great advantage with using the GPS bearing was however that it allows
  users to wear their phones in any way they prefer.
  This was something that this project required, as it seemed more realistic
  that the users would run with their phones in a pocket or in a sports bracelet,
- than that they would attach the phone to its head or carry it in their
+ than that they would attach the phone to their head or carry it in their
  hand like a compass.
  Hence, while a firmly attached phone would have made the user orientation
  a lot more accurate, it would be impractical for this project.
@@ -502,7 +502,7 @@ reference "sec:Sensor-fusion"
 \end_layout
 
 \begin_layout Standard
-Another benefit from using sensor fusion is that it capture the sometimes
+Another benefit from using sensor fusion is that it captures the sometimes
  bad accuracy from the GPS.
  The GPS might temporary lose its connection and by using the values from
  other sensors, the loss can be compensated and the application can be used
@@ -578,7 +578,7 @@ reference "sec:Random-route-implementation"
  taken into consideration.
  Different approaches was evaluated in order to make this method viable.
  The basic and most important aspect to this method was to have an accurate
- map with an corresponding coordinate system attach to it.
+ map with a corresponding coordinate system attached to it.
  Different maps was considered, for example Google Maps
 \begin_inset Foot
 status open
@@ -602,11 +602,12 @@ http://www.openstreetmap.org/
 .
  The hard part was to extract the colour from the interesting location.
  This could be done by taking a print screen of the map and analyze the
- image with an algorithm that determine the colour of the location.
- There might also be functions available from the map-providers and by sending
- a request to the them receive a response containing the colour of the location.
- This problem was never solved because the idea of using Google Maps and
- its functions to find directions was now invented.
+ image with an algorithm that determines the colour of the location.
+ There might also be functions available from the map-providers by sending
+ a request to them and receiving a response containing the colour of the
+ location.
+ This was not investigated in detail since the idea of using Google Maps
+ and its functions to find directions solved the problem for us.
  The method using Google Maps geocoding API was at that time more preferable
  since a lot of its functions was supported within Android and the APIs
  from Google.
@@ -617,8 +618,8 @@ The two methods both have their pros and cons.
  The bad thing with the method using the geocoding API is that it must be
  quite a lot of roads and trails nearby for the request to find any good
  directions.
- If there is only one straight road nearby, the sound sources is going to
- be mapped to the road and the distance between them will vary a lot.
+ If there is only one straight road nearby, the sound sources are going
+ to be mapped to the road and the distance between them will vary a lot.
  A conclusion of this method is that it is working good in a city or a village
  where there are a lot of roads and walkways.
  The colour classification model on the other hand does not depend on the
@@ -638,12 +639,21 @@ name "sec:Design-choices-disc"
 \end_layout
 
 \begin_layout Standard
+The responses from the user evaluation was generally positive concerning
+ the usability.
+ Most of the users had no problem in understanding what to press in order
+ to achieve their tasks, which we interpret as a success in making the user
+ interface straight forward and easy to understand.
+ 
+\end_layout
+
+\begin_layout Standard
 During the design process the inclusion of a 
 \emph on
-splash screen
+Splash Screen
 \emph default
  was considered.
- When starting an application a splash screen may sometimes be motivated
+ When starting an application a Splash Screen may sometimes be motivated
  since it gives the user feedback that the application is loading.
  This is often applied in games where the loading takes a long time.
  However, the fact that the loading of the splash screen itself requires
@@ -673,7 +683,7 @@ key "Lehtimaki2013"
 \begin_layout Standard
 At first the 
 \emph on
-dashboard 
+Dashboard 
 \emph default
 pattern 
 \begin_inset CommandInset citation
@@ -683,7 +693,7 @@ key "Lehtimaki2013"
 \end_inset
 
  was considered for the start screen.
- The reason for this is that a dashboard clearly presents an application's
+ The reason for this is that a Dashboard clearly presents an application's
  different parts with big icons leading to them.
  The pattern was earlier officially recommended by Google and have thereby
  become well known to users.
