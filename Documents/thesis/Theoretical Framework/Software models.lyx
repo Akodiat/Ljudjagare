@@ -308,19 +308,12 @@ key "Lehtimaki2013"
 
 .
  An Activity is a controller handling the components visible on the screen.
- The components visible in an Activity are called 
+ These components are called 
 \emph on
 User Interface Widgets
 \emph default
- and consists of everything from buttons to more complex components like
- gallery widgets 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Lehtimaki2013"
-
-\end_inset
-
-.
+ and consist of everything from buttons to more complex components like
+ gallery widgets.
  User Interface Widgets are collected in containers called 
 \emph on
 Layouts.
@@ -373,7 +366,7 @@ key "Intents2014"
  These Intents can be explicit, meaning that they are used to start a certain
  Activity within the application itself, but may also be implicit letting
  the operating system choose another application to handle the action that
- the intent want to perform.
+ the intent wants to perform.
  Intents can include extra data if it is needed to perform the desired action.
 \end_layout
 
