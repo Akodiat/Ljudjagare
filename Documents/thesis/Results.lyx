@@ -317,11 +317,11 @@ Home screen
 \end_layout
 
 \begin_layout Standard
-The home screen is the first thing the user sees when launching the application.
+The Home screen is the first thing the user sees when launching the application.
  If it is the first time using the application, however, a dialog box will
  show up on top.
- The dialog box describes the purpose of the application and provides a
- link leading to the help view (also accessible from the navigation drawer).
+ The dialog box provides a link leading to the Help screen (also accessible
+ from the Navigation Drawer).
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -329,7 +329,7 @@ reference "fig:The-main-screen"
 
 \end_inset
 
- displays the main screen and its different parts:
+ displays the Main screen and its different parts:
 \end_layout
 
 \begin_layout Standard
@@ -366,7 +366,7 @@ name "fig:The-main-screen"
 
 \end_inset
 
-The main screen and its navigation drawer
+The Main screen and its Navigation Drawer
 \end_layout
 
 \end_inset
@@ -389,12 +389,12 @@ reference "sub:Navigation-Drawer"
 \end_inset
 
 .
- From here, the user can choose to go back to the main screen, view statistics
- on past runs or learn about how the application works in Help.
+ From here, the user can choose to go back to the Main screen, view statistics
+ on past runs in History or learn about how the application works in Help.
 \end_layout
 
 \begin_layout Description
-2 In the 
+2 On the 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sec:Settings"
@@ -406,36 +406,22 @@ reference "sec:Settings"
 
 \begin_layout Description
 3 Using the selector in the middle, the user can swipe between the two available
- game modes: 
-\begin_inset CommandInset ref
-LatexCommand nameref
-reference "sec:Coin-Collector"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand nameref
-reference "sec:Tutorial"
-
-\end_inset
-
- mode.
+ game modes: Coin Collector and Tutorial mode.
  If the user touches anywhere on the image, information regarding the selected
  mode will replace it.
 \end_layout
 
 \begin_layout Description
-4 Pressing the next button launches the mode currently selected in the middle
- of the screen.
-\end_layout
-
-\begin_layout Description
-5 The first icon tells the user whether the device has a valid GPS connection
+4 The first icon tells the user whether the device has a valid GPS connection
  or not, and the second whether headphones are plugged in to the device
  or not.
  In the picture, none of the icons are crossed out, meaning that the GPS
- connection is valid and headphones are plugged in.
+ connection is valid and the headphones are plugged in.
+\end_layout
+
+\begin_layout Description
+5 Pressing the next button launches the mode currently selected in the middle
+ of the screen.
 \end_layout
 
 \begin_layout Section
