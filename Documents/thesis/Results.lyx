@@ -436,8 +436,8 @@ name "sec:Coin-Collector"
 \end_layout
 
 \begin_layout Standard
-In Coin Collector, the user's task is to navigate to certain points (coins)
- using the sound coming from the headphones.
+In Coin Collector, the user's task is to navigate to certain checkpoints
+ (coins) using the sound coming from the headphones.
  The game is finished once all coins are found (see 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -446,8 +446,8 @@ reference "sub:Coin-collectoraaaa"
 \end_inset
 
  for a detailed description).
- It is made up of three different tabs, each having its own purpose; Run,
- Map and Stats.
+ The screen is made up of three different tabs, each having its own purpose;
+ Run, Map and Stats.
  
 \end_layout
 
