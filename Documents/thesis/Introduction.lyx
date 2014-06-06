@@ -511,8 +511,8 @@ Android's Software Development Kit (SDK) does not currently provide any
 \begin_layout Standard
 The application has been developed for devices using platform version 4.0
  and above, corresponding to an API level of 14.
- It offers many functionalities and is compatible with majority of the devices
- on the market today, see Table 1.1.
+ It offers many functionalities and is compatible with the majority of the
+ devices on the market today, see Table 1.1.
  Statistics from the beginning of May 2014 shows that platform version 4.0
  will cover more than 80% of the devices 
 \begin_inset CommandInset citation
