@@ -405,8 +405,16 @@ reference "er-dia"
 ).
  A route is basically the user's running session, containing a unique identifier
  and the date that the route started.
- Also the route saves data on the number of coins that was generated for
- the route, this number is set by the user in the settings menu before the
+ Also the route saves data on the number of coins (being the checkpoints
+ in the game mode Coin Collector which is explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Coin-collectoraaaa"
+
+\end_inset
+
+) that were generated for the route.
+ The number of coins is set by the user in the settings menu before the
  running session.
  The “Point” entity represents a specific location of the users route and
  is noticeably different by the double border, this means that the entity
