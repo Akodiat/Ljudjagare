@@ -621,7 +621,7 @@ footnotemark[1]
 \end_layout
 
 \begin_layout Standard
-The most important feature of the action bar is perhaps, as the name suggests,
+The most important feature of the Action Bar is perhaps, as the name suggests,
  its actions.
  The actions that are most important in the application should be located
  among the Action Buttons as in (3) in 
@@ -699,7 +699,7 @@ reference "fig:ActionBar"
 .
  If the phone however does have a hardware menu button, it will instead
  be used to open the overflow menu and the three dotted button will not
- be visible
+ be visible 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "actionbar2014"
@@ -762,10 +762,10 @@ key "Lehtimaki2013"
 \end_layout
 
 \begin_layout Standard
-Another component giving a sense of location is the View control as (2)
+Another component giving a sense of location is the View control (2) as
  in 
 \begin_inset CommandInset ref
-LatexCommand nameref
+LatexCommand ref
 reference "fig:ActionBar"
 
 \end_inset
@@ -802,8 +802,8 @@ citeasnoun{NavigationDrawer2014}
 
  suggests that actions should be put to the right and navigation to the
  left.
- However, there is a risk that putting navigational options into the action
- bar, as in (4) in 
+ However, there is a risk that putting navigational options into the Action
+ Bar, as in (2) in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ActionBar"
@@ -931,7 +931,7 @@ Dashboard
 \emph default
 .
  The Dashboard pattern is basically a landing screen consisting of big icons
- which take the user to different parts of the application 
+ which take the user to different parts of an application 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -990,9 +990,12 @@ key "Lehtimaki2013"
 \end_inset
 
 .
- If the number exceeds three however, it may be better to use the pattern
- called title strip where the user may swipe between an unlimited number
- of tabs.
+ If the number exceeds three however, it may be better to use a pattern
+ called 
+\emph on
+Title Strip
+\emph default
+ where the user may swipe between an unlimited number of tabs.
 \end_layout
 
 \end_body
