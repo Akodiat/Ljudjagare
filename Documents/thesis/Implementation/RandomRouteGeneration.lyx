@@ -397,7 +397,7 @@ To determine the next checkpoint, the calculated angle,
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -424,7 +424,7 @@ A theoretical route represented by a dotted circle is rotated around the
 \begin_inset Formula $\beta$
 \end_inset
 
-, forming a random route 
+, forming a random route.
 \end_layout
 
 \end_inset

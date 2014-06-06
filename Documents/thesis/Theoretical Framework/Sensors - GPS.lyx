@@ -475,7 +475,7 @@ key "Bajaj2002"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -499,7 +499,7 @@ name "fig:Trilateration"
 
 \end_inset
 
-Location finding using trilateration
+Location finding using trilateration.
 \end_layout
 
 \end_inset
@@ -730,7 +730,7 @@ Figure showing definition of latitude (
 \begin_inset Formula $\lambda$
 \end_inset
 
-) on a sphere.
+) on a sphere
 \end_layout
 
 \end_inset
@@ -742,7 +742,7 @@ key "Mercator2010"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
