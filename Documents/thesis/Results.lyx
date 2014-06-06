@@ -308,12 +308,12 @@ target "https://play.google.com/store/apps/details?id=se.chalmers.group42.runfor
 
 ).
  The following chapter presents its result and describes the final application
- and its views.
+ and its screens.
  
 \end_layout
 
 \begin_layout Section
-Home view
+Home screen
 \end_layout
 
 \begin_layout Standard
@@ -439,7 +439,7 @@ reference "sec:Tutorial"
 \end_layout
 
 \begin_layout Section
-Coin Collector view
+Coin Collector screen
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Coin-Collector"
@@ -634,7 +634,7 @@ Finished Coin Collector mode
 \end_layout
 
 \begin_layout Section
-Tutorial view
+Tutorial screen
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Tutorial"
@@ -720,7 +720,7 @@ Tutorial mode with cheat turned on
 \end_layout
 
 \begin_layout Section
-Settings view
+Settings screen
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Settings"
