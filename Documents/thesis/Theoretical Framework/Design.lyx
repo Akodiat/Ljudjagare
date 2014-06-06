@@ -296,14 +296,19 @@ Standard design patterns
 \end_layout
 
 \begin_layout Standard
-In 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Tidwell2011"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citeasnoun{Tidwell2011}
+\end_layout
 
 \end_inset
 
- it is stated that easily used applications are designed to be familiar.
+ states that easily used applications are designed to be familiar.
  It is further discussed that when parts of an application are recognizable
  and have clear relationships between each other the users will be able
  to apply previous knowledge and understand what to do.
@@ -351,7 +356,7 @@ reference "fig:prominent"
 \end_inset
 
  the sign up-button is prominent and thereby clearly telling the user that
- it should be pressed after the form has been filled in.
+ it should be pressed after the form has been filled out.
 \end_layout
 
 \begin_layout Standard
@@ -447,8 +452,8 @@ key "Tidwell2011"
 \end_inset
 
 .
- This is generally good practice when the screen is small, which is the
- case for mobile devices.
+ This is generally good practice when the screen is small, which usually
+ is the case for mobile devices.
  There is no space for clues of the adjacent elements on the sides, which
  usually is solved by small dots in the bottom of the screen as shown in
  
