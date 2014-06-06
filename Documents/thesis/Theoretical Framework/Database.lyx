@@ -301,9 +301,9 @@ The information retrieved from the GPS when the user is running (along with
 
 \begin_layout Standard
 A relational database collects data in tables.
- The columns of a table represents the different kinds of data stored and
- each row is a specific object.
- It is important to have an column that stores an unique identifier (ID)
+ The columns of a table represent the different kinds of data stored and
+ each row is a specific object containing these data.
+ It is important to have a column that stores an unique identifier (ID)
  for each row.
  This makes it possible to obtain a specific row from the database and to
  specify relationships between the different tables.
@@ -409,7 +409,7 @@ key "database2009"
  entities of the database, for example it could hold the relationship between
  hotels and their rooms.
  In the ER-Diagram entities are represented by rectangles, attributes by
- ellipses and the relationships by diamond.
+ ellipses and the relationships by diamonds.
  In a relational database a relationship is often a separate table that
  stores the relationship between different entities.
  

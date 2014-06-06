@@ -294,7 +294,7 @@ name "sec:Generation-of-random"
 \end_layout
 
 \begin_layout Standard
-To enable the user to instantly start running using the application the
+To enable the user to instantly start running using the application, the
  sound sources (checkpoints) are generated using a predefined algorithm.
  The checkpoints must be generated at reachable locations and can for example
  not be placed in a lake or inside a building, but instead on a road or
