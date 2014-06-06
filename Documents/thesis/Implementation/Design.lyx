@@ -380,6 +380,12 @@ The requirements that was established was to make the application detailed
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Design-of-alternatives"
+
+\end_inset
+
 Design of alternatives and creation of prototypes
 \end_layout
 

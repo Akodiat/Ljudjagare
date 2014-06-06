@@ -644,7 +644,16 @@ The responses from the user evaluation was generally positive concerning
  Most of the users had no problem in understanding what to press in order
  to achieve their tasks, which we interpret as a success in making the user
  interface straight forward and easy to understand.
- 
+ The motivations behind the design choices are explained fully in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Design-of-alternatives"
+
+\end_inset
+
+.
+ The motivations behind the patterns that were considered but rejected are
+ however explained below.
 \end_layout
 
 \begin_layout Standard
