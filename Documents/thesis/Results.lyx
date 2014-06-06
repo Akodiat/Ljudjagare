@@ -631,7 +631,7 @@ name "sec:Tutorial"
 \end_layout
 
 \begin_layout Standard
-The tutorial mode enables the user to try out the spatial sound of the applicati
+The Tutorial mode enables the user to try out the spatial sound of the applicati
 on without running.
  When the mode is launched, a point is generated on the screen and the sound
  starts to play.
@@ -660,7 +660,7 @@ Cheat
 \begin_inset Quotes erd
 \end_inset
 
- is enabled by toggling the button at the bottom of the same figure, making
+ is enabled by toggling the checkbox at the bottom of the same figure, making
  the generated point visible.
  Cheating is not enabled by default.
  
@@ -717,7 +717,7 @@ name "sec:Settings"
 \end_layout
 
 \begin_layout Standard
-In the settings view, shown in 
+On the Settings screen, shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:wadawdadwadawd"
@@ -770,7 +770,7 @@ name "fig:wadawdadwadawd"
 
 \end_inset
 
-Settings view
+Settings screen
 \end_layout
 
 \end_inset
