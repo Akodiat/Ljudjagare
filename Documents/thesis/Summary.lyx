@@ -362,7 +362,7 @@ head related transfer functions
 Applikationen innehåller spelmoment och hoppas kunna uppmuntra användarna
  till en mer regelbunden träning.
  Detta görs genom att generera en slumpmässig löprunda innehållande kontroller
- (virtuella ljudkällor) och med hjälp av ljus vägleda användaren i rätt
+ (virtuella ljudkällor) och med hjälp av ljud vägleda användaren i rätt
  riktning mot dessa kontroller.
  
 \begin_inset ERT
