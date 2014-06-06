@@ -1137,14 +1137,14 @@ reference "chap:Implementation"
 
 \end_inset
 
-) describes how the different parts in 
+) describes how the different parts in (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Theoretical-Framework"
 
 \end_inset
 
- was implemented into the application.
+) was implemented into the application.
  It also covers the findings obtained from the user evaluation.
 \end_layout
 
@@ -1156,21 +1156,21 @@ reference "chap:Result"
 
 \end_inset
 
-), discussion 
+), discussion (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Discussion"
 
 \end_inset
 
- and the conclusion 
+) and the conclusion (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Conclusion"
 
 \end_inset
 
-.
+).
  It begins by describing the end product, that is the application.
  Thereafter, the result along with the entire design and implementation
  process is discussed.
