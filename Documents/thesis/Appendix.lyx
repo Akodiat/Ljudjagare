@@ -294,8 +294,8 @@ Appendix: User evaluation
 
 \begin_layout Standard
 The test was carried out by letting the user do a number of tasks.
- The data was then gathered by asking interview questions.
- Before doing the tasks involved in the testing however, the functionality
+ The data was then gathered by asking questions.
+ Before completing the tasks involved in the testing, however, the functionality
  was explained with the following text.
 \end_layout
 
@@ -304,13 +304,14 @@ Explanation
 \end_layout
 
 \begin_layout Standard
-The sound is balanced in your ear to imitate that the sound is coming from
- a specified direction.
+The sound will appear to come from a certain direction while wearing the
+ headphones.
  When you are running straight to the sound source the sound is playing
  with equal volume in both ears and with a high pitch.
- If the sound source is on your right it will be higher volume in the right
+ If the sound source is to your right it will be higher volume in the right
  headphone and lower in the left and with a medium pitch.
- If the sound source is behind you it is equal volume and a low (dark) pitch.
+ If the sound source is behind you it is equal volume and a lower (dark)
+ pitch.
  
 \end_layout
 
