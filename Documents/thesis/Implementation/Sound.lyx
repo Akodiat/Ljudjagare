@@ -308,7 +308,7 @@ Software Development Kit
 \emph default
  provides several classes for handling audio, like AudioTrack, MediaPlayer
  and SoundPool.
- However, none of these currently provides any support for 3D audio operations
+ However, none of these currently provide any support for 3D audio operations
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -401,7 +401,7 @@ key "opensl"
  There is very little information available on what phones supports what
  profile.
  In Android Beginner’s Guide (2012) the author mentions that no devices
- supports the game profile at the time the book was written.
+ support the game profile at the time the book was written.
  
 \end_layout
 
