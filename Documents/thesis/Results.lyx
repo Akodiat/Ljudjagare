@@ -549,7 +549,7 @@ The run can be paused at any time by pressing the pause button located in
 
 \begin_layout Standard
 When a run is finished, the screen looks similar to what it does while running;
- the Run tab displays basic statistics and the Run and Stats tabs displays
+ the Run tab displays basic run statistics and the Map and Stats tabs display
  information of where the coins have been found and at what time.
  By pressing the OK button, the user is taken back to the home screen described
  in the beginning of the chapter.
