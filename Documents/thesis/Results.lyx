@@ -728,7 +728,7 @@ reference "fig:wadawdadwadawd"
  Currently, the settings only apply to the Coin Collector mode, as the Tutorial
  mode is supposed to be straightforward and easy to play without having
  to worry about specific settings.
- To change the radius of the circular route generated in Coin Collector
+ To change the diameter of the circular route generated in Coin Collector
  or the number of points being generated, the user simply touches either
  of the sections.
  The user is then prompted to enter the desired value.
