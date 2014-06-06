@@ -422,8 +422,8 @@ Database
 \end_layout
 
 \begin_layout Standard
-A way to improve Coin Collector would be to let the user select the electronic
- beat illustrated in 
+A way to improve Coin Collector would be to let the user select the beat
+ illustrated in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:sound_table"
@@ -438,8 +438,11 @@ reference "sub:Sound-modulation"
 \end_inset
 
  so that the beat can be any melody the user would like to listen to.
- This would probably prevent the monotony of navigating to the same sound
- every time.
+ This could be solved either by playing a chosen sound file within Run For
+ Life itself or by sending an implicit intent using another media player
+ application on the device.
+ The possibility to choose music would probably prevent the monotony that
+ might occur when navigating to the same sound.
 \end_layout
 
 \begin_layout Standard
