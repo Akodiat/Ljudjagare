@@ -408,8 +408,8 @@ name "fig:PNC"
 Pseudorandom Number Codes 
 \emph default
 are sent from satellites and picked up by GPS receivers.
- A PNC contains information about the satellite's location and time at the
- moment of transmission.
+ A PNC contains information about the satellite's location and the time
+ at the moment of transmission.
 \end_layout
 
 \end_inset
@@ -514,7 +514,14 @@ Location finding using trilateration
 
 \begin_layout Standard
 In the context of GPS technology, trilateration is a way to narrow down
- the possible locations by determining where spheres intersect.
+ the possible locations by determining where spheres intersect 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bajaj2002"
+
+\end_inset
+
+.
  All visible satellites each provide one sphere of possible locations.
  Two satellites will narrow down the possible location to a circle as shown
  at the intersection of Satellite A's and Satellite B's spheres in 
@@ -528,7 +535,7 @@ reference "fig:Trilateration"
  Furthermore the third satellite, Satellite C, will narrow down this circle
  into two points.
  Normally, this information is enough since often only one of the two provided
- points is located on the Earths surface.
+ points is located on the surface of the Earth.
  It is however useful to use more satellites to acquire a confirmed location.
  Also, another satellite might be used to synchronize the GPS receiver's
  internal clock.
@@ -542,14 +549,7 @@ reference "fig:Trilateration"
  By adding the calculated travel time to the departure time of the PNC the
  correct current time in the GPS receiver is acquired.
  This is good practice since the satellite's clock, that is being synchronized
- against, is atomic and thereby very accurate 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bajaj2002"
-
-\end_inset
-
-.
+ against, is atomic and thereby very accurate.
  
 \end_layout
 
