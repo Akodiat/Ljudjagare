@@ -1075,9 +1075,7 @@ Interaction design process
 \end_layout
 
 \begin_layout Standard
-To design a usable application, the interaction design process was applied.
- This process consists of establishing requirements, designing alternatives
- and creating prototypes and also conducting user evaluations on test persons
+To design a usable application, the interaction design process was applied
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1086,6 +1084,9 @@ key "Rogers2013"
 \end_inset
 
 .
+ This process consists of establishing requirements, designing alternatives
+ and creating prototypes and also evaluating, which was done with user evaluatio
+ns on test persons.
  
 \end_layout
 
