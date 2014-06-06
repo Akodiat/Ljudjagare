@@ -568,8 +568,8 @@ name "fig:oldrun"
 \end_inset
 
 A display of a finished run, where the $ symbols shows the location of every
- collected coin and the red line is all the GPS data from the users running
- session.
+ collected checkpoint and the red line is all the GPS data from the users
+ running session.
 \end_layout
 
 \end_inset
