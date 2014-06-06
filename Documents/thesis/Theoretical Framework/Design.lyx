@@ -801,7 +801,11 @@ reference "fig:ActionBar"
 \end_inset
 
 , may make the view cluttered due to limited space.
- To avoid this the design pattern Navigation Drawer can be used.
+ To avoid this the design pattern 
+\emph on
+Navigation Drawer
+\emph default
+ can be used.
  The Navigation Drawer is a menu that may be dragged from the left part
  of the screen or accessed by pressing the application logotype as shown
  in the left figure in 
@@ -950,8 +954,12 @@ As mentioned above, the Navigation Drawer provides quick navigation between
  different views.
  However, there are times when functionality that logically belongs to the
  same view does not fit into a single screen.
- This can be solved by putting the different parts on different tabs that
- the user can swipe horizontally between 
+ This can be solved by the pattern 
+\emph on
+Swipe Views
+\emph default
+ which puts different parts on different tabs that the user can swipe horizontal
+ly between 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -964,10 +972,7 @@ key "Lehtimaki2013"
 
 \begin_layout Standard
 This is considered as a good solution as long as the number of tabs are
- limited to three or less.
- If the number exceeds three however, it may be better to use the pattern
- called title strip where the user may swipe between an unlimited number
- of tabs 
+ limited to three or less 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lehtimaki2013"
@@ -975,6 +980,9 @@ key "Lehtimaki2013"
 \end_inset
 
 .
+ If the number exceeds three however, it may be better to use the pattern
+ called title strip where the user may swipe between an unlimited number
+ of tabs.
 \end_layout
 
 \end_body
