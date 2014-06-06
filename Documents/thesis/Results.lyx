@@ -344,7 +344,7 @@ status open
 \begin_inset Graphics
 	filename Figures/home1.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -352,7 +352,7 @@ status open
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-07-11-16-33.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -478,7 +478,7 @@ status open
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-07-09-40-40.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -486,7 +486,7 @@ status open
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-07-09-40-52.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -494,7 +494,7 @@ status open
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-07-09-41-59.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -590,7 +590,7 @@ status open
 \begin_inset Graphics
 	filename Figures/run_finished_run.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -598,7 +598,7 @@ status open
 \begin_inset Graphics
 	filename Figures/run_finished_map.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -606,7 +606,7 @@ status open
 \begin_inset Graphics
 	filename Figures/run_finished_stats.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -692,7 +692,7 @@ status open
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-18-10-42-37.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
@@ -770,7 +770,7 @@ status open
 \begin_inset Graphics
 	filename Figures/Screenshot_2014-05-18-10-27-54.png
 	lyxscale 20
-	scale 10
+	width 30text%
 
 \end_inset
 
