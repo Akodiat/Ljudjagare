@@ -459,8 +459,8 @@ However, this method only calculates a current angle relative to a start
  angle.
  In other words, the user would clearly perceive a direction that the sound
  is coming from, the sound levels updating correctly when the user is turning
- around, but the perceived direction is not the same as the one the coin
- is actually located in.
+ around, but the perceived direction is not the same as the one the sound
+ source is actually located in.
 \end_layout
 
 \begin_layout Standard
