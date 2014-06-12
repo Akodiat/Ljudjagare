@@ -46,7 +46,7 @@ public class FreerunActivity extends RunActivity {
 
 		// Initialize audio
 		(fx = new FXHandler2()).initSound(this);
-		fx.loop(fx.getNavigationFX());
+		fx.startLoop();
 		
 	}
 
@@ -145,7 +145,7 @@ public class FreerunActivity extends RunActivity {
 
 	private void coinFound() {
 		// Play sound of a coin
-		fx.foundCoin();
+		//fx.foundCoin();
 
 		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()
 				.findFragmentByTag("android:switcher:" + R.id.pager + ":1");
@@ -156,14 +156,17 @@ public class FreerunActivity extends RunActivity {
 	}
 
 	private void adjustPanoration() {
-		// negate to invert angle
-		float angle = -getRotation();
 
 		float distance = human.getLocation().distanceTo(coinLocation) 
 				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
+		float bearing = human.getLocation().bearingTo(coinLocation);
 
-		if (fx.getNavigationFX().isPlaying())
-			fx.update(fx.getNavigationFX(), (angle), distance);
+		fx.setListenerOrientation(-(usingGyro() ? 
+				this.orientation : 
+					human.getLocation().getBearing()));
+		
+		float[] xy = LocationHelper.getCoordFromDistBear(distance, bearing);
+		fx.setSoundSourcePosition(xy[0], xy[1], 1);
 
 	}
 
@@ -171,8 +174,7 @@ public class FreerunActivity extends RunActivity {
 	protected void playSound() {
 		super.playSound();
 
-		if (!fx.getNavigationFX().isPlaying())
-			fx.loop(fx.getNavigationFX());
+		fx.startLoop();
 
 	}
 
@@ -209,15 +211,8 @@ public class FreerunActivity extends RunActivity {
 
 		double v = 2 * Math.PI * Math.random();
 
-
-		double addLat = Math.sin(v) * radius;
-		double addLong = Math.cos(v) * radius
-				/ Math.cos(Math.toRadians(human.getLocation().getLatitude()));
-
-
-		Location location = new Location("new Location");
-		location.setLongitude(origo.getLongitude() + addLong);
-		location.setLatitude(origo.getLatitude() + addLat);
+		Location location = new Location(origo);
+		LocationHelper.moveLocation(location, (float) v, (float) radius);
 		
 
 		MapFragment mapFrag = (MapFragment) getSupportFragmentManager()

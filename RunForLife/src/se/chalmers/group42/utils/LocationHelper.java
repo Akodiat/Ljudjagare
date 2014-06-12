@@ -1,6 +1,11 @@
 package se.chalmers.group42.utils;
 
+import se.chalmers.group42.controller.MapFragment;
+import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.R;
 import android.location.Location;
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -33,34 +38,7 @@ public class LocationHelper {
 		);
 	}
 	
-	/**
-	 * Calculates a new LatLng positioned a specified distance and bearing away.
-	 * @param latLng	The LatLng from which to move
-	 * @param bearing	The bearing in which to move (in degrees)
-	 * @param distance	The distance to move (in meters)
-	 * @return			A new LatLng, positioned distance meters away in the bearing direction.
-	 */
-	public static LatLng calculateNewLatLng(LatLng latLng, float bearing, float distance){
-		//Convert lat and long to radians
-		double rLat = Math.toRadians(latLng.latitude);
-		double rLng = Math.toRadians(latLng.longitude);
-		
-		//Changing distance to proportion of earth radius;
-		distance /= EARTH_RADIUS;
-		
-		//Changing bearing to radians
-		double rBearing = Math.toRadians(bearing);
-		
-		//Calculate new latitude and longitude (in radians)
-		double newRLat = Math.asin(Math.sin(rLat) * Math.cos(distance) +
-                Math.cos(rLat) * Math.sin(distance) * Math.cos(rBearing));
-		
-		double newRLng = rLng + Math.atan2(Math.sin(rBearing) * Math.sin(distance) * Math.cos(rLat),
-                Math.cos(distance) - Math.sin(rLat * Math.sin(newRLat)));
-		
-		return new LatLng(Math.toDegrees(newRLat), Math.toDegrees(newRLng));
-		
-	}
+
 	/**
 	 * Updates the position and bearing of the location to a new one, 
 	 * positioned distance meters away in the bearing direction
@@ -69,17 +47,24 @@ public class LocationHelper {
 	 * @param distance	The distance to move (in meters)
 	 */
 	public static void moveLocation(Location location, float bearing, float distance) {
-		//Calculates new position
-		LatLng updatedLatLng = calculateNewLatLng(
-				latlngFromLocation(location), 
-				bearing, 
-				distance);
-		//Sets the calculated position
-		location.setLatitude(updatedLatLng.latitude);
-		location.setLongitude(updatedLatLng.longitude);
 		
-		//Updates bearing to match the travelled direction
-		location.setBearing(bearing);
+			Location debugTemp = new Location(location);
+			
+			distance /= Constants.LAT_LNG_TO_METER;
+			bearing = (float) Math.toRadians(bearing);
+
+			double deltaLatitude = 	
+					Math.sin(bearing) * distance;
+			
+			double deltaLongitude =	 
+					Math.cos(bearing) * distance
+					/ Math.cos(Math.toRadians(location.getLatitude()));
+
+			location.setLongitude(location.getLongitude() 	+ deltaLongitude);
+			location.setLatitude (location.getLatitude() 	+ deltaLatitude);
+			
+			Log.d("GYROREADINGS", "Intended distance: "+ distance * Constants.LAT_LNG_TO_METER + "\t Real distance:" + location.distanceTo(debugTemp));
+
 	}
 	
 	public static float[] getCoordFromDistBear(float distance, float bearing){

@@ -35,6 +35,7 @@ StatusIconEventListener, GPSInputListener {
 	private ImageView gpsIcon, headPhonesIcon;
 	private boolean gpsOn, headphonesIn;
 	private ImageView modeIndicator;
+	private StatusIconHandler statusIconHandler;
 
 	/**
 	 * The number of modes in the application.
@@ -122,8 +123,8 @@ StatusIconEventListener, GPSInputListener {
 		// Set up statusIconHandler
 		IntentFilter filter = new IntentFilter(
 				"android.intent.action.HEADSET_PLUG");
-		StatusIconHandler receiver = new StatusIconHandler(this, mainActivity);
-		mainActivity.registerReceiver(receiver, filter);
+		statusIconHandler = new StatusIconHandler(this, mainActivity);
+		mainActivity.registerReceiver(statusIconHandler, filter);
 		return view;
 
 	}
@@ -200,5 +201,17 @@ StatusIconEventListener, GPSInputListener {
 			modeIndicator.setImageResource(modeIndicators[position]);
 		}
 	}
+	@Override
+	public void onPause() {
+		super.onPause();
+		mainActivity.unregisterReceiver(statusIconHandler);
+	}
+	
+//	@Override
+//	public void onResume() {
+//		IntentFilter filter = new IntentFilter(
+//				"android.intent.action.HEADSET_PLUG");
+//		mainActivity.registerReceiver(statusIconHandler, filter);
+//	}
 
 }

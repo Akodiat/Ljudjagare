@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -96,6 +97,8 @@ GPSInputListener, OrientationInputListener {
 	private int routeId;
 
 	private String appMode;
+
+	private BroadcastReceiver statusIconHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -220,8 +223,8 @@ GPSInputListener, OrientationInputListener {
 			// Setting up statusIconHandler
 			IntentFilter filter = new IntentFilter(
 					"android.intent.action.HEADSET_PLUG");
-			StatusIconHandler receiver = new StatusIconHandler(this, this);
-			registerReceiver(receiver, filter);
+			statusIconHandler = new StatusIconHandler(this, this);
+			registerReceiver(statusIconHandler, filter);
 
 		} else if (appMode.equals("DISPLAY_MODE")) {
 
@@ -565,4 +568,17 @@ GPSInputListener, OrientationInputListener {
 			finish();
 		}
 	}
+	@Override
+	public void onPause() {
+		super.onPause();
+		unregisterReceiver(statusIconHandler);
+	}
+	
+//	@Override
+//	public void onResume() {
+//		
+//		IntentFilter filter = new IntentFilter(
+//				"android.intent.action.HEADSET_PLUG");
+//		registerReceiver(statusIconHandler, filter);
+//	}
 }

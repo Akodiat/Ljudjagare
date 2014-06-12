@@ -1,6 +1,7 @@
 package se.chalmers.group42.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.group42.runforlife.R;
 
@@ -33,6 +34,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
  * A fragment including the map with information of what route has been taken.
  */
 public class MapFragment extends Fragment {
+	
 	OnHeadlineSelectedListener mCallback;
 
 	// Container Activity must implement this interface
@@ -129,6 +131,17 @@ public class MapFragment extends Fragment {
 				locationOfCoin.getLongitude()))
 				.title("Coin")
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_coin)));
+	}
+	
+	public Marker newMarker(LatLng l, int resourceId, String title){
+		return map.addMarker(new MarkerOptions()
+		.position(l)
+		.title(title)
+		.icon(BitmapDescriptorFactory.fromResource(resourceId)));
+	}
+	public void updateMarker(Marker m, LatLng l){
+		m.setPosition(l);
+		//m.setRotation((float) (m.getRotation() + 5));
 	}
 	public void zoomToPosition(Location position){
 		CameraUpdate cameraUpdate= CameraUpdateFactory.
