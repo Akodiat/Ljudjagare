@@ -43,12 +43,12 @@ public class FXHandler2 {
 		env = SoundEnv.getInstance((Activity) context);
 
 		// Load sound into memory. Has to be mono .wav file.
-		Buffer  navFXToSourceBuffer;
+		Buffer  droneBuffer;
 		try {
-			navFXToSourceBuffer = env.addBuffer("sine_loop");
+			droneBuffer = env.addBuffer("techno2");
 
 			// Add the audio buffer as a source in the 3D room and
-			drone = env.addSource(navFXToSourceBuffer);
+			drone = env.addSource(droneBuffer);
 
 		} catch (IOException e) {
 			Log.e(Constants.TAG, "Could not initialize OpenAL4Android", e);
@@ -59,7 +59,7 @@ public class FXHandler2 {
 		drone.setPosition(0, 0, -1);
 
 		// Roll-off is at which distance the gain changes.
-		drone.setRolloffFactor(1);
+		drone.setRolloffFactor(500);
 
 		// Set listener orientation.
 		env.setListenerOrientation(0);
@@ -104,7 +104,7 @@ public class FXHandler2 {
 	 *            the sound to be looped
 	 */
 	public void startLoop() {
-		//drone.play(true);
+		drone.play(true);
 		env.playAllSources(true);
 	}
 
