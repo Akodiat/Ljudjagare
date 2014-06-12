@@ -55,22 +55,23 @@ public class Drone {
 	}
 
 	public void escapeHunter(){
-		float distance 	= speed * (DELAY_TIME/1000);
+		float deltaDist 	= speed * (DELAY_TIME/1000);
 		
-		if(location.distanceTo(hunter) < SAFE_DISTANCE && power > distance){
-			power -= distance;
+		if(location.distanceTo(hunter) < SAFE_DISTANCE && power > deltaDist){
+			power -= deltaDist;
 			
 			float direction = location.bearingTo(hunter);
-			Log.d("Monster", "moving " + distance + "m in " + direction +"deg.");
+			Log.d("Monster", "moving " + deltaDist + "m in " + direction +"deg.");
 			LocationHelper.moveLocation(
 					location, 
 					direction,
-					distance
+					deltaDist
 			);
 			listener.onMonsterLocationUpdated(location);
 		}
 		else if (power < 100){
-			power += 2*distance;
+			power += 2*deltaDist;
+			if(power > 100) power = 100;
 		}
 	}
 }

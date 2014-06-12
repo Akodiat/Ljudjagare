@@ -45,7 +45,7 @@ public class FXHandler2 {
 		// Load sound into memory. Has to be mono .wav file.
 		Buffer  navFXToSourceBuffer;
 		try {
-			navFXToSourceBuffer = env.addBuffer("techno2");
+			navFXToSourceBuffer = env.addBuffer("sine_loop");
 
 			// Add the audio buffer as a source in the 3D room and
 			drone = env.addSource(navFXToSourceBuffer);
@@ -64,13 +64,12 @@ public class FXHandler2 {
 		// Set listener orientation.
 		env.setListenerOrientation(0);
 
-		initSoundPool(context);
+//		initSoundPool(context);
 	}
 
 	public void setSoundSourcePosition(float x, float y, float z){
 
-		//Coordinate system looks different in openAL.
-		//one meter above listener
+		//Coordinate system is different in openAL.
 		drone.setPosition(z, x, y);
 	}
 
@@ -78,25 +77,25 @@ public class FXHandler2 {
 		env.setListenerOrientation(orientation);
 	}
 
-	public Speech getSpeech(int i){
-		return speech.get(i);
-	}
-
-	public void initSoundPool(Context context) {
-		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-
-		// initialize audio samples
-		speech.add(new Speech(soundPool.load(context, R.raw.say100, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say200, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say300, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say400, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say500, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say600, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say700, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say800, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say900, 1)));
-		speech.add(new Speech(soundPool.load(context, R.raw.say1000, 1)));
-	}
+//	public Speech getSpeech(int i){
+//		return speech.get(i);
+//	}
+//
+//	public void initSoundPool(Context context) {
+//		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+//
+//		// initialize audio samples
+//		speech.add(new Speech(soundPool.load(context, R.raw.say100, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say200, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say300, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say400, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say500, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say600, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say700, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say800, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say900, 1)));
+//		speech.add(new Speech(soundPool.load(context, R.raw.say1000, 1)));
+//	}
 
 	/**
 	 * Loop a sound until it's being stopped manually.
@@ -105,7 +104,8 @@ public class FXHandler2 {
 	 *            the sound to be looped
 	 */
 	public void startLoop() {
-		drone.play(false);
+		//drone.play(true);
+		env.playAllSources(true);
 	}
 
 	/**
@@ -128,17 +128,17 @@ public class FXHandler2 {
 	 *            the new angle
 	 */
 
-	public void sayDistance(Speech speech) {
-		if (speech.isPlayable()) {
-			soundPool.play(speech.id(), 1, 1, 1, 0, 1);
-			speech.setPlayed();
-
-			if (Speech.previous() != null)
-				Speech.previous().setPlayable();
-
-			Speech.setPrevious(speech);
-		}
-	}
+//	public void sayDistance(Speech speech) {
+//		if (speech.isPlayable()) {
+//			soundPool.play(speech.id(), 1, 1, 1, 0, 1);
+//			speech.setPlayed();
+//
+//			if (Speech.previous() != null)
+//				Speech.previous().setPlayable();
+//
+//			Speech.setPrevious(speech);
+//		}
+//	}
 
 
 }
