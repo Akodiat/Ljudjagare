@@ -94,7 +94,7 @@ public class Drone {
 				power -= distToMove;
 
 				float direction = location.bearingTo(hunter);
-				statusText = "Power: "+power+"\n"+(int)distToHunter()+"m from hunter. \nMoving " + (int) distToMove + "m in " + (int) direction +"deg.";
+				statusText = "Power: "+power+"%\n"+(int)distToHunter()+"m from hunter. \nMoving " + (int) distToMove + "m in " + (int) direction +"deg.";
 				status = DroneStatus.FLYING;
 				LocationHelper.moveLocation(
 						location, 
@@ -105,14 +105,14 @@ public class Drone {
 			}
 
 			else {										//If power is drained
-				statusText = "Power: "+power+"\n"+(int)distToHunter()+"m from hunter. \nCannot escape. Power drained. Resting";
+				statusText = "Power: "+power+"%\n"+(int)distToHunter()+"m from hunter. \nCannot escape. Power drained. Resting";
 				status = DroneStatus.RESTING;
 				power += 2*distToMove;
 				if(power > 100) power = 100;
 			}
 		}
 		else {
-			statusText = "Power: "+power+"\n"+(int)distToHunter()+"m from hunter. \nResting";
+			statusText = "Power: "+power+"%\n"+(int)distToHunter()+"m from hunter. \nResting";
 			status = DroneStatus.RESTING;
 			power += 2*distToMove;
 			if(power > 100) power = 100;
