@@ -3,11 +3,12 @@ package se.chalmers.group42.gameModes;
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.runforlife.Constants;
+import se.chalmers.group42.runforlife.Drone.DroneStatus;
 import se.chalmers.group42.runforlife.FXHandler;
 import se.chalmers.group42.runforlife.FXHandler2;
 import se.chalmers.group42.runforlife.Human;
 import se.chalmers.group42.runforlife.Drone;
-import se.chalmers.group42.runforlife.DroneLocationListener;
+import se.chalmers.group42.runforlife.DroneListener;
 import se.chalmers.group42.runforlife.R;
 import se.chalmers.group42.utils.LocationHelper;
 import android.location.Location;
@@ -15,27 +16,28 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
 /**
- * A game of being chased by monsters.
+ * An endurance hunting mode
  * 
  * @author Joakim Johansson
  * 
  */
-public class DroneHuntActivity extends RunActivity implements DroneLocationListener {
+public class DroneHuntActivity extends RunActivity implements DroneListener {
 	public static LatLng 	DEFAULT_POSITION 			= new LatLng(58.705477, 11.990884);
-	public static int 		GAME_MODE_ID 				= 1;
-	public static int 		MAX_MONSTER_SPAWN_DISTANCE 	= 500;
-	public static int 		MIN_MONSTER_SPAWN_DISTANCE	= 210;
-	public static float 	MONSTER_SPEED 				= 30; //	Meters per second
+	public static int 		GAME_MODE_ID 				= 3;
+	public static int 		MAX_MONSTER_SPAWN_DISTANCE 	= 100;
+	public static int 		MIN_MONSTER_SPAWN_DISTANCE	= 10;
+	public static float 	MONSTER_SPEED 				= 3; //	Meters per second
 
 	private Human 	human; 				// Containing the player position and score
 	private Drone 	drone;			// Containing the drone position
 	private float 	compassFromNorth; 	// Compass angle
 
-	private Marker monsterMarker;
+	private Marker droneMarker;
 
 	// Handles the sound
 	private FXHandler2 sound; //TODO: Add sound of vildvittror
@@ -72,17 +74,16 @@ public class DroneHuntActivity extends RunActivity implements DroneLocationListe
 		MapFragment mapFrag = (MapFragment) getSupportFragmentManager().findFragmentByTag(
 				"android:switcher:"+R.id.pager+":1");	
 
-		monsterMarker = mapFrag.newMarker(
+		droneMarker = mapFrag.newMarker(
 				LocationHelper.latlngFromLocation(
 						droneLocation), 
-						R.drawable.map_coin, 
+						R.drawable.drone_flying, 
 						"Rouge drone!"
 				);
 
 		drone = new Drone(droneLocation, MONSTER_SPEED, this);
 		drone.setHunter(human.getLocation());
 
-		android.util.Log.d("Monster", "Distance2: "+ human.getLocation().distanceTo(drone.getLocation()));
 	}
 
 	public int getScore() {
@@ -111,29 +112,29 @@ public class DroneHuntActivity extends RunActivity implements DroneLocationListe
 	}
 
 	private void updateMarker() {
-		
+
 
 		final MapFragment mapFrag = (MapFragment) getSupportFragmentManager().
 				findFragmentByTag(
 						"android:switcher:"+R.id.pager+":1");
-		
+
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				monsterMarker.setPosition( 
+				droneMarker.setPosition( 
 						LocationHelper.latlngFromLocation(drone.getLocation()));
-				monsterMarker.setTitle(
+				droneMarker.setTitle(
 						"Rouge drone! " +
-						"\nPower: "	 + drone.getRemainingPower() + 
-						"\nDistance: " + human.getLocation().distanceTo(drone.getLocation()));
-				
-				((TextView) findViewById(R.id.textView_distance)).setText(
-						"Distance: "+ 
-								human.getLocation().distanceTo(
-										drone.getLocation()));
+								"\nPower: "	 + drone.getRemainingPower() + 
+								"\nDistance: " + distToDrone());
+				float minAlpha = 0.5f;
+				droneMarker.setAlpha(drone.getRemainingPower()*minAlpha/100 + minAlpha);
 			}
 		});
 
+	}
+	private float distToDrone(){
+		return LocationHelper.calculateDistance(human.getLocation(), drone.getLocation());
 	}
 
 	@Override
@@ -147,11 +148,10 @@ public class DroneHuntActivity extends RunActivity implements DroneLocationListe
 	@SuppressWarnings("unused")
 	private boolean eatenByMonster() {
 		return (// If closer than minimum distance
-				human.getLocation().distanceTo(drone.getLocation()) < Constants.MIN_DISTANCE
+				distToDrone() < Constants.MIN_DISTANCE
 				// Or the accuracy is less than 50 meters but still larger
 				// than the distance to the sound source.
-				|| (human.getLocation().getAccuracy() < 50 ? human.getLocation()
-						.distanceTo(drone.getLocation()) < human.getLocation().getAccuracy()
+				|| (human.getLocation().getAccuracy() < 50 ? distToDrone() < human.getLocation().getAccuracy()
 						: false));
 	}
 
@@ -162,7 +162,7 @@ public class DroneHuntActivity extends RunActivity implements DroneLocationListe
 
 	private void adjustPanoration() {
 
-		float distance = human.getLocation().distanceTo(drone.getLocation()) 
+		float distance = distToDrone() 
 				- Constants.MIN_DISTANCE; //Subtracting the distance that a coin can be picked up from
 		float bearing = human.getLocation().bearingTo(drone.getLocation());
 
@@ -214,6 +214,27 @@ public class DroneHuntActivity extends RunActivity implements DroneLocationListe
 	public void onMonsterLocationUpdated(Location location) {
 		updateMarker();
 		adjustPanoration();
+	}
+
+	@Override
+	public void onMonsterStatusUpdated(final DroneStatus status, final String statusText) {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				int icon = R.drawable.drone_flying;
+				if (status == DroneStatus.RESTING)
+					icon = R.drawable.drone_resting;
+				droneMarker.setIcon(BitmapDescriptorFactory.fromResource(icon));
+				
+				((TextView) findViewById(R.id.textView_distance)).setText(
+						statusText +
+						"\nDistance: "+ 
+						(int)LocationHelper.calculateDistance(human.getLocation(), drone.getLocation())
+						+ "m (" + (int)
+						human.getLocation().distanceTo(drone.getLocation())+"m)");
+			}
+		});
+
 	}
 
 }

@@ -32,7 +32,7 @@ LocationListener
 
 	private LocationClient 	locationClient;
 	private GPSInputListener 	listener;
-	
+
 	private LocationManager locationManager;
 
 
@@ -41,11 +41,11 @@ LocationListener
 	}
 	public GPSInputHandler(GPSInputListener listener, Context context, long updateInterval) {
 		this.listener = listener;
-		
+
 		REQUEST = LocationRequest.create()
-		.setInterval(updateInterval)         // milliseconds
-		.setFastestInterval(16)    // 16ms = 60fps
-		.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+				.setInterval(updateInterval)         // milliseconds
+				.setFastestInterval(16)    // 16ms = 60fps
+				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
 		locationClient = new LocationClient(context, this, this);
 
@@ -54,7 +54,7 @@ LocationListener
 			locationClient.connect(); 
 
 		currentLocation = LocationHelper.locationFromLatlng(STOCKHOLM);
-		
+
 		locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 	}
 
@@ -75,21 +75,22 @@ LocationListener
 
 	@Override
 	public void onLocationChanged(Location location) {
-		if((location.getAccuracy() < MAXIMAL_ACCEPTABLE_ACCURACY) && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-			listener.onGPSConnect();
+		if(location.getAccuracy() < MAXIMAL_ACCEPTABLE_ACCURACY) {
+			if( locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+				listener.onGPSConnect();
+
+				//If the new location has no bearing, use the old bearing
+				if(!location.hasBearing()){
+					float bearing = currentLocation.getBearing();
+					currentLocation = location;
+					currentLocation.setBearing(bearing);
+				} else currentLocation = location;
+
+				listener.onLocationChanged(location);
+			}
 		}
 		else
 			listener.onGPSDisconnect();
-
-		
-		//If the new location has no bearing, use the old bearing
-		if(!location.hasBearing()){
-			float bearing = currentLocation.getBearing();
-			currentLocation = location;
-			currentLocation.setBearing(bearing);
-		} else currentLocation = location;
-		
-		listener.onLocationChanged(location);
 	}
 
 	public void pause() {

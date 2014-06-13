@@ -64,7 +64,7 @@ public class FXHandler2 {
 		// Set listener orientation.
 		env.setListenerOrientation(0);
 
-//		initSoundPool(context);
+		drone.play(true);
 	}
 
 	public void setSoundSourcePosition(float x, float y, float z){
@@ -77,25 +77,25 @@ public class FXHandler2 {
 		env.setListenerOrientation(orientation);
 	}
 
-//	public Speech getSpeech(int i){
-//		return speech.get(i);
-//	}
-//
-//	public void initSoundPool(Context context) {
-//		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-//
-//		// initialize audio samples
-//		speech.add(new Speech(soundPool.load(context, R.raw.say100, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say200, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say300, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say400, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say500, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say600, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say700, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say800, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say900, 1)));
-//		speech.add(new Speech(soundPool.load(context, R.raw.say1000, 1)));
-//	}
+	//	public Speech getSpeech(int i){
+	//		return speech.get(i);
+	//	}
+	//
+	//	public void initSoundPool(Context context) {
+	//		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+	//
+	//		// initialize audio samples
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say100, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say200, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say300, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say400, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say500, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say600, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say700, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say800, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say900, 1)));
+	//		speech.add(new Speech(soundPool.load(context, R.raw.say1000, 1)));
+	//	}
 
 	/**
 	 * Loop a sound until it's being stopped manually.
@@ -128,17 +128,18 @@ public class FXHandler2 {
 	 *            the new angle
 	 */
 
-//	public void sayDistance(Speech speech) {
-//		if (speech.isPlayable()) {
-//			soundPool.play(speech.id(), 1, 1, 1, 0, 1);
-//			speech.setPlayed();
-//
-//			if (Speech.previous() != null)
-//				Speech.previous().setPlayable();
-//
-//			Speech.setPrevious(speech);
-//		}
-//	}
+	//	public void sayDistance(Speech speech) {
+	//		if (speech.isPlayable()) {
+	//			soundPool.play(speech.id(), 1, 1, 1, 0, 1);
+	//			speech.setPlayed();
+	//
+	//			if (Speech.previous() != null)
+	//				Speech.previous().setPlayable();
+	//
+	//			Speech.setPrevious(speech);
+	//		}
+	//	}
+
 
 
 }

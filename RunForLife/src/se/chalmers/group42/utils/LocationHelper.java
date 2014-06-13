@@ -73,4 +73,23 @@ public class LocationHelper {
 		xy[1] = (float) (distance * Math.sin(bearing));
 		return xy;
 	}
+	
+	//private static final int earthRadius = 6371;
+    public static float calculateDistance(Location l1, Location l2)
+    {
+        float dLat = (float) Math.toRadians(l2.getLatitude() - l1.getLatitude());
+        float dLng = (float) Math.toRadians(l2.getLongitude() - l1.getLongitude());
+        float a =	(float) (	Math.sin(dLat / 2) * Math.sin(dLat / 2) + 
+        		
+        						Math.cos(Math.toRadians(l1.getLatitude())) * 
+        						Math.cos(Math.toRadians(l2.getLatitude())) * 
+        						Math.sin(dLng / 2) * 
+        						Math.sin(dLng / 2)
+        					);
+        
+        float c = (float) (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+        
+        float distance = EARTH_RADIUS * c;
+        return distance;
+    }
 }
