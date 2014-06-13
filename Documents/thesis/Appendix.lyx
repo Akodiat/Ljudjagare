@@ -317,9 +317,10 @@ The sound will appear to come from a certain direction while wearing the
 
 \begin_layout Standard
 To easier tell if you are heading in the right direction the playback rate
- of the sound is incremented the closer you come to every one hundred meter.
- For every hundred meter you pass you are provided with feedback of how
- far it is to the sounds source, for example “500 meters”.
+ of the sound increases the closer you get to the coin within each 100 meter
+ interval from it.
+ For every 100 meter interval you pass you are provided with feedback of
+ how far it is to the sound source, for example “500 meters”.
 \end_layout
 
 \begin_layout Section
