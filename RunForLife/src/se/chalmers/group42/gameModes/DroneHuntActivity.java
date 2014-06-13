@@ -1,7 +1,12 @@
 package se.chalmers.group42.gameModes;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
+import se.chalmers.group42.controller.StatsFragment;
 import se.chalmers.group42.runforlife.Constants;
 import se.chalmers.group42.runforlife.Drone.DroneStatus;
 import se.chalmers.group42.runforlife.FXHandler;
@@ -32,6 +37,8 @@ public class DroneHuntActivity extends RunActivity implements DroneListener {
 	public static int 		MAX_MONSTER_SPAWN_DISTANCE 	= 100;
 	public static int 		MIN_MONSTER_SPAWN_DISTANCE	= 10;
 	public static float 	MONSTER_SPEED 				= 3; //	Meters per second
+	
+	public static List<String> descriptions = Arrays.asList("First-aid kit", "Toaster", "TV", "Battery charger", "Survival kit", "Soda bottle");
 
 	private Human 	human; 				// Containing the player position and score
 	private Drone 	drone;			// Containing the drone position
@@ -81,7 +88,9 @@ public class DroneHuntActivity extends RunActivity implements DroneListener {
 						"Rouge drone!"
 				);
 
-		drone = new Drone(droneLocation, MONSTER_SPEED, this);
+		String desc = descriptions.get((int) (Math.random()*descriptions.size() -1));
+		
+		drone = new Drone(droneLocation, MONSTER_SPEED, desc, this);
 		drone.setHunter(human.getLocation());
 
 	}
@@ -102,6 +111,24 @@ public class DroneHuntActivity extends RunActivity implements DroneListener {
 
 		// Update monster target
 		drone.setHunter(human.getLocation());
+		
+		if(capturesDrone()){ //&& dataHandler.isRunning()){
+			dataHandler.onAquiredCoin(human.getLocation());
+			// Increase the player score by one
+			this.human.modScore(1);
+			
+			sound.droneCaptured();
+
+			// And generate a new coin to search for
+			generateNewDrone();
+			
+			
+			StatsFragment statsFrag = (StatsFragment) getSupportFragmentManager().findFragmentByTag(
+	                "android:switcher:"+R.id.pager+":2");
+			if(getStatsFragment().isAdded()){
+				statsFrag.updateTableData(1337,1337, drone.getDescription());
+			}
+		}
 
 		//	Toast.makeText(this, human.getLocation().distanceTo(monster.getLocation()) + "meters", Toast.LENGTH_SHORT).show();
 
@@ -113,20 +140,12 @@ public class DroneHuntActivity extends RunActivity implements DroneListener {
 
 	private void updateMarker() {
 
-
-		final MapFragment mapFrag = (MapFragment) getSupportFragmentManager().
-				findFragmentByTag(
-						"android:switcher:"+R.id.pager+":1");
-
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				droneMarker.setPosition( 
 						LocationHelper.latlngFromLocation(drone.getLocation()));
-				droneMarker.setTitle(
-						"Rouge drone! " +
-								"\nPower: "	 + drone.getRemainingPower() + 
-								"\nDistance: " + distToDrone());
+				droneMarker.setTitle(drone.getDescription());
 				float minAlpha = 0.5f;
 				droneMarker.setAlpha(drone.getRemainingPower()*minAlpha/100 + minAlpha);
 			}
@@ -145,8 +164,7 @@ public class DroneHuntActivity extends RunActivity implements DroneListener {
 		this.compassFromNorth = headingAngleOrientation;
 	}
 
-	@SuppressWarnings("unused")
-	private boolean eatenByMonster() {
+	private boolean capturesDrone() {
 		return (// If closer than minimum distance
 				distToDrone() < Constants.MIN_DISTANCE
 				// Or the accuracy is less than 50 meters but still larger

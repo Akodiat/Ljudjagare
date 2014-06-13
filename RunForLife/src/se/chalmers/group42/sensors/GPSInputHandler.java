@@ -75,20 +75,19 @@ LocationListener
 
 	@Override
 	public void onLocationChanged(Location location) {
+		if( locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+			listener.onGPSConnect();
 		if(location.getAccuracy() < MAXIMAL_ACCEPTABLE_ACCURACY) {
-			if( locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-				listener.onGPSConnect();
+			//If the new location has no bearing, use the old bearing
+			if(!location.hasBearing()){
+				float bearing = currentLocation.getBearing();
+				currentLocation = location;
+				currentLocation.setBearing(bearing);
+			} else currentLocation = location;
 
-				//If the new location has no bearing, use the old bearing
-				if(!location.hasBearing()){
-					float bearing = currentLocation.getBearing();
-					currentLocation = location;
-					currentLocation.setBearing(bearing);
-				} else currentLocation = location;
-
-				listener.onLocationChanged(location);
-			}
+			listener.onLocationChanged(location);
 		}
+
 		else
 			listener.onGPSDisconnect();
 	}

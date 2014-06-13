@@ -45,9 +45,9 @@ public class StatsFragment extends Fragment{
 		return rootView;
 	}
 	
-	//TODO Fixa så att varannan rad blir grå med hjälp av om det inlästa 
-	//elementet har udda eller jämn plats
-	public void updateTableData(int distance, long seconds){
+	//TODO Fixa sï¿½ att varannan rad blir grï¿½ med hjï¿½lp av om det inlï¿½sta 
+	//elementet har udda eller jï¿½mn plats
+	public void updateTableData(int distance, long seconds, String EventText){
 		Time t = new Time();
 		t.set(seconds*1000);
 		t.switchTimezone("GMT");
@@ -63,7 +63,7 @@ public class StatsFragment extends Fragment{
 		TextView time = new TextView(this.getActivity());
 		TextView dist = new TextView(this.getActivity());
 		TextView pace = new TextView(this.getActivity());
-		event.setText("Coin");
+		event.setText(EventText);
 		time.setText(t.format("%H:%M:%S"));
 		dist.setText(distance+"m");
 		pace.setText(paceX+"min/km");
@@ -89,7 +89,7 @@ public class StatsFragment extends Fragment{
 		int[] dists = stats.getIntArray("dists");
 		
 		for(int row = 0 ; row < times.length ; row++){
-			updateTableData(dists[row],times[row]);
+			updateTableData(dists[row],times[row], "Coin"); //TODO: Do something more general than "Coin"
 		}
 	}
 }

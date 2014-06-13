@@ -9,6 +9,7 @@ import se.chalmers.group42.controller.MapFragment;
 import se.chalmers.group42.controller.RunActivity;
 import se.chalmers.group42.controller.StatsFragment;
 import se.chalmers.group42.database.*;
+import se.chalmers.group42.utils.LocationHelper;
 
 import android.location.Location;
 import android.os.Handler;
@@ -68,7 +69,7 @@ public class DataHandler {
 				} else{
 					if(runStatus==RunStatus.RUNNING){
 						//adds the distance from the last point to the current point
-						distance += prev.distanceTo(curr);
+						distance += LocationHelper.calculateDistance(prev, curr);
 						
 						MapFragment mapFrag = (MapFragment) runAct.getSupportFragmentManager().findFragmentByTag(
 				                "android:switcher:"+R.id.pager+":1");
@@ -180,7 +181,7 @@ public class DataHandler {
 		StatsFragment statsFrag = (StatsFragment) runAct.getSupportFragmentManager().findFragmentByTag(
                 "android:switcher:"+R.id.pager+":2");
 		if(runAct.getStatsFragment().isAdded()){
-			statsFrag.updateTableData(d,seconds);
+			statsFrag.updateTableData(d,seconds, "Coin");
 		}
 	}
 	public void finnishRoute(){

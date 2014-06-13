@@ -14,6 +14,7 @@ public class Drone {
 	private		Location 	hunter;					//Location of the target (that the monster hunts)
 	private 	float 		speed;					//Meters per second
 	private		int			power;
+	private		String		description;
 	private		String		statusText;
 	private 	DroneStatus	status;
 
@@ -24,15 +25,27 @@ public class Drone {
 	private 	DroneListener listener;
 
 
-	public Drone(Location location, float speed, DroneListener listener){
+	public Drone(Location location, float speed, String description, DroneListener listener){
 		this.location 	= location;
 		this.hunter		= location;
 		this.speed 		= speed;
+		this.description= description;
 		this.listener	= listener;
 		this.power		= 100;
 		this.statusText		= "";
 		this.status = DroneStatus.FLYING;
 
+		resume();
+	}
+	
+	public void pause(){
+		timer.cancel();
+		statusText = "GAME IS PAUSED";
+		listener.onMonsterStatusUpdated(status, statusText);
+	}
+	public void resume(){
+		timer = new Timer();
+		
 		TimerTask task = new TimerTask() {
 
 			@Override
@@ -41,6 +54,7 @@ public class Drone {
 			}
 		};
 		timer.schedule(task, 0, DELAY_TIME);
+		
 	}
 
 	public void setSpeed(float speed){
@@ -53,6 +67,14 @@ public class Drone {
 
 	public Location getLocation(){
 		return location;
+	}
+	public String getDescription(){
+		return description;
+	}
+	
+	@Override
+	public String toString() {
+		return this.description + "\n" + statusText;
 	}
 
 	public int getRemainingPower(){
@@ -72,8 +94,12 @@ public class Drone {
 				power -= distToMove;
 
 				float direction = location.bearingTo(hunter);
-				statusText = "Power: "+power+"\n"+(int)distToHunter()+"m from hunter. \nMoving " + (int) distToMove + "m in " + (int) direction +"deg.";
-				status = DroneStatus.FLYING;
+				setStatus(DroneStatus.FLYING, 
+						"Power: "+power+"\n"+
+								(int)distToHunter()+"m from hunter. \n" +
+								"Moving " + (int) distToMove + "m in " + 
+								(int) direction +"deg.");
+				
 				LocationHelper.moveLocation(
 						location, 
 						direction,
@@ -83,19 +109,29 @@ public class Drone {
 			}
 
 			else {										//If power is drained
-				statusText = "Power: "+power+"\n"+(int)distToHunter()+"m from hunter. \nCannot escape. Power drained. Resting";
-				status = DroneStatus.RESTING;
+				setStatus(
+						DroneStatus.RESTING, 
+						"Power: "+power+"\n"+(int)distToHunter()+"m from hunter. \nCannot escape. Power drained. Resting");
+				
 				power += 2*distToMove;
 				if(power > 100) power = 100;
 			}
 		}
 		else {
-			statusText = "Power: "+power+"\n"+(int)distToHunter()+"m from hunter. \nResting";
-			status = DroneStatus.RESTING;
+			setStatus(
+					DroneStatus.RESTING,
+					"Power: "+power+"\n"+(int)distToHunter()+"m from hunter. \nResting");
+			
 			power += 2*distToMove;
 			if(power > 100) power = 100;
 		}
 		Log.d("MONSTER", statusText);
 		listener.onMonsterStatusUpdated(status, statusText);
+	}
+	private void setStatus(DroneStatus status, String statusText){
+		if(this.status != status){
+			this.status = status;
+			listener.onMonsterStatusUpdated(status, statusText);
+		}
 	}
 }

@@ -32,6 +32,8 @@ public class FXHandler2 {
 
 	private SoundPool soundPool;
 
+	private int coin;
+
 	private ArrayList<Speech> speech = new ArrayList<Speech>();
 
 
@@ -45,7 +47,7 @@ public class FXHandler2 {
 		// Load sound into memory. Has to be mono .wav file.
 		Buffer  droneBuffer;
 		try {
-			droneBuffer = env.addBuffer("techno2");
+			droneBuffer = env.addBuffer("drone");
 
 			// Add the audio buffer as a source in the 3D room and
 			drone = env.addSource(droneBuffer);
@@ -59,12 +61,20 @@ public class FXHandler2 {
 		drone.setPosition(0, 0, -1);
 
 		// Roll-off is at which distance the gain changes.
-		drone.setRolloffFactor(500);
+		drone.setRolloffFactor(1);
 
 		// Set listener orientation.
 		env.setListenerOrientation(0);
 
 		drone.play(true);
+
+
+		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+		coin = soundPool.load(context, R.raw.coin, 1);
+	}
+
+	public void droneCaptured(){
+		soundPool.play(coin, 1, 1, 1, 0, 1);
 	}
 
 	public void setSoundSourcePosition(float x, float y, float z){
